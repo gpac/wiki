@@ -6,12 +6,9 @@ jobs:
     # runs-on: self-hosted
     runs-on: ubuntu-latest
     steps:
-      - name: add deploy key to ssh agent 
-        run: | 
-          eval `ssh-agent -s`
-          ssh-add - <<< '${{ secrets.GH_WIKI_DEPLOY_KEY }}'
       - uses: actions/checkout@v4
         with:
+          ssh-key: ${{secrets.GH_WIKI_DEPLOY_KEY}}
           fetch-depth: 0
           submodules: recursive
       - uses: actions/setup-python@v5
