@@ -12,11 +12,11 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-    - navigation.expand
+    # - navigation.expand
     - navigation.sections
     - navigation.path
     - navigation.top
-    # - navigation.tabs
+    - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.tracking
     - navigation.indexes 
@@ -34,7 +34,7 @@ markdown_extensions:
 # extra:
 #   analytics:
 #     provider: google
-#     property: UA-25451652-1
+#     property: 
 #   consent:
 #     title: Cookie consent
 #     description: > # (1)
