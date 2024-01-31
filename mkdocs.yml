@@ -1,0 +1,317 @@
+site_name: GPAC wiki
+site_url: https://wiki.gpac.io/
+site_author: team GPAC 
+theme: 
+  name: material
+  logo: images/gpac.png
+  palette:
+      primary: red
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.expand
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.indexes 
+    # - toc.integrate
+    - toc.follow
+    - search.highlight
+    - search.share
+    - search.suggest
+repo_url: https://github.com/gpac/gpac/
+plugins:
+  - search
+markdown_extensions:
+  - toc:
+      permalink: true
+# extra:
+#   analytics:
+#     provider: google
+#     property: UA-25451652-1
+#   consent:
+#     title: Cookie consent
+#     description: > # (1)
+#       We use cookies to recognize your repeated visits and preferences, as well
+#       as to measure the effectiveness of our documentation and whether users
+#       find what they're searching for. With your consent, you're helping us to
+#       make our documentation better.
+
+nav: 
+  - Howtos:
+    - Intro: Howtos/howtos.md
+    - filters-oneliners: Howtos/filters-oneliners.md
+    - The GPAC Log System: Howtos/The-GPAC-Log-System.md
+    - inspecting: Howtos/inspecting.md
+    - gpac-mp4box: Howtos/gpac-mp4box.md
+    - avmix_tuto: Howtos/avmix_tuto.md
+    - custom-boxes: Howtos/custom-boxes.md
+    - dynamic_rc: Howtos/dynamic_rc.md
+    - encoding: Howtos/encoding.md
+    - MP4Box filters: Howtos/mp4box-filters.md
+    - MP4Box inplace: Howtos/mp4box-inplace.md
+    - network capture: Howtos/network-capture.md
+    - nodejs: Howtos/nodejs.md
+    - pipes: Howtos/pipes.md
+    - playlist: Howtos/playlist.md
+    - python: Howtos/python.md
+    - raw-formats: Howtos/raw-formats.md
+    - realtime: Howtos/realtime.md
+    - route: Howtos/route.md
+    - sockets: Howtos/sockets.md
+    - archives:
+      - Archives: Howtos/archives/Archives.md
+      - Language tagging in GPAC: Howtos/archives/Language-tagging-in-GPAC.md
+      - MPEG-HEVC Support in GPAC: Howtos/archives/MPEG-HEVC-Support-in-GPAC.md
+      - SVC Support in MP4Box: Howtos/archives/SVC-Support-in-MP4Box.md
+      - Use MP4Box to dump and analyze broadcast TS streams: Howtos/archives/Use-MP4Box-to-dump-and-analyze-broadcast-TS-streams.md
+    - dash:
+      - Intro: Howtos/dash/DASH-intro.md
+      - DASH basics: Howtos/dash/DASH-basics.md
+      - DASH Sequences: Howtos/dash/DASH-Sequences.md
+      - DASH Support in MP4Box: Howtos/dash/DASH-Support-in-MP4Box.md
+      - Checking key frame alignment with MP4Box: Howtos/dash/Check-key-frame-alignment-with-MP4Box.md
+      - cmaf: Howtos/dash/cmaf.md
+      - DASH low latency: Howtos/dash/dash_low_latency.md
+      - DASH transcoding: Howtos/dash/dash_transcoding.md
+      - Fragmentation,segmentation,splitting and interleaving: Howtos/dash/Fragmentation,-segmentation,-splitting-and-interleaving.md
+      - HAS advanced: Howtos/dash/HAS-advanced.md
+      - HEVC-Tile-based-adaptation-guide: Howtos/dash/HEVC-Tile-based-adaptation-guide.md
+      - HEVC-Tile-multi-resolution-adaptation-guide: Howtos/dash/HEVC-Tile-multi-resolution-adaptation-guide.md
+      - hls: Howtos/dash/hls.md
+      - LL-DASH: Howtos/dash/LL-DASH.md
+      - LL-HLS: Howtos/dash/LL-HLS.md
+      - MPEG DASH SRD and HEVC tiling for VR videos: Howtos/dash/MPEG-DASH-SRD-and-HEVC-tiling-for-VR-videos.md
+      - Support for Apple fMP4 adaptive streaming format: Howtos/dash/Support-for-Apple-fMP4-adaptive-streaming-format.md
+      - Tiled Streaming: Howtos/dash/Tiled-Streaming.md
+    - Encryption:
+      - Intro: Howtos/encryption/Encryption-Introduction.md
+      - Encryption clearkey: Howtos/encryption/encryption-clearkey.md
+      - Encryption filters: Howtos/encryption/encryption-filters.md
+    - heif:
+      - Intro: Howtos/heif/GPAC-support-for-HEIF.md
+      - heif extraction: Howtos/heif/heif-extraction.md
+      - heif import: Howtos/heif/heif-import.md
+    - jsf:
+      - Intro: Howtos/jsf/jsfilter.md
+      - evg: Howtos/jsf/evg.md
+      - jsdash: Howtos/jsf/jsdash.md
+      - jshttp: Howtos/jsf/jshttp.md
+      - jssession: Howtos/jsf/jssession.md
+      - webgl: Howtos/jsf/webgl.md
+      - webgl_three: Howtos/jsf/webgl_three.md
+    - Scene coding:
+      - Intro: Howtos/scenecoding/SceneCodingIntro.md
+      - MP4Box tips and tricks with BT and XMT: Howtos/scenecoding/MP4Box-tips-and-tricks-with-BT-and-XMT.md
+      - MPEG-4 BIFS Textual Format: Howtos/scenecoding/MPEG-4-BIFS-Textual-Format.md
+      - MPEG-4 Scene Commands: Howtos/scenecoding/MPEG-4-Scene-Commands.md
+      - MPEG-4 XMT Format: Howtos/scenecoding/MPEG-4-XMT-Format.md
+    - Subtitles:
+      - Subtitling with GPAC: Howtos/subtitles/Subtitling-with-GPAC.md
+      - EBU-TTD support in GPAC: Howtos/subtitles/EBU-TTD-support-in-GPAC.md
+  - MP4Box:
+    - Intro: MP4Box/MP4Box.md
+    - import options: MP4Box/mp4box-import-opts.md
+    - dump options: MP4Box/mp4box-dump-opts.md
+    - gen options: MP4Box/mp4box-gen-opts.md
+    - meta options: MP4Box/mp4box-meta-opts.md
+    - dash options: MP4Box/mp4box-dash-opts.md
+    - scene options: MP4Box/mp4box-scene-opts.md
+    - other options: MP4Box/mp4box-other-opts.md
+  - GPAC:
+    - Intro: Filters/Filters.md
+    - GPAC 2.* Rearchitecture: Filters/Rearchitecture.md
+    - Usage: Filters/gpac_general.md
+    - core config: Filters/core_config.md
+    - core logs: Filters/core_logs.md
+    - core options: Filters/core_options.md
+    - filters_general: Filters/filters_general.md
+    - filters_properties: Filters/filters_properties.md
+    - a52dec: Filters/a52dec.md
+    - aout: Filters/aout.md
+    - avgen: Filters/avgen.md
+    - avidmx: Filters/avidmx.md
+    - avimx: Filters/avimx.md
+    - avmix: Filters/avmix.md
+    - bifsdec: Filters/bifsdec.md
+    - bsagg: Filters/bsagg.md
+    - bsrw: Filters/bsrw.md
+    - bssplit: Filters/bssplit.md
+    - btplay: Filters/btplay.md
+    - ccdec: Filters/ccdec.md
+    - cdcrypt: Filters/cdcrypt.md
+    - cecrypt: Filters/cecrypt.md
+    - compositor: Filters/compositor.md
+    - cryptin: Filters/cryptin.md
+    - cryptout: Filters/cryptout.md
+    - dasher: Filters/dasher.md
+    - dashin: Filters/dashin.md
+    - dtout: Filters/dtout.md
+    - dvbin: Filters/dvbin.md
+    - evgs: Filters/evgs.md
+    - faad: Filters/faad.md
+    - ffavf: Filters/ffavf.md
+    - ffavin: Filters/ffavin.md
+    - ffbsf: Filters/ffbsf.md
+    - ffdec: Filters/ffdec.md
+    - ffdmx: Filters/ffdmx.md
+    - ffenc: Filters/ffenc.md
+    - ffmx: Filters/ffmx.md
+    - ffsws: Filters/ffsws.md
+    - fin: Filters/fin.md
+    - flist: Filters/flist.md
+    - fout: Filters/fout.md
+    - ghidmx: Filters/ghidmx.md
+    - glpush: Filters/glpush.md
+    - gsfdmx: Filters/gsfdmx.md
+    - gsfmx: Filters/gsfmx.md
+    - hevcmerge: Filters/hevcmerge.md
+    - hevcsplit: Filters/hevcsplit.md
+    - httpin: Filters/httpin.md
+    - httpout: Filters/httpout.md
+    - imgdec: Filters/imgdec.md
+    - inspect: Filters/inspect.md
+    - j2kdec: Filters/j2kdec.md
+    - jpgenc: Filters/jpgenc.md
+    - jsf: Filters/jsf.md
+    - lsrdec: Filters/lsrdec.md
+    - m2psdmx: Filters/m2psdmx.md
+    - m2tsdmx: Filters/m2tsdmx.md
+    - m2tsmx: Filters/m2tsmx.md
+    - maddec: Filters/maddec.md
+    - mcdec: Filters/mcdec.md
+    - mp4dmx: Filters/mp4dmx.md
+    - mp4mx: Filters/mp4mx.md
+    - mpeghdec: Filters/mpeghdec.md
+    - nhmlr: Filters/nhmlr.md
+    - nhmlw: Filters/nhmlw.md
+    - nhntr: Filters/nhntr.md
+    - nhntw: Filters/nhntw.md
+    - nvdec: Filters/nvdec.md
+    - odfdec: Filters/odfdec.md
+    - oggdmx: Filters/oggdmx.md
+    - oggmx: Filters/oggmx.md
+    - ohevcdec: Filters/ohevcdec.md
+    - osvcdec: Filters/osvcdec.md
+    - pin: Filters/pin.md
+    - pngenc: Filters/pngenc.md
+    - pout: Filters/pout.md
+    - probe: Filters/probe.md
+    - reframer: Filters/reframer.md
+    - resample: Filters/resample.md
+    - restamp: Filters/restamp.md
+    - rewind: Filters/rewind.md
+    - rfac3: Filters/rfac3.md
+    - rfadts: Filters/rfadts.md
+    - rfamr: Filters/rfamr.md
+    - rfav1: Filters/rfav1.md
+    - rfflac: Filters/rfflac.md
+    - rfh263: Filters/rfh263.md
+    - rfimg: Filters/rfimg.md
+    - rflatm: Filters/rflatm.md
+    - rfmhas: Filters/rfmhas.md
+    - rfmp3: Filters/rfmp3.md
+    - rfmpgvid: Filters/rfmpgvid.md
+    - rfnalu: Filters/rfnalu.md
+    - rfpcm: Filters/rfpcm.md
+    - rfprores: Filters/rfprores.md
+    - rfqcp: Filters/rfqcp.md
+    - rfrawvid: Filters/rfrawvid.md
+    - rfsrt: Filters/rfsrt.md
+    - rftruehd: Filters/rftruehd.md
+    - routein: Filters/routein.md
+    - routeout: Filters/routeout.md
+    - rtpin: Filters/rtpin.md
+    - rtpout: Filters/rtpout.md
+    - rtspout: Filters/rtspout.md
+    - safdmx: Filters/safdmx.md
+    - sockin: Filters/sockin.md
+    - sockout: Filters/sockout.md
+    - svgplay: Filters/svgplay.md
+    - theoradec: Filters/theoradec.md
+    - thumbs: Filters/thumbs.md
+    - tileagg: Filters/tileagg.md
+    - tilesplit: Filters/tilesplit.md
+    - tssplit: Filters/tssplit.md
+    - ttml2srt: Filters/ttml2srt.md
+    - ttml2vtt: Filters/ttml2vtt.md
+    - ttmldec: Filters/ttmldec.md
+    - ttxtdec: Filters/ttxtdec.md
+    - tx3g2srt: Filters/tx3g2srt.md
+    - tx3g2ttml: Filters/tx3g2ttml.md
+    - tx3g2vtt: Filters/tx3g2vtt.md
+    - txtin: Filters/txtin.md
+    - ufadts: Filters/ufadts.md
+    - uflatm: Filters/uflatm.md
+    - ufm4v: Filters/ufm4v.md
+    - ufmhas: Filters/ufmhas.md
+    - ufnalu: Filters/ufnalu.md
+    - ufobu: Filters/ufobu.md
+    - ufttxt: Filters/ufttxt.md
+    - ufvc1: Filters/ufvc1.md
+    - ufvtt: Filters/ufvtt.md
+    - uncvdec: Filters/uncvdec.md
+    - uncvg: Filters/uncvg.md
+    - unframer: Filters/unframer.md
+    - vcrop: Filters/vcrop.md
+    - vflip: Filters/vflip.md
+    - vobsubdmx: Filters/vobsubdmx.md
+    - vorbisdec: Filters/vorbisdec.md
+    - vout: Filters/vout.md
+    - vtbdec: Filters/vtbdec.md
+    - vtt2tx3g: Filters/vtt2tx3g.md
+    - vttdec: Filters/vttdec.md
+    - writegen: Filters/writegen.md
+    - writeqcp: Filters/writeqcp.md
+    - writeuf: Filters/writeuf.md
+    - xviddec: Filters/xviddec.md
+  - Build:
+    - Intro: Build/Build-Introduction.md
+    - Building MP4Box only: Build/GPAC-build-MP4Box-only-all-platforms.md
+    - Upgrading: Build/Upgrading.md
+    - build:
+      - Android: Build/build/GPAC-Build-Guide-for-Android.md
+      - iOS: Build/build/GPAC-Build-Guide-for-iOS.md
+      - Linux: Build/build/GPAC-Build-Guide-for-Linux.md
+      - MSYS MinGW: Build/build/GPAC-Build-Guide-for-MSYS-MinGW.md
+      - OSX: Build/build/GPAC-Build-Guide-for-OSX.md
+      - Windows: Build/build/GPAC-Build-Guide-for-Windows.md
+      - Docker: Build/build/GPAC-Build-with-Docker.md
+    - Archives:
+      - Command line GPAC compiling on Windows x86 using free Microsoft Visual C++: Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
+      - Compiling GPAC on Debian and Ubuntu and other Unix: Build/old/Compiling-GPAC-on-Debian-and-Ubuntu-and-other-Unix.md
+      - Compiling GPAC for MacOS X: Build/old/Compiling-GPAC-for-MacOS-X.md
+    - Tests:
+      - GPAC tests: Build/tests/GPAC_tests.md
+    - Basic player application using GPAC: Build/Basic-Player-Application-using-GPAC.md
+    - MP4 dmx examples: Build/MP4-dmx-examples.md
+  - Developpers:
+    - Intro: Developpers/index.md  
+  - Player:
+    - Intro: Player/Playback.md
+    - Player: Player/Player.md
+    - Player features: Player/Player-Features.md
+    - BIFS implementation status: Player/BIFS-Implementation-Status.md
+    - Deferred rendering in GPAC: Player/Deferred-rendering-in-GPAC.md
+    - Filters playback: Player/filters-playback.md
+    - GPAC 10bit support: Player/GPAC-10bit-support.md
+    - Overlay composition: Player/olay-composition.md
+    - Fun with multiview rendering on 3D screens: Player/Some-fun-with-multiview-rendering-on-3D-screens.md
+    - SVG implementation status: Player/SVG-Implementation-Status.md
+    - X3D implementation status: Player/X3D-Implementation-Status.md
+  - XML formats:
+    - Intro: xmlformats/xmlformats.md
+    - XML binary: xmlformats/XML-Binary.md
+    - BoxPatch: xmlformats/BoxPatch.md
+    - Common encryption: xmlformats/Common-Encryption.md
+    - ISMACryp: xmlformats/ISMACryp.md
+    - NHML format: xmlformats/NHML-Format.md
+    - NHNT format: xmlformats/NHNT-Format.md
+    - OMA DRM: xmlformats/OMA-DRM.md
+    - TTXT format documentation: xmlformats/TTXT-Format-Documentation.md

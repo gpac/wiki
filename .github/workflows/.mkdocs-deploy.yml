@@ -1,0 +1,30 @@
+name: mkdocs-deploy
+run-name: ${{ github.actor }} is deploying gpac mkdocs wiki
+on: workflow_dispatch
+jobs:
+  build-mkdocs:
+    # runs-on: self-hosted
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' 
+      - name: install mkdocs-material
+        run: pip install mkdocs-material 
+        # run: pip install mkdocs-material=="9.5.6" 
+      - name: install lftp
+        run: sudo apt install lftp
+      - name: build mkdocs
+        run: mkdocs build --clean -t material -d ./site
+      - name: lftp upload
+        run: |
+          lftp -f "
+          open ${{vars.WIKI_FTP_HOST}}
+          user ${{secrets.WIKI_FTP_USER}} ${{secrets.WIKI_FTP_PASS}}
+          lcd ./site
+          mirror --reverse --delete --verbose
+          bye
+          "
