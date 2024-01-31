@@ -12,7 +12,7 @@ jobs:
       - name: Get submodules
         run: |
           eval `ssh-agent -s`
-          ssh-add - <<< "${secrets.GH_WIKI_DEPLOY_KEY}"; git submodule update --init --recursive
+          ssh-add - <<< "${{secrets.GH_WIKI_DEPLOY_KEY}}"; git submodule update --init --recursive
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10' 
