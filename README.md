@@ -22,6 +22,10 @@ live preview localy:
 (.venv)$ mkdocs serve
 ```
 
+build:
+```
+mkdocs build --clean -d ./site
+```
 
 ## Contributing
 

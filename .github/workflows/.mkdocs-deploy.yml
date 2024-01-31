@@ -22,7 +22,7 @@ jobs:
       - name: install lftp
         run: sudo apt install lftp
       - name: build mkdocs
-        run: mkdocs build --clean -t material -d ./site
+        run: mkdocs build --clean -d ./site
       - name: disable SEO indexing
         run: | 
           echo " 
