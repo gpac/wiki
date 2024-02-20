@@ -1,7 +1,19 @@
+TODO: [GITHUB-ACTION](https://github.com/pinkasey/cpanel-deploy-action/tree/main)
+
+
 # GPAC wiki
 
 This repo builds gpac wiki using the popular [mkdocs](https://www.mkdocs.org/) documentation framework.
 
+
+## part of GPAC wiki is auto generated and should be updated with the following commands
+```
+cd Filters
+gpac -genmd
+cd ../MP4Box
+MP4Box -genmd
+cd ..
+```
 
 ## Getting started
 
