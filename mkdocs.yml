@@ -12,13 +12,13 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-    # - navigation.expand
-    - navigation.sections
+    - navigation.expand
+    # - navigation.sections
     - navigation.path
-    - navigation.top
+    # - navigation.top
     - navigation.tabs
     # - navigation.tabs.sticky
-    - navigation.tracking
+    # - navigation.tracking
     - navigation.indexes 
     # - toc.integrate
     - toc.follow
@@ -28,6 +28,8 @@ theme:
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
+hooks:
+  - mkdocs_hooks.py
 markdown_extensions:
   - toc:
       permalink: true
@@ -78,7 +80,6 @@ nav:
       - DASH Support in MP4Box: Howtos/dash/DASH-Support-in-MP4Box.md
       - Checking key frame alignment with MP4Box: Howtos/dash/Check-key-frame-alignment-with-MP4Box.md
       - cmaf: Howtos/dash/cmaf.md
-      - DASH low latency: Howtos/dash/dash_low_latency.md
       - DASH transcoding: Howtos/dash/dash_transcoding.md
       - Fragmentation,segmentation,splitting and interleaving: Howtos/dash/Fragmentation,-segmentation,-splitting-and-interleaving.md
       - HAS advanced: Howtos/dash/HAS-advanced.md
@@ -133,144 +134,145 @@ nav:
     - core options: Filters/core_options.md
     - filters_general: Filters/filters_general.md
     - filters_properties: Filters/filters_properties.md
-    - a52dec: Filters/a52dec.md
-    - aout: Filters/aout.md
-    - avgen: Filters/avgen.md
-    - avidmx: Filters/avidmx.md
-    - avimx: Filters/avimx.md
-    - avmix: Filters/avmix.md
-    - bifsdec: Filters/bifsdec.md
-    - bsagg: Filters/bsagg.md
-    - bsrw: Filters/bsrw.md
-    - bssplit: Filters/bssplit.md
-    - btplay: Filters/btplay.md
-    - ccdec: Filters/ccdec.md
-    - cdcrypt: Filters/cdcrypt.md
-    - cecrypt: Filters/cecrypt.md
-    - compositor: Filters/compositor.md
-    - cryptin: Filters/cryptin.md
-    - cryptout: Filters/cryptout.md
-    - dasher: Filters/dasher.md
-    - dashin: Filters/dashin.md
-    - dtout: Filters/dtout.md
-    - dvbin: Filters/dvbin.md
-    - evgs: Filters/evgs.md
-    - faad: Filters/faad.md
-    - ffavf: Filters/ffavf.md
-    - ffavin: Filters/ffavin.md
-    - ffbsf: Filters/ffbsf.md
-    - ffdec: Filters/ffdec.md
-    - ffdmx: Filters/ffdmx.md
-    - ffenc: Filters/ffenc.md
-    - ffmx: Filters/ffmx.md
-    - ffsws: Filters/ffsws.md
-    - fin: Filters/fin.md
-    - flist: Filters/flist.md
-    - fout: Filters/fout.md
-    - ghidmx: Filters/ghidmx.md
-    - glpush: Filters/glpush.md
-    - gsfdmx: Filters/gsfdmx.md
-    - gsfmx: Filters/gsfmx.md
-    - hevcmerge: Filters/hevcmerge.md
-    - hevcsplit: Filters/hevcsplit.md
-    - httpin: Filters/httpin.md
-    - httpout: Filters/httpout.md
-    - imgdec: Filters/imgdec.md
-    - inspect: Filters/inspect.md
-    - j2kdec: Filters/j2kdec.md
-    - jpgenc: Filters/jpgenc.md
-    - jsf: Filters/jsf.md
-    - lsrdec: Filters/lsrdec.md
-    - m2psdmx: Filters/m2psdmx.md
-    - m2tsdmx: Filters/m2tsdmx.md
-    - m2tsmx: Filters/m2tsmx.md
-    - maddec: Filters/maddec.md
-    - mcdec: Filters/mcdec.md
-    - mp4dmx: Filters/mp4dmx.md
-    - mp4mx: Filters/mp4mx.md
-    - mpeghdec: Filters/mpeghdec.md
-    - nhmlr: Filters/nhmlr.md
-    - nhmlw: Filters/nhmlw.md
-    - nhntr: Filters/nhntr.md
-    - nhntw: Filters/nhntw.md
-    - nvdec: Filters/nvdec.md
-    - odfdec: Filters/odfdec.md
-    - oggdmx: Filters/oggdmx.md
-    - oggmx: Filters/oggmx.md
-    - ohevcdec: Filters/ohevcdec.md
-    - osvcdec: Filters/osvcdec.md
-    - pin: Filters/pin.md
-    - pngenc: Filters/pngenc.md
-    - pout: Filters/pout.md
-    - probe: Filters/probe.md
-    - reframer: Filters/reframer.md
-    - resample: Filters/resample.md
-    - restamp: Filters/restamp.md
-    - rewind: Filters/rewind.md
-    - rfac3: Filters/rfac3.md
-    - rfadts: Filters/rfadts.md
-    - rfamr: Filters/rfamr.md
-    - rfav1: Filters/rfav1.md
-    - rfflac: Filters/rfflac.md
-    - rfh263: Filters/rfh263.md
-    - rfimg: Filters/rfimg.md
-    - rflatm: Filters/rflatm.md
-    - rfmhas: Filters/rfmhas.md
-    - rfmp3: Filters/rfmp3.md
-    - rfmpgvid: Filters/rfmpgvid.md
-    - rfnalu: Filters/rfnalu.md
-    - rfpcm: Filters/rfpcm.md
-    - rfprores: Filters/rfprores.md
-    - rfqcp: Filters/rfqcp.md
-    - rfrawvid: Filters/rfrawvid.md
-    - rfsrt: Filters/rfsrt.md
-    - rftruehd: Filters/rftruehd.md
-    - routein: Filters/routein.md
-    - routeout: Filters/routeout.md
-    - rtpin: Filters/rtpin.md
-    - rtpout: Filters/rtpout.md
-    - rtspout: Filters/rtspout.md
-    - safdmx: Filters/safdmx.md
-    - sockin: Filters/sockin.md
-    - sockout: Filters/sockout.md
-    - svgplay: Filters/svgplay.md
-    - theoradec: Filters/theoradec.md
-    - thumbs: Filters/thumbs.md
-    - tileagg: Filters/tileagg.md
-    - tilesplit: Filters/tilesplit.md
-    - tssplit: Filters/tssplit.md
-    - ttml2srt: Filters/ttml2srt.md
-    - ttml2vtt: Filters/ttml2vtt.md
-    - ttmldec: Filters/ttmldec.md
-    - ttxtdec: Filters/ttxtdec.md
-    - tx3g2srt: Filters/tx3g2srt.md
-    - tx3g2ttml: Filters/tx3g2ttml.md
-    - tx3g2vtt: Filters/tx3g2vtt.md
-    - txtin: Filters/txtin.md
-    - ufadts: Filters/ufadts.md
-    - uflatm: Filters/uflatm.md
-    - ufm4v: Filters/ufm4v.md
-    - ufmhas: Filters/ufmhas.md
-    - ufnalu: Filters/ufnalu.md
-    - ufobu: Filters/ufobu.md
-    - ufttxt: Filters/ufttxt.md
-    - ufvc1: Filters/ufvc1.md
-    - ufvtt: Filters/ufvtt.md
-    - uncvdec: Filters/uncvdec.md
-    - uncvg: Filters/uncvg.md
-    - unframer: Filters/unframer.md
-    - vcrop: Filters/vcrop.md
-    - vflip: Filters/vflip.md
-    - vobsubdmx: Filters/vobsubdmx.md
-    - vorbisdec: Filters/vorbisdec.md
-    - vout: Filters/vout.md
-    - vtbdec: Filters/vtbdec.md
-    - vtt2tx3g: Filters/vtt2tx3g.md
-    - vttdec: Filters/vttdec.md
-    - writegen: Filters/writegen.md
-    - writeqcp: Filters/writeqcp.md
-    - writeuf: Filters/writeuf.md
-    - xviddec: Filters/xviddec.md
+    - All filters:
+      - a52dec: Filters/a52dec.md
+      - aout: Filters/aout.md
+      - avgen: Filters/avgen.md
+      - avidmx: Filters/avidmx.md
+      - avimx: Filters/avimx.md
+      - avmix: Filters/avmix.md
+      - bifsdec: Filters/bifsdec.md
+      - bsagg: Filters/bsagg.md
+      - bsrw: Filters/bsrw.md
+      - bssplit: Filters/bssplit.md
+      - btplay: Filters/btplay.md
+      - ccdec: Filters/ccdec.md
+      - cdcrypt: Filters/cdcrypt.md
+      - cecrypt: Filters/cecrypt.md
+      - compositor: Filters/compositor.md
+      - cryptin: Filters/cryptin.md
+      - cryptout: Filters/cryptout.md
+      - dasher: Filters/dasher.md
+      - dashin: Filters/dashin.md
+      - dtout: Filters/dtout.md
+      - dvbin: Filters/dvbin.md
+      - evgs: Filters/evgs.md
+      - faad: Filters/faad.md
+      - ffavf: Filters/ffavf.md
+      - ffavin: Filters/ffavin.md
+      - ffbsf: Filters/ffbsf.md
+      - ffdec: Filters/ffdec.md
+      - ffdmx: Filters/ffdmx.md
+      - ffenc: Filters/ffenc.md
+      - ffmx: Filters/ffmx.md
+      - ffsws: Filters/ffsws.md
+      - fin: Filters/fin.md
+      - flist: Filters/flist.md
+      - fout: Filters/fout.md
+      - ghidmx: Filters/ghidmx.md
+      - glpush: Filters/glpush.md
+      - gsfdmx: Filters/gsfdmx.md
+      - gsfmx: Filters/gsfmx.md
+      - hevcmerge: Filters/hevcmerge.md
+      - hevcsplit: Filters/hevcsplit.md
+      - httpin: Filters/httpin.md
+      - httpout: Filters/httpout.md
+      - imgdec: Filters/imgdec.md
+      - inspect: Filters/inspect.md
+      - j2kdec: Filters/j2kdec.md
+      - jpgenc: Filters/jpgenc.md
+      - jsf: Filters/jsf.md
+      - lsrdec: Filters/lsrdec.md
+      - m2psdmx: Filters/m2psdmx.md
+      - m2tsdmx: Filters/m2tsdmx.md
+      - m2tsmx: Filters/m2tsmx.md
+      - maddec: Filters/maddec.md
+      - mcdec: Filters/mcdec.md
+      - mp4dmx: Filters/mp4dmx.md
+      - mp4mx: Filters/mp4mx.md
+      - mpeghdec: Filters/mpeghdec.md
+      - nhmlr: Filters/nhmlr.md
+      - nhmlw: Filters/nhmlw.md
+      - nhntr: Filters/nhntr.md
+      - nhntw: Filters/nhntw.md
+      - nvdec: Filters/nvdec.md
+      - odfdec: Filters/odfdec.md
+      - oggdmx: Filters/oggdmx.md
+      - oggmx: Filters/oggmx.md
+      - ohevcdec: Filters/ohevcdec.md
+      - osvcdec: Filters/osvcdec.md
+      - pin: Filters/pin.md
+      - pngenc: Filters/pngenc.md
+      - pout: Filters/pout.md
+      - probe: Filters/probe.md
+      - reframer: Filters/reframer.md
+      - resample: Filters/resample.md
+      - restamp: Filters/restamp.md
+      - rewind: Filters/rewind.md
+      - rfac3: Filters/rfac3.md
+      - rfadts: Filters/rfadts.md
+      - rfamr: Filters/rfamr.md
+      - rfav1: Filters/rfav1.md
+      - rfflac: Filters/rfflac.md
+      - rfh263: Filters/rfh263.md
+      - rfimg: Filters/rfimg.md
+      - rflatm: Filters/rflatm.md
+      - rfmhas: Filters/rfmhas.md
+      - rfmp3: Filters/rfmp3.md
+      - rfmpgvid: Filters/rfmpgvid.md
+      - rfnalu: Filters/rfnalu.md
+      - rfpcm: Filters/rfpcm.md
+      - rfprores: Filters/rfprores.md
+      - rfqcp: Filters/rfqcp.md
+      - rfrawvid: Filters/rfrawvid.md
+      - rfsrt: Filters/rfsrt.md
+      - rftruehd: Filters/rftruehd.md
+      - routein: Filters/routein.md
+      - routeout: Filters/routeout.md
+      - rtpin: Filters/rtpin.md
+      - rtpout: Filters/rtpout.md
+      - rtspout: Filters/rtspout.md
+      - safdmx: Filters/safdmx.md
+      - sockin: Filters/sockin.md
+      - sockout: Filters/sockout.md
+      - svgplay: Filters/svgplay.md
+      - theoradec: Filters/theoradec.md
+      - thumbs: Filters/thumbs.md
+      - tileagg: Filters/tileagg.md
+      - tilesplit: Filters/tilesplit.md
+      - tssplit: Filters/tssplit.md
+      - ttml2srt: Filters/ttml2srt.md
+      - ttml2vtt: Filters/ttml2vtt.md
+      - ttmldec: Filters/ttmldec.md
+      - ttxtdec: Filters/ttxtdec.md
+      - tx3g2srt: Filters/tx3g2srt.md
+      - tx3g2ttml: Filters/tx3g2ttml.md
+      - tx3g2vtt: Filters/tx3g2vtt.md
+      - txtin: Filters/txtin.md
+      - ufadts: Filters/ufadts.md
+      - uflatm: Filters/uflatm.md
+      - ufm4v: Filters/ufm4v.md
+      - ufmhas: Filters/ufmhas.md
+      - ufnalu: Filters/ufnalu.md
+      - ufobu: Filters/ufobu.md
+      - ufttxt: Filters/ufttxt.md
+      - ufvc1: Filters/ufvc1.md
+      - ufvtt: Filters/ufvtt.md
+      - uncvdec: Filters/uncvdec.md
+      - uncvg: Filters/uncvg.md
+      - unframer: Filters/unframer.md
+      - vcrop: Filters/vcrop.md
+      - vflip: Filters/vflip.md
+      - vobsubdmx: Filters/vobsubdmx.md
+      - vorbisdec: Filters/vorbisdec.md
+      - vout: Filters/vout.md
+      - vtbdec: Filters/vtbdec.md
+      - vtt2tx3g: Filters/vtt2tx3g.md
+      - vttdec: Filters/vttdec.md
+      - writegen: Filters/writegen.md
+      - writeqcp: Filters/writeqcp.md
+      - writeuf: Filters/writeuf.md
+      - xviddec: Filters/xviddec.md
   - Build:
     - Intro: Build/Build-Introduction.md
     - Building MP4Box only: Build/GPAC-build-MP4Box-only-all-platforms.md
@@ -291,8 +293,13 @@ nav:
       - GPAC tests: Build/tests/GPAC_tests.md
     - Basic player application using GPAC: Build/Basic-Player-Application-using-GPAC.md
     - MP4 dmx examples: Build/MP4-dmx-examples.md
-  - Developpers:
-    - Intro: Developpers/index.md  
+  - Developers:
+    - contributing: https://doxygen.gpac.io/index.html
+    - build status: https://buildbot.gpac.io
+    - github discussions: https://github.com/gpac/gpac/issues?utf8=%E2%9C%93&q=
+    - API documentation: https://doxygen.gpac.io/annotated.html  
+    - test suites: https://github.com/gpac/testsuite/tree/master/scripts
+    - tests status: https://tests.gpac.io
   - Player:
     - Intro: Player/Playback.md
     - Player: Player/Player.md
