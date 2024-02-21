@@ -1,0 +1,831 @@
+diff --git a/.gitignore b/.gitignore
+old mode 100644
+new mode 100755
+index 5ca0973..0957f25
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,2 +1,2 @@
+ .DS_Store
+-
++.venv/
+\ No newline at end of file
+diff --git a/Build/Basic Player Application using GPAC.md b/Build/Basic-Player-Application-using-GPAC.md
+similarity index 100%
+rename from Build/Basic Player Application using GPAC.md
+rename to Build/Basic-Player-Application-using-GPAC.md
+diff --git a/Build/MP4 dmx examples.md b/Build/MP4-dmx-examples.md
+similarity index 100%
+rename from Build/MP4 dmx examples.md
+rename to Build/MP4-dmx-examples.md
+diff --git a/Build/_Sidebar.md b/Build/_Sidebar.md
+deleted file mode 100644
+index b919e81..0000000
+--- a/Build/_Sidebar.md
++++ /dev/null
+@@ -1,30 +0,0 @@
+-[**HOME**](Home) » [**Build**](Build-Introduction)
+-
+-
+-**Building**
+-
+-[[Upgrading or Changing Branch|Upgrading]]      
+-[[Windows|GPAC Build Guide for Windows]]      
+-[[Linux|GPAC Build Guide for Linux]]      
+-[[OSX|GPAC Build Guide for OSX]]      
+-[[iOS|GPAC Build Guide for iOS]]      
+-[[Android|GPAC Build Guide for Android]]      
+-[[MSYS2|GPAC Build Guide for MSYS-MinGW]]      
+-[[Docker|GPAC Build with Docker]]      
+-      
+-
+-**Old Build Docs**
+-
+-[[MP4Box only|GPAC build MP4Box only all platforms]]      
+-[[Windows|Command-line GPAC compiling on Windows x86 using free Microsoft Visual C++]]      
+-[[Linux|Compiling GPAC on Debian and Ubuntu and other Unix]]      
+-[[OSX|Compiling GPAC for MacOS X]]      
+-
+-**Testing**      
+-
+-[[GPAC Tests|GPAC_tests]]      
+-
+-**Developing (old)**
+-
+-[[Basic Player Application|Basic Player Application using GPAC]]    
+-[MP4 Demultiplexer Examples](mp4-dmx-examples)    
+diff --git a/Build/old/Command-line GPAC compiling on Windows x86 using free Microsoft Visual C++.md b/Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
+similarity index 100%
+rename from Build/old/Command-line GPAC compiling on Windows x86 using free Microsoft Visual C++.md
+rename to Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
+diff --git a/Build/old/Compiling GPAC on Debian and Ubuntu and other Unix.md b/Build/old/Compiling-GPAC-on-Debian-and-Ubuntu-and-other-Unix.md
+similarity index 100%
+rename from Build/old/Compiling GPAC on Debian and Ubuntu and other Unix.md
+rename to Build/old/Compiling-GPAC-on-Debian-and-Ubuntu-and-other-Unix.md
+diff --git a/Filters/_Sidebar.md b/Filters/_Sidebar.md
+deleted file mode 100644
+index d98f756..0000000
+--- a/Filters/_Sidebar.md
++++ /dev/null
+@@ -1,156 +0,0 @@
+-[**HOME**](Home) » [**Filters**](Filters)  
+-  
+-**Filters Overview**  
+-  
+-[[General Filters Concepts|filters_general]]  
+-[[gpac General Usage|gpac_general]]  
+-[[Built-in Properties|filters_properties]]  
+-
+-**GPAC Configuration**  
+-  
+-[[Configuration File|core_config]]  
+-[[Global Options|core_options]]  
+-[[Logging|core_logs]]  
+-  
+-  
+-<!-- automatically generated from this point on - do not edit, patch gpac/applications/gpac/main.c -->
+-**Filters Help**  
+-
+-  
+-[[Inspect packets (inspect)|inspect]]  
+-[[Probe source (probe)|probe]]  
+-[[Compositor (compositor)|compositor]]  
+-[[ISOBMFF/QT demultiplexer (mp4dmx)|mp4dmx]]  
+-[[MPEG-4 BIFS decoder (bifsdec)|bifsdec]]  
+-[[MPEG-4 OD decoder (odfdec)|odfdec]]  
+-[[File input (fin)|fin]]  
+-[[BT/XMT/X3D loader (btplay)|btplay]]  
+-[[HTTP input (httpin)|httpin]]  
+-[[SVG loader (svgplay)|svgplay]]  
+-[[JPG/J2K/PNG/BMP reframer (rfimg)|rfimg]]  
+-[[PNG/JPG decoder (imgdec)|imgdec]]  
+-[[ADTS reframer (rfadts)|rfadts]]  
+-[[LATM reframer (rflatm)|rflatm]]  
+-[[MP3 reframer (rfmp3)|rfmp3]]  
+-[[FAAD decoder (faad)|faad]]  
+-[[MAD decoder (maddec)|maddec]]  
+-[[OpenJPEG2000 decoder (j2kdec)|j2kdec]]  
+-[[AC3 reframer (rfac3)|rfac3]]  
+-[[A52 decoder (a52dec)|a52dec]]  
+-[[AMR/EVRC reframer (rfamr)|rfamr]]  
+-[[OGG demultiplexer (oggdmx)|oggdmx]]  
+-[[Vorbis decoder (vorbisdec)|vorbisdec]]  
+-[[Theora decoder (theoradec)|theoradec]]  
+-[[MPEG-2 TS demultiplexer (m2tsdmx)|m2tsdmx]]  
+-[[UDP/TCP input (sockin)|sockin]]  
+-[[DVB for Linux (dvbin)|dvbin]]  
+-[[OpenSVC decoder (osvcdec)|osvcdec]]  
+-[[VideoToolBox decoder (vtbdec)|vtbdec]]  
+-[[MediaCodec decoder (mcdec)|mcdec]]  
+-[[MPEG-4 LASeR decoder (lsrdec)|lsrdec]]  
+-[[SAF demultiplexer (safdmx)|safdmx]]  
+-[[MPEG-DASH and HLS client (dashin)|dashin]]  
+-[[CENC decryptor (cdcrypt)|cdcrypt]]  
+-[[CENC encryptor (cecrypt)|cecrypt]]  
+-[[ISOBMFF/QT multiplexer (mp4mx)|mp4mx]]  
+-[[QCP reframer (rfqcp)|rfqcp]]  
+-[[H263 reframer (rfh263)|rfh263]]  
+-[[M1V/M2V/M4V reframer (rfmpgvid)|rfmpgvid]]  
+-[[NHNT reader (nhntr)|nhntr]]  
+-[[NHML reader (nhmlr)|nhmlr]]  
+-[[AVC/HEVC reframer (rfnalu)|rfnalu]]  
+-[[MPEG PS demultiplexer (m2psdmx)|m2psdmx]]  
+-[[AVI demultiplexer (avidmx)|avidmx]]  
+-[[Subtitle loader (txtin)|txtin]]  
+-[[TTXT/TX3G decoder (ttxtdec)|ttxtdec]]  
+-[[WebVTT decoder (vttdec)|vttdec]]  
+-[[TTML decoder (ttmldec)|ttmldec]]  
+-[[RTP/RTSP/SDP input (rtpin)|rtpin]]  
+-[[File output (fout)|fout]]  
+-[[Raw AAC to LATM writer (uflatm)|uflatm]]  
+-[[ADTS writer (ufadts)|ufadts]]  
+-[[MHAS writer (ufmhas)|ufmhas]]  
+-[[Media Reframer (reframer)|reframer]]  
+-[[Stream to file (writegen)|writegen]]  
+-[[AVC/HEVC to AnnexB writer (ufnalu)|ufnalu]]  
+-[[QCP writer (writeqcp)|writeqcp]]  
+-[[WebVTT unframer (ufvtt)|ufvtt]]  
+-[[NHNT writer (nhntw)|nhntw]]  
+-[[NHML writer (nhmlw)|nhmlw]]  
+-[[VobSub parser (vobsubdmx)|vobsubdmx]]  
+-[[AVI multiplexer (avimx)|avimx]]  
+-[[Audio output (aout)|aout]]  
+-[[M4V writer (ufm4v)|ufm4v]]  
+-[[VC1 writer (ufvc1)|ufvc1]]  
+-[[Audio resampler (resample)|resample]]  
+-[[Video output (vout)|vout]]  
+-[[Video crop (vcrop)|vcrop]]  
+-[[Video flip (vflip)|vflip]]  
+-[[RAW video reframer (rfrawvid)|rfrawvid]]  
+-[[PCM reframer (rfpcm)|rfpcm]]  
+-[[JPG encoder (jpgenc)|jpgenc]]  
+-[[PNG encoder (pngenc)|pngenc]]  
+-[[Audio/Video rewinder (rewind)|rewind]]  
+-[[Sources concatenator (flist)|flist]]  
+-[[MPEG-2 TS multiplexer (m2tsmx)|m2tsmx]]  
+-[[DASH and HLS segmenter (dasher)|dasher]]  
+-[[HEVC tile aggregator (tileagg)|tileagg]]  
+-[[HEVC tile bitstream splitter (tilesplit)|tilesplit]]  
+-[[pipe input (pin)|pin]]  
+-[[pipe output (pout)|pout]]  
+-[[GSF Multiplexer (gsfmx)|gsfmx]]  
+-[[GSF demultiplexer (gsfdmx)|gsfdmx]]  
+-[[UDP/TCP output (sockout)|sockout]]  
+-[[AV1/IVF/VP9 reframer (rfav1)|rfav1]]  
+-[[IVF/OBU/annexB writer (ufobu)|ufobu]]  
+-[[NVidia decoder (nvdec)|nvdec]]  
+-[[ROUTE input (routein)|routein]]  
+-[[RTP Streamer (rtpout)|rtpout]]  
+-[[RTSP Server (rtspout)|rtspout]]  
+-[[HTTP Server (httpout)|httpout]]  
+-[[HEVC tile splitter (hevcsplit)|hevcsplit]]  
+-[[HEVC Tile merger (hevcmerge)|hevcmerge]]  
+-[[FLAC reframer (rfflac)|rfflac]]  
+-[[MPEH-H Audio Stream reframer (rfmhas)|rfmhas]]  
+-[[ProRes reframer (rfprores)|rfprores]]  
+-[[MPEG Transport Stream splitter (tssplit)|tssplit]]  
+-[[Compressed bitstream rewriter (bsrw)|bsrw]]  
+-[[Compressed layered bitstream splitter (bssplit)|bssplit]]  
+-[[Compressed layered bitstream aggregator (bsagg)|bsagg]]  
+-[[TX3G unframer (ufttxt)|ufttxt]]  
+-[[TX3G to SRT (tx3g2srt)|tx3g2srt]]  
+-[[TX3G to WebVTT (tx3g2vtt)|tx3g2vtt]]  
+-[[TX3G to TTML (tx3g2ttml)|tx3g2ttml]]  
+-[[WebVTT to TX3G (vtt2tx3g)|vtt2tx3g]]  
+-[[SRT reframer (rfsrt)|rfsrt]]  
+-[[TTML to WebVTT (ttml2vtt)|ttml2vtt]]  
+-[[TTML to SRT (ttml2srt)|ttml2srt]]  
+-[[MPEG-H Audio decoder (mpeghdec)|mpeghdec]]  
+-[[FFMPEG demultiplexer (ffdmx)|ffdmx]]  
+-[[FFMPEG decoder (ffdec)|ffdec]]  
+-[[FFMPEG AV Capture (ffavin)|ffavin]]  
+-[[FFMPEG video rescaler (ffsws)|ffsws]]  
+-[[FFMPEG encoder (ffenc)|ffenc]]  
+-[[FFMPEG multiplexer (ffmx)|ffmx]]  
+-[[FFMPEG AVFilter (ffavf)|ffavf]]  
+-[[FFMPEG BitStream filter (ffbsf)|ffbsf]]  
+-[[JavaScript filter (jsf)|jsf]]  
+-[[ROUTE output (routeout)|routeout]]  
+-[[TrueHD reframer (rftruehd)|rftruehd]]  
+-[[CryptFile input (cryptin)|cryptin]]  
+-[[CryptFile output (cryptout)|cryptout]]  
+-[[Packet timestamp rewriter (restamp)|restamp]]  
+-[[OGG multiplexer (oggmx)|oggmx]]  
+-[[Stream unframer (unframer)|unframer]]  
+-[[Stream to unframed format (writeuf)|writeuf]]  
+-[[UNCV decoder (uncvdec)|uncvdec]]  
+-[[GHI demultiplexer (ghidmx)|ghidmx]]  
+-[[EVG video rescaler (evgs)|evgs]]  
+-[[Closed-Caption decoder (ccdec)|ccdec]]  
+-[[DekTec SDIOut (dtout)|dtout]]  
+-[[OpenHEVC decoder (ohevcdec)|ohevcdec]]  
+-[[Uncompressed Video File Format Generator Utility (uncvg)|uncvg]]  
+-[[GPU texture uploader (glpush)|glpush]]  
+-[[Thumbnail collection generator (thumbs)|thumbs]]  
+-[[Audio Video Mixer (avmix)|avmix]]  
+-[[AV Counter Generator (avgen)|avgen]]  
+diff --git a/Home.md b/Home.md
+deleted file mode 100644
+index eeae61d..0000000
+--- a/Home.md
++++ /dev/null
+@@ -1,29 +0,0 @@
+-<p align="center">
+-[[/images/gpac.png]]
+-<br/>
+-Welcome to the GPAC wiki.
+-</p>
+-
+-
+-
+-| [[/images/tools.png]] | [[/images/videoedit.png]] | [[/images/pipe.png]] | [[/images/cookbook.png]] | [[/images/player.png]] | 
+-|:-------------:|:-------------:|:-----:|:-----:|:-----:|
+-| [Build](Build-Introduction) | [MP4Box](MP4Box-Introduction) | [Filters](Filters) | [HOWTOs](Howtos) | [Playback](Player) |
+-|Compiling, installing and developing for GPAC|MP4Box usage, concepts and formats|Filters documentation|Cookbook|Player documentation|
+-
+-
+-<p align="center">
+-Additional resources
+-</p>
+-
+- You can also check:
+- - current build status of GPAC: <a href="https://buildbot.gpac.io" target="_blank">buildbot.gpac.io</a>
+-- current test suite status of GPAC: <a href="https://tests.gpac.io" target="_blank">tests.gpac.io</a> 
+-- full API documentation: <a href="https://doxygen.gpac.io" target="_blank"> doxygen.gpac.io</a>
+-- the <a href="https://github.com/gpac/testsuite/tree/master/scripts" target="_blank">testsuite scripts</a> might give you additional info on how to use GPAC tools
+-- tips and tricks in our [github discussions](https://github.com/gpac/gpac/issues?utf8=%E2%9C%93&q=) and our old [sourceforge forums](https://sourceforge.net/p/gpac/discussion/)
+-
+-
+-***The documentation in this wiki applies to latest GPAC master. 
+-  The HowTos also assume GPAC 2.0 or above, but some info (especially regarding MP4Box) might be valid for older versions of GPAC.***
+-
+diff --git a/Howtos/The GPAC Log System.md b/Howtos/The-GPAC-Log-System.md
+similarity index 100%
+rename from Howtos/The GPAC Log System.md
+rename to Howtos/The-GPAC-Log-System.md
+diff --git a/Howtos/_Sidebar.md b/Howtos/_Sidebar.md
+deleted file mode 100644
+index 61696dc..0000000
+--- a/Howtos/_Sidebar.md
++++ /dev/null
+@@ -1,34 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos)
+-
+-- [Filters One-Liners](filters-oneliners)  
+-
+-**Various Topic**
+-- [File Inspection](inspecting)  
+-- [Using RAW formats](raw-formats)  
+-- [Encoding](encoding)  
+-- [Using data pipes](pipes)  
+-- [Using sockets](sockets)  
+-- [MP4Box vs gpac](gpac-mp4box)  
+-- [MP4Box and filters](mp4box-filters)  
+-- [Custom ISOBMFF files](custom-boxes)
+-- [Simulating Real-Time sources](realtime)
+-- [Working with Network Captures](network-capture)
+-- [Playlists/Splicing/Ad Insertion](playlist)  
+-- [ROUTE & ATSC3.0 services](route)  
+-- [[Logging in GPAC|The GPAC Log System]]  
+-- [GPAC and Python](python)  
+-- [GPAC and NodeJS](nodejs)  
+-- [In-place Editing](mp4box-inplace)  
+-- [Audio-Video Mixer](avmix_tuto)  
+-- [Dynamic Rate Control](dynamic_rc)  
+- 
+-**Categories**
+-- [[DASH & HLS|DASH-intro]]  
+-- [[Encryption|Encryption Introduction]]  
+-- [JavaScript Filters](jsfilter)  
+-- [[Scene Description|SceneCodingIntro]]  
+-- [[Subtitles|Subtitling with GPAC]]  
+-- [[HEIF|GPAC support for HEIF]]  
+-
+-
+-[[Archives|Archives]]  
+diff --git a/Howtos/archives/MPEG-HEVC Support in GPAC.md b/Howtos/archives/MPEG-HEVC-Support-in-GPAC.md
+similarity index 100%
+rename from Howtos/archives/MPEG-HEVC Support in GPAC.md
+rename to Howtos/archives/MPEG-HEVC-Support-in-GPAC.md
+diff --git a/Howtos/archives/SVC Support in MP4Box.md b/Howtos/archives/SVC-Support-in-MP4Box.md
+similarity index 100%
+rename from Howtos/archives/SVC Support in MP4Box.md
+rename to Howtos/archives/SVC-Support-in-MP4Box.md
+diff --git a/Howtos/archives/_Sidebar.md b/Howtos/archives/_Sidebar.md
+deleted file mode 100644
+index 95d0c93..0000000
+--- a/Howtos/archives/_Sidebar.md
++++ /dev/null
+@@ -1,7 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » Archives
+-
+-
+-[[Language tagging|Language tagging in GPAC]]  
+-[[HEVC|MPEG-HEVC Support in GPAC]]  
+-[[SVC|SVC Support in MP4Box]]  
+-[[Dump TS streams|Use MP4Box to dump and analyze broadcast TS streams]]  
+diff --git a/Howtos/dash/_Sidebar.md b/Howtos/dash/_Sidebar.md
+deleted file mode 100644
+index b01efcb..0000000
+--- a/Howtos/dash/_Sidebar.md
++++ /dev/null
+@@ -1,35 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » DASH & HLS
+-
+-
+-**DASH**
+-
+-[[Introduction|DASH-intro]]  
+-[[MPEG-DASH basics|DASH-basics]]  
+-[[DASH and HLS Transcoding|dash_transcoding]]  
+-[[HLS Generation|hls]]  
+-[[CMAF Generation|cmaf]]  
+-
+-[[DASH Low Latency|LL-DASH]]  
+-[[HLS Low Latency|LL-HLS]]  
+-
+-[Custom DASH Algorithms](jsdash)  
+-
+-[Complex DASH/HLS use cases](HAS-advanced)  
+-
+-**DASH 360 Tiling**
+-
+-[[HEVC Tile Adaptation Guide|HEVC Tile-based adaptation guide]]       
+-[[DASH SRD and HEVC tiling|MPEG-DASH SRD and HEVC tiling for VR videos]]  
+-[[360 Video tiled streaming|Tiled-Streaming]]   
+-[[HEVC Tile Multi-Resolution Adaptation Guide|HEVC Tile multi resolution adaptation guide]]       
+-
+-**Old entries**
+-
+-[[DASH Sequences]]  
+-
+-[[Key-frame alignment|Check key-frame alignment with MP4Box]]  
+-[[Fragmentation|Fragmentation, segmentation, splitting and interleaving]]  
+-[[Fragmented MP4 in HLS|Support for Apple fMP4 adaptive streaming format]]   
+-[[MP4Box DASH options|DASH Support in MP4Box]]  
+-
+-
+diff --git a/Howtos/encryption/Encryption Introduction.md b/Howtos/encryption/Encryption-Introduction.md
+similarity index 100%
+rename from Howtos/encryption/Encryption Introduction.md
+rename to Howtos/encryption/Encryption-Introduction.md
+diff --git a/Howtos/encryption/_Sidebar.md b/Howtos/encryption/_Sidebar.md
+deleted file mode 100644
+index ec4bf54..0000000
+--- a/Howtos/encryption/_Sidebar.md
++++ /dev/null
+@@ -1,8 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » Encryption
+-
+-
+-**GPAC and Encryption**
+-
+-[[Introduction|Encryption Introduction]]  
+-[Encryption & Filters](encryption-filters)  
+-[ClearKey](encryption-clearkey)  
+diff --git a/Howtos/heif/_Sidebar.md b/Howtos/heif/_Sidebar.md
+deleted file mode 100644
+index 5cb1b45..0000000
+--- a/Howtos/heif/_Sidebar.md
++++ /dev/null
+@@ -1,6 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » HEIF Image Files
+-
+-
+-[[Introduction|GPAC support for HEIF]]  
+-[[Image extraction|heif-extraction]]  
+-[[HEIF creation|heif-import]]  
+diff --git a/Howtos/jsf/_Sidebar.md b/Howtos/jsf/_Sidebar.md
+deleted file mode 100644
+index a32afee..0000000
+--- a/Howtos/jsf/_Sidebar.md
++++ /dev/null
+@@ -1,10 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » JavaScript Filters
+-
+-
+-[JavaScript Filters](jsfilter)  
+-[JavaScript Session](jssession)  
+-[JS 2D Graphics](evg)  
+-[JS 3D Graphics](webgl)  
+-[WebGL and Three.js](webgl_three)  
+-[JS Custom HAS logic](jsdash)  
+-[JS Custom HTTP server](jshttp)  
+diff --git a/Howtos/scenecoding/MP4Box tips and tricks with BT and XMT.md b/Howtos/scenecoding/MP4Box-tips-and-tricks-with-BT-and-XMT.md
+similarity index 100%
+rename from Howtos/scenecoding/MP4Box tips and tricks with BT and XMT.md
+rename to Howtos/scenecoding/MP4Box-tips-and-tricks-with-BT-and-XMT.md
+diff --git a/Howtos/scenecoding/MPEG-4 BIFS Textual Format.md b/Howtos/scenecoding/MPEG-4-BIFS-Textual-Format.md
+similarity index 100%
+rename from Howtos/scenecoding/MPEG-4 BIFS Textual Format.md
+rename to Howtos/scenecoding/MPEG-4-BIFS-Textual-Format.md
+diff --git a/Howtos/scenecoding/MPEG-4 Scene Commands.md b/Howtos/scenecoding/MPEG-4-Scene-Commands.md
+similarity index 100%
+rename from Howtos/scenecoding/MPEG-4 Scene Commands.md
+rename to Howtos/scenecoding/MPEG-4-Scene-Commands.md
+diff --git a/Howtos/scenecoding/MPEG-4 XMT Format.md b/Howtos/scenecoding/MPEG-4-XMT-Format.md
+similarity index 100%
+rename from Howtos/scenecoding/MPEG-4 XMT Format.md
+rename to Howtos/scenecoding/MPEG-4-XMT-Format.md
+diff --git a/Howtos/scenecoding/_Sidebar.md b/Howtos/scenecoding/_Sidebar.md
+deleted file mode 100644
+index 89dcca8..0000000
+--- a/Howtos/scenecoding/_Sidebar.md
++++ /dev/null
+@@ -1,8 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » Scene Coding
+-
+-
+-[[Introduction|SceneCodingIntro]]  
+-[[BIFS Textual Format|MPEG-4 BIFS Textual Format]]  
+-[[XMT Format|MPEG-4 XMT Format]]    
+-[[Scene Commands|MPEG-4 Scene Commands]]   
+-[[BT and XMT tips|MP4Box tips and tricks with BT and XMT]]    
+diff --git a/Howtos/subtitles/EBU-TTD support in GPAC.md b/Howtos/subtitles/EBU-TTD-support-in-GPAC.md
+similarity index 100%
+rename from Howtos/subtitles/EBU-TTD support in GPAC.md
+rename to Howtos/subtitles/EBU-TTD-support-in-GPAC.md
+diff --git a/Howtos/subtitles/_Sidebar.md b/Howtos/subtitles/_Sidebar.md
+deleted file mode 100644
+index fcd8638..0000000
+--- a/Howtos/subtitles/_Sidebar.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+-[**HOME**](Home) » [**HOWTOs**](Howtos) » Subtitling
+-
+-
+-[[Introduction|Subtitling with GPAC]]  
+-[[EBU-TTD|EBU-TTD support in GPAC]]  
+diff --git a/MP4Box/MP4Box-Introduction.md b/MP4Box/MP4Box-Introduction.md
+index 42a9b9c..fbb998f 100644
+--- a/MP4Box/MP4Box-Introduction.md
++++ b/MP4Box/MP4Box-Introduction.md
+@@ -1,5 +1,116 @@
+-***
++# Overview
++
++The multimedia packager available in GPAC is called MP4Box. It is mostly designed for processing ISOBMF files (e.g. MP4, 3GP), but can also be used to import/export media from container files like AVI, MPG, MKV, MPEG-2 TS ...
++
++For detailed information on MP4Box options, check this wiki and `MP4Box -h`.
++
++The command-line documentation available in this subsection is based on GPAC 2.0, and is automatically generated from the source tree on a daily basis.
++
++In short, MP4Box can be used for:
++
++* [manipulating](mp4box-gen-opts) ISOBMF files like MP4, 3GP, HEIF: removing/editing/tagging tracks, editing for specific devices, [tagging](mp4box-other-opts#tagging-support)... 
++* [importing](mp4box-import-opts) audio, video and presentation data (including subtitles) from different sources and in different formats,
++* packaging of content for [[HTTP Adaptive Streaming|DASH-intro]]  (MPEG-DASH, HLS), [RTP/RTSP](mp4box-other-opts#hinting-options) streaming or HTTP download
++* editing/packaging of [HEIF image](mp4box-meta-opts) files
++* [encryption and decryption](mp4box-gen-opts#encryptiondecryption-options) of streams
++* [exporting and splitting](mp4box-dump-opts) ISOBMFF files
++* [transcoding](mp4box-filters) audio and video
++* [encoding/decoding](mp4box-scene-opts) presentation languages like MPEG-4 XMT or W3C SVG into/from binary formats like MPEG-4 BIFS or LASeR
++
++
++# Examples
++
++This section only lists very basic but common usage of MP4Box. For more examples, check GPAC [test suite](https://github.com/gpac/testsuite).
++
++## Content Packaging
++
++MP4Box can be used to repackage existing content to compliant ISO Base Media Files (MP4, 3GP, 3G2, OMA DCF). 
++
++_Note  MP4Box prior to 0.9.0 does NOT re-encode audio, video and still image content, external tools shall be used for this purpose. With MP4Box 0.9.0 or above, MP4Box can be used in combination with encoding filters to [transcode the content](mp4box-filters)._
++
++*   Remove specific track/streams from an MP4 file (this removes the third and fourth streams):
++
++`MP4Box -rem 3 -rem 4 file.mp4`
++
++*   Importing a media file to an existing MP4 file:
++
++`MP4Box -add file.avi my_file.mp4`
++
++*   Importing a media file to an new MP4 file:
++
++`MP4Box -add file.avi -new new_file.mp4`
++
++*   Adding a secondary audio track to the previous file:
++
++`MP4Box -add audio2.mp3 new_file.mp4`
++
++*   MP4Box can import specific media from an existing container. To get the supported media that can be imported from a container:
++
++`MP4Box -info file`
++
++*   Add a single audio stream  from a container:
++
++`MP4Box -add file.mpg#audio new_file.mp4`
++
++*   Add a specific duration of a media from a container:
++
++`MP4Box -add file.mpg#audio:dur=10 new_file.mp4`
++
++*   Adjust/correct a video stream with an incorrect aspect ratio (DAR = SAR x PAR):
++
++`MP4Box -par 1=4:3 file.mp4`
++
++*   To replace the label on an audio or subtitle track (uses udta "name" atom, shown by players like vlc):
++
++`MP4Box -udta 3:type=name -udta 3:type=name:str="Director Commentary" file.mp4`
++
++## Delivery Setup
++
++MP4Box can be used to prepare files for different delivery protocols, mainly HTTP downloading or RTP streaming.
++
++*   To prepare a file for simple progressive HTTP download, the following instruction will interleave file data by chunks of 500 milliseconds in order to enable playback while downloading the file (HTTP FastStart):
++
++`MP4Box -inter 500 file.mp4`
++
++*   To prepare for RTP, the following instruction will create RTP hint tracks for the file. This enables classic streaming servers like DarwinStreamingServer or QuickTime Streaming Server to deliver the file through RTSP/RTP:
++
++`MP4Box -hint file.mp4`
++
++*   To prepare for adaptive streaming (MPEG-DASH), the following instruction will create the DASH manifest and associated files. For more information on DASH see [[this page|DASH Support in MP4Box]]:
++
++`MP4Box -dash 1000 file.mp4`
++
++*   To prepare for CMAF MPEG-DASH and HLS:
++
++```
++MP4Box -dash 1000 file.mp4 -out live.m3u8:dual:cmaf
++MP4Box -dash 1000 file.mp4 -out live.mpd --dual --cmaf
++```
++
++## Scene Transcoding
++
++MP4Box can be used to encode MPEG-4 scene descriptions BIFS and LASeR and to decode MPEG-4 scene descriptions BIFS and LASeR.
++
++*   To encode an existing description:
++
++`MP4Box -mp4 scene.bt`
++
++_Note MP4Box will do its best to encode VRML/X3D to MPEG-4, but that not all tools from X3D or VRML extensions are supported in MPEG-4._
++
++*   To decode an existing BIFS track to a BIFS Text format (VRML-like format)description:
++
++`MP4Box -bt file.mp4`
++
++*   To decode an existing BIFS track to XMT-A format:
++
++`MP4Box -xmt file.mp4`
++
++*   To decode an existing LASeR track to an XSR format (SAF+LASeR Markup Language) description:
++
++`MP4Box -lsr file.mp4`
++
++*   To decode the first sample of an existing LASeR track to an SVG file:
++
++`MP4Box -svg file.mp4`
+ 
+-**❯ This page has moved here: [MP4Box](MP4Box) ❮**
+ 
+-***
+\ No newline at end of file
+diff --git a/MP4Box/MP4Box.md b/MP4Box/MP4Box.md
+deleted file mode 100644
+index fbb998f..0000000
+--- a/MP4Box/MP4Box.md
++++ /dev/null
+@@ -1,116 +0,0 @@
+-# Overview
+-
+-The multimedia packager available in GPAC is called MP4Box. It is mostly designed for processing ISOBMF files (e.g. MP4, 3GP), but can also be used to import/export media from container files like AVI, MPG, MKV, MPEG-2 TS ...
+-
+-For detailed information on MP4Box options, check this wiki and `MP4Box -h`.
+-
+-The command-line documentation available in this subsection is based on GPAC 2.0, and is automatically generated from the source tree on a daily basis.
+-
+-In short, MP4Box can be used for:
+-
+-* [manipulating](mp4box-gen-opts) ISOBMF files like MP4, 3GP, HEIF: removing/editing/tagging tracks, editing for specific devices, [tagging](mp4box-other-opts#tagging-support)... 
+-* [importing](mp4box-import-opts) audio, video and presentation data (including subtitles) from different sources and in different formats,
+-* packaging of content for [[HTTP Adaptive Streaming|DASH-intro]]  (MPEG-DASH, HLS), [RTP/RTSP](mp4box-other-opts#hinting-options) streaming or HTTP download
+-* editing/packaging of [HEIF image](mp4box-meta-opts) files
+-* [encryption and decryption](mp4box-gen-opts#encryptiondecryption-options) of streams
+-* [exporting and splitting](mp4box-dump-opts) ISOBMFF files
+-* [transcoding](mp4box-filters) audio and video
+-* [encoding/decoding](mp4box-scene-opts) presentation languages like MPEG-4 XMT or W3C SVG into/from binary formats like MPEG-4 BIFS or LASeR
+-
+-
+-# Examples
+-
+-This section only lists very basic but common usage of MP4Box. For more examples, check GPAC [test suite](https://github.com/gpac/testsuite).
+-
+-## Content Packaging
+-
+-MP4Box can be used to repackage existing content to compliant ISO Base Media Files (MP4, 3GP, 3G2, OMA DCF). 
+-
+-_Note  MP4Box prior to 0.9.0 does NOT re-encode audio, video and still image content, external tools shall be used for this purpose. With MP4Box 0.9.0 or above, MP4Box can be used in combination with encoding filters to [transcode the content](mp4box-filters)._
+-
+-*   Remove specific track/streams from an MP4 file (this removes the third and fourth streams):
+-
+-`MP4Box -rem 3 -rem 4 file.mp4`
+-
+-*   Importing a media file to an existing MP4 file:
+-
+-`MP4Box -add file.avi my_file.mp4`
+-
+-*   Importing a media file to an new MP4 file:
+-
+-`MP4Box -add file.avi -new new_file.mp4`
+-
+-*   Adding a secondary audio track to the previous file:
+-
+-`MP4Box -add audio2.mp3 new_file.mp4`
+-
+-*   MP4Box can import specific media from an existing container. To get the supported media that can be imported from a container:
+-
+-`MP4Box -info file`
+-
+-*   Add a single audio stream  from a container:
+-
+-`MP4Box -add file.mpg#audio new_file.mp4`
+-
+-*   Add a specific duration of a media from a container:
+-
+-`MP4Box -add file.mpg#audio:dur=10 new_file.mp4`
+-
+-*   Adjust/correct a video stream with an incorrect aspect ratio (DAR = SAR x PAR):
+-
+-`MP4Box -par 1=4:3 file.mp4`
+-
+-*   To replace the label on an audio or subtitle track (uses udta "name" atom, shown by players like vlc):
+-
+-`MP4Box -udta 3:type=name -udta 3:type=name:str="Director Commentary" file.mp4`
+-
+-## Delivery Setup
+-
+-MP4Box can be used to prepare files for different delivery protocols, mainly HTTP downloading or RTP streaming.
+-
+-*   To prepare a file for simple progressive HTTP download, the following instruction will interleave file data by chunks of 500 milliseconds in order to enable playback while downloading the file (HTTP FastStart):
+-
+-`MP4Box -inter 500 file.mp4`
+-
+-*   To prepare for RTP, the following instruction will create RTP hint tracks for the file. This enables classic streaming servers like DarwinStreamingServer or QuickTime Streaming Server to deliver the file through RTSP/RTP:
+-
+-`MP4Box -hint file.mp4`
+-
+-*   To prepare for adaptive streaming (MPEG-DASH), the following instruction will create the DASH manifest and associated files. For more information on DASH see [[this page|DASH Support in MP4Box]]:
+-
+-`MP4Box -dash 1000 file.mp4`
+-
+-*   To prepare for CMAF MPEG-DASH and HLS:
+-
+-```
+-MP4Box -dash 1000 file.mp4 -out live.m3u8:dual:cmaf
+-MP4Box -dash 1000 file.mp4 -out live.mpd --dual --cmaf
+-```
+-
+-## Scene Transcoding
+-
+-MP4Box can be used to encode MPEG-4 scene descriptions BIFS and LASeR and to decode MPEG-4 scene descriptions BIFS and LASeR.
+-
+-*   To encode an existing description:
+-
+-`MP4Box -mp4 scene.bt`
+-
+-_Note MP4Box will do its best to encode VRML/X3D to MPEG-4, but that not all tools from X3D or VRML extensions are supported in MPEG-4._
+-
+-*   To decode an existing BIFS track to a BIFS Text format (VRML-like format)description:
+-
+-`MP4Box -bt file.mp4`
+-
+-*   To decode an existing BIFS track to XMT-A format:
+-
+-`MP4Box -xmt file.mp4`
+-
+-*   To decode an existing LASeR track to an XSR format (SAF+LASeR Markup Language) description:
+-
+-`MP4Box -lsr file.mp4`
+-
+-*   To decode the first sample of an existing LASeR track to an SVG file:
+-
+-`MP4Box -svg file.mp4`
+-
+-
+diff --git a/MP4Box/_Sidebar.md b/MP4Box/_Sidebar.md
+deleted file mode 100644
+index f259ec2..0000000
+--- a/MP4Box/_Sidebar.md
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[**HOME**](Home) » [**MP4Box**](MP4Box)
+-
+-
+-**Command-line Help**
+-
+-- [[Overview|MP4Box]]  
+-- [[General Usage|mp4box-gen-opts]]  
+-- [[Media Import|mp4box-import-opts]]  
+-- [[Media Export and dump|mp4box-dump-opts]]  
+-- [[DASH Packaging|mp4box-dash-opts]]  
+-- [[Meta and IFF/HEIF|mp4box-meta-opts]]  
+-- [[Scene Description|mp4box-scene-opts]]  
+-- [[Other Features|mp4box-other-opts]]  
+-
+diff --git a/Player/_Sidebar.md b/Player/_Sidebar.md
+deleted file mode 100644
+index 306a19e..0000000
+--- a/Player/_Sidebar.md
++++ /dev/null
+@@ -1,12 +0,0 @@
+-[**HOME**](Home) » Playback
+-
+-
+-**General**
+-
+-[Introduction](Player)  
+-[Playback features](Player-Features)  
+-[Simple Playback](filters-playback)  
+-[Overlay & Composition](olay-composition)  
+-[[2D Deferred rendering|Deferred rendering in GPAC]]  
+-[[Multiview rendering|Some fun with multiview rendering on 3D screens]]    
+-[[GPAC 10bit support]]        
+diff --git a/Player/filters-playback.md b/Player/filters-playback.md
+index e0f0024..207e2d2 100644
+--- a/Player/filters-playback.md
++++ b/Player/filters-playback.md
+@@ -67,7 +67,7 @@ This is basically the same as video output.
+ The above command will play the first audio track (and only this track) found in `source.mp4`.
+ 
+ __Discussion__  
+-As with the video output filter, the audio output filter is a wrapper around the audio output modules in GPAC, which can be configured using [-drv](aout#drv]) option (see `gpac -h modules`).
++As with the video output filter, the audio output filter is a wrapper around the audio output modules in GPAC, which can be configured using [-drv](aout#drv) option (see `gpac -h modules`).
+ 
+ The default behaviour of the audio output filter is to use 100ms of sound data buffer, split in 2 buffers for audio output modules supporting this (DirectSound). It also uses a default input buffer of 100ms before starting the playback.
+ 
+diff --git a/_Footer.md b/_Footer.md
+deleted file mode 100644
+index 8b13789..0000000
+--- a/_Footer.md
++++ /dev/null
+@@ -1 +0,0 @@
+-
+diff --git a/_Sidebar.md b/_Sidebar.md
+deleted file mode 100644
+index 3b2f820..0000000
+--- a/_Sidebar.md
++++ /dev/null
+@@ -1,8 +0,0 @@
+-[**HOME**](Home) 
+-
+-[Build](Build-Introduction)  
+-[MP4Box](MP4Box)  
+-[Filters](Filters)  
+-[Playback](Player)  
+-[XML Formats](xmlformats)  
+-[HOWTOs](Howtos)  
+diff --git a/index.md b/index.md
+new file mode 100644
+index 0000000..17870f1
+--- /dev/null
++++ b/index.md
+@@ -0,0 +1,11 @@
++
++![GPAC logo](/images/gpac.png)
++
++**Welcome to the GPAC wiki.**
++
++
++| ![GPAC](/images/pipe.png) | ![MP4Box](/images/videoedit.png) | ![Media Playback](/images/player.png) | ![Cookbook](/images/cookbook.png) | ![Build GPAC](/images/tools.png) | 
++|:-:|:-:|:-:|:-:|:-:|
++| [GPAC](/Filters/Filters) | [MP4Box](/MP4Box/MP4Box) | [Player](/Player/Player) | [Tutorials](/Howtos/howtos) | [Build](/Build/Build-Introduction) | 
++|Manipulate MP4s using MP4Box|Build media pipelines using GPAC|Player documentation|Cookbook|Compiling, installing and developing for GPAC|
++
+diff --git a/update_doc.sh b/update_doc.sh
+old mode 100755
+new mode 100644
+index 85a7049..45b14d7
+--- a/update_doc.sh
++++ b/update_doc.sh
+@@ -6,3 +6,7 @@ cd ../MP4Box
+ MP4Box -genmd
+ cd ..
+ 
++find . -name "_Sidebar.md" -delete
++find . -name "_Footer.md" -delete
++rm MP4Box/MP4Box-Introduction.md
++mv Home.md index.md
+diff --git a/xmlformats/NHNT Format.md b/xmlformats/NHNT-Format.md
+similarity index 100%
+rename from xmlformats/NHNT Format.md
+rename to xmlformats/NHNT-Format.md
+diff --git a/xmlformats/TTXT Format Documentation.md b/xmlformats/TTXT-Format-Documentation.md
+similarity index 100%
+rename from xmlformats/TTXT Format Documentation.md
+rename to xmlformats/TTXT-Format-Documentation.md
+diff --git a/xmlformats/_Sidebar.md b/xmlformats/_Sidebar.md
+deleted file mode 100644
+index 94f1447..0000000
+--- a/xmlformats/_Sidebar.md
++++ /dev/null
+@@ -1,10 +0,0 @@
+-[**HOME**](Home) » [**XML Formats**](xmlformats)
+-
+-
+-- [[Common Encryption]]  
+-  - [[ISMACryp]]  
+-  - [[OMA DRM]]  
+-- [[TTXT Format|TTXT Format Documentation]]  
+-- [[XML Binary Format|XML-Binary]]  
+-- [[XML Box Patch Format|BoxPatch]]  
+-- [[NHML Format]]  

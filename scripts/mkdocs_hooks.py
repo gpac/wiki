@@ -34,8 +34,12 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
 
     def fix_target(self, target, files):
         # know issues with gh-wiki
+        if target == "MP4Box":
+            return "MP4Box/MP4Box-Introduction.md"
+        if target == "/MP4Box/MP4Box":
+            return "MP4Box/MP4Box-Introduction.md"
         if target.lower() == "mp4box-introduction":
-            return "MP4Box/MP4Box.md"
+            return "MP4Box/MP4Box-Introduction.md"
         elif target == "route_out":
             return "Filters/routeout.md"
         elif target == "player":
@@ -44,7 +48,9 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
             return "Howtos/dash/LL-DASH.md"
         elif target == "Home":
             return "index.md"
-        elif target.startswith("exemples"):
+        elif target == "MP4Client":
+            return "#"
+        elif target.startswith("examples"):
             return f"/{target}"
 
         # look for a filename that matches target, and return relative path
@@ -191,14 +197,15 @@ def gh_wiki_cleanup():
         # fix Home page
         elif p.name == 'Home.md':
             os.remove(p)
+            os.rename('./index.md', './docs/index.md')
         # cleanup names that contain spaces
         elif " " in p.name:
             n = p.parent / p.name.replace(" ", "-")
             logger.info(f"renamed {p} to {n}")
             os.rename(p, n)
 
-def on_startup(*args, **kwargs):
-    gh_wiki_cleanup()
+# def on_startup(*args, **kwargs):
+#     gh_wiki_cleanup()
 
 def heading_level(line):
     hx = 0

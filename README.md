@@ -1,28 +1,17 @@
-TODO: [GITHUB-ACTION](https://github.com/pinkasey/cpanel-deploy-action/tree/main)
-
-
 # GPAC wiki
 
 This repo builds gpac wiki using the popular [mkdocs](https://www.mkdocs.org/) documentation framework.
 
-
-## part of GPAC wiki is auto generated and should be updated with the following commands
-```
-cd Filters
-gpac -genmd
-cd ../MP4Box
-MP4Box -genmd
-cd ..
-```
-
 ## Getting started
 
-clone the repo & submodule:
+patch GPAC's wiki for compatibility with mkdocs
 ```bash
-$ git clone --recurse-submodules git@github.com:nlsdvl/gpac-wiki.git
+git clone https://github.com/gpac/gpac.wiki.git docs
+git checkout ae93bb19120806acf946098d7bd236dce47aa90d
+cd docs && git apply --reject --whitespace=fix ../docs.diff
 ```
 
-intall dependencies. venv is optional but highly recommended:
+intall **mkdocs** dependencies. venv is optional but highly recommended:
 ```bash
 $ python3 -m venv .venv 
 $ source .venv/bin/activate
@@ -34,15 +23,28 @@ live preview localy:
 (.venv)$ mkdocs serve
 ```
 
-build:
+release build:
 ```
 mkdocs build --clean -d ./site
 ```
 
-## Contributing
+## add a notice to github's wiki about the new wiki 
+```bash
+python scripts/migrate_wiki.py
+```
 
-To update the wiki content, please commit to the [gpac wiki fork](https://github.com/nlsdvl/gpac-gh-wiki/), then update the git submodule in `./docs`.
+prepends the following message to all markdown files except sidebars and footer 
+```
+> [!WARNING]
+> **GPAC's wiki is moving to [wiki.gpac.io](https://wiki.gpac.io/)**.
+> The github wiki is no longer updated.
+```
 
-`mkdocs.yml` contains the configuration. 
-
-The [material for mkdocs theme](https://squidfunk.github.io/mkdocs-material/) is used. Navigation and sidebars are configured explicitly in `mkdocs.yml`
+## part of GPAC wiki is auto generated and should be updated with the following commands
+```
+cd Filters
+gpac -genmd
+cd ../MP4Box
+MP4Box -genmd
+cd ..
+```

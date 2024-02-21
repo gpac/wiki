@@ -2,8 +2,7 @@ name: mkdocs-deploy
 run-name: ${{ github.actor }} is deploying gpac mkdocs wiki
 on: workflow_dispatch
 jobs:
-  build-mkdocs:
-    # runs-on: self-hosted
+  deploy-mkdocs-wiki:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,6 +12,8 @@ jobs:
         run: |
           eval `ssh-agent -s`
           ssh-add - <<< "${{secrets.GH_WIKI_DEPLOY_KEY}}"; git submodule update --init --recursive
+      - name: clone_and_patch_wiki
+        run: ./scripts/clone_and_patch_wiki.sh
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10' 
@@ -27,7 +28,7 @@ jobs:
           User-agent: *
           Disallow: /
           " > ./site/robots.txt 
-      - name: files
+      - name: ftp upload - slow ...
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{vars.WIKI_FTP_HOST}}
