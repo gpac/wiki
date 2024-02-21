@@ -35,11 +35,12 @@ jobs:
           password: ${{secrets.WIKI_FTP_PASS}}
           local-dir: ./site/
           server-dir: www/
-          state-file: .sync-state.json
+          state-name: .sync-state.json
           exclude: |
             **/.git*
             **/.git*/**
-            .ftpquota
+            */**.ftpquota
             */**.htaccess
             .check_spell.sh
             .well-known*/**
+            .sync-state.json
