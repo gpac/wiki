@@ -36,7 +36,7 @@ jobs:
           local-dir: ./site/
           server-dir: www/
           state-name: .sync-state.json
-          log-level: verbose
+          # log-level: verbose
           timeout: 60000
           exclude: |
             **/.git*
