@@ -28,23 +28,7 @@ jobs:
           User-agent: *
           Disallow: /
           " > ./site/robots.txt 
-      - name: ftp upload - slow ...
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{vars.WIKI_FTP_HOST}}
-          username: ${{secrets.WIKI_FTP_USER}}
-          password: ${{secrets.WIKI_FTP_PASS}}
-          local-dir: ./site/
-          server-dir: www/
-          state-name: .sync-state.json
-          log-level: verbose
-          timeout: 120000
-          exclude: |
-            **/.git*
-            **/.git*/**
-            */**.ftpquota
-            */**.htaccess
-            .check_spell.sh
-            .well-known*/**
-            .sync-state.json
-            */**.sh
+- uses: actions/upload-artifact@v4
+  with:
+    name: gpac-wiki
+    path: site/
