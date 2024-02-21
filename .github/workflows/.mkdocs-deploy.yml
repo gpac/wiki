@@ -25,7 +25,7 @@ jobs:
           Disallow: /
           " > dist/site/robots.txt
       - name: create archive
-        run: mkdir dist && tar -cvzf dist/site.$(git rev-parse --short HEAD).tar.gz dist/site/
+        run: tar -cvzf dist/site.$(git rev-parse --short HEAD).tar.gz dist/site/
       - name: install lftp
         run: sudo apt install lftp
       - name: lftp upload
