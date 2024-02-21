@@ -34,7 +34,8 @@ jobs:
           username: ${{secrets.WIKI_FTP_USER}}
           password: ${{secrets.WIKI_FTP_PASS}}
           local-dir: ./site/
-          server-dir: .sync-state.json
+          server-dir: www/
+          state-file: .sync-state.json
           exclude: |
             **/.git*
             **/.git*/**
