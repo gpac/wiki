@@ -28,7 +28,7 @@ jobs:
           User-agent: *
           Disallow: /
           " > ./site/robots.txt 
-- uses: actions/upload-artifact@v4
-  with:
-    name: gpac-wiki
-    path: site/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gpac-wiki
+          path: site/
