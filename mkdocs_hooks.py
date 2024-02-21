@@ -162,14 +162,15 @@ def on_page_markdown(md_string, page, config, files):
     )
     broken_link_ext = BrokenLinkProcessor(page.file, files, config)
     broken_link_ext._register(md)
+    md_updated = md_string
     _ = md.convert(md_string)
     if len(broken_link_ext.broken_links) > 0:
         md_updated = broken_link_ext.fix_broken_links(md_string, files)
         if FIX_MARDOWN_FILES:
             with open(page.file.abs_src_path, "w") as md_file:
                 md_file.write(md_updated)
-        return md_updated
-    return None
+    md_updated = fix_md_headings(md_updated)
+    return md_updated
 
 
 def on_post_build(*args, **kwargs) -> None:
@@ -180,7 +181,7 @@ def on_post_build(*args, **kwargs) -> None:
             writer.writerows(BROKEN_LINKS)
 
 
-def cleanup():
+def gh_wiki_cleanup():
     path = Path("docs")
     for p in path.rglob("*"):
         # remove legacy github wiki stuff
@@ -197,7 +198,26 @@ def cleanup():
             os.rename(p, n)
 
 def on_startup(*args, **kwargs):
-    cleanup()
+    gh_wiki_cleanup()
+
+def heading_level(line):
+    hx = 0
+    for char in line.lstrip():
+        if char != "#":
+            return hx
+        hx+=1
+    return hx
+
+def fix_md_headings(md_content):
+    md_fixed = []
+    for l in md_content.splitlines():
+        hx = heading_level(l)
+        if hx > 0 and hx < 6:
+            l = "#"+l
+        elif hx >= 6:
+            logger.warning("h6 detected - could not be fixed using mkdocs hooks")
+        md_fixed.append(l)
+    return '\n'.join(md_fixed)
 
 if __name__ == "__main__":
-    cleanup()
+    gh_wiki_cleanup()

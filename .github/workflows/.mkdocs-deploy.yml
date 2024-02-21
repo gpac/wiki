@@ -19,8 +19,8 @@ jobs:
       - name: install mkdocs-material
         run: pip install mkdocs-material 
         # run: pip install mkdocs-material=="9.5.6" 
-      - name: install lftp
-        run: sudo apt install lftp
+      #- name: install lftp
+      #  run: sudo apt install lftp
       - name: build mkdocs
         run: mkdocs build --clean -d ./site
       - name: disable SEO indexing
@@ -29,12 +29,13 @@ jobs:
           User-agent: *
           Disallow: /
           " > ./site/robots.txt 
-      - name: lftp upload
-        run: |
-          lftp -f "
-          open ${{vars.WIKI_FTP_HOST}}
-          user ${{secrets.WIKI_FTP_USER}} ${{secrets.WIKI_FTP_PASS}}
-          lcd ./site
-          mirror --reverse --delete --verbose
-          bye
-          "
+      # - name: lftp upload
+      #   run: |
+      #     lftp -f "
+      #     open ${{vars.WIKI_FTP_HOST}}
+      #     user ${{secrets.WIKI_FTP_USER}} ${{secrets.WIKI_FTP_PASS}}
+      #     lcd ./site
+      #     mirror --reverse --delete --verbose
+      #     bye
+      #     "
+      scp -r ./site ${{secrets.WIKI_FTP_USER}}@${{vars.WIKI_FTP_HOST}}${{vars.WIKI_FTP_HOST}}:/home/boro0635/wiki.gpac.io
