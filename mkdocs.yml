@@ -36,7 +36,8 @@ markdown_extensions:
 extra:
   analytics:
     provider: google
-    property: 
+    property: G-428564276
+
   consent:
     title: Cookie consent
     description: > # (1)
