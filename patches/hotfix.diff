@@ -1,0 +1,87 @@
+diff --git a/Howtos/avmix_tuto.md b/Howtos/avmix_tuto.md
+index 0f9aab4..144f6a7 100644
+--- a/Howtos/avmix_tuto.md
++++ b/Howtos/avmix_tuto.md
+@@ -607,7 +607,7 @@ Your module can also control the playlist through several functions:
+ __Warning All these functions MUST be called from within the `update()` function.__
+ 
+ 
+-````
++```
+ //resets a playlist to empty, but our module update() function will still be called after that
+ reload_playlist([]);
+ 
+@@ -636,7 +636,7 @@ let scene_json = {"id": "s1", "sources": ["seq1"], "width": 60, "height": 60, "s
+ let g = get_group("g1");
+ let new_scene = parse_scene(scene_json, g);
+ //if needed, move new_scene at desired location in g.scenes
+-````
++```
+ 
+ A script can also modify elements of a playlist.
+ - Scene and group objects can be retrieved using `get_scene` and `get_group`, and properties can be accessed through `elt.get('propName')` and set through `elt.set('propName', value)`.
+diff --git a/Howtos/nodejs.md b/Howtos/nodejs.md
+index 50c3d14..e19551c 100644
+--- a/Howtos/nodejs.md
++++ b/Howtos/nodejs.md
+@@ -28,8 +28,7 @@ You can then build using:
+ % cd gpac/share/nodejs
+ % node-gyp configure
+ % node-gyp build
+-
+-````
++```
+ 
+ If you don't want to install on your system, you will need to modify the `binding.gyp` file to set the include dir to the root of gpac source tree:
+ -  "include_dirs": ["<(module_root_dir)/../../include"]
+@@ -64,7 +63,7 @@ or if you want to use the provided `index.js`, simply use:
+ const gpac = require(path/to/gpac/share/nodejs);
+ ```
+ 
+- Check everything is in place running the following JS:
++Check everything is in place running the following JS:
+ 
+ 
+ ```
+diff --git a/Player/Playback.md b/Player/Playback.md
+index 5a21aa8..6813f0c 100644
+--- a/Player/Playback.md
++++ b/Player/Playback.md
+@@ -9,19 +9,19 @@ This section of the wiki discusses various use cases for content playback with G
+ 
+ In most cases your content consists of one audio stream and one video stream and composing them together is not needed.
+ You can play such content using:
+-````gpac -play source```
++```gpac -play source```
+ 
+ The `-play` alias resolves to `-i @{1} aout vout`, so the above is equivalent to:
+-````gpac -i source aout vout```
++```gpac -i source aout vout```
+ 
+ If you only want to play the audio, use
+-````gpac -i source aout```
++```gpac -i source aout```
+ 
+ If you only want to play the video, use
+-````gpac -i source vout```
++```gpac -i source vout```
+ 
+ If you only want to play the video as fast as possible without dropping, use
+-````gpac -i source vout:vsync=0```
++```gpac -i source vout:vsync=0```
+ 
+ 
+ See [this howto](filters-playback) for more details.
+diff --git a/Player/filters-playback.md b/Player/filters-playback.md
+index e0f0024..207e2d2 100644
+--- a/Player/filters-playback.md
++++ b/Player/filters-playback.md
+@@ -67,7 +67,7 @@ This is basically the same as video output.
+ The above command will play the first audio track (and only this track) found in `source.mp4`.
+ 
+ __Discussion__  
+-As with the video output filter, the audio output filter is a wrapper around the audio output modules in GPAC, which can be configured using [-drv](aout#drv]) option (see `gpac -h modules`).
++As with the video output filter, the audio output filter is a wrapper around the audio output modules in GPAC, which can be configured using [-drv](aout#drv) option (see `gpac -h modules`).
+ 
+ The default behaviour of the audio output filter is to use 100ms of sound data buffer, split in 2 buffers for audio output modules supporting this (DirectSound). It also uses a default input buffer of 100ms before starting the playback.
+ 
