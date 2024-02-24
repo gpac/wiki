@@ -37,7 +37,6 @@ extra:
   analytics:
     provider: google
     property: G-428564276
-
   consent:
     title: Cookie consent
     description: > # (1)
@@ -45,7 +44,9 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
-
+    actions:
+          - accept
+          - manage 
 nav: 
   - Howtos:
     - Intro: Howtos/howtos.md
