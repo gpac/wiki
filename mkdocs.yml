@@ -31,6 +31,7 @@ plugins:
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
+  - admonition
   - toc:
       permalink: true
 extra:
