@@ -134,7 +134,7 @@ nav:
       - Subtitling with GPAC: Howtos/subtitles/Subtitling-with-GPAC.md
       - EBU-TTD support in GPAC: Howtos/subtitles/EBU-TTD-support-in-GPAC.md
   - MP4Box:
-    - Intro: MP4Box/MP4Box-Introduction.md
+    - Intro: MP4Box/MP4Box.md
     - import options: MP4Box/mp4box-import-opts.md
     - dump options: MP4Box/mp4box-dump-opts.md
     - gen options: MP4Box/mp4box-gen-opts.md
