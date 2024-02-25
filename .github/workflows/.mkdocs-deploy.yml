@@ -1,9 +1,10 @@
 name: mkdocs-deploy
 run-name: ${{ github.actor }} is deploying gpac mkdocs wiki
-on: workflow_dispatch
+on: [push, workflow_dispatch]
 jobs:
   deploy-mkdocs-wiki:
     runs-on: ubuntu-latest
+    if:  ${{ github.ref == 'refs/heads/master' }}
     steps:
       - uses: actions/checkout@v4
         with:
