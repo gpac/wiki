@@ -34,12 +34,8 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
 
     def fix_target(self, target, files):
         # know issues with gh-wiki
-        if target == "MP4Box":
-            return "MP4Box/MP4Box-Introduction.md"
-        if target == "/MP4Box/MP4Box":
-            return "MP4Box/MP4Box-Introduction.md"
         if target.lower() == "mp4box-introduction":
-            return "MP4Box/MP4Box-Introduction.md"
+            return "MP4Box/MP4Box.md"
         elif target == "route_out":
             return "Filters/routeout.md"
         elif target == "player":
