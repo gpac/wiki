@@ -36,8 +36,10 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
         # know issues with gh-wiki
         if target.lower() == "mp4box/mp4box-introduction.md":
             return "MP4Box/MP4Box.md"
-        if target.lower() == "mp4box-introduction":
-            return "MP4Box.md"
+        elif target.lower() == "mp4box-introduction":
+            return "MP4Box/MP4Box.md"
+        elif target == "../MP4Box.md":
+            return "MP4Box/MP4Box.md"
         elif target == "route_out":
             return "Filters/routeout.md"
         elif target == "player":
