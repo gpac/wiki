@@ -1,0 +1,157 @@
+<!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
+
+# ROUTE output  
+  
+Register name used to load filter: __routeout__  
+This filter may be automatically loaded during graph resolution.  
+  
+The ROUTE output filter is used to distribute a live file-based session using ROUTE.  
+The filter supports DASH and HLS inputs, ATSC3.0 signaling and generic ROUTE signaling.  
+  
+The filter is identified using the following URL schemes:  
+* `atsc://`: session is a full ATSC 3.0 session  
+* `route://IP:port`: session is a ROUTE session running on given multicast IP and port  
+  
+The filter only accepts input PIDs of type `FILE`.  
+- HAS Manifests files are detected by file extension and/or MIME types, and sent as part of the signaling bundle or as LCT object files for HLS child playlists.  
+- HAS Media segments are detected using the `OrigStreamType` property, and send as LCT object files using the DASH template string.  
+- A PID without `OrigStreamType` property set is delivered as a regular LCT object file (called `raw` hereafter).  
+    
+For `raw` file PIDs, the filter will look for the following properties:  
+* `ROUTEName`: set resource name. If not found, uses basename of URL  
+* `ROUTECarousel`: set repeat period. If not found, uses [carousel](#carousel). If 0, the file is only sent once  
+* `ROUTEUpload`: set resource upload time. If not found, uses [carousel](#carousel). If 0, the file will be sent as fast as possible.  
+  
+When DASHing for ROUTE or single service ATSC, a file extension, either in [dst](#dst) or in [ext](#ext), may be used to identify the HAS session type (DASH or HLS).  
+Example
+```
+"route://IP:PORT/manifest.mpd", "route://IP:PORT/:ext=mpd"
+```  
+  
+When DASHing for multi-service ATSC, forcing an extension will force all service to use the same formats.  
+Example
+```
+"atsc://:ext=mpd", "route://IP:PORT/manifest.mpd"
+```  
+If multiple services with different formats are needed, you will need to explicit your filters:  
+Example
+```
+gpac -i DASH_URL:#ServiceID=1 dashin:forward=file:FID=1 -i HLS_URL:#ServiceID=2 dashin:forward=file:FID=2 -o atsc://:SID=1,2  
+gpac -i MOVIE1:#ServiceID=1 dasher:FID=1:mname=manifest.mpd -i MOVIE2:#ServiceID=2 dasher:FID=2:mname=manifest.m3u8 -o atsc://:SID=1,2
+```  
+  
+__Warning: When forwarding an existing DASH/HLS session, do NOT set any extension or manifest name.__  
+  
+By default, all streams in a service are assigned to a single route session, and differentiated by ROUTE TSI (see [splitlct](#splitlct)).  
+TSI are assigned as follows:  
+- signaling TSI is always 0  
+- raw files are assigned TSI 1 and increasing number of TOI  
+- otherwise, the first PID found is assigned TSI 10, the second TSI 20 etc ...  
+  
+Init segments and HLS child playlists are sent before each new segment, independently of [carousel](#carousel).  
+
+# ATSC 3.0 mode  
+  
+In this mode, the filter allows multiple service multiplexing, identified through the `ServiceID` property.  
+By default, a single multicast IP is used for route sessions, each service will be assigned a different port.  
+The filter will look for `ROUTEIP` and `ROUTEPort` properties on the incoming PID. If not found, the default [ip](#ip) and [port](#port) will be used.  
+  
+ATSC 3.0 attributes set by using the following PID properties:  
+* ATSC3ShortServiceName: set the short service name, maxiumu of 7 characters.  If not found, `ServiceName` is checked, otherwise default to `GPAC`.  
+* ATSC3MajorChannel: set major channel number of service. Default to 2.  This really should be set and should not use the default.  
+* ATSC3MinorChannel: set minor channel number of service. Default of 1.  
+* ATSC3ServiceCat: set service category, default to 1 if not found. 1=Linear a/v service. 2=Linear audio only service. 3=App-based service. 4=ESg service. 5=EA service. 6=DRM service.  
+* ATSC3hidden: set if service is hidden.  Boolean true or false. Default of false.  
+* ATSC3hideInGuide: set if service is hidden in ESG.  Boolean true or false. Default of false.  
+* ATSC3configuration: set service configuration.  Choices are Broadcast or Broadband.  Default of Broadcast  
+  
+# ROUTE mode  
+  
+In this mode, only a single service can be distributed by the ROUTE session.  
+_Note: [ip](#ip) is ignored, and [first_port](#first_port) is used if no port is specified in [dst](#dst)._  
+The ROUTE session will include a multi-part MIME unsigned package containing manifest and S-TSID, sent on TSI=0.  
+  
+# Low latency mode  
+  
+When using low-latency mode, the input media segments are not re-assembled in a single packet but are instead sent as they are received.  
+In order for the real-time scheduling of data chunks to work, each fragment of the segment should have a CTS and timestamp describing its timing.  
+If this is not the case (typically when used with an existing DASH session in file mode), the scheduler will estimate CTS and duration based on the stream bitrate and segment duration. The indicated bitrate is increased by [brinc](#brinc) percent for safety.  
+If this fails, the filter will trigger warnings and send as fast as possible.  
+_Note: The LCT objects are sent with no length (TOL header) assigned until the final segment size is known, potentially leading to a final 0-size LCT fragment signaling only the final size._  
+  
+# Examples  
+  
+Since the ROUTE filter only consumes files, it is required to insert:  
+- the dash demultiplexer in file forwarding mode when loading a DASH session  
+- the dash multiplexer when creating a DASH session  
+  
+Multiplexing an existing DASH session in route:  
+Example
+```
+gpac -i source.mpd dashin:forward=file -o route://225.1.1.0:6000/
+```  
+Multiplexing an existing DASH session in atsc:  
+Example
+```
+gpac -i source.mpd dashin:forward=file -o atsc://
+```  
+Dashing and multiplexing in route:  
+Example
+```
+gpac -i source.mp4 dasher:profile=live -o route://225.1.1.0:6000/manifest.mpd
+```  
+Dashing and multiplexing in route Low Latency:  
+Example
+```
+gpac -i source.mp4 dasher -o route://225.1.1.0:6000/manifest.mpd:profile=live:cdur=0.2:llmode
+```  
+  
+Sending a single file in ROUTE using half a second upload time, 2 seconds carousel:  
+Example
+```
+gpac -i URL:#ROUTEUpload=0.5:#ROUTECarousel=2 -o route://225.1.1.0:6000/
+```  
+  
+Common mistakes:  
+Example
+```
+gpac -i source.mpd -o route://225.1.1.0:6000/
+```  
+This will only send the manifest file as a regular object and will not load the dash session.  
+Example
+```
+gpac -i source.mpd dashin:forward=file -o route://225.1.1.0:6000/manifest.mpd
+```  
+This will force the ROUTE multiplexer to only accept .mpd files, and will drop all segment files (same if [ext](#ext) is used).  
+Example
+```
+gpac -i source.mpd dasher -o route://225.1.1.0:6000/  
+gpac -i source.mpd dasher -o route://225.1.1.0:6000/manifest.mpd
+```  
+These will demultiplex the input, re-dash it and send the output of the dasher to ROUTE  
+  
+
+# Options    
+  
+<a id="dst">__dst__</a> (cstr): destination URL  
+<a id="ext">__ext__</a> (cstr): set extension for graph resolution, regardless of file extension  
+<a id="mime">__mime__</a> (cstr): set mime type for graph resolution  
+<a id="ifce">__ifce__</a> (str): default interface to use for multicast. If NULL, the default system interface will be used  
+<a id="carousel">__carousel__</a> (uint, default: _1000_): carousel period in ms for repeating signaling and raw file data  
+<a id="first_port">__first_port__</a> (uint, default: _6000_): port number of first ROUTE session in ATSC mode  
+<a id="ip">__ip__</a> (str, default: _225.1.1.0_): multicast IP address for ROUTE session in ATSC mode  
+<a id="ttl">__ttl__</a> (uint, default: _0_): time-to-live for multicast packets  
+<a id="bsid">__bsid__</a> (uint, default: _800_): ID for ATSC broadcast stream  
+<a id="mtu">__mtu__</a> (uint, default: _1472_): size of LCT MTU in bytes  
+<a id="splitlct">__splitlct__</a> (enum, default: _off_): split mode for LCT channels  
+* off: all streams are in the same LCT channel  
+* type: each new stream type results in a new LCT channel  
+* all: all streams are in dedicated LCT channel, the first stream being used for STSID signaling  
+  
+<a id="korean">__korean__</a> (bool, default: _false_): use Korean version of ATSC 3.0 spec instead of US  
+<a id="llmode">__llmode__</a> (bool, default: _false_): use low-latency mode  
+<a id="brinc">__brinc__</a> (uint, default: _10_): bitrate increase in percent when estimating timing in low latency mode  
+<a id="noreg">__noreg__</a> (bool, default: _false_): disable rate regulation for media segments, pushing them as fast as received  
+<a id="runfor">__runfor__</a> (uint, default: _0_): run for the given time in ms  
+<a id="nozip">__nozip__</a> (bool, default: _false_): do not zip signaling package (STSID+manifest)  
+  

@@ -1,0 +1,17 @@
+<!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
+
+# Probe source  
+  
+Register name used to load filter: __probe__  
+This filter is not checked during graph resolution and needs explicit loading.  
+  
+The Probe filter is used by applications (typically `MP4Box`) to query demultiplexed PIDs (audio, video, ...) available in a source chain.  
+  
+The filter outputs the number of input PIDs in the file specified by [log](#log).  
+It is up to the app developer to query input PIDs of the prober and take appropriated decisions.  
+  
+
+# Options    
+  
+<a id="log">__log__</a> (str, default: _stdout_, minmax: fileName, stderr, stdout GLOG or null): set probe log filename to print number of streams, GLOG uses GPAC logs `app@info`(default for android)  
+  
