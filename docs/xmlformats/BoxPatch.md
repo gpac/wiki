@@ -1,6 +1,7 @@
 GPAC allows adding or removing boxes in an ISOBMFF file through patches, in order to customize files. This box patching uses an XML description of where the box should be added or removed, and what the new box content is in case of box addition.
 
 The XML syntax used is:
+
 - a root `GPACBOXES` element with no specified attributes
 - Any number of `Box` elements, where the payload is described using XML Binary [BS](XML-Binary) elements. 
 
@@ -16,6 +17,7 @@ The XML syntax used is:
 A `Box` element with no children implies a box removal, and the `path` attribute gives the path to the box to remove. Otherwise this specifies a box insertion, and the path attribute gives the path to the parent box or previous box.
 
 The path is formatted as a series of 4CC separated by a `.` indicating target child. When inserting a new box, a final character may be appended to the path:
+
 - no character: the last 4CC shall identify a container box, and this specifies that the new box shall be inserted at the end of this container, e.g. `trak.mdia` means insert box as the last child of the media box
 - `+`: specifies that the new box shall be inserted after the indicated box, e.g. `trak.tkhd+` means insert box after track header
 - `-`: specifies that the new box shall be inserted before the indicated box, e.g. `trak.tkhd-` means insert box before track header
@@ -23,6 +25,7 @@ The path is formatted as a series of 4CC separated by a `.` indicating target ch
 To insert a box at the root level, simply indicate after or before which root box you want to insert the file, e.g. `moov-`or `moov+`.
 
  The trackID may be:
+ 
  - set in the Box patch
  - specified using the command line
  - derived from the PID attached to this box patch

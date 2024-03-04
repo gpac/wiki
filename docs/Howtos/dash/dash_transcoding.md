@@ -5,6 +5,7 @@ In this howto, we will study various setups for DASH transcoding.
 Please make sure you are familiar with [DASH terminology](DASH-basics) before reading. 
 
 It is likely that your source media is not properly encoded for DASH or HLS delivery, most likely because:
+
 - openGOPs are used 
 - key-frame position do not match between your different qualities
 - key-frame intervals are not constant

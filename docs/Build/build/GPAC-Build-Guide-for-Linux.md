@@ -1,6 +1,7 @@
 _Preliminary notes: the following instructions will be based on Ubuntu and Debian. It should be easily applicable to other distributions, the only changes should be name of the packages to be installed, and the package manager used._
 
 GPAC is a modular piece of software which depends on third-party libraries. During the build process it will try to detect and leverage the installed third-party libraries on your system. Here are the instructions to:
+
  * build GPAC easily (recommended for most users) from what's available on your system,
  * build a minimal 'MP4Box' and 'gpac' (only contains GPAC core features like muxing and streaming),
  * build a complete GPAC by rebuilding all the dependencies manually.
@@ -47,6 +48,7 @@ _If you are upgrading from a previous version (especially going from below 1.0.0
 ## Use
 
 You can either:
+
  -  `sudo make install` to install the binaries,
  - or use the `MP4Box` or `gpac` binary in `gpac_public/bin/gcc/` directly, 
  - or move/copy it somewhere manually.
@@ -104,6 +106,7 @@ make
 4. Use
 
 You can either:
+
  -  `sudo make install` to install the binaries,
  - or use the `MP4Box` or `gpac` binary in `gpac_public/bin/gcc/` directly, 
  - or move/copy it somewhere manually.

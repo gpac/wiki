@@ -95,6 +95,7 @@ gpac -i source.mp4 inspect:interleave=false:deep:analyze=on
 The above command will open the given `source.mp4` file and create an XML dump of all PID media-specific info and all packets media-specific info if [deep](inspect#deep) is set. 
 
 The analyze mode will check the payload of the decoder configuration (parameter sets)  and the payload of each packet. Supported bitstream formats for analysis are:
+
 - AVC, HEVC, VVC video
 - AV1
 - VP8,VP9

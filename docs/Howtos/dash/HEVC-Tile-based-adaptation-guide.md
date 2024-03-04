@@ -75,10 +75,12 @@ You can now playback your MPD using GPAC, and have fun with the different adapta
 ## Live setup
 
 If you want to produce a live feed of tiled video, you can either:
+
 - produce short segments, package them and dash them using `-dash-live`, `dash-ctx` and `-subdur`, see discussion [here](https://github.com/gpac/gpac/issues/1648)
 - produce a live session with a [tilesplit](tilesplit) filter.
 
 GPAC does not have a direct wrapper for Kvazaar, but you can either:
+
 - use a FFmpeg build with Kvazaar enabled (`--enable-libkvazaar` in ffmpeg configure) - check GPAC support using `gpac -h ffenc:libkvazaar`
 - use an external grab+Kvazaar encoding and pipe its output into GPAC.
 
@@ -134,6 +136,7 @@ gpac
 
 
 The resulting filter graph is quite fun (use `-graph` to check it) and shows:
+
 - only one (or 0 depending on your webcam formats) pixel converter filter is used in the chain to feed both Kvazaar instances
 - all tile PIDs (and only them) connecting to the dasher filter
 - 21 output PIDs of the dasher: one for MPD, 2 x (1+3x3) media PIDs.
@@ -179,6 +182,7 @@ In 2D playback, the tile adaptation logic (for ROI for example)  is controlled b
 
 The compositor can use gaze information to automatically decrease the quality of the tiles not below the gaze. 
 The gaze information can be:
+
 - emulated via mouse using [--sgaze](compositor#sgaze) option.
 - signaled through filter updates on the [gazer_enabled](compositor#gazer_enabled) [gaze_x](compositor#gaze_x) [gaze_y](compositor#gaze_y) 
 

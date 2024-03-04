@@ -105,6 +105,7 @@ _Note_
 A sequence not attached with a scene will not be visible nor played, even if active.
 
 Now let's add :
+
 - a logo
 - a bottom rectangle with a gradient
 - some text
@@ -131,6 +132,7 @@ In the following examples, we always use [relative coordinates system](avmix#coo
 ## Animating a scene
 
 Scenes can be animated through timer objects providing value interpolation instructions. A timer provides:
+
 - a start time, stop time and a loop count
 - a duration for the interpolation period
 - a set of animation values and their targets
@@ -167,6 +169,7 @@ It can be tedious to apply the same transformation (matrix, active, ...) on a su
 The simplest way to do this is to group scenes together, and transform the group.
 
 The following animates:
+
 - the video from 90% to 100% , sticking it to the top-left corner and animated the rounded rectangle effect
 - the overlay group position from visible to hidden past the bottom-right corner
 
@@ -270,6 +273,7 @@ This works with video scenes too:
 
 You will at some point need to chain some videos. AVMix handles this through `sequence` objects describing how sources are to be chained.
 Sequences are designed to:
+
 - take care of media prefetching to reduce loading times
 - perform transitions between sources, activating / prefetching based on the desired transition duration
 
@@ -297,6 +301,7 @@ AVMix handles this by allowing scenes to use more than one sequence as input, an
 _Note: Currently, defined scenes only support 0, 1 or 2 input sequences_
 
 This is done at scene declaration through:
+
 - a `mix` object, describing a transition
 - a `mix_ratio` property, describing the transition ratio
 
@@ -347,6 +352,7 @@ Specifying an identifier on the sequence avoids that.
 ## Live mode
 
 Live mode works like offline mode, with the following additions:
+
 - detection and display of signal lost or no input sequences
 - `sequence` and `timer` start and stop time can be expressed as UTC dates (absolute) or current UTC offset
 
@@ -368,6 +374,7 @@ You should now see "no input" message when playing. Without closing the player, 
 ]
 ```
 And the video sequence will start ! You can use for start and stop time values:
+
 - "now": will resolve to current UTC time
 - integer: will resolve to current UTC time plus the number of seconds specified by the integer
 - date: will use the date as the start/stop time
@@ -448,6 +455,7 @@ This is problematic if you use AVMix to generate a live feed supposed to be up 2
 To prevent this, the filter allows launching the sources as dedicated child processes. When the child process exits unexpectedly, or when source data is no longer received, the filter can then kill and relaunch the child process.
 
 There are three supported methods for this:
+
 - running a gpac instance over a pipe
 - running a gpac instance over TCP
 - running any other process capable of communicating with gpac
@@ -455,6 +463,7 @@ There are three supported methods for this:
 The declaration is done at the `sourceURL` level through the port option.
 
 For each of these mode, the `keep_alive` option is used to decide if the child process shall be restarted:
+
 - if no more data is received after `rtimeout`.
 - stream is in end of stream but child process exited with an error code greater than 2.
 
@@ -598,6 +607,7 @@ return 0;
 ```
  
 Your module can also control the playlist through several functions:
+
 - remove_element(id_or_elem): removes a scene, group or sequence from playlist
 - parse_element(JSON_obj): parses a root JSON object and add to the playlist
 - parse_scene(JSON_obj, parent_group): parses a scene from its JSON object and add it to parent_group, or to root if parent_group is null
@@ -729,12 +739,14 @@ In this mode, the texturing parameters used by the offscreen group can be modifi
 AVMix can use a global alpha mask (covering the entire output frame) for draw operations, through the [mask](avmix#scene-mask) scene module.
 
 This differs from using an offscreen group as an alpha operand input to [shape](avmix#scene-shape) as discussed above as follows:
+
 - the mask is global and not subject to any transformation
 - the mask is always cleared at the beginning of a frame
 - the mask is only one alpha channel
 - the mask operations can be accumulated between draws
 
 The following example shows using a mask in regular mode:
+
 - enable and clear mask
 - draw a circle with alpha 0.4
 - use mask and draw video, which will be blended only where the circle was drawn using alpha= 0.4
@@ -768,6 +780,7 @@ The following example shows using a mask in regular mode:
 The mask can also be updated while drawing using a record mode. In this mode, the mask acts as a binary filter, any pixel drawn to the mask will no longer get drawn.
 
 The following draws:
+
 - an ellipse with first video at half opacity, appearing blended on the background
 - the entire second video at full opacity, which will only appear where mask was not set
 

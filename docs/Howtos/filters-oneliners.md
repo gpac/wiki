@@ -1,10 +1,12 @@
 # Foreword
 
 This page contains one-liners illustrating the many possibilities of GPAC filters architecture. For a more detailed information, it is highly recommended that you read:
+
 - the [general concepts](filters_general) page 
 - the [gpac application](gpac_general)  help
 
 To get a better understanding of each command illustrated in this case, it is recommended to:
+
 - run the same command with `-graph` specified to see the filter graph associated
 - read the help of the different filters in this graph using `gpac -h filter_name`
 
@@ -13,6 +15,7 @@ Whenever an option is specified, e.g. `dest.mp4:foo`, you can get more info and 
 The filter session is by default quiet, except for warnings and error reporting. To get information on the session while running, use [-r](gpac_general#r) option. To get more runtime information, use the [log system](core_logs).
 
 Given the configurable nature of the filter architecture, most examples given in one context can be reused in another context. For example:
+
 - from the dump examples:
 ```
 gpac -i source reframer:saps=1 -o dump/$num$.png
@@ -34,6 +37,7 @@ _NOTE The command lines given here are usually using a local file for source or 
 _Reminder_
 Most filters are never specified at the prompt, they are dynamically loaded during the graph resolution.
 GPAC filters can use either:
+
 - global options, e.g. `--foo`, applying to each instance of any filter defining the `foo` option,
 - local options to a given filter and any filters dynamically loaded, e.g. `:foo`. This is called [argument inheriting](filters_general#arguments-inheriting).  
 

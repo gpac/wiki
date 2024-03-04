@@ -1,4 +1,5 @@
 It is possible to describe bit sequences when importing XML data. This applies to:
+
 - [NHML](NHML-Format): some elements in the format may or must have child bitstream constructors
 
 - [Encryption](Common-Encryption): a `DRMInfo` element may have child bitstream constructors
@@ -69,6 +70,7 @@ This example was used to generate files conforming to ISO/IEC 14496-18 AMD1. It 
 ```
 
 When used in an NHML sample, if a `BS` element describes file data (`dataLength` and/or `mediaOffset` are set) but no file is given, the source file is:
+
 - the `mediaFile` indicated at the sample level, if present
 - otherwise the `baseMediaFile` indicated at the NHML stream level, if present
 - otherwise the media file associated with the NHML, e.g. `track.media` for `track.nhml`

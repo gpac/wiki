@@ -17,6 +17,7 @@ GPAC Python bindings are only available starting from GPAC 2.0.
 The GPAC Python bindings use [ctypes](https://docs.python.org/3/library/ctypes.html) for interfacing with libgpac filter session, while providing an object-oriented wrapper hiding all ctypes internals and GPAC C design.
 
 You __must__:
+
 - use the bindings which come along with your GPAC installation, otherwise ABI/API might mismatch, resulting in crashes.
 - use a regular GPAC build, not a static library version (so python bindings are not compatible with mp4box-only build).
 - make sure the libgpac shared library is known to your dynamic library loader.
@@ -51,6 +52,7 @@ You can also install libgpac bindings using PIP, see [this post](https://github.
 # Tuning up GPAC
 
 The first thing to do is to initialize libgpac. This is done by default while importing the bindings with the following settings:
+
 - no memory tracking
 - default GPAC profile used
 
@@ -396,6 +398,7 @@ fs.run()
 
 The following defines a custom filter doing raw video write access (e.g. pixel modification) and forwarding the result in the middle of the pipeline.
 We cover two methods here:
+
 - inplace processing, where the input data is modified and sent
 - read access, where the output data can be anything (in this example, its is a copy of the input with a line drawn on the luma plane)
 
@@ -532,6 +535,7 @@ First you must delegate all GL context management to your python app (must be do
 If you run the session in multithreaded mode, you may need to override the filter session `on_gl_activate` to properly activate the GL context for the calling thread.
 
 A typical packet processing will then be:
+
 - if GPU texture
 	- use `get_gl_texture` for each video plane, typically 3 for YUV, 2 for Y+packed YV (nv12), 1 for RGB/RGBA
 	- set active texture units and uniforms using the textureID returned
@@ -610,6 +614,7 @@ You can however enable or disable Remotery profiler using `gpac.rmt_enable(True/
 You can override the default algorithm used by the DASH client with your own algorithm. See [the documentation](https://doxygen.gpac.io/group__pydash__grp.html) for further details.
 
 The principle is as follows:
+
 - the script can get notification of period start/end to reset statistics, setup live vs on demand cases, etc.
 - the script can get notification of each created group (AdaptationSet in DASH, Variant Stream in HLS) with its various qualities. For HEVC tiling, each tile will be declared as a group, as well as the base tile track
 - the script is notified after each segment download on which quality to pickup next
@@ -687,6 +692,7 @@ fs.run()
 GPAC allows using wrappers for file operations (open, close, read, write, seek...), and such wrappers can be constructed from Python.
 
 A FileIO wrapper is constructed using:
+
 - the URL you want to wrap
 - a 'factory' object providing the callbacks for GPAC.
 
@@ -760,6 +766,7 @@ This allows handling, with a single wrapper, cases where a URL resolves in multi
 You can override the default behaviour of the httpout filter. See [the documentation](https://doxygen.gpac.io/group__pyhttpout__grp.html) for further details.
 
 The principle is as follows:
+
 - the script can get notification of each new request being received
 - the script can decide to let GPAC handle the request as usual (typically used for injecting http headers, throttling and monitoring)
 - the script can feed the data to GPAC (GET) or receive the data from GPAC (PUT/POST)
@@ -849,6 +856,7 @@ class MyHTTPOutRequest(gpac.HTTPOutRequest):
 # Advanced example
 
 The following is an example showing:
+
 - DASH custom logic
 - Custom sink filter with buffering control
 - Raw video access for both GPU-based or system-based decoders

@@ -3,6 +3,7 @@
 As of GPAC 2.0, MP4Box supports in-place editing of MP4 files.
 
 In-place editing is used whenever the following conditions are true:
+
 - the media data has not been modified during the edit operations
 - no storage mode is specified
 - no output file name is specified

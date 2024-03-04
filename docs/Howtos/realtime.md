@@ -7,6 +7,7 @@ We discuss here how to simulate real-time sources in GPAC.
 
 Assume you have one or several sources dispatching data in a non real-time fashion, such as a local file, an HTTP download or a pipe input. You may want to produce data in real-time, for DASH, HLS, MPEG-2 TS or HTTP delivery. 
 GPAC comes with the [reframer](reframer) filter, in charge of forcing a de-multiplexing of input data. This filter supports several features including:
+
 - discarding frames based on their SAP type (e.g. build a stream containing only I-frames of the input stream)
 - force decoding of media data
 - and real-time regulation
@@ -89,6 +90,7 @@ gpac flist:srcs=source.mp4:floop=-1 reframer:rt=sync -o live.mpd:dur=2:cdur=0.1:
 
 ## Icecast-like server
 In this example, we use a local playlist to generate an icecast server. If we don't inject a real-time regulation, the server will:
+
 - drop all packets way too fast when no client is connected
 - send all packets way too fast when clients are connected
 

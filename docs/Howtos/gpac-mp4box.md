@@ -3,6 +3,7 @@
 Following the introduction of the filter architecture and the gpac application, you may have a hard time choosing between MP4Box and gpac.
  
 Before going any further, we assume:
+
 -  you are familiar with [MP4Box](MP4Box)
 -  you understand the principles of GPAC [filters](filters_general) and are somehow familiar with using the [gpac](gpac_general) application
 
@@ -13,6 +14,7 @@ We recommend that you quickly read the article on GPAC [re-architecture](Rearchi
 There are many features of libgpac available in MP4Box only, and most of them will probably never be ported to the general filter architecture.
 
 The things you can do with both MP4Box and gpac are:
+
 - adding media tracks or image items to a __new__ ISOBMFF file
 - extracting media track to raw formats
 - fragmenting and DASHing a set of sources (ISOBMFF or not)
@@ -21,6 +23,7 @@ The things you can do with both MP4Box and gpac are:
 - some XML dump operations (-dnal option of MP4Box)
 
 File concatenation can also be done using MP4Box as well as with gpac, but they do not use the same code base:
+
 - MP4Box only concatenates ISOBMFF files, potentially requiring temporary ISOBMFF import
 - gpac can concatenate any source  (live or not) using the [flist](flist) filter.
 
@@ -37,29 +40,36 @@ The gpac application is only in charge of calling a filter session based on the 
 MP4Box works in a completely different way to allow for ISOBMFF file edition. These are the logical steps in MP4Box processing, in their order of execution:
 
 If `-add` / `-cat`, then:
+
 - run a filter session for each import (-add) operation. This may be optimized when creating a new file using [-newfs](mp4box-gen-opts#newfs), in which case a single session is used for all import operations.
 - store the result in a temporary file (unless `-flat` is set )
 
 The input file is now either the source file (read-only or edit operations) or the edited file, potentially with new tracks
 
 If `-split`, then:
+
 - run a filter session on the input file for file splitting using the [reframer](reframer) filter
 
 If `-raw`, then:
+
 - run a filter session on the input file for each track to dump (usually involving the [writegen](writegen) filter)
 
 If `-add-image`, then:
+
 - run a filter session with the target source adding the track to the input file, convert desired samples to items and remove added track
 
 If `-dash`, then:
+
 - run a filter session on each input file names using the [dasher](dasher) filter
 - exit
 
 If `-crypt` or `-decrypt` , then:
+
 - run a filter session for file encryption/decryption (potentially using fragmented mode)
 - exit
 
 If `-frag`, then:
+
 - run a filter session for fragmentation
 - exit
 
@@ -105,6 +115,7 @@ gpac -i video.264:options -i audio_en.264:options -i audio_fr.264:options -o res
 
 The track import syntax and the dashing syntax may be combined with filter declarations, as discussed [here](mp4box-filters).
 They are however restricted as follows:
+
 - for importing, the destination format is always ISOBMFF
 - the filter chain described is fairly simple, going from source to destination ([mp4mx](mp4mx) or [dasher](dasher) filters) without any possible branch in-between.
 
@@ -144,6 +155,7 @@ On the other hand, gpac can be interrupted using `ctrl+c` and the current sessio
 # gpac, not MP4Box
 
 You should use gpac rather than MP4Box in the following cases:
+
 - sources are either live or simulate live (running forever)
 - outputs are not local files: HTTP output, RTSP server, ROUTE output, etc...
 - there are many filters manually specified in the pipeline

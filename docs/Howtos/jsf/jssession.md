@@ -22,6 +22,7 @@ The filter session API can only be loaded once per session. The implies that usi
 
 __Discussion__  
 Since the session API is available in a JSFilter, you can load a script directly using `gpac script.js`. This will however create a JSFilter inside the session, but this filter will be automatically disabled (not used in the graph resolution, leaving it not connected) if the following conditions are met after initialization:
+
 - filter did not assign any capabilities
 - filter did not create any output PID
 - filter did not post any task using filter.post_task
@@ -238,6 +239,7 @@ session.fire_event(f_evt);
 ```
 
 The filter session can also be used to fire non-UI related events on filters. You must be extra careful when using this, as this might trigger unwanted behavior in the chain. Typically:
+
 - upstream events (towards sink) should only be fired on source filters (nb_ipid = 0)
 - downstream events (towards source) should only be fired on sink filters (nb_opid = 0)
 
@@ -252,6 +254,7 @@ session.fire_event(f_evt, target_filter);
 GPAC is by default compiled with [Remotery](https://github.com/Celtoys/Remotery) support, and can use the underlying websocket server of remotery to communicate with a web browser.
 
 You will need for this:
+
 - to launch GPAC with remotery activate by specifying [-rmt](core_options#rmt)
 - set a handler function to listen to messages from the web client using `session.set_rmt_fun`
 - send messsages to the web client using `session.rmt_send`
@@ -284,6 +287,7 @@ session.rmt_enabled = false;
 # Creating custom filters
 
 You can create your own custom filters in a JS session using `new_filter`. The returned object will be a  [JavaScript Filter](jsfilter) with the following limitations:
+
 - no custom arguments for the filter can be set
 - the `initialize` function is not called
 - the filter cannot be cloned

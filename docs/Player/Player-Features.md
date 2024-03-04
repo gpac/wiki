@@ -29,6 +29,7 @@ The status of X3D implementation in GPAC can be checked [here](X3D-Implementati
 GPAC extends VRML/BIFS node set through its hardcoded proto mechanism. These are protos with predefined URLs and interfaces, allowing BIFS compression without modifying the language syntax. These nodes are identified by a proto URN starting with `urn:inet:gpac:builtin:`.
 
 The following hardcoded protos are available:
+
 - PlanarExtrusion: extrude a 2D shape (except text) along a 2D path
 - PathExtrusion: extrude a 2D shape, including text,  along a 2D path
 - PlaneClipper: set a 3D plane clipper
@@ -87,6 +88,7 @@ The media stream composition (renderer) is performed by the [Compositor](composi
 
 # Media Decoders
 Decoders included in default builds:
+
 - PNG, JPEG (libJPEG) and JPEG-2000
 - MPEG-4 AAC, MPEG-1/2 audio, Dolby AC-3
 - MPEG-1/2/4, H264|AVC, SVC, HEVC, L-HEVC
@@ -97,6 +99,7 @@ Decoders included in default builds:
 
 # Networking
 Any possible input from GPAC filter architecture is supported by the player. This includes:
+
 - File access from local drive, HTTP download, pipes and sockets.
 - MP4, 3GP, MP3/Shoutcast, JPEG, PNG, OGG/Icecast, AMR/EVRC/SMV, SAF, raw YUV and PCM
 - AAC files and radio streams (icecast AAC-ADTS)

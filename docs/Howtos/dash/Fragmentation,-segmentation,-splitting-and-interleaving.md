@@ -20,6 +20,7 @@ Segmentation (`-dash`) is the process of creating segments, parts of an original
 Last, MP4Box can split (-split) a file and create individual playable files from an original one. It does not use segmentation in the above sense, it removes fragmentation and can use interleaving.
 
 Some examples of MP4Box usages:
+
 - Rewrites a file with an interleaving window of 1 sec.
 
 `MP4Box -inter 1000 file.mp4`

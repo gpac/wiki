@@ -150,6 +150,7 @@ The following attributes are used when creating 3GPP DIMS sample descriptions:
 
 
 The decoder config of an `NHNTStream` can be specified using [XML bitstream constructors](XML-Binary). To do this, the BS elements shall be encapsulated in a `DecoderSpecificInfo` element present in the children of the `NHNTStream` element. The content of the `DecoderSpecificInfo` element is then inserted:
+
 - in the ESD (MPEG-4 Systems)
 - or after the base sampleDescription (ISOBMFF generic), in which case the data should likely be formatted as a box (4 byte size, 4 byte type then payload).
 
@@ -220,6 +221,7 @@ __WARNING Support for `SubSamples` requires GPAC 2.0 or above.__
 The `SAI` element is used to associate auxiliary information to the parent sample. The children of this element must use [bitstream constructors](XML-Binary) to describe the data.
 
 Auxiliary information will be tanslated by the ISOBMFF multiplexer as:
+
 - sample group description with `grouping_type` value of `type` if `group` is set
 - sample auxiliary information with  `aux_info_type` value of `type` if `group` is not set
 

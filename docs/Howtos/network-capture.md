@@ -5,6 +5,7 @@ We discuss here how to use network captures with GPAC 2.3-DEV or above
 # Overview
 
 GPAC can:
+
 - write packets to a custom file format called GPC
 - read packets from pcap, pcapng and gpc files
 

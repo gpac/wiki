@@ -19,6 +19,7 @@ And when using gpac, you can enable real-time reporting of filters activities us
 
 
 The `gpac` application can be used for dashing whenever `MP4Box` is used, but the opposite is not true. Especially MP4Box cannot:
+
 - use complex custom filter chains while dashing, such as transcoding in several qualities
 - produce two DASH sessions at the same time
 
@@ -169,6 +170,7 @@ gpac -i source1 -i source2 reframer:rt=on -o http://ORIG_SERVER_IP_PORT/live.mpd
 
 We will now use a live source (webcam), encode it in two qualities, DASH the result and push it to a remote server. Please check the [encoding howto](encoding) first.
 Compared to what we have seen previously, we only need to modify the input part of the graph:
+
 - take as a live source the default audio video grabbed by the [libavdevice](ffavin) filter
 - rescale the video  as 1080p and 720p 
 - encode the rescaled videos at 6 and 3 mbps 

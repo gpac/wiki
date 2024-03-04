@@ -67,6 +67,7 @@ The above command will encode the video track in  `source.mp4`  into AVC|H264 at
 ```gpac -i source.mp4 c=avc::x264-params=no-mbtree:sync-lookahead=0::profile=baseline -o test.avc```
 
 The above command will encode the video track in  `source.mp4`  into AVC|H264 and pass two options to ffmpeg encoder:
+
 -  `x264-params`, with value `no-mbtree:sync-lookahead=0`
 -  `profile`, with value `baseline`
 

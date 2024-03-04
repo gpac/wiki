@@ -12,6 +12,7 @@ In this example we will use RTP as delivery mechanism and monitor loss rate of c
 ## RTP reader
 
 The reader is a regular video playback from RTP (using SDP as input). We will:
+
 - locate the `rtpin` filter in the chain, i.e. the first filter after the `fin`filter used for SDP access
 - update every 2 second the `loss_rate`option of the `rtpin` filter: this will force the loss ratio in RTCP Receiver Reports, but will not drop any packet at the receiver side
 
@@ -77,6 +78,7 @@ gpac.close()
 ## Encoder and RTP sender
 
 The encoder consists in a source (here a single video file playing in loop), an AVC encoder and an RTP output. We will:
+
 - locate the `rtpout` filter in the chain, i.e. the first filter before the `fout` filter used for SDP output
 - monitor every 2 second the statistics of the input PID of `rtpout` to get the real-time measurements reported by RTCP
 - adjust encoder max rate based on the percentage of loss packets

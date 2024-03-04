@@ -37,6 +37,7 @@ This will generate `live.m3u8`, `video.m3u8` and `audio.m3u8`
 # Renditions
 ## Grouping
 When several renditions are possible for a set of inputs, the default behavior is as follows:
+
 - if video is present, it is used as the main content
 - otherwise, audio is used as the main content
 

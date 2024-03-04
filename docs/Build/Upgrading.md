@@ -20,6 +20,7 @@ If you build GPAC directly in the source tree (i.e., running `./configure && mak
 # Out of source tree building
 
 To avoid the issue of cleaning dependencies, it is safer to have one dedicated build directory for each branch you test:
+
 -  `mkdir bin/master && cd bin/master && ../../configure && make -j`
 -  `mkdir bin/somebranch && cd bin/master && git checkout somebranch && ../../configure && make -j`
 
