@@ -13,10 +13,10 @@ jobs:
         with:
           python-version: '3.10' 
       - name: install mkdocs-material
-        env:
-            GOOGLE_ANALYTICS_KEY: ${{secrets.GOOGLE_ANALYTICS_KEY}}
         run: pip install mkdocs-material 
       - name: build mkdocs
+        env:
+            GOOGLE_ANALYTICS_KEY: ${{secrets.GOOGLE_ANALYTICS_KEY}}
         run: mkdocs build --clean -d dist/site
       - name: create archive
         run: cd dist/site && tar -cvzf ../site.$(git rev-parse --short HEAD).tar.gz .
