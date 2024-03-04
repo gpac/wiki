@@ -9,25 +9,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: clone_and_patch_wiki
-        run: ./scripts/clone_and_patch_wiki.sh
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10' 
       - name: install mkdocs-material
+        env:
+            GOOGLE_ANALYTICS_KEY: ${{secrets.GOOGLE_ANALYTICS_KEY}}
         run: pip install mkdocs-material 
-        # run: pip install mkdocs-material=="9.5.6" 
       - name: build mkdocs
         run: mkdocs build --clean -d dist/site
-      - name: disable SEO indexing
-        run: | 
-          echo " 
-          User-agent: *
-          Disallow: /
-          " > dist/site/robots.txt
       - name: create archive
         run: cd dist/site && tar -cvzf ../site.$(git rev-parse --short HEAD).tar.gz .
-      - name: install lftp
+      - name: install ftp
         run: sudo apt install lftp
-      - name: lftp upload
-        run: lftp -c "open -u ${{secrets.WIKI_FTP_USER}},${{secrets.WIKI_FTP_PASS}} ${{vars.WIKI_FTP_HOST}}; put -O dist/ dist/site.$(git rev-parse --short HEAD).tar.gz" 
+      - name: ftp upload
+        run: lftp -c "open -u ${{secrets.WIKI_FTP_USER}},${{secrets.WIKI_FTP_PASS}} ${{vars.WIKI_FTP_HOST}}; put site.$(git rev-parse --short HEAD).tar.gz" 
