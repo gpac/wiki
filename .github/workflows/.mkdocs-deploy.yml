@@ -23,4 +23,4 @@ jobs:
       - name: install ftp
         run: sudo apt install lftp
       - name: ftp upload
-        run: lftp -c "open -u ${{secrets.WIKI_FTP_USER}},${{secrets.WIKI_FTP_PASS}} ${{vars.WIKI_FTP_HOST}}; put site.$(git rev-parse --short HEAD).tar.gz" 
+        run: lftp -c "open -u ${{secrets.WIKI_FTP_USER}},${{secrets.WIKI_FTP_PASS}} ${{vars.WIKI_FTP_HOST}}; put dist/site.$(git rev-parse --short HEAD).tar.gz" 
