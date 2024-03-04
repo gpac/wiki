@@ -8,6 +8,7 @@ This filter requires the graph resolver to be activated.
   
 This filter provides segmentation and manifest generation for MPEG-DASH and HLS formats.  
 The segmenter currently supports:  
+
 - MPD and m3u8 generation (potentially in parallel)  
 - ISOBMFF, MPEG-2 TS, MKV and raw bitstream segment formats  
 - override of profiles and levels in manifest for codecs  
@@ -43,6 +44,7 @@ Standard DASH replacement strings:
 _Note: these strings are not replaced in the manifest templates elements._  
   
 Additional replacement strings (not DASH, not generic GPAC replacements but may occur multiple times in template):  
+
 * $Init=NAME$: replaced by NAME for init segment, ignored otherwise  
 * $XInit=NAME$: complete replace by NAME for init segment, ignored otherwise  
 * $InitExt=EXT$: replaced by EXT for init segment file extensions, ignored otherwise  
@@ -51,10 +53,12 @@ Additional replacement strings (not DASH, not generic GPAC replacements but may 
 * $Segment=NAME$: replaced by NAME for media segments, ignored for init segments  
 * $SegExt=EXT$: replaced by EXT for media segment file extensions, ignored for init segments  
 * $FS$ (FileSuffix): replaced by `_trackN` in case the input is an AV multiplex, or kept empty otherwise  
+
 _Note: these strings are replaced in the manifest templates elements._  
   
 ## PID assignment and configuration  
-To assign PIDs into periods and adaptation sets and configure the session, the segmenter looks for the following properties on each input PID:  
+To assign PIDs into periods and adaptation sets and configure the session, the segmenter looks for the following properties on each input PID: 
+
 * `Representation`: assigns representation ID to input PID. If not set, the default behavior is to have each media component in different adaptation sets. Setting the `Representation` allows explicit multiplexing of the source(s)  
 * `Period`: assigns period ID to input PID. If not set, the default behavior is to have all media in the same period with the same start time  
 * `PStart`: assigns period start. If not set, 0 is assumed, and periods appear in the Period ID declaration order. If negative, this gives the period order (-1 first, then -2 ...). If positive, this gives the true start time and will abort DASHing at period end  
@@ -71,6 +75,7 @@ _Note: If multiple streams in source, only the first stream will have an AS ID a
 * `CropOrigin`: indicates x and y coordinates of video for SRD (size is video size)  
 * `SRD`: indicates SRD position and size of video for SRD, ignored if `CropOrigin` is set  
 * `SRDRef`: indicates global width and height of SRD, ignored if `CropOrigin` is set  
+* `HLSPL`: name of variant playlist, can use templates  
 * `HLSMExt`: list of extensions to add to master playlist entries, ['foo','bar=val'] added as `,foo,bar=val`  
 * `HLSVExt`: list of extensions to add to variant playlist, ['#foo','#bar=val'] added as `#foo \n #bar=val`  
 * Non-dash properties: `Bitrate`, `SAR`, `Language`, `Width`, `Height`, `SampleRate`, `NumChannels`, `Language`, `ID`, `DependencyID`, `FPS`, `Interlaced`, `Codec`. These properties are used to setup each representation and can be overridden on input PIDs using the general PID property settings (cf global help).  
@@ -135,9 +140,19 @@ This will layout the `v2` below `v1` using a global SRD size of 1280x720.
   
 The segmenter will create multiplexing filter chains for each representation and will reassign PID IDs so that each media component (video, audio, ...) in an adaptation set has the same ID.  
   
-For HLS, the output PID will deliver the master playlist __and__ the variant playlists.  
+For HLS, the output manifest PID will deliver the master playlist __and__ the variant playlists.  
 The default variant playlist are $NAME_$N.m3u8, where $NAME is the radical of the output file name and $N is the 1-based index of the variant.  
-  
+
+When HLS mode is enabled, the segment [template](#template) is relative to the variant playlist file, which can also be templated.
+
+Example
+```
+gpac -i av.mp4:#HLSPL=$Type$/index.m3u8 -o dash/live.m3u8:dual:template='$Number$'
+```  
+
+This will put video segments and playlist in `dash/video/` and audio segments and playlist in `dash/audio/`  
+
+
 ## Segmentation  
 The default behavior of the segmenter is to estimate the theoretical start time of each segment based on target segment duration, and start a new segment when a packet with SAP type 1,2,3 or 4 with time greater than the theoretical time is found.  
 This behavior can be changed to find the best SAP packet around a segment theoretical boundary using [sbound](#sbound):  
@@ -163,6 +178,7 @@ gpac -i source.mp4 -o live.mpd:segdur=2:profile=live:dmode=dynamic:sreg
 ```  
   
 For low latency segmentation with fMP4, you will need to specify the following options:  
+
 * cdur: set the fMP4 fragment duration  
 * asto: set the availability time offset for DASH. This value should be equal or slightly greater than segment duration minus cdur  
 * llhls: enable low latency for HLS  
@@ -211,12 +227,14 @@ The segmenter can take a list of instructions, or Cues, to use for the segmentat
   
 Cue files can be specified for the entire segmenter, or per PID using `DashCue` property.  
 Cues are given in an XML file with a root element called &lt;DASHCues&gt;, with currently no attribute specified. The children are one or more &lt;Stream&gt; elements, with attributes:  
+
 * id: integer for stream/track/PID ID  
 * timescale: integer giving the units of following timestamps  
 * mode: if present and value is `edit`, the timestamp are in presentation time (edit list applied) otherwise they are in media time  
 * ts_offset: integer giving a value (in timescale) to subtract to the DTS/CTS values listed  
   
 The children of &lt;Stream&gt; are one or more &lt;Cue&gt; elements, with attributes:  
+
 * sample: integer giving the sample/frame number of a sample at which splitting shall happen  
 * dts: long integer giving the decoding time stamp of a sample at which splitting shall happen  
 * cts: long integer giving the composition / presentation time stamp of a sample at which splitting shall happen  
@@ -238,6 +256,7 @@ The segmenter can be used to generate manifests from already fragmented ISOBMFF 
 In this case, segment boundaries are attached to each packet starting a segment and used to drive the segmentation.  
 This can be used with single-track ISOBMFF sources, either single file or multi file.  
 For single file source:  
+
 - if onDemand [profile](#profile) is requested, sources have to be formatted as a DASH self-initializing media segment with the proper sidx.  
 - templates are disabled.  
 - [sseg](#sseg) is forced for all profiles except onDemand ones.  

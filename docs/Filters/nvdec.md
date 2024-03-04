@@ -8,6 +8,9 @@ This filter may be automatically loaded during graph resolution.
 This filter decodes MPEG-2, MPEG-4 Part 2, AVC|H264 and HEVC streams through NVidia decoder. It allows GPU frame dispatch or direct frame copy.  
 If the SDK is not available, the configuration key `nvdec@disabled` will be written in configuration file to avoid future load attempts.  
   
+The absolute path to cuda lib can be set using the `cuda_lib` option in `core` or `temp` section of the config file, e.g. `-cfg=temp:cuda_lib=PATH_TO_CUDA`.
+The absolute path to cuvid lib can be set using the `cuvid_lib` option in `core` or `temp` section of the config file, e.g. `-cfg=temp:cuvid_lib=PATH_TO_CUDA`.  
+
 
 # Options    
   

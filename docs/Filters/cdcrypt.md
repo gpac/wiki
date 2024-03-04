@@ -17,11 +17,15 @@ When the file is set per PID, the first `CryptInfo` with the same ID is used, ot
 # Options    
   
 <a id="cfile">__cfile__</a> (str): crypt file location  
-<a id="decrypt">__decrypt__</a> (enum, default: _full_): decrypt mode (CENC only)  
+<a id="decrypt">__decrypt__</a> (enum, default: _full_): decrypt mode (CENC only)
+
 * full: decrypt everything, throwing error if keys are not found  
 * nokey: decrypt everything for which a key is found, skip decryption otherwise  
 * skip: decrypt nothing  
-  
+* pad0: decrypt nothing and replace all crypted bits with 0  
+* pad1: decrypt nothing and replace all crypted bits with 1  
+* padsc: decrypt nothing and replace all crypted bytes with start codes 
+
 <a id="drop_keys">__drop_keys__</a> (uintl): consider keys with given 1-based indexes as not available (multi-key debug)  
 <a id="kids">__kids__</a> (strl): define KIDs. If `keys` is empty, consider keys with given KID (as hex string) as not available (debug)  
 <a id="keys">__keys__</a> (strl): define key values for each of the specified KID  

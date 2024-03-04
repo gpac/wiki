@@ -81,7 +81,7 @@ The following example shows a simple GPAC DRM system info:
 *   `selectiveType` : specifies how selective encryption is to be used. The possible values are:
     *   **None** : no selective encryption, all samples encrypted (this is the default behavior).
     *   **Clear**: samples are not encrypted but track is signaled as using encryption and sample group seig is used.
-    *   **ForceClear[=N]**: samples are not encrypted, track is signaled as using encryption but no sample groups are used. If `N` is set, only leaves the first N samples in the clear and switch to regular encryption after. 
+    *   ForceClear[=N]**: samples are not encrypted, track is signaled as using encryption but no sample groups are used. If `N` is set, only leaves the first N samples in the clear and switch to regular encryption after. If N is 0, all samples are encrypted. If N is -1, no samples are encrypted.
     *   **RAP** : only Random Access Samples (key frames) will be encrypted. If all media samples are RAPs, this defaults to `None`.
     *   **Non-RAP** : only non-Random Access Samples (non-key frames) will be encrypted. If all media samples are RAPs, this defaults to `None`.
     *   **Rand** : random selection of samples to encrypt is performed.
