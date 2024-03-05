@@ -9,6 +9,7 @@ _Note: you may try to write a Canvas2D polyfill based on GPAC [EVG](evg)._
 We recommend reading the [WebGL HowTo](webgl) before anything else.
 
 GPAC does not allow loading JS filters using remote scripts, so you will need to download the latest release of Three.js (this howto was tested with r130). We assume:
+
 - your JS filter script is called `ex3D.js`
 - your Three.js distribution is unzipped as "three" in the same directory as  `ex3D.js`
 
@@ -156,6 +157,7 @@ The complete code for this example is [here](examples/three/ex1.js).
 In WebGL, textures are passed using `img`, `video` or `canvas` tags, which we don't have in GPAC. Three.js uses the DOM to load these elements with the desired source.
 
 We'll need to:
+
 - trick Three.js again, by creating a `document` object intercepting calls to element creation. 
 - use EVG textures to pass the data to WebGL
 
@@ -293,6 +295,7 @@ The complete code for this example is [here](examples/three/ex3.js).
 We will now load a video as a texture in Three.js. Again, no `video` tag to help us, so we will use the same workaround as previously for images, and use EVG textures.
 
 We will try to load the given resource as an EVG texture, and if this fails we try to load the resource as a filter. This implies:
+
 - your filter will now accept video inputs
 - you will have to relink input PIDs to sources
 

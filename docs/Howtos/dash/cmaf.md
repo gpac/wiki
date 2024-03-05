@@ -5,6 +5,7 @@ GPAC can be used to generate DASH or HLS following the CMAF specification.
 
 CMAF defines two structural brands `cmfc`and `cmf2`  for ISOBMFF-segmented content. 
 The `cmfc` brand constraints:
+
 - some default values in ISOBMFF boxes
 - a single media per file
 - a single track fragment per movie fragment (`moof`)
@@ -16,6 +17,7 @@ The `cmfc` brand constraints:
 
 
 The `cmf2`brand further restrict the `cmfc` brand for video tracks:
+
 - no edit list shall be used
 -  negative composition offset (`trun` version 1) shall be used
 - sample default values shall be repeated in each track fragment

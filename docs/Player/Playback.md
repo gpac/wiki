@@ -1,5 +1,6 @@
 # Introduction
 GPAC can playback content in two main ways:
+
 - through its interactive renderer using the [Compositor](compositor) filter
 - through simple audio and video output filters.
 

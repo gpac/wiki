@@ -203,6 +203,7 @@ In the above code, note the usage of `tx.nb_textures` : this allows fetching the
 The core concept for dealing with NamedTexture is that the fragment shader sources must be set AFTER the texture is being setup (upload / texImage2D). Doing it before will result in an unmodified fragment shader and missing uniforms.
 
 To summarize, NamedTexture allows you to use existing glsl fragment shaders sources with any pixel format for your source, provided that:
+
 - you tag the texture with the name of the sampler2D you want to replace
 - you upload data to your texture before creating the program using it
 

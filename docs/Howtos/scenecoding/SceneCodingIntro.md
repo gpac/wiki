@@ -2,6 +2,7 @@
 
 A scene description is a language describing animations, interactivity, 2D and 3D shapes, audio and video relationship in a presentation. 
 GPAC supports a variety of scene description languages:
+
 - MPEG-4 BIFS, in its binary form, [text](MPEG-4-BIFS-Textual-Format) form and [XML](MPEG-4-XMT-Format) form
 - Web3D VRML97 and X3D
 - SVG 1.2 Tiny profile

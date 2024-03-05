@@ -254,6 +254,7 @@ canvas.fill(brush);
 
 # Using textures
 GPAC EVG can use textures to fill path. There are several ways of creating a texture:
+
 - create texture from your script data
 
 ```

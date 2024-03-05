@@ -22,6 +22,7 @@ We will assume in the rest of this article that the script file is called `scrip
 
 
 JS filter life cycle can be described as follows:
+
 * creation of JS context
 * loading of the JS file (load or setup phase)
 * filter initializing, executed in the callback function `filter.initialize`
@@ -31,6 +32,7 @@ JS filter life cycle can be described as follows:
 * final destruction of JS context
 
 While a filter is active, it can get the following notifications:
+
  * if the filter accepts inputs, (re)configuration of input PIDs in the callback function `filter.configure_pid`
  * if the filter accepts inputs, removal of input PIDs through the callback function `filter.remove_pid`
  * events sent by the pipeline through the callback function `filter.process_event`
@@ -40,6 +42,7 @@ Callback functions defined for `filter` object do not use exception error handli
  
 It is possible to use several JS filters in a given chain, but each JS filter will create its own JavaScript context, and JS objects cannot be shared between JS filters.
 If you need to pass JS data across filters, you will have to serialize to JSON your data and either:
+
 - send it as PID information on a PID of your choice
 - send it as JSON-only packets through a dedicated JS PID
 - send it as associated property on existing packets
@@ -182,6 +185,7 @@ The above code allows monitoring PID configuration and performs simple PID prope
 __Discussion__  
 
 Filters properties are mapped to their native type, e.g. unsigned int, boolean, string, float and double, or to objects for vector, arrays, and fractions. There are however a few exceptions here:
+
 - the `StreamType` property is converted to a string (see `gpac -h props` and [Properties](filters_properties))
 - the `PixelFormat` property is converted to a string (see `gpac -h props` and [Properties](filters_properties))
 - the `AudioFormat` property is converted to a string (see `gpac -h props` and [Properties](filters_properties))
@@ -190,6 +194,7 @@ Filters properties are mapped to their native type, e.g. unsigned int, boolean, 
 # Packet Query
 
 Once you have an input PID in place in your filter, you can start fetching packets from this PID in the `filter.process` callback. The packet access API follows the same principles as non-JS filters:
+
 - packets are always delivered in processing order
 - only the first packet of an input PID packet queue can be fetched, and must be explicitly removed
 - packets can be reference counted for later reuse
@@ -355,6 +360,7 @@ pid.opid.set_props(pid, "MIMEType", null);
 # Creating new packets
 
 GPAC uses several types of packets:
+
 - packets holding data allocated by the framework. 
 
 Examples:

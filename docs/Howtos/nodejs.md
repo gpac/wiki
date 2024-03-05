@@ -19,6 +19,7 @@ The binding is called gpac_napi.c, and is hosted in GPAC [source tree](https://g
 
 You will need to build the module using `node-gyp`, potentially editing `share/nodejs/binding.gyp` as required for your system.
 The `binding.gyp` provided is for GPAC:
+
 - built in regular shared library mode for libgpac (i.e. NodeJS module is not compatible with mp4box-only build)
 - installed on your system (gpac headers available in a standard include directory, libgpac in standard lib directory), typically done with `sudo make install` after building gpac
 
@@ -31,6 +32,7 @@ You can then build using:
 ```
 
 If you don't want to install on your system, you will need to modify the `binding.gyp` file to set the include dir to the root of gpac source tree:
+
 -  "include_dirs": ["<(module_root_dir)/../../include"]
 
 If built using configure and make, you will likely have a custom config.h file, and the build tree root must also be indicated together with the `GPAC_HAVE_CONFIG_H` macro.
@@ -80,6 +82,7 @@ A test program [gpac.js](https://github.com/gpac/gpac/blob/master/share/nodejs/t
 
 
 The first thing to do is to initialize libgpac. This is done by default while importing the bindings with the following settings:
+
 - no memory tracking
 - default GPAC profile used
 
@@ -192,6 +195,7 @@ console.log('Entering NodeJS EventLoop');
 ## Callbacks in sessions
 
 Regardless of the way you run the session, you can request for being called back once or on regular basis. This is achieved by posting tasks to the GPAC session scheduler. A task object shall provide an `execute` method to be called. This function may return:
+
 -  `false` to cancel the task, 
 - `true` to reschedule the task asap
 - a positive integer giving the time of next task callback in milliseconds
@@ -251,6 +255,7 @@ Note that  (as in GPAC JS or Python) properties referring to constant values are
 You can define your own filter(s) to interact with the media pipeline. As usual in GPAC filters, a custom filter can be a source, a sink or any other filter. It can consume packets from input PIDs and produce packets on output PIDs. 
 
 Custom filters are created through the `new_filter` function of the filter session object. The custom filter can then assign its callbacks functions:
+
 - `GF_Err process()` method called whenever the filter has some data to process.
 - `GF_Err configure_pid(pid, is_remove)` method called whenever a new PID must be configured, re-configured or removed in the custom filter
 - `Bool process_event(evt)` method called whenever an event is passing through the filter or one of its PIDs
@@ -454,6 +459,7 @@ You can however enable or disable Remotery profiler using `gpac.rmt_enable(true)
 You can override the default algorithm used by the DASH client with your own algorithm. See [the documentation](https://doxygen.gpac.io/classlibgpac_1_1_filter.html#a05de5bc6b3cb9a3573e00d9f4ccfc056) for further details.
 
 The principle is as follows:
+
 - the script can get notification when a period start/end to reset your stats and setup live vs on demand cases
 - the script can get notified of each created group (AdaptationSet in DASH, Variant Stream in HLS) with its various qualities. For HEVC tiling, each tile will be declared as a group, as well as the base tile track
 - the script is notified after each segment download on which quality to pickup next
@@ -508,6 +514,7 @@ fs.run();
 You can override the default behaviour of the httpout filter. See [the documentation](https://doxygen.gpac.io/group__nodehttp__grp.html) for further details.
 
 The principle is as follows:
+
 - the script can get notification of each new request being received
 - the script can decide to let GPAC handle the request as usual (typically used for injecting http headers, throttling and monitoring)
 - the script can feed the data to GPAC (GET) or receive the data from GPAC (PUT/POST)
@@ -583,6 +590,7 @@ let http_req = {
 GPAC allows usage of wrappers for file operations (open, close, read, write, seek...), and such wrappers can be constructed from NodeJS.
 
 A FileIO wrapper is constructed using:
+
 - the URL you want to wrap
 - a 'factory' object providing the callbacks for GPAC.
 - an optional boolean indicating if direct memory should be used (default), or if array buffers are copied between GPAC and NodeJS.

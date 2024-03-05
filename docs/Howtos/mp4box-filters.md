@@ -3,6 +3,7 @@
 We discuss here how to use the [MP4Box](MP4Box-introduction) together with filters in GPAC.
 
 As discussed [here](Rearchitecture), the following features of MP4Box are now using the GPAC filter engine:
+
 - Media importing
 - Media exporting
 - DASHing
@@ -111,12 +112,14 @@ You may also specify several paths for the filter chain:
 MP4Box -add source.mp4:@ffsws:osize=160x120@enc:c=avc:fintra=2:b=100k@@ffsws:osize=320x240@enc:c=avc:fintra=2:b=200k -new file.mp4
 ```
 The above command will the source and:
+
 - rescale it to 160x120 and encode it at 100 kbps
 - rescale it to 320x240 and encode it at 200 kbps
 
 
 __Discussion__   
 You may ask yourself whether using MP4Box or gpac is more efficient for such an operation:
+
 -  When you add a single track using MP4Box to a new file, gpac and MP4Box are strictly equivalent. 
 - If you add several tracks in one shot in a new file, gpac will be more efficient as a single filter session will be used to import all tracks, whereas MP4Box uses one filter session per `-add` operation (unless [-newfs](mp4box-gen-opts#newfs) is set).
 - The filter architecture does not support (for the moment) reading and writing in the same file, so if you need to add a track to an existing file, you must use MP4Box for that.

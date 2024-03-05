@@ -35,6 +35,7 @@ Just like any XML file, the file must begin with the usual xml header. The file 
 ## DRMInfo Element Semantics
 The `DRMInfo` element contains information needed by a Content Protection System to play back the content such as SystemID, the URL of license server(s) or rights issuer(s) used, embedded licenses/rights, embedded keys(s), and/or other protection system specific metadata. It is possible to specify  more than one DRM system by using one DRMInfo element per system ID. 
 The children of this element use the binary XML construction of GPAC to build a binary blob representing:
+
 - the CENC PSSH box payload without box size, type, version and no data size field
 - or a complete pssh box 
 
@@ -130,6 +131,7 @@ The key ID and value must be specified as a 32 bytes hex string, using an improp
 If the KID attribute is not specified, the key will match any KID in the file. Such a key should be placed after all other key declarations.
 
  The defined attributes are:
+
 *   `KID` : the ID of the key (KID in CENC) to use
 *    `value`: the AES-128 bit key corresponding to this KID to use. 
 *    `hlsInfo`: the associated info for HLS, must contain at least `URI="..."`  and may also contain other params of EXT-X-KEY, except `METHOD` which is set by GPAC. Multiple key options may be specified using `URI="uri1",KEYFORMAT="identity",URI="uri1",KEYFORMAT="myown"` (the code will look for `,URI` as a separator.
@@ -160,6 +162,7 @@ The payload of a DRMInfoTemplate describing a PSSH blob is not encrypted, howeve
 There can be multiple `DRMInfoTemplate`, typically one per system ID.
 
 When a new key is activated, each `DRMInfoTemplate` will be serialized with the following templating:
+
 -  in the first child `<BS>` element with an attribute `ID128` set to `KEY`, attribute value is replaced with the encrypted value of the new key (encrypted with `DRMInfoTemplate@key`)
 -  in the first child `<BS>` element with an attribute `ID128` set to `KID`, attribute value is replaced with the new key ID (usually not needed if using pssh version 1)
 
@@ -306,6 +309,7 @@ GPAC Player can play protected files which use the GPAC SystemID. This system is
 The SystemID and _system_ key are _0x6770616363656E6364726D746F6F6C31_.
 
 The PSSH version is used as follows:
+
 - version 0 (no KID) indicates that inband keys are used (key rolling)
 - version 1 identifies regular keys.
 

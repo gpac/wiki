@@ -15,6 +15,7 @@ Record the session in fragmented MP4
 gpac -i $HAS_URL -o grab/record.mp4:frag
 ```
 Note that we specify [frag](mp4mx#store) option for the generated MP4 so that:
+
 - we don't have a long multiplexing process at the end 
 - if anything goes wrong (crash / battery dead / ...), we still have a file containing all media until the last written fragment. 
 
@@ -80,6 +81,7 @@ gpac -i $HAS_URL dashin:forward=file -o route://225.1.1.0:6000
 
 The [DASH reader](dashin) can be configured through [-forward](dashin#forward)  to insert segment boundaries in the media pipeline - see [here](dashin#segment-bound-modes) for more details.
  Two variants of this mode exist:
+
 - `segb`: this enables `split_as`, DASH cue insertion (segment start signal) and fragment bounds signalling
 - `mani`: same as `segb` and also forward manifests (MPD, M3U8) as packet properties.
 

@@ -16,6 +16,7 @@ gpac -i source.mpd --algo=mydash.js ...
 ```
 
 The JS script is loaded with a global object called `dashin` with 4 callback functions:
+
 -  period_reset: indicates start or end of a period (optional)
 -  new_group: indicates setup of a new adaptation group (optional), i.e. DASH AdaptationSet or HLS Variant Stream. For HEVC tiling, each tile will be declared as a group, as well as the base tile track
 -  rate_adaptation: performs rate adaptation for a group (mandatory). Return value is the new quality index, or -1 to keep as current, -2 to discard (debug, segments won't be fetched/decoded)

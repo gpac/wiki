@@ -115,6 +115,7 @@ vid3.mp4:#Period=1
 This will result in a DASH MPD with three periods, the first (resp. third) period containing media from `vid1.mp4` (resp. `vid3.mp4`) and the second period containing media from `vid2.mp4`, `audio2.mp4` and `audio2_fr.mp4`.
  
 Note that in this example:
+
 - audio sources override their language definitions
 - we use the `props` option for the second source entry to signal the DASH period ID of each source globally, rather than copying it for each source. 
 
@@ -195,6 +196,7 @@ The filter does **NOT** operate on the media content payload and cannot perform 
 ## Static playlists
 
 In this example, we will replace the content from `main` source in the range [4, 10] with the content from `ad1` . We need to indicate:
+
 - an `out` cue: the point in the `main` timeline when the content replacement must begin
 - an `in` cue: the point in the `main` timeline when the content replacement must end and the main content must resume.
 
@@ -292,6 +294,7 @@ ad
 ```
 
 This will resolve the splice start time to be the next SAP found on video stream, and the splice end time to be 10s after the splice start. You can use for `out` and `in`:
+
 - a time in seconds. This time is expressed in the `main` media timeline
 - a date in XSD dateTime format
 - `now`, as explained previously
@@ -320,10 +323,12 @@ ad2
 When concatenating media streams (whether at the end of a previous media or at a splice point), the encoding characteristics of the source usually result in audio and video streams of different duration at the insertion point.
 
 When concatenating, the filter will use the highest frame time on all streams, and realign the next timeline starting from that point. For example:
+
 - video @25fps, duration 10.0s
 - AAC 44100Hz, duration 10.03102s
 
 The next source timeline origin will be the last audio time (10.03102s), which will result in:
+
 - the next audio frame starting exactly after the last audio
 - the next video frame starting at 31.02 ms after the last video frame, introducing a gap in video
 

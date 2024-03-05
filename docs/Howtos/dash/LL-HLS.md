@@ -9,6 +9,7 @@ In this howto, we will study various setups for HLS live streaming in low latenc
 The same setup for configuring segments and CMAF chunks is used as the [DASH low latency](LL-DASH#dash-low-latency-setup) setup.
 
 When you have low-latency producing of your HLS media segments, you need to indicate to the client how to access LL-HLS `parts` (CMAF chunks) while they are produced. LL-HLS offers two possibilities to describe these parts in the manifest:
+
 - file mode: advertise the chunks as dedicated files, i.e. each chunk will create its own file. This requires double storage for segments close to the live edge, increases disk IOs and might not be very practical if you setup a PUSH origin (twice the bandwidth is required)
 - byte range mode: advertise the chunks as byte range of a media file. If that media file is the full segment being produced (usually the case), this does not induce bandwidth increase or extra disk IOs.
   

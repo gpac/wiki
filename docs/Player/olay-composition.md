@@ -37,6 +37,7 @@ The [compositor](compositor) filter is a in charge of 2D+3D rasterization of nat
 ## Overlaying 
 
 Assume you want to insert some text and logo over a video. To do this with GPAC, you can:
+
 - use a BIFS/BT/XMT scene
 - use a [JavaScript drawing](evg) filter
 - use the [AVMix](avmix) filter (see [howto](avmix_tuto) )

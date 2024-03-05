@@ -36,6 +36,7 @@ The following lists the core principles of the re-architecture. Read the [genera
 
 # Filter Design Principles 
 A filter object obeys the following principles:
+
 - may accept (consume) any number of data stream (named `PID` in this architecture)
 - may produce any number of PIDs
 - can have its input PIDs reconfigured at run time or even removed
@@ -65,6 +66,7 @@ The filter session main features are:
 - handle filters capability negotiation, usually inserting a filter chain to match the desired format
 
 The filter session operates in a semi-blocking mode:
+
 - it prevents filters in blocking mode (output PIDs buffers full) to operate
 - it will not prevent a running filter to dispatch a packet; this greatly simplifies demultiplexers writing
 
@@ -82,6 +84,7 @@ These properties may also be overloaded by the user, e.g. to assign a ServiceID 
 # Media Streams internal representation
 
 In order to be able to exchange media stream data between filters, a unified data format had to be set, as follows:
+
 - a frame is defined as a single-time block of data (Access Unit in MPEG terminology), but can be transferred in multiple packets
 - frames or fragments of frames are always transferred in processing order (e.g. decoding order for MPEG video) 
 - multiplexed media data is identified as `file` data, where a frame is a complete file.
@@ -155,6 +158,7 @@ gpac -i source.mp4 reframer:xround=closest:splitrange:xs=2:xe=4 -o dest.mp4
 All other functionalities of MP4Box are not available through a filter session. Some might make it one day (BIFS encoding for example), but most of them are not good candidates for filter-based processing and will only be available through MP4Box (track add/remove to existing file, image item add/remove to existing file, file hinting, ...).
 
 __Note__ For operations using a filter session in MP4Box, it is possible to view some information about the filter session:
+
 - -fstat: this will print the statistics per filter and per PID of the session
 - -fgraph: this will print the connections between the filters in the session
 

@@ -68,6 +68,7 @@ Check the [HEVC Tile-based adaptation guide](HEVC-Tile-multi-resolution-adaptati
 # Content Playback
 
 The logic of content playback is as follows:
+
 - the MPD indicates SRD information and a GPAC extension for mergeable bitstream
 - when the compositor is used, the [hevcmerge](hevcmerge) filter is automatically created to reassemble the streams
 - otherwise (using vout), each PID is declared as an alternative to the other
