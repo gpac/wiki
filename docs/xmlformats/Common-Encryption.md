@@ -99,6 +99,7 @@ The following example shows a simple GPAC DRM system info:
     *   **period[=N]** : roll keys every N DASH periods. Input must use segment boundary signaling.
 *   `skip_byte_block` : number of 16-bytes blocks in the clear at the beginning of the encryption pattern. When not set and the scheme type uses pattern (cens, cbcs), a value of 9 is assumed for NAL-based tracks and 0 for other tracks.
 *   `crypt_byte_block` : number of 16-bytes blocks encrypted at the beginning of the encryption pattern. When not set and the scheme type uses pattern (cens, cbcs), a value of 1 is assumed.
+*   `byte_offset` : number of bytes to leave in the clear (defaut: auto) at the begining of each NALU/OBU/etc. The final value will be at least the slice header size.
 *   `constant_IV_size` : size of constant IV used in pattern encryption mode. When not set, guessed from the size of the `constant_IV` attribute.
 *   `constant_IV` : constant IV used for all samples in cbcs pattern encryption mode. If `IV_size` is set, constant IV is ignored and each sample has a dedicated IV.  If the scheme type does not use constant IV and `first_IV` attribute is not present, this will be used as the first IV.
 *   `encryptSliceHeader`: enables old behavior for cenc scheme for AVC in avc1 mode, for which slice headers (and other nal such as SEI) can be encrypted.
