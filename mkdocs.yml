@@ -1,9 +1,9 @@
 site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
-site_author: GPAC contributors 
+site_author: GPAC contributors
 extra_css:
   - stylesheets/extra.css
-theme: 
+theme:
   name: material
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
@@ -34,7 +34,7 @@ theme:
     - navigation.path
     - navigation.tabs
     - navigation.tracking
-    - navigation.indexes 
+    - navigation.indexes
     - toc.follow
     - search.highlight
     - search.share
@@ -65,9 +65,9 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback!
-nav: 
+nav:
   - Howtos:
     - Howtos/howtos.md
     - Filters One-Liners: Howtos/filters-oneliners.md
@@ -307,6 +307,7 @@ nav:
       - Android: Build/build/GPAC-Build-Guide-for-Android.md
       - MSYS2: Build/build/GPAC-Build-Guide-for-MSYS-MinGW.md
       - Docker: Build/build/GPAC-Build-with-Docker.md
+      - WASM: Build/build/GPAC-Build-Guide-for-WASM.md
     - Old Build Docs:
       - Building MP4Box only: Build/GPAC-build-MP4Box-only-all-platforms.md
       - Windows: Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
@@ -339,7 +340,7 @@ nav:
     # - X3D implementation status: Player/X3D-Implementation-Status.md
   - XML formats:
     - Overview: xmlformats/xmlformats.md
-    - Common encryption: 
+    - Common encryption:
       - xmlformats/Common-Encryption.md
       - ISMACryp: xmlformats/ISMACryp.md
       - OMA DRM: xmlformats/OMA-DRM.md

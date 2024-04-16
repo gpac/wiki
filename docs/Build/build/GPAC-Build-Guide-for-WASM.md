@@ -2,7 +2,7 @@
 
 This page describes how to build GPAC for WASM/Emscripten. 
 
-A live can be seen at https://wasm.gpac.io
+A live can be seen at [https://wasm.gpac.io](https://wasm.gpac.io)
 
 
 # Install Emscripten SDK
@@ -110,8 +110,8 @@ You can then access the gpac.html through the web server to use GPAC WASM.
 
 # Resources
 
-For more info, you can check how the official gpac wasm builder runs at https://buildbot.gpac.io/#/builders/27
+For more info, you can check how the official gpac wasm builder runs at [https://buildbot.gpac.io/#/builders/27](https://buildbot.gpac.io/#/builders/27)
 
-And you can check the official live gpac wasm build at https://wasm.gpac.io
+And you can check the official live gpac wasm build at [https://wasm.gpac.io](https://wasm.gpac.io)
 
-For issues and support, go to https://github.com/gpac/gpac/labels/wasm
+For issues and support, go to [https://github.com/gpac/gpac/labels/wasm](https://github.com/gpac/gpac/labels/wasm)
