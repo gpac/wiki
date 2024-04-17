@@ -77,6 +77,10 @@ Then we can build GPAC with emscripten:
 git clone https://github.com/gpac/gpac.git
 cd gpac
 
+#for gpac unthreaded
+./configure --emscripten --disable-threads --extra-cflags='-Wno-pointer-sign -Wno-implicit-const-int-float-conversion'
+
+#for gpac threaded
 ./configure --emscripten --extra-cflags='-Wno-pointer-sign -Wno-implicit-const-int-float-conversion'
 
 make -j4
@@ -89,7 +93,19 @@ You can then find the built files in the `bin/gcc/` folder.
 
 To use WASM GPAC, you need to serve the built `bin/gcc/gpac.*` files through a web server (it can't be accessed as a file:// resource). 
 
-You also need to add some settings for the webserver, either in a `.htaccess` file, or in the apache config: 
+## GPAC example
+If you have GPAC installed, you can use the included HTTP server:
+```
+gpac httpout:port=8080:rdirs=bin/gcc
+```
+
+For threaded version you need to enable CORS on the server:
+```
+gpac httpout:port=8080:rdirs=bin/gcc:cors=on
+```
+
+## Apache example
+For Apache, you need to add some settings for the webserver, either in a `.htaccess` file, or in the apache config: 
 
 ```
     DirectoryIndex gpac.html
