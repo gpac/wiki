@@ -7,7 +7,7 @@ _FILTER_: a single filter declaration (e.g., `-i file`, `-o dump`, `inspect`, ..
 _[LINK]_: a link instruction (e.g., `@`, `@2`, `@2#StreamType=Visual`, ...), see [gpac -h doc](filters_general#explicit-links-between-filters-link).  
 _[options]_: one or more option strings, each starting with a `-` character.  
   - an option using a single `-` indicates an option of gpac (see [gpac -hx](gpac_general#h)) or of libgpac (see [gpac -hx core](core_options))  
-  - an option using `--` indicates a global filter or meta-filter (e.g. FFMPEG) option, e.g. `--block_size=1000` or `--profile=Baseline` (see [gpac -h doc](core_config#global-filter-options))  
+  - an option using `--` indicates a global filter or meta-filter (e.g. FFmpeg) option, e.g. `--block_size=1000` or `--profile=Baseline` (see [gpac -h doc](core_config#global-filter-options))  
     
 Filter declaration order may impact the link resolver which will try linking in declaration order. Most of the time for simple graphs, this has no impact. However, for complex graphs with no link declarations, this can lead to different results.    
 Options do not require any specific order, and may be present anywhere, including between link statements or filter declarations.    

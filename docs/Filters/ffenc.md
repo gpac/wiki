@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG encoder  
+# FFmpeg encoder  
   
 Register name used to load filter: __ffenc__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter encodes audio and video streams using FFMPEG.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details.  
+This filter encodes audio and video streams using FFmpeg.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported encoders for your GPAC build, use `gpac -h ffenc:*`.  
   
 The filter will try to resolve the codec name in [c](#c) against a libavcodec codec name (e.g. `libx264`) and use it if found.  

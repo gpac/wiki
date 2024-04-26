@@ -50,7 +50,7 @@ Prior to GPAC 2.0, the following command had to be used:
 The link directive `@` is used to prevent the decoded YUV/RGB data PID to link against the `test.yuv` destination, by enforcing the destination to only accept PIDs coming from `ffsws`, as described in the [general documentation](filters_general#filter-linking-link). GPAC 2.0 and above simplified command line processing to avoid link directives in most cases.
 
 
-The simplest way to resize a video in GPAC at the current time is to use the ffmpeg-based [rescaler](ffsws).
+The simplest way to resize a video in GPAC at the current time is to use the FFmpeg-based [rescaler](ffsws).
 
 The [writegen](writegen) filter used in the extraction process can be used to specify an extraction range using its [start](writegen#start) and [dur](writegen#dur) options:
 

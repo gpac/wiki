@@ -30,15 +30,15 @@ You can directly call your preferred encoder rather than letting the link resolv
 
 ```gpac -i source.yuv:size=1280x720 ffenc:c=avc -o test.mp4```
 
-This will explicitly load the FFMPEG encoder to do the job.
+This will explicitly load the FFmpeg encoder to do the job.
 
-Note that for `ffenc`, since the filter provides all encoders supported by your FFMPEG build, you may have several choices within FFMPEG itself. To specify the true desired codec rather than the format, use the codec name directly:
+Note that for `ffenc`, since the filter provides all encoders supported by your FFmpeg build, you may have several choices within FFmpeg itself. To specify the true desired codec rather than the format, use the codec name directly:
 
 ```
 gpac -i source.yuv:size=1280x720 enc:c=libx264 -o test.mp4
 gpac -i source.yuv:size=1280x720 enc:c=libx264rgb -o test.mp4
 ```
-__Warning: Hardware encoders of FFMPEG have not been tested yet!__
+__Warning: Hardware encoders of FFmpeg have not been tested yet!__
  
 ## Transcoding from a non raw video file
 
@@ -53,7 +53,7 @@ As explained previously, the link directive `@` ensures that we do the transcodi
 
 ## Setting encoder parameters
 
-Currently, all encoders audio and video in GPAC are using FFMPEG. We therefore only illustrate encoder parameters with the [ffenc](ffenc) filter.
+Currently, all encoders audio and video in GPAC are using FFmpeg. We therefore only illustrate encoder parameters with the [ffenc](ffenc) filter.
 
 ```gpac -i source.mp4 c=avc:b=2M -o test.avc```
 
@@ -66,7 +66,7 @@ The above command will encode the video track in  `source.mp4`  into AVC|H264 at
 
 ```gpac -i source.mp4 c=avc::x264-params=no-mbtree:sync-lookahead=0::profile=baseline -o test.avc```
 
-The above command will encode the video track in  `source.mp4`  into AVC|H264 and pass two options to ffmpeg encoder:
+The above command will encode the video track in  `source.mp4`  into AVC|H264 and pass two options to FFmpeg encoder:
 
 -  `x264-params`, with value `no-mbtree:sync-lookahead=0`
 -  `profile`, with value `baseline`
@@ -82,11 +82,11 @@ To get a list of all options supported by a given encoder of the ffenc filter, f
 The above command will encode the video track in  `source.mp4`  into AVC|H264, converting the source data to YUV 422 8bit planar.
 
 __Discussion__  
-FFMPEG usually comes with several variations of the same coding type, with different pixel format supported. For example, AVC|H264 encoding can use both `libx264` and `libx264_rgb` encoders. If the source data is decoded into RGB by the decoder, the `ffenc` filter will match the `libx264_rgb` encoder as supporting RGB input and AVC format. The resulting file may be in a profile not supported by most devices !  
+FFmpeg usually comes with several variations of the same coding type, with different pixel format supported. For example, AVC|H264 encoding can use both `libx264` and `libx264_rgb` encoders. If the source data is decoded into RGB by the decoder, the `ffenc` filter will match the `libx264_rgb` encoder as supporting RGB input and AVC format. The resulting file may be in a profile not supported by most devices !  
 
 Setting the pixel format using [pfmt](ffenc) will make sure you encode in YUV format; alternatively, you can also enforce the encoder used by setting `ffc=libx264`. 
 
-_Note: The `pfmt` option is a generic option of all present and future encoders in GPAC, while `ffc` option is specific to FFMPEG encoder._
+_Note: The `pfmt` option is a generic option of all present and future encoders in GPAC, while `ffc` option is specific to FFmpeg encoder._
    
 
 ## Changing Resolution
@@ -110,7 +110,7 @@ The above command will encode the `source.pcm` 48000 Hz stereo signed 16 bit PCM
  
 ```gpac -i source.mp4 enc:c=aac -o test.mp4```
 
-The above command will encode the `source.mp4` audio tracks into AAC, even if the track is already in AAC format, and use FFMPEG `aac` encoder for the job. Note that the `ffc` option will only be used by the ffenc filter. If another filter provides AAC encoding and is used to encode the stream, the `ffc` option will likely be reported as not used by the filter session. 
+The above command will encode the `source.mp4` audio tracks into AAC, even if the track is already in AAC format, and use FFmpeg `aac` encoder for the job. Note that the `ffc` option will only be used by the ffenc filter. If another filter provides AAC encoding and is used to encode the stream, the `ffc` option will likely be reported as not used by the filter session. 
 
 ## Changing sample rate
 

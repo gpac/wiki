@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG multiplexer  
+# FFmpeg multiplexer  
   
 Register name used to load filter: __ffmx__  
 This filter may be automatically loaded during graph resolution.  
   
-Multiplexes files and open output protocols using FFMPEG.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details.  
+Multiplexes files and open output protocols using FFmpeg.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported multiplexers for your GPAC build, use `gpac -h ffmx:*`.This will list both supported output formats and protocols.  
 Output protocols are listed with `Description: Output protocol`, and the subclass name identifies the protocol scheme.  
 For example, if `ffmx:rtmp` is listed as output protocol, this means `rtmp://` destination URLs are supported.  

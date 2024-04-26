@@ -1,13 +1,13 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG AVFilter  
+# FFmpeg AVFilter  
   
 Register name used to load filter: __ffavf__  
 This filter is not checked during graph resolution and needs explicit loading.  
 Filters of this class can connect to each-other.  
   
 This filter provides libavfilter raw audio and video tools.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details  
 To list all supported avfilters for your GPAC build, use `gpac -h ffavf:*`.  
   
 # Declaring a filter  
@@ -18,7 +18,7 @@ Example
 ffavf:f=showspectrum
 ```  
   
-Unlike other FFMPEG bindings in GPAC, this filter does not parse other libavfilter options, you must specify them directly in the filter chain, and the [f](#f) option will have to be escaped.  
+Unlike other FFmpeg bindings in GPAC, this filter does not parse other libavfilter options, you must specify them directly in the filter chain, and the [f](#f) option will have to be escaped.  
 Example
 ```
 ffavf::f=showspectrum=size=320x320 or ffavf::f=showspectrum=size=320x320::pfmt=rgb  

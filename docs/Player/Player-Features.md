@@ -93,8 +93,8 @@ Decoders included in default builds:
 - MPEG-4 AAC, MPEG-1/2 audio, Dolby AC-3
 - MPEG-1/2/4, H264|AVC, SVC, HEVC, L-HEVC
 - AMR speech codec using 3GPP fixed-point reference code
-- All codecs supported by FFMPEG
-- Xiph Media codecs: Vorbis, Theora (FLAC and Opus supported through FFMPEG)
+- All codecs supported by FFmpeg
+- Xiph Media codecs: Vorbis, Theora (FLAC and Opus supported through FFmpeg)
 - SRT / 3GPP timed text / MPEG-4 Streaming Text decoder /WebVTT (rendering done through GPAC)
 
 # Networking
@@ -127,8 +127,8 @@ Any possible input from GPAC filter architecture is supported by the player. Thi
   - RFC 3984 for H264/AVC video (only STAP-A, FU-A and regular NAL units)
   - RFC 7798 for H265|HEVC video (AP, FU and regular NAL units)
 
- - Generic input using FFMPEG libavformat, supports most AV containers known (MPEG, VOB, AVI, MOV ...) and many protocols
- - Generic frame grabber FFMPEG libavdevice, supports many capture devices
+ - Generic input using FFmpeg libavformat, supports most AV containers known (MPEG, VOB, AVI, MOV ...) and many protocols
+ - Generic frame grabber FFmpeg libavdevice, supports many capture devices
  
 # Available plugins
 ## Audio output

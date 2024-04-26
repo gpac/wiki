@@ -417,8 +417,8 @@ To generate these DASH sequences, several open-source software tools have been u
 *   GPAC/MP4Box to process the BIFS visual data and export it to a raw video track in AVI,
 *   Audacity \[1.3 Beta\] to generate the raw audio track,
 *   x264 \[0.118.2085 8a62835\] for the AVC|H.264 encoding,
-*   faac \[as included in ffmpeg build\] for AAC encoding,
-*   LAME \[as included in ffmpeg build\] for MP3 encoding,
+*   faac \[as included in FFmpeg build\] for AAC encoding,
+*   LAME \[as included in FFmpeg build\] for MP3 encoding,
 *   GPAC/MP42TS \[REV3926\] for Transport Stream packaging,
 *   GPAC/MP4Box \[REV3926\] for ISOBMF packaging, MPD generation and DASH segmentation (TS and ISOBMFF).
 
