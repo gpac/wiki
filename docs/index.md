@@ -15,7 +15,7 @@ hide:
 | ![GPAC](/images/pipe.png) | ![MP4Box](/images/videoedit.png) | ![Media Playback](/images/player.png) | ![Cookbook](/images/cookbook.png) | ![Build GPAC](/images/tools.png) |
 |:-:|:-:|:-:|:-:|:-:|
 | [GPAC](/Filters/Filters) | [MP4Box](/MP4Box/MP4Box) | [Player](/Player/Player) | [Tutorials](/Howtos/howtos) | [Build](/Build/Build-Introduction) |
-|Manipulate MP4s using MP4Box|Build media pipelines using GPAC|Player documentation|Cookbook|Compiling, installing and developing for GPAC|
+|Build media pipelines using GPAC|Manipulate MP4s using MP4Box|Player documentation|Cookbook|Compiling, installing and developing for GPAC|
 
 ## Developer resources
 
@@ -29,4 +29,6 @@ hide:
 
 !!! note
 
-    The documentation assumes GPAC 2.0 or above. Some informations relative MP4Box may be usefull for older versions.
+    The documentation assumes GPAC 2.0 or above. Some informations relative to MP4Box may still be useful for older versions.
+
+.
