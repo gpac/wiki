@@ -187,7 +187,7 @@ Mux sources to MPEG-2 TS with a target mux rate - _see [filter](m2tsmx)_
 gpac -i source:#ServiceID=1 -i source2:#ServiceID=2 -o dst.ts:rate=10m
 ```
 
-Mux sources to MKV (for builds with FFMPEG support) - _see [filter](ffmx)_  
+Mux sources to MKV (for builds with FFmpeg support) - _see [filter](ffmx)_  
 ```
 gpac -i source -o dst.mkv
 ```
@@ -249,7 +249,7 @@ Downscale and transcode to AVC 1mbps and aac 128k while monitoring video output 
 gpac -i source ffsws:osize=256x144 enc:c=avc:b=1m enc:c=aac:b=128k -o dst.mp4 vout:vsync=0
 ```
 
-Use two-pass encoding with FFMPEG (libx264 only for GPAC 2.0, all codecs for higher versions) - _see [filter](ffenc)_  
+Use two-pass encoding with FFmpeg (libx264 only for GPAC 2.0, all codecs for higher versions) - _see [filter](ffenc)_  
 ```
 #first pass
 gpac -i source enc:c=avc:b=3m:pass1 -o null
@@ -554,7 +554,7 @@ Decode source MP4 enabling only the minimum filters:
 gpac -blacklist=-fin,mp4dmx,ffdec,vout source.mp4 vout
 ```
 
-# FFMPEG support
+# FFmpeg support
 
 Set gpac as RTMP output server  
 ```
@@ -636,7 +636,7 @@ gpac -i video.mp4:#ffid=dist -i ref.mp4:#ffid=ref \
 	@@ @@1 ffavf::f='[dist][ref]ssim=f=ssim2.log' @ -o null
 ```
 
-SRT session from local file (requires FFMPEG with SRT support)
+SRT session from local file (requires FFmpeg with SRT support)
 ```
 #player listening for SRT handshake
 gpac -play srt://127.0.0.1:1234:gpac:mode=listener
@@ -644,7 +644,7 @@ gpac -play srt://127.0.0.1:1234:gpac:mode=listener
 gpac -i video.mp4 reframer:rt=on -o srt://127.0.0.1:1234:gpac:ffmt=mpegts
 ```
 
-SRT session from avgen filter (requires FFMPEG with SRT support)
+SRT session from avgen filter (requires FFmpeg with SRT support)
 ```
 #player listening for SRT handshake
 gpac -play srt://127.0.0.1:1234:gpac:mode=listener

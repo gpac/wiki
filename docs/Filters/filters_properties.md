@@ -507,12 +507,12 @@ prores apcn | ProRes Video 422 STD
 prores apcs | ProRes Video 422 LT    
 prores ap4x | ProRes Video 4444 XQ    
 prores ap4h | ProRes Video 4444    
-ffmpeg | FFMPEG unmapped codec    
+ffmpeg | FFmpeg unmapped codec    
 tmcd | QT TimeCode    
 vvc 266 h266 | VVC Video    
 vvs1 | VVC Subpicture Video    
 usac xheaac | xHEAAC / USAC Audio    
-ffv1 | FFMPEG Video Codec 1    
+ffv1 | FFmpeg Video Codec 1    
 dvbs | DVB Subtitles    
 dvbs | DVB-TeleText    
 div3 | MS-MPEG4 V3    

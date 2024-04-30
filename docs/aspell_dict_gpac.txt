@@ -204,7 +204,7 @@ tssplit
 bsrw
 bssplit
 bsagg
-FFMPEG
+FFmpeg
 ffdmx
 ffdec
 rescaler

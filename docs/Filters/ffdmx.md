@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG demultiplexer  
+# FFmpeg demultiplexer  
   
 Register name used to load filter: __ffdmx__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter demultiplexes an input file or open a source protocol using FFMPEG.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details.  
+This filter demultiplexes an input file or open a source protocol using FFmpeg.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported demultiplexers for your GPAC build, use `gpac -h ffdmx:*`.  
 This will list both supported input formats and protocols.  
 Input protocols are listed with `Description: Input protocol`, and the subclass name identifies the protocol scheme.  

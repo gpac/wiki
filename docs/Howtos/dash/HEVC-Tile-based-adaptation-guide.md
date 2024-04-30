@@ -81,7 +81,7 @@ If you want to produce a live feed of tiled video, you can either:
 
 GPAC does not have a direct wrapper for Kvazaar, but you can either:
 
-- use a FFmpeg build with Kvazaar enabled (`--enable-libkvazaar` in ffmpeg configure) - check GPAC support using `gpac -h ffenc:libkvazaar`
+- use a FFmpeg build with Kvazaar enabled (`--enable-libkvazaar` in FFmpeg's configure) - check GPAC support using `gpac -h ffenc:libkvazaar`
 - use an external grab+Kvazaar encoding and pipe its output into GPAC.
 
 ### Piping encoder output

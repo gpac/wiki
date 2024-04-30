@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG video rescaler  
+# FFmpeg video rescaler  
   
 Register name used to load filter: __ffsws__  
 This filter may be automatically loaded during graph resolution.  
 Filters of this class can connect to each-other.  
   
-This filter rescales raw video data using FFMPEG to the specified size and pixel format.  
+This filter rescales raw video data using FFmpeg to the specified size and pixel format.  
 
 ## Output size assignment  
 If [osize](#osize) is {0,0}, the output dimensions will be set to the input size, and input aspect ratio will be ignored.  
@@ -40,7 +40,7 @@ When sample aspect ratio is kept, the filter will:
 - for gauss [p1](#p1) tunes the exponent and thus cutoff frequency  
 - for lanczos [p1](#p1) tunes the width of the window function  
   
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details  
   
 
 # Options    

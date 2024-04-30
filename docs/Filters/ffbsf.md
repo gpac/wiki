@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG BitStream filter  
+# FFmpeg BitStream filter  
   
 Register name used to load filter: __ffbsf__  
 This filter is not checked during graph resolution and needs explicit loading.  
   
 This filter provides bitstream filters (BSF) for compressed audio and video formats.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details  
 To list all supported bitstream filters for your GPAC build, use `gpac -h ffbsf:*`.  
   
 Several BSF may be specified in [f](#f) for different coding types. BSF not matching the coding type are silently ignored.  

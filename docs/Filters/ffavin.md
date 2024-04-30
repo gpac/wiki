@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG AV Capture  
+# FFmpeg AV Capture  
   
 Register name used to load filter: __ffavin__  
 This filter may be automatically loaded during graph resolution.  
   
-Reads from audio/video capture devices using FFMPEG.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details.  
+Reads from audio/video capture devices using FFmpeg.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported grabbers for your GPAC build, use `gpac -h ffavin:*`.  
   
 # Device identification  

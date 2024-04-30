@@ -1,12 +1,12 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFMPEG decoder  
+# FFmpeg decoder  
   
 Register name used to load filter: __ffdec__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter decodes audio and video streams using FFMPEG.  
-See FFMPEG documentation (https://ffmpeg.org/documentation.html) for more details.  
+This filter decodes audio and video streams using FFmpeg.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported decoders for your GPAC build, use `gpac -h ffdec:*`.  
   
 Options can be passed from prompt using `--OPT=VAL`  
@@ -14,10 +14,10 @@ The default threading mode is to let libavcodec decide how many threads to use. 
   
 # Codec Map  
   
-The [ffcmap](#ffcmap) option allows specifying FFMPEG codecs for codecs not supported by GPAC.  
+The [ffcmap](#ffcmap) option allows specifying FFmpeg codecs for codecs not supported by GPAC.  
 Each entry in the list is formatted as `GID@name` or `GID@+name`, with:  
 * GID: 4CC or 32 bit identifier of codec ID, as indicated by `gpac -i source inspect:full`  
-* name: FFMPEG codec name  
+* name: FFmpeg codec name  
 * `+': is set and extra data is set and formatted as an ISOBMFF box, removes box header  
   
 Example

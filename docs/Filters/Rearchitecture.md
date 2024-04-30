@@ -21,7 +21,7 @@ This was a long process (almost 2 years) resulting in:
 - moving MP4Client compositor and most of the GF_Terminal internals to a filter
 - addition of a new application [gpac](gpac_general), whose only purpose is to create and run filter chains
 - additions of a bunch of filters, including:
-    -  __encoders__ through [FFMPEG](https://ffmpeg.org/)
+    -  __encoders__ through [FFmpeg](https://ffmpeg.org/)
     - generic pipe and socket input and output
     - raw audio and video reframers
     - HEVC tile splitting and merging filters

@@ -17,7 +17,7 @@ For more information on content playback:
 
 
 ## Content Generation
-If you generate your content with an third-party application such as ffmpeg, make sure all your video qualities use closed GOP and have the same positions for their IDR frames.
+If you generate your content with an third-party application such as ```ffmpeg```, make sure all your video qualities use closed GOP and have the same positions for their IDR frames.
 When using GPAC, this is usually ensure by using the `fintra` option.
 
 GPAC can be used to generate both static and live DASH/HLS content. For live cases, GPAC can expose the created files:
