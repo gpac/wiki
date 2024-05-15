@@ -1,13 +1,13 @@
 # Overview
 
-We discuss here how to use network captures with GPAC 2.3-DEV or above
+We discuss here how to use network captures with GPAC 2.3-DEV or above.
 
 # Overview
 
 GPAC can:
 
-- write packets to a custom file format called GPC
-- read packets from pcap, pcapng and gpc files
+- write packets to a custom file format called GPC (GPAC Packet Capture), and
+- read packets from pcap, pcapng and gpc files.
 
 GPAC uses a concept of network capture rules identified by ID. This allows having a set of filters in GPAC use one capture file while other filters will use either no capture file or another capture file.
 
@@ -40,10 +40,10 @@ gpac -i source.mp4 reframer:rt=on -o route://234.1.1.1:1234/live.mpd:dynamic -ne
 
 You can also use Wireshark to capture packets.
 
+
 # Playing network captures
 
 To replay a capture file (from the above examples), use: 
-
 
 ```
 gpac -i udp://234.0.0.1:1234/ inspect:deep -netcap=src=cap_ts.gpc
@@ -70,16 +70,16 @@ If you need one filter to read from a capture file and others to not use a captu
 For example, playing a route capture and exposing the resulting files to a real HTTP server filter:
 
 ```
-gpac -i route://234.1.1.1:1234/live.mpd:gcache=false:NCID=RTE -netcap=src=id=RTE,route.gpc httpout:port=8080:rdirs=./dash
+gpac -i route://234.1.1.1:1234/live.mpd:gcache=false:NCID=RTE -netcap=id=RTE,src=route.gpc httpout:port=8080:rdirs=./dash
 
 ```
 
 
 # Stress-testing
 
-You can also add rules for packet droping or modifications, in order to simulate errors in the transmission chain or to test GPAC demux reliability.
+You can also add rules for packet dropping or modifications, in order to simulate errors in the transmission chain or to test GPAC demux reliability.
 
-This can be done using a capture file or using the device network interface(s). The assignment to filters using `NCID` also works when not using a capture file.
+This can be done using a capture file or using the device network interface(s). The assignment to filters using `NCID` also works when not using a capture file:
 
 
 ```
@@ -87,7 +87,7 @@ gpac -i session.sdp inspect:deep -netcap=src=cap_rtp.gpc,nrt[s=10]
 
 ```
 
-This will drop the 10th UDP packet of the capture file, read in non-realtime mode
+This will drop the 10th UDP packet of the capture file, read in non-realtime mode:
 
 ```
 gpac -i session.sdp inspect:deep -netcap=[f=100]
