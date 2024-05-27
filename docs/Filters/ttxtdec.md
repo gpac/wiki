@@ -6,7 +6,7 @@ Register name used to load filter: __ttxtdec__
 This filter may be automatically loaded during graph resolution.  
   
 This filter decodes TTXT/TX3G streams into a BIFS scene graph of the compositor filter.  
-The TTXT documentation is available at https://wiki.gpac.io/TTXT-Format-Documentation  
+The TTXT documentation is available at https://wiki.gpac.io/xmlformats/TTXT-Format-Documentation  
   
 In stand-alone rendering (no associated video), the filter will use:  
 - `Width` and `Height` properties of input pid if any  

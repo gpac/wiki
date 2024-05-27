@@ -78,4 +78,8 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
   
 <a id="lightp">__lightp__</a> (bool, default: _false_): load minimal set of properties  
 <a id="initseg">__initseg__</a> (str): local init segment name when input is a single ISOBMFF segment  
+<a id="ctso">__ctso__</a> (sint): value to add to CTS offset for tracks using negative ctts  
+- set to `-1` to use the `cslg` box info or the minimum cts offset present in the track  
+- set to `-2` to use the minimum cts offset present in the track (`cslg` ignored)  
+  
   

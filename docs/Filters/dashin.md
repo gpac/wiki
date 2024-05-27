@@ -98,7 +98,7 @@ When the [dasher](dasher) is used together with this mode, this will force all g
 * disk: files are stored to disk but discarded once played  
 * cache: all files are stored to disk and kept  
   
-<a id="algo">__algo__</a> (str, default: _gbuf_, minmax: none|grate|gbuf|bba0|bolaf|bolab|bolau|bolao|JS): adaptation algorithm to use  
+<a id="algo">__algo__</a> (str, default: _gbuf_, Enum: none|grate|gbuf|bba0|bolaf|bolab|bolau|bolao|JS): adaptation algorithm to use  
 * none: no adaptation logic  
 * grate: GPAC legacy algo based on available rate  
 * gbuf: GPAC legacy algo based on buffer occupancy  

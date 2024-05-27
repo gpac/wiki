@@ -112,7 +112,8 @@ Whether the setting is applied or not depends on the graphics module and player 
 <a id="asr">__asr__</a> (uint, default: _0_): force output sample rate (0 for auto)  
 <a id="ach">__ach__</a> (uint, default: _0_): force output channels (0 for auto)  
 <a id="alayout">__alayout__</a> (uint, default: _0_): force output channel layout (0 for auto)  
-<a id="afmt">__afmt__</a> (afmt, default: _s16_, minmax: none,u8,s16,s16b,s24,s24b,s32,s32b,flt,fltb,dbl,dblb,u8p,s16p,s24p,s32p,fltp,dblp): force output channel format (0 for auto)  
+<a id="afmt">__afmt__</a> (afmt, default: _s16_, Enum: none|u8|s16|s16b|s24|s24b|s32|s32b|flt|fltb|dbl|dblb|u8p|s16p|s24p|s32p|fltp|dblp): force output channel format (0 for auto)  
+  
 <a id="asize">__asize__</a> (uint, default: _1024_): audio output packet size in samples  
 <a id="abuf">__abuf__</a> (uint, default: _100_): audio output buffer duration in ms - the audio renderer fills the output PID up to this value. A too low value will lower latency but can have real-time playback issues  
 <a id="avol">__avol__</a> (uint, default: _100_, updatable): audio volume in percent  
@@ -225,7 +226,8 @@ Whether the setting is applied or not depends on the graphics module and player 
 * gui: player mode with GUI auto-start  
   
 <a id="noaudio">__noaudio__</a> (bool, default: _false_): disable audio output  
-<a id="opfmt">__opfmt__</a> (pfmt, default: _none_, minmax: none,yuv420,yvu420,yuv420_10,yuv422,yuv422_10,yuv444,yuv444_10,uyvy,vyuy,yuyv,yvyu,uyvl,vyul,yuyl,yvyl,nv12,nv21,nv1l,nv2l,yuva,yuvd,yuv444a,yuv444p,v308,yuv444ap,v408,v410,v210,grey,algr,gral,rgb4,rgb5,rgb6,rgba,argb,bgra,abgr,rgb,bgr,xrgb,rgbx,xbgr,bgrx,rgbd,rgbds,uncv): pixel format to use for output. Ignored in [player](#player) mode  
+<a id="opfmt">__opfmt__</a> (pfmt, default: _none_, Enum: none|yuv420|yvu420|yuv420_10|yuv422|yuv422_10|yuv444|yuv444_10|uyvy|vyuy|yuyv|yvyu|uyvl|vyul|yuyl|yvyl|nv12|nv21|nv1l|nv2l|yuva|yuvd|yuv444a|yuv444p|v308|yuv444ap|v408|v410|v210|grey|algr|gral|rgb4|rgb5|rgb6|rgba|argb|bgra|abgr|rgb|bgr|xrgb|rgbx|xbgr|bgrx|rgbd|rgbds|uncv): pixel format to use for output. Ignored in [player](#player) mode  
+  
 <a id="drv">__drv__</a> (enum, default: _auto_): indicate if graphics driver should be used  
 * no: never loads a graphics driver, software blit is used, no 3D possible (in player mode, disables OpenGL)  
 * yes: always loads a graphics driver, output pixel format will be RGB (in player mode, same as `auto`)  

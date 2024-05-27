@@ -90,7 +90,7 @@ The filter watches the following custom data properties on incoming packets:
 * `sai_A4CC_param`: same as above and sets `aux_info_type_parameter`to `param`  
     
 The property `grp_EMSG` consists in one or more `EventMessageBox` as defined in MPEG-DASH.  
-- in fragmented mode, presence of these boxes in a packet will start a new fragment, with the boxes written before the `moof`  
+- in fragmented mode, presence of this property in a packet will start a new fragment, with the boxes written before the `moof`  
 - in regular mode, an internal sample group of type `EMSG` is currently used for `emsg` box storage  
     
 
@@ -129,7 +129,8 @@ This will force the text stream to be used as a QT chapter track.
   
 <a id="m4sys">__m4sys__</a> (bool, default: _false_): force MPEG-4 Systems signaling of tracks  
 <a id="dref">__dref__</a> (bool, default: _false_): only reference data from source file - not compatible with all media sources  
-<a id="ctmode">__ctmode__</a> (enum, default: _edit_): set composition offset mode for video tracks  
+<a id="ctmode">__ctmode__</a> (enum, default: _auto_): set composition offset mode for video tracks  
+* auto: if fragmenting an ISOBMFF source, use source settings otherwise resolve to `edit`  
 * edit: uses edit lists to shift first frame to presentation time 0  
 * noedit: ignore edit lists and does not shift timeline  
 * negctts: uses ctts v1 with possibly negative offsets and no edit lists  
@@ -274,4 +275,5 @@ This will force the text stream to be used as a QT chapter track.
 * tiny: enabled and write reduced version if profile known and compatible  
   
 <a id="trunv1">__trunv1__</a> (bool, default: _false_): force using version 1 of trun regardless of media type or CMAF brand  
+<a id="rsot">__rsot__</a> (bool, default: _false_): inject redundant sample timing information when present  
   
