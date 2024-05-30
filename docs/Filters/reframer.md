@@ -151,7 +151,7 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 * on: enables real-time regulation, one clock per PID  
 * sync: enables real-time regulation one clock for all PIDs  
   
-<a id="saps">__saps__</a> (uintl, minmax: 0|1|2|3|4, updatable): list of SAP types (0,1,2,3,4) to forward, other packets are dropped (forwarding only sap 0 will break the decoding)  
+<a id="saps">__saps__</a> (uintl, Enum: 0|1|2|3|4, updatable): list of SAP types (0,1,2,3,4) to forward, other packets are dropped (forwarding only sap 0 will break the decoding)  
   
 <a id="refs">__refs__</a> (bool, default: _false_, updatable): forward only frames used as reference frames, if indicated in the input stream  
 <a id="speed">__speed__</a> (dbl, default: _0.0_, updatable): speed for real-time regulation mode, a value of 0 uses speed from play commands  

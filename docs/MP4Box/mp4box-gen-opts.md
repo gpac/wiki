@@ -23,8 +23,6 @@ Option values:
 Unless specified otherwise, a track operation option of type `integer` expects a track identifier value following it.  
 An option of type `boolean` expects no following value.  
     
-<a id="mem-track">__-mem-track__</a>: enable memory tracker  
-<a id="mem-track-stack">__-mem-track-stack__</a>: enable memory tracker with stack dumping  
 <a id="p">__-p__</a> (string): use indicated profile for the global GPAC config. If not found, config file is created. If a file path is indicated, this will load profile from that file. Otherwise, this will create a directory of the specified name and store new config there. Reserved name `0` means a new profile, not stored to disk. Works using -p=NAME or -p NAME  
 <a id="inter">__-inter__</a> (number, default: __0.5__): interleave file, producing track chunks with given duration in ms. A value of 0 disables interleaving   
 <a id="old-inter">__-old-inter__</a> (number): same as [-inter](#inter) but without drift correction  
@@ -133,7 +131,7 @@ _Note: If no source is set, UDTA of type CODE will be removed_
 # Encryption/Decryption Options  
   
 MP4Box supports encryption and decryption of ISMA, OMA and CENC content, see [encryption filter `gpac -h cecrypt`](cecrypt).  
-It requires a specific XML file called `CryptFile`, whose syntax is available at https://wiki.gpac.io/Common-Encryption  
+It requires a specific XML file called `CryptFile`, whose syntax is available at https://wiki.gpac.io/xmlformats/Common-Encryption  
 Image files (HEIF) can also be crypted / decrypted, using CENC only.  
     
 Options:  

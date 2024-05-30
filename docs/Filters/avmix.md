@@ -192,6 +192,22 @@ When reloading the playlist:
   
 ### Notes  
   
+The special URL scheme `ipid://` can be used to locate an input pid by link directives.  
+Example
+```
+in=ipid://#foo=bar
+```  
+This will use pids having property `foo` with value `bar`, regardless of source filter ID.  
+  
+Example
+```
+in=ipid://TEST#foo=bar
+```  
+This will use pids having property `foo` with value `bar` coming from filter with ID `TEST`.  
+  
+When using the `ipid://` scheme, filter chains cannot be specified (in accepts a single argument) and `port` is ignored.  
+The syntax for link directive is the same as in gpac. However, if a listed property is not found on the input pid, the matching will fail.  
+  
 When launching a child process, the input filter is created first and the child process launched afterwards.  
   
 __Warning: When launching a child process directly (e.g. `in="ffmpeg ..."`), any relative URL used in `in` must be relative to the current working directory.__  
@@ -624,45 +640,6 @@ Example
   
 # Scene modules  
   
-## Scene `mask`  
-This scene sets the canvas alpha mask mode.  
-  
-The canvas alpha mask is always full screen.  
-  
-In software mode, combining mask effect in record mode and reverse group drawing allows drawing front to back while writing pixels only once.  
-  
-Options:  
-* mode ('off'): if set, reset clipper otherwise set it to scene position and size  
-  * off: mask is disabled  
-  * on: mask is enabled and cleared, further draw operations will take place on mask  
-  * onkeep: mask is enabled but not cleared, further draw operations will take place on mask  
-  * use: mask is enabled, further draw operations will be filtered by mask  
-  * use_inv: mask is enabled, further draw operations will be filtered by 1-mask  
-  * rec: mask is in record mode, further draw operations will be drawn on output and will set mask value to 0   
-   
-
-## Scene `clear`  
-This scene clears the canvas area covered by the scene with a given color.   
-  
-The default clear color of the mixer is `black`.  
-  
-The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
-  
-Options:  
-* color ('none'): clear color  
-
-## Scene `clip`  
-This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
-  
-The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
-  
-Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
-If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
-  
-Options:  
-* reset (false): if set, reset clipper otherwise set it to scene position and size  
-* stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
-
 ## Scene `shape`  
 This scene can be used to setup a shape, its outline and specify the fill and strike modes.  
 Supported shapes include:  
@@ -848,12 +825,54 @@ Options:
 * rs_rep (false): same as `rs` for local image in replace mode  
 * rt_rep (false): same as `rt` for local image in replace mode  
 
+## Scene `mask`  
+This scene sets the canvas alpha mask mode.  
+  
+The canvas alpha mask is always full screen.  
+  
+In software mode, combining mask effect in record mode and reverse group drawing allows drawing front to back while writing pixels only once.  
+  
+Options:  
+* mode ('off'): if set, reset clipper otherwise set it to scene position and size  
+  * off: mask is disabled  
+  * on: mask is enabled and cleared, further draw operations will take place on mask  
+  * onkeep: mask is enabled but not cleared, further draw operations will take place on mask  
+  * use: mask is enabled, further draw operations will be filtered by mask  
+  * use_inv: mask is enabled, further draw operations will be filtered by 1-mask  
+  * rec: mask is in record mode, further draw operations will be drawn on output and will set mask value to 0   
+   
+
+## Scene `clear`  
+This scene clears the canvas area covered by the scene with a given color.   
+  
+The default clear color of the mixer is `black`.  
+  
+The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
+  
+Options:  
+* color ('none'): clear color  
+
+## Scene `clip`  
+This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
+  
+The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
+  
+Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
+If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
+  
+Options:  
+* reset (false): if set, reset clipper otherwise set it to scene position and size  
+* stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
+
 # Transition modules  
   
 ## Transition `gltrans` - GPU only  
 This transition module wraps gl-transitions, see https://gl-transitions.com/ and `gpac -h avmix:gltrans` for builtin transitions  
 Options:  
 * fx (''): effect name for built-in effects, or path to gl-transition GLSL file  
+
+## Transition `mix` - software/GPU  
+This transition performs cross-fade of source videos  
 
 ## Transition `swipe` - software/GPU  
 This transition performs simple 2D affine transformations for source videos transitions, with configurable effect origin  
@@ -875,9 +894,6 @@ Options:
   * grow: video 2 size increases, video 1 not modified  
   * swap: video 2 size increases, video 1 size decreases  
   
-## Transition `mix` - software/GPU  
-This transition performs cross-fade of source videos  
-
 ## Transition `fade` - software/GPU  
 This transition performs fade to/from color of source videos  
 Options:  

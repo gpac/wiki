@@ -6,7 +6,7 @@ Register name used to load filter: __nhntw__
 This filter may be automatically loaded during graph resolution.  
   
 This filter converts a single stream to an NHNT output file.  
-NHNT documentation is available at https://wiki.gpac.io/NHNT-Format  
+NHNT documentation is available at https://wiki.gpac.io/xmlformats/NHNT-Format  
   
 
 # Options    

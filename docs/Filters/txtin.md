@@ -9,7 +9,7 @@ This filter reads subtitle data from input PID to produce subtitle frames on a s
 The filter supports the following formats:  
 * SRT: https://en.wikipedia.org/wiki/SubRip  
 * WebVTT: https://www.w3.org/TR/webvtt1/  
-* TTXT: https://wiki.gpac.io/TTXT-Format-Documentation  
+* TTXT: https://wiki.gpac.io/xmlformats/TTXT-Format-Documentation  
 * QT 3GPP Text XML (TexML): Apple QT6, likely deprecated  
 * TTML: https://www.w3.org/TR/ttml2/  
 * SUB: one subtitle per line formatted as `{start_frame}{end_frame}text`  
@@ -89,7 +89,8 @@ In this mode, the [stxtdur](#stxtdur) option is used to control the duration of 
 <a id="ttml_zero">__ttml_zero__</a> (str): set subtitle zero time for TTML  
 <a id="no_empty">__no_empty__</a> (bool, default: _false_): do not send empty samples  
 <a id="stxtdur">__stxtdur__</a> (frac, default: _1_): duration for simple text  
-<a id="stxtmod">__stxtmod__</a> (enum, default: _none_): simple text stream mode- none: declares output PID as simple text stream  
+<a id="stxtmod">__stxtmod__</a> (enum, default: _none_): simple text stream mode  
+* none: declares output PID as simple text stream  
 * tx3g: declares output PID as TX3G/Apple stream  
 * vtt: declares output PID as WebVTT stream  
   

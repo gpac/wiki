@@ -18,7 +18,9 @@ When ports are specified in the URL and the default option separators are used (
 - have a trailing '/', e.g. `udp://localhost:1234/[:opts]`  
 - use `gpac` separator, e.g. `udp://localhost:1234[:gpac:opts]`  
   
-On OSX with VM packet replay you will need to force multicast routing, e.g. `route add -net 239.255.1.4/32 -interface vboxnet0`  
+When the socket is listening in keep-alive [ka](#ka) mode:  
+- a single connection is allowed and a single output PID will be produced  
+- each connection close event will triger a pipeline flush  
   
 
 # Options    

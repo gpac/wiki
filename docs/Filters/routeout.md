@@ -5,12 +5,13 @@
 Register name used to load filter: __routeout__  
 This filter may be automatically loaded during graph resolution.  
   
-The ROUTE output filter is used to distribute a live file-based session using ROUTE.  
-The filter supports DASH and HLS inputs, ATSC3.0 signaling and generic ROUTE signaling.  
+The ROUTE output filter is used to distribute a live file-based session using ROUTE or DVB-MABR.  
+The filter supports DASH and HLS inputs, ATSC3.0 signaling and generic ROUTE or DVB-MABR signaling.  
   
 The filter is identified using the following URL schemes:  
 * `atsc://`: session is a full ATSC 3.0 session  
 * `route://IP:port`: session is a ROUTE session running on given multicast IP and port  
+* `mabr://IP:port`: session is a DVB-MABR session using FLUTE running on given multicast IP and port  
   
 The filter only accepts input PIDs of type `FILE`.  
 - HAS Manifests files are detected by file extension and/or MIME types, and sent as part of the signaling bundle or as LCT object files for HLS child playlists.  
@@ -22,7 +23,7 @@ For `raw` file PIDs, the filter will look for the following properties:
 * `ROUTECarousel`: set repeat period. If not found, uses [carousel](#carousel). If 0, the file is only sent once  
 * `ROUTEUpload`: set resource upload time. If not found, uses [carousel](#carousel). If 0, the file will be sent as fast as possible.  
   
-When DASHing for ROUTE or single service ATSC, a file extension, either in [dst](#dst) or in [ext](#ext), may be used to identify the HAS session type (DASH or HLS).  
+When DASHing for ROUTE, DVB-MABR or single service ATSC, a file extension, either in [dst](#dst) or in [ext](#ext), may be used to identify the HAS session type (DASH or HLS).  
 Example
 ```
 "route://IP:PORT/manifest.mpd", "route://IP:PORT/:ext=mpd"
@@ -42,9 +43,9 @@ gpac -i MOVIE1:#ServiceID=1 dasher:FID=1:mname=manifest.mpd -i MOVIE2:#ServiceID
   
 __Warning: When forwarding an existing DASH/HLS session, do NOT set any extension or manifest name.__  
   
-By default, all streams in a service are assigned to a single route session, and differentiated by ROUTE TSI (see [splitlct](#splitlct)).  
+By default, all streams in a service are assigned to a single multicast session, and differentiated by TSI (see [splitlct](#splitlct)).  
 TSI are assigned as follows:  
-- signaling TSI is always 0  
+- signaling TSI is always 0 for ROUTE, 1 for DVB+Flute  
 - raw files are assigned TSI 1 and increasing number of TOI  
 - otherwise, the first PID found is assigned TSI 10, the second TSI 20 etc ...  
   
@@ -70,6 +71,16 @@ ATSC 3.0 attributes set by using the following PID properties:
 In this mode, only a single service can be distributed by the ROUTE session.  
 _Note: [ip](#ip) is ignored, and [first_port](#first_port) is used if no port is specified in [dst](#dst)._  
 The ROUTE session will include a multi-part MIME unsigned package containing manifest and S-TSID, sent on TSI=0.  
+  
+# DVB-MABR mode  
+  
+In this mode, the filter allows multiple service multiplexing, identified through the `ServiceID` and `ServiceName` properties.  
+_Note: [ip](#ip) and [first_port](#first_port) are used to send the multicast gateway configuration, init segments and manifests. [first_port](#first_port) is used only if no port is specified in [dst](#dst)._  
+  
+The session will carry DVB-MABR gateway configuration, maifests and init segments on `TSI=1`  
+The filter will look for `ROUTEIP` and `ROUTEPort` properties on the incoming PID to setup multicast of each service. If not found, the default [ip](#ip) and port will be used, with port incremented by one for each new multicast stream.  
+  
+The FLUTE session always uses a symbol length of [mtu](#mtu) minus 44 bytes.  
   
 # Low latency mode  
   
@@ -154,4 +165,10 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
 <a id="noreg">__noreg__</a> (bool, default: _false_): disable rate regulation for media segments, pushing them as fast as received  
 <a id="runfor">__runfor__</a> (uint, default: _0_): run for the given time in ms  
 <a id="nozip">__nozip__</a> (bool, default: _false_): do not zip signaling package (STSID+manifest)  
+<a id="furl">__furl__</a> (bool, default: _false_): inject full URLs of source service in the signaling instead of stripped server path  
+<a id="csum">__csum__</a> (enum, default: _meta_): send MD5 checksum for DVB flute  
+* no: do not send checksum  
+* meta: only send checksum for configuration files, manifests and init segments  
+* all: send checksum for everything  
+  
   

@@ -5,7 +5,7 @@
 ## General considerations  
 MP4Box supports encoding and decoding of of BT, XMT, VRML and (partially) X3D formats int MPEG-4 BIFS, and encoding and decoding of XSR and SVG into MPEG-4 LASeR  
 Any media track specified through a `MuxInfo` element will be imported in the resulting MP4 file.  
-See https://wiki.gpac.io/MPEG-4-BIFS-Textual-Format and related pages.  
+See https://wiki.gpac.io/Howtos/scenecoding/MPEG-4-BIFS-Textual-Format and related pages.  
 
 ## Scene Random Access  
 MP4Box can encode BIFS or LASeR streams and insert random access points at a given frequency. This is useful when packaging content for broadcast, where users will not turn in the scene at the same time. In MPEG-4 terminology, this is called the _scene carousel_.## BIFS Chunk Processing  

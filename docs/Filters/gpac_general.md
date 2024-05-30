@@ -17,8 +17,6 @@ The session can be interrupted at any time using `ctrl+c`, which can also be use
   
 The possible options for gpac are:  
   
-<a id="mem-track">__-mem-track__</a>: enable memory tracker  
-<a id="mem-track-stack">__-mem-track-stack__</a>: enable memory tracker with stack dumping  
 <a id="ltf">__-ltf__</a>:      load test-unit filters (used for for unit tests only)  
 <a id="sloop">__-sloop__</a> (int): loop execution of session, creating a session at each loop, mainly used for testing. If no value is given, loops forever  
 <a id="runfor">__-runfor__</a> (int): run for the given amount of milliseconds, exit with full session flush  
@@ -52,6 +50,8 @@ The possible options for gpac are:
 <a id="ob">__-ob__</a> (string): specify an output file to wrap as GF_FileIO object (testing of GF_FileIO)  
 <a id="cl">__-cl__</a>:        force complete mode when no link directive are set - see [filters help (-h doc)](filters_general)  
   
+<a id="sid">__-sid__</a>:      force source IDs to be present when attempting to link - see [filters help (-h doc)](filters_general)  
+  
 <a id="step">__-step__</a>:    test step mode in non-blocking session  
 <a id="h">__-h__</a>,__-help,-ha,-hx,-hh__ (string): print help. Use `-help` or `-h` for basic options, `-ha` for advanced options, `-hx` for expert options and `-hh` for all.    
 _Note: The `@` character can be used in place of the `*` character. String parameter can be:_  
@@ -77,6 +77,7 @@ _Note: The `@` character can be used in place of the `*` character. String param
 * layouts: print the builtin CICP audio channel layout names and their values  
 * links: print possible connections between each supported filters (use -hx to view src->dst cap bundle detail)  
 * links FNAME: print sources and sinks for filter `FNAME` (either builtin or JS filter)  
+* defer: print defer mode help  
 * FNAME: print filter `FNAME` info (multiple FNAME can be given)  
   - For meta-filters, use `FNAME:INST`, e.g. `ffavin:avfoundation`  
   - Use `*` to print info on all filters (_big output!_), `*:*` to print info on all filters including meta filter instances (_really big output!_)  
@@ -105,7 +106,7 @@ Appending `:reload` to the profile name will force recreating a new configuratio
     
 The following libgpac core options allow customizing the filter session:  
     
-<a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status, weight, src_cap_idx, dst_cap_idx)  
+<a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status(disable_depth), weight, src_cap_idx -> dst_cap_idx)  
 <a id="full-link">__-full-link__</a>: throw error if any PID in the filter graph cannot be linked  
 <a id="no-dynf">__-no-dynf__</a>: disable dynamically loaded filters  
 <a id="no-block">__-no-block__</a> (Enum, default: __no__): disable blocking mode of filters  

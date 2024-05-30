@@ -7,7 +7,7 @@ This filter may be automatically loaded during graph resolution.
   
 This filter runs a javascript file specified in [js](#js) defining a new JavaScript filter.  
     
-For more information on how to use JS filters, please check https://wiki.gpac.io/jsfilter  
+For more information on how to use JS filters, please check https://wiki.gpac.io/Howtos/jsf/jsfilter  
   
 
 # Options    

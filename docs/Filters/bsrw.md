@@ -32,9 +32,12 @@ The filter will work in passthrough mode for all other codecs and media types.
 
 # Options    
   
-<a id="cprim">__cprim__</a> (cprm, default: _-1_, minmax: reserved0,BT709,undef,reserved3,BT470M,BT470G,SMPTE170,SMPTE240,FILM,BT2020,SMPTE428,SMPTE431,SMPTE432,EBU3213, updatable): color primaries according to ISO/IEC 23001-8 / 23091-2  
-<a id="ctfc">__ctfc__</a> (ctfc, default: _-1_, minmax: reserved0,BT709,undef,reserved3,BT470M,BT470BG,SMPTE170,SMPTE249,Linear,Log100,Log316,IEC61966,BT1361,sRGB,BT2020_10,BT2020_12,SMPTE2084,SMPTE428,STDB67, updatable): color transfer characteristics according to ISO/IEC 23001-8 / 23091-2  
-<a id="cmx">__cmx__</a> (cmxc, default: _-1_, minmax: GBR,BT709,undef,FCC,BT601,SMPTE170,SMPTE240,YCgCo,BT2020,BT2020cl,YDzDx, updatable): color matrix coeficients according to ISO/IEC 23001-8 / 23091-2  
+<a id="cprim">__cprim__</a> (cprm, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470G|SMPTE170|SMPTE240|FILM|BT2020|SMPTE428|SMPTE431|SMPTE432|EBU3213, updatable): color primaries according to ISO/IEC 23001-8 / 23091-2  
+  
+<a id="ctfc">__ctfc__</a> (ctfc, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470BG|SMPTE170|SMPTE249|Linear|Log100|Log316|IEC61966|BT1361|sRGB|BT2020_10|BT2020_12|SMPTE2084|SMPTE428|STDB67, updatable): color transfer characteristics according to ISO/IEC 23001-8 / 23091-2  
+  
+<a id="cmx">__cmx__</a> (cmxc, default: _-1_, Enum: GBR|BT709|undef|FCC|BT601|SMPTE170|SMPTE240|YCgCo|BT2020|BT2020cl|YDzDx, updatable): color matrix coeficients according to ISO/IEC 23001-8 / 23091-2  
+  
 <a id="sar">__sar__</a> (frac, default: _-1/-1_, updatable): aspect ratio to rewrite  
 <a id="m4vpl">__m4vpl__</a> (sint, default: _-1_, updatable): set ProfileLevel for MPEG-4 video part two  
 <a id="fullrange">__fullrange__</a> (bool, default: _false_, updatable): video full range flag  

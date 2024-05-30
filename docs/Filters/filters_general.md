@@ -21,17 +21,20 @@ Each filter exposes a set of argument to configure itself, using property types 
 * string: formatted as:  
   * `value`: copies value to string.  
   * `file@FILE`: load string from local `FILE` (opened in binary mode).  
-  * `bxml@FILE`: binarize XML from local `FILE` and set property type to data - see https://wiki.gpac.io/NHML-Format.  
+  * `bxml@FILE`: binarize XML from local `FILE` and set property type to data - see https://wiki.gpac.io/xmlformats/NHML-Format.  
 * data: formatted as:  
   * `size@address`: constant data block, not internally copied; `size` gives the size of the block, `address` the data pointer.  
   * `0xBYTESTRING`: data block specified in hexadecimal, internally copied.  
   * `file@FILE`: load data from local `FILE` (opened in binary mode).  
-  * `bxml@FILE`: binarize XML from local `FILE` - see https://wiki.gpac.io/NHML-Format.  
+  * `bxml@FILE`: binarize XML from local `FILE` - see https://wiki.gpac.io/xmlformats/NHML-Format.  
   * `b64@DATA`: load data from base-64 encoded `DATA`.  
 * pointer: pointer address as formatted by `%p` in C.  
 * string lists: formatted as `val1,val2[,...]`. Each value can also use `file@FILE` syntax.  
 * integer lists: formatted as `val1,val2[,...]`  
+  
 _Note: The special characters in property formats (0x,/,-,+I,-I,x) cannot be configured._  
+  
+Numbers and fraction can be expressed as `THH:MM:SS.ms`, `TMM:SS.ms`, `THH:MM:SS` or `TMM:SS`, translated into milliseconds.  
 
 # Filter declaration [_FILTER_]  
   
@@ -165,6 +168,7 @@ For each filter `DST` accepting a connection from the PID, directly or with inte
   
 In all linking modes, a filter can prevent being linked to a filter with no link directives by setting `RSID` option on the filter.  
 This is typically needed when dynamically inserting/removing filters in an existing session where some filters have no ID defined and are not desired for the inserted chain.  
+A filter with `RSID` set is not clonable.  
   
 Example
 ```
@@ -418,6 +422,7 @@ Destination URLs can be dynamically constructed using templates. Pattern `$KEYWO
 * URL: URL of source file  
 * File: path on disk for source file; if not found, use URL if set, or PID name otherwise  
 * Type: name of stream type of PID (`video`, `audio` ...)  
+* OType: same as `Type` but uses original type when stream is encrypted (e.g. move from `crypt` to `video`)  
 * p4cc=ABCD: uses PID property with 4CC value `ABCD`  
 * pname=VAL: uses PID property with name `VAL`  
 * cts, dts, dur, sap: uses properties of first packet in PID at template resolution time  
@@ -629,6 +634,7 @@ As seen previously, the following options may be set on any filter, but are not 
 * gpac: argument separator for URLs (no value)  
 * ccp: filter replacement control (string list value)  
 * NCID: ID of netcap configuration to use (string)  
+* LT: set additionnal log tools and levels for the filter usin same syntax as -logs, e.g. `:LT=filter@debug` (string value)  
 * DBG: debug missing input PID property (`=pid`), missing input packet property (`=pck`) or both (`=all`)  
   
 The buffer control options are used to change the default buffering of PIDs of a filter:  

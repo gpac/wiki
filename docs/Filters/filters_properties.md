@@ -36,6 +36,7 @@ afmt | raw audio format
 cprm | color primaries, string or int value from ISO/IEC 23091-2    
 ctfc | color transfer characteristics, string or int value from ISO/IEC 23091-2    
 cmxc | color matrix coefficients, string or int value from ISO/IEC 23091-2    
+alay | channel layout configuration, string or int value from ISO/IEC 23091-3    
 
 ## Built-in properties for PIDs and packets, pixel formats and audio formats  
     
@@ -281,7 +282,7 @@ EQRClamp | v4di | D | Clamping of frame for EQR as 0.32 fixed point (x is top, y
 SceneNode | bool |  | PID is a scene node decoder (AFX BitWrapper in BIFS) | PSND    
 OrigCryptoScheme | 4cc |  | Original crypto scheme on a decrypted PID | POCS    
 TSBSegs | uint | D | Time shift in number of segments for HAS streams, only set by dashin and dasher filters | PTSN    
-IsManifest | uint | D | PID is a HAS manifest  <br/>* 0: not a manifest  <br/>* 1: DASH manifest  <br/>* 2: HLS manifest  <br/>* 3: GHI(X) manifest | PHSM    
+IsManifest | uint | D | PID is a HAS manifest (MSB=1 if live)  <br/>* 0: not a manifest  <br/>* 1: DASH manifest  <br/>* 2: HLS manifest  <br/>* 3: GHI(X) manifest | PHSM    
 Sparse | bool | D | PID has potentially empty times between packets | PSPA    
 CharSet | str | D | Character set for input text PID | PCHS    
 ForcedSub | uint | D | PID or Packet is forced sub  <br/>0: not forced  <br/>1: forced frame  <br/>2: all frames are forced (PID only) | PFCS    
@@ -290,6 +291,7 @@ ChapNames | strl | D | Chapter names | CHPN
 IsChap | bool | D | Subtitle PID is chapter (for QT-like chapters) | PCHP    
 SkipBegin | uint | P | Amount of media to skip from beginning of packet in PID timescale | PCKS    
 SkipPres | bool | P | Packet and any following with CTS greater than this packet shall not be presented (used by reframer to create edit lists) | PCKD    
+OriginalDuration | frac | P | Elapsed time (.num) and original duration (.den, 0 if last copy of packet) for redundant packets | PCOD    
 HLSRef | luint | DP | HLS playlist reference, gives a unique ID identifying media mux, and indicated in packets carrying child playlists | HPLR    
 LLHLS | uint | D | HLS low latency mode | HLSL    
 LLHLSFragNum | uint | P | LLHLS fragment number | HLSN    
@@ -509,6 +511,8 @@ prores ap4x | ProRes Video 4444 XQ
 prores ap4h | ProRes Video 4444    
 ffmpeg | FFmpeg unmapped codec    
 tmcd | QT TimeCode    
+scte | SCTE35    
+evte | Event Messages    
 vvc 266 h266 | VVC Video    
 vvs1 | VVC Subpicture Video    
 usac xheaac | xHEAAC / USAC Audio    
@@ -847,6 +851,7 @@ rtsps | rtpin | rtspout
 pipe | pin | pout  
 atsc | routein | routeout  
 route | routein | routeout  
+mabr | routein | routeout  
 video | ffavin |  n/a  
 audio | ffavin |  n/a  
 av | ffavin |  n/a  

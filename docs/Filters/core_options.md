@@ -37,23 +37,25 @@
 <a id="no-fd">__-no-fd__</a>:  use buffered IO instead of file descriptor for read/write - this can speed up operations on small files  
   
 <a id="no-mx">__-no-mx__</a>:  disable all mutexes, threads and semaphores (do not use if unsure about threading used)  
+<a id="xml-max-csize">__-xml-max-csize__</a> (int, default: __100k__): maximum XML content or attribute size  
 <a id="netcap">__-netcap__</a> (string): set packet capture and filtering rules formatted as [CFG][RULES]. Each `-netcap` argument will define a configuration  
 [CFG] is an optional comma-separated list of:  
 * id=ID: ID (string) for this configuration. If NULL, configuration will apply to all sockets not specifying a netcap ID  
 * src=F: read packets from `F`, as produced by GPAC or a pcap or pcapng file  
-* dst=F: output packets to `F` (no pcap/pcapng support), cannot be set if src is set  
+* dst=F: output packets to `F` (GPAC or pcap/pcapng file), cannot be set if src is set  
 * loop[=N]: loop capture file N times, or forever if N is not set or negative  
 * nrt: disable real-time playback  
 [RULES] is an optional list of `[OPT,OPT2...]` with OPT in:  
-* m=N: set rule mode - `N` can be `r` for reception only (default), `w` for send only or `rw` for both  
-* s=N: set packet start range to `N`  
-* e=N: set packet end range to `N` (only used for `r` and `f` rules)  
-* n=N: set number of packets to drop to `N` - not set, 0 or 1 means single packet  
-* r=N: random drop one packet every `N`  
-* f=N: drop first packet every `N`  
-* p=P: local port number to filter, if not set the rule applies to all packets  
-* o=N: patch packet instead of droping (always true for TCP), replacing byte at offset `N` (0 is first byte, <0 for random)  
-* v=N: set patch byte value to `N` (hexa) or negative value for random (default)  
+* m=K: set rule mode - `K` can be `r` for reception only (default), `w` for send only or `rw` for both  
+* s=K: set packet start range to `K`  
+* e=K: set packet end range to `K` - only used for `r` and `f` rules, 0 or not set means rule apply until end  
+* n=K: set number of packets to drop to `K` - not set, 0 or 1 means single packet  
+* r=K: random drop `n` packet every `K`  
+* f=K: drop first `n` packets every `K`  
+* d=K: reorder `n` packets after the next `K` packets, can be used with `f` or `r` rules  
+* p=K: filter packets on port `K` only, if not set the rule applies to all packets  
+* o=K: patch packet instead of droping (always true for TCP), replacing byte at offset `K` (0 is first byte, <0 for random)  
+* v=K: set patch byte value to `K` (hexa) or negative value for random (default)  
   
 Example
 ```
@@ -93,10 +95,7 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="dm-threads">__-dm-threads__</a>: force using threads for async download requests rather than session scheduler  
 <a id="cte-rate-wnd">__-cte-rate-wnd__</a> (int, default: __20__): set window analysis length in milliseconds for chunk-transfer encoding rate estimation  
 <a id="cred">__-cred__</a> (string): path to 128 bits key for credential storage  
-<a id="no-h2">__-no-h2__</a>:  disable HTTP2  
-<a id="no-h2c">__-no-h2c__</a>: disable HTTP2 upgrade (i.e. over non-TLS)  
-<a id="h2-copy">__-h2-copy__</a>: enable intermediate copy of data in nghttp2 (default is disabled but may report as broken frames in wireshark)  
-<a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status, weight, src_cap_idx, dst_cap_idx)  
+<a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status(disable_depth), weight, src_cap_idx -> dst_cap_idx)  
 <a id="full-link">__-full-link__</a>: throw error if any PID in the filter graph cannot be linked  
 <a id="no-dynf">__-no-dynf__</a>: disable dynamically loaded filters  
 <a id="no-block">__-no-block__</a> (Enum, default: __no__): disable blocking mode of filters  

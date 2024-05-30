@@ -6,7 +6,7 @@ Register name used to load filter: __nhmlw__
 This filter may be automatically loaded during graph resolution.  
   
 This filter converts a single stream to an NHML output file.  
-NHML documentation is available at https://wiki.gpac.io/NHML-Format  
+NHML documentation is available at https://wiki.gpac.io/xmlformats/NHML-Format  
   
 
 # Options    

@@ -47,7 +47,7 @@ _Note: The filter uses negative CTS offsets: CTS is correct, but some frames may
 * bt2020: SDR BT.2020  
 * brd: Ultra HD Blu-ray Disc HDR  
   
-<a id="bsdbg">__bsdbg__</a> (enum, default: _off_): debug NAL parsing in `parser@debug` logs  
+<a id="bsdbg">__bsdbg__</a> (enum, default: _off_): debug NAL parsing in `media@debug` logs  
 * off: not enabled  
 * on: enabled  
 * full: enable with number of bits dumped  

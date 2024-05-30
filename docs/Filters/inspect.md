@@ -86,7 +86,13 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 
 # Options    
   
-<a id="log">__log__</a> (str, default: _stdout_, minmax: fileName, stderr, stdout, GLOG or null): set probe log filename to print number of streams, GLOG uses GPAC logs `app@info`(default for android)  
+<a id="log">__log__</a> (str, default: _stdout_, Enum: _any|stderr|stdout|GLOG|null): set probe log filename  
+* _any: target file path and name  
+* stderr: dump to stderr  
+* stdout: dump to stdout  
+* GLOG: use GPAC logs `app@info`  
+* null: silent mode  
+  
 <a id="mode">__mode__</a> (enum, default: _pck_): dump mode  
 * pck: dump full packet  
 * blk: dump packets before reconstruction  
