@@ -257,6 +257,7 @@ nav:
       - rtpout: Filters/rtpout.md
       - rtspout: Filters/rtspout.md
       - safdmx: Filters/safdmx.md
+      - scte35dec: Filters/scte35dec.md
       - sockin: Filters/sockin.md
       - sockout: Filters/sockout.md
       - svgplay: Filters/svgplay.md
