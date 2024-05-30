@@ -1,9 +1,33 @@
 [**HOME**](Home) » [**Build**](Build-Introduction) » WASM
 
-This page describes how to build GPAC for WASM/Emscripten. 
+This page describes how to build GPAC for WASM/Emscripten.
 
-A live can be seen at [https://wasm.gpac.io](https://wasm.gpac.io)
+A live demo can be seen at [https://wasm.gpac.io](https://wasm.gpac.io)
 
+# (Recommended) Use Docker
+
+The easiest way to build GPAC for WASM is to use the provided Dockerfile at `build/docker/wasm.Dockerfile` in the GPAC repository.
+
+You just need to build the docker image and copy the built files from the container.
+
+```bash
+# Build the docker image
+docker build -t gpac-wasm -f build/docker/wasm.Dockerfile .
+
+# Create a container from the image
+docker create --name gpac-wasm gpac-wasm
+
+# Copy the built files from the container
+docker cp gpac-wasm:/gpac_public/bin/gcc/. /path/to/destination
+
+# Remove the container
+docker rm gpac-wasm
+
+# Launch the HTTP server
+gpac httpout:port=8080:rdirs=/path/to/destination:cors=on
+```
+
+After that, you can access the GPAC WASM build at [http://localhost:8080/gpac.html](http://localhost:8080/gpac.html)
 
 # Install Emscripten SDK
 
@@ -33,8 +57,7 @@ source ./emsdk_env.sh
 
 ```
 
-
-# Build GPAC dependencies 
+# Build GPAC dependencies
 
 If you already installed the emscripten SDK, it is still important to run the last two commands from the previous section to activate the SDK environment.
 
@@ -52,14 +75,13 @@ bash wasm_extra_libs.sh [--enable-threading]
 
 ```
 
-The `--enable-threading` option is optional and is used to build the multi-threaded version of WASM GPAC. 
-
+The `--enable-threading` option is optional and is used to build the multi-threaded version of WASM GPAC.
 
 # Build GPAC
 
 First make sure you have `pkg-config` installed (`sudo apt install pkg-config`).
 
-Then we must point pkg-config to the dependencies we built in the previous section by defining an environment variable: 
+Then we must point pkg-config to the dependencies we built in the previous section by defining an environment variable:
 
 ```bash
 
@@ -71,7 +93,7 @@ export PKG_CONFIG_PATH=/path/to/deps_wasm/wasm_thread/lib/pkgconfig
 
 ```
 
-Then we can build GPAC with emscripten: 
+Then we can build GPAC with emscripten:
 
 ```bash
 git clone https://github.com/gpac/gpac.git
@@ -86,26 +108,29 @@ cd gpac
 make -j4
 ```
 
-You can then find the built files in the `bin/gcc/` folder. 
-
+You can then find the built files in the `bin/gcc/` folder.
 
 # Serving
 
-To use WASM GPAC, you need to serve the built `bin/gcc/gpac.*` files through a web server (it can't be accessed as a file:// resource). 
+To use WASM GPAC, you need to serve the built `bin/gcc/gpac.*` files through a web server (it can't be accessed as a file:// resource).
 
 ## GPAC example
+
 If you have GPAC installed, you can use the included HTTP server:
+
 ```
 gpac httpout:port=8080:rdirs=bin/gcc
 ```
 
 For threaded version you need to enable CORS on the server:
+
 ```
 gpac httpout:port=8080:rdirs=bin/gcc:cors=on
 ```
 
 ## Apache example
-For Apache, you need to add some settings for the webserver, either in a `.htaccess` file, or in the apache config: 
+
+For Apache, you need to add some settings for the webserver, either in a `.htaccess` file, or in the apache config:
 
 ```
     DirectoryIndex gpac.html
@@ -121,8 +146,7 @@ For Apache, you need to add some settings for the webserver, either in a `.htacc
     AddType application/javascript js
 ```
 
-You can then access the gpac.html through the web server to use GPAC WASM. 
-
+You can then access the gpac.html through the web server to use GPAC WASM.
 
 # Resources
 
