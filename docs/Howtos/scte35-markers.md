@@ -85,7 +85,7 @@ The format is selected automatically depending on the file extension (or can be 
 Adaptive streaming with DASH or HLS requires the content to be segmented. Simple segmentation (where content can be replicated over several segments without any change) works for all kind of streams.
 
 For SCTE-35 streams the [dec_scte35 filter](dec_scte35) must be explicitly loaded.
-Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you):
+Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you:
 
 ```
 gpac -i input scte35dec -o output.mpd:segdur=2
