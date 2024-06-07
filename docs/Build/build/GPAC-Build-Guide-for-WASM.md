@@ -11,11 +11,15 @@ The easiest way to build GPAC for WASM is to use the provided Dockerfile at `bui
 You just need to build the docker image and copy the built files from the container.
 
 ```bash
-# Build the docker image
-docker build -t gpac-wasm -f build/docker/wasm.Dockerfile .
+
+# Get the pre-built docker image
+docker pull gpac/wasm
+
+# OR build the docker image yourself
+docker build -t gpac/wasm -f build/docker/wasm.Dockerfile .
 
 # Create a container from the image
-docker create --name gpac-wasm gpac-wasm
+docker create --name gpac-wasm gpac/wasm
 
 # Copy the built files from the container
 docker cp gpac-wasm:/gpac_public/bin/gcc/. /path/to/destination
@@ -27,7 +31,9 @@ docker rm gpac-wasm
 gpac httpout:port=8080:rdirs=/path/to/destination:cors=on
 ```
 
-After that, you can access the GPAC WASM build at [http://localhost:8080/gpac.html](http://localhost:8080/gpac.html)
+After that, you can access the GPAC WASM build at [http://localhost:8080/gpac.html](http://localhost:8080/gpac.html).
+
+For more details about serving the files, see [the serving section](#serving)
 
 # Install Emscripten SDK
 
@@ -118,14 +124,18 @@ To use WASM GPAC, you need to serve the built `bin/gcc/gpac.*` files through a w
 
 If you have GPAC installed, you can use the included HTTP server:
 
-```
+```bash
 gpac httpout:port=8080:rdirs=bin/gcc
 ```
 
-For threaded version you need to enable CORS on the server:
+For threaded version you need to enable CORS on the server and serve through https:
 
-```
-gpac httpout:port=8080:rdirs=bin/gcc:cors=on
+```bash
+# you can use an existing cert, or generate one with letsencrypt, or here we generate a self-signed certificate:
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname"
+
+# serve the files with cors and https enabled
+gpac httpout:port=8080:rdirs=bin/gcc:cors=on:cert=cert.pem:pkey=key.pem
 ```
 
 ## Apache example
@@ -147,6 +157,9 @@ For Apache, you need to add some settings for the webserver, either in a `.htacc
 ```
 
 You can then access the gpac.html through the web server to use GPAC WASM.
+
+For the threaded version you'll have to serve through https for it to work properly.
+
 
 # Resources
 
