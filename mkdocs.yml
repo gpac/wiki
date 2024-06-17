@@ -42,14 +42,17 @@ theme:
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
+  - tags
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
   - admonition
-  - pymdownx.details
-  - pymdownx.superfences
   - toc:
       permalink: true
+  - nl2br
+  - sane_lists
+  - pymdownx.details
+  - pymdownx.superfences
 extra:
   analytics:
     provider: google
@@ -322,10 +325,18 @@ nav:
       - MP4 dmx examples: Build/MP4-dmx-examples.md
   - Developers:
     - Developers/index.md
-    - contributing: https://doxygen.gpac.io/index.html#autotoc_md10
-    - build status: https://buildbot.gpac.io
-    - github discussions: https://github.com/gpac/gpac/issues?utf8=%E2%9C%93&q=
+    - JavaScript:
+      - Developers/javascript.md
+      - Javascript Filters (jsf): Howtos/jsf/jsfilter.md
+      - GPAC and NodeJS: Howtos/nodejs.md
+    - Python: Howtos/python.md
+    - Filter API tutorials:
+      - Intro to Filter Session: Developers/tutorials/filter-session-intro.md
+      - Writing a custom Filter: Developers/tutorials/custom-filters.md
     - API documentation: https://doxygen.gpac.io/modules.html
+    - contributing: https://doxygen.gpac.io/index.html#autotoc_md10
+    - issues: https://github.com/gpac/gpac/issues
+    - build status: https://buildbot.gpac.io
     - test suites: https://github.com/gpac/testsuite/tree/master/scripts
     - tests status: https://tests.gpac.io
   - Playback:
