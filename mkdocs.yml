@@ -47,6 +47,7 @@ hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
   - admonition
+  - attr_list
   - toc:
       permalink: true
   - nl2br
@@ -325,20 +326,12 @@ nav:
       - MP4 dmx examples: Build/MP4-dmx-examples.md
   - Developers:
     - Developers/index.md
-    - JavaScript:
-      - Developers/javascript.md
-      - Javascript Filters (jsf): Howtos/jsf/jsfilter.md
-      - GPAC and NodeJS: Howtos/nodejs.md
-    - Python: Howtos/python.md
-    - Filter API tutorials:
-      - Intro to Filter Session: Developers/tutorials/filter-session-intro.md
-      - Writing a custom Filter: Developers/tutorials/custom-filters.md
     - API documentation: https://doxygen.gpac.io/modules.html
-    - contributing: https://doxygen.gpac.io/index.html#autotoc_md10
-    - issues: https://github.com/gpac/gpac/issues
-    - build status: https://buildbot.gpac.io
-    - test suites: https://github.com/gpac/testsuite/tree/master/scripts
-    - tests status: https://tests.gpac.io
+    - Filter API tutorials:
+      - Intro to Filter Session: Developers/tutorials/filter-session-intro
+      - Writing a custom Filter: Developers/tutorials/custom-filter
+    - JavaScript: Developers/javascript.md
+    - Python: Howtos/python.md
   - Playback:
     - Overview: Player/Player.md
     # - Introduction: Player/Playback.md
