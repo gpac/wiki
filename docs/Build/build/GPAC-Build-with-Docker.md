@@ -25,10 +25,10 @@ cd gpac
 ... 
 
 # doubly optional: you can change and rebuild the base system containing the dependencies for gpac with
-docker build -t gpac/ubuntu-deps -f build/docker/ubuntu-deps.DockerFile .
+docker build -t gpac/ubuntu-deps -f build/docker/ubuntu-deps.Dockerfile .
 
 # build the docker image
-docker build -t myimages/gpac -f build/docker/ubuntu.DockerFile . 
+docker build -t myimages/gpac -f build/docker/ubuntu.Dockerfile .
 ```
 
 ## Use an image
