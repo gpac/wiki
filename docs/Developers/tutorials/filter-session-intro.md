@@ -2,12 +2,12 @@
 
 The API enables you to use GPAC capabilities in your own personal code. By calling any filter in gpac’s set of built-in filters, or even create your own personalized custom filters to interact within the media pipelines. This can be useful to interface with other pieces of software or create faster ways of executing some media processing workflows.
 
-To learn more about general concepts refer to the general wiki page of [gpac](Filters/filters_general). 
+To learn more about general concepts refer to the general wiki page of [gpac](/Filters/filters_general). 
 
 
 ## Build and install the gpac library
 
-Refer to the gpac [build documentation](Build/Build-Introduction) provides detailed instructions for compiling GPAC on all supported platforms.
+Refer to the gpac [build documentation](/Build/Build-Introduction) provides detailed instructions for compiling GPAC on all supported platforms.
 
 For linux systems, following the general build, you can use
  `$ make install-lib` to install the necessary libraries and header files. It will also install a gpac.pc file for pkg-config. With it you can easily build projects that use the gpac library with something like:
@@ -28,7 +28,7 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
     }
 ```
 
-This function will create a new filter session, loading parameters from [gpac config](Filters/core_config). This will also load all available filter registers not blacklisted.
+This function will create a new filter session, loading parameters from [gpac config](/Filters/core_config). This will also load all available filter registers not blacklisted.
 
 More information on this function and alternatives can be found on the doxygen [libgpac documentation page](https://doxygen.gpac.io/group__fs__grp.html#gaa7570001b4d4c07ef8883b17d7ed12ca).
 
@@ -47,7 +47,7 @@ if (gf_err != GF_OK)
 }
 ```
 
-Alternatively to [gf_fs_load_source](https://doxygen.gpac.io/group__fs__grp.html#gafce8e6e28696bc68e863bd4153282f80) function we can use the more generic [gf_fs_load_filter](https://doxygen.gpac.io/group__fs__grp.html#ga962fa3063a69ef02e43f06abe14cfe65) and use the [Fin](Filters/fin) filter (followed by its options with the syntax :opt=val) as follows:
+Alternatively to [gf_fs_load_source](https://doxygen.gpac.io/group__fs__grp.html#gafce8e6e28696bc68e863bd4153282f80) function we can use the more generic [gf_fs_load_filter](https://doxygen.gpac.io/group__fs__grp.html#ga962fa3063a69ef02e43f06abe14cfe65) and use the [Fin](/Filters/fin) filter (followed by its options with the syntax :opt=val) as follows:
 
 ```C
 GF_Filter *src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);
@@ -63,7 +63,7 @@ The filter session keeps an internal graph representation of all available filte
 
   
 
-The following code snippet provides an example to load the [reframer](Filters/reframer) filter.
+The following code snippet provides an example to load the [reframer](/Filters/reframer) filter.
 
   
 ```C

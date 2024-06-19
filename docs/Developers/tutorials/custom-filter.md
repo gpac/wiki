@@ -378,4 +378,4 @@ static const uint8_t h264_grey_frame_dsi[] = {
 ```
 and we run our filters session that will result in the following filters graph being executed. 
 
-![custom filter execution](tutorials/images/T1_img0.png)
+![custom filter execution](images/T1_img0.png)

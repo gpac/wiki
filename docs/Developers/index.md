@@ -1,3 +1,7 @@
+---
+title: GPAC developer guide
+---
+
 ## Contributing
 
 A complex project like GPAC wouldn’t exist and persist without the support of its community. Please contribute: a nice message, supporting us in our communication, reporting issues when you see them … any gesture, even the smallest ones, counts. 
@@ -12,6 +16,12 @@ Please use [github issues](https://github.com/gpac/gpac/issues) for feature requ
 The [API documentation](https://doxygen.gpac.io/modules.html) provides information on the GPAC  Filter API.
 
 GPAC's core is writen in C, but it can be easily extended using [Javascipt Filters](/Developers/javascript), used in a [Python](/Howtos/python) or [NodeJS application](/Developers/javascript).
+
+
+## Tutorials
+
+- [Intro to Filter Session](/Developers/tutorials/filter-session-intro)
+- [Writing a custom Filter](/Developers/tutorials/custom-filter)
 
 
 ## Building
