@@ -151,6 +151,14 @@ MP4Box is not designed to deal with live sources and its processing cannot be in
 
 On the other hand, gpac can be interrupted using `ctrl+c` and the current session flushed to save the results of what has been done so far.
 
+## Subtle differences in gpac
+
+There are some subtle differences between MP4Box and gpac that may result in different behavior. Some of these are:
+
+- Default interleaving in MP4Box is 500ms, while it is 1000ms in gpac
+- `deps` option is set by default on mp4mx, you must set in on sources in gpac
+- Handler name is not set by `-for-test` in gpac, for that you need to set `#HandlerName=...` property on the source
+
 
 # gpac, not MP4Box
 
