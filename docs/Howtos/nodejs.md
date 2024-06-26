@@ -33,10 +33,14 @@ You can then build using:
 
 If you don't want to install on your system, you will need to modify the `binding.gyp` file to set the include dir to the root of gpac source tree:
 
--  "include_dirs": ["<(module_root_dir)/../../include"]
+```
+"include_dirs": ["<(module_root_dir)/../../include"]
+```
 
-If built using configure and make, you will likely have a custom config.h file, and the build tree root must also be indicated together with the `GPAC_HAVE_CONFIG_H` macro.
+- If built using configure and make, you will likely have a custom config.h file, and the build tree root must also be indicated together with the `GPAC_HAVE_CONFIG_H` macro.
+
 - If you build gpac at the top of the gpac source tree (using e.g. `./configure && make`),  the build tree root for node will be `<(module_root_dir)/../..`.
+
 - If you build gpac in gpac/bin/mytest, (using e.g. `mkdir bin/mytest && cd bin/mytest && ../../configure && make`),  the build tree root for node will be `<(module_root_dir)/../../bin/mytest`.
 
 You will also likely need to update the `libraries` property to add the path to your libgpac shared library (typically in bin/gcc of the build tree root).
@@ -47,7 +51,7 @@ You will also likely need to update the `libraries` property to add the path to 
         "target_name": "gpac",
         "sources": [ "./src/gpac_napi.c"],
         "include_dirs": ["<(module_root_dir)/../../include", "<(module_root_dir)/../.."],
-        "libraries": [ '-lgpac',"-L<(module_root_dir)/bin/gcc"],
+        "libraries": [ '-lgpac',"-L<(module_root_dir)/../../bin/gcc"],
         "defines":["GPAC_HAVE_CONFIG_H"]
     }]
 }
@@ -765,6 +769,3 @@ You should therefore avoid using shared JS data in your custom filter whenever p
 In multi-threaded mode, custom filter bindings (`dashin` filter for now) must be called on the main thread. 
 
 This implies that the filter bound will be forced to run on the main thread. Packets dispatched by a JS-bound filter may still be processed by other threads, unless they are JS shared data packets.
-
-
-
