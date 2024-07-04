@@ -11,9 +11,10 @@ This filter decodes HEVC and LHVC (HEVC scalable extensions) from one or more PI
 # Options    
   
 <a id="threading">__threading__</a> (enum, default: _frame_): set threading mode  
-* frameslice: parallel decoding of both frames and slices  
-* frame: parallel decoding of frames  
-* slice: parallel decoding of slices  
+
+- frameslice: parallel decoding of both frames and slices  
+- frame: parallel decoding of frames  
+- slice: parallel decoding of slices  
   
 <a id="nb_threads">__nb_threads__</a> (uint, default: _0_): set number of threads (if 0, uses number of cores minus one)  
 <a id="no_copy">__no_copy__</a> (bool, default: _false_): directly dispatch internal decoded frame without copy  

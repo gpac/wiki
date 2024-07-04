@@ -9,21 +9,25 @@ This process will create the destination file if not existing, and add the track
 The supported input media types depend on your installation, check [filters documentation](Filters) for more info.  
     
 To select a desired media track from a source, a fragment identifier '#' can be specified, before any other options. The following syntax is used:  
-* `#video`: adds the first video track found in source  
-* `#audio`: adds the first audio track found in source  
-* `#auxv`: adds the first auxiliary video track found in source  
-* `#pict`: adds the first picture track found in source  
-* `#trackID=ID` or `#ID`: adds the specified track. For IsoMedia files, ID is the track ID. For other media files, ID is the value indicated by `MP4Box -info inputFile`  
-* `#pid=ID`: number of desired PID for MPEG-2 TS sources  
-* `#prog_id=ID`: number of desired program for MPEG-2 TS sources  
-* `#program=NAME`: name of desired program for MPEG-2 TS sources  
+
+- `#video`: adds the first video track found in source  
+- `#audio`: adds the first audio track found in source  
+- `#auxv`: adds the first auxiliary video track found in source  
+- `#pict`: adds the first picture track found in source  
+- `#trackID=ID` or `#ID`: adds the specified track. For IsoMedia files, ID is the track ID. For other media files, ID is the value indicated by `MP4Box -info inputFile`  
+- `#pid=ID`: number of desired PID for MPEG-2 TS sources  
+- `#prog_id=ID`: number of desired program for MPEG-2 TS sources  
+- `#program=NAME`: name of desired program for MPEG-2 TS sources  
+
     
 By default all imports are performed sequentially, and final interleaving is done at the end; this however requires a temporary file holding original ISOBMF file (if any) and added files before creating the final output. Since this can become quite large, it is possible to add media to a new file without temporary storage, using [-flat](mp4box-gen-opts/#flat) option, but this disables media interleaving.  
     
 If you wish to create an interleaved new file with no temporary storage, use the [-newfs](mp4box-gen-opts/#newfs) option. The interleaving might not be as precise as when using [-new](#new) since it is dependent on multiplexer input scheduling (each execution might lead to a slightly different result). Additionally in this mode:   
- - Some multiplexing options (marked with `X` below) will be activated for all inputs (e.g. it is not possible to import one AVC track with `xps_inband` and another without).  
- - Some multiplexing options (marked as `D` below) cannot be used as they require temporary storage for file edition.  
- - Usage of [-cat](#cat) is possible, but concatenated sources will not be interleaved in the output. If you wish to perform more complex cat/add operations without temp file, use a [playlist](flist).  
+
+    - Some multiplexing options (marked with `X` below) will be activated for all inputs (e.g. it is not possible to import one AVC track with `xps_inband` and another without).  
+    - Some multiplexing options (marked as `D` below) cannot be used as they require temporary storage for file edition.  
+    - Usage of [-cat](#cat) is possible, but concatenated sources will not be interleaved in the output. If you wish to perform more complex cat/add operations without temp file, use a [playlist](flist).  
+
     
 Source URL can be any URL supported by GPAC, not limited to local files.  
     
@@ -49,9 +53,10 @@ When importing an ISOBMFF/QT file, only options marked as `C` or `S` can be used
 Allowed per-file options:  
   
 __dur__ (int):                 `XC` import only the specified duration from the media. Value can be:  
-  * positive float: specifies duration in seconds  
-  * fraction: specifies duration as NUM/DEN fraction  
-  * negative integer: specifies duration in number of coded frames  
+
+    - positive float: specifies duration in seconds  
+    - fraction: specifies duration as NUM/DEN fraction  
+    - negative integer: specifies duration in number of coded frames  
   
 __start__ (number):            `C` target start time in source media, may not be supported depending on the source  
 __lang__ (string):             `S` set imported media language code  
@@ -81,10 +86,11 @@ __ovsbr__:                     same as [-ovsbr](#ovsbr)
 __ps__:                        same as [-ps](#ps)  
 __psx__:                       same as [-psx](#psx)  
 __asemode__ (string):          `XS` set the mode to create the AudioSampleEntry. Value can be:  
-  * v0-bs: use MPEG AudioSampleEntry v0 and the channel count from the bitstream (even if greater than 2) - default  
-  * v0-2: use MPEG AudioSampleEntry v0 and the channel count is forced to 2  
-  * v1: use MPEG AudioSampleEntry v1 and the channel count from the bitstream  
-  * v1-qt: use QuickTime Sound Sample Description Version 1 and the channel count from the bitstream (even if greater than 2). This will also trigger using alis data references instead of url, even for non-audio tracks  
+
+    - v0-bs: use MPEG AudioSampleEntry v0 and the channel count from the bitstream (even if greater than 2) - default  
+    - v0-2: use MPEG AudioSampleEntry v0 and the channel count is forced to 2  
+    - v1: use MPEG AudioSampleEntry v1 and the channel count from the bitstream  
+    - v1-qt: use QuickTime Sound Sample Description Version 1 and the channel count from the bitstream (even if greater than 2). This will also trigger using alis data references instead of url, even for non-audio tracks  
   
 __audio_roll__ (int):          `S` add a roll sample group with roll_distance `N` for audio tracks  
 __roll__ (int):                `S` add a roll sample group with roll_distance `N`  
@@ -94,16 +100,18 @@ __nosei__:                     discard all SEI messages during import
 __svc__:                       import SVC/LHVC with explicit signaling (no AVC base compatibility)  
 __nosvc__:                     discard SVC/LHVC data when importing  
 __svcmode__ (string):          `DS` set SVC/LHVC import mode. Value can be:  
-  * split: each layer is in its own track  
-  * merge: all layers are merged in a single track  
-  * splitbase: all layers are merged in a track, and the AVC base in another  
-  * splitnox: each layer is in its own track, and no extractors are written  
-  * splitnoxib: each layer is in its own track, no extractors are written, using inband param set signaling  
+
+    - split: each layer is in its own track  
+    - merge: all layers are merged in a single track  
+    - splitbase: all layers are merged in a track, and the AVC base in another  
+    - splitnox: each layer is in its own track, and no extractors are written  
+    - splitnoxib: each layer is in its own track, no extractors are written, using inband param set signaling  
   
 __temporal__ (string):         `DS` set HEVC/LHVC temporal sublayer import mode. Value can be:  
-  * split: each sublayer is in its own track  
-  * splitbase: all sublayers are merged in a track, and the HEVC base in another  
-  * splitnox: each layer is in its own track, and no extractors are written  
+
+    - split: each sublayer is in its own track  
+    - splitbase: all sublayers are merged in a track, and the HEVC base in another  
+    - splitnox: each layer is in its own track, and no extractors are written  
   
 __subsamples__:                add SubSample information for AVC+SVC  
 __deps__:                      import sample dependency information for AVC and HEVC  
@@ -138,16 +146,18 @@ __compat__ (int):              `S` force the profile compatibility flags for the
 __novpsext__:                  remove VPS extensions from HEVC VPS  
 __keepav1t__:                  keep AV1 temporal delimiter OBU in samples, might help if source file had losses  
 __dlba__ (string):             `S` force DolbyAtmos mode for EAC3. Value can be  
-* no: disable Atmos signaling  
-* auto: use Atmos signaling from first sample  
-* N: force Atmos signaling using compatibility type index N  
+
+- no: disable Atmos signaling  
+- auto: use Atmos signaling from first sample  
+- N: force Atmos signaling using compatibility type index N  
   
 __font__ (string):             specify font name for text import (default `Serif`)  
 __size__ (int):                specify font size for text import (default `18`)  
 __text_layout__ (string):      specify the track text layout as WxHxXxY  
-  * if W (resp H) = 0: the max width (resp height) of the tracks in the file are used  
-  * if Y=-1: the layout is moved to the bottom of the track area  
-  * X and Y can be omitted: `:layout=WxH`  
+
+    - if W (resp H) = 0: the max width (resp height) of the tracks in the file are used  
+    - if Y=-1: the layout is moved to the bottom of the track area  
+    - X and Y can be omitted: `:layout=WxH`  
   
 __swf-global__:                all SWF defines are placed in first scene replace rather than when needed  
 __swf-no-ctrl__:               use a single stream for movie control and dictionary (this will disable ActionScript)  
@@ -166,14 +176,16 @@ __rate__ (int):                force average rate and max rate to VAL (in bps) i
 __stz2__:                      `S` use compact size table (for low-bitrates)  
 __bitdepth__ (int):            set bit depth to VAL for imported video content (default is 24)  
 __colr__ (string):             `S` set color profile for imported video content. Value is formatted as:  
-  * nclc,p,t,m: with `p` colour primary (int or string), `t` transfer characteristics (int or string) and `m` matrix coef (int or string), cf `-h cicp`  
-  * nclx,p,t,m,r: same as `nclx` with r full range flag (`yes`, `on` or `no`, `off`)  
-  * prof,path: with path indicating the file containing the ICC color profile  
-  * rICC,path: with path indicating the file containing the restricted ICC color profile  
-  * 'none': removes color info  
+
+    - nclc,p,t,m: with `p` colour primary (int or string), `t` transfer characteristics (int or string) and `m` matrix coef (int or string), cf `-h cicp`  
+    - nclx,p,t,m,r: same as `nclx` with r full range flag (`yes`, `on` or `no`, `off`)  
+    - prof,path: with path indicating the file containing the ICC color profile  
+    - rICC,path: with path indicating the file containing the restricted ICC color profile  
+    - 'none': removes color info  
   
 __hdr__ (string):              `S` set HDR info on track (see [-hdr](mp4box-gen-opts/#hdr) ), 'none' removes HDR info  
 __dvp__,__-dv-profile__ (string): `S` set the Dolby Vision profile on imported track  
+
 - Profile is an integer, or `none` to remove DV signaling  
 - Profile can be suffixed with compatibility ID, e.g. `5.hdr10`  
 - Allowed compatibility ID are `none`, `hdr10`, `bt709`, `hlg709`, `hlg2100`, `bt2020`, `brd`, or integer value as per DV spec  
@@ -185,20 +197,23 @@ __colorprim__ (string):        `S` force the colour primaries in VUI for AVC|H26
 __colortfc__ (string):         `S` force transfer characteristics in VUI for AVC|H264 and HEVC (int or string, cf `-h cicp`)  
 __colormx__ (string):          `S` force the matrix coefficients in VUI for the AVC|H264 and HEVC content (int or string, cf `-h cicp`)  
 __tc__ (string):               `S` inject a single QT timecode. Value is formatted as:  
-  * [d]FPS[/FPS_den],h,m,s,f[,framespertick]: optional drop flag, framerate (integer or fractional), hours, minutes, seconds and frame number  
-  * : `d` is an optional flag used to indicate that the counter is in drop-frame format  
-  * : the `framespertick` is optional and defaults to round(framerate); it indicates the number of frames per counter tick  
+
+    - [d]FPS[/FPS_den],h,m,s,f[,framespertick]: optional drop flag, framerate (integer or fractional), hours, minutes, seconds and frame number  
+    - : `d` is an optional flag used to indicate that the counter is in drop-frame format  
+    - : the `framespertick` is optional and defaults to round(framerate); it indicates the number of frames per counter tick  
   
 __edits__ (string):            `S` override edit list, same syntax as [-edits](#edits)  
 __lastsampdur__ (string):      `S` set duration of the last sample. Value is formatted as:  
-  * no value: use the previous sample duration  
-  * integer: indicate the duration in milliseconds  
-  * N/D: indicate the duration as fractional second  
+
+    - no value: use the previous sample duration  
+    - integer: indicate the duration in milliseconds  
+    - N/D: indicate the duration as fractional second  
   
 __ID__ (int):                  `S` set target ID  
-  - a value of 0 (default) will try to keep source track ID  
-  - a value of -1 will ignore source track ID  
-  - other value will try to set track ID to this value if no other track with same ID is present  
+
+    - a value of 0 (default) will try to keep source track ID  
+    - a value of -1 will ignore source track ID  
+    - other value will try to set track ID to this value if no other track with same ID is present  
   
 __tkgp__ (string):             `S` assign track group to track. Value is formatted as `TYPE,N` with TYPE the track group type (4CC) and N the track group ID. A negative ID removes from track group ID -N  
 __tkidx__ (string):            `S` set track position in track list, 1 being first track in file  

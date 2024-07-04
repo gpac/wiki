@@ -21,10 +21,11 @@ The pixel format of the dumped frame is always RGB in OpenGL and matches the vid
 <a id="vsync">__vsync__</a> (bool, default: _true_): enable video screen sync  
 <a id="drop">__drop__</a> (bool, default: _false_, updatable): enable dropping late frames  
 <a id="disp">__disp__</a> (enum, default: _gl_): display mode  
-* gl: OpenGL  
-* pbo: OpenGL with PBO  
-* blit: 2D hardware blit  
-* soft: software blit  
+
+- gl: OpenGL  
+- pbo: OpenGL with PBO  
+- blit: 2D hardware blit  
+- soft: software blit  
   
 <a id="start">__start__</a> (dbl, default: _0.0_, updatable): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
 <a id="dur">__dur__</a> (lfrac, default: _0_): only play the specified duration  
@@ -33,6 +34,7 @@ The pixel format of the dumped frame is always RGB in OpenGL and matches the vid
 <a id="linear">__linear__</a> (bool, default: _false_): use linear filtering instead of nearest pixel for GL mode  
 <a id="back">__back__</a> (uint, default: _0x808080_): back color for transparent images  
 <a id="wsize">__wsize__</a> (v2di, default: _-1x-1_): default init window size  
+
 - 0x0 holds the window size of the first frame  
 - negative values indicate video media size  
   
@@ -53,16 +55,18 @@ The pixel format of the dumped frame is always RGB in OpenGL and matches the vid
 <a id="media_offset">__media_offset__</a> (dbl, default: _0_): media offset (substract this value to CTS to get media time - readonly)  
 <a id="wid">__wid__</a> (uint, default: _0_): window id (readonly)  
 <a id="vflip">__vflip__</a> (enum, default: _no_, updatable): flip video (GL only)  
-* no: no flipping  
-* v: vertical flip  
-* h: horizontal flip  
-* vh: horizontal and vertical  
-* hv: same as vh  
+
+- no: no flipping  
+- v: vertical flip  
+- h: horizontal flip  
+- vh: horizontal and vertical  
+- hv: same as vh  
   
 <a id="vrot">__vrot__</a> (enum, default: _0_, updatable): rotate video by given angle  
-* 0: no rotation  
-* 90: rotate 90 degree counter clockwise  
-* 180: rotate 180 degree  
-* 270: rotate 90 degree clockwise  
+
+- 0: no rotation  
+- 90: rotate 90 degree counter clockwise  
+- 180: rotate 180 degree  
+- 270: rotate 90 degree clockwise  
   
   

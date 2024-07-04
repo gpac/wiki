@@ -9,9 +9,11 @@ This filter decodes WebVTT streams into a SVG scene graph of the compositor filt
 The scene graph creation is done through JavaScript.  
 The filter options are used to override the JS global variables of the WebVTT renderer.  
 In stand-alone rendering (no associated video), the filter will use:  
+
 - `Width` and `Height` properties of input pid if any  
 - otherwise, `osize` option of compositor if set  
 - otherwise, [txtw](#txtw) and [txth](#txth)  
+
   
 
 # Options    

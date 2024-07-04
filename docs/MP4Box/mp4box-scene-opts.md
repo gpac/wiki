@@ -48,14 +48,15 @@ Options:
 <a id="rap">__-rap__</a> (int): duration in ms of base carousel; you can specify the RAP period of a single ESID (not in DIMS) using `ESID=X:time`  
     
 Runtime options:  
-* q: quits  
-* u: inputs some commands to be sent  
-* U: same as u but signals the updates as critical  
-* e: inputs some commands to be sent without being aggregated  
-* E: same as e but signals the updates as critical  
-* f: forces RAP sending  
-* F: forces RAP regeneration and sending  
-* p: dumps current scene  
+
+- q: quits  
+- u: inputs some commands to be sent  
+- U: same as u but signals the updates as critical  
+- e: inputs some commands to be sent without being aggregated  
+- E: same as e but signals the updates as critical  
+- f: forces RAP sending  
+- F: forces RAP regeneration and sending  
+- p: dumps current scene  
 
 # SWF Importer Options  
   

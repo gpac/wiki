@@ -9,19 +9,25 @@ The ROUTE output filter is used to distribute a live file-based session using RO
 The filter supports DASH and HLS inputs, ATSC3.0 signaling and generic ROUTE or DVB-MABR signaling.  
   
 The filter is identified using the following URL schemes:  
-* `atsc://`: session is a full ATSC 3.0 session  
-* `route://IP:port`: session is a ROUTE session running on given multicast IP and port  
-* `mabr://IP:port`: session is a DVB-MABR session using FLUTE running on given multicast IP and port  
+
+- `atsc://`: session is a full ATSC 3.0 session  
+- `route://IP:port`: session is a ROUTE session running on given multicast IP and port  
+- `mabr://IP:port`: session is a DVB-MABR session using FLUTE running on given multicast IP and port  
+
   
 The filter only accepts input PIDs of type `FILE`.  
+
 - HAS Manifests files are detected by file extension and/or MIME types, and sent as part of the signaling bundle or as LCT object files for HLS child playlists.  
 - HAS Media segments are detected using the `OrigStreamType` property, and send as LCT object files using the DASH template string.  
 - A PID without `OrigStreamType` property set is delivered as a regular LCT object file (called `raw` hereafter).  
+
     
 For `raw` file PIDs, the filter will look for the following properties:  
-* `ROUTEName`: set resource name. If not found, uses basename of URL  
-* `ROUTECarousel`: set repeat period. If not found, uses [carousel](#carousel). If 0, the file is only sent once  
-* `ROUTEUpload`: set resource upload time. If not found, uses [carousel](#carousel). If 0, the file will be sent as fast as possible.  
+
+- `ROUTEName`: set resource name. If not found, uses basename of URL  
+- `ROUTECarousel`: set repeat period. If not found, uses [carousel](#carousel). If 0, the file is only sent once  
+- `ROUTEUpload`: set resource upload time. If not found, uses [carousel](#carousel). If 0, the file will be sent as fast as possible.  
+
   
 When DASHing for ROUTE, DVB-MABR or single service ATSC, a file extension, either in [dst](#dst) or in [ext](#ext), may be used to identify the HAS session type (DASH or HLS).  
 Example
@@ -45,9 +51,11 @@ __Warning: When forwarding an existing DASH/HLS session, do NOT set any extensio
   
 By default, all streams in a service are assigned to a single multicast session, and differentiated by TSI (see [splitlct](#splitlct)).  
 TSI are assigned as follows:  
+
 - signaling TSI is always 0 for ROUTE, 1 for DVB+Flute  
 - raw files are assigned TSI 1 and increasing number of TOI  
 - otherwise, the first PID found is assigned TSI 10, the second TSI 20 etc ...  
+
   
 Init segments and HLS child playlists are sent before each new segment, independently of [carousel](#carousel).  
 
@@ -58,13 +66,15 @@ By default, a single multicast IP is used for route sessions, each service will 
 The filter will look for `ROUTEIP` and `ROUTEPort` properties on the incoming PID. If not found, the default [ip](#ip) and [port](#port) will be used.  
   
 ATSC 3.0 attributes set by using the following PID properties:  
-* ATSC3ShortServiceName: set the short service name, maxiumu of 7 characters.  If not found, `ServiceName` is checked, otherwise default to `GPAC`.  
-* ATSC3MajorChannel: set major channel number of service. Default to 2.  This really should be set and should not use the default.  
-* ATSC3MinorChannel: set minor channel number of service. Default of 1.  
-* ATSC3ServiceCat: set service category, default to 1 if not found. 1=Linear a/v service. 2=Linear audio only service. 3=App-based service. 4=ESg service. 5=EA service. 6=DRM service.  
-* ATSC3hidden: set if service is hidden.  Boolean true or false. Default of false.  
-* ATSC3hideInGuide: set if service is hidden in ESG.  Boolean true or false. Default of false.  
-* ATSC3configuration: set service configuration.  Choices are Broadcast or Broadband.  Default of Broadcast  
+
+- ATSC3ShortServiceName: set the short service name, maxiumu of 7 characters.  If not found, `ServiceName` is checked, otherwise default to `GPAC`.  
+- ATSC3MajorChannel: set major channel number of service. Default to 2.  This really should be set and should not use the default.  
+- ATSC3MinorChannel: set minor channel number of service. Default of 1.  
+- ATSC3ServiceCat: set service category, default to 1 if not found. 1=Linear a/v service. 2=Linear audio only service. 3=App-based service. 4=ESg service. 5=EA service. 6=DRM service.  
+- ATSC3hidden: set if service is hidden.  Boolean true or false. Default of false.  
+- ATSC3hideInGuide: set if service is hidden in ESG.  Boolean true or false. Default of false.  
+- ATSC3configuration: set service configuration.  Choices are Broadcast or Broadband.  Default of Broadcast  
+
   
 # ROUTE mode  
   
@@ -84,17 +94,22 @@ The FLUTE session always uses a symbol length of [mtu](#mtu) minus 44 bytes.
   
 # Low latency mode  
   
-When using low-latency mode, the input media segments are not re-assembled in a single packet but are instead sent as they are received.  
+When using low-latency mode (-llmode)(), the input media segments are not re-assembled in a single packet but are instead sent as they are received.  
 In order for the real-time scheduling of data chunks to work, each fragment of the segment should have a CTS and timestamp describing its timing.  
 If this is not the case (typically when used with an existing DASH session in file mode), the scheduler will estimate CTS and duration based on the stream bitrate and segment duration. The indicated bitrate is increased by [brinc](#brinc) percent for safety.  
 If this fails, the filter will trigger warnings and send as fast as possible.  
 _Note: The LCT objects are sent with no length (TOL header) assigned until the final segment size is known, potentially leading to a final 0-size LCT fragment signaling only the final size._  
   
+In this mode, init segments and manifests are sent at the frequency given by property `ROUTECarousel` of the source PID if set or by (-carousel)[] option.  
+Indicating `ROUTECarousel=0` will disable mid-segment repeating of manifests and init segments.  
+
 # Examples  
   
 Since the ROUTE filter only consumes files, it is required to insert:  
+
 - the dash demultiplexer in file forwarding mode when loading a DASH session  
 - the dash multiplexer when creating a DASH session  
+
   
 Multiplexing an existing DASH session in route:  
 Example
@@ -141,6 +156,15 @@ gpac -i source.mpd dasher -o route://225.1.1.0:6000/manifest.mpd
 ```  
 These will demultiplex the input, re-dash it and send the output of the dasher to ROUTE  
   
+# Error simulation  
+  
+It is possible to simulate errors with (-errsim)(). In this mode the LCT network sender implements a 2-state Markov chain:  
+Example
+```
+gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
+```  
+for a 1.0 percent chance to transition to error (not sending data over the network) and 98.0 to transition from error back to OK.  
+  
 
 # Options    
   
@@ -155,9 +179,10 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
 <a id="bsid">__bsid__</a> (uint, default: _800_): ID for ATSC broadcast stream  
 <a id="mtu">__mtu__</a> (uint, default: _1472_): size of LCT MTU in bytes  
 <a id="splitlct">__splitlct__</a> (enum, default: _off_): split mode for LCT channels  
-* off: all streams are in the same LCT channel  
-* type: each new stream type results in a new LCT channel  
-* all: all streams are in dedicated LCT channel, the first stream being used for STSID signaling  
+
+- off: all streams are in the same LCT channel  
+- type: each new stream type results in a new LCT channel  
+- all: all streams are in dedicated LCT channel, the first stream being used for STSID signaling  
   
 <a id="korean">__korean__</a> (bool, default: _false_): use Korean version of ATSC 3.0 spec instead of US  
 <a id="llmode">__llmode__</a> (bool, default: _false_): use low-latency mode  
@@ -166,9 +191,13 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
 <a id="runfor">__runfor__</a> (uint, default: _0_): run for the given time in ms  
 <a id="nozip">__nozip__</a> (bool, default: _false_): do not zip signaling package (STSID+manifest)  
 <a id="furl">__furl__</a> (bool, default: _false_): inject full URLs of source service in the signaling instead of stripped server path  
+<a id="flute">__flute__</a> (bool, default: _true_): use flute for DVB-MABR object delivery  
 <a id="csum">__csum__</a> (enum, default: _meta_): send MD5 checksum for DVB flute  
-* no: do not send checksum  
-* meta: only send checksum for configuration files, manifests and init segments  
-* all: send checksum for everything  
+
+- no: do not send checksum  
+- meta: only send checksum for configuration files, manifests and init segments  
+- all: send checksum for everything  
   
+<a id="recv_obj_timeout">__recv_obj_timeout__</a> (uint, default: _50_): timeout period in ms before resorting to unicast repair  
+<a id="errsim">__errsim__</a> (v2d, default: _0.0x100.0_): simulate errors using a 2-state Markov chain. Value are percentages  
   

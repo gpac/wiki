@@ -17,8 +17,9 @@ This filter parses AV1 OBU, AV1 AnnexB or IVF with AV1 or VP9 files/data and out
 <a id="notime">__notime__</a> (bool, default: _false_): ignore input timestamps, rebuild from 0  
 <a id="temporal_delim">__temporal_delim__</a> (bool, default: _false_): keep temporal delimiters in reconstructed frames  
 <a id="bsdbg">__bsdbg__</a> (enum, default: _off_): debug OBU parsing in `media@debug logs`  
-* off: not enabled  
-* on: enabled  
-* full: enable with number of bits dumped  
+
+- off: not enabled  
+- on: enabled  
+- full: enable with number of bits dumped  
   
   

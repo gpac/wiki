@@ -13,8 +13,10 @@ Several BSF may be specified in [f](#f) for different coding types. BSF not matc
 When no BSF matches the input coding type, or when [f](#f) is empty, the filter acts as a passthrough filter.  
   
 Options are specified after the desired filters:  
+
 - `ffbsf:f=h264_metadata:video_full_range_flag=0`  
 - `ffbsf:f=h264_metadata,av1_metadata:video_full_range_flag=0:color_range=tv`  
+
   
 _Note: Using BSFs on some media types (e.g. avc, hevc) may trigger creation of a reframer filter (e.g. rfnalu)_  
   

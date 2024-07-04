@@ -5,7 +5,7 @@
 Register name used to load filter: __aout__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter writes a single uncompressed audio input PID to a sound card or other audio output device.  
+This filter writes a single PCM (uncompressed) audio input PID to a sound card or other audio output device.  
   
 The longer the audio buffering [bdur](#bdur) is, the longer the audio latency will be (pause/resume). The quality of fast forward audio playback will also be degraded when using large audio buffers.  
   

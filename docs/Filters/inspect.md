@@ -16,50 +16,54 @@ _Note: specifying [xml](#xml), [analyze](#analyze), [fmt](#fmt) or using `-for-t
   
 The packet inspector can be configured to dump specific properties of packets using [fmt](#fmt).  
 When the option is not present, all properties are dumped. Otherwise, only properties identified by `$TOKEN$` are printed. You may use '$', '@' or '%' for `TOKEN` separator. `TOKEN` can be:  
-* pn: packet (frame in framed mode) number  
-* dts: decoding time stamp in stream timescale, N/A if not available  
-* ddts: difference between current and previous packets decoding time stamp in stream timescale, N/A if not available  
-* cts: composition time stamp in stream timescale, N/A if not available  
-* dcts: difference between current and previous packets composition time stamp in stream timescale, N/A if not available  
-* ctso: difference between composition time stamp and decoding time stamp in stream timescale, N/A if not available  
-* dur: duration in stream timescale  
-* frame: framing status  
-  * interface: complete AU, interface object (no size info). Typically a GL texture  
-  * frame_full: complete AU  
-  * frame_start: beginning of frame  
-  * frame_end: end of frame  
-  * frame_cont: frame continuation (not beginning, not end)  
-* sap or rap: SAP type of the frame  
-* ilace: interlacing flag (0: progressive, 1: top field, 2: bottom field)  
-* corr: corrupted packet flag  
-* seek: seek flag  
-* bo: byte offset in source, N/A if not available  
-* roll: roll info  
-* crypt: crypt flag  
-* vers: carousel version number  
-* size: size of packet  
-* csize: total size of packets received so far  
-* crc: 32 bit CRC of packet  
-* lf or n: insert new line  
-* t: insert tab  
-* data: hex dump of packet (_big output!_) or as string if legal UTF-8  
-* lp: leading picture flag  
-* depo: depends on other packet flag  
-* depf: is depended on other packet flag  
-* red: redundant coding flag  
-* start: packet composition time as HH:MM:SS.ms  
-* startc: packet composition time as HH:MM:SS,ms  
-* end: packet end time as HH:MM:SS.ms  
-* endc: packet end time as HH:MM:SS,ms  
-* ck: clock type used for PCR discontinuities  
-* pcr: MPEG-2 TS last PCR, n/a if not available  
-* pcrd: difference between last PCR and decoding time, n/a if no PCR available  
-* pcrc: difference between last PCR and composition time, n/a if no PCR available  
-* P4CC: 4CC of packet property  
-* PropName: Name of packet property  
-* pid.P4CC: 4CC of PID property  
-* pid.PropName: Name of PID property  
-* fn: Filter name  
+
+- pn: packet (frame in framed mode) number  
+- dts: decoding time stamp in stream timescale, N/A if not available  
+- ddts: difference between current and previous packets decoding time stamp in stream timescale, N/A if not available  
+- cts: composition time stamp in stream timescale, N/A if not available  
+- dcts: difference between current and previous packets composition time stamp in stream timescale, N/A if not available  
+- ctso: difference between composition time stamp and decoding time stamp in stream timescale, N/A if not available  
+- dur: duration in stream timescale  
+- frame: framing status  
+
+    - interface: complete AU, interface object (no size info). Typically a GL texture  
+    - frame_full: complete AU  
+    - frame_start: beginning of frame  
+    - frame_end: end of frame  
+    - frame_cont: frame continuation (not beginning, not end)  
+
+- sap or rap: SAP type of the frame  
+- ilace: interlacing flag (0: progressive, 1: top field, 2: bottom field)  
+- corr: corrupted packet flag  
+- seek: seek flag  
+- bo: byte offset in source, N/A if not available  
+- roll: roll info  
+- crypt: crypt flag  
+- vers: carousel version number  
+- size: size of packet  
+- csize: total size of packets received so far  
+- crc: 32 bit CRC of packet  
+- lf or n: insert new line  
+- t: insert tab  
+- data: hex dump of packet (_big output!_) or as string if legal UTF-8  
+- lp: leading picture flag  
+- depo: depends on other packet flag  
+- depf: is depended on other packet flag  
+- red: redundant coding flag  
+- start: packet composition time as HH:MM:SS.ms  
+- startc: packet composition time as HH:MM:SS,ms  
+- end: packet end time as HH:MM:SS.ms  
+- endc: packet end time as HH:MM:SS,ms  
+- ck: clock type used for PCR discontinuities  
+- pcr: MPEG-2 TS last PCR, n/a if not available  
+- pcrd: difference between last PCR and decoding time, n/a if no PCR available  
+- pcrc: difference between last PCR and composition time, n/a if no PCR available  
+- P4CC: 4CC of packet property  
+- PropName: Name of packet property  
+- pid.P4CC: 4CC of PID property  
+- pid.PropName: Name of PID property  
+- fn: Filter name  
+
   
 Example
 ```
@@ -86,18 +90,21 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 
 # Options    
   
-<a id="log">__log__</a> (str, default: _stdout_, Enum: _any|stderr|stdout|GLOG|null): set probe log filename  
-* _any: target file path and name  
-* stderr: dump to stderr  
-* stdout: dump to stdout  
-* GLOG: use GPAC logs `app@info`  
-* null: silent mode  
+<a id="log">__log__</a> (str, default: _stdout_, Enum: _any|stderr|stdout|GLOG|TL|null): set probe log filename  
+
+- _any: target file path and name  
+- stderr: dump to stderr  
+- stdout: dump to stdout  
+- GLOG: use GPAC logs `app@info`  
+- TL: use GPAC log tool `TL` at level `info`  
+- null: silent mode  
   
 <a id="mode">__mode__</a> (enum, default: _pck_): dump mode  
-* pck: dump full packet  
-* blk: dump packets before reconstruction  
-* frame: force reframer  
-* raw: dump source packets without demultiplexing  
+
+- pck: dump full packet  
+- blk: dump packets before reconstruction  
+- frame: force reframer  
+- raw: dump source packets without demultiplexing  
   
 <a id="interleave">__interleave__</a> (bool, default: _true_): dump packets as they are received on each PID. If false, logs are reported for each PID at end of session  
 <a id="deep">__deep__</a> (bool, default: _false_, updatable): dump packets along with PID state change, implied when [fmt](#fmt) is set  
@@ -113,10 +120,11 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 <a id="start">__start__</a> (dbl, default: _0.0_): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
 <a id="dur">__dur__</a> (frac, default: _0/0_): set inspect duration  
 <a id="analyze">__analyze__</a> (enum, default: _off_, updatable): analyze sample content (NALU, OBU), similar to `-bsdbg` option of reframer filters  
-* off: no analyzing  
-* on: simple analyzing  
-* bs: log bitstream syntax (all elements read from bitstream)  
-* full: log bitstream syntax and bit sizes signaled as `(N)` after field value, except 1-bit fields (omitted)  
+
+- off: no analyzing  
+- on: simple analyzing  
+- bs: log bitstream syntax (all elements read from bitstream)  
+- full: log bitstream syntax and bit sizes signaled as `(N)` after field value, except 1-bit fields (omitted)  
   
 <a id="xml">__xml__</a> (bool, default: _false_, updatable): use xml formatting (implied if (-analyze]() is set) and disable [fmt](#fmt)  
 <a id="crc">__crc__</a> (bool, default: _false_, updatable): dump crc of samples of subsamples (NALU or OBU) when analyzing  
@@ -125,14 +133,16 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 <a id="buffer">__buffer__</a> (uint, default: _0_): set playback buffer in ms  
 <a id="mbuffer">__mbuffer__</a> (uint, default: _0_): set max buffer occupancy in ms. If less than buffer, use buffer  
 <a id="rbuffer">__rbuffer__</a> (uint, default: _0_, updatable): rebuffer trigger in ms. If 0 or more than buffer, disable rebuffering  
+<a id="stats">__stats__</a> (bool, default: _false_): compute statistics for PIDs  
 <a id="test">__test__</a> (enum, default: _no_, updatable): skip predefined set of properties, used for test mode  
-* no: no properties skipped  
-* noprop: all properties/info changes on PID are skipped, only packets are dumped  
-* network: URL/path dump, cache state, file size properties skipped (used for hashing network results)  
-* netx: same as network but skip track duration and templates (used for hashing progressive load of fmp4)  
-* encode: same as network plus skip decoder config (used for hashing encoding results)  
-* encx: same as encode and skip bitrates, media data size and co  
-* nocrc: disable packet CRC dump  
-* nobr: skip bitrate  
+
+- no: no properties skipped  
+- noprop: all properties/info changes on PID are skipped, only packets are dumped  
+- network: URL/path dump, cache state, file size properties skipped (used for hashing network results)  
+- netx: same as network but skip track duration and templates (used for hashing progressive load of fmp4)  
+- encode: same as network plus skip decoder config (used for hashing encoding results)  
+- encx: same as encode and skip bitrates, media data size and co  
+- nocrc: disable packet CRC dump  
+- nobr: skip bitrate  
   
   

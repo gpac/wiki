@@ -18,9 +18,11 @@ In this case it accepts ANY type of input PID, not just file ones.
 # HTTP streaming recording  
   
 When recording a DASH or HLS session, the number of segments to keep per quality can be set using [max_cache_segs](#max_cache_segs).  
+
 - value `0`  keeps everything (default behaviour)  
 - a negative value `N` will keep `-N` files regardless of the time-shift buffer value  
 - a positive value `N` will keep `MAX(N, time-shift buffer)` files  
+
   
 Example
 ```
@@ -39,14 +41,16 @@ This will force keeping a maximum of 3 media segments while recording the DASH s
 <a id="ext">__ext__</a> (cstr): set extension for graph resolution, regardless of file extension  
 <a id="mime">__mime__</a> (cstr): set mime type for graph resolution  
 <a id="cat">__cat__</a> (enum, default: _none_): cat each file of input PID rather than creating one file per filename  
-* none: never cat files  
-* auto: only cat if files have same names  
-* all: always cat regardless of file names  
+
+- none: never cat files  
+- auto: only cat if files have same names  
+- all: always cat regardless of file names  
   
 <a id="ow">__ow__</a> (enum, default: _yes_): overwrite output mode when concatenation is not used  
-* yes: override file if existing  
-* no: throw error if file existing  
-* ask: interactive prompt  
+
+- yes: override file if existing  
+- no: throw error if file existing  
+- ask: interactive prompt  
   
 <a id="mvbk">__mvbk__</a> (uint, default: _8192_): block size used when moving parts of the file around in patch mode  
 <a id="redund">__redund__</a> (bool, default: _false_): keep redundant packet in output file  

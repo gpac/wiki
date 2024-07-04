@@ -36,9 +36,11 @@ gpac rtspout:mounts=mydir1,mydir2
 In this case, content `RES` from any of the specified directory is exposed as `rtsp://SERVER/RES`  
   
 The [mounts](#mounts) option can also specify access rule file(s), see `gpac -h creds`. When rules are used:  
+
 - if a directory has a `name` rule, it will be used in the URL  
 - otherwise, the directory is directly available under server root `/`  
 - only read access and multicast rights are checked  
+
 Example
 ```
 [foodir]  
@@ -109,16 +111,18 @@ The tunnel conforms to QT specification, and only HTTP 1.0 and 1.1 tunnels are s
 <a id="loop">__loop__</a> (bool, default: _true_): loop all streams in session (not always possible depending on source type)  
 <a id="dynurl">__dynurl__</a> (bool, default: _false_): allow dynamic service assembly  
 <a id="mcast">__mcast__</a> (enum, default: _off_): control multicast setup of a session  
-* off: clients are never allowed to create a multicast  
-* on: clients can create multicast sessions  
-* mirror: clients can create a multicast session. Any later request to the same URL will use that multicast session  
+
+- off: clients are never allowed to create a multicast  
+- on: clients can create multicast sessions  
+- mirror: clients can create a multicast session. Any later request to the same URL will use that multicast session  
   
 <a id="quit">__quit__</a> (bool, default: _false_): exit server once first session is over (for test purposes)  
 <a id="htun">__htun__</a> (bool, default: _true_): enable RTSP over HTTP tunnel  
 <a id="trp">__trp__</a> (enum, default: _both_): transport mode  
-* both: allow TCP or UDP traffic  
-* udp: only allow UDP traffic  
-* tcp: only allow TCP traffic  
+
+- both: allow TCP or UDP traffic  
+- udp: only allow UDP traffic  
+- tcp: only allow TCP traffic  
   
 <a id="cert">__cert__</a> (str): certificate file in PEM format to use for TLS mode  
 <a id="pkey">__pkey__</a> (str): private key file in PEM format to use for TLS mode  

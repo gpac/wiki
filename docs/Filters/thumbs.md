@@ -3,7 +3,7 @@
 # Thumbnail collection generator  
   
 Register name used to load filter: __thumbs__  
-This is a JavaScript filter, not checked during graph resolution and needs explicit loading.  
+This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  
 Author: GPAC team  
   
 This filter generates screenshots from a video stream.  
@@ -21,16 +21,18 @@ If a single image per output frame is used, the default value for [snap](#snap) 
 Otherwise, the default value for [snap](#snap) is 1 second and for [scale](#scale) is 10.  
   
 A single line of text can be inserted over each frame. Predefined keywords can be used in input text, identified as `$KEYWORD$`:  
-* ts: replaced by packet timestamp  
-* timescale: replaced by PID timescale  
-* time: replaced by packet time as HH:MM:SS.ms  
-* cpu: replaced by current CPU usage of process  
-* mem: replaced by current memory usage of process  
-* version: replaced by GPAC version  
-* fversion: replaced by GPAC full version  
-* mae: replaced by Mean Absolute Error with previous frame  
-* mse: replaced by Mean Square Error with previous frame  
-* P4CC, PropName: replaced by corresponding PID property  
+
+- ts: replaced by packet timestamp  
+- timescale: replaced by PID timescale  
+- time: replaced by packet time as HH:MM:SS.ms  
+- cpu: replaced by current CPU usage of process  
+- mem: replaced by current memory usage of process  
+- version: replaced by GPAC version  
+- fversion: replaced by GPAC full version  
+- mae: replaced by Mean Absolute Error with previous frame  
+- mse: replaced by Mean Square Error with previous frame  
+- P4CC, PropName: replaced by corresponding PID property  
+
   
 Example
 ```
@@ -63,8 +65,10 @@ If both [mae](#mae) and [mse](#mse) thresholds are not 0, the frame is added if 
 For both metrics, a value of 0 means all pixels are the same, a value of 100 means all pixels have 100% intensity difference (e.g. black versus white).  
   
 The scene detection is performed after the [snap](#snap) filtering and uses:  
+
 - the previous frame in the stream, whether it was added or not, if [scref](#scref) is not set,  
 - the last added frame otherwise.  
+
   
 Typical thresholds for scene cut detection are 14 to 20 for [mae](#mae) and 5 to 7 for [mse](#mse).  
   

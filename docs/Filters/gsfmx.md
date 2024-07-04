@@ -60,9 +60,10 @@ This will DASH the source, store the manifest file and the media streams with th
 <a id="sigbo">__sigbo__</a> (bool, default: _false_): signal byte offset  
 <a id="sigdts">__sigdts__</a> (bool, default: _true_): signal decoding timestamp  
 <a id="dbg">__dbg__</a> (enum, default: _no_): set debug mode  
-* no: disable debug  
-* nodata: force packet size to 0  
-* nopck: skip packet  
+
+- no: disable debug  
+- nodata: force packet size to 0  
+- nopck: skip packet  
   
 <a id="key">__key__</a> (mem): encrypt packets using given key  
 <a id="IV">__IV__</a> (mem):   set IV for encryption - a constant IV is used to keep packet overhead small (cbcs-like)  

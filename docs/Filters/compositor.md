@@ -24,8 +24,10 @@ It will stop generating frames as soon as all input streams are done, unless ext
 If audio streams are loaded, an audio output PID is created.  
   
 The default output pixel format in filter mode is:  
+
 - `rgb` when the filter is explicitly loaded by the application  
 - `rgba` when the filter is loaded during a link resolution  
+
 This can be changed by assigning the [opfmt](#opfmt) option.  
 If either [opfmt](#opfmt) specifies alpha channel or [bc](#bc) is not 0 but has alpha=0, background creation in default scene will be skipped.  
   
@@ -42,13 +44,17 @@ If 3D graphics are used or display driver is forced, OpenGL will be used on offs
 # Specific URL syntaxes  
   
 The compositor accepts any URL type supported by GPAC. It also accepts the following schemes for URLs:  
-* views:// : creates an auto-stereo scene of N views from `views://v1::.::vN`  
-* mosaic:// : creates a mosaic of N views from `mosaic://v1::.::vN`  
+
+- views:// : creates an auto-stereo scene of N views from `views://v1::.::vN`  
+- mosaic:// : creates a mosaic of N views from `mosaic://v1::.::vN`  
+
   
 For both syntaxes, `vN` can be any type of URL supported by GPAC.  
 For `views://` syntax, the number of rendered views is set by [nbviews](#nbviews):  
+
 - If the URL gives less views than rendered, the views will be repeated  
 - If the URL gives more views than rendered, the extra views will be ignored  
+
   
 The compositor can act as a source filter when the [src](#src) option is explicitly set, independently from the operating mode:  
 Example
@@ -66,9 +72,10 @@ gpac -i mosaic://URL1:URL2 vout
 # Options    
   
 <a id="aa">__aa__</a> (enum, default: _all_, updatable): set anti-aliasing mode for raster graphics; whether the setting is applied or not depends on the graphics module or graphic card  
-* none: no anti-aliasing  
-* text: anti-aliasing for text only  
-* all: complete anti-aliasing  
+
+- none: no anti-aliasing  
+- text: anti-aliasing for text only  
+- all: complete anti-aliasing  
   
 <a id="hlfill">__hlfill__</a> (uint, default: _0x0_, updatable): set highlight fill color (ARGB)  
 <a id="hlline">__hlline__</a> (uint, default: _0xFF000000_, updatable): set highlight stroke color (ARGB)  
@@ -81,14 +88,16 @@ gpac -i mosaic://URL1:URL2 vout
 <a id="stress">__stress__</a> (bool, default: _false_, updatable): enable stress mode of compositor (rebuild all vector graphics and texture states at each frame)  
 <a id="fast">__fast__</a> (bool, default: _false_, updatable): enable speed optimization - whether the setting is applied or not depends on the graphics module / graphic card  
 <a id="bvol">__bvol__</a> (enum, default: _no_, updatable): draw bounding volume of objects  
-* no: disable bounding box  
-* box: draws a rectangle (2D) or box (3D)  
-* aabb: draws axis-aligned bounding-box tree (3D) or rectangle (2D)  
+
+- no: disable bounding box  
+- box: draws a rectangle (2D) or box (3D)  
+- aabb: draws axis-aligned bounding-box tree (3D) or rectangle (2D)  
   
 <a id="textxt">__textxt__</a> (enum, default: _default_, updatable): specify whether text shall be drawn to a texture and then rendered or directly rendered. Using textured text can improve text rendering in 3D and also improve text-on-video like content  
-* default: use texturing for OpenGL rendering, no texture for 2D rasterizer  
-* never: never uses text textures  
-* always: always render text to texture before drawing  
+
+- default: use texturing for OpenGL rendering, no texture for 2D rasterizer  
+- never: never uses text textures  
+- always: always render text to texture before drawing  
   
 <a id="out8b">__out8b__</a> (bool, default: _false_, updatable): convert 10-bit video to 8 bit texture before GPU upload  
 <a id="drop">__drop__</a> (bool, default: _false_, updatable): drop late frame when drawing. If not set, frames are not dropped until a desynchronization of 1 second or more is observed  
@@ -103,9 +112,11 @@ gpac -i mosaic://URL1:URL2 vout
 <a id="dur">__dur__</a> (dbl, default: _0_, updatable): duration of generation. Mostly used when no video input is present. Negative values mean number of frames, positive values duration in second, 0 stops as soon as all streams are done  
 <a id="fsize">__fsize__</a> (bool, default: _false_, updatable): force the scene to resize to the biggest bitmap available if no size info is given in the BIFS configuration  
 <a id="mode2d">__mode2d__</a> (enum, default: _defer_, updatable): specify whether immediate drawing should be used or not  
-* immediate: the screen is completely redrawn at each frame (always on if pass-through mode is detected)  
-* defer: object positioning is tracked from frame to frame and dirty rectangles info is collected in order to redraw the minimal amount of the screen buffer  
-* debug: only renders changed areas, resetting other areas  
+
+- immediate: the screen is completely redrawn at each frame (always on if pass-through mode is detected)  
+- defer: object positioning is tracked from frame to frame and dirty rectangles info is collected in order to redraw the minimal amount of the screen buffer  
+- debug: only renders changed areas, resetting other areas  
+
 Whether the setting is applied or not depends on the graphics module and player mode  
   
 <a id="amc">__amc__</a> (bool, default: _true_): audio multichannel support; if disabled always down-mix to stereo. Useful if the multichannel output does not work properly  
@@ -128,76 +139,86 @@ Whether the setting is applied or not depends on the graphics module and player 
 <a id="nojs">__nojs__</a> (bool, default: _false_): disable javascript  
 <a id="noback">__noback__</a> (bool, default: _false_): ignore background nodes and viewport fill (useful when dumping to PNG)  
 <a id="ogl">__ogl__</a> (enum, default: _auto_, updatable): specify 2D rendering mode  
-* auto: automatically decides between on, off and hybrid based on content  
-* off: disables OpenGL; 3D will not be rendered  
-* on: uses OpenGL for all graphics; this will involve polygon tesselation and 2D graphics will not look as nice as 2D mode  
-* hybrid: the compositor performs software drawing of 2D graphics with no textures (better quality) and uses OpenGL for all 2D objects with textures and 3D objects  
+
+- auto: automatically decides between on, off and hybrid based on content  
+- off: disables OpenGL; 3D will not be rendered  
+- on: uses OpenGL for all graphics; this will involve polygon tesselation and 2D graphics will not look as nice as 2D mode  
+- hybrid: the compositor performs software drawing of 2D graphics with no textures (better quality) and uses OpenGL for all 2D objects with textures and 3D objects  
   
 <a id="pbo">__pbo__</a> (bool, default: _false_, updatable): enable PixelBufferObjects to push YUV textures to GPU in OpenGL Mode. This may slightly increase the performances of the playback  
 <a id="nav">__nav__</a> (enum, default: _none_, updatable): override the default navigation mode of MPEG-4/VRML (Walk) and X3D (Examine)  
-* none: disables navigation  
-* walk: 3D world walk  
-* fly: 3D world fly (no ground detection)  
-* pan: 2D/3D world zoom/pan  
-* game: 3D world game (mouse gives walk direction)  
-* slide: 2D/3D world slide  
-* exam: 2D/3D object examine  
-* orbit: 3D object orbit  
-* vr: 3D world VR (yaw/pitch/roll)  
+
+- none: disables navigation  
+- walk: 3D world walk  
+- fly: 3D world fly (no ground detection)  
+- pan: 2D/3D world zoom/pan  
+- game: 3D world game (mouse gives walk direction)  
+- slide: 2D/3D world slide  
+- exam: 2D/3D object examine  
+- orbit: 3D object orbit  
+- vr: 3D world VR (yaw/pitch/roll)  
   
 <a id="linegl">__linegl__</a> (bool, default: _false_, updatable): indicate that outlining shall be done through OpenGL pen width rather than vectorial outlining  
 <a id="epow2">__epow2__</a> (bool, default: _true_, updatable): emulate power-of-2 textures for OpenGL (old hardware). Ignored if OpenGL rectangular texture extension is enabled  
-* yes: video texture is not resized but emulated with padding. This usually speeds up video mapping on shapes but disables texture transformations  
-* no: video is resized to a power of 2 texture when mapping to a shape  
+
+- yes: video texture is not resized but emulated with padding. This usually speeds up video mapping on shapes but disables texture transformations  
+- no: video is resized to a power of 2 texture when mapping to a shape  
   
 <a id="paa">__paa__</a> (bool, default: _false_, updatable): indicate whether polygon antialiasing should be used in full antialiasing mode. If not set, only lines and points antialiasing are used  
 <a id="bcull">__bcull__</a> (enum, default: _on_, updatable): indicate whether backface culling shall be disable or not  
-* on: enables backface culling  
-* off: disables backface culling  
-* alpha: only enables backface culling for transparent meshes  
+
+- on: enables backface culling  
+- off: disables backface culling  
+- alpha: only enables backface culling for transparent meshes  
   
 <a id="wire">__wire__</a> (enum, default: _none_, updatable): wireframe mode  
-* none: objects are drawn as solid  
-* only: objects are drawn as wireframe only  
-* solid: objects are drawn as solid and wireframe is then drawn  
+
+- none: objects are drawn as solid  
+- only: objects are drawn as wireframe only  
+- solid: objects are drawn as solid and wireframe is then drawn  
   
 <a id="norms">__norms__</a> (enum, default: _none_, updatable): normal vector drawing for debug  
-* none: no normals drawn  
-* face: one normal per face drawn  
-* vertex: one normal per vertex drawn  
+
+- none: no normals drawn  
+- face: one normal per face drawn  
+- vertex: one normal per vertex drawn  
   
 <a id="rext">__rext__</a> (bool, default: _true_, updatable): use non power of two (rectangular) texture GL extension  
 <a id="cull">__cull__</a> (bool, default: _true_, updatable): use aabb culling: large objects are rendered in multiple calls when not fully in viewport  
 <a id="depth_gl_scale">__depth_gl_scale__</a> (flt, default: _100_, updatable): set depth scaler  
 <a id="depth_gl_type">__depth_gl_type__</a> (enum, default: _none_, updatable): set geometry type used to draw depth video  
-* none: no geometric conversion  
-* point: compute point cloud from pixel+depth  
-* strip: same as point but thins point set  
+
+- none: no geometric conversion  
+- point: compute point cloud from pixel+depth  
+- strip: same as point but thins point set  
   
 <a id="nbviews">__nbviews__</a> (uint, default: _0_, updatable): number of views to use in stereo mode  
 <a id="stereo">__stereo__</a> (enum, default: _none_, updatable): stereo output type. If your graphic card does not support OpenGL shaders, only `top` and `side` modes will be available  
-* none: no stereo  
-* side: images are displayed side by side from left to right  
-* top: images are displayed from top (laft view) to bottom (right view)  
-* hmd: same as side except that view aspect ratio is not changed  
-* ana: standard color anaglyph (red for left view, green and blue for right view) is used (forces views=2)  
-* cols: images are interleaved by columns, left view on even columns and left view on odd columns (forces views=2)  
-* rows: images are interleaved by columns, left view on even rows and left view on odd rows (forces views=2)  
-* spv5: images are interleaved by for SpatialView 5 views display, fullscreen mode (forces views=5)  
-* alio8: images are interleaved by for Alioscopy 8 views displays, fullscreen mode (forces views=8)  
-* custom: images are interleaved according to the shader file indicated in [mvshader](#mvshader). The shader is exposed each view as uniform sampler2D gfViewX, where X is the view number starting from the left  
+
+- none: no stereo  
+- side: images are displayed side by side from left to right  
+- top: images are displayed from top (laft view) to bottom (right view)  
+- hmd: same as side except that view aspect ratio is not changed  
+- ana: standard color anaglyph (red for left view, green and blue for right view) is used (forces views=2)  
+- cols: images are interleaved by columns, left view on even columns and left view on odd columns (forces views=2)  
+- rows: images are interleaved by columns, left view on even rows and left view on odd rows (forces views=2)  
+- spv5: images are interleaved by for SpatialView 5 views display, fullscreen mode (forces views=5)  
+- alio8: images are interleaved by for Alioscopy 8 views displays, fullscreen mode (forces views=8)  
+- custom: images are interleaved according to the shader file indicated in [mvshader](#mvshader). The shader is exposed each view as uniform sampler2D gfViewX, where X is the view number starting from the left  
   
 <a id="mvshader">__mvshader__</a> (str, updatable): file path to the custom multiview interleaving shader  
 <a id="fpack">__fpack__</a> (enum, default: _none_, updatable): default frame packing of input video  
-* none: no frame packing  
-* top: top bottom frame packing  
-* side: side by side packing  
+
+- none: no frame packing  
+- top: top bottom frame packing  
+- side: side by side packing  
   
 <a id="camlay">__camlay__</a> (enum, default: _offaxis_, updatable): camera layout in multiview modes  
-* straight: camera is moved along a straight line, no rotation  
-* offaxis: off-axis projection is used  
-* linear: camera is moved along a straight line with rotation  
-* circular: camera is moved along a circle with rotation  
+
+- straight: camera is moved along a straight line, no rotation  
+- offaxis: off-axis projection is used  
+- linear: camera is moved along a straight line with rotation  
+- circular: camera is moved along a circle with rotation  
   
 <a id="iod">__iod__</a> (flt, default: _6.4_, updatable): inter-ocular distance (eye separation) in cm (distance between the cameras).   
 <a id="rview">__rview__</a> (bool, default: _false_, updatable): reverse view order  
@@ -205,9 +226,10 @@ Whether the setting is applied or not depends on the graphics module and player 
 <a id="tvtn">__tvtn__</a> (uint, default: _30_, updatable): number of point sampling for tile visibility algorithm  
 <a id="tvtt">__tvtt__</a> (uint, default: _8_, updatable): number of points above which the tile is considered visible  
 <a id="tvtd">__tvtd__</a> (enum, default: _off_, updatable): debug tiles and full coverage SRD  
-* off: regular draw  
-* partial: only displaying partial tiles, not the full sphere video  
-* full: only display the full sphere video  
+
+- off: regular draw  
+- partial: only displaying partial tiles, not the full sphere video  
+- full: only display the full sphere video  
   
 <a id="tvtf">__tvtf__</a> (bool, default: _false_, updatable): force all tiles to be considered visible, regardless of viewpoint  
 <a id="fov">__fov__</a> (flt, default: _1.570796326794897_, updatable): default field of view for VR  
@@ -221,17 +243,19 @@ Whether the setting is applied or not depends on the graphics module and player 
 <a id="dpi">__dpi__</a> (v2di, default: _96x96_, updatable): default dpi if not indicated by video output  
 <a id="dbgpvr">__dbgpvr__</a> (flt, default: _0_, updatable): debug scene used by PVR addon  
 <a id="player">__player__</a> (enum, default: _no_): set compositor in player mode  
-* no: regular mode  
-* base: player mode  
-* gui: player mode with GUI auto-start  
+
+- no: regular mode  
+- base: player mode  
+- gui: player mode with GUI auto-start  
   
 <a id="noaudio">__noaudio__</a> (bool, default: _false_): disable audio output  
 <a id="opfmt">__opfmt__</a> (pfmt, default: _none_, Enum: none|yuv420|yvu420|yuv420_10|yuv422|yuv422_10|yuv444|yuv444_10|uyvy|vyuy|yuyv|yvyu|uyvl|vyul|yuyl|yvyl|nv12|nv21|nv1l|nv2l|yuva|yuvd|yuv444a|yuv444p|v308|yuv444ap|v408|v410|v210|grey|algr|gral|rgb4|rgb5|rgb6|rgba|argb|bgra|abgr|rgb|bgr|xrgb|rgbx|xbgr|bgrx|rgbd|rgbds|uncv): pixel format to use for output. Ignored in [player](#player) mode  
   
 <a id="drv">__drv__</a> (enum, default: _auto_): indicate if graphics driver should be used  
-* no: never loads a graphics driver, software blit is used, no 3D possible (in player mode, disables OpenGL)  
-* yes: always loads a graphics driver, output pixel format will be RGB (in player mode, same as `auto`)  
-* auto: decides based on the loaded content  
+
+- no: never loads a graphics driver, software blit is used, no 3D possible (in player mode, disables OpenGL)  
+- yes: always loads a graphics driver, output pixel format will be RGB (in player mode, same as `auto`)  
+- auto: decides based on the loaded content  
   
 <a id="src">__src__</a> (cstr): URL of source content  
 <a id="gaze_x">__gaze_x__</a> (sint, default: _0_, updatable): horizontal gaze coordinate (0=left, width=right)  

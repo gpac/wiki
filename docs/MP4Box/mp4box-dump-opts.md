@@ -100,11 +100,14 @@ The input file must have enough random access points in order to be split. If th
 You can add media to a file and split it in the same pass. In this case, the destination file (the one which would be obtained without splitting) will not be stored.  
     
 Time ranges are specified as follows:  
-* `S-E`: `S` start and `E` end times, formatted as `HH:MM:SS.ms`, `MM:SS.ms` or time in seconds (int, double, fraction)  
-* `S:E`: `S` start time and `E` end times in seconds (int, double, fraction). If `E` is prefixed with `D`, this sets `E = S + time`  
-* `S:end` or `S:end-N`: `S` start time in seconds (int, double), `N` number of seconds (int, double) before the end  
+
+- `S-E`: `S` start and `E` end times, formatted as `HH:MM:SS.ms`, `MM:SS.ms` or time in seconds (int, double, fraction)  
+- `S:E`: `S` start time and `E` end times in seconds (int, double, fraction). If `E` is prefixed with `D`, this sets `E = S + time`  
+- `S:end` or `S:end-N`: `S` start time in seconds (int, double), `N` number of seconds (int, double) before the end  
+
     
 MP4Box splitting runs a filter session using the `reframer` filter as follows:  
+
 - `splitrange` option of the reframer is always set  
 - source is demultiplexed with `alltk` option set  
 - start and end ranges are passed to `xs` and `xe` options of the reframer  
@@ -112,29 +115,35 @@ MP4Box splitting runs a filter session using the `reframer` filter as follows:
 - for `-splitg`, options `xadjust` and `xround=before` are enforced  
 - for `-splitf`, option `xround=seek` is enforced and `propbe_ref`set if not specified at prompt  
 - for `-splitx`, option `xround=closest` and `propbe_ref` are enforced if not specified at prompt  
+
     
 The default output storage mode is to full interleave and will require a temp file for each output. This behavior can be modified using `-flat`, `-newfs`, `-inter` and `-frag`.  
 The output file name(s) can be specified using `-out` and templates (e.g. `-out split$num%04d$.mp4` produces split0001.mp4, split0002.mp4, ...).  
 Multiple time ranges can be specified as a comma-separated list for `-splitx`, `-splitz` and `-splitg`.  
     
 <a id="split">__-split__</a> (string): split in files of given max duration (float number) in seconds. A trailing unit can be specified:  
-* `M`, `m`: duration is in minutes  
-* `H`, `h`: size is in hours  
+
+- `M`, `m`: duration is in minutes  
+- `H`, `h`: size is in hours  
   
 <a id="split-rap">__-split-rap__</a>,__-splitr__ (string): split in files at each new RAP  
 <a id="split-size">__-split-size__</a>,__-splits__ (string): split in files of given max size (integer number) in kilobytes. A trailing unit can be specified:  
-* `M`, `m`: size is in megabytes  
-* `G`, `g`: size is in gigabytes  
+
+- `M`, `m`: size is in megabytes  
+- `G`, `g`: size is in gigabytes  
   
 <a id="split-chunk">__-split-chunk__</a>,__-splitx__ (string): extract the specified time range as follows:  
+
 - the start time is moved to the RAP sample closest to the specified start time  
 - the end time is kept as requested  
   
 <a id="splitz">__-splitz__</a> (string): extract the specified time range so that ranges `A:B` and `B:C` share exactly the same boundary `B`:  
+
 - the start time is moved to the RAP sample at or after the specified start time  
 - the end time is moved to the frame preceding the RAP sample at or following the specified end time  
   
 <a id="splitg">__-splitg__</a> (string): extract the specified time range as follows:  
+
 - the start time is moved to the RAP sample at or before the specified start time  
 - the end time is moved to the frame preceding the RAP sample at or following the specified end time  
   

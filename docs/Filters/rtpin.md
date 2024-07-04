@@ -6,15 +6,19 @@ Register name used to load filter: __rtpin__
 This filter may be automatically loaded during graph resolution.  
   
 This filter handles SDP/RTSP/RTP input reading. It supports:  
+
 - SDP file reading  
 - RTP direct url through `rtp://` protocol scheme  
 - RTSP session processing through `rtsp://` and `satip://` protocol schemes  
+
    
 The filter produces either PIDs with media frames, or file PIDs with multiplexed data (e.g. MPEG-2 TS).   
 The filter will use:  
+
 - RTSP over HTTP tunnel if server port is 80 or 8080 or if protocol scheme is `rtsph://`.  
 - RTSP over TLS if server port is 322 or if protocol scheme is `rtsps://`.  
 - RTSP over HTTPS tunnel if server port is 443 and if protocol scheme is `rtsph://`.  
+
    
 The filter will attempt reconnecting in TLS mode after two consecutive initial connection failures.  
   
@@ -36,9 +40,10 @@ The filter will attempt reconnecting in TLS mode after two consecutive initial c
 <a id="default_port">__default_port__</a> (uint, default: _554_, minmax: 0-65535): set default RTSP port  
 <a id="satip_port">__satip_port__</a> (uint, default: _1400_, minmax: 0-65535): set default port for SATIP  
 <a id="transport">__transport__</a> (enum, default: _auto_): set RTP over RTSP  
-* auto: set interleave on if HTTP tunnel is used, off otherwise and retry in interleaved mode if UDP timeout  
-* tcp: enable RTP over RTSP  
-* udp: disable RTP over RTSP  
+
+- auto: set interleave on if HTTP tunnel is used, off otherwise and retry in interleaved mode if UDP timeout  
+- tcp: enable RTP over RTSP  
+- udp: disable RTP over RTSP  
   
 <a id="udp_timeout">__udp_timeout__</a> (uint, default: _10000_): default timeout before considering UDP is down  
 <a id="rtcp_timeout">__rtcp_timeout__</a> (uint, default: _5000_): default timeout for RTCP traffic in ms. After this timeout, playback will start out of sync. If 0 always wait for RTCP  
@@ -49,6 +54,7 @@ The filter will attempt reconnecting in TLS mode after two consecutive initial c
 <a id="languages">__languages__</a> (str, default: _$GLANG_): user languages, by default solved from GPAC preferences  
 <a id="stats">__stats__</a> (uint, default: _500_): update statistics to the user every given MS (0 disables reporting)  
 <a id="max_sleep">__max_sleep__</a> (sint, default: _1000_): set max sleep in milliseconds:  
+
 - a negative value `-N` means to always sleep for `N` ms  
 - a positive value `N` means to sleep at most `N` ms but will sleep less if frame duration is shorter  
   

@@ -3,7 +3,7 @@
 # AV Counter Generator  
   
 Register name used to load filter: __avgen__  
-This is a JavaScript filter, not checked during graph resolution and needs explicit loading.  
+This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  
 Author: GPAC Team  
   
 This filter generates AV streams representing a counter. Streams can be enabled or disabled using [type](#type).  
@@ -11,7 +11,7 @@ The filter is software-based and does not use GPU.
   
 When [adjust](#adjust) is set, the first video frame is adjusted such that a full circle happens at each exact second according to the system UTC clock.  
 By default, video UTC and date are computed at each frame generation from current clock and not from frame number.  
-This will result in broken timing when playing at speeds other than 1.0.  
+This will result in broken UTC timing text when playing at speeds other than 1.0.  
 This can be changed using [lock](#lock).  
   
 Audio beep is generated every second, with octave (2xfreq) of even beep used every 10 seconds.  
@@ -47,9 +47,10 @@ If multiple [views](#views) are generated, they are assigned the names `videoN_v
 # Options    
   
 <a id="type">__type__</a> (enum, default: _av_): output selection  
-* a: audio only  
-* v: video only  
-* av: audio and video  
+
+- a: audio only  
+- v: video only  
+- av: audio and video  
   
 <a id="freq">__freq__</a> (uint, default: _440_): frequency of beep  
 <a id="freq2">__freq2__</a> (uint, default: _659_): frequency of odd beep  
@@ -68,9 +69,10 @@ If multiple [views](#views) are generated, they are assigned the names `videoN_v
 <a id="dur">__dur__</a> (frac, default: _0/0_): run for the given time in second  
 <a id="adjust">__adjust__</a> (bool, default: _true_): adjust start time to synchronize counter and UTC  
 <a id="pack">__pack__</a> (enum, default: _no_): packing mode for stereo views  
- * no: no packing  
- * ss: side by side packing, forces [views](#views) to 2  
- * tb: top-bottom packing, forces [views](#views) to 2  
+
+- no: no packing  
+- ss: side by side packing, forces [views](#views) to 2  
+- tb: top-bottom packing, forces [views](#views) to 2  
   
 <a id="disparity">__disparity__</a> (uint, default: _20_): disparity in pixels between left-most and right-most views  
 <a id="views">__views__</a> (uint, default: _1_): number of views  

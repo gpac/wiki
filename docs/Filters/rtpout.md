@@ -25,11 +25,15 @@ This will indicate that the RTP streamer expects a MPEG-2 TS mux as an input.
   
 The RTP packets produced have a maximum payload set by the [mtu](#mtu) option (IP packet will be MTU + 40 bytes of IP+UDP+RTP headers).  
 The real-time scheduling algorithm works as follows:  
+
 - first initialize the clock by:  
-  - computing the smallest timestamp for all input PIDs  
-  - mapping this media time to the system clock  
+
+    - computing the smallest timestamp for all input PIDs  
+    - mapping this media time to the system clock  
+
 - determine the earliest packet to send next on each input PID, adding [delay](#delay) if any  
 - finally compare the packet mapped timestamp _TS_ to the system clock _SC_. When _TS_ - _SC_ is less than [tt](#tt), the RTP packets for the source packet are sent  
+
   
 The filter does not check for RTCP timeout and will run until all input PIDs reach end of stream.  
   

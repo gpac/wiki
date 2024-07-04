@@ -11,13 +11,16 @@ This filter rewrites timing (offsets and rate) of packets.
 The delays (global or per stream class) can be either positive (stream presented later) or negative (stream presented sooner).  
   
 The specified [fps](#fps) can be either 0, positive or negative.  
+
 - if 0 or if the stream is audio, stream rate is not modified.  
 - otherwise if negative, stream rate is multiplied by `-fps.num/fps.den`.  
 - otherwise if positive and the stream is not video, stream rate is not modified.  
 - otherwise (video PID), constant frame rate is assumed and:  
-  - if [rawv=no](#rawv=no), video frame rate is changed to the specified rate (speed-up or slow-down).  
-  - if [rawv=force](#rawv=force), input video stream is decoded and video frames are dropped/copied to match the new rate.  
-  - if [rawv=dyn](#rawv=dyn), input video stream is decoded if not all-intra and video frames are dropped/copied to match the new rate.  
+
+    - if [rawv=no](#rawv=no), video frame rate is changed to the specified rate (speed-up or slow-down).  
+    - if [rawv=force](#rawv=force), input video stream is decoded and video frames are dropped/copied to match the new rate.  
+    - if [rawv=dyn](#rawv=dyn), input video stream is decoded if not all-intra and video frames are dropped/copied to match the new rate.  
+
   
 _Note: frames are simply copied or dropped with no motion compensation._  
   
@@ -34,9 +37,10 @@ is set to the last computed timestamp plus the minimum packet duration for the s
 <a id="delay_t">__delay_t__</a> (frac, default: _0/1_, updatable): delay to add to text streams  
 <a id="delay_o">__delay_o__</a> (frac, default: _0/1_, updatable): delay to add to other streams  
 <a id="rawv">__rawv__</a> (enum, default: _no_): copy video frames  
-* no: no raw frame copy/drop  
-* force: force decoding all video streams  
-* dyn: decoding video streams if not all intra  
+
+- no: no raw frame copy/drop  
+- force: force decoding all video streams  
+- dyn: decoding video streams if not all intra  
   
 <a id="tsinit">__tsinit__</a> (lfrac, default: _-1/1_): initial timestamp to resync to, negative values disables resync  
 <a id="align">__align__</a> (uint, default: _0_): timestamp alignment threshold (0 disables alignment) - see filter help  

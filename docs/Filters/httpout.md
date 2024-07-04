@@ -6,16 +6,20 @@ Register name used to load filter: __httpout__
 This filter may be automatically loaded during graph resolution.  
   
 The HTTP output filter can act as:  
+
 - a simple HTTP server  
 - an HTTP server sink  
 - an HTTP server file sink  
 - an HTTP _client_ sink  
 - an HTTP server _source_  
+
     
 The server currently handles GET, HEAD, PUT, POST, DELETE methods, and basic OPTIONS support.  
 Single or multiple byte ranges are supported for both GET and PUT/POST methods, in all server modes.  
+
 - for GET, the resulting body is a single-part body formed by the concatenated byte ranges as requested (no overlap checking).  
 - for PUT/POST, the received data is pushed to the target file according to the byte ranges specified in the client request.  
+
     
 
 __Warning: the partial PUT request is RFC2616 compliant but not compliant with RFC7230. PATCH method is not yet implemented in GPAC.__  
@@ -26,9 +30,11 @@ When multiple read directories are specified, the server root `/` contains the l
 When a write directory is specified, the upload resource name identifies a file in this directory (the write directory name is not present in the URL).  
     
 A directory rule file (cf `gpac -h creds`) can be specified in [rdirs](#rdirs) but NOT in [wdir](#wdir). When rules are used:  
+
 - if a directory has a `name` rule, it will be used in the URL  
 - otherwise, the directory is directly available under server root `/`  
 - read and write access rights are checked  
+
 Example
 ```
 [foodir]  
@@ -102,10 +108,14 @@ This mode should not be used with multiple files muxers such as DASH or HLS.
 In this mode, the filter will write input PIDs to files in the first read directory specified, acting as a file output sink.  
 The filter uses a read directory in this mode, which must be writable.  
 Upon client GET request, the server will check if the requested URL matches the name of a file currently being written by the server.  
+
 - If so, the server will:  
-  - send the content using HTTP chunk transfer mode, starting with what is already written on disk  
-  - push remaining data to the client as soon as received while writing it to disk, until source file is done  
+
+    - send the content using HTTP chunk transfer mode, starting with what is already written on disk  
+    - push remaining data to the client as soon as received while writing it to disk, until source file is done  
+
 - If not so, the server will simply send the file from the disk as a regular HTTP session, without chunk transfer.  
+
     
 This mode is typically used for origin server in HAS sessions where clients may request files while they are being produced (low latency DASH).  
 Example
@@ -118,10 +128,12 @@ The server can store incoming files to memory mode by setting the read directory
 In this mode, [max_cache_segs](#max_cache_segs) is always at least 1.  
     
 If [max_cache_segs](#max_cache_segs) value `N` is not 0, each incoming PID will store at most:  
+
 - `MIN(N, time-shift depth)` files if stored in memory  
 - `-N` files if stored locally and `N` is negative  
 - `MAX(N, time-shift depth)` files if stored locally and `N` is positive  
 - unlimited otherwise (files stored locally, `N` is positive and no time-shift info)  
+
     
 
 # HTTP client sink  
@@ -158,16 +170,20 @@ The server currently only operates in either HTTPS or HTTP mode and cannot run b
 # Multiple destinations on single server  
   
 When running in server mode, multiple HTTP outputs with same URL/port may be used:  
+
 - the first loaded HTTP output filter with same URL/port will be reused  
 - all httpout options of subsequent httpout filters, except [dst](#dst) will be ignored, other options will be inherited as usual  
+
   
 Example
 ```
 gpac -i dash.mpd dashin:forward=file:FID=D1 dashin:forward=segb:FID=D2 -o http://localhost:80/live.mpd:SID=D1:rdirs=dash -o http://localhost:80/live_rw.mpd:SID=D2:sigfrag
 ```  
 This will:  
+
 - load the HTTP server and forward (through `D1`) the dash session to this server using `live.mpd` as manifest name  
 - reuse the HTTP server and regenerate the manifest (through `D2` and `sigfrag` option), using `live_rw.mpd` as manifest name  
+
   
 
 # Options    
@@ -187,9 +203,10 @@ This will:
 <a id="cache_control">__cache_control__</a> (str): specify the `Cache-Control` string to add (`none` disable cache control and ETag)  
 <a id="hold">__hold__</a> (bool, default: _false_): hold packets until one client connects  
 <a id="hmode">__hmode__</a> (enum, default: _default_): filter operation mode, ignored if [wdir](#wdir) is set  
-* default: run in server mode  
-* push: run in client mode using PUT or POST  
-* source: use server as source filter on incoming PUT/POST  
+
+- default: run in server mode  
+- push: run in client mode using PUT or POST  
+- source: use server as source filter on incoming PUT/POST  
   
 <a id="timeout">__timeout__</a> (uint, default: _30_): timeout in seconds for persistent connections (0 disable timeout)  
 <a id="ext">__ext__</a> (cstr): set extension for graph resolution, regardless of file extension  
@@ -199,9 +216,10 @@ This will:
 <a id="dlist">__dlist__</a> (bool, default: _false_): enable HTML listing for GET requests on directories  
 <a id="sutc">__sutc__</a> (bool, default: _false_): insert server UTC in response headers as `Server-UTC: VAL_IN_MS`  
 <a id="cors">__cors__</a> (enum, default: _auto_): insert CORS header allowing all domains  
-* off: disable CORS  
-* on: enable CORS  
-* auto: enable CORS when `Origin` is found in request  
+
+- off: disable CORS  
+- on: enable CORS  
+- auto: enable CORS when `Origin` is found in request  
   
 <a id="reqlog">__reqlog__</a> (str): provide short log of the requests indicated in this option (comma separated list, `*` for all) regardless of HTTP log settings. Value `REC` logs file writing start/end. If prefix `-` is set, do not log request end  
 <a id="ice">__ice__</a> (bool, default: _false_): insert ICE meta-data in response headers in sink mode  

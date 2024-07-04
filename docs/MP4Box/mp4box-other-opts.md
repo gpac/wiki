@@ -35,25 +35,31 @@ Unsupported tags can be added using their four character code as a tag name, and
 If the tag name length is 3, the prefix 0xA9 is used to create the four character code.  
     
 Tags can also be loaded from a text file using `-itags filename`. The file must be in UTF8 with:  
+
 - lines starting with `tag_name=value` specify the start of a tag  
 - other lines specify the remainder of the last declared tag  
+
     
 If tag name starts with `WM/`, the tag is added to `Xtra` box (WMA tag, string only).  
     
 
 ## QT metadata key  
 The tag is added as a QT metadata key if:  
+
 - `tag_name` starts with `QT/`  
 - or `tag_name` is not recognized and longer than 4 characters  
+
     
 The `tag_name` can optionally be prefixed with `HDLR@`, indicating the tag namespace 4CC, the default namespace being `mdta`.  
 The `tag_value` can be prefixed with:  
-* S: force string encoding (must be placed first) instead of parsing the tag value  
-* b: use 8-bit encoding for signed or unsigned int  
-* s: use 16-bit encoding for signed or unsigned int  
-* l: use 32-bit encoding for signed or unsigned int  
-* L: use 64-bit encoding for signed or unsigned int  
-* f: force float encoding for numbers  
+
+- S: force string encoding (must be placed first) instead of parsing the tag value  
+- b: use 8-bit encoding for signed or unsigned int  
+- s: use 16-bit encoding for signed or unsigned int  
+- l: use 32-bit encoding for signed or unsigned int  
+- L: use 64-bit encoding for signed or unsigned int  
+- f: force float encoding for numbers  
+
 Numbers are converted by default and stored in variable-size mode.  
 To force a positive integer to use signed storage, add `+` in front of the number.  
 Example
@@ -62,11 +68,13 @@ Example
 ```  
 This will force storing value `32` in signed 16 bit format.  
 The `tag_value` can also be formatted as:  
-* XxY@WxH: a rectangle type  
-* XxY: a point type  
-* W@H: a size type  
-* A,B,C,D,E,F,G,H,I: a 3x3 matrix  
-* FNAME: data is loaded from `FNAME`, type set to jpeg or png if needed  
+
+- XxY@WxH: a rectangle type  
+- XxY: a point type  
+- W@H: a size type  
+- A,B,C,D,E,F,G,H,I: a 3x3 matrix  
+- FNAME: data is loaded from `FNAME`, type set to jpeg or png if needed  
+
     
 
 ## Supported tag names (name, value, type, aliases)  

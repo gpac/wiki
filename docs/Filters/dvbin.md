@@ -8,8 +8,10 @@ This filter may be automatically loaded during graph resolution.
 Experimental DVB support for linux, requires a channel config file through [chcfg](#chcfg)  
     
 The URL syntax is `dvb://CHANNAME[@FRONTEND]`, with:  
- * CHANNAME: the channel name as listed in the channel config file  
- * frontend: the index of the DVB adapter to use (optional, default is 0)  
+
+    - CHANNAME: the channel name as listed in the channel config file  
+    - frontend: the index of the DVB adapter to use (optional, default is 0)  
+
   
 
 # Options    

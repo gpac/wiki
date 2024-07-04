@@ -65,7 +65,10 @@ This generates init segment for representation `FOO` in file `BAR2`.
 The filter outputs are PIDs using framed packets marked with segment boundaries and can be chained to other filters before entering the dasher (e.g. for encryption, transcode...).  
   
 If representation IDs are not assigned during index creation, they default to the 1-based index of the source. You can check them using:  
-EX: `gpac -i src.ghi inspect:full`  
+Example
+```
+gpac -i src.ghi inspect:full
+```  
   
 # Muxed Representations  
   
@@ -89,26 +92,31 @@ gpac -i index.ghi:rep=V2:sn=5:mux=A@V2 -o dash/vod.mpd
 This will generate the 5th segment containing representations `A` and `V2`.  
   
 The filter does not store any state, it is the user responsibility to use consistent information across calls:  
+
 - do not change segment templates  
 - do not change muxed representations to configurations not advertised in the generated manifests  
+
   
 # Recommendations  
   
 Indexing supports fragmented and non-fragmented MP4, MPEG-2 TS and seekable inputs.  
+
 - It is recommended to use fragmented MP4 as input format since this greatly reduces file loading times.  
 - If non-fragmented MP4 are used, it is recommended to use single-track files to decrease the movie box size and speedup parsing.  
 - MPEG-2 TS sources will be slower since they require PES reframing and AU reformating, resulting in more IOs than with mp4.  
 - other seekable sources will likely be slower (seeking, reframing) and are not recommended.  
+
   
 
 # Options    
   
 <a id="gm">__gm__</a> (enum, default: _main_): manifest generation mode  
-* none: no manifest generation (implied if sn is not 0)  
-* all: generate all manifests and init segments  
-* main: generate main manifest (MPD or master M3U8)  
-* child: generate child playlist for HLS  
-* init: generate init segment  
+
+- none: no manifest generation (implied if sn is not 0)  
+- all: generate all manifests and init segments  
+- main: generate main manifest (MPD or master M3U8)  
+- child: generate child playlist for HLS  
+- init: generate init segment  
   
 <a id="force">__force__</a> (bool, default: _false_): force loading sources in manifest generation for debug  
 <a id="rep">__rep__</a> (str): representation to generate  

@@ -11,26 +11,35 @@ Each filter exposes a set of argument to configure itself, using property types 
 
 # Property and filter option format  
   
-* boolean: formatted as `yes`,`true`,`1` or `no`,`false`,`0`  
-* enumeration (for filter arguments only): must use the syntax given in the argument description, otherwise value `0` (first in enum) is assumed.  
-* 1-dimension (numbers, floats, ints...): formatted as `value[unit]`, where `unit` can be `k`,`K` (x 1000) or `m`,`M` (x 1000000) or `g`,`G` (x 1000000000) or `sec` (x 1000) or `min` (x 60000). `+I` means max float/int/uint value, `-I` min float/int/uint value.  
-* fraction: formatted as `num/den` or `num-den` or `num`, in which case the denominator is 1 if `num` is an integer, or 1000000 if `num` is a floating-point value.  
-* unsigned 32 bit integer: formatted as number or hexadecimal using the format `0xAABBCCDD`.  
-* N-dimension (vectors): formatted as `DIM1xDIM2[xDIM3[xDIM4]]` values, without unit multiplier.  
-  * For 2D integer vectors, the following resolution names can be used: `360`, `480`, `576`, `720`, `1080`, `hd`, `2k`, `2160`, `4k`, `4320`, `8k`  
-* string: formatted as:  
-  * `value`: copies value to string.  
-  * `file@FILE`: load string from local `FILE` (opened in binary mode).  
-  * `bxml@FILE`: binarize XML from local `FILE` and set property type to data - see https://wiki.gpac.io/xmlformats/NHML-Format.  
-* data: formatted as:  
-  * `size@address`: constant data block, not internally copied; `size` gives the size of the block, `address` the data pointer.  
-  * `0xBYTESTRING`: data block specified in hexadecimal, internally copied.  
-  * `file@FILE`: load data from local `FILE` (opened in binary mode).  
-  * `bxml@FILE`: binarize XML from local `FILE` - see https://wiki.gpac.io/xmlformats/NHML-Format.  
-  * `b64@DATA`: load data from base-64 encoded `DATA`.  
-* pointer: pointer address as formatted by `%p` in C.  
-* string lists: formatted as `val1,val2[,...]`. Each value can also use `file@FILE` syntax.  
-* integer lists: formatted as `val1,val2[,...]`  
+
+- boolean: formatted as `yes`,`true`,`1` or `no`,`false`,`0`  
+- enumeration (for filter arguments only): must use the syntax given in the argument description, otherwise value `0` (first in enum) is assumed.  
+- 1-dimension (numbers, floats, ints...): formatted as `value[unit]`, where `unit` can be `k`,`K` (x 1000) or `m`,`M` (x 1000000) or `g`,`G` (x 1000000000) or `sec` (x 1000) or `min` (x 60000). `+I` means max float/int/uint value, `-I` min float/int/uint value.  
+- fraction: formatted as `num/den` or `num-den` or `num`, in which case the denominator is 1 if `num` is an integer, or 1000000 if `num` is a floating-point value.  
+- unsigned 32 bit integer: formatted as number or hexadecimal using the format `0xAABBCCDD`.  
+- N-dimension (vectors): formatted as `DIM1xDIM2[xDIM3[xDIM4]]` values, without unit multiplier.  
+
+    - For 2D integer vectors, the following resolution names can be used: `360`, `480`, `576`, `720`, `1080`, `hd`, `2k`, `2160`, `4k`, `4320`, `8k`  
+
+- string: formatted as:  
+
+    - `value`: copies value to string.  
+    - `file@FILE`: load string from local `FILE` (opened in binary mode).  
+    - `bxml@FILE`: binarize XML from local `FILE` and set property type to data - see https://wiki.gpac.io/xmlformats/NHML-Format.  
+
+- data: formatted as:  
+
+    - `size@address`: constant data block, not internally copied; `size` gives the size of the block, `address` the data pointer.  
+    - `0xBYTESTRING`: data block specified in hexadecimal, internally copied.  
+    - `file@FILE`: load data from local `FILE` (opened in binary mode).  
+    - `bxml@FILE`: binarize XML from local `FILE` - see https://wiki.gpac.io/xmlformats/NHML-Format.  
+    - `b64@DATA`: load data from base-64 encoded `DATA`.  
+    - `FMT@val`: load values from val (comma-separated list) with `FMT` being `u8`, `s8`, `u16`, `s16`, `u32`, `s32`, `u64`, `s64`, `flt`, `dbl`, `hex` or `str`.  
+
+- pointer: pointer address as formatted by `%p` in C.  
+- string lists: formatted as `val1,val2[,...]`. Each value can also use `file@FILE` syntax.  
+- integer lists: formatted as `val1,val2[,...]`  
+
   
 _Note: The special characters in property formats (0x,/,-,+I,-I,x) cannot be configured._  
   
@@ -40,8 +49,10 @@ Numbers and fraction can be expressed as `THH:MM:SS.ms`, `TMM:SS.ms`, `THH:MM:SS
   
 ## Generic declaration  
 Each filter is declared by its name, with optional filter arguments appended as a list of colon-separated `name=value` pairs. Additional syntax is provided for:  
-* boolean: `value` can be omitted, defaulting to `true` (e.g. `:allt`). Using `!` before the name negates the result (e.g. `:!moof_first`)  
-* enumerations: name can be omitted, e.g. `:disp=pbo` is equivalent to `:pbo`.  
+
+- boolean: `value` can be omitted, defaulting to `true` (e.g. `:allt`). Using `!` before the name negates the result (e.g. `:!moof_first`)  
+- enumerations: name can be omitted, e.g. `:disp=pbo` is equivalent to `:pbo`.  
+
   
     
 When string parameters are used (e.g. URLs), it is recommended to escape the string using the keyword `gpac`.    
@@ -56,7 +67,7 @@ filter:ARG=http://foo/bar?yes:opt=VAL
 ```  
 This will fail to extract it and keep `:opt=VAL` as part of the URL.  
 The escape mechanism is not needed for local source, for which file existence is probed during argument parsing. It is also not needed for builtin protocol handlers (`avin://`, `video://`, `audio://`, `pipe://`)  
-For `tcp://` and `udp://` protocols, the escape is not needed if a trailing `/` is appended after the port number.  
+For schemes not using a server path, e.g. `tcp://` and `udp://`, the escape is not needed if a trailing `/` is appended after the port number.  
 Example
 ```
 -i tcp://127.0.0.1:1234:OPT
@@ -69,7 +80,7 @@ Example
 This will extract the URL and options.  
 _Note: one trick to avoid the escape sequence is to declare the URLs option at the end, e.g. `f1:opt1=foo:url=http://bar`, provided you have only one URL parameter to specify on the filter._  
   
-It is possible to disable option parsing (for string options) by duplicating the separator.  
+It is possible to locally disable option parsing (usefull for string options) by duplicating the separator.  
 Example
 ```
 filter::opt1=UDP://IP:PORT/:someopt=VAL::opt2=VAL2
@@ -105,11 +116,13 @@ This can be used to test a specific filter when alternate filter chains are poss
 
 ## Specifying encoders and decoders  
 By default filters chain will be resolved without any decoding/encoding if the destination accepts the desired format. Otherwise, decoders/encoders will be dynamically loaded to perform the conversion, unless dynamic resolution is disabled. There is a special shortcut filter name for encoders `enc` allowing to match a filter providing the desired encoding. The parameters for `enc` are:  
-* c=NAME: identifies the desired codec. `NAME` can be the GPAC codec name or the encoder instance for ffmpeg/others  
-* b=UINT, rate=UINT, bitrate=UINT: indicates the bitrate in bits per second  
-* g=UINT, gop=UINT: indicates the GOP size in frames  
-* pfmt=NAME: indicates the target pixel format name (see [properties (-h props)](filters_properties) ) of the source, if supported by codec  
-* all_intra=BOOL: indicates all frames should be intra frames, if supported by codec  
+
+- c=NAME: identifies the desired codec. `NAME` can be the GPAC codec name or the encoder instance for ffmpeg/others  
+- b=UINT, rate=UINT, bitrate=UINT: indicates the bitrate in bits per second  
+- g=UINT, gop=UINT: indicates the GOP size in frames  
+- pfmt=NAME: indicates the target pixel format name (see [properties (-h props)](filters_properties) ) of the source, if supported by codec  
+- all_intra=BOOL: indicates all frames should be intra frames, if supported by codec  
+
   
 Other options will be passed to the filter if it accepts generic argument parsing (as is the case for ffmpeg).  
 The shortcut syntax `c=TYPE` (e.g. `c=aac:opts`) is also supported.  
@@ -159,12 +172,15 @@ _They do not specify which destination a filter can connect to._
 When no link instructions are given (see below), the default linking strategy used is either _implicit mode_ (default in `gpac`) or _complete mode_ (if [-cl](gpac_general/#cl) is set).  
 Each PID is checked for possible connection to all defined filters, in their declaration order.  
 For each filter `DST` accepting a connection from the PID, directly or with intermediate filters:  
+
 - if `DST` filter has link directives, use them to allow or reject PID connection.  
 - otherwise, if _complete mode_ is enabled, allow connection..  
 - otherwise (_implicit mode_):  
- - if `DST` is not a sink and is the first matching filter with no link directive, allow connection.  
- - otherwise, if `DST` is not a sink and is not the first matching filter with no link directive, reject connection.  
- - otherwise (`DST` is a sink) and no previous connections to a non-sink filter, allow connection.  
+
+    - if `DST` is not a sink and is the first matching filter with no link directive, allow connection.  
+    - otherwise, if `DST` is not a sink and is not the first matching filter with no link directive, reject connection.  
+    - otherwise (`DST` is a sink) and no previous connections to a non-sink filter, allow connection.  
+
   
 In all linking modes, a filter can prevent being linked to a filter with no link directives by setting `RSID` option on the filter.  
 This is typically needed when dynamically inserting/removing filters in an existing session where some filters have no ID defined and are not desired for the inserted chain.  
@@ -175,16 +191,20 @@ Example
 gpac -i file.mp4 c=avc -o output
 ```  
 With this setup in _implicit mode_:  
+
 - if the file has a video PID, it will connect to `enc` but not to `output`. The output PID of `enc` will connect to `output`.  
 - if the file has other PIDs than video, they will connect to `output`, since this `enc` filter accepts only video.  
+
   
 Example
 ```
 gpac -cl -i file.mp4 c=avc -o output
 ```  
 With this setup in _complete mode_:  
+
 - if the file has a video PID, it will connect both to `enc` and to `output`, and the output PID of `enc` will connect to `output`.  
 - if the file has other PIDs than video, they will connect to `output`.  
+
   
 Furthermore in _implicit mode_, filter connections are restricted to filters defined between the last source and the sink(s).  
 Example
@@ -192,8 +212,10 @@ Example
 gpac -i video1 reframer:saps=1 -i video2 ffsws:osize=128x72 -o output
 ```  
 This will connect:  
+
 - `video1` to `reframer` then `reframer` to `output` but will prevent `reframer` to `ffsws` connection.  
 - `video2` to `ffsws` then `ffsws` to `output` but will prevent `video2` to `reframer` connection.  
+
   
 Example
 ```
@@ -218,8 +240,10 @@ Example
 gpac -i file.mp4 ffswf=osize:128x72 c=avc resample=osr=48k c=aac -o output
 ```  
 This will force:  
+
 - `SRC(video)->ffsws->enc(video)->output` and prevent `SRC(video)->output`, `SRC(video)->enc(video)` and `ffsws->output` connections which would happen in _complete mode_.  
 - `SRC(audio)->resample->enc(audio)->output` and prevent `SRC(audio)->output`, `SRC(audio)->enc(audio)` and `resample->output` connections which would happen in _complete mode_.  
+
   
 ## Quick links  
 Link between filters may be manually specified. The syntax is an `@` character optionally followed by an integer (0 if omitted).  
@@ -245,8 +269,10 @@ This indicates that `fZ` only accepts inputs from `fB`.
   
 ## Complex links  
 The `@` link directive is just a quick shortcut to set the following filter arguments:  
-* FID=name: assigns an identifier to the filter  
-* SID=name1[,name2...]: sets a list of filter identifiers, or _sourceIDs_, restricting the list of possible inputs for a filter.  
+
+- FID=name: assigns an identifier to the filter  
+- SID=name1[,name2...]: sets a list of filter identifiers, or _sourceIDs_, restricting the list of possible inputs for a filter.  
+
   
 Example
 ```
@@ -266,21 +292,25 @@ This indicates that `fD` only accepts input from `fA` and `fB` and `fC` only fro
 _Note: A filter with sourceID set cannot get input from filters with no IDs._  
   
 A sourceID name can be further extended using fragment identifier (`#` by default):  
-* name#PIDNAME: accepts only PID(s) with name `PIDNAME`  
-* name#TYPE: accepts only PIDs of matching media type. TYPE can be `audio`, `video`, `scene`, `text`, `font`, `meta`  
-* name#TYPEN: accepts only `N` (1-based index) PID of matching type from source (e.g. `video2` to only accept second video PID)  
-* name#TAG=VAL: accepts the PID if its parent filter has no tag or a tag matching `VAL`  
-* name#ITAG=VAL: accepts the PID if its parent filter has no inherited tag or an inherited tag matching `VAL`  
-* name#P4CC=VAL: accepts only PIDs with builtin property of type `P4CC` and value `VAL`.  
-* name#PName=VAL: same as above, using the builtin name corresponding to the property.  
-* name#AnyName=VAL: same as above, using the name of a non built-in property.  
-* name#Name=OtherPropName: compares the value with the value of another property of the PID. The matching will fail if the value to compare to is not present or different from the value to check. The property to compare with shall be a built-in property.  
+
+- name#PIDNAME: accepts only PID(s) with name `PIDNAME`  
+- name#TYPE: accepts only PIDs of matching media type. TYPE can be `audio`, `video`, `scene`, `text`, `font`, `meta`  
+- name#TYPEN: accepts only `N` (1-based index) PID of matching type from source (e.g. `video2` to only accept second video PID)  
+- name#TAG=VAL: accepts the PID if its parent filter has no tag or a tag matching `VAL`  
+- name#ITAG=VAL: accepts the PID if its parent filter has no inherited tag or an inherited tag matching `VAL`  
+- name#P4CC=VAL: accepts only PIDs with builtin property of type `P4CC` and value `VAL`.  
+- name#PName=VAL: same as above, using the builtin name corresponding to the property.  
+- name#AnyName=VAL: same as above, using the name of a non built-in property.  
+- name#Name=OtherPropName: compares the value with the value of another property of the PID. The matching will fail if the value to compare to is not present or different from the value to check. The property to compare with shall be a built-in property.  
+
 If the property is not defined on the PID, the property is matched. Otherwise, its value is checked against the given value.  
   
 The following modifiers for comparisons are allowed (for any fragment format using `=`):  
-* name#P4CC=!VAL: accepts only PIDs with property NOT matching `VAL`.  
-* name#P4CC-VAL: accepts only PIDs with property strictly less than `VAL` (only for 1-dimension number properties).  
-* name#P4CC+VAL: accepts only PIDs with property strictly greater than `VAL` (only for 1-dimension number properties).  
+
+- name#P4CC=!VAL: accepts only PIDs with property NOT matching `VAL`.  
+- name#P4CC-VAL: accepts only PIDs with property strictly less than `VAL` (only for 1-dimension number properties).  
+- name#P4CC+VAL: accepts only PIDs with property strictly greater than `VAL` (only for 1-dimension number properties).  
+
   
 A sourceID name can also use wildcard or be empty to match a property regardless of the source filter.  
 Example
@@ -352,14 +382,18 @@ gpac -i file.mp4 -o dump.mp4:nomux
 This will result in a direct file copy.  
   
 This only applies to local files destination. For pipes, sockets or other file outputs (HTTP, ROUTE):  
+
 - direct copy is enabled by default  
 - `nomux=0` can be used to force remultiplex  
+
   
 ## Sub-session tagging  
 Filters may be assigned to a sub-session using `:FS=N`, with `N` a positive integer.  
 Filters belonging to different sub-sessions may only link to each-other:  
+
 - if explicitly allowed through sourceID directives (`@` or `SID`)  
 - or if they have the same sub-session identifier  
+
   
 This is mostly used for _implicit mode_ in `gpac`: each first source filter specified after a sink filter will trigger a new sub-session.  
 Example
@@ -417,16 +451,18 @@ A filter may also be assigned an inherited tag (any string) using `:ITAG=name` o
   
 Destination URLs can be dynamically constructed using templates. Pattern `$KEYWORD$` is replaced in the template with the resolved value and `$KEYWORD%%0Nd$` is replaced in the template with the resolved integer, padded with up to N zeros if needed.  
 `KEYWORD` is __case sensitive__, and may be present multiple times in the string. Supported `KEYWORD`:  
-* num: replaced by file number if defined, 0 otherwise  
-* PID: ID of the source PID  
-* URL: URL of source file  
-* File: path on disk for source file; if not found, use URL if set, or PID name otherwise  
-* Type: name of stream type of PID (`video`, `audio` ...)  
-* OType: same as `Type` but uses original type when stream is encrypted (e.g. move from `crypt` to `video`)  
-* p4cc=ABCD: uses PID property with 4CC value `ABCD`  
-* pname=VAL: uses PID property with name `VAL`  
-* cts, dts, dur, sap: uses properties of first packet in PID at template resolution time  
-* OTHER: locates property 4CC for the given name, or property name if no 4CC matches.  
+
+- num: replaced by file number if defined, 0 otherwise  
+- PID: ID of the source PID  
+- URL: URL of source file  
+- File: path on disk for source file; if not found, use URL if set, or PID name otherwise  
+- Type: name of stream type of PID (`video`, `audio` ...)  
+- OType: same as `Type` but uses original type when stream is encrypted (e.g. move from `crypt` to `video`)  
+- p4cc=ABCD: uses PID property with 4CC value `ABCD`  
+- pname=VAL: uses PID property with name `VAL`  
+- cts, dts, dur, sap: uses properties of first packet in PID at template resolution time  
+- OTHER: locates property 4CC for the given name, or property name if no 4CC matches.  
+
     
 `$$` is an escape for $  
   
@@ -496,10 +532,12 @@ Each audio track will be dumped to aac (potentially reencoding if needed).
 It is possible to define properties on output PIDs that will be declared by a filter. This allows tagging parts of the graph with different properties than other parts (for example `ServiceID`). The syntax is the same as filter option, and uses the fragment separator to identify properties, e.g. `#Name=Value`.  
 This sets output PIDs property (4cc, built-in name or any name) to the given value. Value can be omitted for boolean (defaults to true, e.g. `:#Alpha`).  
 Non built-in properties are parsed as follows:  
+
 - `file@FOO` will be declared as string with a value set to the content of `FOO`.  
 - `bxml@FOO` will be declared as data with a value set to the binarized content of `FOO`.  
 - `FOO` will be declared as string with a value set to `FOO`.  
 - `TYPE@FOO` will be parsed according to `TYPE`. If the type is not recognized, the entire value is copied as string. See `gpac -h props` for defined types.  
+
   
 User-assigned PID properties on filter `fA` will be inherited by all filters dynamically loaded to solve `fA -> fB` connection.  
 If `fB` also has user-assigned PID properties, these only apply starting from `fB` in the chain and are not inherited by filters between `fA` and `fB`.  
@@ -540,8 +578,10 @@ gpac -i source.mp4:#MyProp=(Width+1280)HD
 This will assign property `MyProp` to `HD` for PIDs with property `Width` greater than 1280.  
   
 The property value can use templates with the following keywords:  
-* $GINC(init[,inc]) or @GINC(...): replaced by integer for each new output PID of the filter (see specific filter options for details on syntax)  
-* PROP (enclosed between `$` or `@`): replaced by serialized value of property `PROP` (name or 4CC) of the PID or with empty string if no such property  
+
+- $GINC(init[,inc]) or @GINC(...): replaced by integer for each new output PID of the filter (see specific filter options for details on syntax)  
+- PROP (enclosed between `$` or `@`): replaced by serialized value of property `PROP` (name or 4CC) of the PID or with empty string if no such property  
+
 Example
 ```
 gpac -i source.ts:#ASID=$PID$
@@ -553,6 +593,13 @@ gpac -i source.ts:#RepresentationID=$ServiceID$
 ```  
 This will assign DASH Representation ID to the PID ServiceID value.  
   
+A property can also be removed by not specifying any value. Conditional removal is possible using the above syntax.  
+Example
+```
+gpac -i source.ts:#FOO=
+```  
+This will remove the `FOO` property on the output PID.  
+  
 # Using option files  
   
 It is possible to use a file to define options of a filter, by specifying the target file name as an option without value, i.e. `:myopts.txt`.  
@@ -560,8 +607,10 @@ It is possible to use a file to define options of a filter, by specifying the ta
 __Warning: Only local files are allowed.__  
   
 An option file is a simple text file containing one or more options or PID properties on one or more lines.  
+
 - A line beginning with "//" is a comment and is ignored (not configurable).  
 - A line beginning with ":" indicates an escaped option (the entire line is parsed as a single option).  
+
 Options in an option file may point to other option files, with a maximum redirection level of 5.  
 An option file declaration (`filter:myopts.txt`) follows the same inheritance rules as regular options.  
 Example
@@ -598,15 +647,19 @@ Some specific keywords are replaced when processing filter options.
 __Warning: These keywords do not apply to PID properties. Multiple keywords cannot be defined for a single option.__  
   
 Defined keywords:  
-* $GSHARE: replaced by system path to GPAC shared directory (e.g. /usr/share/gpac)  
-* $GJS: replaced by the first path from global share directory and paths set through [-js-dirs](core_options/#js-dirs) that contains the file name following the macro, e.g. $GJS/source.js  
-* $GDOCS: replaced by system path to:  
-  - application document directory for iOS  
-  - `EXTERNAL_STORAGE` environment variable if present or `/sdcard` otherwise for Android  
-  - user home directory for other platforms  
-* $GLANG: replaced by the global config language option [-lang](core_options/#lang)  
-* $GUA: replaced by the global config user agent option [-user-agent](core_options/#user-agent)  
-* $GINC(init_val[,inc]): replaced by `init_val` and increment `init_val` by `inc` (positive or negative number, 1 if not specified) each time a new filter using this string is created.  
+
+- $GSHARE: replaced by system path to GPAC shared directory (e.g. /usr/share/gpac)  
+- $GJS: replaced by the first path from global share directory and paths set through [-js-dirs](core_options/#js-dirs) that contains the file name following the macro, e.g. $GJS/source.js  
+- $GDOCS: replaced by system path to:  
+
+    - application document directory for iOS  
+    - `EXTERNAL_STORAGE` environment variable if present or `/sdcard` otherwise for Android  
+    - user home directory for other platforms  
+
+- $GLANG: replaced by the global config language option [-lang](core_options/#lang)  
+- $GUA: replaced by the global config user agent option [-user-agent](core_options/#user-agent)  
+- $GINC(init_val[,inc]): replaced by `init_val` and increment `init_val` by `inc` (positive or negative number, 1 if not specified) each time a new filter using this string is created.  
+
   
 The `$GINC` construct can be used to dynamically assign numbers in filter chains:  
 Example
@@ -616,38 +669,44 @@ gpac -i source.ts tssplit @#ServiceID= -o dump_$GINC(10,2).ts
 This will dump first service in dump_10.ts, second service in dump_12.ts, etc...  
   
 As seen previously, the following options may be set on any filter, but are not visible in individual filter help:  
-* FID: filter identifier  
-* SID: filter source(s) (string value)  
-* N=NAME: filter name (string value)  
-* FS: sub-session identifier (unsigned int value)  
-* RSID: require sourceID to be present on target filters (no value)  
-* TAG: filter tag (string value)  
-* ITAG: filter inherited tag (string value)  
-* FBT: buffer time in microseconds (unsigned int value)  
-* FBU: buffer units (unsigned int value)  
-* FBD: decode buffer time in microseconds (unsigned int value)  
-* clone: explicitly enable/disable filter cloning flag (no value)  
-* nomux: enable/disable direct file copy (no value)  
-* gfreg: preferred filter registry names for link solving (string value)  
-* gfloc: following options are local to filter declaration, not inherited (no value)  
-* gfopt: following options are not tracked (no value)  
-* gpac: argument separator for URLs (no value)  
-* ccp: filter replacement control (string list value)  
-* NCID: ID of netcap configuration to use (string)  
-* LT: set additionnal log tools and levels for the filter usin same syntax as -logs, e.g. `:LT=filter@debug` (string value)  
-* DBG: debug missing input PID property (`=pid`), missing input packet property (`=pck`) or both (`=all`)  
+
+- FID: filter identifier  
+- SID: filter source(s) (string value)  
+- N=NAME: filter name (string value)  
+- FS: sub-session identifier (unsigned int value)  
+- RSID: require sourceID to be present on target filters (no value)  
+- TAG: filter tag (string value)  
+- ITAG: filter inherited tag (string value)  
+- FBT: buffer time in microseconds (unsigned int value)  
+- FBU: buffer units (unsigned int value)  
+- FBD: decode buffer time in microseconds (unsigned int value)  
+- clone: explicitly enable/disable filter cloning flag (no value)  
+- nomux: enable/disable direct file copy (no value)  
+- gfreg: preferred filter registry names for link solving (string value)  
+- gfloc: following options are local to filter declaration, not inherited (no value)  
+- gfopt: following options are not tracked (no value)  
+- gpac: argument separator for URLs (no value)  
+- ccp: filter replacement control (string list value)  
+- NCID: ID of netcap configuration to use (string)  
+- LT: set additionnal log tools and levels for the filter usin same syntax as -logs, e.g. `:LT=filter@debug` (string value)  
+- DBG: debug missing input PID property (`=pid`), missing input packet property (`=pck`) or both (`=all`)  
+
   
 The buffer control options are used to change the default buffering of PIDs of a filter:  
+
 - `FBT` controls the maximum buffer time of output PIDs of a filter  
 - `FBU` controls the maximum number of packets in buffer of output PIDs of a filter when timing is not available  
 - `FBD` controls the maximum buffer time of input PIDs of a decoder filter, ignored for other filters  
+
   
 If another filter sends a buffer requirement messages, the maximum value of `FBT` (resp. `FBD`) and the user requested buffer time will be used for output buffer time (resp. decoding buffer time).  
   
 The options `FBT`, `FBU`, `FBD`  and `DBG` can be set:  
-* per filter instance: `fA reframer:FBU=2`  
-* per filter class for the run: `--reframer@FBU=2`  
-* in the GPAC config file in a per-filter section: `[filter@reframer]FBU=2`  
+
+- per filter instance: `fA reframer:FBU=2`  
+- per filter class for the run: `--reframer@FBU=2`  
+- in the GPAC config file in a per-filter section: `[filter@reframer]FBU=2`  
+
   
 The default values are defined by the session default parameters `-buffer-gen`, `buffer-units` and `-buffer-dec`.  
   

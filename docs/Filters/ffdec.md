@@ -16,9 +16,11 @@ The default threading mode is to let libavcodec decide how many threads to use. 
   
 The [ffcmap](#ffcmap) option allows specifying FFmpeg codecs for codecs not supported by GPAC.  
 Each entry in the list is formatted as `GID@name` or `GID@+name`, with:  
-* GID: 4CC or 32 bit identifier of codec ID, as indicated by `gpac -i source inspect:full`  
-* name: FFmpeg codec name  
-* `+': is set and extra data is set and formatted as an ISOBMFF box, removes box header  
+
+- GID: 4CC or 32 bit identifier of codec ID, as indicated by `gpac -i source inspect:full`  
+- name: FFmpeg codec name  
+- `+': is set and extra data is set and formatted as an ISOBMFF box, removes box header  
+
   
 Example
 ```

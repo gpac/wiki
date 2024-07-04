@@ -12,9 +12,10 @@ This filter flips uncompressed video frames vertically, horizontally, in both di
 # Options    
   
 <a id="mode">__mode__</a> (enum, default: _vert_, updatable): flip mode  
-* off: no flipping (passthrough)  
-* vert: vertical flip  
-* horiz: horizontal flip  
-* both: horizontal and vertical flip  
+
+- off: no flipping (passthrough)  
+- vert: vertical flip  
+- horiz: horizontal flip  
+- both: horizontal and vertical flip  
   
   

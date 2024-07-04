@@ -11,14 +11,18 @@ In server mode, the filter can be instructed to keep running at the end of the s
 In server mode, the default behavior is to keep input packets when no more clients are connected; this can be adjusted though the [kp](#kp) option, however there is no realtime regulation of how fast packets are dropped.  
 If your sources are not real time, consider adding a real-time scheduler in the chain (cf reframer filter), or set the send [rate](#rate) option.  
   
+
 - UDP sockets are used for destinations URLs formatted as `udp://NAME`  
 - TCP sockets are used for destinations URLs formatted as `tcp://NAME`  
 - UDP unix domain sockets are used for destinations URLs formatted as `udpu://NAME`  
 - TCP unix domain sockets are used for destinations URLs formatted as `tcpu://NAME`  
+
   
 When ports are specified in the URL and the default option separators are used (see `gpac -h doc`), the URL must either:  
+
 - have a trailing '/', e.g. `udp://localhost:1234/[:opts]`  
 - use `gpac` escape, e.g. `udp://localhost:1234[:gpac:opts]`  
+
   
 The socket output can be configured to drop or revert packet order for test purposes.  
 A window size in packets is specified as the drop/revert fraction denominator, and the index of the packet to drop/revert is given as the numerator/  

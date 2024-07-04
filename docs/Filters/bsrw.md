@@ -8,24 +8,33 @@ Filters of this class can connect to each-other.
   
 This filter rewrites some metadata of various bitstream formats.  
 The filter can currently modify the following properties in video bitstreams:  
+
 - MPEG-4 Visual:  
-  - sample aspect ratio  
-  - profile and level  
+
+    - sample aspect ratio  
+    - profile and level  
+
 - AVC|H264, HEVC and VVC:  
-  - sample aspect ratio  
-  - profile, level, profile compatibility  
-  - video format, video fullrange  
-  - color primaries, transfer characteristics and matrix coefficients (or remove all info)  
+
+    - sample aspect ratio  
+    - profile, level, profile compatibility  
+    - video format, video fullrange  
+    - color primaries, transfer characteristics and matrix coefficients (or remove all info)  
+
 - ProRes:  
-  - sample aspect ratio  
-  - color primaries, transfer characteristics and matrix coefficients  
+
+    - sample aspect ratio  
+    - color primaries, transfer characteristics and matrix coefficients  
+
     
 Values are by default initialized to -1, implying to keep the related info (present or not) in the bitstream.  
 A [sar](#sar) value of `0/0` will remove sample aspect ratio info from bitstream if possible.  
     
 The filter can currently modify the following properties in the stream configuration but not in the bitstream:  
-* HEVC: profile IDC, profile space, general compatibility flags  
-* VVC: profile IDC, general profile and level indication  
+
+- HEVC: profile IDC, profile space, general compatibility flags  
+- VVC: profile IDC, general profile and level indication  
+
     
 The filter will work in passthrough mode for all other codecs and media types.  
   

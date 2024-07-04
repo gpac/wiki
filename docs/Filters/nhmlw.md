@@ -17,8 +17,9 @@ NHML documentation is available at https://wiki.gpac.io/xmlformats/NHML-Format
 <a id="nhmlonly">__nhmlonly__</a> (bool, default: _false_): only dump NHML info, not media  
 <a id="pckp">__pckp__</a> (bool, default: _false_): full NHML dump  
 <a id="chksum">__chksum__</a> (enum, default: _none_): insert frame checksum  
-* none: no checksum  
-* crc: CRC32 checksum  
-* sha1: SHA1 checksum  
+
+- none: no checksum  
+- crc: CRC32 checksum  
+- sha1: SHA1 checksum  
   
   

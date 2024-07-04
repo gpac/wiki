@@ -35,13 +35,17 @@ The filter can create the pipe if not found using [mkp](#mkp). On windows hosts,
 On non windows hosts, the created pipe will delete the pipe file upon filter destruction.  
     
 Input pipes can be setup to run forever using [ka](#ka). In this case:  
+
 - any potential pipe close on the writing side will be ignored  
 - pipeline flushing will be triggered upon pipe close if [sigflush](#sigflush) is set  
 - final end of stream will be triggered upon session close.  
+
     
 This can be useful to pipe raw streams from different process into gpac:  
-* Receiver side: `gpac -i pipe://mypipe:ext=.264:mkp:ka`  
-* Sender side: `cat raw1.264 > mypipe && gpac -i raw2.264 -o pipe://mypipe:ext=.264`    
+
+- Receiver side: `gpac -i pipe://mypipe:ext=.264:mkp:ka`  
+- Sender side: `cat raw1.264 > mypipe && gpac -i raw2.264 -o pipe://mypipe:ext=.264`    
+
 The pipeline flush is signaled as EOS while keeping the stream active.  
 This is typically needed for mux filters waiting for EOS to flush their data.  
     

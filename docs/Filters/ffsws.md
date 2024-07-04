@@ -22,23 +22,31 @@ ffsws:osize=288x240:osar=3/2
 The output dimensions will be 192x240.  
   
 When aspect ratio is not kept ([keepar=off](#keepar=off)):  
+
 - source is resampled to desired dimensions  
 - if output aspect ratio is not set, output will use source sample aspect ratio  
+
   
 When aspect ratio is partially kept ([keepar=nosrc](#keepar=nosrc)):  
+
 - resampling is done on the input data without taking input sample aspect ratio into account  
 - if output sample aspect ratio is not set ([osar=0/N](#osar=0/N)), source aspect ratio is forwarded to output.  
+
   
 When aspect ratio is fully kept ([keepar=full](#keepar=full)), output aspect ratio is force to 1/1 if not set.  
   
 When sample aspect ratio is kept, the filter will:  
+
 - center the rescaled input frame on the output frame  
 - fill extra pixels with [padclr](#padclr)  
+
   
 ## Algorithms options  
+
 - for bicubic, to tune the shape of the basis function, [p1](#p1) tunes f(1) and [p2](#p2) f´(1)  
 - for gauss [p1](#p1) tunes the exponent and thus cutoff frequency  
 - for lanczos [p1](#p1) tunes the width of the window function  
+
   
 See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details  
   
@@ -59,9 +67,10 @@ See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more detail
 <a id="otable">__otable__</a> (sintl): the yuv2rgb coefficients describing the output yuv space, normally ff_yuv2rgb_coeffs[x], use default if not set  
 <a id="itable">__itable__</a> (sintl): the yuv2rgb coefficients describing the input yuv space, normally ff_yuv2rgb_coeffs[x], use default if not set  
 <a id="keepar">__keepar__</a> (enum, default: _off_): keep aspect ratio  
-* off: ignore aspect ratio  
-* full: respect aspect ratio, applying input sample aspect ratio info  
-* nosrc: respect aspect ratio but ignore input sample aspect ratio  
+
+- off: ignore aspect ratio  
+- full: respect aspect ratio, applying input sample aspect ratio info  
+- nosrc: respect aspect ratio but ignore input sample aspect ratio  
   
 <a id="padclr">__padclr__</a> (str, default: _black_): clear color when aspect ration preservation is used  
 <a id="osar">__osar__</a> (frac, default: _0/1_): force output pixel aspect ratio  

@@ -15,6 +15,15 @@ The special file name `randsc` is used to generate random data with `0x000001` s
   
 The filter handles both files and GF_FileIO objects as input URL.  
   
+## Packet Injecting  
+The filter can be used to inject a single packet instead of a file using (-pck)[] option.  
+No specific properties are attached, except a timescale if (-ptime)[] is set.  
+Example
+```
+gpac fin:pck=str@"My Sample Text":ptime=2500/100:#CodecID=stxt:#StreamType=text
+```  
+This will declare the PID as WebVTT and send a single packet with payload `My Sample Text` and a timestamp value of 25 second.  
+  
 
 # Options    
   
@@ -24,4 +33,5 @@ The filter handles both files and GF_FileIO objects as input URL.
 <a id="ext">__ext__</a> (cstr): override file extension  
 <a id="mime">__mime__</a> (cstr): set file mime type  
 <a id="pck">__pck__</a> (mem): data to use instead of file  
+<a id="ptime">__ptime__</a> (frac, default: _0/0_): timing for data packet, ignored if den is 0  
   

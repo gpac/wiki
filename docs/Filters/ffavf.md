@@ -49,9 +49,11 @@ Example
 gpac -i video:#ffid=a -i logo:#ffid=b ffavf::f=[a][b]overlay=main_w-overlay_w-10:main_h-overlay_h-10 vout
 ```  
 In this example:  
+
 - the video source is identified as `a`  
 - the logo source is identified as `b`  
 - the filter declaration maps `a` to its first input (in this case, main video) and `b` to its second input (in this case the overlay)  
+
   
 When a graph has several outputs, output PIDs will be identified using the `ffid` property set to the output avfilter name.  
 Example
@@ -59,17 +61,21 @@ Example
 gpac -i source ffavf::f=split inspect:SID=#ffid=out0 vout#SID=out1
 ```  
 In this example:  
+
 - the splitter produces 2 video streams `out0` and `out1`  
 - the inspector only process stream with ffid `out0`  
 - the video output only displays stream with ffid `out1`  
+
   
 The name(s) of the final output of the avfilter graph cannot be configured in GPAC. You can however name intermediate output(s) in a complex filter chain as usual.  
   
 # Filter graph commands  
   
 The filter handles option updates as commands passed to the AV filter graph. The syntax expected in the option name is:  
-* com_name=value: sends command `com_name` with value `value` to all filters  
-* name#com_name=value: sends command `com_name` with value `value` to filter named `name`  
+
+- com_name=value: sends command `com_name` with value `value` to all filters  
+- name#com_name=value: sends command `com_name` with value `value` to filter named `name`  
+
   
 
 # Options    

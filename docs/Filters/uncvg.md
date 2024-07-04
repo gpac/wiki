@@ -3,30 +3,36 @@
 # Uncompressed Video File Format Generator Utility  
   
 Register name used to load filter: __uncvg__  
-This is a JavaScript filter, not checked during graph resolution and needs explicit loading.  
+This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  
 Author: GPAC team - (c) Telecom ParisTech 2023 - license LGPL v2  
   
 This filter provides generation of test images for ISO/IEC 23001-17  
 Generated pixels can be:  
+
 - a pattern of colors in columns, or in rectangles if [sq](#sq) is set, using the specified palette.  
 - an image source if [img](#img) is used.  
+
   
 Colors specified in the palette can be default GPAC colors (see gpac -h colors), 0xRRGGBB or 0xAARRGGBB  
   
 When generating video, the pixels are shifted to the left at every frame  
   
 Components are described as N[bpc][+k] with  
-* N: component type, one of M(mono), Y, U, V, R, G, B, A, d(depth), disp, p(palette), f(filterArray), x (pad)  
-* bpc: bits per component value, default is 8. Non-integer values must be one of  
-  * sft: floating-point value on 16 bits  
-  * flt: floating-point value on 32 bits  
-  * dbl: floating-point value on 64 bits  
-  * dblx: floating-point value on 128 bits  
-  * cps: complex value as two floats on 16 bits each  
-  * cpf: complex value as two floats on 32 bits each  
-  * cpd: complex value as two floats on 64 bits each  
-  * cpx: complex value as two floats on 128 bits each  
-* k: force component alignment on k bytes, default is 0 (no alignment)  
+
+- N: component type, one of M(mono), Y, U, V, R, G, B, A, d(depth), disp, p(palette), f(filterArray), x (pad)  
+- bpc: bits per component value, default is 8. Non-integer values must be one of  
+
+    - sft: floating-point value on 16 bits  
+    - flt: floating-point value on 32 bits  
+    - dbl: floating-point value on 64 bits  
+    - dblx: floating-point value on 128 bits  
+    - cps: complex value as two floats on 16 bits each  
+    - cpf: complex value as two floats on 32 bits each  
+    - cpd: complex value as two floats on 64 bits each  
+    - cpx: complex value as two floats on 128 bits each  
+
+- k: force component alignment on k bytes, default is 0 (no alignment)  
+
   
 
 # Options    
@@ -35,18 +41,20 @@ Components are described as N[bpc][+k] with
 <a id="c">__c__</a> (strl, default: _R8,G8,B8_): image components  
 <a id="tiles">__tiles__</a> (v2d, default: _1x1_): number of horizontal and vertical tiles  
 <a id="interleave">__interleave__</a> (enum, default: _pix_): interleave type  
-* comp: component-based interleaving (planar modes)  
-* pix: pixel-based interleaving (packed modes)  
-* mix: pixel-based interleaving for UV (semi-planar modes)  
-* row: row-based interleaving  
-* tile: tile-component interleaving  
-* multi: pixel-based interleaving (packed modes) for sub-sampled modes  
+
+- comp: component-based interleaving (planar modes)  
+- pix: pixel-based interleaving (packed modes)  
+- mix: pixel-based interleaving for UV (semi-planar modes)  
+- row: row-based interleaving  
+- tile: tile-component interleaving  
+- multi: pixel-based interleaving (packed modes) for sub-sampled modes  
   
 <a id="sampling">__sampling__</a> (enum, default: _none_): sampling types  
-* none: no sub-sampling  
-* 422: YUV 4:2:2 sub-sampling  
-* 420: YUV 4:2:0 sub-sampling  
-* 411: YUV 4:1:1 sub-sampling  
+
+- none: no sub-sampling  
+- 422: YUV 4:2:2 sub-sampling  
+- 420: YUV 4:2:0 sub-sampling  
+- 411: YUV 4:1:1 sub-sampling  
   
 <a id="block_size">__block_size__</a> (uint, default: _0_): block size in bytes  
 <a id="pad_lsb">__pad_lsb__</a> (bool, default: _false_): padded bits are at LSB in the block  

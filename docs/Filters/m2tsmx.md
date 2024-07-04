@@ -12,11 +12,13 @@ This filter multiplexes one or more input PIDs into a MPEG-2 Transport Stream mu
 The MPEG-2 TS multiplexer assigns M2TS PID for media streams using the PID of the PMT plus the stream index.  
 For example, the default config creates the first program with a PMT PID 100, the first stream will have a PID of 101.  
 Streams are grouped in programs based on input PID property ServiceID if present. If absent, stream will go in the program with service ID as indicated by [sid](#sid) option.  
+
 - [name](#name) option is overridden by input PID property `ServiceName`.  
 - [provider](#provider) option is overridden by input PID property `ServiceProvider`.  
 - [pcr_offset](#pcr_offset) option is overridden by input PID property `"tsmux:pcr_offset"`  
 - [first_pts](#first_pts) option is overridden by input PID property `"tsmux:force_pts"`  
 - [temi](#temi) option is overridden by input PID property `"tsmux:temi"`  
+
   
 # Time and External Media Information (TEMI)  
   
@@ -24,22 +26,28 @@ The [temi](#temi) option allows specifying a list of URLs or timeline IDs to ins
 One or more TEMI timeline can be specified per PID.  
 The syntax is a comma-separated list of one or more TEMI description.  
 Each TEMI description is formatted as ID_OR_URL or #OPT1[#OPT2]#ID_OR_URL. Options are:  
-* S`N`: indicate the target service with ID `N`  
-* T`N`: set timescale to use (default: PID timescale)  
-* D`N`: set delay in ms between two TEMI url descriptors (default 1000)  
-* O`N`: set offset (max 64 bits) to add to TEMI timecodes (default 0). If timescale is not specified, offset value is in ms, otherwise in timescale units.  
-* I`N`: set initial value (max 64 bits) of TEMI timecodes. If not set, initial value will match first packet CTS. If timescale is not specified, value is in PID timescale units, otherwise in specified timescale units.  
-* P`N`: indicate target PID in program. Possible values are  
-  * `V`: only insert for video streams.  
-  * `A`: only insert for audio streams.  
-  * `T`: only insert for text streams.  
-  * N: only insert for stream with index `N` (0-based) in the program.  
-* L`C`: set 64bit timecode signaling. Possible values for `C` are:  
-  * `A`: automatic switch between 32 and 64 bit depending on timecode value (default if not specified).  
-  * `Y`: use 64 bit signaling only.  
-  * `N`: use 32 bit signaling only and wrap around timecode value.  
-* N: insert NTP timestamp in TEMI timeline descriptor  
-* ID_OR_URL: If number, indicate the TEMI ID to use for external timeline. Otherwise, give the URL to insert  
+
+- S`N`: indicate the target service with ID `N`  
+- T`N`: set timescale to use (default: PID timescale)  
+- D`N`: set delay in ms between two TEMI url descriptors (default 1000)  
+- O`N`: set offset (max 64 bits) to add to TEMI timecodes (default 0). If timescale is not specified, offset value is in ms, otherwise in timescale units.  
+- I`N`: set initial value (max 64 bits) of TEMI timecodes. If not set, initial value will match first packet CTS. If timescale is not specified, value is in PID timescale units, otherwise in specified timescale units.  
+- P`N`: indicate target PID in program. Possible values are  
+
+    - `V`: only insert for video streams.  
+    - `A`: only insert for audio streams.  
+    - `T`: only insert for text streams.  
+    - N: only insert for stream with index `N` (0-based) in the program.  
+
+- L`C`: set 64bit timecode signaling. Possible values for `C` are:  
+
+    - `A`: automatic switch between 32 and 64 bit depending on timecode value (default if not specified).  
+    - `Y`: use 64 bit signaling only.  
+    - `N`: use 32 bit signaling only and wrap around timecode value.  
+
+- N: insert NTP timestamp in TEMI timeline descriptor  
+- ID_OR_URL: If number, indicate the TEMI ID to use for external timeline. Otherwise, give the URL to insert  
+
     
 Example
 ```
@@ -72,9 +80,11 @@ __Warning: multipliers (k,m,g) are not supported in TEMI options.__
 # Adaptive Streaming  
   
 In DASH and HLS mode:  
+
 - the PCR is always initialized at 0, and [flush_rap](#flush_rap) is automatically set.  
 - unless `nb_pack` is specified, 200 TS packets will be used as pack output in DASH mode.  
 - `pes_pack=none` is forced since some demultiplexers have issues with non-aligned ADTS PES.  
+
   
 The filter watches the property `FileNumber` on incoming packets to create new files, or new segments in DASH mode.  
 The filter will look for property `M2TSRA` set on the input stream.  
@@ -95,9 +105,10 @@ In LATM mux mode, the decoder configuration is inserted at the given [repeat_rat
 <a id="first_pts">__first_pts__</a> (luint, default: _0_): force PTS value of first packet, in 90kHz  
 <a id="pcr_offset">__pcr_offset__</a> (luint, default: _-1_): offset all timestamps from PCR by V, in 90kHz (default value is computed based on input media)  
 <a id="mpeg4">__mpeg4__</a> (enum, default: _none_): force usage of MPEG-4 signaling (IOD and SL Config)  
-* none: disables 4on2  
-* full: sends AUs as SL packets over section for OD, section/pes for scene (cf bifs_pes)  
-* scene: sends only scene streams as 4on2 but uses regular PES without SL for audio and video  
+
+- none: disables 4on2  
+- full: sends AUs as SL packets over section for OD, section/pes for scene (cf bifs_pes)  
+- scene: sends only scene streams as 4on2 but uses regular PES without SL for audio and video  
   
 <a id="pmt_version">__pmt_version__</a> (uint, default: _200_): set version number of the PMT  
 <a id="disc">__disc__</a> (bool, default: _false_): set the discontinuity marker for the first packet of each stream  
@@ -106,15 +117,17 @@ In LATM mux mode, the decoder configuration is inserted at the given [repeat_rat
 <a id="max_pcr">__max_pcr__</a> (uint, default: _100_): set max interval in ms between 2 PCR  
 <a id="nb_pack">__nb_pack__</a> (uint, default: _4_): pack N TS packets in output packets  
 <a id="pes_pack">__pes_pack__</a> (enum, default: _audio_): set AU to PES packing mode  
-* audio: will pack only multiple audio AUs in a PES  
-* none: make exactly one AU per PES  
-* all: will pack multiple AUs per PES for all streams  
+
+- audio: will pack only multiple audio AUs in a PES  
+- none: make exactly one AU per PES  
+- all: will pack multiple AUs per PES for all streams  
   
 <a id="realtime">__realtime__</a> (bool, default: _false_): use real-time output  
 <a id="bifs_pes">__bifs_pes__</a> (enum, default: _off_): select BIFS streams packetization (PES vs sections)  
-* on: uses BIFS PES  
-* off: uses BIFS sections  
-* copy: uses BIFS PES but removes timestamps in BIFS SL and only carries PES timestamps  
+
+- on: uses BIFS PES  
+- off: uses BIFS sections  
+- copy: uses BIFS PES but removes timestamps in BIFS SL and only carries PES timestamps  
   
 <a id="flush_rap">__flush_rap__</a> (bool, default: _false_): force flushing mux program when RAP is found on video, and injects PAT and PMT before the next video PES begin  
 <a id="pcr_only">__pcr_only__</a> (bool, default: _false_): enable PCR-only TS packets  

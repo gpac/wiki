@@ -19,13 +19,14 @@ _Note: Unless disabled at session level (see [-no-probe](core_options/#no-probe)
 <a id="src">__src__</a> (cstr): URL of source content  
 <a id="block_size">__block_size__</a> (uint, default: _100000_): block size used to read file  
 <a id="cache">__cache__</a> (enum, default: _none_): set cache mode  
-* auto: cache to disk if content length is known, no cache otherwise  
-* disk: cache to disk,  discard once session is no longer used  
-* keep: cache to disk and keep  
-* mem: stores to memory, discard once session is no longer used  
-* mem_keep: stores to memory, keep after session is reassigned but move to `mem` after first download  
-* none: no cache  
-* none_keep: stores to memory, keep after session is reassigned but move to `none` after first download  
+
+- auto: cache to disk if content length is known, no cache otherwise  
+- disk: cache to disk,  discard once session is no longer used  
+- keep: cache to disk and keep  
+- mem: stores to memory, discard once session is no longer used  
+- mem_keep: stores to memory, keep after session is reassigned but move to `mem` after first download  
+- none: no cache  
+- none_keep: stores to memory, keep after session is reassigned but move to `none` after first download  
   
 <a id="range">__range__</a> (lfrac, default: _0-0_): set byte range, as fraction  
 <a id="ext">__ext__</a> (cstr): override file extension  

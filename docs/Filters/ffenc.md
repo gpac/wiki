@@ -17,8 +17,10 @@ Options can be passed from prompt using `--OPT=VAL` (global options) or appendin
 The filter will look for property `TargetRate` on input PID to set the desired bitrate per PID.  
   
 The filter will force a closed gop boundary:  
+
 - at each packet with a `FileNumber` property set or a `CueStart` property set to true.  
 - if [fintra](#fintra) and [rc](#rc) is set.  
+
   
 When forcing a closed GOP boundary, the filter will flush, destroy and recreate the encoder to make sure a clean context is used, as currently many encoders in libavcodec do not support clean reset when forcing picture types.  
 If [fintra](#fintra) is not set and the output of the encoder is a DASH session in live profile without segment timeline, [fintra](#fintra) will be set to the target segment duration and [rc](#rc) will be set.  

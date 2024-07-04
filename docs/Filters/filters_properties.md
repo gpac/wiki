@@ -41,8 +41,10 @@ alay | channel layout configuration, string or int value from ISO/IEC 23091-3
 ## Built-in properties for PIDs and packets, pixel formats and audio formats  
     
 Flags can be:  
-* D: droppable property, see [GSF multiplexer](gsfmx) filter help for more info  
-* P: property applying to packet  
+
+- D: droppable property, see [GSF multiplexer](gsfmx) filter help for more info  
+- P: property applying to packet  
+
     
 Name | type | Flags | Description | 4CC    
 --- | --- | --- | --- | ---    
@@ -55,7 +57,8 @@ ServiceID | uint | D | ID of parent service | PSID
 ClockID | uint | D | ID of clock reference PID | CKID    
 DependencyID | uint |  | ID of layer depended on | DPID    
 SubLayer | bool |  | PID is a sublayer of the stream depended on rather than an enhancement layer | DPSL    
-PlaybackMode | uint | D | Playback mode supported:  <br/>* 0: no time control  <br/>* 1: play/pause/seek,speed=1  <br/>* 2: play/pause/seek,speed>=0  <br/>* 3: play/pause/seek, reverse playback | PBKM    
+PlaybackMode | uint | D | Playback mode supported:  <br/>
+- 0: no time control  <br/>- 1: play/pause/seek,speed=1  <br/>- 2: play/pause/seek,speed>=0  <br/>- 3: play/pause/seek, reverse playback | PBKM    
 Scalable | bool |  | Scalable stream | SCAL    
 TileBase | bool |  | Tile base stream | SABT    
 TileID | uint |  | ID of the tile for hvt1/hvt2 PIDs | PTID    
@@ -79,7 +82,7 @@ TimeshiftDepth | frac | D | Depth of the timeshift buffer | PTSD
 TimeshiftTime | dbl | D | Time in the timeshift buffer in seconds - changes are signaled through PID info (no reconfigure) | PTST    
 TimeshiftState | uint | D | State of timeshift buffer: 0 is OK, 1 is underflow, 2 is overflow - changes are signaled through PID info (no reconfigure) | PTSS    
 Timescale | uint |  | Media timescale (a timestamp delta of N is N/timescale seconds) | TIMS    
-ProfileLevel | uint | D | MPEG-4 profile and level | PRPL    
+ProfileLevel | uint | D | Profile and level indication | PRPL    
 DecoderConfig | mem |  | Decoder configuration data | DCFG    
 DecoderConfigEnhancement | mem |  | Decoder configuration data of the enhancement layer(s). Also used by 3GPP/Apple text streams to give the full sample description table used in SDP. | ECFG    
 DSISuperset | bool |  | Decoder config is a superset of previous decoder config | DCFS    
@@ -104,7 +107,7 @@ BitDepthLuma | uint |  | Bit depth for luma components | YBPS
 BitDepthChroma | uint |  | Bit depth for chroma components | CBPS    
 FPS | frac |  | Video framerate | VFPF    
 Interlaced | bool |  | Video is interlaced | VILC    
-SAR | frac |  | Sample (i.e. pixel) aspect ratio | PSAR    
+SAR | frac |  | Sample (i.e. pixel) aspect ratio (negative values mean no SAR and removal of info in containers) | PSAR    
 MaxWidth | uint |  | Maximum width (video / text / graphics) of all enhancement layers | MWID    
 MaxHeight | uint |  | Maximum height (video / text / graphics) of all enhancement layers | MHEI    
 ZOrder | sint |  | Z-order of the video, from 0 (first) to max int (last) | VZIX    
@@ -117,7 +120,8 @@ CropOrigin | v2di |  | Position in source window, X,Y indicate coordinates in so
 OriginalSize | v2di |  | Original resolution of video | VOWH    
 SRD | v4di |  | Position and size of the video in the referential given by SRDRef | SRD     
 SRDRef | v2di |  | Width and Height of the SRD referential | SRDR    
-SRDMap | uintl |  | Mapping of input videos in reconstructed video, expressed as {Ox,Oy,Ow,Oh,Dx,Dy,Dw,Dh} per input, with:  <br/>* Ox,Oy,Ow,Oh: position and size of the input video (usually matching its `SRD` property), expressed in the output referential given by `SRDRef`  <br/>* Dx,Dy,Dw,Dh: Position and Size of the input video in the reconstructed output, expressed in the output referential given by `SRDRef` | SRDM    
+SRDMap | uintl |  | Mapping of input videos in reconstructed video, expressed as {Ox,Oy,Ow,Oh,Dx,Dy,Dw,Dh} per input, with:  <br/>
+- Ox,Oy,Ow,Oh: position and size of the input video (usually matching its `SRD` property), expressed in the output referential given by `SRDRef`  <br/>- Dx,Dy,Dw,Dh: Position and Size of the input video in the reconstructed output, expressed in the output referential given by `SRDRef` | SRDM    
 Alpha | bool |  | Video in this PID is an alpha map | VALP    
 Mirror | uint |  | Mirror mode (as bit mask with flags 0: no mirror, 1: along Y-axis, 2: along X-axis) | VMIR    
 Rotate | uint |  | Video rotation as value*90 degree anti-clockwise | VROT    
@@ -178,7 +182,8 @@ CENC_SAI | mem | P | CENC SAI for the packet, formatted as (char(IV_Size))IV(u16
 KeyInfo | mem |  | Multi key info formatted as:  <br/> `is_mkey(u8);`  <br/>nb_keys(u16);  <br/>[  <br/>	IV_size(u8);  <br/>	KID(bin128);  <br/>	if (!IV_size) {;  <br/>		const_IV_size(u8);  <br/>		constIV(const_IV_size);  <br/>}  <br/>]  <br/>` | CBIV  `  
 CENCPattern | frac |  | CENC crypt pattern, CENC pattern, skip as frac.num crypt as frac.den | CPTR    
 CENCStore | 4cc |  | Storage location 4CC of SAI data | CSTR    
-CENCstsdMode | uint |  | Mode for CENC sample description when using clear samples:  <br/>* 0: single sample description is used  <br/>* 1: a clear clone of the sample description is created, inserted before the CENC sample description  <br/>* 2: a clear clone of the sample description is created, inserted after the CENC sample description | CSTM    
+CENCstsdMode | uint |  | Mode for CENC sample description when using clear samples:  <br/>
+- 0: single sample description is used  <br/>- 1: a clear clone of the sample description is created, inserted before the CENC sample description  <br/>- 2: a clear clone of the sample description is created, inserted after the CENC sample description | CSTM    
 AMRModeSet | uint |  | ModeSet for AMR and AMR-WideBand | AMST    
 SubSampleInfo | mem |  | Binary blob describing N subsamples of the sample, formatted as N [(u32)flags(u32)size(u32)codec_param(u8)priority(u8) discardable]. Subsamples for a given flag MUST appear in order, however flags can be interleaved | SUBS    
 NALUMaxSize | uint |  | Max size of NAL units in stream - changes are signaled through PID info change (no reconfigure) | NALS    
@@ -282,7 +287,8 @@ EQRClamp | v4di | D | Clamping of frame for EQR as 0.32 fixed point (x is top, y
 SceneNode | bool |  | PID is a scene node decoder (AFX BitWrapper in BIFS) | PSND    
 OrigCryptoScheme | 4cc |  | Original crypto scheme on a decrypted PID | POCS    
 TSBSegs | uint | D | Time shift in number of segments for HAS streams, only set by dashin and dasher filters | PTSN    
-IsManifest | uint | D | PID is a HAS manifest (MSB=1 if live)  <br/>* 0: not a manifest  <br/>* 1: DASH manifest  <br/>* 2: HLS manifest  <br/>* 3: GHI(X) manifest | PHSM    
+IsManifest | uint | D | PID is a HAS manifest (MSB=1 if live)  <br/>
+- 0: not a manifest  <br/>- 1: DASH manifest  <br/>- 2: HLS manifest  <br/>- 3: GHI(X) manifest | PHSM    
 Sparse | bool | D | PID has potentially empty times between packets | PSPA    
 CharSet | str | D | Character set for input text PID | PCHS    
 ForcedSub | uint | D | PID or Packet is forced sub  <br/>0: not forced  <br/>1: forced frame  <br/>2: all frames are forced (PID only) | PFCS    
@@ -521,6 +527,7 @@ dvbs | DVB Subtitles
 dvbs | DVB-TeleText    
 div3 | MS-MPEG4 V3    
 caf | Apple Lossless Audio    
+dnx | AViD DNxHD    
 
 # Audio channel layout code points (ISO/IEC 23091-3)  
   
@@ -530,17 +537,17 @@ mono | 1 | 0x0000000000000004
 stereo | 2 | 0x0000000000000003    
 3/0.0 | 3 | 0x0000000000000007    
 3/1.0 | 4 | 0x0000000000000407    
-3/2.0 | 5 | 0x0000000000000307    
-3/2.1 | 6 | 0x000000000000030f    
-5/2.1 | 7 | 0x000000000000030f    
+3/2.0 | 5 | 0x0000000000000037    
+3/2.1 | 6 | 0x000000000000003f    
+5/2.1 | 7 | 0x000000000000003f    
 1+1 | 8 | 0x0000000000000003    
 2/1.0 | 9 | 0x0000000000000403    
 2/2.0 | 10 | 0x0000000000000033    
 3/3.1 | 11 | 0x000000000000043f    
 3/4.1 | 12 | 0x000000000000033f    
 11/11.2 | 13 | 0x000000003ffe67cf    
-5/2.1 | 14 | 0x000000000006030f    
-5/5.2 | 15 | 0x000000000606630f    
+5/2.1 | 14 | 0x000000000006003f    
+5/5.2 | 15 | 0x000000000606603f    
 5/4.1 | 16 | 0x000000000036003f    
 6/5.1 | 17 | 0x00000000023e003f    
 6/7.1 | 18 | 0x00000600023e003f    
@@ -838,12 +845,28 @@ gmem | fin httpin |  n/a
 gfio | fin | fout  
 http | httpin | httpout  
 https | httpin | httpout  
+dict | httpin |  n/a  
+ftp | httpin |  n/a  
+ftps | httpin |  n/a  
+gopher | httpin |  n/a  
+gophers | httpin |  n/a  
+imap | httpin |  n/a  
+imaps | httpin |  n/a  
+mqtt | httpin |  n/a  
+pop3 | httpin |  n/a  
+pop3s | httpin |  n/a  
+rtsp | httpin rtpin | rtspout  
+smb | httpin |  n/a  
+smbs | httpin |  n/a  
+smtp | httpin |  n/a  
+smtps | httpin |  n/a  
+telnet | httpin |  n/a  
+tftp | httpin |  n/a  
 tcp | sockin | sockout  
 udp | sockin | sockout  
 tcpu | sockin | sockout  
 udpu | sockin | sockout  
 rtp | rtpin | rtpout  
-rtsp | rtpin | rtspout  
 rtspu | rtpin |  n/a  
 rtsph | rtpin | rtspout  
 satip | rtpin |  n/a  

@@ -3,18 +3,22 @@
 # Configuration file  
   
 GPAC uses a configuration file to modify default options of libgpac and filters. This file is called `GPAC.cfg` and is located:  
+
 - on Windows platforms, in `C:\Users\FOO\AppData\Roaming\GPAC` or in `C:\Program Files\GPAC`.  
 - on iOS platforms, in a .gpac folder in the app storage directory.  
 - on Android platforms, in `/sdcard/GPAC/` if this directory exists, otherwise in `/data/data/io.gpac.gpac/GPAC`.  
 - on other platforms, in a `$HOME/.gpac/`.  
+
   
 Applications in GPAC can also specify a different configuration file through the [-p](gpac_general/#p) profile option. EX gpac -p=foo []  
 This will load configuration from $HOME/.gpac/foo/GPAC.cfg, creating it if needed.  
 The reserved name `0` is used to disable configuration file writing.  
   
 The configuration file is structured in sections, each made of one or more keys:  
+
 - section `foo` is declared as `[foo]\n`  
 - key `bar` with value `N` is declared as `bar=N\n`. The key value `N` is not interpreted and always handled as ASCII text.  
+
   
 By default the configuration file only holds a few system specific options and directories. It is possible to serialize the entire set of options to the configuration file, using [-wc](gpac_general/#wc) [-wf](gpac_general/#wf).  
 This should be avoided as the resulting configuration file size will be quite large, hence larger memory usage for the applications.  

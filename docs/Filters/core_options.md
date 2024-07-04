@@ -14,12 +14,13 @@
 <a id="ifce">__-ifce__</a> (string): set default multicast interface (default is ANY), either an IP address or a device name as listed by `gpac -h net`. Prefix '+' will force using IPv6 for dual interface  
 <a id="lang">__-lang__</a> (string): set preferred language  
 <a id="cfg">__-cfg__</a>,__-opt__ (string): get or set configuration file value. The string parameter can be formatted as:  
-* `section:key=val`: set the key to a new value  
-* `section:key=null`, `section:key`: remove the key  
-* `section=null`: remove the section  
-* no argument: print the entire configuration file  
-* `section`: print the given section  
-* `section:key`: print the given `key` in `section` (section can be set to `*`)- `*:key`: print the given `key` in all sections  
+
+- `section:key=val`: set the key to a new value  
+- `section:key=null`, `section:key`: remove the key  
+- `section=null`: remove the section  
+- no argument: print the entire configuration file  
+- `section`: print the given section  
+- `section:key`: print the given `key` in `section` (section can be set to `*`)- `*:key`: print the given `key` in all sections  
   
 <a id="no-save">__-no-save__</a>: discard any changes made to the config file upon exit  
 <a id="mod-reload">__-mod-reload__</a>: unload / reload module shared libs when no longer used  
@@ -40,22 +41,26 @@
 <a id="xml-max-csize">__-xml-max-csize__</a> (int, default: __100k__): maximum XML content or attribute size  
 <a id="netcap">__-netcap__</a> (string): set packet capture and filtering rules formatted as [CFG][RULES]. Each `-netcap` argument will define a configuration  
 [CFG] is an optional comma-separated list of:  
-* id=ID: ID (string) for this configuration. If NULL, configuration will apply to all sockets not specifying a netcap ID  
-* src=F: read packets from `F`, as produced by GPAC or a pcap or pcapng file  
-* dst=F: output packets to `F` (GPAC or pcap/pcapng file), cannot be set if src is set  
-* loop[=N]: loop capture file N times, or forever if N is not set or negative  
-* nrt: disable real-time playback  
+
+- id=ID: ID (string) for this configuration. If NULL, configuration will apply to all sockets not specifying a netcap ID  
+- src=F: read packets from `F`, as produced by GPAC or a pcap or pcapng file  
+- dst=F: output packets to `F` (GPAC or pcap/pcapng file), cannot be set if src is set  
+- loop[=N]: loop capture file N times, or forever if N is not set or negative  
+- nrt: disable real-time playback  
+
 [RULES] is an optional list of `[OPT,OPT2...]` with OPT in:  
-* m=K: set rule mode - `K` can be `r` for reception only (default), `w` for send only or `rw` for both  
-* s=K: set packet start range to `K`  
-* e=K: set packet end range to `K` - only used for `r` and `f` rules, 0 or not set means rule apply until end  
-* n=K: set number of packets to drop to `K` - not set, 0 or 1 means single packet  
-* r=K: random drop `n` packet every `K`  
-* f=K: drop first `n` packets every `K`  
-* d=K: reorder `n` packets after the next `K` packets, can be used with `f` or `r` rules  
-* p=K: filter packets on port `K` only, if not set the rule applies to all packets  
-* o=K: patch packet instead of droping (always true for TCP), replacing byte at offset `K` (0 is first byte, <0 for random)  
-* v=K: set patch byte value to `K` (hexa) or negative value for random (default)  
+
+- m=K: set rule mode - `K` can be `r` for reception only (default), `w` for send only or `rw` for both  
+- s=K: set packet start range to `K`  
+- e=K: set packet end range to `K` - only used for `r` and `f` rules, 0 or not set means rule apply until end  
+- n=K: set number of packets to drop to `K` - not set, 0 or 1 means single packet  
+- r=K: random drop `n` packet every `K`  
+- f=K: drop first `n` packets every `K`  
+- d=K: reorder `n` packets after the next `K` packets, can be used with `f` or `r` rules  
+- p=K: filter packets on port `K` only, if not set the rule applies to all packets  
+- o=K: patch packet instead of droping (always true for TCP), replacing byte at offset `K` (0 is first byte, <0 for random)  
+- v=K: set patch byte value to `K` (hexa) or negative value for random (default)  
+
   
 Example
 ```
@@ -76,9 +81,7 @@ Example
 This will use regular network interface and drop packets 100 to 119 on port 1234 and patch one random packet every 200 starting from packet 500, setting byte 10 to FE  
   
 <a id="cache">__-cache__</a> (string): cache directory location  
-<a id="proxy-on">__-proxy-on__</a>: enable HTTP proxy  
-<a id="proxy-name">__-proxy-name__</a> (string): set HTTP proxy address  
-<a id="proxy-port">__-proxy-port__</a> (int, default: __80__): set HTTP proxy port  
+<a id="proxy">__-proxy__</a> (string): set HTTP proxy server address and port  
 <a id="maxrate">__-maxrate__</a> (int): set max HTTP download rate in bits per sec. 0 means unlimited  
 <a id="no-cache">__-no-cache__</a>: disable HTTP caching  
 <a id="offline-cache">__-offline-cache__</a>: enable offline HTTP caching (no re-validation of existing resource in cache)  
@@ -95,25 +98,33 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="dm-threads">__-dm-threads__</a>: force using threads for async download requests rather than session scheduler  
 <a id="cte-rate-wnd">__-cte-rate-wnd__</a> (int, default: __20__): set window analysis length in milliseconds for chunk-transfer encoding rate estimation  
 <a id="cred">__-cred__</a> (string): path to 128 bits key for credential storage  
+<a id="no-h2">__-no-h2__</a>:  disable HTTP2  
+<a id="no-h2c">__-no-h2c__</a>: disable HTTP2 upgrade (i.e. over non-TLS)  
+<a id="h2-copy">__-h2-copy__</a>: enable intermediate copy of data in nghttp2 (default is disabled but may report as broken frames in wireshark)  
+<a id="curl">__-curl__</a>:    use CURL instead of GPAC HTTP stack  
+<a id="no-h3">__-no-h3__</a>:  disable HTTP3 (CURL only)  
 <a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status(disable_depth), weight, src_cap_idx -> dst_cap_idx)  
 <a id="full-link">__-full-link__</a>: throw error if any PID in the filter graph cannot be linked  
 <a id="no-dynf">__-no-dynf__</a>: disable dynamically loaded filters  
 <a id="no-block">__-no-block__</a> (Enum, default: __no__): disable blocking mode of filters  
-* no: enable blocking mode  
-* fanout: disable blocking on fan-out, unblocking the PID as soon as one of its destinations requires a packet  
-* all: disable blocking  
+
+- no: enable blocking mode  
+- fanout: disable blocking on fan-out, unblocking the PID as soon as one of its destinations requires a packet  
+- all: disable blocking  
   
 <a id="no-reg">__-no-reg__</a>: disable regulation (no sleep) in session  
 <a id="no-reassign">__-no-reassign__</a>: disable source filter reassignment in PID graph resolution  
 <a id="sched">__-sched__</a> (Enum, default: __free__): set scheduler mode  
-* free: lock-free queues except for task list (default)  
-* lock: mutexes for queues when several threads  
-* freex: lock-free queues including for task lists (experimental)  
-* flock: mutexes for queues even when no thread (debug mode)  
-* direct: no threads and direct dispatch of tasks whenever possible (debug mode)  
+
+- free: lock-free queues except for task list (default)  
+- lock: mutexes for queues when several threads  
+- freex: lock-free queues including for task lists (experimental)  
+- flock: mutexes for queues even when no thread (debug mode)  
+- direct: no threads and direct dispatch of tasks whenever possible (debug mode)  
   
 <a id="max-chain">__-max-chain__</a> (int, default: __6__): set maximum chain length when resolving filter links. Default value covers for _[ in -> ] dmx -> reframe -> decode -> encode -> reframe -> mx [ -> out]_. Filter chains loaded for adaptation (e.g. pixel format change) are loaded after the link resolution. Setting the value to 0 disables dynamic link resolution. You will have to specify the entire chain manually  
 <a id="max-sleep">__-max-sleep__</a> (int, default: __50__): set maximum sleep time slot in milliseconds when regulation is enabled  
+<a id="step-link">__-step-link__</a>: load filters one by one when solvink a link instead of loading all filters for the solved path  
 <a id="threads">__-threads__</a> (int): set N extra thread for the session. -1 means use all available cores  
 <a id="no-probe">__-no-probe__</a>: disable data probing on sources and relies on extension (faster load but more error-prone)  
 <a id="no-argchk">__-no-argchk__</a>: disable tracking of argument usage (all arguments will be considered as used)  
@@ -135,10 +146,11 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="wait-fonts">__-wait-fonts__</a>: wait for SVG fonts to be loaded before displaying frames  
 <a id="webvtt-hours">__-webvtt-hours__</a>: force writing hour when serializing WebVTT  
 <a id="charset">__-charset__</a> (string): set charset when not recognized from input. Possible values are:  
-* utf8: force UTF-8  
-* utf16: force UTF-16 little endian  
-* utf16be: force UTF-16 big endian  
-* other: attempt to parse anyway  
+
+- utf8: force UTF-8  
+- utf16: force UTF-16 little endian  
+- utf16be: force UTF-16 big endian  
+- other: attempt to parse anyway  
   
 <a id="rmt">__-rmt__</a>:      enable profiling through [Remotery](https://github.com/Celtoys/Remotery). A copy of Remotery visualizer is in gpac/share/vis, usually installed in _/usr/share/gpac/vis_ or _Program Files/GPAC/vis_  
 <a id="rmt-port">__-rmt-port__</a> (int, default: __17815__): set remotery port  

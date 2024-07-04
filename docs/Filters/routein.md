@@ -5,27 +5,33 @@
 Register name used to load filter: __routein__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter is a receiver for ROUTE sessions (ATSC 3.0 and generic ROUTE) and DVB-MABR flute sessions.  
+This filter is a receiver for file delivery over multicast. It currently supports ATSC 3.0, generic ROUTE and DVB-MABR flute.  
+
 - ATSC 3.0 mode is identified by the URL `atsc://`.  
 - Generic ROUTE mode is identified by the URL `route://IP:PORT`.  
 - DVB-MABR mode is identified by the URL `mabr://IP:PORT` pointing to the bootstrap FLUTE channel carrying the multicast gateway configuration.  
+
   
 The filter can work in cached mode, source mode or standalone mode.  
 
 # Cached mode  
   
-The cached mode is the default filter behavior. It populates GPAC HTTP Cache with the received files, using `http://groute/serviceN/` as service root, `N being the ROUTE service ID.`  
+The cached mode is the default filter behavior. It populates GPAC HTTP Cache with the received files, using `http://gmcast/serviceN/` as service root, `N being the multicast service ID.`  
 In cached mode, repeated files are always pushed to cache.  
 The maximum number of media segment objects in cache per service is defined by [nbcached](#nbcached); this is a safety used to force object removal in case DASH client timing is wrong and some files are never requested at cache level.  
     
 The cached MPD is assigned the following headers:  
-* `x-route`: integer value, indicates the ROUTE service ID.  
-* `x-route-first-seg`: string value, indicates the name of the first segment (completely or currently being) retrieved from the broadcast.  
-* `x-route-ll`: boolean value, if yes indicates that the indicated first segment is currently being received (low latency signaling).  
-* `x-route-loop`: boolean value, if yes indicates a loop (e.g. pcap replay) in the service has been detected - only checked if [cloop](#cloop) is set.  
+
+- `x-mcast`: boolean value, if `yes` indicates the file comes from a multicast.  
+- `x-mcast-first-seg`: string value, indicates the name of the first segment (completely or currently being) retrieved from the broadcast.  
+- `x-mcast-ll`: boolean value, if yes indicates that the indicated first segment is currently being received (low latency signaling).  
+- `x-mcast-loop`: boolean value, if yes indicates a loop (e.g. pcap replay) in the service has been detected - only checked if [cloop](#cloop) is set.  
+
     
 The cached files are assigned the following headers:  
-* `x-route`: boolean value, if yes indicates the file comes from an ROUTE session.  
+
+- `x-mcast`: boolean value, if `yes` indicates the file comes from a multicast.  
+
   
 If [max_segs](#max_segs) is set, file deletion event will be triggered in the filter chain.  
   
@@ -55,8 +61,10 @@ If [max_segs](#max_segs) is set, old files will be deleted.
 # File Repair  
   
 In case of losses or incomplete segment reception (during tune-in), the files are patched as follows:  
-* MPEG-2 TS: all lost ranges are adjusted to 188-bytes boundaries, and transformed into NULL TS packets.  
-* ISOBMFF: all top-level boxes are scanned, and incomplete boxes are transformed in `free` boxes, except mdat kept as is if [repair](#repair) is set to simple.  
+
+- MPEG-2 TS: all lost ranges are adjusted to 188-bytes boundaries, and transformed into NULL TS packets.  
+- ISOBMFF: all top-level boxes are scanned, and incomplete boxes are transformed in `free` boxes, except mdat kept as is if [repair](#repair) is set to simple.  
+
   
 If [kc](#kc) option is set, corrupted files will be kept. If [fullseg](#fullseg) is not set and files are only partially received, they will be kept.  
   
@@ -68,7 +76,7 @@ Example
 ```
 route add -net 224.0.23.60/32 -interface vboxnet0
 ```  
-Then for each ROUTE service in the multicast:  
+Then for each multicast service in the multicast:  
 Example
 ```
 route add -net 239.255.1.4/32 -interface vboxnet0
@@ -96,11 +104,14 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="rtimeout">__rtimeout__</a> (uint, default: _1000_): default timeout in us to wait when gathering out-of-order packets  
 <a id="fullseg">__fullseg__</a> (bool, default: _false_): only dispatch full segments in cache mode (always true for other modes)  
 <a id="repair">__repair__</a> (enum, default: _simple_): repair mode for corrupted files  
-* no: no repair is performed  
-* simple: simple repair is performed (incomplete `mdat` boxes will be kept)  
-* strict: incomplete mdat boxes will be lost as well as preceding `moof` boxes  
-* full: HTTP-based repair of all lost packets  
+
+- no: no repair is performed  
+- simple: simple repair is performed (incomplete `mdat` boxes will be kept)  
+- strict: incomplete mdat boxes will be lost as well as preceding `moof` boxes  
+- full: HTTP-based repair of all lost packets  
   
 <a id="repair_url">__repair_url__</a> (cstr): repair url  
 <a id="max_sess">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  
+<a id="llmode">__llmode__</a> (bool, default: _true_): enable low-latency access  
+<a id="dynsel">__dynsel__</a> (bool, default: _true_): dynamically enable and disable multicast groups based on their selection state  
   
