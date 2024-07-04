@@ -7,6 +7,7 @@ The app is responsible for assigning capabilities to the filter, and setting cal
   
 
 **Custom filter limitations:**
+
 *  Custom filters do not have any arguments exposed.    
 *  The filter cannot be used as source of filters loading a source filter graph dynamically, such as the dashin filter.
 *  The filter cannot be used as destination of filters loading a destination filter graph dynamically, such as the dasher filter.
@@ -120,33 +121,33 @@ GF_Err  mem_in_process_ckb(GF_Filter  *filter) {
 First thing we declare a PID that will serve us as an output PID, than we add the properties to this PID. Here for example we are adding the property  **GF_PROP_PID_CODECID**  with the value **GF_CODECID_AVC** to indicate that w are sending an AVC frame through this PID.
 
 ```C
-  opid  =  gf_filter_get_opid(filter, 0);
-  if (!opid) {
-    opid  =  gf_filter_pid_new(filter);
-    Properties  properties[]  = {
-        {.prop_4cc  =  GF_PROP_PID_CODECID,
-	     .val  = {.type  =  GF_PROP_UINT, .value.uint  =  GF_CODECID_AVC},
-         .flags  =  GF_CAPS_INPUT},
-	 {0},
-	};
-	
-    push_props(opid, properties);    
-  }
+opid  =  gf_filter_get_opid(filter, 0);
+if (!opid) {
+  opid  =  gf_filter_pid_new(filter);
+  Properties  properties[]  = {
+      {.prop_4cc  =  GF_PROP_PID_CODECID,
+     .val  = {.type  =  GF_PROP_UINT, .value.uint  =  GF_CODECID_AVC},
+       .flags  =  GF_CAPS_INPUT},
+ {0},
+};
+
+  push_props(opid, properties);    
+}
 ```
 
 The push props function is defined below:
 
 ```C
-  static GF_Err push_props(GF_FilterPid *PID, Properties pid_props[])  
-  {  
-  GF_Err gf_err = GF_OK;  
-  int i = 0;  
-  while(pid_props[i].prop_4cc) {  
-   if(pid_props[i].flags == GF_CAPS_INPUT) {  
-     gf_filter_pid_set_property(PID, pid_props[i].prop_4cc, &pid_props[i].val);  
-     }  
-    i++;  
-  }}  
+static GF_Err push_props(GF_FilterPid *PID, Properties pid_props[])  
+{  
+GF_Err gf_err = GF_OK;  
+int i = 0;  
+while(pid_props[i].prop_4cc) {  
+ if(pid_props[i].flags == GF_CAPS_INPUT) {  
+   gf_filter_pid_set_property(PID, pid_props[i].prop_4cc, &pid_props[i].val);  
+   }  
+  i++;  
+}}  
 ```
 
 We loop through the props that we want to add (defined here through a specific struct). And add them through the [gf_filter_pid_set_property](https://doxygen.gpac.io/group__fs__pid.html#gaa9d532d9ca4c10a19973bcbd5e8af4fd) function.
@@ -156,56 +157,56 @@ An alternative way is to use the [gf_filter_push_caps()](https://doxygen.gpac.io
 Our output PID and its properties are now configured, Next order of business is  to fetch the data from memory. We keep a reference to the internal data of the filter through the following struct. This allows us to pass references to the getData() and freeData() functions from the main program to the filters session internals, we also keep some metadata like the current decoding / presentation timestamps and the number of max frames we will process.   
  
 ```C
-  typedef  struct {
-     void  *parent;
-     Bool (*getData)(void  *parent, const  u8  **data, u32  *data_size, u64  *dts,
-     u64  *pts);
-     void (*freeData)(void  *parent, const  u8  *data);
-     int  max_frames;
-     u64  dts;
-     u64  pts;
-  } MemInCtx;
+typedef  struct {
+   void  *parent;
+   Bool (*getData)(void  *parent, const  u8  **data, u32  *data_size, u64  *dts,
+   u64  *pts);
+   void (*freeData)(void  *parent, const  u8  *data);
+   int  max_frames;
+   u64  dts;
+   u64  pts;
+} MemInCtx;
 ```
  
 With that in mind , lets return to our mem_in process callback:  
 
 ```C
-  const u8 *data  =  NULL;
-  u32  data_size  =  0;
-  u64  dts  =  0, pts  =  0;
-  MemInCtx  *ctx  = (MemInCtx  *)gf_filter_get_rt_udta(filter);
-  if (!ctx)
-    return  GF_BAD_PARAM;
-  ctx->parent  = (void  *)ctx;
-  ctx->getData  =  &inputGetData;
-  if (!ctx->getData(ctx->parent, &data, &data_size, &dts, &pts)){
-    gf_filter_pid_set_eos(opid);
-    return  GF_EOS;
-  } 
-  if (!data) {
-     gf_filter_ask_rt_reschedule(filter, 1);
-     return  GF_OK;
-  } 
+const u8 *data  =  NULL;
+u32  data_size  =  0;
+u64  dts  =  0, pts  =  0;
+MemInCtx  *ctx  = (MemInCtx  *)gf_filter_get_rt_udta(filter);
+if (!ctx)
+  return  GF_BAD_PARAM;
+ctx->parent  = (void  *)ctx;
+ctx->getData  =  &inputGetData;
+if (!ctx->getData(ctx->parent, &data, &data_size, &dts, &pts)){
+  gf_filter_pid_set_eos(opid);
+  return  GF_EOS;
+} 
+if (!data) {
+   gf_filter_ask_rt_reschedule(filter, 1);
+   return  GF_OK;
+} 
 ```
 
 After initialisation of local variables, we use the [gf_filter_get_rt_udta()](https://doxygen.gpac.io/group__fs__filter.html#ga47b46ae728e700f983f53fdc069032f3) function to retrieve the user data that we set from the main function(see code bellow). This function is typically used by bindings and custom filters to share runtime data. 
   
 Now we can access the data in memory using the getData(), in case the function is not available we send an End Of Stream signal through our output pid.
 
-If there is no data available  we ask for rescheduling   with [gf_filter_ask_rt_reschedule()](https://doxygen.gpac.io/group__fs__filter.html#ga36bb988aa964b3c6220aae11773d7c9e). 
+If there is no data available  we ask for rescheduling with [gf_filter_ask_rt_reschedule()](https://doxygen.gpac.io/group__fs__filter.html#ga36bb988aa964b3c6220aae11773d7c9e). 
 
 
 Otherwise, we create a new packet to be shared, we set some packets properties and we send the packet upstream. 
   
 ```C
-  GF_FilterPacket *pck = gf_filter_pck_new_shared(opid, data, data_size, mem_in_pck_destructor);
-  if(!pck) { gf_err = GF_OUT_OF_MEM; goto exit; }
-  gf_filter_pck_set_dts(pck, dts);
-  gf_filter_pck_set_cts(pck, pts); 
-  gf_filter_pck_set_duration(pck, 1);
-  gf_filter_pck_set_sap(pck, GF_FILTER_SAP_1); 
-  gf_filter_pck_set_framing(pck, GF_TRUE, GF_TRUE);
-  gf_filter_pck_send(pck);
+GF_FilterPacket *pck = gf_filter_pck_new_shared(opid, data, data_size, mem_in_pck_destructor);
+if(!pck) { gf_err = GF_OUT_OF_MEM; goto exit; }
+gf_filter_pck_set_dts(pck, dts);
+gf_filter_pck_set_cts(pck, pts); 
+gf_filter_pck_set_duration(pck, 1);
+gf_filter_pck_set_sap(pck, GF_FILTER_SAP_1); 
+gf_filter_pck_set_framing(pck, GF_TRUE, GF_TRUE);
+gf_filter_pck_send(pck);
 ```
 
 ### Instantiation of the process callback
@@ -213,12 +214,12 @@ Otherwise, we create a new packet to be shared, we set some packets properties a
 Once we defined our process callback we need to instantiate it and  assign it to our filter. so the logic of the filter will be executed each time the filter process is called by the gpac filters session. 
 
 ```C
-    // create a new GF_filter pointer called src_filter 
-    GF_Filter *src_filter = gf_fs_new_filter(session, "mem_in", 0, &gf_err);
-    // declare the mem_in process callback function if not defined in the same file
-    GF_Err mem_in_process_ckb(GF_Filter * filter);
-    // assign the callback to the filter   
-    gf_filter_set_process_ckb(src_filter, mem_in_process_ckb);
+// create a new GF_filter pointer called src_filter 
+GF_Filter *src_filter = gf_fs_new_filter(session, "mem_in", 0, &gf_err);
+// declare the mem_in process callback function if not defined in the same file
+GF_Err mem_in_process_ckb(GF_Filter * filter);
+// assign the callback to the filter   
+gf_filter_set_process_ckb(src_filter, mem_in_process_ckb);
 ```
 
 Our source filter is ready to be used by the filter session.  
@@ -242,35 +243,35 @@ The following is the definition of the mem_out filter register with simply two f
 The mem_out_process logic is also straight forward.
 
 ```C
-    static GF_Err mem_out_process(GF_Filter *filter) {
-      MemOutCtx *ctx = (MemOutCtx *)gf_filter_get_udta(filter);
-      if (!ctx)
-        return GF_BAD_PARAM;
-      ctx->pushData = &outputPushData;
-      ctx->pushDsi = &outputPushMetadata;
-    
-      GF_FilterPid *ipid = gf_filter_get_ipid(filter, 0);
-    
-      const GF_PropertyValue *prop =
-          gf_filter_pid_get_property(ipid, GF_PROP_PID_DECODER_CONFIG);
-    
-      if (prop && prop->value.data.ptr && prop->value.data.size) {
-        ctx->pushDsi(ctx->parent, prop->value.data.ptr, prop->value.data.size);
-      }
-    
-      GF_FilterPacket *pck = gf_filter_pid_get_packet(ipid);
-      if (pck) {
-        u32 data_size = 0;
-        u64 dts = gf_filter_pck_get_dts(pck);
-        u64 pts = gf_filter_pck_get_cts(pck);
-        const u8 *data = gf_filter_pck_get_data(pck, &data_size);
-    
-        ctx->pushData(ctx->parent, data, data_size, dts, pts);
-        gf_filter_pid_drop_packet(ipid);
-      }
-    
-      return GF_OK;
-    }
+MemOutCtx *ctx = (MemOutCtx *)gf_filter_get_udta(filter);
+static GF_Err mem_out_process(GF_Filter *filter) {
+  if (!ctx)
+    return GF_BAD_PARAM;
+  ctx->pushData = &outputPushData;
+  ctx->pushDsi = &outputPushMetadata;
+
+  GF_FilterPid *ipid = gf_filter_get_ipid(filter, 0);
+
+  const GF_PropertyValue *prop =
+      gf_filter_pid_get_property(ipid, GF_PROP_PID_DECODER_CONFIG);
+
+  if (prop && prop->value.data.ptr && prop->value.data.size) {
+    ctx->pushDsi(ctx->parent, prop->value.data.ptr, prop->value.data.size);
+  }
+
+  GF_FilterPacket *pck = gf_filter_pid_get_packet(ipid);
+  if (pck) {
+    u32 data_size = 0;
+    u64 dts = gf_filter_pck_get_dts(pck);
+    u64 pts = gf_filter_pck_get_cts(pck);
+    const u8 *data = gf_filter_pck_get_data(pck, &data_size);
+
+    ctx->pushData(ctx->parent, data, data_size, dts, pts);
+    gf_filter_pid_drop_packet(ipid);
+  }
+
+  return GF_OK;
+}
 ```
 
 we note here:
@@ -284,11 +285,11 @@ we note here:
 ### Registry and loading of the filter to the session 
 
 ```C
-  // register and load destination filter
-  GF_Filter  *dst_filter  =  NULL;
-  const  GF_FilterRegister  *mem_out_register(GF_FilterSession  *);
-  gf_fs_add_filter_register(session, mem_out_register(session));
-  dst_filter  =  gf_fs_load_filter(session, "mem_out", &gf_err);
+// register and load destination filter
+GF_Filter  *dst_filter  =  NULL;
+const  GF_FilterRegister  *mem_out_register(GF_FilterSession  *);
+gf_fs_add_filter_register(session, mem_out_register(session));
+dst_filter  =  gf_fs_load_filter(session, "mem_out", &gf_err);
 ```
 
 The memory output filter is now ready to be used inside the filters session.
@@ -362,6 +363,7 @@ int  main() {
 ```
 
 Here we note:
+
 * The use of [gf_filter_set_rt_udta()](https://doxygen.gpac.io/group__fs__filter.html#gac2f040600796f000ac4189fda1c76bc0) to set our runtime data of the mem_in filter. 
 * We post the mem_in process task to the session using the [gf_filter_post_process_task(src_filter)](https://doxygen.gpac.io/group__fs__filter.html#ga5806cdb70097f7d5d181884928870842) function.
  

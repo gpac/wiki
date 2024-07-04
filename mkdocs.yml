@@ -328,9 +328,9 @@ nav:
   - Developers:
     - Developers/index.md
     - API documentation: https://doxygen.gpac.io/modules.html
-    - Filter API tutorials:
-      - Intro to Filter Session: Developers/tutorials/filter-session-intro
-      - Writing a custom Filter: Developers/tutorials/custom-filter
+    - tutorials:
+      - Intro to Filter Session: Developers/tutorials/filter-session-intro.md
+      - Writing a custom Filter: Developers/tutorials/custom-filter.md
     - JavaScript: Developers/javascript.md
     - Python: Howtos/python.md
   - Playback:
