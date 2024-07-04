@@ -273,6 +273,7 @@ nav:
       - ttml2srt: Filters/ttml2srt.md
       - ttml2vtt: Filters/ttml2vtt.md
       - ttmldec: Filters/ttmldec.md
+      - ttmlmerge: Filters/ttmlmerge.md
       - ttxtdec: Filters/ttxtdec.md
       - tx3g2srt: Filters/tx3g2srt.md
       - tx3g2ttml: Filters/tx3g2ttml.md

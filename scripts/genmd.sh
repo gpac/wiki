@@ -1,8 +1,10 @@
 #!/bin/sh
 
-cd docs/Filters
+cd ../docs/Filters
 gpac -genmd
+git add *.md
 cd ../MP4Box
 MP4Box -genmd
-cd ..
-
+git add *.md
+cd ../../scripts
+git add ../mkdocs.yml
