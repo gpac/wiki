@@ -22,10 +22,10 @@ The GPAC filter session object allows building media pipelines using multiple so
 The simplest way to create a session object is to use the gf_fs_new_defaults() function.
 
 ```C 
-    GF_FilterSession *session = gf_fs_new_defaults(0u);  
-    if (session == NULL) {  
-        fprintf(stderr, "Failed to create GPAC session\n");  
-    }
+GF_FilterSession *session = gf_fs_new_defaults(0u);  
+if (session == NULL) {  
+    fprintf(stderr, "Failed to create GPAC session\n");  
+}
 ```
 
 This function will create a new filter session, loading parameters from [gpac config](/Filters/core_config). This will also load all available filter registers not blacklisted.
