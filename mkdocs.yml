@@ -88,9 +88,7 @@ nav:
     - Dynamic Rate Control: Howtos/dynamic_rc.md
     - In-place Editing: Howtos/mp4box-inplace.md
     - Working with Network Captures: Howtos/network-capture.md
-    - GPAC and NodeJS: Howtos/nodejs.md
     - Playlists/Splicing/Ad Insertion: Howtos/playlist.md
-    - GPAC and Python: Howtos/python.md
     - Simulating Real-Time sources: Howtos/realtime.md
     - ROUTE & ATSC3.0 services: Howtos/route.md
     - SCTE-35, id3 markers, dynamic metadata: Howtos/scte35-markers.md
@@ -332,7 +330,8 @@ nav:
       - Intro to Filter Session: Developers/tutorials/filter-session-intro.md
       - Writing a custom Filter: Developers/tutorials/custom-filter.md
     - JavaScript: Developers/javascript.md
-    - Python: Howtos/python.md
+    - Python: Developers/python.md
+    - NodeJS: Developers/nodejs.md
   - Playback:
     - Overview: Player/Player.md
     # - Introduction: Player/Playback.md
