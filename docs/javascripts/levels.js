@@ -57,7 +57,7 @@ function addLevelTags() {
     allContent.forEach(element => {
         const level = element.dataset.level;
         if (level) {
-            // Vérifier si un tag de niveau existe déjà
+        
             const existingTag = element.querySelector('.level-tag');
             if (!existingTag) {
                 const tag = document.createElement('span');

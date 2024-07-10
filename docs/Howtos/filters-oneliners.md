@@ -1,4 +1,9 @@
-# Foreword
+
+
+
+
+# Foreword {: data-level="all" }
+
 
 This page contains one-liners illustrating the many possibilities of GPAC filters architecture. For a more detailed information, it is highly recommended that you read:
 
@@ -13,7 +18,7 @@ To get a better understanding of each command illustrated in this case, it is re
 Whenever an option is specified, e.g. `dest.mp4:foo`, you can get more info and locate the parent filter of this option  using `gpac -h foo`.
 
 The filter session is by default quiet, except for warnings and error reporting. To get information on the session while running, use [-r](gpac_general#r) option. To get more runtime information, use the [log system](core_logs).
-
+sectionLevel === null || 
 Given the configurable nature of the filter architecture, most examples given in one context can be reused in another context. For example:
 
 - from the dump examples:
@@ -45,7 +50,7 @@ GPAC filters can use either:
 
 _NOTE This page is under permanent construction, feel free to contribute !_
 
-# Source Inspection
+# Source Inspection {: data-level="beginner" }
 
 Check if a source is supported and get quick information on the media streams - _see [filter](inspect), [howto](inspecting)_  
 ```
@@ -95,7 +100,7 @@ Count all AC3 audio streams in a source - _see [filter](probe),  [doc](filters_g
 res = `gpac -i source @#CodecID=ac3 probe`
 ```
 
-# Dumping and decoding
+# Dumping and decoding 
 
 Extract AVC track, potentially transcoding - _see [filter](writegen)_  
 ```
@@ -147,7 +152,7 @@ Extract all AAC audio tracks - _see [doc](filters_general#complex-links)_
 gpac -i source reframer @#CodecID=aac -o dump_$ID$:dynext
 ```
 
-# Multiplexing
+# Multiplexing {: data-level="beginner" }
 
 Mux sources to MP4 - _see [filter](mp4mx)_  
 ```
@@ -192,7 +197,7 @@ Mux sources to MKV (for builds with FFmpeg support) - _see [filter](ffmx)_
 gpac -i source -o dst.mkv
 ```
 
-# Remultiplexing
+# Remultiplexing {: data-level="beginner" }
 
 Remux sources to MP4 forcing bitstream reparsing (all syntaxes are equivalent)  
 ```
@@ -201,7 +206,7 @@ MP4Box -add source:unframer -new dst.mp4
 ```
 
 
-# Encoding
+# Encoding {: data-level="beginner" }
 
 Encode an MP3 to an AAC file at 100 kbps - _see [filter](ffenc)_  
 ```
@@ -258,7 +263,7 @@ gpac -i source enc:c=avc:b=3m:pass2 -o dst.mp4
 ```
 
 
-# Rescaling
+# Rescaling 
 
 rescale without respecting aspect ratio
 ```
@@ -276,7 +281,7 @@ gpac -i source1.mp4 ffsws:osize=510x512:osr=3/2 vout
 ```
 
 
-# Encryption
+# Encryption 
 
 Encrypt and dash several sources using a single drm configuration - _see [filter](cecrypt)_  
 ```
@@ -294,7 +299,7 @@ gpac -i source.mp4 dasher:gencues cecrypt:cfile=roll_seg.xml -o live.mpd
 ```
 
 
-# Piping and sockets
+# Piping and sockets 
 
 Grab a  compressed stream (e.g. AVC|H264) from stdin, remove all non I-frames and non-video PIDs and output as raw 264 over stdout - _see  [filter](fout)   [howto](pipes)_  
 ```
@@ -402,7 +407,7 @@ gpac -i source::#HLSMExt=vfoo,vbar=video::#HLSVExt=#fooVideo,#bar1=optVideo -i s
 ```
 
 
-# Time modification
+# Time modification 
 
 _Note: If the source is an MP4 file, it is much simpler/faster to perform these operations using MP4Box_
 
@@ -427,7 +432,7 @@ gpac -i source restamp:fps=30000/1001:rawv=force -o dst
 ```
 
 
-# Source splitting
+# Source splitting {: data-level="beginner" }
 
 Extract from 1min to 2min30s - _see [filter](restamp)_  
 ```
@@ -457,7 +462,7 @@ gpac -i source reframer:xs=T00:01:00,T00:05:20:xe=T00:02:30 -o dst
 ```
 
 
-# Playlists and source concatenation
+# Playlists and source concatenation {: data-level="beginner" }
 
 Loop file forever playback  - _see [filter](flist)_  
 ```
@@ -483,7 +488,7 @@ ls *.mp4 > pl.m3u
 gpac -i pl.m3u vout
 ```
 
-# Playback
+# Playback { : data-level="beginner" }
 
 Basic playback  - _see [howto](filters-playback)_  
 ```
@@ -554,7 +559,7 @@ Decode source MP4 enabling only the minimum filters:
 gpac -blacklist=-fin,mp4dmx,ffdec,vout source.mp4 vout
 ```
 
-# FFmpeg support
+# FFmpeg support 
 
 Set gpac as RTMP output server  
 ```
@@ -772,4 +777,3 @@ Fractal-like animated video reuse
 }
 ]
 ```
-

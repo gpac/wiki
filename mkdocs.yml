@@ -4,7 +4,7 @@ site_author: GPAC contributors
 extra:
   keywords_file: 'data/keywords.json'
 extra_javascript:
-   - assets/javascripts/bundle.min.js
+   
    - javascripts/main.js
    - javascripts/levels.js
    - javascripts/fetchFunctions.js
@@ -25,8 +25,10 @@ extra_css:
   - stylesheets/collapse_section.css
   - stylesheets/feedback.css
   - stylesheets/levels.css
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 theme:
   name: material
+  custom_dir: overrides
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
   palette:
