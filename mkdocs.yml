@@ -1,8 +1,30 @@
 site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
+extra:
+  keywords_file: 'data/keywords.json'
+extra_javascript:
+   - assets/javascripts/bundle.min.js
+   - javascripts/main.js
+   - javascripts/levels.js
+   - javascripts/fetchFunctions.js
+   - javascripts/domManipulation.js
+   - javascripts/keywordsFinder.js
+   - javascripts/keywordsDisplay.js
+   - javascripts/cache.js
+   - javascripts/modalFunctions.js
+   
+    
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/keyword-cloud.css
+  - stylesheets/top.css
+  - stylesheets/toggle.css
+  - stylesheets/modal.css
+  - stylesheets/glossary-pages.css
+  - stylesheets/collapse_section.css
+  - stylesheets/feedback.css
+  - stylesheets/levels.css
 theme:
   name: material
   logo: images/gpac-logo.svg
@@ -25,8 +47,10 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
+    - navigation.top
     - tables
     - def_list
+    - content.code.select
     - content.code.annotate
     - content.code.copy
     - content.tooltips
@@ -39,6 +63,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
+    - search
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
@@ -46,14 +71,17 @@ plugins:
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
-  - admonition
-  - attr_list
-  - toc:
+- admonition
+- attr_list
+- toc:
       permalink: true
-  - nl2br
-  - sane_lists
-  - pymdownx.details
-  - pymdownx.superfences
+- nl2br
+- sane_lists      
+- md_in_html
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.inlinehilite  
+
 extra:
   analytics:
     provider: google
@@ -356,3 +384,6 @@ nav:
     - TTXT Format: xmlformats/TTXT-Format-Documentation.md
     - NHML format: xmlformats/NHML-Format.md
     - NHNT format: xmlformats/NHNT-Format.md
+  - Glossary:
+    - glossary/encode.md
+    - glossary/encrypt.md  

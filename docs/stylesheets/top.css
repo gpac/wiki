@@ -1,0 +1,20 @@
+.md-top.md-icon {
+    margin-left: 75% !important;
+    top: 90% !important;
+    background-color:  #fff !important;
+    color:#8e8686;
+  
+  }
+  .md-top:focus, .md-top:hover 
+    {
+  
+  background-color: #d7d7d7!important;
+    color: black!important;
+    border: 1px solid var(--md-default-fg-color--light)!important;
+    transition-duration: 300ms!important;
+  }
+  
+  
+  .md-top[hidden]{
+    transition-duration: 300ms!important;
+  }
