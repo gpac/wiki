@@ -117,3 +117,44 @@ function initializeAllSections() {
 }
 
 document.addEventListener("DOMContentLoaded", initializeAllSections);
+// Open collapse sections with highlighted search terms
+document.addEventListener('DOMContentLoaded', function() {
+    function openCollapseWithHighlight() {
+        const highlights = document.querySelectorAll('mark[data-md-highlight]');
+
+        highlights.forEach(highlight => {
+            // Find the closest parent collapse section
+            const collapseSection = highlight.closest('.collapse-section');
+            if (collapseSection) {
+                collapseSection.classList.add('active');
+            }
+        });
+    }
+
+    openCollapseWithHighlight();
+
+    window.addEventListener('hashchange', openCollapseWithHighlight);
+    document.addEventListener('DOMContentSwap', openCollapseWithHighlight);
+
+    // MutationObserver to detect when search highlights are added to the page
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                const addedNodes = mutation.addedNodes;
+                for (let i = 0; i < addedNodes.length; i++) {
+                    const node = addedNodes[i];
+
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        // Check if the node itself or any of its descendants have the highlight mark
+                        if (node.matches('mark[data-md-highlight]') || node.querySelector('mark[data-md-highlight]')) {
+                            openCollapseWithHighlight();
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+});

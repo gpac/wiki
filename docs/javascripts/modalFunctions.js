@@ -1,12 +1,12 @@
 function openModal(keyword, definition) {
-   
-
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");
-    const modalLink = document.getElementById("modal-link");
+ // TODO: navigation to the keyword page is under development
 
-    if (modalTitle && modalDefinition && modalLink) {
+    /* const modalLink = document.getElementById("modal-link"); */
+
+    if (modalTitle && modalDefinition /* && modalLink */) {
         let descriptionText;
         if (typeof definition === 'string') {
             descriptionText = definition;
@@ -15,17 +15,18 @@ function openModal(keyword, definition) {
         } else {
             descriptionText = 'Definition not available';
         }
-        const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+   
       
         if (window.innerWidth <= 1040) {
             window.location.href = glossaryPageUrl;
         } else {
+            /* Removed the redirection logic */
             modalTitle.textContent = keyword;
             modalDefinition.textContent = descriptionText;
-            modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+            /* modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`; */
             modal.classList.remove("hidden");
             modal.style.display = "block";
-            modalLink.classList.remove("hidden");
+            /* modalLink.classList.remove("hidden"); */
         }
     } else {
         console.error('Modal elements not found');

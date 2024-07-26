@@ -1,3 +1,4 @@
+//delete links in markdown content
 function cleanMarkdownContent(content) {
     return content.replace(/\[[^\]]*\]\([^)]*\)/g, '');
 }
