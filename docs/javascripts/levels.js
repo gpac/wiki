@@ -131,32 +131,38 @@ function handleExpertOrAllSection(section, span, level, isAllSection) {
   }
 }
 function updateTOCVisibility(level) {
-  if (!isHowtosSection()) {
-      // Hors section Howtos, tout afficher
-      document.querySelectorAll(".md-nav__item, .md-nav").forEach((item) => {
-          item.style.removeProperty('display');
+  if (level !== 'beginner') {
+   
+      document.querySelectorAll('.md-nav__item').forEach(item => {
+          item.style.display = '';
       });
       return;
   }
 
-  const tocItems = document.querySelectorAll(".md-nav__list > .md-nav__item");
-  
-  tocItems.forEach((item) => {
-      const link = item.querySelector(":scope > a.md-nav__link");
+  const h2Elements = document.querySelectorAll('h2[data-level]');
+  const tocItems = document.querySelectorAll('.md-nav__item');
+
+  const beginnerIds = new Set();
+  const sectionWithSubsections = new Set();
+  h2Elements.forEach(h2 => {
+      if (h2.getAttribute('data-level') === 'beginner') {
+          beginnerIds.add(h2.id);
+      }
+  });
+
+
+   // Hide non-beginner TOC items and show beginner ones.
+  tocItems.forEach(item => {
+      const link = item.querySelector('a.md-nav__link');
       if (link) {
-          const subNav = item.querySelector('.md-nav');
-          const subItems = subNav ? subNav.querySelectorAll('.md-nav__item') : [];
-          
-          if (level === "expert") {
-              // En mode expert, tout afficher
-              item.style.removeProperty('display');
-              subItems.forEach(subItem => subItem.style.removeProperty('display'));
-          } else {
-              // En mode beginner
-              item.style.removeProperty('display'); // Toujours afficher les éléments de premier niveau
-              
-              // Cacher les sous-éléments
-              subItems.forEach(subItem => subItem.style.display = 'none');
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+              const id = href.slice(1);  
+              if (!beginnerIds.has(id)) {
+                  item.style.display = 'none';
+              } else {
+                  item.style.display = '';
+              }
           }
       }
   });
