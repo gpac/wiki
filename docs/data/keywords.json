@@ -1,0 +1,142 @@
+
+{
+    "definitions": {
+        "SOURCE": {
+            "description": "In GPAC, a source is an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.",
+            "level": "beginner"
+        },
+        "SINK": {
+            "description": "A sink in GPAC is an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.",
+            "level": "beginner"
+        },
+        "INPUT": {
+            "description": "An input refers to any data fed into the GPAC processing system, including video, audio, and other multimedia streams.",
+            "level": "beginner"
+        },
+        "OUTPUT": {
+            "description": "Output in GPAC refers to the processed data that is generated after media processing, ready for storage or display.",
+            "level": "beginner"
+        },
+        "PID": {
+            "description": "PID stands for Packet Identifier. It is used in GPAC to uniquely identify different streams within a media file, such as audio, video, and subtitles.",
+            "level": "expert"
+        },
+        "PACKETS": {
+            "description": "Packets are units of data transmitted over a network or stored in a media file. In GPAC, packets are processed to extract media streams.",
+            "level": "beginner"
+        },
+        "DATA": {
+            "description": "Data in GPAC refers to the raw media content, including video frames, audio samples, and subtitles, that is processed and manipulated.",
+            "level": "beginner"
+        },
+        "STREAM": {
+            "description": "A stream is a sequence of media data (audio, video, etc.) that is processed by GPAC. Streams are identified by PIDs and can be multiplexed or demultiplexed.",
+            "level": "beginner"
+        },
+        "MEDIA": {
+            "description": "Media refers to various types of content such as video, audio, and images. GPAC processes different media types to enable playback, editing, and streaming.",
+            "level": "beginner"
+        },
+        "FRAME": {
+            "description": "A frame is a single image in a sequence of images that make up a video. GPAC processes frames during video encoding and decoding.",
+            "level": "beginner"
+        },
+        "OPTION": {
+            "description": "Options in GPAC are parameters that configure the behavior of filters and processing tasks. They can be set to customize media processing.",
+            "level": "beginner"
+        },
+        "PROPERTY": {
+            "description": "Properties in GPAC refer to attributes of media streams or filters, such as resolution, bitrate, and codec type, that affect processing.",
+            "level": "all"
+        },
+        "CODEC": {
+            "description": "A codec is a software or hardware tool that encodes or decodes media data. GPAC supports various codecs for compressing and decompressing media streams.",
+            "level": "beginner"
+        },
+        "SESSION": {
+            "description": "A session in GPAC is a context for managing the lifecycle of media processing tasks, including loading, configuring, and executing filters.",
+            "level": "expert"
+        },
+        "LINK": {
+            "description": "Links in GPAC connect different filters and processing elements, forming a processing chain or graph. They facilitate the flow of media data.",
+            "level": "beginner"
+        },
+        "CONNECTIONS": {
+            "description": "Connections in GPAC refer to the relationships between filters in a processing graph. They define how data flows from one filter to another.",
+            "level": "beginner"
+        },
+        "CHAIN": {
+            "description": "A chain in GPAC is a sequence of connected filters that process media data in a specific order. Chains define the processing pipeline.",
+            "level": "beginner"
+        },
+        "GRAPH": {
+            "description": "A graph in GPAC represents the entire media processing workflow, consisting of nodes (filters) and edges (connections) that define data flow.",
+            "level": "all"
+        },
+        "DECODING": {
+            "description": "Decoding is the process of converting compressed media data back into its original format. GPAC uses various codecs to decode audio and video streams.",
+            "level": "beginner"
+        },
+        "REFRAMER": {
+            "description": "A reframer in GPAC adjusts the timing and structure of media frames to meet specific requirements, such as alignment for streaming.",
+            "level": "expert"
+        },
+        
+        "ENCRYPT": {
+            "description": "Encryption in GPAC refers to the process of securing media content by converting it into a code to prevent unauthorized access. GPAC supports various encryption standards like CENC and ISMA.",
+            "level": "expert"
+        },
+        "ENCODE": {
+            "description": "Encoding in GPAC is the process of converting raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
+            "level": "all"
+        },
+        "MP4": {
+            "description": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
+            "level": "beginner"
+        },
+
+        "DASH": {
+            "description": "DASH stands for Dynamic Adaptive Streaming over HTTP, a technique that enables high-quality streaming of media content over the internet.",
+            "level": "all"
+        }	        
+        ,
+        "SCENE": {
+            "description": "Scene in GPAC refers to a multimedia presentation, including video, audio, and interactive elements, typically described using BIFS or X3D.",
+            "level": "all"
+        },
+        "MPD": {
+            "description": "MPD stands for Media Presentation Description, a file that provides metadata about the media content in a DASH session.",
+            "level": "beginner"
+        },
+
+    "BOX": {
+        "description": "A box in GPAC refers to a container or structure within a media file format, such as an MP4 box, used to store metadata and media data.",
+        "level": "beginner"
+    }
+    ,
+    "RAW": {
+        "description": "Raw in GPAC refers to uncompressed media data that has not been processed or encoded.",
+        "level": "beginner"
+    },
+    "GROUP": {
+        "description": "A group in GPAC refers to a collection of related items, such as tracks or filters, that are processed or managed together.",
+        "level": "beginner"
+    },
+    "PROFILE": {
+        "description": "A profile in GPAC refers to a set of predefined settings or configurations for media processing tasks, such as encoding profiles.",
+        "level": "beginner"
+    }
+    ,
+    "XML": {
+        "description": "XML stands for eXtensible Markup Language, used in GPAC for storing and exchanging metadata and configuration settings.",
+        "level": "all"
+    }
+    ,
+    "TILE": {
+        "description": "A tile in GPAC refers to a rectangular section of a video frame, used in tiling and parallel processing of video content.",
+        "level": "all"
+    }
+
+
+    }	    
+}

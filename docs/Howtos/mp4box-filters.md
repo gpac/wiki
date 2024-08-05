@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all" }
 
 We discuss here how to use the [MP4Box](MP4Box-introduction) together with filters in GPAC.
 
@@ -12,9 +12,9 @@ As discussed [here](Rearchitecture), the following features of MP4Box are now us
 
 At the time being, only media importing and DASHing operations can be extended to use other filters.
 
-# Media Importing
+# Media Importing 
 
-# Customizing source and mux parameters
+# Customizing source and mux parameters {: data-level="beginner" }
 
 It is possible to provide additional parameters to both source and destination during an import operations. Most MP4Box parameters are mapped to the filter engine and they have roughly the same names, but the opposite is not true (i.e. most options of the various filters in GPAC are not mapped as MP4Box options). 
 - source options are declared using `:sopt:` separator
@@ -53,7 +53,7 @@ The filter statistics can be seen by using the `fstat` option:
 MP4Box -add source.aac:fstat -new file.mp4
 ```
 
-# Filtering input streams
+# Filtering input streams {: data-level="beginner" }
 Assume you have an input file with several tracks/media streams, such as two videos in AVC and HEVC, and audios in english and french, and you only want to import AVC and english audio from that source file.
 
 With regular MP4Box usage, you would need to know the track IDs of the desired tracks. If you have a collection of such files with varying track IDs, you would need complex dumping and analyzing of the file tracks to extract their track IDs and import them.
@@ -125,7 +125,7 @@ You may ask yourself whether using MP4Box or gpac is more efficient for such an 
 - The filter architecture does not support (for the moment) reading and writing in the same file, so if you need to add a track to an existing file, you must use MP4Box for that.
 
 
-# DASHing
+# DASHing {: data-level="beginner" }
 
 
 It is possible to provide a filter chain to each source being DASHed with MP4Box.

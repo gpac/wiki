@@ -1,0 +1,69 @@
+
+@media screen and (max-width: 76.25em) {
+    .toggle-btn, 
+    .toggle-btn i{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 76.25em) {
+    .md-nav--secondary .md-nav__title .md-nav__icon {
+        display: block;
+    }
+}
+@media screen and (min-width: 76.25em) {
+    .md-nav__icon {
+        transition: background-color .25s;
+         width: auto;
+    }
+}
+
+@media screen and (min-width: 76.25em) {
+    .md-nav__icon:hover {
+    background-color: transparent; 
+    }
+}
+
+
+.toggle-btn {
+    margin-bottom: 0.2rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    z-index: 99999;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-btn i:hover {
+    background-color: #D7D7D7;
+}
+
+.toggle-btn i {
+    color: #d94412e0;
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+
+
+.span-toggle {
+    margin-right: 4px;
+}

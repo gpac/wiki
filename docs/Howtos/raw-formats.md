@@ -1,9 +1,9 @@
-# Overview
+# Overview {: data-level="all" }
 
 We discuss here how to work with RAW, uncompressed audio and video data in GPAC.  
 
 
-# RAW Video
+# RAW Video {: data-level="beginner" }
 
 ## Extracting raw video from a file
 
@@ -89,7 +89,7 @@ This will resize and extract the video frames from start time 10s until end rang
 
 The above command will load a raw YUV420 planar 8-bits file using a resolution of 128x128 pixels, and display it using the [video output](vout) filter. The default frame rate is 25, as indicated in [the raw video reframer](rfrawvid).
 
-# RAW Audio
+# RAW Audio {: data-level="beginner" }
 This is very similar to raw video.
 
 ## Extracting raw audio from a file
@@ -109,7 +109,7 @@ The above command will dump the audio content from `source.mp4` into a 16-bit li
 
 The above command will load a raw  16-bit little endian PCM  file using 44100 Hz sample rate, and play it using the [audio output](aout) filter. The default channel count is 2, as indicated in [the raw audio reframer](rfpcm).
 
-# RAW Audio and Video
+# RAW Audio and Video {: data-level="beginner" }
 ## Direct extraction
 
 ```gpac -i source.mp4 -o test.pcm -o test.yuv```

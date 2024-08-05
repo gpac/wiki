@@ -1,56 +1,97 @@
 #welcome {
-   text-align: center;
-   margin-bottom: 1em;
-}
-
-#home-logo {
+    text-align: center;
     margin-bottom: 1em;
-}
-
-[data-md-color-scheme="slate"] {
-    --md-hue: 217; 
-    --md-typeset-a-color: #d94412 !important;
-}
-
-[data-md-color-scheme="gpac"] {
-    /* header background */
-    --md-primary-fg-color: #d7d7d7;               
-    /* header text */
-    --md-primary-bg-color: #141414;
-
-    --md-primary-fg-color--light:        hsla(0, 0, 95%, 1);
-    --md-primary-fg-color--dark:         hsla(0, 0, 25%, 1);
-    
-    --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+ }
+ 
+ #home-logo {
+     margin-bottom: 1em;
+ }
+ 
+ [data-md-color-scheme="slate"] {
+     --md-hue: 217; 
+     --md-typeset-a-color: #d94412 !important;
+     --md-accent-keywords-color: hsla(0, 0%, 75%, 1) !important;
+     --md-icon-color: #a7a7a7;
   
-    --md-accent-fg-color:                #d94412;
-    --md-accent-fg-color--transparent:   #d944121f;
-    --md-accent-bg-color:                #d94412;
-    --md-accent-bg-color--light:         #d94412e0;
-
-    --md-typeset-a-color: #d94412;
+     --md-glossary-bg-color: #2e2e2e;
+     --md-glossary-text-color: #e0e0e0;
+     --md-keyword-cloud-bg-color: #3a3a3a;
+     --md-keyword-cloud-text-color: #f0f0f0;
+ }
+ 
+ [data-md-color-scheme="gpac"] {
+     /* header background */
+     --md-primary-fg-color: #E0E0E0;             
+     /* header text */
+     --md-primary-bg-color: #141414;
+ 
+     --md-primary-fg-color--light: hsla(0, 0%, 95%, 1);
+     --md-primary-fg-color--dark: hsla(0, 0%, 25%, 1);
+     
+     --md-primary-bg-color--light: #F0F0F0;
+   
+     --md-accent-fg-color: #d94412;
+     --md-accent-fg-color--transparent: #d944121f;
+     --md-accent-keywords-color: hsla(0, 0%, 25%, 1) !important;
+     --md-accent-bg-color: #d94412;
+     --md-accent-bg-color--light: #d94412e0;
+ 
+     --md-typeset-a-color: #d94412;
+     --md-icon-color: #8e8686;
+     
+     /* default is too bright on poorly calibrated screens */
+     --md-code-bg-color: #e0e0e0;
+ 
+     --md-glossary-bg-color: #f5f5f5;
+     --md-glossary-text-color: #333333;
+     --md-keyword-cloud-bg-color: #ffffff;
+     --md-keyword-cloud-text-color: #000000;
+ 
+     /* force tabs to match gpac.io styles */
+     .md-tabs__item .md-tabs__link {
+         transition: unset !important;
+         background: none !important;
+         color: inherit !important;
+         opacity: 1 !important;
+     }
+     
+     .md-tabs__item:focus,
+     .md-tabs__item:hover {
+         background-color: #151515 !important;
+         color: #fff !important;
+     }
+ 
+     .md-tabs__item--active {
+         color: var(--md-typeset-a-color);
+         font-style: italic;
+     }
     
-    /* default is too bright on pourly calibrated screens */
-    --md-code-bg-color:  #e0e0e0;
+     .md-header__option {
+         background-color: var(--md-primary-fg-color) !important;
+     }
+ }
+ 
+ .md-typeset .highlight button {
+     display: block !important;
+ }
+ 
+ .md-footer {
+     flex-shrink: 0;
+ }
+ 
+ 
+ .glossary-container,
+ .words-cloud {
+     background-color: var(--md-glossary-bg-color);
+     color: var(--md-glossary-text-color);
+ }
+ 
+ .words-cloud-container {
+     background-color: var(--md-keyword-cloud-bg-color);
+     color: var(--md-keyword-cloud-text-color);
+ }
+ 
 
-    /* 
-    force tabs to match gpac.io styles 
-    */
-    .md-tabs__item .md-tabs__link {
-        transition: unset !important;
-        background: none !important;
-        color: inherit!important;
-        opacity: 1 !important;
-    }
-    .md-tabs__item:focus,
-    .md-tabs__item:hover {
-        background-color: #151515 !important;
-        color: #fff !important;
-    }
-
-    .md-tabs__item--active {
-        color: var(--md-typeset-a-color);
-        font-style: italic;
-    }
-
-}
+ .words-cloud a {
+     color: var(--md-typeset-a-color);
+ }

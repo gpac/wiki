@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all" }
 
 We discuss here how to use the [flist](flist) filter to deal with playlists in GPAC.  
 
@@ -10,7 +10,7 @@ In both modes, when switching sources, the filter will match streams (PIDs) base
 The filter will move to the next item once all PIDs are done playing. It will then adjust the timeline of the following source by repositioning the new source smallest initial timestamp to the greatest time (timestamp+duration) of the last source. 
 
 
-# File list mode
+# File list mode {: data-level="beginner" }
  
 ```
 gpac flist:srcs=file.mp4:floop=-1 vout
@@ -32,7 +32,7 @@ gpac flist:srcs=images/*.png:fdur=1:fsort=date -o slide.mp4
 ```
 The above command will gather all files with extension `png` in directory `images` ordered by their file creation date, each image lasting for 1 second, and output as a PNG track in MP4 format.
 
-# Playlist mode
+# Playlist mode 
 
 ## General usage
 The playlist mode allows you to build complex source sequences. Think of it as piping the output of several sequential `gpac` executions into a consuming `gpac` instance.
