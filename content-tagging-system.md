@@ -102,6 +102,28 @@ The level switching functionality is currently implemented only in the "Howtos" 
    - Verify that the TOC updates correctly when switching levels.
    - Check that the keywords cloud updates appropriately.
 
+## Best Practices for Content Formatting
+
+When adding or editing content in the GPAC wiki, it's crucial to follow certain formatting practices to ensure readability and proper rendering of the documentation. One key aspect to pay attention to is the spacing between code blocks and other elements.
+
+### Spacing Between Code Blocks
+
+Always add a blank line between code blocks and surrounding text. This practice prevents rendering issues and improves readability.
+
+#### Good Practice:
+
+Example:
+
+![Code block formatting issue](docs/images/good_format.png)
+
+#### Bad Practice:
+
+Avoid this:
+Example:
+
+![Code block formatting issue](docs/images/bad_format.png)
+
+
 ## Known Limitations
 
 1. The level switching feature is currently only available in the "Howtos" section.

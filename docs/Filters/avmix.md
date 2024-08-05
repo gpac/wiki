@@ -231,12 +231,14 @@ Example
 ```
 in=ipid://#foo=bar
 ```  
+
 This will use pids having property `foo` with value `bar`, regardless of source filter ID.  
   
 Example
 ```
 in=ipid://TEST#foo=bar
 ```  
+
 This will use pids having property `foo` with value `bar` coming from filter with ID `TEST`.  
   
 When using the `ipid://` scheme, filter chains cannot be specified (in accepts a single argument) and `port` is ignored.  
@@ -548,6 +550,7 @@ Example
 ```
 { "script": "let s=get_scene('s1'); let rot = s.get('rotation'); rot += 10; s.set('rotation', rot); return 2;" }
 ```  
+
 This will change scene `s1` rotation every 2 seconds   
   
 ## Watchers  
@@ -584,12 +587,14 @@ Example
 ```
 {'watch': 's1@rotation', 'target': 's2@rotation'}
 ```  
+
 This will copy s1.rotation to s2.rotation.  
   
 Example
 ```
 {'watch': 's1@rotation', 'target': 'get_scene('s2').set('rotation', -value); }
-```  
+``` 
+
 This will copy the -1*s1.rotation to s2.rotation.  
   
 ### Watching UI events  
@@ -611,6 +616,7 @@ Example
 ```
 {'watch': 'mousemove', 'target': 'let s = mouse_over(evt); get_scene('s2').set('fill', (s && (s.id=='s1') ? 'white' : 'black' );'}
 ```  
+
 This will set s1 fill color to white of mouse is over s2 and to black otherwise.  
   
 ## Styles  
@@ -879,6 +885,7 @@ Example
 ```
 "shape": "this.path.add_rectangle(0, 0, this.width, this.height); let el = new evg.Path().ellipse(0, 0, this.width, this.height/3); this.path.add_path(el); this.tx_adjust = true;"
 ```  
+
 In this example, the texture mapping will be adjusted to the desired size.  
   
 The global variables and functions are available (c.f. `gpac -h avmix:global`):  
