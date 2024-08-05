@@ -1,4 +1,4 @@
-## Foreword
+
 
 GPAC has extended support for MPEG-DASH and HLS content generation and playback. 
 

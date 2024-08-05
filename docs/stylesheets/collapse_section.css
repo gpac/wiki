@@ -14,14 +14,28 @@
 .collapse-section h2 {
     margin: 0;
     padding: 1em;
-    background-color: #ebe8e8;
+    background-color: #e7e6e6;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     font-size: 1.2em;
     color: #333;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    position: relative; 
+}
+
+
+.collapse-section h2 .headerlink {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.collapse-section h2 .collapse-icon {
+    margin-right: 30px; 
+    margin-left: 15px;
 }
 
 .collapse-section h2:hover {

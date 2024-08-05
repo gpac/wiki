@@ -24,12 +24,14 @@ In file mode, each part file is the full segment name appended with `.N`, with `
 MP4Box -frag-rt -dash-live 10000 -frag 1000 -profile live -out res/live.m3u8:llhls=br source1 source2
 gpac -i source1 -i source2 reframer:rt=on -o res/live.m3u8:segdur=10:cdur=1:profile=live:dmode=dynamic:llhls=br
 ```
+
 In the above example, we indicate the LLHLS parts are byte-ranges in the segment being produced. 
 
 ```
 MP4Box -frag-rt -dash-live 10000 -frag 1000 -profile live -out res/live.m3u8:llhls=sf source1 source2
 gpac -i source1 -i source2 reframer:rt=on -o res/live.m3u8:segdur=10:cdur=1:profile=live:dmode=dynamic:llhls=sf
 ```
+
 In the above example, we indicate the LLHLS parts are independent files. 
 
 
