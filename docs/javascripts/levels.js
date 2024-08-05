@@ -55,6 +55,8 @@ function addLevelTags() {
     }
   });
 }
+
+
 function isHowtosSection() {
   return window.location.pathname.includes('/Howtos/');
 }

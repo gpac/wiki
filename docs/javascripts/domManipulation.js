@@ -7,13 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let isNavIsVisible = true;
 
     toggleButton.addEventListener("click", function () {
-       
+        console.log("Button clicked");
         if (isNavIsVisible) {
             navContent.style.display = "none";
             tocContent.style.display = "block";
+            toggleButton.setAttribute('data-md-tooltip', 'Switch to Navigation');
         } else {
             navContent.style.display = "block";
             tocContent.style.display = "none";
+            toggleButton.setAttribute('data-md-tooltip', 'Switch to Table of Contents');
         }
         isNavIsVisible = !isNavIsVisible;
     });
@@ -21,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tocContent.style.display = "none";
     navContent.style.display = "block";
 });
-
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.pathname.includes("/glossary/")) {
         document.body.classList.add("glossary-page");

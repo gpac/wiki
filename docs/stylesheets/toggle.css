@@ -26,28 +26,32 @@
 
 
 .toggle-btn {
-    margin-bottom: 0.2rem;
-    background-color: transparent;
-    color: white;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
     border: none;
-    border-radius: 50%;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    z-index: 99999;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    transition: background-color 0.3s ease;
+  }
 
-.toggle-btn i:hover {
-    background-color: #D7D7D7;
+  [data-md-color-scheme="slate"] .toggle-btn:hover{
+    background-color: #3a3a3a;
+
+  } 
+
+.toggle-btn:hover {
+ 
+        background-color: #dddcdc;
+   
 }
 
 .toggle-btn i {
     color: #d94412e0;
     transition: transform 0.3s ease;
+    font-size: 18px;
 }
 
 .hidden {
