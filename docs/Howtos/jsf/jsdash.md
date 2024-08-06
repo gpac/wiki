@@ -1,4 +1,4 @@
-# Overview
+# Overview 
 
 We discuss here how to implement your custom DASH rate adaptation logic in JS.
 

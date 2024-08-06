@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level ="all"}
 
 We discuss here how to use the [JavaScript Filter](jsf) to generate 3D vector graphics in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the GPAC test suite are also a good source of examples.

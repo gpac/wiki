@@ -1,4 +1,4 @@
-# Overview
+# Overview {:data-level="all"}
 
 We discuss here how to use the AVMix filter to do offline or live video editing.
 This filter is a [JS filter](jsf) and can be modified fairly simply.
@@ -32,7 +32,7 @@ By default, the filter will run in live mode, and will never stop. You can run i
 ```
 
 
-# General concepts
+# General concepts {:data-level="beginner"}
 ## Declaring media
 
 To declare media for the mixer, you need to use a sequence object along with your media source. Typically:
@@ -380,7 +380,7 @@ And the video sequence will start ! You can use for start and stop time values:
 - date: will use the date as the start/stop time
 
  
-# Some examples
+# Some examples {:data-level="beginner"}
 ## Transparent Logo insertion
 
 Simplified version of above example, with a single source and logo

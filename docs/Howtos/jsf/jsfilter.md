@@ -1,11 +1,11 @@
-# Overview
+# Overview {:data-level="all"} 
 
 We discuss here how to use the [JavaScript Filter](jsf) to write JavaScript-based custom filters in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the gpac test suite are also a good source of examples.
 
 The JS filter provides JS bindings to the GPAC filter architecture. JavaScript support in GPAC is powered by QuickJS. Check the documentation of the [JS APIs](https://doxygen.gpac.io/group__jsf__grp.html) for more details. 
 
-# Principles
+# Principles {:data-level="beginner"}
 
 In order to load, a JS filter requires a source JS, specified in the filter  [js](jsf#js) option. A short-cut syntax is to directly specify the js script. In other words, the following syntaxes are equivalent:
 ```
@@ -48,7 +48,7 @@ If you need to pass JS data across filters, you will have to serialize to JSON y
 - send it as associated property on existing packets
 
 
-# Declaring a filter (optional)
+# Declaring a filter (optional) {:data-level="beginner"}
 
 The first thing to do when creating a filter is to setup a few things about your filter. 
 
@@ -584,7 +584,7 @@ vout_f.set_source(filter, "MuxSrc=myPid");
 ```
 
 
-# Including filters in your distribution
+# Including filters in your distribution {:data-level=beginner"}
 
 JS files located in GPAC distribution or in the directories indicated using [-js-dirs](core_options#js-dirs) option can describe filters usable by the filter engine based on their name (file without extension or directory name).
 

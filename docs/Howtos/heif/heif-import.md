@@ -1,9 +1,9 @@
-# Overview
+# Overview {:data-level="all"}
 
 We discuss here how to import items to create HEIF file collections. For track import, use the regular tools from GPAC.
 
 
-# Importing images
+# Importing images {:data-level="beginner"}
 
 You can use MP4Box to manually import each item, see [MP4Box -h meta](mp4box-meta-opts).
 
@@ -42,7 +42,7 @@ MP4Box -add-image src.hvc:primary:time=3-180/30 -new image.heic
 ```
 
 
-# Filtering while importing
+# Filtering while importing {:data-level="beginner"}
 MP4Box can be used together with filters in gpac, as discussed [here](mp4box-filters). This section illustrates how this feature can be used in various use cases.
 
 ## Importing a subset of frames
@@ -59,7 +59,7 @@ The following example imports a JPG image and transcodes it to HEVC at 5 mbps:
 MP4Box -add-image src.jpg:primary@@enc:c=avc:b=5m -new image.heic
 ```
 
-# Creating images in a file with video
+# Creating images in a file with video {:data-level="beginner"}
 
 MP4Box can create images from a file with one or more video tracks and save the combined video+items.
 The syntax used is the same as the examples above except the source file is not set.

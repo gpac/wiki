@@ -1,4 +1,4 @@
-# Overview
+# Overview {:data-level="all"}
 
 We discuss here how to use the [JavaScript Filter](jsf) to generate 2D vector graphics in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the gpac test suite are also a good source of examples.
@@ -12,18 +12,18 @@ For a simpler and/or more customized support of 2D graphics, GPAC includes JavaS
 Please note that the EVG API is an immediate mode API and does not track objects drawn. If you want to partially redraw the surface, you will need to track changes and use clippers to redraw only changed areas.
 
 
-# Setting up EVG
+# Setting up EVG {:data-level="beginner"}
 You need to import the EVG JavaScript bindings in your script:
 
 ```
 import * as evg from 'evg'
 ```
 
-# Setting up a canvas
+# Setting up a canvas {:data-level="beginner"}
 
 In order to draw, a JS EVG filter requires a canvas, called surface in the API. This surface allows writing to a memory buffer in the desired pixel format, and can be setup in different ways.
 
-# Creating a canvas
+# Creating a canvas {:data-level="beginner"}
 
 The simplest way to create a canvas is to allocate your own memory and setup the canvas:
 

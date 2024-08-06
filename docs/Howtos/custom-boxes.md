@@ -1,4 +1,4 @@
-# Overview
+# Overview {:data-level="all"}
 
 We discuss here how to customize ISOBMFF files using box patches.  Please first check the XML [Box Patch](BoxPatch) syntax before reading.
 
@@ -66,7 +66,7 @@ This will remove the new box if present in the track header of the track with ID
 
 
 
-# Injecting a box patch in your workflow
+# Injecting a box patch in your workflow {: data-level="beginner"}
 
 You may also want to customize your ISOBMFF files while they are being produced in a filter chain. 
 
