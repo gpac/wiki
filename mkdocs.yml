@@ -13,6 +13,7 @@ extra_javascript:
    - javascripts/keywordsDisplay.js
    - javascripts/cache.js
    - javascripts/modalFunctions.js
+   - javascripts/search.js
    
    
     
@@ -26,6 +27,7 @@ extra_css:
   - stylesheets/collapse_section.css
   - stylesheets/feedback.css
   - stylesheets/levels.css
+  - stylesheets/search.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 theme:
   name: material

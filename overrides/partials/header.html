@@ -8,13 +8,7 @@
     {% set class = class ~ " md-header--shadow" %}
   {% endif %}
   <header class="{{ class }}" data-md-component="header">
-<div class="switch-container">
-  <label class="switch">
-    <input type="checkbox" id="level-switch">
-    <span class="slider round" data-md-tooltip="Switch between Beginner and Expert levels"></span>
-  </label>
-  <span class="switch-label" data-md-tooltip="Current content level"></span>
-</div>
+
       
     
     <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
@@ -43,6 +37,13 @@
             </span>
           </div>
         </div>
+      </div>
+      <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="level-switch">
+          <span class="slider round" data-md-tooltip="Switch between Beginner and Expert levels"></span>
+        </label>
+        <span class="switch-label" data-md-tooltip="Current content level"></span>
       </div>
       {% if config.theme.palette %}
         {% if not config.theme.palette is mapping %}

@@ -4,25 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggle-button");
     const tocContent = document.getElementById("toc-content");
     const navContent = document.getElementById("nav-content");
+    const isDarkMode = document.body.getAttribute('data-md-color-scheme') === 'slate';
     let isNavIsVisible = true;
+   
 
+    if (toggleButton) {
+        console.log("Creating tippy instance for toggle button");
+        tippy(toggleButton, {
+            content: 'Toggle Nav/Toc',
+            placement: 'left',
+            theme: isDarkMode ? 'dark' : 'light',
+            trigger: 'mouseenter',
+            hideOnClick: false
+        });
+    } 
     toggleButton.addEventListener("click", function () {
-        console.log("Button clicked");
+  
         if (isNavIsVisible) {
             navContent.style.display = "none";
             tocContent.style.display = "block";
-            toggleButton.setAttribute('data-md-tooltip', 'Switch to Navigation');
         } else {
             navContent.style.display = "block";
             tocContent.style.display = "none";
-            toggleButton.setAttribute('data-md-tooltip', 'Switch to Table of Contents');
         }
         isNavIsVisible = !isNavIsVisible;
     });
 
     tocContent.style.display = "none";
     navContent.style.display = "block";
+
+    function activatePermanentLinkSections() {
+        const permanentLinkSections = document.querySelectorAll('h2:has(a[title="Permanent link"])');
+        permanentLinkSections.forEach(section => {
+            section.classList.add('active');
+        });
+    }
+
+    // Appeler la fonction au chargement de la page
+    activatePermanentLinkSections()
+ 
 });
+
+
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.pathname.includes("/glossary/")) {
         document.body.classList.add("glossary-page");
@@ -32,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Collapse sections
 
 document.addEventListener("DOMContentLoaded", function () {
+
     
     const articleInner = document.querySelector('.md-content__inner');
     const h1Element = articleInner.querySelector('h1');

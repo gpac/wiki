@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeLevelManagement();
+    initializeTOCClickHandler();
     
     let cachedKeywords = getCache('keywordsCache');
     let cachedDefinitions = getCache('definitionsCache');
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 });
+

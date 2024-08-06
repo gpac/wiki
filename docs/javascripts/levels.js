@@ -34,6 +34,7 @@ function handleLevelChange() {
   let cachedKeywords = getCache("keywordsCache");
   let cachedDefinitions = getCache("definitionsCache");
   fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+  document.dispatchEvent(new Event('levelChanged'));
 }
 //Display the level of the user
 function updateSwitchLabel() {
@@ -143,6 +144,7 @@ function updateTOCVisibility(level) {
 
   const h2Elements = document.querySelectorAll('h2[data-level]');
   const tocItems = document.querySelectorAll('.md-nav__item');
+ 
 
   const beginnerIds = new Set();
   const sectionWithSubsections = new Set();
@@ -151,24 +153,31 @@ function updateTOCVisibility(level) {
           beginnerIds.add(h2.id);
       }
   });
-
+  if (beginnerIds.size === 0) {
+    // If no beginner sections, show all TOC items
+    tocItems.forEach(item => {
+      item.style.display = '';
+    });
+  } else {
 
    // Hide non-beginner TOC items and show beginner ones.
-  tocItems.forEach(item => {
-      const link = item.querySelector('a.md-nav__link');
-      if (link) {
-          const href = link.getAttribute('href');
-          if (href && href.startsWith('#')) {
-              const id = href.slice(1);  
-              if (!beginnerIds.has(id)) {
-                  item.style.display = 'none';
-              } else {
-                  item.style.display = '';
-              }
-          }
+   tocItems.forEach(item => {
+    const link = item.querySelector('a.md-nav__link');
+    if (link) {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const id = href.slice(1);  
+        if (!beginnerIds.has(id)) {
+          item.style.display = 'none';
+        } else {
+          item.style.display = '';
+        }
       }
+    }
   });
 }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   initializeLevelManagement();
   const savedLevel = localStorage.getItem("userLevel") || "expert";
