@@ -38,7 +38,7 @@ brew install freetype jpeg libpng openjpeg mad faad2 libogg libvorbis theora a52
 
 ```bash
 # install build tools
-sudo port -N install cmake scons coreutils gettext yasm git wget pkgconfig
+sudo port -N install cmake scons coreutils gtime gettext yasm wget pkgconfig
 
 # install dependencies 
 sudo port -N install freetype jpeg libpng openjpeg libmad faad2 libogg libvorbis libtheora a52dec ffmpeg6 x264 aom xvid openssl libsdl2
