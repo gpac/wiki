@@ -9,12 +9,12 @@ For the following, we'll call the working directory `<GPAC_ROOT_DIR>`.
 
 ```bash
 ##get src
-<GPAC_ROOT_DIR>$ git clone https://github.com/gpac/gpac.git gpac_public
+git clone https://github.com/gpac/gpac.git gpac_public
 
 ##get deps
-<GPAC_ROOT_DIR>$ git clone https://github.com/gpac/deps_ios
-<GPAC_ROOT_DIR>$ cd deps_ios
-<GPAC_ROOT_DIR>/deps_ios$ git submodule update --init --recursive --force --checkout
+git clone https://github.com/gpac/deps_ios
+cd deps_ios
+git submodule update --init --recursive --force --checkout
 ```
 
 We need to keep the `gpac_public` for the main repository to have the scripts run smoothly.
@@ -22,16 +22,20 @@ We need to keep the `gpac_public` for the main repository to have the scripts ru
 
 ## Build dependencies
 
+From the `deps_ios` folder:
+
 ```bash
-<GPAC_ROOT_DIR>/deps_ios/SDL_iOS$ cd ../build/xcode_ios
-<GPAC_ROOT_DIR>/deps_ios/build/xcode_ios$ ./generate_extra_libs.sh
+cd build/xcode_ios
+./generate_extra_libs.sh
 ```
 
 ## Copy dependencies
 
+Then continuing from the `build/xcode_ios` folder:
+
 ```bash
-<GPAC_ROOT_DIR>/deps_ios/build/xcode_ios$ cd ../..
-<GPAC_ROOT_DIR>/deps_ios$ ./CopyLibs2Public4iOS.sh
+cd ../..
+./CopyLibs2Public4iOS.sh
 ```
 
 If all went well, the extra_lib directory of the main repository should now look something like this: 
