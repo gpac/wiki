@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# JPG/J2K/PNG/BMP reframer  
+# JPG/J2K/PNG/BMP reframer  {:data-level="all"}  
   
 Register name used to load filter: __rfimg__  
 This filter may be automatically loaded during graph resolution.  

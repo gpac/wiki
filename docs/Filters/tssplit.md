@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG Transport Stream splitter  
+# MPEG Transport Stream splitter  {:data-level="all"}  
   
 Register name used to load filter: __tssplit__  
 This filter is not checked during graph resolution and needs explicit loading.  

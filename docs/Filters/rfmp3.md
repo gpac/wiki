@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MP3 reframer  
+# MP3 reframer  {:data-level="all"}  
   
 Register name used to load filter: __rfmp3__  
 This filter may be automatically loaded during graph resolution.  

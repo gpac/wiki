@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# NHNT writer  
+# NHNT writer  {:data-level="all"}  
   
 Register name used to load filter: __nhntw__  
 This filter may be automatically loaded during graph resolution.  

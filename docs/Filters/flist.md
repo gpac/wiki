@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Sources concatenator  
+# Sources concatenator  {:data-level="all"}  
   
 Register name used to load filter: __flist__  
 This filter may be automatically loaded during graph resolution.  
@@ -111,13 +111,15 @@ __Warning: There shall be a single character, with value space (' '), before and
 Example
 ```
 src.mp4 @ reframer:rt=on
-```  
+``` 
+
 This will inject a reframer with real-time regulation between source and `flist` filter.  
 Example
 ```
 src.mp4 @ reframer:saps=1 @1 reframer:saps=0,2,3  
 src.mp4 @ reframer:saps=1 @-1 reframer:saps=0,2,3
 ```  
+
 This will inject a reframer filtering only SAP1 frames and a reframer filtering only non-SAP1 frames between source and `flist` filter  
   
 Link options can be specified (see `gpac -h doc`).  
@@ -125,6 +127,7 @@ Example
 ```
 src.mp4 @#video reframer:rt=on
 ```  
+
 This will inject a reframer with real-time regulation between video PID of source and `flist` filter.  
   
 When using filter chains, the `flist` filter will only accept PIDs from the last declared filter in the chain.  
@@ -133,13 +136,15 @@ Example
 ```
 src.mp4 @#video reframer:rt=on @-1#audio
 ```  
+
 This will inject a reframer with real-time regulation between video PID of source and `flist` filter, and will also allow audio PIDs from source to connect to `flist` filter.  
   
 The empty link directive can also be used on the last declared filter  
 Example
 ```
 src.mp4 @ reframer:rt=on @#audio
-```  
+``` 
+
 This will inject a reframer with real-time regulation between source and `flist` filter and only connect audio PIDs to `flist` filter.  
 
 ## Splicing  
@@ -191,6 +196,7 @@ Example
 #out=2 in=4 mark sprops=#xlink=http://foo.bar/  
 src:#Period=main
 ```  
+
 This will inject property xlink on the output PIDs in the splice zone (corresponding to period `main_2`) but not in the rest of the main media.  
   
 Directives `mark`, `keep` and `sprops` are reset at the end of the splice period.  

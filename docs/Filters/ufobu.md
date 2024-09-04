@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# IVF/OBU/annexB writer  
+# IVF/OBU/annexB writer  {:data-level="all"}  
   
 Register name used to load filter: __ufobu__  
 This filter may be automatically loaded during graph resolution.  

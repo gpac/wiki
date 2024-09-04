@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HTTP input  
+# HTTP input  {:data-level="all"}  
   
 Register name used to load filter: __httpin__  
 This filter may be automatically loaded during graph resolution.  

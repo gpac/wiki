@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Configuration file  
+# Configuration file {:data-level="all"}  
   
 GPAC uses a configuration file to modify default options of libgpac and filters. This file is called `GPAC.cfg` and is located:  
 
@@ -33,6 +33,7 @@ Example
 [core]  
 threads=2
 ```  
+
 Setting this in the config file is equivalent to using `-threads=2`.  
 The options specified at prompt overrides the value of the config file.  
 
@@ -44,6 +45,7 @@ Example
 [filter@rtpin]  
 interleave=yes
 ```  
+
 This will force the rtp input filter to always request RTP over RTSP by default.  
 To generate a configuration file with all filters options serialized, use [-wf](gpac_general/#wf).  
 
@@ -55,11 +57,13 @@ Example
 ```
 --buffer=100 -i file vout aout
 ```  
+
 This is equivalent to specifying `vout:buffer=100 aout:buffer=100`.  
 Example
 ```
 --buffer=100 -i file vout aout:buffer=10
 ```  
+
 This is equivalent to specifying `vout:buffer=100 aout:buffer=10`.  
 
 __Warning: This syntax only applies to regular filter options. It cannot be used with builtin shortcuts (gfreg, enc, ...).__  
@@ -69,6 +73,7 @@ Example
 ```
 --profile=Baseline -i file.cmp -o dump.264
 ```  
+
 This is equivalent to specifying `-o dump.264:profile=Baseline`.  
     
 For both syntaxes, it is possible to specify the filter registry name of the option, using `--FNAME:OPTNAME=VAL` or `--FNAME@OPTNAME=VAL`.  
@@ -77,4 +82,5 @@ Example
 ```
 --flist@timescale=100 -i plist1 -i plist2 -o live.mpd
 ```  
+
 This will set the timescale option on the playlists filters but not on the dasher filter.  

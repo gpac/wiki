@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# VC1 writer  
+# VC1 writer  {:data-level="all"}  
   
 Register name used to load filter: __ufvc1__  
 This filter may be automatically loaded during graph resolution.  

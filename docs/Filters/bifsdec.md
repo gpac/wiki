@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-4 BIFS decoder  
+# MPEG-4 BIFS decoder  {:data-level="all"}  
   
 Register name used to load filter: __bifsdec__  
 This filter may be automatically loaded during graph resolution.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# EVG video rescaler  
+# EVG video rescaler  {:data-level="all"}  
   
 Register name used to load filter: __evgs__  
 This filter may be automatically loaded during graph resolution.  

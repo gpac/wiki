@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# SCTE35 decoder  
+# SCTE35 decoder  {:data-level="all"}  
   
 Register name used to load filter: __scte35dec__  
 This filter is not checked during graph resolution and needs explicit loading.  

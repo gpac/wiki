@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AV Counter Generator  
+# AV Counter Generator {:data-level="all"}   
   
 Register name used to load filter: __avgen__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  

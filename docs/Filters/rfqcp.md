@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# QCP reframer  
+# QCP reframer  {:data-level="all"}  
   
 Register name used to load filter: __rfqcp__  
 This filter may be automatically loaded during graph resolution.  

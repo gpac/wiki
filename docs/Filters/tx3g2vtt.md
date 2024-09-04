@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# TX3G to WebVTT  
+# TX3G to WebVTT  {:data-level="all"}  
   
 Register name used to load filter: __tx3g2vtt__  
 This filter may be automatically loaded during graph resolution.  

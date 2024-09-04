@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# File output  
+# File output  {:data-level="all"}  
   
 Register name used to load filter: __fout__  
 This filter may be automatically loaded during graph resolution.  
@@ -27,7 +27,8 @@ When recording a DASH or HLS session, the number of segments to keep per quality
 Example
 ```
 gpac -i LIVE_MPD dashin:forward=file -o rec/$File$:max_cache_segs=3
-```  
+``` 
+ 
 This will force keeping a maximum of 3 media segments while recording the DASH session.  
   
 

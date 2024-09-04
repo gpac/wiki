@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HTTP Server  
+# HTTP Server  {:data-level="all"}  
   
 Register name used to load filter: __httpout__  
 This filter may be automatically loaded during graph resolution.  
@@ -39,7 +39,8 @@ Example
 ```
 [foodir]  
 name=bar
-```  
+```
+
 Content `RES` of this directory is exposed as `http://SERVER/bar/RES`.  
     
 Listing can be enabled on server using [dlist](#dlist).  
@@ -59,18 +60,21 @@ Example
 ```
 gpac httpout:rdirs=outcoming
 ```  
+
 This sets up a read-only server.  
     
 Example
 ```
 gpac httpout:wdir=incoming
-```  
+``` 
+
 This sets up a write-only server.  
     
 Example
 ```
 gpac httpout:rdirs=outcoming:wdir=incoming:port=8080
-```  
+``` 
+
 This sets up a read-write server running on [port](#port) 8080.  
     
 
@@ -82,13 +86,15 @@ This mode is mostly useful to setup live HTTP streaming of media sessions such a
 Example
 ```
 gpac -i MP3_SOURCE -o http://localhost/live.mp3 --hold
-```  
+``` 
+
 In this example, the server waits for client requests on `/live.mp3` and will then push each input packet to all connected clients.  
 If the source is not real-time, you can inject a reframer filter performing realtime regulation.  
 Example
 ```
 gpac -i MP3_SOURCE reframer:rt=on -o http://localhost/live.mp3
-```  
+``` 
+
 In this example, the server will push each input packet to all connected clients, or trash the packet if no connected clients.  
     
 In this mode, ICECast meta-data can be inserted using [ice](#ice). The default inserted values are `ice-audio-info`, `icy-br`, `icy-pub` (set to 1) and `icy-name` if input `ServiceName` property is set.  
@@ -96,7 +102,8 @@ The server will also look for any property called `ice-*` on the input PID and i
 Example
 ```
 gpac -i source.mp3:#ice-Genre=CoolRock -o http://IP/live.mp3 --ice
-```  
+``` 
+
 This will inject the header `ice-Genre: CoolRock` in the response.    
 Once one complete input file is sent, it is no longer available for download unless [reopen](#reopen) is set and input PID is not over.  
     
@@ -121,7 +128,8 @@ This mode is typically used for origin server in HAS sessions where clients may 
 Example
 ```
 gpac -i SOURCE reframer:rt=on -o http://localhost:8080/live.mpd --rdirs=temp --dmode=dynamic --cdur=0.1
-```  
+``` 
+
 In this example, a real-time dynamic DASH session with chunks of 100ms is created, writing files to `temp`. A client connecting to the live edge will receive segments as they are produced using HTTP chunk transfer.  
     
 The server can store incoming files to memory mode by setting the read directory to `gmem`.  
@@ -144,7 +152,8 @@ The filter uses no read or write directories in this mode.
 Example
 ```
 gpac -i SOURCE -o http://targethost:8080/live.mpd:gpac:hmode=push
-```  
+``` 
+
 In this example, the filter will send PUT methods to the server running on [port](#port) 8080 at `targethost` location (IP address or name).  
     
 
@@ -156,7 +165,8 @@ The filter uses no read or write directories in this mode, and uploaded data is 
 Example
 ```
 gpac httpout:hmode=source vout aout
-```  
+``` 
+
 In this example, the filter will try to play uploaded files through video and audio output.  
     
 
@@ -179,6 +189,7 @@ Example
 ```
 gpac -i dash.mpd dashin:forward=file:FID=D1 dashin:forward=segb:FID=D2 -o http://localhost:80/live.mpd:SID=D1:rdirs=dash -o http://localhost:80/live_rw.mpd:SID=D2:sigfrag
 ```  
+
 This will:  
 
 - load the HTTP server and forward (through `D1`) the dash session to this server using `live.mpd` as manifest name  

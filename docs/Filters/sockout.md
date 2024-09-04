@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# UDP/TCP output  
+# UDP/TCP output {:data-level="all"}   
   
 Register name used to load filter: __sockout__  
 This filter may be automatically loaded during graph resolution.  
@@ -30,12 +30,14 @@ If the numerator is 0, a packet is randomly chosen in that window.
 Example
 ```
 :pckd=4/10
-```  
+``` 
+
 This drops every 4th packet of each 10 packet window.  
 Example
 ```
 :pckr=0/100
 ```  
+
 This reverts the send order of one random packet in each 100 packet window.  
   
 

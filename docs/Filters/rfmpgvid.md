@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# M1V/M2V/M4V reframer  
+# M1V/M2V/M4V reframer  {:data-level="all"}  
   
 Register name used to load filter: __rfmpgvid__  
 This filter may be automatically loaded during graph resolution.  

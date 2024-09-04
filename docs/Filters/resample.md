@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Audio resampler  
+# Audio resampler  {:data-level="all"}  
   
 Register name used to load filter: __resample__  
 This filter may be automatically loaded during graph resolution.  

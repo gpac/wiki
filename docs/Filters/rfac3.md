@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AC3 reframer  
+# AC3 reframer {:data-level="all"}   
   
 Register name used to load filter: __rfac3__  
 This filter may be automatically loaded during graph resolution.  

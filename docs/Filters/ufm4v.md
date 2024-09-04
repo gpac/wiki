@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# M4V writer  
+# M4V writer {:data-level="all"}    
   
 Register name used to load filter: __ufm4v__  
 This filter may be automatically loaded during graph resolution.  

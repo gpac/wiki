@@ -1,5 +1,5 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
-# General Usage of gpac
+# General Usage of gpac {:data-level="all"}
 Usage: gpac [options] FILTER [LINK] FILTER [...]   
 gpac is GPAC's command line tool for setting up and running filter chains.  
   
@@ -162,7 +162,8 @@ When parsing arguments, the alias will be replace by its value.
 Example
 ```
 gpac -alias="output aout vout"
-```  
+``` 
+
 This allows later audio and video playback using `gpac -i src.mp4 output`  
   
 Aliases can use arguments from the command line. The allowed syntaxes are:  
@@ -188,22 +189,26 @@ Arguments not used by any aliases are kept on the command line, other ones are r
 Example
 ```
 -alias="foo src=@{N} dst=test.mp4"
-```  
+``` 
+
 The command `gpac foo f1 f2` expands to `gpac src=f2 dst=test.mp4 f1`  
 Example
 ```
 -alias="list: inspect src=@{+:N}"
 ```  
+
 The command `gpac list f1 f2 f3` expands to `gpac inspect src=f1 src=f2 src=f3`  
 Example
 ```
 -alias="list inspect src=@{+2:N}"
 ```  
+
 The command `gpac list f1 f2 f3` expands to `gpac inspect src=f2 src=f3 f1`  
 Example
 ```
 -alias="plist aout vout flist:srcs=@{-,N}"
 ```  
+
 The command `gpac plist f1 f2 f3` expands to `gpac aout vout flist:srcs="f1,f2,f3"`    
   
 Alias documentation can be set using `gpac -aliasdoc="NAME VALUE"`, with `NAME` the alias name and `VALUE` the documentation.  
@@ -263,6 +268,7 @@ rg=bar
 [d1/d2]  
 ru=foo
 ```  
+
 With this configuration:  
 
 - the directory `d1` will be readable by all members of group `bar`  
@@ -288,12 +294,14 @@ The last run can be omitted.
 Example
 ```
 gpac -dl -np -i SRC reframer -g -rl -g inspect -g -rl
-```  
+``` 
+
 This will load SRC and reframer, print the graph (no connection), relink SRC, print the graph (connection to reframer), insert inspect, print the graph (no connection), relink reframer and run. No play event is sent here.  
 Example
 ```
 gpac -dl -np -i SRC reframer inspect:deep -g -rl=2 -g -rl -se
-```  
+``` 
+
 This will load SRC, reframer and inspect, print the graph (no connection), relink SRC, print the graph (connection to reframer), print the graph (no connection), relink reframer, send play and run.  
   
 Linking can be done once filters are loaded, using the syntax `@F@SRC` or `@@F@SRC`:  
@@ -306,7 +314,8 @@ Sources MUST be set before relinking outputs using (-rl)[].
 Example
 ```
 gpac -dl -i SRC F1 F2 [...] @1@2 @0@2
-```  
+``` 
+
 This will set SRC as source to F1 and SRC as source to F2 after loading all filters.  
   
 The following options are used in defer mode:  

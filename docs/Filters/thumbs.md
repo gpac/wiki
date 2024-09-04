@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Thumbnail collection generator  
+# Thumbnail collection generator {:data-level="all"}   
   
 Register name used to load filter: __thumbs__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  
@@ -37,13 +37,15 @@ A single line of text can be inserted over each frame. Predefined keywords can b
 Example
 ```
 gpac -i src reframer:saps=1 thumbs:snap=30:grid=6x30 -o dump/$num$.png
-```  
+``` 
+
 This will generate images from key-frames only, inserting one image every 30 seconds. Using key-frame filtering is much faster but may give unexpected results if there are not enough key-frames in the source.  
   
 Example
 ```
 gpac -i src thumbs:snap=0:grid=5x5 -o dump/$num$.png
 ```  
+
 This will generate one image containing 25 frames every second at 25 fps.  
   
 If a single image per output frame is used and the scaling factor is 1, the input packet is reused as input with text and graphics overlaid.  
@@ -52,6 +54,7 @@ Example
 ```
 gpac -i src thumbs:grid=1x1:txt='Frame $time$' -o dump/$num$.png
 ```  
+
 This will inject text over each frame and keep timing and other packet properties.  
   
 A json output can be specified in input [list](#list) to let applications retrieve frame position in output image from its timing.  

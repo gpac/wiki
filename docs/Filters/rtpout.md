@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# RTP Streamer  
+# RTP Streamer  {:data-level="all"}  
   
 Register name used to load filter: __rtpout__  
 This filter may be automatically loaded during graph resolution.  
@@ -19,6 +19,7 @@ Example
 ```
 gpac -i src -o rtp://localhost:1234/:ext=ts
 ```  
+
 This will indicate that the RTP streamer expects a MPEG-2 TS mux as an input.  
 
 # RTP Packets  

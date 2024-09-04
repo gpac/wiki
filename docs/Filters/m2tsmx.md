@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-2 TS multiplexer  
+# MPEG-2 TS multiplexer  {:data-level="all"}  
   
 Register name used to load filter: __m2tsmx__  
 This filter may be automatically loaded during graph resolution.  
@@ -52,27 +52,32 @@ Each TEMI description is formatted as ID_OR_URL or #OPT1[#OPT2]#ID_OR_URL. Optio
 Example
 ```
 temi="url"
-```  
+``` 
+
 Inserts a TEMI URL+timecode in the each stream of each program.  
 Example
 ```
 temi="#P0#url,#P1#4"
 ```  
+
 Inserts a TEMI URL+timecode in the first stream of all programs and an external TEMI with ID 4 in the second stream of all programs.  
 Example
 ```
 temi="#P0#2,#P0#url,#P1#4"
-```  
+``` 
+
 Inserts a TEMI with ID 2 and a TEMI URL+timecode in the first stream of all programs, and an external TEMI with ID 4 in the second stream of all programs.  
 Example
 ```
 temi="#S20#4,#S10#URL"
-```  
+``` 
+
 Inserts an external TEMI with ID 4 in the each stream of program with ServiceID 20 and a TEMI URL in each stream of program with ServiceID 10.  
 Example
 ```
 temi="#N#D500#PV#T30000#4"
-```  
+``` 
+ 
 Inserts an external TEMI with ID 4 and timescale 30000, NTP injection and carousel of 500 ms in the video stream of all programs.  
   
 __Warning: multipliers (k,m,g) are not supported in TEMI options.__  

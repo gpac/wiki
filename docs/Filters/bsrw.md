@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed bitstream rewriter  
+# Compressed bitstream rewriter  {:data-level="all"}  
   
 Register name used to load filter: __bsrw__  
 This filter is not checked during graph resolution and needs explicit loading.  

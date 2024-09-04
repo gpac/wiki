@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# CENC encryptor  
+# CENC encryptor  {:data-level="all"}  
   
 Register name used to load filter: __cecrypt__  
 This filter is not checked during graph resolution and needs explicit loading.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Overview  
+# Overview {:data-level="all"} 
   
 Filters are configurable processing units consuming and producing data packets. These packets are carried between filters through a data channel called _PID_. A PID is in charge of allocating/tracking data packets, and passing the packets to the destination filter(s). A filter output PID may be connected to zero or more filters. This fan-out is handled internally by GPAC (no such thing as a tee filter in GPAC).  
 _Note: When a PID cannot be connected to any filter, a warning is thrown and all packets dispatched on this PID will be destroyed. The session may however still run, unless [-full-link](core_options/#full-link) is set._  

@@ -1,7 +1,7 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 # GPAC Log System
 
-# libgpac logs options:  
+# libgpac logs options:  {:data-level="all"} 
   
 <a id="noprog">__-noprog__</a>: disable progress messages  
 <a id="quiet">__-quiet__</a>:  disable all messages, including errors  
@@ -58,6 +58,7 @@ Example
 ```
 -logs=all@info:dash@debug:ncl
 ```  
+
 This moves all log to info level, dash to debug level and disable color logs  
   
 <a id="proglf">__-proglf__</a>: use new line at each progress messages  

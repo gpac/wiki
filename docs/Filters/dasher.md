@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# DASH and HLS segmenter  
+# DASH and HLS segmenter  {:data-level="all"}  
   
 Register name used to load filter: __dasher__  
 This filter may be automatically loaded during graph resolution.  

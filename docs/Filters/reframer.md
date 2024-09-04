@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Media Reframer  
+# Media Reframer  {:data-level="all"}  
   
 Register name used to load filter: __reframer__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -69,6 +69,7 @@ Example
 ```
 gpac -i m.mp4 reframer:xs=T00:00:10,T00:01:10,T00:02:00:xe=T00:00:20,T00:01:20 [dst]
 ```  
+
 This will extract the time ranges [10s,20s], [1m10s,1m20s] and all media starting from 2m  
   
 If no end range is found for a given start range:  
@@ -80,12 +81,14 @@ If no end range is found for a given start range:
 Example
 ```
 gpac -i m.mp4 reframer:xs=0,10,25:xe=5,20 [dst]
-```  
+``` 
+
 This will extract the time ranges [0s,5s], [10s,20s] and all media starting from 25s  
 Example
 ```
 gpac -i m.mp4 reframer:xs=0,10,25 [dst]
-```  
+``` 
+
 This will extract the time ranges [0s,10s], [10s,25s] and all media starting from 25s  
   
 It is possible to signal range boundaries in output packets using [splitrange](#splitrange).  
@@ -99,6 +102,7 @@ Example
 ```
 gpac -i m.mp4 reframer:xs=T00:00:10,T00:01:10:xe=T00:00:20:splitrange -o dump_$FS$.264 [dst]
 ```  
+
 This will create two output files dump_T00.00.10_T00.02.00.264 and dump_T00.01.10.264.  
 _Note: The `:` and `/` characters are replaced by `.` in `FileSuffix` property._  
   
@@ -110,6 +114,7 @@ Example
 ```
 gpac -i m.mp4 reframer:xs=0,30::props=#Period=P1,#Period=P2:#foo=bar [dst]
 ```  
+
 This will assign to output PIDs  
 
 - during the range [0,30]: property `Period` to `P1`  

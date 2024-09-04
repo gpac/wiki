@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-2 TS demultiplexer  
+# MPEG-2 TS demultiplexer  {:data-level="all"}  
   
 Register name used to load filter: __m2tsdmx__  
 This filter may be automatically loaded during graph resolution.  

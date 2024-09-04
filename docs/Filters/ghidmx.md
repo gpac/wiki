@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# GHI demultiplexer  
+# GHI demultiplexer {:data-level="all"}   
   
 Register name used to load filter: __ghidmx__  
 This filter may be automatically loaded during graph resolution.  
@@ -16,11 +16,13 @@ Example
 ```
 gpac -i SRC [... -i SRCn] -o index.ghi:segdur=2
 ```  
+
 This constructs a binary index for the DASH session.  
 Example
 ```
 gpac -i SRC -o index.ghix:segdur=2
-```  
+``` 
+ 
 This constructs an XML index for the DASH session.  
   
 __Warning: XML indexes should only be used for debug purposes as they can take a significant amount of time to be parsed.__  
@@ -33,13 +35,15 @@ The index can be used to generate manifest, child variants for HLS, init segment
 Example
 ```
 gpac -i index.ghi:gm=all -o dash/vod.mpd
-```  
+``` 
+
 This generates manifest(s) and init segment(s).  
   
 Example
 ```
 gpac -i index.ghi:rep=FOO:sn=10 -o dash/vod.mpd
-```  
+``` 
+
 This generates the 10th segment of representation with ID `FOO`.  
   
 _Note: The manifest file(s) and init segment(s) are not written when generating a segment. The manifest target (mpd or m3u8) is only used to setup the filter chain and target output path._  
@@ -47,19 +51,22 @@ _Note: The manifest file(s) and init segment(s) are not written when generating 
 Example
 ```
 gpac -i index.ghi:gm=main -o dash/vod.m3u8
-```  
+``` 
+
 This generates main manifest only (MPD or master HLS playlist).  
   
 Example
 ```
 gpac -i index.ghi:gm=child:rep=FOO:out=BAR -o dash/vod.m3u8
-```  
+``` 
+
 This generates child manifest for representation `FOO` in file `BAR`.  
   
 Example
 ```
 gpac -i index.ghi:gm=init:rep=FOO:out=BAR2 -o dash/vod.m3u8
 ```  
+
 This generates init segment for representation `FOO` in file `BAR2`.  
   
 The filter outputs are PIDs using framed packets marked with segment boundaries and can be chained to other filters before entering the dasher (e.g. for encryption, transcode...).  
@@ -76,19 +83,22 @@ The filter can be used to generate muxed representations, either at manifest gen
 Example
 ```
 gpac -i index.ghi:mux=A@V1@V2 -o dash/vod.mpd
-```  
+``` 
+
 This will generate a manifest muxing representations `A` with representations `V1` and `V2`.  
   
 Example
 ```
 gpac -i index.ghi:mux=A@V1@V2,T@V1@V2 -o dash/vod.mpd
-```  
+``` 
+
 This will generate a manifest muxing representations `A` and `T` with representations `V1` and `V2`.  
   
 Example
 ```
 gpac -i index.ghi:rep=V2:sn=5:mux=A@V2 -o dash/vod.mpd
-```  
+``` 
+ 
 This will generate the 5th segment containing representations `A` and `V2`.  
   
 The filter does not store any state, it is the user responsibility to use consistent information across calls:  

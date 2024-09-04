@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg decoder  
+# FFmpeg decoder  {:data-level="all"}  
   
 Register name used to load filter: __ffdec__  
 This filter may be automatically loaded during graph resolution.  

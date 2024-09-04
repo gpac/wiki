@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# GPAC Built-in properties  
+# GPAC Built-in properties {:data-level="all"}  
   
 
 ## Built-in property types  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# RTSP Server  
+# RTSP Server  {:data-level="all"}  
   
 Register name used to load filter: __rtspout__  
 This filter may be automatically loaded during graph resolution.  
@@ -24,6 +24,7 @@ Example
 gpac -i source -o rtsp://myip/sessionname  
 gpac -i source -o rtsp://myip/sessionname
 ```  
+
 In this mode, only one session is possible. It is possible to [loop](#loop) the input source(s).  
   
 # Server mode  
@@ -32,7 +33,8 @@ The filter can work as a regular RTSP server by specifying the [mounts](#mounts)
 Example
 ```
 gpac rtspout:mounts=mydir1,mydir2
-```  
+``` 
+
 In this case, content `RES` from any of the specified directory is exposed as `rtsp://SERVER/RES`  
   
 The [mounts](#mounts) option can also specify access rule file(s), see `gpac -h creds`. When rules are used:  
@@ -46,6 +48,7 @@ Example
 [foodir]  
 name=bar
 ```  
+
 Content `RES` of this directory is exposed as `rtsp://SERVER/bar/RES`.  
     
   
@@ -56,6 +59,7 @@ Example
 ```
 gpac -i rtsp://localhost/?pipe://mynamepipe&myfile.mp4 [dst filters]
 ```  
+
 The server will resolve this URL in a new session containing streams from `myfile.mp4` and streams from pipe `mynamepipe`.  
 When setting [runfor](#runfor) in server mode, the server will exit at the end of the last session being closed.  
   

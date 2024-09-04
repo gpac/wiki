@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Raw AAC to LATM writer  
+# Raw AAC to LATM writer  {:data-level="all"}  
   
 Register name used to load filter: __uflatm__  
 This filter may be automatically loaded during graph resolution.  

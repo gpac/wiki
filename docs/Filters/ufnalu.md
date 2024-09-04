@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AVC/HEVC to AnnexB writer  
+# AVC/HEVC to AnnexB writer  {:data-level="all"}  
   
 Register name used to load filter: __ufnalu__  
 This filter may be automatically loaded during graph resolution.  

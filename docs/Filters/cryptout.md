@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# CryptFile output  
+# CryptFile output  {:data-level="all"}  
   
 Register name used to load filter: __cryptout__  
 This filter is not checked during graph resolution and needs explicit loading.  

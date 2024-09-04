@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Audio Video Mixer  
+# Audio Video Mixer {:data-level="all"}   
   
 Register name used to load filter: __avmix__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Probe source  
+# Probe source  {:data-level="all"}  
   
 Register name used to load filter: __probe__  
 This filter is not checked during graph resolution and needs explicit loading.  

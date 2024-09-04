@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg encoder  
+# FFmpeg encoder  {:data-level="all"}  
   
 Register name used to load filter: __ffenc__  
 This filter may be automatically loaded during graph resolution.  

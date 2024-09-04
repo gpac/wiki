@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Inspect packets  
+# Inspect packets  {:data-level="all"}  
   
 Register name used to load filter: __inspect__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -68,7 +68,8 @@ When the option is not present, all properties are dumped. Otherwise, only prope
 Example
 ```
 fmt="PID $pid.ID$ packet $pn$ DTS $dts$ CTS $cts$ $lf$"
-```  
+``` 
+
 This dumps packet number, cts and dts as follows: `PID 1 packet 10 DTS 100 CTS 108 \n`  
     
 An unrecognized keyword or missing property will resolve to an empty string.  
@@ -85,6 +86,7 @@ Example
 ```
 gpac -i SRC reframer:rt=on inspect:buffer=10000:rbuffer=1000:mbuffer=30000:speed=2
 ```  
+
 This will play the session at 2x speed, using 30s of maximum buffering, consuming packets after 10s of media are ready and rebuffering if less than 1s of media.  
   
 

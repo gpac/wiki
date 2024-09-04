@@ -1,4 +1,4 @@
-# Overview
+# Overview {:data-level="all"}  
 
 For version 0.9.0, GPAC has undergone a major re-architecture of its core, the first one in 15 years!
 The re-architecture was done with the following goals:

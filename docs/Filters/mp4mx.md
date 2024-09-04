@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ISOBMFF/QT multiplexer  
+# ISOBMFF/QT multiplexer  {:data-level="all"}  
   
 Register name used to load filter: __mp4mx__  
 This filter may be automatically loaded during graph resolution.  
@@ -45,7 +45,8 @@ Per PID box patch can be specified through the PID property `boxpatch`.
 Example
 ```
 gpac -i source:#boxpatch=myfile.xml -o mux.mp4
-```  
+``` 
+
 Per Item box patch can be specified through the PID property `boxpatch`.  
 Example
 ```
@@ -113,6 +114,7 @@ Example
 ```
 -i unkn.mkv:#ISOMSubtype=VIUK:#DSIWrap=cfgv -o t.mp4
 ```  
+
 This will wrap the unknown stream using `VIUK` code point in `stsd` and wrap any decoder configuration data in a `cfgv` box.  
   
 If [pad_sparse](#pad_sparse) is set, the filter watches the property `Sparse` on incoming PID to decide whether empty packets should be injected to keep packet duration info.  
@@ -128,12 +130,14 @@ Example
 ```
 -i src.srt:#StreamSubtype=sbtl [-i ...]  -o test.mp4 
 ```  
+
 This will force the text stream to use `sbtl` handler type instead of default `text` one.  
 Subtitle streams may be used as chapters by setting the property `IsChap` on the desired PID.  
 Example
 ```
 -i src.srt:#IsChap  [-i ...] -o test.mp4 
 ```  
+
 This will force the text stream to be used as a QT chapter track.    
   
 

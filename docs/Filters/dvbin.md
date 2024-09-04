@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# DVB for Linux  
+# DVB for Linux  {:data-level="all"}  
   
 Register name used to load filter: __dvbin__  
 This filter may be automatically loaded during graph resolution.  

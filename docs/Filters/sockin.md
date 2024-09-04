@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# UDP/TCP input  
+# UDP/TCP input  {:data-level="all"}  
   
 Register name used to load filter: __sockin__  
 This filter may be automatically loaded during graph resolution.  

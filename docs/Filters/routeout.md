@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE output  
+# ROUTE output  {:data-level="all"}  
   
 Register name used to load filter: __routeout__  
 This filter may be automatically loaded during graph resolution.  
@@ -40,6 +40,7 @@ Example
 ```
 "atsc://:ext=mpd", "route://IP:PORT/manifest.mpd"
 ```  
+
 If multiple services with different formats are needed, you will need to explicit your filters:  
 Example
 ```
@@ -115,17 +116,20 @@ Multiplexing an existing DASH session in route:
 Example
 ```
 gpac -i source.mpd dashin:forward=file -o route://225.1.1.0:6000/
-```  
+```
+
 Multiplexing an existing DASH session in atsc:  
 Example
 ```
 gpac -i source.mpd dashin:forward=file -o atsc://
 ```  
+
 Dashing and multiplexing in route:  
 Example
 ```
 gpac -i source.mp4 dasher:profile=live -o route://225.1.1.0:6000/manifest.mpd
-```  
+``` 
+
 Dashing and multiplexing in route Low Latency:  
 Example
 ```
@@ -143,17 +147,20 @@ Example
 ```
 gpac -i source.mpd -o route://225.1.1.0:6000/
 ```  
+
 This will only send the manifest file as a regular object and will not load the dash session.  
 Example
 ```
 gpac -i source.mpd dashin:forward=file -o route://225.1.1.0:6000/manifest.mpd
 ```  
+
 This will force the ROUTE multiplexer to only accept .mpd files, and will drop all segment files (same if [ext](#ext) is used).  
 Example
 ```
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/  
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/manifest.mpd
 ```  
+
 These will demultiplex the input, re-dash it and send the output of the dasher to ROUTE  
   
 # Error simulation  
@@ -163,6 +170,7 @@ Example
 ```
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
 ```  
+
 for a 1.0 percent chance to transition to error (not sending data over the network) and 98.0 to transition from error back to OK.  
   
 

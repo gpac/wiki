@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE input  
+# ROUTE input  {:data-level="all"}  
   
 Register name used to load filter: __routein__  
 This filter may be automatically loaded during graph resolution.  

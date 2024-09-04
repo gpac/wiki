@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AV1/IVF/VP9 reframer  
+# AV1/IVF/VP9 reframer  {:data-level="all"}  
   
 Register name used to load filter: __rfav1__  
 This filter may be automatically loaded during graph resolution.  
