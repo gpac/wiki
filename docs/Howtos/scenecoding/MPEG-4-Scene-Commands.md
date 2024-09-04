@@ -1,6 +1,8 @@
+# Foreword {:data-level="all"}
+
 We will now review the syntax of MPEG-4 scene commands in both BT and XMT-A formats. Please remember that BT and XMT languages are case sensitive.
 
-## Command declaration
+# Command declaration
 
 ### BT format
 
@@ -41,6 +43,7 @@ REPLACE nodeName.fieldName BY NodeDeclaration {... }
 <NodeXXX />
 </Replace>
 ```
+
 Note that the new node can be DEF'ed, or that a null node may be specified (`NULL` ).
 
 ## Replacing a value in a multiple field
@@ -53,6 +56,7 @@ REPLACE nodeName.fieldName[idx] BY newValue
 ```xml
 <Replace atNode="nodeName" atField="fieldName" position="idx" value="newValue" />
 ```
+
 For XMT-A, `idx` can also take the special values 'BEGIN' and 'END'. Replacement of a node in an MFNode field is the combination of both syntax
 
 ## Replacing a multiple field
@@ -74,6 +78,7 @@ REPLACE nodeName.fieldName BY [Node { ... } ... Node { ... }]
 <NodeXXX>...</NodeXXX>
 </Replace>
 ```
+
 Replacement of a node in an MFNode field is the combination of both syntax
 
 ## Deleting a node
@@ -102,6 +107,7 @@ DELETE nodeName.fieldName[idx]
 ```xml
 <Delete atNode="nodeName" atField="fieldName" position="idx" />
 ```
+
 For XMT-A, `idx` can also take the special values 'BEGIN' and 'END'.
 
 ## Inserting a simple value in a multiple field
@@ -117,6 +123,7 @@ APPEND TO nodeName.fieldName newValue
 ```xml
 <Insert atNode="nodeName" atField="fieldName" position="idx" value="newValue" />
 ```
+
 For XMT-A, `idx` can also take the special values 'BEGIN' and 'END'.
 
 ## Inserting a node in a node list field
@@ -134,6 +141,7 @@ APPEND TO nodeName.fieldName Node { }
 <NodeXXX>...</NodeXXX>
 </Insert>
 ```
+
 For XMT-A, `idx` can also take the special values 'BEGIN' and 'END'.
 
 ## Replacing a route

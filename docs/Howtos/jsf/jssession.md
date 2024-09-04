@@ -1,4 +1,4 @@
-# Overview {: data-level ="all"}
+# Overview {:data-level="all"} 
 
 We discuss here how to use [gpac](gpac_general) or the [JavaScript Filter](jsf) to query and control from JavaScript the filter session in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the gpac test suite are also a good source of examples.

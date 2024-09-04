@@ -12,6 +12,7 @@ You can use MP4Box to manually extract each item, see [MP4Box -h meta](mp4box-me
 ```
 MP4Box -dump-item 1:path=dump.hvc source.heic
 ```
+
 This will dump item 2 into `dump.hvc`.
 
 This however requires the item ID, hence an inspection of the file prior to extracting the item.

@@ -32,11 +32,13 @@ This patch describes insertion of a box after a track header box, with a 4CC val
 ```
 MP4Box -patch box.xml source.mp4
 ```
+
 This will inject the new box after the track header of the first track in the file.
 
 ```
 MP4Box -patch 4=box.xml source.mp4
 ```
+
 This will inject the new box after the track header of the track with ID 4.
 
 
@@ -57,11 +59,13 @@ This patch describes removal of a box with a 4CC value `GPAC`located in the `tra
 ```
 MP4Box -patch box.xml source.mp4
 ```
+
 This will remove the new box if present in the track header of the first track in the file.
 
 ```
 MP4Box -patch 4=box.xml source.mp4
 ```
+
 This will remove the new box if present in the track header of the track with ID 4.
 
 

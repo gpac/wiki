@@ -82,6 +82,7 @@ You can change that by specifying that the item is a reference to the sample dat
 ```
 MP4Box -add-image ref:time=-1/30 image.heic
 ```
+
 In this example, the first key frame of every 30s window of the source track will be added as an item sharing the data with the track sample.
 
 # Creating grids

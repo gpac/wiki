@@ -101,6 +101,7 @@ let circle = new Path();
 let circle.add_ellipse(0, 0, 100, 100);
 
 ```
+
 Then create a simple brush:
 ```
 let brush = new SolidBrush();
@@ -108,7 +109,7 @@ brush.set_color('cyan');
 ```
 
 Then assign path to surface and draw path
- ```
+```
 canvas.path = circle;
 canvas.fill(brush);
 ```
@@ -116,6 +117,7 @@ canvas.fill(brush);
 If we put all this together:
 
 ```
+
 import * as evg from 'evg'
 
 let width=400;
@@ -171,6 +173,7 @@ brush.set_stop(0.0, 'red');
 brush.set_stopf(1.0, 0.0, 0.0, 1.0, 0.5);
 brush.mode = GF_GRADIENT_MODE_SPREAD;
 ```
+
 or a linear gradient:
 
 ```
@@ -195,6 +198,7 @@ mx.scale(2.0, 0.5);
 canvas.matrix = mx;
 canvas.path = circle;	
 canvas.fill(brush);
+
 ```
 
 You can also use a 3D matrix to draw a path, usually to apply perspective transform. In this case, all points in the path are considered to have 0 as Z coordinate.
@@ -215,6 +219,7 @@ You can also use a 3D matrix to draw a path, usually to apply perspective transf
 GPAC EVG handles path outlines ("striking") as a regular path. If you want to outline a path, you first need to create the corresponding outline path using pen properties, then draw it as usual.
 
 ```
+
 let outline = circle.outline({width: 5.0, align: GF_PATH_LINE_OUTSIDE, join: GF_LINE_JOIN_BEVEL, dash: GF_DASH_STYLE_DASH_DASH_DOT});
 
 
@@ -231,6 +236,7 @@ GPAC EVG handles text by converting a text string with a given font as a set of 
 
 ```
 /*create a text*/
+
 let text = new evg.Text();
 text.font = 'Times';
 text.fontsize = 20;
@@ -270,6 +276,7 @@ let tx = new EVG.Texture(2, 2, 'rgba', ab);
 ```
 let tx = new EVG.Texture('myimage.jpg', true);
 ```
+
 Note that the image loader can resolve the image path as relative to the source JS or to the current working directory. In this example, we use source JS relative path. Only local files are supported by this API.
 
 - create texture from a remote PNG or JPEG file
@@ -279,6 +286,7 @@ Note that the image loader can resolve the image path as relative to the source 
 xhr = xhr_fetch_file(file_url);
 let tx = new EVG.Texture(xhr.response);
 ```
+
 Check GPAC [XHR API](https://doxygen.gpac.io/group__xhr__grp.html) for more details.
 
 
@@ -290,6 +298,7 @@ let pck = ipid.get_packet();
 
 let tx = new EVG.Texture(pck);
 ```
+
 In this case, the texture properties are derived from the packet's parent PID properties.
 
 
@@ -298,6 +307,7 @@ In this case, the texture properties are derived from the packet's parent PID pr
 ```
 let tx = new EVG.Texture(canvas);
 ```
+
 In this case, the texture properties are derived from the canvas properties. This is typically used to draw an offscreen canvas and use the result as a texture, similar to MPEG-4 CompositeTexture2D.
 
 

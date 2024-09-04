@@ -95,6 +95,7 @@ If you want to change these, you need to re-init libgpac right after import:
 ```
 gpac.init(1, "customprofile");
 ```
+
 Any call other than `init`  to GPAC will prevent any subsequent call to `init` to be executed.
 
 Before starting any filter session, you may also need to pass some global configuration options (libgpac core or filter options) to GPAC:
@@ -237,6 +238,7 @@ You can specify the usual link filtering as an optional argument to `set_source`
 ```
 f_dst.set_source(reframer, "#PID=1");
 ```
+
 This will instruct that the destination only accepts PIDs coming from the reframer filter, and with ID 1.
 
 

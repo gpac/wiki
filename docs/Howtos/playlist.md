@@ -15,21 +15,25 @@ The filter will move to the next item once all PIDs are done playing. It will th
 ```
 gpac flist:srcs=file.mp4:floop=-1 vout
 ```
+
 The above command will play  `file.mp4`, looping it forever. The source may have any number of streams
 
 ```
 gpac flist:srcs=f1.mp4,f2.mp4 vout
 ```
+
 The above command will play  `f1.mp4` then `f2.mp4`. 
 
 ```
 gpac flist:srcs=images/*.png:fdur=1/25 vout
 ```
+
 The above command will play all files with extension `png` in directory `images`, each image lasting for 40 milliseconds.
 
 ```
 gpac flist:srcs=images/*.png:fdur=1:fsort=date -o slide.mp4
 ```
+
 The above command will gather all files with extension `png` in directory `images` ordered by their file creation date, each image lasting for 1 second, and output as a PNG track in MP4 format.
 
 # Playlist mode 
@@ -75,6 +79,7 @@ file.aac
 file.mp3
 ##end playlist
 ```
+
 This will play twice `file.aac` then once `file.mp3`. 
 
 
@@ -99,10 +104,12 @@ file.mp3 @ enc:c=aac:b=64k
 file2.aac
 ##end playlist
 ```
+
 This will only activate the AAC encoder for the `file.mp3` source. When `file2.aac` is queued for processing, the transcoding chain used for `file.mp3` will be unloaded. 
 
 The following describes a sequence of sources to be used as input to a DASH multi-period session:  
 ```
+
 ##begin mixed.m3u
 vid1.mp4:#Period=1
 
@@ -112,6 +119,7 @@ vid2.mp4 && audio2.mp4:#Language=en && audio2_fr.mp4:#Language=fr
 vid3.mp4:#Period=1
 ##end playlist
 ```
+
 This will result in a DASH MPD with three periods, the first (resp. third) period containing media from `vid1.mp4` (resp. `vid3.mp4`) and the second period containing media from `vid2.mp4`, `audio2.mp4` and `audio2_fr.mp4`.
  
 Note that in this example:
@@ -134,6 +142,7 @@ v3.264 && a3.aac
 
 gpac -i playlist.m3u:sigcues -o dash.mpd
 ```
+
 The DASH session will in that case only have 3 segments containing v1/a1,  v2/a2 and v3/a3 (obviously, make sure vX and aX have the same duration ...).
 
 
@@ -179,6 +188,7 @@ s3.mp4
 s4.mp4
 ##end playlist
 ```
+
 In this example, only `s1.mp4` and `s2.mp4` will be deleted.
 
 

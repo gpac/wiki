@@ -216,6 +216,7 @@ A group with `opacity` less than 1 will be rendered offscreen and drawn with the
 ]}
 ]
 ```
+
 You can also use the `scaler` property to change the offscreen resolution of the group, to create a pixelated effect, here combined with opacity changing: 
 
 ```
@@ -337,6 +338,7 @@ For example, load:
 {"seq": [ { "src": [{"in": "media.mp4"}], "start": 1, "stop": 5} ] }
 ]
 ```
+
 then load (updating `loop` parameter):
 ```
 [
@@ -373,6 +375,7 @@ You should now see "no input" message when playing. Without closing the player, 
 { "id": "scene1", "sources": ["seq1"]}
 ]
 ```
+
 And the video sequence will start ! You can use for start and stop time values:
 
 - "now": will resolve to current UTC time
@@ -731,6 +734,7 @@ The following shows a cross-fade of two inputs using an offscreen group in alpha
 ] }
 ]
 ```
+
 In this mode, the texturing parameters used by the offscreen group can be modified using the properties `*_rep`of the shape object.
 
 
@@ -820,6 +824,7 @@ The simplest usage of a watcher is to forward a property to another object prope
 {"watch": "s1@y", "target": "s2@y"}
 ]
 ```
+
 In this example, any modification to `s1.x` (resp `s1.y`) through timers, playlist update or other JS code will automatically copy the values to  `s2.x` (resp `s2.y`) .
 
 If you want to modify the value, simply use a script instead of a builtin target:
@@ -827,10 +832,12 @@ If you want to modify the value, simply use a script instead of a builtin target
 ```
 {"watch": "s1@x", "target": "get_scene('s2').set('x', value/2);"},
 ```
+
 If you need to modify something other than group or scene:
 ```
 {"watch": "s1@x", "target": "update_element('timer', 'loop',  (x<0) ? false : true);"},
 ```
+
 This will pause the timer `timer` whenever the x coordinate of `s1` is greater than 0, and resume the timer otherwise.
 
 
@@ -840,6 +847,7 @@ As indicated in the scripting section, you can also add watcher redirecting to m
 {"id": "mod", "js": "mymod.js"},
 {"watch": "s1@x", "target": "mod.on_x"},
 ```
+
 And in `mymod.js`:
 
 ```

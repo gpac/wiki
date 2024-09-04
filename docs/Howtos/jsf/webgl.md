@@ -1,4 +1,4 @@
-# Overview {: data-level ="all"}
+# Overview 
 
 We discuss here how to use the [JavaScript Filter](jsf) to generate 3D vector graphics in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the GPAC test suite are also a good source of examples.
@@ -150,6 +150,7 @@ A named texture is a texture created with a name:
 ```
 let tx = gl.createTexture('myVidTex');
 ```
+
 The texture data is then associated using upload():
 ```
 
@@ -160,6 +161,7 @@ tx.upload(pck);
 //source data is only in system memory
 tx.upload(some_evg_texture);
 ```
+
 Regular bindTexture and texImage2D can also be used if you don't like changing your code too much:
 ```
 let pck = input_pid.get_packet();
@@ -185,6 +187,7 @@ void main(void) {
   gl_FragColor = vid;
 }
 ```
+
 The resulting fragment shader may contain one or more sampler2D and a few additional uniforms, but they are managed for you by GPAC!
 
 The named texture is then used as usual:

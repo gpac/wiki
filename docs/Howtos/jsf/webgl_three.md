@@ -1,4 +1,4 @@
-# Foreword {: data-level ="all"}
+# Foreword {:data-level="all"}
 
 We discuss here how to use the [JavaScript Filter](jsf) WebGL along with Three.js in GPAC.
 
@@ -68,6 +68,7 @@ console.info = function() { this.loglevel = 1; this._do_log.apply(this, argument
 console.debug = function() { this.loglevel = 0; this._do_log.apply(this, arguments); };
 globalThis.console=console;
 ```
+
 Note that we need to export the console object to `globalThis` for Three.js to see it.
 
 
@@ -146,6 +147,7 @@ filter.process = function()
 	return GF_OK;
 }
 ```
+
 And that's it !
 
 
@@ -199,6 +201,7 @@ document.createElementNS = function(ns, tag)
 }
 globalThis.document=document;
 ```
+
 So far, what we did is create an EVG texture instead of an `img` DOM element, so that any call to `gl.texImage2D`  made for that image is indeed passing an EVG texture.
 
 
@@ -257,6 +260,7 @@ Three.js model loaders rely on XmlHttpRequest to fetch data. You will need to im
 import { XMLHttpRequest } from 'xhr'
 globalThis.XMLHttpRequest = XMLHttpRequest;
 ```
+
 Again, note that we need to export  to `globalThis` for Three.js to see the object.
 
 
