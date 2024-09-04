@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
 
-# MPEG-4 Scene Encoding Options  
+# MPEG-4 Scene Encoding Options  {:data-level="all"}
   
 ## General considerations  
 MP4Box supports encoding and decoding of of BT, XMT, VRML and (partially) X3D formats int MPEG-4 BIFS, and encoding and decoding of XSR and SVG into MPEG-4 LASeR  

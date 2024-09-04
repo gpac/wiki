@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
 
-# Importing Options  
+# Importing Options 
   
 # File importing  
   
@@ -40,11 +40,13 @@ Example
 ```
 -add self:moovts=-1:noedit src.mp4
 ```  
+
 This will apply `moovts` and `noedit` option to all tracks in src.mp4  
 Example
 ```
 -add self#2:moovts=-1:noedit src.mp4
 ```  
+
 This will apply `moovts` and `noedit` option to track with `ID=2` in src.mp4  
 Only per-file options marked with a `S` are possible in this mode.  
     

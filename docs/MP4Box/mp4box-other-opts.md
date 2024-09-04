@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
 
-# Hinting Options  
+# Hinting Options  {:data-level="all"}
   
 IsoMedia hinting consists in creating special tracks in the file that contain transport protocol specific information and optionally multiplexing information. These tracks are then used by the server to create the actual packets being sent over the network, in other words they provide the server with hints on how to build packets, hence their names `hint tracks`.  
 MP4Box supports creation of hint tracks for RTSP servers supporting these such as QuickTime Streaming Server, DarwinStreaming Server or 3GPP-compliant RTSP servers.  
@@ -66,6 +66,7 @@ Example
 ```
 -tags io.gpac.some_tag=s+32
 ```  
+
 This will force storing value `32` in signed 16 bit format.  
 The `tag_value` can also be formatted as:  
 

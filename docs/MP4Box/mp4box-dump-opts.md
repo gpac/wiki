@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
 
-# Extracting Options  
+# Extracting Options  {:data-level="all"}
   
 MP4Box can be used to extract media tracks from MP4 files. If you need to convert these tracks however, please check the [filters doc](Filters).  
     

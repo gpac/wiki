@@ -1,7 +1,9 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
-# Syntax
+# Syntax {:data-level="all"}
+
+```
 MP4Box [option] input [option] [other_dash_inputs]  
-    
+```    
 
 # General Options  
   

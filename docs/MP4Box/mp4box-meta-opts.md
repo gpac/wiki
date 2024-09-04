@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/mp4box/mp4box.c -->
 
-# Meta and HEIF Options  
+# Meta and HEIF Options {:data-level="all"} 
   
 IsoMedia files can be used as generic meta-data containers, for examples storing XML information and sample images for a movie. The resulting file may not always contain a movie as is the case with some HEIF files or MPEG-21 files.  
     
