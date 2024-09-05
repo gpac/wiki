@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
    
 
     if (toggleButton) {
-        console.log("Creating tippy instance for toggle button");
+     
         tippy(toggleButton, {
             content: 'Toggle Nav/Toc',
             placement: 'left',

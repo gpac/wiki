@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
      
 
         if (isBeginnerMode) {
-            console.log("Beginner mode: creating/updating tooltip");
+          
             if (!tippyInstance && searchInput) {
-                console.log("Creating new tippy instance");
+         
                 tippyInstance = tippy(searchInput, {
                     content: '⚠️ For best search results, switch to expert mode',
                     placement: 'left',
@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     hideOnClick: true
                 });
             } else if (tippyInstance) {
-                console.log("Updating existing tippy instance");
+                
                 tippyInstance.setProps({
                     theme: isDarkMode ? 'dark' : 'light'
                 });
             }
         } else {
-            console.log("Expert mode: destroying tooltip if it exists");
+            
             if (tippyInstance) {
                 tippyInstance.destroy();
                 tippyInstance = null;
@@ -39,16 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (searchInput) {
-        console.log("Search input found, setting up tooltip");
+       
      
         setTimeout(() => {
-            console.log("Initializing tooltip after delay");
+          
             updateTooltip();
         }, 100);
 
       
         document.addEventListener('levelChanged', function() {
-            console.log("Level changed event detected");
+            
             updateTooltip();
         });
 

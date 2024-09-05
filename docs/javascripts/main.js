@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeLevelManagement();
-    initializeTOCClickHandler();
+  /*   initializeTOCClickHandler(); */
     
     let cachedKeywords = getCache('keywordsCache');
     let cachedDefinitions = getCache('definitionsCache');

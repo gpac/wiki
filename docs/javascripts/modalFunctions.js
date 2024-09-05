@@ -4,11 +4,11 @@ function openModal(keyword, definition) {
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");
-      // TODO: navigation to the keyword page is under development
+    const modalLink = document.getElementById("modal-link");
+     
 
-    /* const modalLink = document.getElementById("modal-link"); */
-
-    if (modalTitle && modalDefinition /* && modalLink */) {
+ 
+    if (modalTitle && modalDefinition && modalLink) {
         let descriptionText;
         if (typeof definition === 'string') {
             descriptionText = definition;
@@ -17,16 +17,18 @@ function openModal(keyword, definition) {
         } else {
             descriptionText = 'Definition not available';
         }
-       /* const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`; */
+        const glossaryPageUrl = `${
+            window.location.origin
+          }/Glossary/${keyword.toLowerCase()}/`;
       
-      /* Removed the redirection logic */
       modalTitle.textContent = keyword;
       modalDefinition.textContent = descriptionText;
-      /* modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`; */
+      modalLink.href = `${window.location.origin}/Glossary/${keyword.toLowerCase()}/`; 
       modal.classList.remove("hidden");
       modal.style.display = "block";
-      /* modalLink.classList.remove("hidden"); */
-            modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+      modalLink.classList.remove("hidden");
+            modalLink.href = `${window.location.origin}/Glossary/${keyword.toLowerCase()}/`;
+            modalLink.href = glossaryPageUrl;
             modal.classList.remove("hidden");
             modal.style.display = "block";
             modalLink.classList.remove("hidden");

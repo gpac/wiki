@@ -37,3 +37,6 @@ encrypt("input.mp4", "output.mp4", "keyfile.xml")
 - **input_file**: Path to the multimedia file to be encrypted.
 - **output_file**: Path where the encrypted file will be saved.
 - **key_file**: Path to the key file used for encryption.
+
+## See Also:
+- [Decoder](link-to-decoder.md)

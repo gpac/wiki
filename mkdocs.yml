@@ -389,7 +389,9 @@ nav:
     - TTXT Format: xmlformats/TTXT-Format-Documentation.md
     - NHML format: xmlformats/NHML-Format.md
     - NHNT format: xmlformats/NHNT-Format.md
-     # TODO: implement  keyword pages
- # - Glossary:
- #   - glossary/encode.md
- #   - glossary/encrypt.md  
+   
+  - Glossary:
+    - Glossary/encode.md
+    - Glossary/encrypt.md
+    - Glossary/sink.md  
+    - Glossary/source.md    
