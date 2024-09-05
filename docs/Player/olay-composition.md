@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all"}
 
 We discuss here how to use GPAC's compositor for complex scenes or simple AV as a filter rather than the player.
 

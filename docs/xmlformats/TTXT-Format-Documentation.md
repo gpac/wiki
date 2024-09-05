@@ -1,4 +1,4 @@
-# Foreword
+# Foreword {: data-level="all"}
 
 The 3GPP consortium has defined a standard for text streaming, independent of any scene description such as SMIL, SVG or BIFS: 3GPP Timed Text. MP4Box supports this standard and uses its own textual format to describe a streaming text session.
 

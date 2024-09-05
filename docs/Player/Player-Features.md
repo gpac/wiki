@@ -1,4 +1,4 @@
-# Foreword
+# Foreword {: data-level="all"}
 
 A true multimedia player is a complex system involving networking, media and user interactions management, rasterizing, etc. The following section is a more or less exhaustive list of supported features in the GPAC player.
 Since the GPAC player is mostly a frontend to the filter engine in GPAC, most features from [Filters](Filters) are supported.
@@ -63,7 +63,7 @@ The media stream composition (renderer) is performed by the [Compositor](composi
  - Dynamic insertion/update/removal of objects and streams
  - Inline scene support (local or remote) with MediaControl/MediaSensor support
 
- ## Audio rendering
+## Audio rendering
 - Multichannel support
 - Integer up/down sampling with mediaSpeed handling in 8, 16, 24, 32 bit or 32 floating point
 - Multichannel to stereo mapper
@@ -106,31 +106,32 @@ Any possible input from GPAC filter architecture is supported by the player. Thi
 - Subtitles (SRT/SUB/TeXML/TTXT/WebVTT formats)
 - MPEG-2 TS files and IP streams (and  experimental support for DVB for linux)
 - MPEG-DASH, HLS and Smooth. This includes:
-  - playback from an HTTP(s) server or from local storage for test purposes.
-  - media segments based on TS and ISOBMF, with 3GPP timed text support
-  - static (on demand) and dynamic (live) sessions
-  - multiple period support
-  - group selection support
-  - independent component download (one adaptation set for audio, one for video)
-  - most MPD syntax is supported
-  - bitstream switching mode (single init segment) and non-bitstream switching mode
-  - manual quality switching by using ctrl+h and ctrl+l
-  - basic automatic quality switching when playing HTTP urls
-  - tiling, gaze and decoding speed adaptation
+    - playback from an HTTP(s) server or from local storage for test purposes.
+    - media segments based on TS and ISOBMF, with 3GPP timed text support
+    - static (on demand) and dynamic (live) sessions
+    - multiple period support
+    - group selection support
+    - independent component download (one adaptation set for audio, one for video)
+    - most MPD syntax is supported
+    - bitstream switching mode (single init segment) and non-bitstream switching mode
+    - manual quality switching by using ctrl+h and ctrl+l
+    - basic automatic quality switching when playing HTTP urls
+    - tiling, gaze and decoding speed adaptation
  
 - SDP input - RTP/RTSP streaming including RTP/UDP streaming, RTP over RTSP and HTTP tunneling of RTP traffic (QuickTime/Darwin Streaming Server). RTP Payload formats supported are:
-  - RFC 3016 for MPEG-4 Simple Profile video and simple LATM AAC
-  - RFC 3640 for any form of MPEG-4 streams (audio, video, systems)
-  - RFC 3267 for AMR audio (narrow-band, octet-align format only)
-  - RFC 2250 for MPEG-1/2 audio and video and MPEG-2 TS
-  - RFC 2429 for H263 video used by 3GPP (no VRC, no extra Picture Header)
-  - RFC 3984 for H264/AVC video (only STAP-A, FU-A and regular NAL units)
-  - RFC 7798 for H265|HEVC video (AP, FU and regular NAL units)
+    - RFC 3016 for MPEG-4 Simple Profile video and simple LATM AAC
+    - RFC 3640 for any form of MPEG-4 streams (audio, video, systems)
+    - RFC 3267 for AMR audio (narrow-band, octet-align format only)
+    - RFC 2250 for MPEG-1/2 audio and video and MPEG-2 TS
+    - RFC 2429 for H263 video used by 3GPP (no VRC, no extra Picture Header)
+    - RFC 3984 for H264/AVC video (only STAP-A, FU-A and regular NAL units)
+    - RFC 7798 for H265|HEVC video (AP, FU and regular NAL units)
 
  - Generic input using FFmpeg libavformat, supports most AV containers known (MPEG, VOB, AVI, MOV ...) and many protocols
  - Generic frame grabber FFmpeg libavdevice, supports many capture devices
  
 # Available plugins
+
 ## Audio output
 - Microsoft DirectSound (with multichannel support)
 - Microsoft WaveOut

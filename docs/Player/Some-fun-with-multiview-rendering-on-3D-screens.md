@@ -1,6 +1,7 @@
 GPAC can support various output type and view number, but requires OpenGL to do so. 
 
-Warning, multi-view rendering is a costly operation. The scene gets rendered multiple times, and you will need a decent graphic card to try that, especially support for [VBO](http://en.wikipedia.org/wiki/Vertex_Buffer_Object)s to avoid sending the geometry data repeatedly, and OpenGL shaders for most screen configurations. 
+!!! warning
+    Multi-view rendering is a costly operation. The scene gets rendered multiple times, and you will need a decent graphic card to try that, especially support for [VBO](http://en.wikipedia.org/wiki/Vertex_Buffer_Object)s to avoid sending the geometry data repeatedly, and OpenGL shaders for most screen configurations. 
 
 The output type is selected in GPAC configuration file by the following keys
 

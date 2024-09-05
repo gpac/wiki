@@ -1,13 +1,16 @@
-To build on Windows, you'll need: 
- * [Git](https://git-scm.com/download/win)
- * [Visual Studio](https://visualstudio.microsoft.com/vs/community/) (at least VS2015 is recommended)
+!!! note
+    To build on Windows, you'll need: 
+    * [Git](https://git-scm.com/download/win)
+    * [Visual Studio](https://visualstudio.microsoft.com/vs/community/) (at least VS2015 is recommended)
 
- For a full build, other tools might be required, they will be mentioned at the time. 
+    For a full build, other tools might be required, they will be mentioned at the time.
 
-# NOTE FOR Windows XP Users
+
+# NOTE FOR Windows XP Users {: data-level="all" }
+
 Windows XP is no longer supported (by GPAC nor Microsoft) in our regular build system. See [this discussion](https://github.com/gpac/gpac/issues/1490#issuecomment-649519836) for further details.
 
- # Build MP4Box only
+# Build MP4Box only
 
 To build only the MP4Box command line utility, you will need to:
 
@@ -31,7 +34,8 @@ It might be called something else depending on your version of Visual Studio. Th
 <a name="toolset"></a>
 You can adjust the parameters: 
  - `/p:Platform=x64`: Change to `/p:Platform=Win32` to get a 32 bits build
- - `/p:PlatformToolset=v140` and `/p:WindowsTargetPlatformVersion=8.1`: Change this depending on your Visual Studio version and the Windows SDK version you have installed. (e.g.: `/p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0` for VS 2022 on Windows 10)
+ - `/p:PlatformToolset=v140` and `/p:WindowsTargetPlatformVersion=8.1`: Change this depending on your Visual Studio version and the Windows SDK version you have installed.
+ -  (e.g.: `/p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0` for VS 2022 on Windows 10)
  
  You can find out what versions you have by opening the gpac.sln solution in Visual Studio, opening the property page of one the project, and checking the "Platform Toolset" and "Windows SDK Version" fields. 
 
@@ -42,7 +46,7 @@ You can adjust the parameters:
 You can add this directory to your `PATH` environment variable. Or move the binary to a destination in your `PATH`. Or just use it locally. 
 
 
- # Full GPAC build
+# Full GPAC build
 
 To get a full build of the whole GPAC project, you will first need to build some dependencies, copy them over to the main gpac repository, and build it. 
 
@@ -101,6 +105,7 @@ The binaries will be in
 ```batch
 <GPAC_ROOT_DIR>\gpac_public\bin\<PLATFORM>\<CONFIGURATION>
 ```
+
 (e.g. `<GPAC_ROOT_DIR>\gpac_public\bin\x64\Release`)
 
 You can add this to your `PATH` to run it from anywhere.

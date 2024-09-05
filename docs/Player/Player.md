@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all"}
 GPAC provides a highly configurable multimedia player through the [compositor](compositor) filter.
 
 This player is much more than a traditional audiovisual player because, in addition to its capabilities to play most video or audio formats and its support for most of the existing delivery protocols, it focuses on graphics, animations and interactivity technologies.
