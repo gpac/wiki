@@ -6,13 +6,21 @@
     <h1 class="error-title">404 - Page Not Found</h1>
     <div id="error-message" class="error-message"></div>
   
-    <div class="action-buttons">
-        <a href="/glossary" class="action-button">View full glossary</a>
-        <a href="/" class="action-button">Return to homepage</a>
+    <div id="glossary-actions" style="display: none;">
+        <div class="action-buttons">
+            <a href="/glossary/encode/" class="action-button">View full glossary</a>
+            <a href="/" class="action-button">Return to homepage</a>
+        </div>
+        <div id="contribution-message" class="contribution-message">
+            <p>Do you know this term and wish to contribute to the page?</p>
+            <a href="https://github.com/gpac/wiki" target="_blank" class="contribution-button">Contribute to GPAC Wiki</a>
+        </div>
     </div>
-    <div id="contribution-message" class="contribution-message">
-        <p>Do you know this term and wish to contribute to the page?</p>
-        <a href="https://github.com/gpac/gpac/wiki" target="_blank" class="contribution-button">Contribute to GPAC Wiki</a>
+    
+    <div id="general-actions" style="display: none;">
+        <div class="action-buttons">
+            <a href="/" class="action-button">Return to homepage</a>
+        </div>
     </div>
 </div>
 
@@ -122,7 +130,7 @@ background-color: #444!important;
     }
 
     .contribution-button {
-        background-color: var(--md-accent-fg-color);
+        background-color: #333!important;
         color: white!important;
     }
 
@@ -132,7 +140,8 @@ background-color: #444!important;
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var errorMessage = document.getElementById('error-message');
-       
+        var glossaryActions = document.getElementById('glossary-actions');
+        var generalActions = document.getElementById('general-actions');
     
         let currentPagePath = window.location.pathname;
     
@@ -140,20 +149,20 @@ background-color: #444!important;
             currentPagePath = currentPagePath.slice(0, -1);
         }
     
-       
-    
         if (currentPagePath.startsWith('/glossary/')) {
             const toggleButton = document.querySelector('#toggle-button');
-            toggleButton.style.display = 'none';
+            if (toggleButton) {
+                toggleButton.style.display = 'none';
+            }
             
             var keyword = currentPagePath.split('/').pop().replace('.html', '').replace('.md', '');
             console.log("Keyword not found:", keyword);
-            errorMessage.innerHTML = ` The keyword "<strong>${keyword}</strong>" was not found in our GPAC glossary.`;
-          
+            errorMessage.innerHTML = `The keyword "<strong>${keyword}</strong>" was not found in our GPAC glossary.`;
+            glossaryActions.style.display = 'block';
         } else {
             errorMessage.textContent = `Sorry, the page you are looking for does not exist.`;
+            generalActions.style.display = 'block';
         }
-
-});
+    });
 </script>
 {% endblock %}
