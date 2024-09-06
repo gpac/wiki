@@ -395,4 +395,7 @@ nav:
     - glossary/encode.md
     - glossary/encrypt.md
     - glossary/sink.md  
-    - glossary/source.md    
+    - glossary/source.md 
+    - glossary/transcode.md
+    - glossary/bitrate.md
+    - glossary/codec.md   

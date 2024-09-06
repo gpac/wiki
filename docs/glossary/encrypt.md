@@ -1,5 +1,7 @@
-
-
+---
+hide:
+  - toc
+---
 
 `encrypt` is a function that allows you to encrypt multimedia files using specified encryption keys.
 
@@ -7,36 +9,36 @@
 encrypt(input_file, output_file, key_file)
 ```
 
-#### Reference
+## Reference
 ```bash
 encrypt("input.mp4", "output.mp4", "keyfile.xml")
 ```
 
-#### Usage
+## Usage
 
 - Encrypting video files
 - Encrypting audio files
 - Encrypting live multimedia streams
 - Managing encryption keys
 
-#### Troubleshooting
+## Troubleshooting
 
-- **My output file is corrupted after encryption**
-  - Verify that the key file is correct and compatible with the input multimedia file.
-- **Permission error when accessing the key file**
-  - Ensure you have the necessary permissions to read the key file.
+### My output file is corrupted after encryption
+- Verify that the key file is correct and compatible with the input multimedia file.
 
-#### Example
+### Permission error when accessing the key file
+- Ensure you have the necessary permissions to read the key file.
+## Example
 
 ```bash
 encrypt("input.mp4", "output.mp4", "keyfile.xml")
 ```
 
-#### Parameters
+## Parameters
 
 - **input_file**: Path to the multimedia file to be encrypted.
 - **output_file**: Path where the encrypted file will be saved.
 - **key_file**: Path to the key file used for encryption.
 
-## See Also:
-- [Decoder](link-to-decoder.md)
+## See Also
+- [Decoder](decoder)
