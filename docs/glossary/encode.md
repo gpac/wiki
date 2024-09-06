@@ -39,7 +39,7 @@ encode("input.mp4", "output.mp4", "libx264")
 - **codec**: Codec to be used for encoding (e.g., libx264 for H.264 encoding).
   
 ## See Also:
-- [Codec](codec)
-- [Bitrate](bitrate)
-- [Transcode](transcode) 
+- [Codec](codec.md)
+- [Bitrate](bitrate.md)
+- [Transcode](transcode.md) 
 
