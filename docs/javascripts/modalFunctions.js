@@ -19,15 +19,15 @@ function openModal(keyword, definition) {
         }
         const glossaryPageUrl = `${
             window.location.origin
-          }/Glossary/${keyword.toLowerCase()}/`;
+          }/glossary/${keyword.toLowerCase()}/`;
       
       modalTitle.textContent = keyword;
       modalDefinition.textContent = descriptionText;
-      modalLink.href = `${window.location.origin}/Glossary/${keyword.toLowerCase()}/`; 
+      modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`; 
       modal.classList.remove("hidden");
       modal.style.display = "block";
       modalLink.classList.remove("hidden");
-            modalLink.href = `${window.location.origin}/Glossary/${keyword.toLowerCase()}/`;
+            modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
             modalLink.href = glossaryPageUrl;
             modal.classList.remove("hidden");
             modal.style.display = "block";

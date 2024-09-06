@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-**SINK** in GPAC refers to an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.
+**SINK** refers to an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.
 
 **Reference:**
 
