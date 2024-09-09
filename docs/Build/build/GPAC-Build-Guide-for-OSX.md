@@ -84,9 +84,40 @@ total 42784
 
 _(contents and versions may differ depending on updates and deprecated features)_
 
+## Build Xcode additional dependencies
+
+Add these only if you explicitely need them or if you plan to use Xcode. The command-line build doesn't need these experimental tools.
+
+Make sure you have the required build tools:
+
+```bash
+brew install autoconf automake libtool
+```
+
+Install openvvc:
+
+```bash
+git clone https://github.com/OpenVVC/OpenVVC.git && cd OpenVVC && autoreconf -iv && ./configure && make
+make install
+```
+
+Install vvdec:
+
+```bash
+git clone https://github.com/fraunhoferhhi/vvdec.git && mkdir vvdec/build && cd vvdec/build && cmake .. && make -j && make install
+sudo cp -r ../install/* /usr/local/
+```
+
+Install vvenc:
+
+```bash
+git clone https://github.com/fraunhoferhhi/vvenc.git && mkdir vvenc/build && cd vvenc/build && cmake .. && make -j && make install
+sudo cp -r ../install/* /usr/local/
+```
+
 ## Build gpac
 
-```
+```bash
 cd ../gpac_public
 ./configure --extra-cflags=-Wno-deprecated
 make
