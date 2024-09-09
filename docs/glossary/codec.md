@@ -30,6 +30,14 @@ codec(input_file, output_file, codec_name)
 codec("input.mp4", "output.mp4", "libx265")
 ```
 
+```mermaid
+
+graph LR;
+    A[input.mp4] --> B[libx265];
+    B --> C[output.mp4];
+```
+
+
 ## Parameters
 
 - **input_file**: Path to the multimedia file.

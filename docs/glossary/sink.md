@@ -35,7 +35,7 @@ gpac -i input.mp4 -o output.avi
 - **options**: Additional parameters to control the output settings (e.g., format, quality).
 
 ## See Also
-- [Output](output) 
+- [Output](output.md) 
 - [Codec](codec.md)
 - [Transcode](transcode.md)
 

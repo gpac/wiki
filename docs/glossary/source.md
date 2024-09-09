@@ -37,6 +37,6 @@ gpac -i input.mp4 -o output.mp4
   
 ## See Also
 - [Input](input)
-- [Filter](filter)
-- [Decode](decode)
+- [Filter](filter.md)
+- [Decoder](decoder.md)
 
