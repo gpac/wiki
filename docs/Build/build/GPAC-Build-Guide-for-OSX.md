@@ -28,7 +28,7 @@ brew install cmake scons coreutils gettext yasm git wget pkg-config
 3. Install dependencies
 
 ```bash
-brew install freetype jpeg libpng openjpeg mad faad2 libogg libvorbis theora a52dec ffmpeg x264 aom xvid openssl@1.1 sdl2
+brew install freetype jpeg libpng openjpeg mad faad2 libogg libvorbis theora a52dec ffmpeg x264 aom xvid openssl@1.1 sdl2 libcaca kvazaar
 ```
 
 
