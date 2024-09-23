@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# GPU texture uploader  {:data-level="all"}  
+# GPU texture uploader  
   
 Register name used to load filter: __glpush__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  

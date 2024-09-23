@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed layered bitstream aggregator {:data-level="all"}   
+# Compressed layered bitstream aggregator  
   
 Register name used to load filter: __bsagg__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -18,7 +18,9 @@ The filter can also be used on AVC and HEVC DolbyVision dual-streams to aggregat
 The filter does not forward aggregator or extractor NAL units.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="svcqid">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
+<div markdown class="option">  
+<a id="svcqid" data-level="basic">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
+</div>  
   

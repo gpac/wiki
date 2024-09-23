@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# CENC decryptor  {:data-level="all"}  
+# CENC decryptor  
   
 Register name used to load filter: __cdcrypt__  
 This filter may be automatically loaded during graph resolution.  
@@ -14,9 +14,12 @@ The DRM config file can be set per PID using the property `DecryptInfo` (highest
 When the file is set per PID, the first `CryptInfo` with the same ID is used, otherwise the first `CryptInfo` is used.When the file is set globally (not per PID), the first `CrypTrack` in the DRM config file with the same ID is used, otherwise the first `CrypTrack` with ID 0 or not set is used.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="cfile">__cfile__</a> (str): crypt file location  
+<div markdown class="option">  
+<a id="cfile" data-level="basic">__cfile__</a> (str): crypt file location  
+</div>  
+<div markdown class="option">  
 <a id="decrypt">__decrypt__</a> (enum, default: _full_): decrypt mode (CENC only)  
 
 - full: decrypt everything, throwing error if keys are not found  
@@ -25,9 +28,18 @@ When the file is set per PID, the first `CryptInfo` with the same ID is used, ot
 - pad0: decrypt nothing and replace all crypted bits with 0  
 - pad1: decrypt nothing and replace all crypted bits with 1  
 - padsc: decrypt nothing and replace all crypted bytes with start codes  
+</div>  
   
+<div markdown class="option">  
 <a id="drop_keys">__drop_keys__</a> (uintl): consider keys with given 1-based indexes as not available (multi-key debug)  
+</div>  
+<div markdown class="option">  
 <a id="kids">__kids__</a> (strl): define KIDs. If `keys` is empty, consider keys with given KID (as hex string) as not available (debug)  
+</div>  
+<div markdown class="option">  
 <a id="keys">__keys__</a> (strl): define key values for each of the specified KID  
+</div>  
+<div markdown class="option">  
 <a id="hls_cenc_patch_iv">__hls_cenc_patch_iv__</a> (bool, default: _false_): ignore IV updates in some broken HLS+CENC streams  
+</div>  
   

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG PS demultiplexer  {:data-level="all"}  
+# MPEG PS demultiplexer  
   
 Register name used to load filter: __m2psdmx__  
 This filter may be automatically loaded during graph resolution.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg encoder  {:data-level="all"}  
+# FFmpeg encoder  
   
 Register name used to load filter: __ffenc__  
 This filter may be automatically loaded during graph resolution.  
@@ -32,14 +32,30 @@ If codec is video and [fintra](#fintra) is set, reload will happen at next force
 The [rld](#rld) option is usually needed for dynamic updates of rate control parameters, since most encoders in ffmpeg do not support it.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="c">__c__</a> (str):     codec identifier. Can be any supported GPAC codec name or ffmpeg codec name - updated to ffmpeg codec name after initialization  
-<a id="pfmt">__pfmt__</a> (pfmt, default: _none_): pixel format for input video. When not set, input format is used  
-<a id="fintra">__fintra__</a> (frac, default: _-1/1_): force intra / IDR frames at the given period in sec, e.g. `fintra=2` will force an intra every 2 seconds and `fintra=1001/1000` will force an intra every 30 frames on 30000/1001=29.97 fps video; ignored for audio  
+<div markdown class="option">  
+<a id="c" data-level="basic">__c__</a> (str): codec identifier. Can be any supported GPAC codec name or ffmpeg codec name - updated to ffmpeg codec name after initialization  
+</div>  
+<div markdown class="option">  
+<a id="pfmt" data-level="basic">__pfmt__</a> (pfmt, default: _none_): pixel format for input video. When not set, input format is used  
+</div>  
+<div markdown class="option">  
+<a id="fintra" data-level="basic">__fintra__</a> (frac, default: _-1/1_): force intra / IDR frames at the given period in sec, e.g. `fintra=2` will force an intra every 2 seconds and `fintra=1001/1000` will force an intra every 30 frames on 30000/1001=29.97 fps video; ignored for audio  
+</div>  
+<div markdown class="option">  
 <a id="all_intra">__all_intra__</a> (bool, default: _false_, updatable): only produce intra frames  
+</div>  
+<div markdown class="option">  
 <a id="ls">__ls__</a> (bool, default: _false_): log stats  
+</div>  
+<div markdown class="option">  
 <a id="rc">__rc__</a> (bool, default: _false_): reset encoder when forcing intra frame (some encoders might not support intra frame forcing)  
+</div>  
+<div markdown class="option">  
 <a id="rld">__rld__</a> (bool, default: _false_, updatable): force reloading of encoder when arguments are updated  
-<a id="*">__*__</a> (str):     any possible options defined for AVCodecContext and sub-classes. see `gpac -hx ffenc` and `gpac -hx ffenc:*`  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVCodecContext and sub-classes. see `gpac -hx ffenc` and `gpac -hx ffenc:*`  
+</div>  
   

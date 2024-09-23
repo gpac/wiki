@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# IVF/OBU/annexB writer  {:data-level="all"}  
+# IVF/OBU/annexB writer  
   
 Register name used to load filter: __ufobu__  
 This filter may be automatically loaded during graph resolution.  
@@ -10,7 +10,9 @@ The temporal delimiter OBU is re-inserted in annexB (`.av1` and `.av1b`files, wi
 _Note: VP8/9 codecs will only use IVF output (equivalent to file extension `.ivf` or `:ext=ivf` set on output)._  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="rcfg">__rcfg__</a> (bool, default: _true_): force repeating decoder config at each I-frame  
+<div markdown class="option">  
+<a id="rcfg" data-level="basic">__rcfg__</a> (bool, default: _true_): force repeating decoder config at each I-frame  
+</div>  
   

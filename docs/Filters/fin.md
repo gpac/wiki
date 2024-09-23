@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# File input  {:data-level="all"}  
+# File input  
   
 Register name used to load filter: __fin__  
 This filter may be automatically loaded during graph resolution.  
@@ -21,17 +21,32 @@ No specific properties are attached, except a timescale if (-ptime)[] is set.
 Example
 ```
 gpac fin:pck=str@"My Sample Text":ptime=2500/100:#CodecID=stxt:#StreamType=text
-```  
+```
+  
 This will declare the PID as WebVTT and send a single packet with payload `My Sample Text` and a timestamp value of 25 second.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (cstr): location of source file  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (cstr): location of source file  
+</div>  
+<div markdown class="option">  
 <a id="block_size">__block_size__</a> (uint, default: _0_): block size used to read file. 0 means 5000 if file less than 500m, 1M otherwise  
-<a id="range">__range__</a> (lfrac, default: _0-0_): byte range  
-<a id="ext">__ext__</a> (cstr): override file extension  
-<a id="mime">__mime__</a> (cstr): set file mime type  
-<a id="pck">__pck__</a> (mem): data to use instead of file  
-<a id="ptime">__ptime__</a> (frac, default: _0/0_): timing for data packet, ignored if den is 0  
+</div>  
+<div markdown class="option">  
+<a id="range" data-level="basic">__range__</a> (lfrac, default: _0-0_): byte range  
+</div>  
+<div markdown class="option">  
+<a id="ext" data-level="basic">__ext__</a> (cstr): override file extension  
+</div>  
+<div markdown class="option">  
+<a id="mime" data-level="basic">__mime__</a> (cstr): set file mime type  
+</div>  
+<div markdown class="option">  
+<a id="pck" data-level="basic">__pck__</a> (mem): data to use instead of file  
+</div>  
+<div markdown class="option">  
+<a id="ptime" data-level="basic">__ptime__</a> (frac, default: _0/0_): timing for data packet, ignored if den is 0  
+</div>  
   

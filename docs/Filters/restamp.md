@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Packet timestamp rewriter  {:data-level="all"}  
+# Packet timestamp rewriter  
   
 Register name used to load filter: __restamp__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -28,21 +28,41 @@ When [align](#align) is not 0, if the difference between two consecutive timesta
 is set to the last computed timestamp plus the minimum packet duration for the stream.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="fps">__fps__</a> (frac, default: _0/1_): target fps  
-<a id="delay">__delay__</a> (frac, default: _0/1_, updatable): delay to add to all streams  
-<a id="delay_v">__delay_v__</a> (frac, default: _0/1_, updatable): delay to add to video streams  
-<a id="delay_a">__delay_a__</a> (frac, default: _0/1_, updatable): delay to add to audio streams  
-<a id="delay_t">__delay_t__</a> (frac, default: _0/1_, updatable): delay to add to text streams  
-<a id="delay_o">__delay_o__</a> (frac, default: _0/1_, updatable): delay to add to other streams  
-<a id="rawv">__rawv__</a> (enum, default: _no_): copy video frames  
+<div markdown class="option">  
+<a id="fps" data-level="basic">__fps__</a> (frac, default: _0/1_): target fps  
+</div>  
+<div markdown class="option">  
+<a id="delay" data-level="basic">__delay__</a> (frac, default: _0/1_, updatable): delay to add to all streams  
+</div>  
+<div markdown class="option">  
+<a id="delay_v" data-level="basic">__delay_v__</a> (frac, default: _0/1_, updatable): delay to add to video streams  
+</div>  
+<div markdown class="option">  
+<a id="delay_a" data-level="basic">__delay_a__</a> (frac, default: _0/1_, updatable): delay to add to audio streams  
+</div>  
+<div markdown class="option">  
+<a id="delay_t" data-level="basic">__delay_t__</a> (frac, default: _0/1_, updatable): delay to add to text streams  
+</div>  
+<div markdown class="option">  
+<a id="delay_o" data-level="basic">__delay_o__</a> (frac, default: _0/1_, updatable): delay to add to other streams  
+</div>  
+<div markdown class="option">  
+<a id="rawv" data-level="basic">__rawv__</a> (enum, default: _no_): copy video frames  
 
 - no: no raw frame copy/drop  
 - force: force decoding all video streams  
 - dyn: decoding video streams if not all intra  
+</div>  
   
-<a id="tsinit">__tsinit__</a> (lfrac, default: _-1/1_): initial timestamp to resync to, negative values disables resync  
-<a id="align">__align__</a> (uint, default: _0_): timestamp alignment threshold (0 disables alignment) - see filter help  
-<a id="reorder">__reorder__</a> (bool, default: _false_): reorder input packets by CTS (resulting PID may fail decoding)  
+<div markdown class="option">  
+<a id="tsinit" data-level="basic">__tsinit__</a> (lfrac, default: _-1/1_): initial timestamp to resync to, negative values disables resync  
+</div>  
+<div markdown class="option">  
+<a id="align" data-level="basic">__align__</a> (uint, default: _0_): timestamp alignment threshold (0 disables alignment) - see filter help  
+</div>  
+<div markdown class="option">  
+<a id="reorder" data-level="basic">__reorder__</a> (bool, default: _false_): reorder input packets by CTS (resulting PID may fail decoding)  
+</div>  
   

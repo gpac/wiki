@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed layered bitstream splitter  {:data-level="all"}  
+# Compressed layered bitstream splitter  
   
 Register name used to load filter: __bssplit__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -50,9 +50,15 @@ The filter can also be used on AVC and HEVC DolbyVision streams to split base st
 The filter does not create aggregator or extractor NAL units.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="ltid">__ltid__</a> (strl): temporal and layer ID of output streams  
-<a id="svcqid">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
-<a id="sig_ltid">__sig_ltid__</a> (bool, default: _false_): signal maximum temporal (`max_temporal_id`) and layer ID (`max_layer_id`) of output streams (mostly used for debug)  
+<div markdown class="option">  
+<a id="ltid" data-level="basic">__ltid__</a> (strl): temporal and layer ID of output streams  
+</div>  
+<div markdown class="option">  
+<a id="svcqid" data-level="basic">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
+</div>  
+<div markdown class="option">  
+<a id="sig_ltid" data-level="basic">__sig_ltid__</a> (bool, default: _false_): signal maximum temporal (`max_temporal_id`) and layer ID (`max_layer_id`) of output streams (mostly used for debug)  
+</div>  
   

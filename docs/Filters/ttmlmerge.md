@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# TTML sample merger  {:data-level="all"}  
+# TTML sample merger  
   
 Register name used to load filter: __ttmlmerge__  
 This filter may be automatically loaded during graph resolution.  

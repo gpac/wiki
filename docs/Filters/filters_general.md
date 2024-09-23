@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Overview {:data-level="all"} 
+# Overview  
   
 Filters are configurable processing units consuming and producing data packets. These packets are carried between filters through a data channel called _PID_. A PID is in charge of allocating/tracking data packets, and passing the packets to the destination filter(s). A filter output PID may be connected to zero or more filters. This fan-out is handled internally by GPAC (no such thing as a tee filter in GPAC).  
 _Note: When a PID cannot be connected to any filter, a warning is thrown and all packets dispatched on this PID will be destroyed. The session may however still run, unless [-full-link](core_options/#full-link) is set._  
@@ -59,28 +59,28 @@ When string parameters are used (e.g. URLs), it is recommended to escape the str
 Example
 ```
 filter:ARG=http://foo/bar?yes:gpac:opt=VAL
-```  
-
+```
+  
 This will properly extract the URL.  
 Example
 ```
 filter:ARG=http://foo/bar?yes:opt=VAL
-``` 
-
+```
+  
 This will fail to extract it and keep `:opt=VAL` as part of the URL.  
 The escape mechanism is not needed for local source, for which file existence is probed during argument parsing. It is also not needed for builtin protocol handlers (`avin://`, `video://`, `audio://`, `pipe://`)  
 For schemes not using a server path, e.g. `tcp://` and `udp://`, the escape is not needed if a trailing `/` is appended after the port number.  
 Example
 ```
 -i tcp://127.0.0.1:1234:OPT
-```  
-
+```
+  
 This will fail to extract the URL and options.  
 Example
 ```
 -i tcp://127.0.0.1:1234/:OPT
-```  
-
+```
+  
 This will extract the URL and options.  
 _Note: one trick to avoid the escape sequence is to declare the URLs option at the end, e.g. `f1:opt1=foo:url=http://bar`, provided you have only one URL parameter to specify on the filter._  
   
@@ -88,8 +88,8 @@ It is possible to locally disable option parsing (usefull for string options) by
 Example
 ```
 filter::opt1=UDP://IP:PORT/:someopt=VAL::opt2=VAL2
-```  
-
+```
+  
 This will pass `UDP://IP:PORT/:someopt=VAL` to `opt1` without inspecting it, and `VAL2` to `opt2`.  
     
 
@@ -98,14 +98,14 @@ Source and sink filters do not need to be addressed by the filter name, specifyi
 Example
 ```
 "src=file.mp4" or "-src file.mp4" or  "-i file.mp4"
-```  
-
+```
+  
 This will find a filter (for example `fin`) able to load `file.mp4`. The same result can be achieved by using `fin:src=file.mp4`.  
 Example
 ```
 "dst=dump.yuv" or "-dst dump.yuv" or "-o dump.yuv"
-``` 
-
+```
+  
 This will dump the video content in `dump.yuv`. The same result can be achieved by using `fout:dst=dump.yuv`.  
   
 Specific source or sink filters may also be specified using `filterName:src=URL` or `filterName:dst=URL`.  
@@ -117,8 +117,8 @@ There is a special option called `gfreg` which allows specifying preferred filte
 Example
 ```
 src=file.mp4:gfreg=ffdmx,ffdec
-``` 
-
+```
+  
 This will use _ffdmx_ to read `file.mp4` and _ffdec_ to decode it.  
 This can be used to test a specific filter when alternate filter chains are possible.  
 
@@ -138,16 +138,16 @@ The shortcut syntax `c=TYPE` (e.g. `c=aac:opts`) is also supported.
 Example
 ```
 gpac -i dump.yuv:size=320x240:fps=25 enc:c=avc:b=150000:g=50:cgop=true:fast=true -o raw.264
-```  
-
+```
+  
 This creates a 25 fps AVC at 175kbps with a gop duration of 2 seconds, using closed gop and fast encoding settings for ffmpeg.  
   
 The inverse operation (forcing a decode to happen) is possible using the _reframer_ filter.  
 Example
 ```
 gpac -i file.mp4 reframer:raw=av -o null
-``` 
-
+```
+  
 This will force decoding media from `file.mp4` and trash (send to `null`) the result (doing a decoder benchmark for example).  
 
 ## Escaping option separators  
@@ -156,19 +156,19 @@ Example
 ```
 f:a=foo:b=bar
 ```
-
+  
 This will set option `a` to `foo` and option `b` to `bar` on the filter.  
 Example
 ```
 f::a=foo:b=bar
-``` 
-
+```
+  
 This will set option `a` to `foo:b=bar` on the filter.  
 Example
 ```
 f:a=foo::b=bar:c::d=fun
-```  
-
+```
+  
 This will set option `a` to `foo`, `b` to `bar:c` and the option `d` to `fun` on the filter.  
   
 # Filter linking [_LINK_]  
@@ -202,8 +202,8 @@ A filter with `RSID` set is not clonable.
 Example
 ```
 gpac -i file.mp4 c=avc -o output
-``` 
-
+```
+  
 With this setup in _implicit mode_:  
 
 - if the file has a video PID, it will connect to `enc` but not to `output`. The output PID of `enc` will connect to `output`.  
@@ -213,8 +213,8 @@ With this setup in _implicit mode_:
 Example
 ```
 gpac -cl -i file.mp4 c=avc -o output
-```  
-
+```
+  
 With this setup in _complete mode_:  
 
 - if the file has a video PID, it will connect both to `enc` and to `output`, and the output PID of `enc` will connect to `output`.  
@@ -225,8 +225,8 @@ Furthermore in _implicit mode_, filter connections are restricted to filters def
 Example
 ```
 gpac -i video1 reframer:saps=1 -i video2 ffsws:osize=128x72 -o output
-```  
-
+```
+  
 This will connect:  
 
 - `video1` to `reframer` then `reframer` to `output` but will prevent `reframer` to `ffsws` connection.  
@@ -237,7 +237,7 @@ Example
 ```
 gpac -i video1 -i video2 reframer:saps=1 ffsws:osize=128x72 -o output
 ```
-
+  
 This will connect `video1` AND `video2` to `reframer->ffsws->output`  
   
 The _implicit mode_ allows specifying linear processing chains (no PID fan-out except for final output(s)) without link directives, simplifying command lines for common cases.  
@@ -247,8 +247,8 @@ __Warning: Argument order really matters in implicit mode!__
 Example
 ```
 gpac -i file.mp4 c=avc c=aac -o output
-```  
-
+```
+  
 If the file has a video PID, it will connect to `c=avc` but not to `output`. The output PID of `c=avc` will connect to `output`.  
 If the file has an audio PID, it will connect to `c=aac` but not to `output`. The output PID of `c=aac` will connect to `output`.  
 If the file has other PIDs than audio or video, they will connect to `output`.  
@@ -256,8 +256,8 @@ If the file has other PIDs than audio or video, they will connect to `output`.
 Example
 ```
 gpac -i file.mp4 ffswf=osize:128x72 c=avc resample=osr=48k c=aac -o output
-``` 
-
+```
+  
 This will force:  
 
 - `SRC(video)->ffsws->enc(video)->output` and prevent `SRC(video)->output`, `SRC(video)->enc(video)` and `ffsws->output` connections which would happen in _complete mode_.  
@@ -273,20 +273,20 @@ Several link directives can be given for a filter.
 Example
 ```
 fA fB @1 fC
-```  
-
+```
+  
 This indicates that `fC` only accepts inputs from `fA`.  
 Example
 ```
 fA fB fC @1 @0 fD
-```  
-
+```
+  
 This indicates that `fD` only accepts inputs from `fB` and `fC`.  
 Example
 ```
 fA fB fC ... @@1 fZ
 ```
-
+  
 This indicates that `fZ` only accepts inputs from `fB`.  
   
 ## Complex links  
@@ -299,20 +299,20 @@ The `@` link directive is just a quick shortcut to set the following filter argu
 Example
 ```
 fA fB @1 fC
-``` 
-
+```
+  
 This is equivalent to `fA:FID=1 fB fC:SID=1`.  
 Example
 ```
 fA:FID=1 fB fC:SID=1
-``` 
-
+```
+  
 This indicates that `fC` only accepts input from `fA`, but `fB` might accept inputs from `fA`.  
 Example
 ```
 fA:FID=1 fB:FID=2 fC:SID=1 fD:SID=1,2
 ```
-
+  
 This indicates that `fD` only accepts input from `fA` and `fB` and `fC` only from `fA`  
 _Note: A filter with sourceID set cannot get input from filters with no IDs._  
   
@@ -342,53 +342,53 @@ Example
 ```
 fA fB:SID=*#ServiceID=2  
 fA fB:SID=#ServiceID=2
-```  
-
+```
+  
 This indicates to match connection between `fA` and `fB` only for PIDs with a `ServiceID` property of `2`.  
 These extensions also work with the _LINK_ `@` shortcut.  
 Example
 ```
 fA fB @1#video fC
-``` 
-
+```
+  
 This indicates that `fC` only accepts inputs from `fA`, and of type video.  
 Example
 ```
 gpac -i img.heif @#ItemID=200 vout
-``` 
-
+```
+  
 This indicates to connect to `vout` only PIDs with `ItemID` property equal to `200`.  
 Example
 ```
 gpac -i vid.mp4 @#PID=1 vout
 ```
-
+  
 This indicates to connect to `vout` only PIDs with `ID` property equal to `1`.  
 Example
 ```
 gpac -i vid.mp4 @#Width=640 vout
-``` 
-
+```
+  
 This indicates to connect to `vout` only PIDs with `Width` property equal to `640`.  
 Example
 ```
 gpac -i vid.mp4 @#Width-640 vout
-```  
-
+```
+  
 This indicates to connect to `vout` only PIDs with `Width` property less than `640`  
 Example
 ```
 gpac -i vid.mp4 @#ID=ItemID#ItemNumber=1 vout
-``` 
-
+```
+  
 This will connect to `vout` only PID with an ID property equal to ItemID property (keep items, discard tracks) and an Item number of 1 (first item).  
   
 Multiple fragment can be specified to check for multiple PID properties.  
 Example
 ```
 gpac -i vid.mp4 @#Width=640#Height+380 vout
-``` 
-
+```
+  
 This indicates to connect to `vout` only PIDs with `Width` property equal to `640` and `Height` greater than `380`.  
   
 __Warning: If a PID directly connects to one or more explicitly loaded filters, no further dynamic link resolution will be done to connect it to other filters with no sourceID set. Link directives should be carefully setup.__  
@@ -396,8 +396,8 @@ __Warning: If a PID directly connects to one or more explicitly loaded filters, 
 Example
 ```
 fA @ reframer fB
-``` 
-
+```
+  
 If `fB` accepts inputs provided by `fA` but `reframer` does not, this will link `fA` PID to `fB` filter since `fB` has no sourceID.  
 Since the PID is connected, the filter engine will not try to solve a link between `fA` and `reframer`.  
   
@@ -405,16 +405,16 @@ An exception is made for local files: by default, a local file destination will 
 Example
 ```
 gpac -i file.mp4 -o dump.mp4
-``` 
-
+```
+  
 This will prevent direct connection of PID of type `file` to dst `file.mp4`, remultiplexing the file.  
   
 The special option `nomux` is used to allow direct connections (ignored for non-sink filters).  
 Example
 ```
 gpac -i file.mp4 -o dump.mp4:nomux
-``` 
-
+```
+  
 This will result in a direct file copy.  
   
 This only applies to local files destination. For pipes, sockets or other file outputs (HTTP, ROUTE):  
@@ -435,14 +435,14 @@ This is mostly used for _implicit mode_ in `gpac`: each first source filter spec
 Example
 ```
 gpac -i in1.mp4 -i in2.mp4 -o out1.mp4 -o out2.mp4
-``` 
-
+```
+  
 This will result in both inputs multiplexed in both outputs.  
 Example
 ```
 gpac -i in1.mp4 -o out1.mp4 -i in2.mp4 -o out2.mp4
 ```
-
+  
 This will result in in1 mixed to out1 and in2 mixed to out2, these last two filters belonging to a different sub-session.  
   
 # Arguments inheriting  
@@ -451,36 +451,36 @@ Unless explicitly disabled (see [-max-chain](core_options/#max-chain)), the filt
 Example
 ```
 gpac -i file.mp4:OPT -o file.aac -o file.264
-``` 
-
+```
+  
 This will pass the `:OPT` to all filters loaded between the source and the two destinations.  
 Example
 ```
 gpac -i file.mp4 -o file.aac:OPT -o file.264
-```  
-
+```
+  
 This will pass the `:OPT` to all filters loaded between the source and the file.aac destination.  
 _Note: the destination arguments inherited are the arguments placed __AFTER__ the `dst=` option._  
 Example
 ```
 gpac -i file.mp4 fout:OPTFOO:dst=file.aac:OPTBAR
-``` 
-
+```
+  
 This will pass the `:OPTBAR` to all filters loaded between `file.mp4` source and `file.aac` destination, but not `OPTFOO`.  
 Arguments inheriting can be stopped by using the keyword `gfloc`: arguments after the keyword will not be inherited.  
 Example
 ```
 gpac -i file.mp4 -o file.aac:OPTFOO:gfloc:OPTBAR -o file.264
-```  
-
+```
+  
 This will pass `:OPTFOO` to all filters loaded between `file.mp4` source and `file.aac` destination, but not `OPTBAR`  
 Arguments are by default tracked to check if they were used by the filter chain, and a warning is thrown if this is not the case.  
 It may be useful to specify arguments which may not be consumed depending on the graph resolution; the specific keyword `gfopt` indicates that arguments after the keyword will not be tracked.  
 Example
 ```
 gpac -i file.mp4 -o file.aac:OPTFOO:gfopt:OPTBAR -o file.264
-```  
-
+```
+  
 This will warn if `OPTFOO` is not consumed, but will not track `OPTBAR`.  
     
 A filter may be assigned a name (for inspection purposes, not inherited) using `:N=name` option. This name is not used in link resolution and may be changed at runtime by the filter instance.  
@@ -513,8 +513,8 @@ Templating can be useful when encoding several qualities in one pass.
 Example
 ```
 gpac -i dump.yuv:size=640x360 vcrop:wnd=0x0x320x180 c=avc:b=1M @2 c=avc:b=750k -o dump_$CropOrigin$x$Width$x$Height$.264
-```  
-
+```
+  
 This will create a cropped version of the source, encoded in AVC at 1M, and a full version of the content in AVC at 750k. Outputs will be `dump_0x0x320x180.264` for the cropped version and `dump_0x0x640x360.264` for the non-cropped one.  
 
 # Cloning filters  
@@ -523,36 +523,36 @@ When a filter accepts a single connection and has a connected input, it is no lo
 Example
 ```
 gpac -i img.heif -o dump_$ItemID$.jpg
-```  
-
+```
+  
 In this case, only one item (likely the first declared in the file) will connect to the destination.  
 Other items will not be connected since the destination only accepts one input PID.  
 Example
 ```
 gpac -i img.heif -o dump_$ItemID$.jpg
-``` 
-
+```
+  
 In this case, the destination will be cloned for each item, and all will be exported to different JPEGs thanks to URL templating.  
 Example
 ```
 gpac -i vid.mpd c=avc:FID=1 -o transcode.mpd:SID=1
-``` 
-
+```
+  
 In this case, the encoder will be cloned for each video PIDs in the source, and the destination will only use PIDs coming from the encoders.  
   
 When implicit linking is enabled, all filters are by default clonable. This allows duplicating the processing for each PIDs of the same type.  
 Example
 ```
 gpac -i dual_audio resample:osr=48k c=aac -o dst
-``` 
-
+```
+  
 The `resampler` filter will be cloned for each audio PID, and the encoder will be cloned for each resampler output.  
 You can explicitly deactivate the cloning instructions:  
 Example
 ```
 gpac -i dual_audio resample:osr=48k:clone=0 c=aac -o dst
-``` 
-
+```
+  
 The first audio will connect to the `resample` filter, the second to the `enc` filter and the `resample` output will connect to a clone of the `enc` filter.  
   
 # Templating filter chains  
@@ -567,15 +567,15 @@ Example
 gpac -i source.ts -o file_$ServiceID$.mp4:SID=*#ServiceID=*  
 gpac -i source.ts -o file_$ServiceID$.mp4:SID=#ServiceID=
 ```
-
+  
 In this case, each new `ServiceID` value found when connecting PIDs to the destination will create a new destination file.  
   
 Cloning in implicit linking mode applies to output as well:  
 Example
 ```
 gpac -i dual_audio -o dst_$PID$.aac
-``` 
-
+```
+  
 Each audio track will be dumped to aac (potentially reencoding if needed).  
   
 # Assigning PID properties  
@@ -598,8 +598,8 @@ __Warning: Properties are not filtered and override the properties of the filter
 Example
 ```
 gpac -i v1.mp4:#ServiceID=4 -i v2.mp4:#ServiceID=2 -o dump.ts
-``` 
-
+```
+  
 This will multiplex the streams in `dump.ts`, using `ServiceID` 4 for PIDs from `v1.mp4` and `ServiceID` 2 for PIDs from `v2.mp4`.  
   
 PID properties may be conditionally assigned by checking other PID properties. The syntax uses parenthesis (not configurable) after the property assignment sign:  
@@ -616,20 +616,20 @@ _Note: When set, the default value (empty condition) always matches the PID, the
 Example
 ```
 gpac -i source.mp4:#MyProp=(audio)"Super Audio",(video)"Super Video"
-``` 
-
+```
+  
 This will assign property `MyProp` to `Super Audio` for audio PIDs and to `Super Video` for video PIDs.  
 Example
 ```
 gpac -i source.mp4:#MyProp=(audio1)"Super Audio"
-```  
-
+```
+  
 This will assign property `MyProp` to `Super Audio` for first audio PID declared.  
 Example
 ```
 gpac -i source.mp4:#MyProp=(Width+1280)HD
-``` 
-
+```
+  
 This will assign property `MyProp` to `HD` for PIDs with property `Width` greater than 1280.  
   
 The property value can use templates with the following keywords:  
@@ -641,21 +641,21 @@ Example
 ```
 gpac -i source.ts:#ASID=$PID$
 ```
-
+  
 This will assign DASH AdaptationSet ID to the PID ID value.  
 Example
 ```
 gpac -i source.ts:#RepresentationID=$ServiceID$
-``` 
-
+```
+  
 This will assign DASH Representation ID to the PID ServiceID value.  
   
 A property can also be removed by not specifying any value. Conditional removal is possible using the above syntax.  
 Example
 ```
 gpac -i source.ts:#FOO=
-``` 
-
+```
+  
 This will remove the `FOO` property on the output PID.  
   
 # Using option files  
@@ -674,8 +674,8 @@ An option file declaration (`filter:myopts.txt`) follows the same inheritance ru
 Example
 ```
 gpac -i source.mp4:myopts.txt:foo=bar -o dst
-```  
-
+```
+  
 Any filter loaded between `source.mp4` and `dst` will inherit both `myopts.txt` and `foo` options and will resolve options and PID properties given in `myopts.txt`.  
   
 # Ignoring filters at run-time  
@@ -686,20 +686,20 @@ When the PID codec ID matches one of the specified codec, the filter is replaced
 Example
 ```
 -i src c=avc:b=1m:ccp -o mux
-``` 
-
+```
+  
 This will replace the encoder filter with a reframer if the input PID is in AVC|H264 format, or uses the encoder for other visual PIDs.  
 Example
 ```
 -i src c=avc:b=1m:ccp=avc,hevc -o mux
-```  
-
+```
+  
 This will replace the encoder filter with a reframer if the input PID is in AVC|H264 or HEVC format, or uses the encoder for other visual PIDs.  
 Example
 ```
 -i src cecrypt:cfile=drm.xml:ccp=aac -o mux
-``` 
-
+```
+  
 This will replace the encryptor filter with a reframer if the input PID is in AAC format, or uses the encryptor for other PIDs.  
   
 # Specific filter options  
@@ -727,8 +727,8 @@ The `$GINC` construct can be used to dynamically assign numbers in filter chains
 Example
 ```
 gpac -i source.ts tssplit @#ServiceID= -o dump_$GINC(10,2).ts
-``` 
-
+```
+  
 This will dump first service in dump_10.ts, second service in dump_12.ts, etc...  
   
 As seen previously, the following options may be set on any filter, but are not visible in individual filter help:  

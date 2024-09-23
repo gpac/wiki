@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# GSF demultiplexer  {:data-level="all"}  
+# GSF demultiplexer  
   
 Register name used to load filter: __gsfdmx__  
 This filter may be automatically loaded during graph resolution.  
@@ -12,10 +12,18 @@ This allows either reading a session saved to file, or receiving the state/data 
 The stream format can be encrypted in AES 128 CBC mode, in which case the demultiplexing filter must be given a 128 bit key.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="key">__key__</a> (mem): key for decrypting packets  
+</div>  
+<div markdown class="option">  
 <a id="magic">__magic__</a> (str): magic string to check in setup packet  
+</div>  
+<div markdown class="option">  
 <a id="mq">__mq__</a> (uint, default: _4_): set max packet queue length for loss detection. 0 will flush incomplete packet when a new one starts  
+</div>  
+<div markdown class="option">  
 <a id="pad">__pad__</a> (uint, default: _0_, minmax: 0-255): byte value used to pad lost packets  
+</div>  
   

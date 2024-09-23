@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HEVC Tile merger {:data-level="all"}   
+# HEVC Tile merger  
   
 Register name used to load filter: __hevcmerge__  
 This filter may be automatically loaded during graph resolution.  
@@ -44,8 +44,8 @@ This indicates that `src1` contains a video located at 0,0, with a size of 640x4
 Example
 ```
 src2:SRD=640x0x640x480:SRDRef=1280x720
-``` 
-
+```
+  
 This indicates that `src1` contains a video located at 640,0, with a size of 640x480 pixels in a virtual source of 1280x720 pixels.  
    
 Each merged input is described by 8 integers in the output `SRDMap`:  
@@ -65,13 +65,17 @@ Alternatively to using `SRD` and `SRDRef`, it is possible to specify `CropOrigin
 Example
 ```
 src1:CropOrigin=0x0  src1:CropOrigin=640x0 
-``` 
- 
+```
+  
 Assuming the two sources are encoded at 320x240 and merged as src1 above src2, the output will be a 320x480 video with a `SRDMap` of `{0,0,320,240,0,0,320,240,640,0,320,240,0,240,320,240}`  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="strict">__strict__</a> (bool, default: _false_): strict comparison of SPS and PPS of input PIDs  
+</div>  
+<div markdown class="option">  
 <a id="mrows">__mrows__</a> (bool, default: _false_): signal multiple rows in tile grid when possible  
+</div>  
   

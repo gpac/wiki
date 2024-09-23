@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Sources concatenator  {:data-level="all"}  
+# Sources concatenator  
   
 Register name used to load filter: __flist__  
 This filter may be automatically loaded during graph resolution.  
@@ -100,7 +100,8 @@ __Warning: There shall not be any other space/tab characters between sources.__
 Example
 ```
 audio.mp4 && video.mp4
-```  
+```
+  
 
 ## Source with filter chains  
 Each URL can be followed by a chain of one or more filters, using the `@` link directive as used in gpac (see `gpac -h doc`).  
@@ -111,23 +112,23 @@ __Warning: There shall be a single character, with value space (' '), before and
 Example
 ```
 src.mp4 @ reframer:rt=on
-``` 
-
+```
+  
 This will inject a reframer with real-time regulation between source and `flist` filter.  
 Example
 ```
 src.mp4 @ reframer:saps=1 @1 reframer:saps=0,2,3  
 src.mp4 @ reframer:saps=1 @-1 reframer:saps=0,2,3
-```  
-
+```
+  
 This will inject a reframer filtering only SAP1 frames and a reframer filtering only non-SAP1 frames between source and `flist` filter  
   
 Link options can be specified (see `gpac -h doc`).  
 Example
 ```
 src.mp4 @#video reframer:rt=on
-```  
-
+```
+  
 This will inject a reframer with real-time regulation between video PID of source and `flist` filter.  
   
 When using filter chains, the `flist` filter will only accept PIDs from the last declared filter in the chain.  
@@ -135,16 +136,16 @@ In order to accept other PIDs from the source, you must specify a final link dir
 Example
 ```
 src.mp4 @#video reframer:rt=on @-1#audio
-```  
-
+```
+  
 This will inject a reframer with real-time regulation between video PID of source and `flist` filter, and will also allow audio PIDs from source to connect to `flist` filter.  
   
 The empty link directive can also be used on the last declared filter  
 Example
 ```
 src.mp4 @ reframer:rt=on @#audio
-``` 
-
+```
+  
 This will inject a reframer with real-time regulation between source and `flist` filter and only connect audio PIDs to `flist` filter.  
 
 ## Splicing  
@@ -195,39 +196,65 @@ Example
 ```
 #out=2 in=4 mark sprops=#xlink=http://foo.bar/  
 src:#Period=main
-```  
-
+```
+  
 This will inject property xlink on the output PIDs in the splice zone (corresponding to period `main_2`) but not in the rest of the main media.  
   
 Directives `mark`, `keep` and `sprops` are reset at the end of the splice period.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="floop">__floop__</a> (sint, default: _0_): loop playlist/list of files, `0` for one time, `n` for n+1 times, `-1` for indefinitely  
-<a id="srcs">__srcs__</a> (strl): list of files to play  
-<a id="fdur">__fdur__</a> (frac, default: _1/25_): frame duration for source files with a single frame (0/NaN fraction means reuse source timing which is usually not set!)  
+<div markdown class="option">  
+<a id="floop" data-level="basic">__floop__</a> (sint, default: _0_): loop playlist/list of files, `0` for one time, `n` for n+1 times, `-1` for indefinitely  
+</div>  
+<div markdown class="option">  
+<a id="srcs" data-level="basic">__srcs__</a> (strl): list of files to play  
+</div>  
+<div markdown class="option">  
+<a id="fdur" data-level="basic">__fdur__</a> (frac, default: _1/25_): frame duration for source files with a single frame (0/NaN fraction means reuse source timing which is usually not set!)  
+</div>  
+<div markdown class="option">  
 <a id="revert">__revert__</a> (bool, default: _false_): revert list of files ([srcs](#srcs), not playlist)  
+</div>  
+<div markdown class="option">  
 <a id="timescale">__timescale__</a> (uint, default: _0_): force output timescale on all PIDs (0 uses the timescale of the first PID found)  
+</div>  
+<div markdown class="option">  
 <a id="ka">__ka__</a> (uint, default: _0_): keep playlist alive (disable loop), waiting for a new input to be added or `#end` directive to end playlist. The value specifies the refresh rate in ms  
+</div>  
+<div markdown class="option">  
 <a id="timeout">__timeout__</a> (luint, default: _-1_): timeout in ms after which the playlist is considered dead (`-1` means indefinitely)  
-<a id="fsort">__fsort__</a> (enum, default: _no_): sort list of files  
+</div>  
+<div markdown class="option">  
+<a id="fsort" data-level="basic">__fsort__</a> (enum, default: _no_): sort list of files  
 
 - no: no sorting, use default directory enumeration of OS  
 - name: sort by alphabetical name  
 - size: sort by increasing size  
 - date: sort by increasing modification time  
 - datex: sort by increasing modification time  
+</div>  
   
+<div markdown class="option">  
 <a id="sigcues">__sigcues__</a> (bool, default: _false_): inject `CueStart` property at each source begin (new or repeated) for DASHing  
+</div>  
+<div markdown class="option">  
 <a id="fdel">__fdel__</a> (bool, default: _false_): delete source files after processing in playlist mode (does not delete the playlist)  
+</div>  
+<div markdown class="option">  
 <a id="keepts">__keepts__</a> (bool, default: _false_): keep initial timestamps unmodified (no reset to 0)  
-<a id="raw">__raw__</a> (enum, default: _no_): force input AV streams to be in raw format  
+</div>  
+<div markdown class="option">  
+<a id="raw" data-level="basic">__raw__</a> (enum, default: _no_): force input AV streams to be in raw format  
 
 - no: do not force decoding of inputs  
 - av: force decoding of audio and video inputs  
 - a: force decoding of audio inputs  
 - v: force decoding of video inputs  
+</div>  
   
-<a id="flush">__flush__</a> (bool, default: _false_): send a flush signal once playlist is done before entering keepalive  
+<div markdown class="option">  
+<a id="flush" data-level="basic">__flush__</a> (bool, default: _false_): send a flush signal once playlist is done before entering keepalive  
+</div>  
   

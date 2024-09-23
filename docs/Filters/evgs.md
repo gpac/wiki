@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# EVG video rescaler  {:data-level="all"}  
+# EVG video rescaler  
   
 Register name used to load filter: __evgs__  
 This filter may be automatically loaded during graph resolution.  
@@ -18,7 +18,8 @@ When output sample aspect ratio is set, the output dimensions are divided by the
 Example
 ```
 evgs:osize=288x240:osar=3/2
-```  
+```
+  
 The output dimensions will be 192x240.  
   
 When aspect ratio is not kept ([keepar=off](#keepar=off)):  
@@ -42,19 +43,35 @@ When sample aspect ratio is kept, the filter will:
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="osize">__osize__</a> (v2di): osize of output video  
-<a id="ofmt">__ofmt__</a> (pfmt, default: _none_): pixel format for output video. When not set, input format is used  
+<div markdown class="option">  
+<a id="osize" data-level="basic">__osize__</a> (v2di): osize of output video  
+</div>  
+<div markdown class="option">  
+<a id="ofmt" data-level="basic">__ofmt__</a> (pfmt, default: _none_): pixel format for output video. When not set, input format is used  
+</div>  
+<div markdown class="option">  
 <a id="ofr">__ofr__</a> (bool, default: _false_): force output full range  
+</div>  
+<div markdown class="option">  
 <a id="keepar">__keepar__</a> (enum, default: _off_): keep aspect ratio  
 
 - off: ignore aspect ratio  
 - full: respect aspect ratio, applying input sample aspect ratio info  
 - nosrc: respect aspect ratio but ignore input sample aspect ratio  
+</div>  
   
+<div markdown class="option">  
 <a id="padclr">__padclr__</a> (str, default: _black_): clear color when aspect ration preservation is used  
+</div>  
+<div markdown class="option">  
 <a id="osar">__osar__</a> (frac, default: _0/1_): force output pixel aspect ratio  
+</div>  
+<div markdown class="option">  
 <a id="nbth">__nbth__</a> (sint, default: _-1_): number of threads to use, -1 means all cores  
+</div>  
+<div markdown class="option">  
 <a id="hq">__hq__</a> (bool, default: _false_): use bilinear interpolation instead of closest pixel  
+</div>  
   

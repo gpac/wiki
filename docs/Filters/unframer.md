@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Stream unframer  {:data-level="all"}  
+# Stream unframer  
   
 Register name used to load filter: __unframer__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -9,8 +9,8 @@ This filter is used to force reframing of input sources using the same internal 
 Example
 ```
 gpac -i src.mp4 unframer -o dst.mp4
-```  
-
+```
+  
 This will:  
 
 - force input PIDs of unframer to be in serialized form (AnnexB, ADTS, ...)  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HEVC tile splitter  {:data-level="all"}  
+# HEVC tile splitter  
   
 Register name used to load filter: __hevcsplit__  
 This filter is not checked during graph resolution and needs explicit loading.  

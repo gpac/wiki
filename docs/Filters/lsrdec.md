@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-4 LASeR decoder  {:data-level="all"}  
+# MPEG-4 LASeR decoder  
   
 Register name used to load filter: __lsrdec__  
 This filter may be automatically loaded during graph resolution.  

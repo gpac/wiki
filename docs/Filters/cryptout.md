@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# CryptFile output  {:data-level="all"}  
+# CryptFile output  
   
 Register name used to load filter: __cryptout__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -12,8 +12,12 @@ The filter is automatically loaded by the DASH/HLS multiplexer and should not be
 The filter accepts URL with scheme `gcryp://URL`, where `URL` is the URL to encrypt.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="dst">__dst__</a> (cstr): location of source file  
+<div markdown class="option">  
+<a id="dst" data-level="basic">__dst__</a> (cstr): location of source file  
+</div>  
+<div markdown class="option">  
 <a id="fullfile">__fullfile__</a> (bool, default: _false_): reassemble full file before decryption  
+</div>  
   

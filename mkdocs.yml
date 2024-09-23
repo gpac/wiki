@@ -5,9 +5,8 @@ extra:
   
   keywords_file: 'data/keywords.json'
 extra_javascript:
-   
-   - javascripts/main.js
    - javascripts/levels.js
+   - javascripts/main.js
    - javascripts/fetchFunctions.js
    - javascripts/domManipulation.js
    - javascripts/keywordsFinder.js
@@ -29,6 +28,7 @@ extra_css:
   - stylesheets/feedback.css
   - stylesheets/levels.css
   - stylesheets/search.css
+  - stylesheets/settings.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 theme:
   name: material
@@ -65,6 +65,7 @@ theme:
     - navigation.tabs
     - navigation.tracking
     - navigation.indexes
+    - navigation.sections 
     - toc.follow
     - search.highlight
     - search.share
@@ -74,6 +75,7 @@ repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
   - tags
+
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
@@ -214,7 +216,6 @@ nav:
       - bsrw: Filters/bsrw.md
       - bssplit: Filters/bssplit.md
       - btplay: Filters/btplay.md
-      - ccdec: Filters/ccdec.md
       - cdcrypt: Filters/cdcrypt.md
       - cecrypt: Filters/cecrypt.md
       - compositor: Filters/compositor.md
@@ -228,7 +229,6 @@ nav:
       - faad: Filters/faad.md
       - ffavf: Filters/ffavf.md
       - ffavin: Filters/ffavin.md
-      - ffbsf: Filters/ffbsf.md
       - ffdec: Filters/ffdec.md
       - ffdmx: Filters/ffdmx.md
       - ffenc: Filters/ffenc.md
@@ -258,7 +258,6 @@ nav:
       - mcdec: Filters/mcdec.md
       - mp4dmx: Filters/mp4dmx.md
       - mp4mx: Filters/mp4mx.md
-      - mpeghdec: Filters/mpeghdec.md
       - nhmlr: Filters/nhmlr.md
       - nhmlw: Filters/nhmlw.md
       - nhntr: Filters/nhntr.md
@@ -267,7 +266,6 @@ nav:
       - odfdec: Filters/odfdec.md
       - oggdmx: Filters/oggdmx.md
       - oggmx: Filters/oggmx.md
-      - ohevcdec: Filters/ohevcdec.md
       - osvcdec: Filters/osvcdec.md
       - pin: Filters/pin.md
       - pngenc: Filters/pngenc.md
@@ -336,7 +334,6 @@ nav:
       - vobsubdmx: Filters/vobsubdmx.md
       - vorbisdec: Filters/vorbisdec.md
       - vout: Filters/vout.md
-      - vtbdec: Filters/vtbdec.md
       - vtt2tx3g: Filters/vtt2tx3g.md
       - vttdec: Filters/vttdec.md
       - writegen: Filters/writegen.md
@@ -397,14 +394,4 @@ nav:
     - NHML format: xmlformats/NHML-Format.md
     - NHNT format: xmlformats/NHNT-Format.md
    
-  - Glossary:
-    - glossary/encode.md
-    - glossary/encrypt.md
-    - glossary/sink.md  
-    - glossary/source.md 
-    - glossary/transcode.md
-    - glossary/bitrate.md
-    - glossary/codec.md  
-    - glossary/decoder.md
-    - glossary/output.md 
-  - Settings: settings.md  
+  

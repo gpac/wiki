@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AVI multiplexer  {:data-level="all"}  
+# AVI multiplexer  
   
 Register name used to load filter: __avimx__  
 This filter may be automatically loaded during graph resolution.  
@@ -16,10 +16,18 @@ The value can either be a 4CC or a string, indicating the mux format for the PID
 If the string is prefixed with `+` and the decoder configuration is present and formatted as an ISOBMFF box, the box header will be removed.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="dst">__dst__</a> (cstr): location of destination file  
-<a id="fps">__fps__</a> (frac, default: _25/1_): default framerate if none indicated in stream  
+<div markdown class="option">  
+<a id="dst" data-level="basic">__dst__</a> (cstr): location of destination file  
+</div>  
+<div markdown class="option">  
+<a id="fps" data-level="basic">__fps__</a> (frac, default: _25/1_): default framerate if none indicated in stream  
+</div>  
+<div markdown class="option">  
 <a id="noraw">__noraw__</a> (bool, default: _false_): disable raw output in AVI, only compressed ones allowed  
+</div>  
+<div markdown class="option">  
 <a id="opendml_size">__opendml_size__</a> (luint, default: _0_): force opendml format when chunks are larger than this amount (0 means 1.9Gb max size in each riff chunk)  
+</div>  
   

@@ -1,5 +1,6 @@
 ---
 hide:
+
   - toc
 ---
 
@@ -42,4 +43,3 @@ encode("input.mp4", "output.mp4", "libx264")
 - [Codec](codec.md)
 - [Bitrate](bitrate.md)
 - [Transcode](transcode.md) 
-

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# pipe output  {:data-level="all"}  
+# pipe output  
   
 Register name used to load filter: __pout__  
 This filter may be automatically loaded during graph resolution.  
@@ -27,16 +27,36 @@ If [marker](#marker) is set, the string `GPACPIF` (8 bytes including 0-terminato
 Pipeline flushing is currently triggered by DASH segment end or ISOBMF fragment end.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="dst">__dst__</a> (cstr): name of destination pipe  
-<a id="ext">__ext__</a> (str): indicate file extension of pipe data  
-<a id="mime">__mime__</a> (str): indicate mime type of pipe data  
+<div markdown class="option">  
+<a id="dst" data-level="basic">__dst__</a> (cstr): name of destination pipe  
+</div>  
+<div markdown class="option">  
+<a id="ext" data-level="basic">__ext__</a> (str): indicate file extension of pipe data  
+</div>  
+<div markdown class="option">  
+<a id="mime" data-level="basic">__mime__</a> (str): indicate mime type of pipe data  
+</div>  
+<div markdown class="option">  
 <a id="dynext">__dynext__</a> (bool, default: _false_): indicate the file extension is set by filter chain, not dst  
-<a id="start">__start__</a> (dbl, default: _0.0_): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
-<a id="speed">__speed__</a> (dbl, default: _1.0_): set playback speed. If negative and start is 0, start is set to -1  
-<a id="mkp">__mkp__</a> (bool, default: _false_): create pipe if not found  
+</div>  
+<div markdown class="option">  
+<a id="start" data-level="basic">__start__</a> (dbl, default: _0.0_): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
+</div>  
+<div markdown class="option">  
+<a id="speed" data-level="basic">__speed__</a> (dbl, default: _1.0_): set playback speed. If negative and start is 0, start is set to -1  
+</div>  
+<div markdown class="option">  
+<a id="mkp" data-level="basic">__mkp__</a> (bool, default: _false_): create pipe if not found  
+</div>  
+<div markdown class="option">  
 <a id="block_size">__block_size__</a> (uint, default: _5000_): buffer size used to write to pipe, Windows only  
+</div>  
+<div markdown class="option">  
 <a id="ka">__ka__</a> (bool, default: _false_): keep pipe alive when broken pipe is detected  
+</div>  
+<div markdown class="option">  
 <a id="marker">__marker__</a> (bool, default: _false_): inject marker upon pipeline flush events  
+</div>  
   

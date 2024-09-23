@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Media Reframer  {:data-level="all"}  
+# Media Reframer  
   
 Register name used to load filter: __reframer__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -37,7 +37,8 @@ This filter can force input media streams to be decoded using the [raw](#raw) op
 Example
 ```
 gpac -i m.mp4 reframer:raw=av [dst]
-```  
+```
+  
 
 # Real-time Regulation  
   
@@ -46,7 +47,8 @@ For example to simulate a live DASH:
 Example
 ```
 gpac -i m.mp4 reframer:rt=on -o live.mpd:dynamic
-```  
+```
+  
     
 
 # Range extraction  
@@ -68,8 +70,8 @@ When multiple ranges are given, the filter will try to seek if needed and suppor
 Example
 ```
 gpac -i m.mp4 reframer:xs=T00:00:10,T00:01:10,T00:02:00:xe=T00:00:20,T00:01:20 [dst]
-```  
-
+```
+  
 This will extract the time ranges [10s,20s], [1m10s,1m20s] and all media starting from 2m  
   
 If no end range is found for a given start range:  
@@ -81,14 +83,14 @@ If no end range is found for a given start range:
 Example
 ```
 gpac -i m.mp4 reframer:xs=0,10,25:xe=5,20 [dst]
-``` 
-
+```
+  
 This will extract the time ranges [0s,5s], [10s,20s] and all media starting from 25s  
 Example
 ```
 gpac -i m.mp4 reframer:xs=0,10,25 [dst]
-``` 
-
+```
+  
 This will extract the time ranges [0s,10s], [10s,25s] and all media starting from 25s  
   
 It is possible to signal range boundaries in output packets using [splitrange](#splitrange).  
@@ -101,8 +103,8 @@ This will expose on the first packet of each range in each PID the following pro
 Example
 ```
 gpac -i m.mp4 reframer:xs=T00:00:10,T00:01:10:xe=T00:00:20:splitrange -o dump_$FS$.264 [dst]
-```  
-
+```
+  
 This will create two output files dump_T00.00.10_T00.02.00.264 and dump_T00.01.10.264.  
 _Note: The `:` and `/` characters are replaced by `.` in `FileSuffix` property._  
   
@@ -113,8 +115,8 @@ __Warning: The option must be escaped using double separators in order to be par
 Example
 ```
 gpac -i m.mp4 reframer:xs=0,30::props=#Period=P1,#Period=P2:#foo=bar [dst]
-```  
-
+```
+  
 This will assign to output PIDs  
 
 - during the range [0,30]: property `Period` to `P1`  
@@ -164,58 +166,106 @@ The additional formats allowed for [xs](#xs) option are:
 _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are implicitly set._  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="exporter">__exporter__</a> (bool, default: _false_): compatibility with old exporter, displays export results  
-<a id="rt">__rt__</a> (enum, default: _off_, updatable): real-time regulation mode of input  
+</div>  
+<div markdown class="option">  
+<a id="rt" data-level="basic">__rt__</a> (enum, default: _off_, updatable): real-time regulation mode of input  
 
 - off: disables real-time regulation  
 - on: enables real-time regulation, one clock per PID  
 - sync: enables real-time regulation one clock for all PIDs  
+</div>  
   
-<a id="saps">__saps__</a> (uintl, Enum: 0|1|2|3|4, updatable): list of SAP types (0,1,2,3,4) to forward, other packets are dropped (forwarding only sap 0 will break the decoding)  
+<div markdown class="option">  
+<a id="saps" data-level="basic">__saps__</a> (uintl, Enum: 0|1|2|3|4, updatable): list of SAP types (0,1,2,3,4) to forward, other packets are dropped (forwarding only sap 0 will break the decoding)  
+</div>  
   
-<a id="refs">__refs__</a> (bool, default: _false_, updatable): forward only frames used as reference frames, if indicated in the input stream  
+<div markdown class="option">  
+<a id="refs" data-level="basic">__refs__</a> (bool, default: _false_, updatable): forward only frames used as reference frames, if indicated in the input stream  
+</div>  
+<div markdown class="option">  
 <a id="speed">__speed__</a> (dbl, default: _0.0_, updatable): speed for real-time regulation mode, a value of 0 uses speed from play commands  
-<a id="raw">__raw__</a> (enum, default: _no_): force input AV streams to be in raw format  
+</div>  
+<div markdown class="option">  
+<a id="raw" data-level="basic">__raw__</a> (enum, default: _no_): force input AV streams to be in raw format  
 
 - no: do not force decoding of inputs  
 - av: force decoding of audio and video inputs  
 - a: force decoding of audio inputs  
 - v: force decoding of video inputs  
+</div>  
   
+<div markdown class="option">  
 <a id="frames">__frames__</a> (sintl, updatable): drop all except listed frames (first being 1). A negative value `-V` keeps only first frame every `V` frames  
-<a id="xs">__xs__</a> (strl):  extraction start time(s)  
-<a id="xe">__xe__</a> (strl):  extraction end time(s). If less values than start times, the last time interval extracted is an open range  
+</div>  
+<div markdown class="option">  
+<a id="xs" data-level="basic">__xs__</a> (strl): extraction start time(s)  
+</div>  
+<div markdown class="option">  
+<a id="xe" data-level="basic">__xe__</a> (strl): extraction end time(s). If less values than start times, the last time interval extracted is an open range  
+</div>  
+<div markdown class="option">  
 <a id="xround">__xround__</a> (enum, default: _before_): adjust start time of extraction range to I-frame  
 
 - before: use first I-frame preceding or matching range start  
 - seek: see filter help  
 - after: use first I-frame (if any) following or matching range start  
 - closest: use I-frame closest to range start  
+</div>  
   
+<div markdown class="option">  
 <a id="xadjust">__xadjust__</a> (bool, default: _false_): adjust end time of extraction range to be before next I-frame  
+</div>  
+<div markdown class="option">  
 <a id="xots">__xots__</a> (bool, default: _false_): keep original timestamps after extraction  
+</div>  
+<div markdown class="option">  
 <a id="nosap">__nosap__</a> (bool, default: _false_): do not cut at SAP when extracting range (may result in broken streams)  
+</div>  
+<div markdown class="option">  
 <a id="splitrange">__splitrange__</a> (bool, default: _false_): signal file boundary at each extraction first packet for template-base file generation  
+</div>  
+<div markdown class="option">  
 <a id="seeksafe">__seeksafe__</a> (dbl, default: _10.0_): rewind play requests by given seconds (to make sure the I-frame preceding start is catched)  
+</div>  
+<div markdown class="option">  
 <a id="tcmdrw">__tcmdrw__</a> (bool, default: _true_): rewrite TCMD samples when splitting  
+</div>  
+<div markdown class="option">  
 <a id="props">__props__</a> (strl): extra output PID properties per extraction range  
+</div>  
+<div markdown class="option">  
 <a id="no_audio_seek">__no_audio_seek__</a> (bool, default: _false_): disable seek mode on audio streams (no change of priming duration)  
+</div>  
+<div markdown class="option">  
 <a id="probe_ref">__probe_ref__</a> (bool, default: _false_): allow extracted range to be longer in case of B-frames with reference frames presented outside of range  
+</div>  
+<div markdown class="option">  
 <a id="utc_ref">__utc_ref__</a> (enum, default: _any_): set reference mode for UTC range extraction  
 
 - local: use UTC of local host  
 - any: use UTC of media, or UTC of local host if not found in media after probing time  
 - media: use UTC of media (abort if none found)  
+</div>  
   
+<div markdown class="option">  
 <a id="utc_probe">__utc_probe__</a> (uint, default: _5000_): timeout in milliseconds to try to acquire UTC reference from media  
+</div>  
+<div markdown class="option">  
 <a id="copy">__copy__</a> (bool, default: _false_, updatable): try copying frame interface into packets  
+</div>  
+<div markdown class="option">  
 <a id="cues">__cues__</a> (enum, default: _no_, updatable): cue filtering mode  
 
 - no: do no filter frames based on cue info  
 - segs: only forward frames marked as segment start  
 - frags: only forward frames marked as fragment start  
+</div>  
   
+<div markdown class="option">  
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
+</div>  
   

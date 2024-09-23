@@ -54,8 +54,7 @@
          color: inherit !important;
          opacity: 1 !important;
      }
-     
-     .md-tabs__item:focus,
+.tabs__item:focus,
      .md-tabs__item:hover {
          background-color: #151515 !important;
          color: #fff !important;
@@ -98,4 +97,32 @@
      color: var(--md-typeset-a-color);
  }
 
- 
+ .md-sidebar--secondary .md-sidebar__inner {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  .md-nav--secondary {
+    flex: 1;
+     margin-bottom: 3rem; 
+    
+  }
+  
+  .keywords-cloud-container {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+  
+
+  @media screen and (max-width: 76.1875em) {
+    .md-sidebar--secondary {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 59.9844em) {
+    .md-nav__source {
+        background-color: #FFFFFF
+    }
+}
