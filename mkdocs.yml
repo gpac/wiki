@@ -70,7 +70,6 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-    - search
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
@@ -216,6 +215,7 @@ nav:
       - bsrw: Filters/bsrw.md
       - bssplit: Filters/bssplit.md
       - btplay: Filters/btplay.md
+      - ccdec: Filters/ccdec.md
       - cdcrypt: Filters/cdcrypt.md
       - cecrypt: Filters/cecrypt.md
       - compositor: Filters/compositor.md
@@ -229,6 +229,7 @@ nav:
       - faad: Filters/faad.md
       - ffavf: Filters/ffavf.md
       - ffavin: Filters/ffavin.md
+      - ffbsf: Filters/ffbsf.md
       - ffdec: Filters/ffdec.md
       - ffdmx: Filters/ffdmx.md
       - ffenc: Filters/ffenc.md
@@ -258,6 +259,7 @@ nav:
       - mcdec: Filters/mcdec.md
       - mp4dmx: Filters/mp4dmx.md
       - mp4mx: Filters/mp4mx.md
+      - mpeghdec: Filters/mpeghdec.md
       - nhmlr: Filters/nhmlr.md
       - nhmlw: Filters/nhmlw.md
       - nhntr: Filters/nhntr.md
@@ -266,6 +268,7 @@ nav:
       - odfdec: Filters/odfdec.md
       - oggdmx: Filters/oggdmx.md
       - oggmx: Filters/oggmx.md
+      - ohevcdec: Filters/ohevcdec.md
       - osvcdec: Filters/osvcdec.md
       - pin: Filters/pin.md
       - pngenc: Filters/pngenc.md
@@ -334,6 +337,7 @@ nav:
       - vobsubdmx: Filters/vobsubdmx.md
       - vorbisdec: Filters/vorbisdec.md
       - vout: Filters/vout.md
+      - vtbdec: Filters/vtbdec.md
       - vtt2tx3g: Filters/vtt2tx3g.md
       - vttdec: Filters/vttdec.md
       - writegen: Filters/writegen.md
@@ -393,5 +397,3 @@ nav:
     - TTXT Format: xmlformats/TTXT-Format-Documentation.md
     - NHML format: xmlformats/NHML-Format.md
     - NHNT format: xmlformats/NHNT-Format.md
-   
-  

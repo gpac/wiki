@@ -95,6 +95,6 @@ margin-right: 5px;
 display: none;
 }
 
-.md-nav__item--nested > .md-nav__link {
+/* .md-nav__item--nested > .md-nav__link {
 display: inline-block;
-}
+} */
