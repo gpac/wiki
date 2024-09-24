@@ -1,28 +1,26 @@
 
-@media screen and (max-width: 76.25em) {
-    .toggle-btn, 
-    .toggle-btn i{
-        display: none;
-    }
-}
 
 @media screen and (min-width: 76.25em) {
     .md-nav--secondary .md-nav__title .md-nav__icon {
         display: block;
     }
-}
-@media screen and (min-width: 76.25em) {
+} 
+ @media screen and (min-width: 76.25em) {
     .md-nav__icon {
         transition: background-color .25s;
-         width: auto;
+         
     }
-}
-
+} 
 @media screen and (min-width: 76.25em) {
+label[for="__toc"] .md-nav__icon.md-icon {
+    width:auto;}
+} 
+
+ @media screen and (min-width: 76.25em) {
     .md-nav__icon:hover {
     background-color: transparent; 
     }
-}
+} 
 
 
 .toggle-btn {
@@ -39,37 +37,3 @@
     display:none;
   }
 
-  [data-md-color-scheme="slate"] .toggle-btn:hover{
-    background-color: #3a3a3a;
-
-  } 
-
-.toggle-btn:hover {
- 
-        background-color: #dddcdc;
-   
-}
-
-.toggle-btn i {
-    color: #d94412e0;
-    transition: transform 0.3s ease;
-    font-size: 18px;
-}
-
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.visible {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-
-
-.span-toggle {
-    margin-right: 4px;
-}

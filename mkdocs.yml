@@ -65,7 +65,6 @@ theme:
     - navigation.tabs
     - navigation.tracking
     - navigation.indexes
-    - navigation.sections 
     - toc.follow
     - search.highlight
     - search.share
