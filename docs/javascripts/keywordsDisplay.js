@@ -25,14 +25,17 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
             a.textContent = keyword;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
 
-            a.addEventListener('click', function (event) {
+            a.addEventListener('mouseenter', function (event) {
                 event.preventDefault();
+                  clearTimeout(closeModalTimer); 
                 if (cachedDefinitions[keyword]) {
-                    openModal(keyword, cachedDefinitions[keyword]);
+                    openModal(keyword, cachedDefinitions[keyword], event);
                 } else {
-                    fetchDefinitions(keyword, cachedDefinitions);
+                    fetchDefinitions(keyword, cachedDefinitions, event);
                 }
             });
+           
+        a.addEventListener('mouseleave', startCloseModalTimer);
 
             li.appendChild(a);
             wordCloudList.appendChild(li);

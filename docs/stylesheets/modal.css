@@ -6,9 +6,18 @@
     width: 100%;
     max-width: 400px;
     left: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: none;
     transform: translateX(-50%);
 }
 
+.modal.visible {
+    opacity: 1;
+    visibility: visible;
+    display: block; 
+}
 .modal-content {
     background-color:#E0E0E0; 
     border: 1px solid #e0e0e0;  
@@ -34,7 +43,7 @@
 
 .modal-header h2 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #333;
 }

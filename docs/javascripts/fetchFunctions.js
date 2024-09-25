@@ -19,7 +19,8 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
         .catch(error => console.error('Error fetching keywords:', error));
 }
 
-function fetchDefinitions(keyword, cachedDefinitions) {
+function fetchDefinitions(keyword, cachedDefinitions,event) {
+
     fetch('/data/keywords.json')
         .then(response => response.json())
         .then(data => {
@@ -27,9 +28,10 @@ function fetchDefinitions(keyword, cachedDefinitions) {
             if (definition) {
                 cachedDefinitions[keyword] = definition;
                 setCache('definitionsCache', cachedDefinitions);
-                openModal(keyword, definition);
+                openModal(keyword, definition, event);
             } else {
                 console.error('Definition not found for keyword:', keyword);
+                openModal(keyword, { description: 'Definition not found' }, event);
             }
         })
         .catch(error => console.error('Error fetching definition:', error));
