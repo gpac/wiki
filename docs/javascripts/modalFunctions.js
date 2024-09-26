@@ -5,7 +5,7 @@ function keepModalOpen() {
 }
 
 function startCloseModalTimer() {
-    closeModalTimer = setTimeout(closeModal, 300); 
+    closeModalTimer = setTimeout(closeModal, 400); 
 }
 function openModal(keyword, definition, event = null) {
    
