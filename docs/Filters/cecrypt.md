@@ -13,9 +13,15 @@ When the DRM config file is set globally (not per PID), the first `CrypTrack` in
 If no DRM config file is defined for a given PID, this PID will not be encrypted, or an error will be thrown if [allc](#allc) is specified.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="cfile">__cfile__</a> (str): crypt file location  
-<a id="allc">__allc__</a> (bool): throw error if no DRM config file is found for a PID  
-<a id="bk_stats">__bk_stats__</a> (bool): print number of encrypted blocks to stdout upon exit  
+<div markdown class="option">  
+<a id="cfile" data-level="basic">__cfile__</a> (str): crypt file location  
+</div>  
+<div markdown class="option">  
+<a id="allc" data-level="basic">__allc__</a> (bool): throw error if no DRM config file is found for a PID  
+</div>  
+<div markdown class="option">  
+<a id="bk_stats" data-level="basic">__bk_stats__</a> (bool): print number of encrypted blocks to stdout upon exit  
+</div>  
   

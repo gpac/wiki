@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all"}
 
 We discuss here how to work with audio and video outputs in GPAC in filter chains, we do not discuss media playback through [GPAC player](player).
 

@@ -15,37 +15,87 @@ Commands with a timing of 0 in the input will modify the carousel version only (
 Commands with a timing different from 0 in the input will generate new AUs.  
     
 Options:  
-<a id="mp4">__-mp4__</a>:      specify input file is for BIFS/LASeR encoding  
-<a id="def">__-def__</a>:      encode DEF names in BIFS  
-<a id="sync">__-sync__</a> (int): force BIFS sync sample generation every given time in ms (cannot be used with [-shadow](#shadow) or [-carousel](#carousel) )  
-<a id="shadow">__-shadow__</a> (int): force BIFS sync shadow sample generation every given time in ms (cannot be used with [-sync](#sync) or [-carousel](#carousel) )  
-<a id="carousel">__-carousel__</a> (int): use BIFS carousel (cannot be used with [-sync](#sync) or [-shadow](#shadow) )  
-<a id="sclog">__-sclog__</a>:  generate scene codec log file if available  
-<a id="ms">__-ms__</a> (string): import tracks from the given file  
-<a id="ctx-in">__-ctx-in__</a> (string): specify initial context (MP4/BT/XMT) file for chunk processing. Input file must be a commands-only file  
-<a id="ctx-out">__-ctx-out__</a> (string): specify storage of updated context (MP4/BT/XMT) file for chunk processing, optional  
-<a id="resolution">__-resolution__</a> (int): resolution factor (-8 to 7, default 0) for LASeR encoding, and all coordinates are multiplied by `2^res` before truncation (LASeR encoding)  
-<a id="coord-bits">__-coord-bits__</a> (int): number of bits used for encoding truncated coordinates (0 to 31, default 12) (LASeR encoding)  
-<a id="scale-bits">__-scale-bits__</a> (int): extra bits used for encoding truncated scales (0 to 4, default 0) (LASeR encoding)  
-<a id="auto-quant">__-auto-quant__</a> (int): resolution is given as if using [-resolution](#resolution) but coord-bits and scale-bits are inferred (LASeR encoding)  
-<a id="global-quant">__-global-quant__</a> (int): resolution is given as if using [-resolution](#resolution) but the res is inferred (BIFS encoding)  
+<div markdown class="option">
+<a id="mp4" data-level="basic">__-mp4__</a>: specify input file is for BIFS/LASeR encoding  
+</div>
+<div markdown class="option">
+<a id="def" data-level="basic">__-def__</a>: encode DEF names in BIFS  
+</div>
+<div markdown class="option">
+<a id="sync" data-level="basic">__-sync__</a> (int): force BIFS sync sample generation every given time in ms (cannot be used with [-shadow](#shadow) or [-carousel](#carousel) )  
+</div>
+<div markdown class="option">
+<a id="shadow" data-level="basic">__-shadow__</a> (int): force BIFS sync shadow sample generation every given time in ms (cannot be used with [-sync](#sync) or [-carousel](#carousel) )  
+</div>
+<div markdown class="option">
+<a id="carousel" data-level="basic">__-carousel__</a> (int): use BIFS carousel (cannot be used with [-sync](#sync) or [-shadow](#shadow) )  
+</div>
+<div markdown class="option">
+<a id="sclog" data-level="basic">__-sclog__</a>: generate scene codec log file if available  
+</div>
+<div markdown class="option">
+<a id="ms" data-level="basic">__-ms__</a> (string): import tracks from the given file  
+</div>
+<div markdown class="option">
+<a id="ctx-in" data-level="basic">__-ctx-in__</a> (string): specify initial context (MP4/BT/XMT) file for chunk processing. Input file must be a commands-only file  
+</div>
+<div markdown class="option">
+<a id="ctx-out" data-level="basic">__-ctx-out__</a> (string): specify storage of updated context (MP4/BT/XMT) file for chunk processing, optional  
+</div>
+<div markdown class="option">
+<a id="resolution" data-level="basic">__-resolution__</a> (int): resolution factor (-8 to 7, default 0) for LASeR encoding, and all coordinates are multiplied by `2^res` before truncation (LASeR encoding)  
+</div>
+<div markdown class="option">
+<a id="coord-bits" data-level="basic">__-coord-bits__</a> (int): number of bits used for encoding truncated coordinates (0 to 31, default 12) (LASeR encoding)  
+</div>
+<div markdown class="option">
+<a id="scale-bits" data-level="basic">__-scale-bits__</a> (int): extra bits used for encoding truncated scales (0 to 4, default 0) (LASeR encoding)  
+</div>
+<div markdown class="option">
+<a id="auto-quant" data-level="basic">__-auto-quant__</a> (int): resolution is given as if using [-resolution](#resolution) but coord-bits and scale-bits are inferred (LASeR encoding)  
+</div>
+<div markdown class="option">
+<a id="global-quant" data-level="basic">__-global-quant__</a> (int): resolution is given as if using [-resolution](#resolution) but the res is inferred (BIFS encoding)  
+</div>
 
 # Live Scene Encoder Options  
   
 The options shall be specified as `opt_name=opt_val.`  
 Options:  
   
-<a id="live">__-live__</a>:    enable live BIFS/LASeR encoder  
-<a id="dst">__-dst__</a> (string): destination IP  
-<a id="port">__-port__</a> (int, default: __7000__): destination port  
-<a id="mtu">__-mtu__</a> (int, default: __1450__): path MTU for RTP packets  
-<a id="ifce">__-ifce__</a> (string): IP address of the physical interface to use  
-<a id="ttl">__-ttl__</a> (int, default: __1__): time to live for multicast packets  
-<a id="sdp">__-sdp__</a> (string, default: __session.sdp__): output SDP file  
-<a id="dims">__-dims__</a>:    turn on DIMS mode for SVG input  
-<a id="no-rap">__-no-rap__</a>: disable RAP sending and carousel generation  
-<a id="src">__-src__</a> (string): source of scene updates  
-<a id="rap">__-rap__</a> (int): duration in ms of base carousel; you can specify the RAP period of a single ESID (not in DIMS) using `ESID=X:time`  
+<div markdown class="option">
+<a id="live" data-level="basic">__-live__</a>: enable live BIFS/LASeR encoder  
+</div>
+<div markdown class="option">
+<a id="dst" data-level="basic">__-dst__</a> (string): destination IP  
+</div>
+<div markdown class="option">
+<a id="port" data-level="basic">__-port__</a> (int, default: __7000__): destination port  
+</div>
+<div markdown class="option">
+<a id="mtu" data-level="basic">__-mtu__</a> (int, default: __1450__): path MTU for RTP packets  
+</div>
+<div markdown class="option">
+<a id="ifce" data-level="basic">__-ifce__</a> (string): IP address of the physical interface to use  
+</div>
+<div markdown class="option">
+<a id="ttl" data-level="basic">__-ttl__</a> (int, default: __1__): time to live for multicast packets  
+</div>
+<div markdown class="option">
+<a id="sdp" data-level="basic">__-sdp__</a> (string, default: __session.sdp__): output SDP file  
+</div>
+<div markdown class="option">
+<a id="dims" data-level="basic">__-dims__</a>: turn on DIMS mode for SVG input  
+</div>
+<div markdown class="option">
+<a id="no-rap" data-level="basic">__-no-rap__</a>: disable RAP sending and carousel generation  
+</div>
+<div markdown class="option">
+<a id="src" data-level="basic">__-src__</a> (string): source of scene updates  
+</div>
+<div markdown class="option">
+<a id="rap" data-level="basic">__-rap__</a> (int): duration in ms of base carousel; you can specify the RAP period of a single ESID (not in DIMS) using `ESID=X:time`  
+</div>
     
 Runtime options:  
 
@@ -64,14 +114,36 @@ MP4Box can import simple Macromedia Flash files (".SWF")
 You can specify a SWF input file with '-bt', '-xmt' and '-mp4' options  
     
 Options:  
-<a id="global">__-global__</a>: all SWF defines are placed in first scene replace rather than when needed  
-<a id="no-ctrl">__-no-ctrl__</a>: use a single stream for movie control and dictionary (this will disable ActionScript)  
-<a id="no-text">__-no-text__</a>: remove all SWF text  
-<a id="no-font">__-no-font__</a>: remove all embedded SWF Fonts (local playback host fonts used)  
-<a id="no-line">__-no-line__</a>: remove all lines from SWF shapes  
-<a id="no-grad">__-no-grad__</a>: remove all gradients from swf shapes  
-<a id="quad">__-quad__</a>:    use quadratic bezier curves instead of cubic ones  
-<a id="xlp">__-xlp__</a>:      support for lines transparency and scalability  
-<a id="ic2d">__-ic2d__</a>:    use indexed curve 2D hardcoded proto  
-<a id="same-app">__-same-app__</a>: appearance nodes are reused  
-<a id="flatten">__-flatten__</a> (number): complementary angle below which 2 lines are merged, value `0` means no flattening  
+<div markdown class="option">
+<a id="global" data-level="basic">__-global__</a>: all SWF defines are placed in first scene replace rather than when needed  
+</div>
+<div markdown class="option">
+<a id="no-ctrl" data-level="basic">__-no-ctrl__</a>: use a single stream for movie control and dictionary (this will disable ActionScript)  
+</div>
+<div markdown class="option">
+<a id="no-text" data-level="basic">__-no-text__</a>: remove all SWF text  
+</div>
+<div markdown class="option">
+<a id="no-font" data-level="basic">__-no-font__</a>: remove all embedded SWF Fonts (local playback host fonts used)  
+</div>
+<div markdown class="option">
+<a id="no-line" data-level="basic">__-no-line__</a>: remove all lines from SWF shapes  
+</div>
+<div markdown class="option">
+<a id="no-grad" data-level="basic">__-no-grad__</a>: remove all gradients from swf shapes  
+</div>
+<div markdown class="option">
+<a id="quad" data-level="basic">__-quad__</a>: use quadratic bezier curves instead of cubic ones  
+</div>
+<div markdown class="option">
+<a id="xlp" data-level="basic">__-xlp__</a>: support for lines transparency and scalability  
+</div>
+<div markdown class="option">
+<a id="ic2d" data-level="basic">__-ic2d__</a>: use indexed curve 2D hardcoded proto  
+</div>
+<div markdown class="option">
+<a id="same-app" data-level="basic">__-same-app__</a>: appearance nodes are reused  
+</div>
+<div markdown class="option">
+<a id="flatten" data-level="basic">__-flatten__</a> (number): complementary angle below which 2 lines are merged, value `0` means no flattening  
+</div>

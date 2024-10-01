@@ -1,4 +1,5 @@
-# Overview
+
+# Overview {:data-level="all"}
 
 This part of the wiki describes general concepts of the GPAC filter architecture, available starting from GPAC 0.9.0.
 

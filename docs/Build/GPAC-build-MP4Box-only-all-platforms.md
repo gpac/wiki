@@ -1,5 +1,5 @@
 
-## Build MP4Box with Visual Studio
+# Build MP4Box with Visual Studio {: data-level="all"}
 
 We published a minimal solution to build MP4Box.exe only, with zero dependency. No DLL to distribute.
 
@@ -7,7 +7,7 @@ You need Visual Studio 2010 or more recent (a pop-up will ask you to upgrade you
 
 That's all!
 
-## Build MP4Box with Make
+# Build MP4Box with Make
 
 On your system, you need the following tools installed on your system:
 
@@ -103,7 +103,7 @@ make -j4
 
 You can find more examples in [our TravisCI script](https://github.com/gpac/gpac/blob/master/.travis.yml).
 
-## Next Step
+# Next Step
 
 We have started [a multimedia component-level build system called Zenbuild](https://github.com/gpac/zenbuild). Zenbuild builds FFmpeg/libav, VLC or GPAC with most of their features enabled (librtmp, jack, openHEVC, etc.). You can start using Zenbuild, it is fully operational!
 

@@ -25,13 +25,20 @@ Each entry in the list is formatted as `GID@name` or `GID@+name`, with:
 Example
 ```
 gpac -i source.mp4 --ffcmap=BKV1@binkvideo vout
-```  
+```
+  
 This will map an ISOBMFF track declared with coding type `BKV1` to binkvideo.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="ffcmap">__ffcmap__</a> (strl): codec map  
+<div markdown class="option">  
+<a id="ffcmap" data-level="basic">__ffcmap__</a> (strl): codec map  
+</div>  
+<div markdown class="option">  
 <a id="c">__c__</a> (str):     codec name (GPAC or ffmpeg), only used to query possible arguments - updated to ffmpeg codec name after initialization  
-<a id="*">__*__</a> (str):     any possible options defined for AVCodecContext and sub-classes. See `gpac -hx ffdec` and `gpac -hx ffdec:*`  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVCodecContext and sub-classes. See `gpac -hx ffdec` and `gpac -hx ffdec:*`  
+</div>  
   

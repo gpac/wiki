@@ -1,4 +1,4 @@
-# OMA DRM authoring
+# OMA DRM authoring {: data-level="all"}
 
 In order to encrypt a 3GP/MP4 file into a PDCF file, MP4Box uses the same process as CENC or ISMA encryption, only the drm file syntax changes.
 

@@ -18,14 +18,16 @@ The default behavior is to perform adaptation according to [algo](#algo), but th
 Example
 ```
 gpac -i MANIFEST_URL:algo=none:start_with=max_bw -o dest.mp4
-```  
+```
+  
 
 - run with no adaptation, fetching all qualities.  
 
 Example
 ```
 gpac -i MANIFEST_URL:split_as -o dst=$File$.mp4
-```  
+```
+  
   
 # File mode  
   
@@ -39,7 +41,8 @@ To expose a live DASH session to route:
 Example
 ```
 gpac -i MANIFEST_URL dashin:forward=file -o route://225.0.0.1:8000/
-```  
+```
+  
   
 If the source has dependent media streams (scalability) and all qualities and initialization segments need to be forwarded, add [split_as](#split_as).  
   
@@ -52,13 +55,15 @@ This mode can be used to process media data and regenerate the same manifest/seg
 Example
 ```
 gpac -i MANIFEST_URL:forward=mani cecrypt:cfile=DRM.xml -o encrypted/live.mpd:pssh=mv
-```  
+```
+  
 This will encrypt an existing DASH session, inject PSSH in manifest and segments.  
   
 Example
 ```
 gpac -i MANIFEST_URL:forward=segb cecrypt:cfile=DRM.xml -o encrypted/live.m3u8
-```  
+```
+  
 This will encrypt an existing DASH session and republish it as HLS, using same segment names and boundaries.  
   
 This mode will force [noseek](#noseek)=`true` to ensure the first segment fetched is complete, and [split_as](#split_as)=`true` to fetch all qualities.  
@@ -96,20 +101,25 @@ Each output PID will have the following properties assigned:
 When the [dasher](dasher) is used together with this mode, this will force all generated segments to have the same name, duration and fragmentation properties as the input ones. It is therefore not recommended for sessions stored/generated on local storage to generate the output in the same directory.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="auto_switch">__auto_switch__</a> (sint, default: _0_): switch quality every N segments  
 
 - positive: go to higher quality or loop to lowest  
 - negative: go to lower quality or loop to highest  
 - 0: disabled  
+</div>  
   
+<div markdown class="option">  
 <a id="segstore">__segstore__</a> (enum, default: _mem_): enable file caching  
 
 - mem: all files are stored in memory, no disk IO  
 - disk: files are stored to disk but discarded once played  
 - cache: all files are stored to disk and kept  
+</div>  
   
+<div markdown class="option">  
 <a id="algo">__algo__</a> (str, default: _gbuf_, Enum: none|grate|gbuf|bba0|bolaf|bolab|bolau|bolao|JS): adaptation algorithm to use  
 
 - none: no adaptation logic  
@@ -121,29 +131,51 @@ When the [dasher](dasher) is used together with this mode, this will force all g
 - bolau: BOLA-U  
 - bolao: BOLA-O  
 - JS: use file JS (either with specified path or in $GSHARE/scripts/) for algo (.js extension may be omitted)  
+</div>  
   
-<a id="start_with">__start_with__</a> (enum, default: _max_bw_): initial selection criteria  
+<div markdown class="option">  
+<a id="start_with" data-level="basic">__start_with__</a> (enum, default: _max_bw_): initial selection criteria  
 
 - min_q: start with lowest quality  
 - max_q: start with highest quality  
 - min_bw: start with lowest bitrate  
 - max_bw: start with highest bitrate; if tiles are used, all low priority tiles will have the lower (below max) bandwidth selected  
 - max_bw_tiles: start with highest bitrate; if tiles are used, all low priority tiles will have their lowest bandwidth selected  
+</div>  
   
-<a id="max_res">__max_res__</a> (bool, default: _true_): use max media resolution to configure display  
+<div markdown class="option">  
+<a id="max_res" data-level="basic">__max_res__</a> (bool, default: _true_): use max media resolution to configure display  
+</div>  
+<div markdown class="option">  
 <a id="abort">__abort__</a> (bool, default: _false_): allow abort during a segment download  
-<a id="use_bmin">__use_bmin__</a> (enum, default: _auto_): playout buffer handling  
+</div>  
+<div markdown class="option">  
+<a id="use_bmin" data-level="basic">__use_bmin__</a> (enum, default: _auto_): playout buffer handling  
 
 - no: use default player settings  
 - auto: notify player of segment duration if not low latency  
 - mpd: use the indicated min buffer time of the MPD  
+</div>  
   
+<div markdown class="option">  
 <a id="shift_utc">__shift_utc__</a> (sint, default: _0_): shift DASH UTC clock in ms  
+</div>  
+<div markdown class="option">  
 <a id="spd">__spd__</a> (sint, default: _-I_): suggested presentation delay in ms  
+</div>  
+<div markdown class="option">  
 <a id="mcast_shift">__mcast_shift__</a> (sint, default: _0_): shift requests time by given ms for multicast sources  
+</div>  
+<div markdown class="option">  
 <a id="server_utc">__server_utc__</a> (bool, default: _yes_): use `ServerUTC` or `Date` HTTP headers instead of local UTC  
+</div>  
+<div markdown class="option">  
 <a id="screen_res">__screen_res__</a> (bool, default: _yes_): use screen resolution in selection phase  
+</div>  
+<div markdown class="option">  
 <a id="init_timeshift">__init_timeshift__</a> (sint, default: _0_): set initial timeshift in ms (if >0) or in per-cent of timeshift buffer (if <0)  
+</div>  
+<div markdown class="option">  
 <a id="tile_mode">__tile_mode__</a> (enum, default: _none_): tile adaptation mode  
 
 - none: bitrate is shared equally across all tiles  
@@ -155,42 +187,85 @@ When the [dasher](dasher) is used together with this mode, this will force all g
 - mcols: bitrate decreased for left and right columns only, same rate for each tile on the columns  
 - center: bitrate decreased for all tiles on the edge of the picture  
 - edges: bitrate decreased for all tiles on the center of the picture  
+</div>  
   
+<div markdown class="option">  
 <a id="tiles_rate">__tiles_rate__</a> (uint, default: _100_): indicate the amount of bandwidth to use at each quality level. The rate is recursively applied at each level, e.g. if 50%, Level1 gets 50%, level2 gets 25%, ... If 100, automatic rate allocation will be done by maximizing the quality in order of priority. If 0, bitstream will not be smoothed across tiles/qualities, and concurrency may happen between different media  
+</div>  
+<div markdown class="option">  
 <a id="delay40X">__delay40X__</a> (uint, default: _500_): delay in milliseconds to wait between two 40X on the same segment  
+</div>  
+<div markdown class="option">  
 <a id="exp_threshold">__exp_threshold__</a> (uint, default: _100_): delay in milliseconds to wait after the segment AvailabilityEndDate before considering the segment lost  
+</div>  
+<div markdown class="option">  
 <a id="switch_count">__switch_count__</a> (uint, default: _1_): indicate how many segments the client shall wait before switching up bandwidth. If 0, switch will happen as soon as the bandwidth is enough, but this is more prone to network variations  
+</div>  
+<div markdown class="option">  
 <a id="aggressive">__aggressive__</a> (bool, default: _no_): if enabled, switching algo targets the closest bandwidth fitting the available download rate. If no, switching algo targets the lowest bitrate representation that is above the currently played (e.g. does not try to switch to max bandwidth)  
+</div>  
+<div markdown class="option">  
 <a id="debug_as">__debug_as__</a> (uintl): play only the adaptation sets indicated by their indices (0-based) in the MPD  
+</div>  
+<div markdown class="option">  
 <a id="speedadapt">__speedadapt__</a> (bool, default: _no_): enable adaptation based on playback speed  
+</div>  
+<div markdown class="option">  
 <a id="noxlink">__noxlink__</a> (bool, default: _no_): disable xlink if period has both xlink and adaptation sets  
+</div>  
+<div markdown class="option">  
 <a id="query">__query__</a> (str): set query string (without initial '?') to append to xlink of periods  
+</div>  
+<div markdown class="option">  
 <a id="split_as">__split_as__</a> (bool, default: _no_): separate all qualities into different adaptation sets and stream all qualities. Dependent representations (scalable) are treated as independent  
+</div>  
+<div markdown class="option">  
 <a id="noseek">__noseek__</a> (bool, default: _no_): disable seeking of initial segment(s) in dynamic mode (useful when UTC clocks do not match)  
+</div>  
+<div markdown class="option">  
 <a id="bwcheck">__bwcheck__</a> (uint, default: _5_): minimum time in milliseconds between two bandwidth checks when allowing segment download abort  
+</div>  
+<div markdown class="option">  
 <a id="lowlat">__lowlat__</a> (enum, default: _early_): segment scheduling policy in low latency mode  
 
 - no: disable low latency  
 - strict: strict respect of AST offset in low latency  
 - early: allow fetching segments earlier than their AST in low latency when input PID is empty  
+</div>  
   
+<div markdown class="option">  
 <a id="forward">__forward__</a> (enum, default: _none_): segment forwarding mode  
 
 - none: regular DASH read  
 - file: do not demultiplex files and forward them as file PIDs (imply `segstore=mem`)  
 - segb: turn on [split_as](#split_as), segment and fragment bounds signaling (`sigfrag`) in sources and DASH cue insertion  
 - mani: same as `segb` and also forward manifests  
+</div>  
   
+<div markdown class="option">  
 <a id="fmodefwd">__fmodefwd__</a> (bool, default: _yes_): forward packet rather than copy them in `file` forward mode. Packet copy might improve performances in low latency mode  
+</div>  
+<div markdown class="option">  
 <a id="skip_lqt">__skip_lqt__</a> (bool, default: _no_): disable decoding of tiles with highest degradation hints (not visible, not gazed at) for debug purposes  
+</div>  
+<div markdown class="option">  
 <a id="llhls_merge">__llhls_merge__</a> (bool, default: _yes_): merge LL-HLS byte range parts into a single open byte range request  
+</div>  
+<div markdown class="option">  
 <a id="groupsel">__groupsel__</a> (bool, default: _no_): select groups based on language (by default all playable groups are exposed)  
+</div>  
+<div markdown class="option">  
 <a id="chain_mode">__chain_mode__</a> (enum, default: _on_): MPD chaining mode  
 
 - off: do not use MPD chaining  
 - on: use MPD chaining once over, fallback if MPD load failure  
 - error: use MPD chaining once over or if error (MPD or segment download)  
+</div>  
   
+<div markdown class="option">  
 <a id="asloop">__asloop__</a> (bool, default: _false_): when auto switch is enabled, iterates back and forth from highest to lowest qualities  
+</div>  
+<div markdown class="option">  
 <a id="bsmerge">__bsmerge__</a> (bool, default: _true_): allow merging of video bitstreams (only HEVC for now)  
+</div>  
   

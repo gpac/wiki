@@ -1,9 +1,9 @@
-To build GPAC for iOS, we'll first need to cross-compile some dependencies, before building the project itself. 
+_To build GPAC for iOS, we'll first need to cross-compile some dependencies, before building the project itself._ 
 
-For the following, we'll call the working directory `<GPAC_ROOT_DIR>`.
+_For the following, we'll call the working directory `<GPAC_ROOT_DIR>`._
 
 
-# Building dependencies
+# Building dependencies {: data-level="all"}
 
 ## Get the code
 

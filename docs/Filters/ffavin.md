@@ -31,28 +31,44 @@ Example
 ```
 ffmpeg -f libndi_newtek -i MY_NDI_TEST ...  
 gpac -i av://:fmt=libndi_newtek:dev=MY_NDI_TEST ...
-```  
+```
+  
   
 You may need to escape the [dev](#dev) option if the format uses ':' as separator, as is the case for AVFoundation:  
 Example
 ```
 gpac -i av://::dev=0:1 ...
-```  
+```
+  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (str): url of device, `video://`, `audio://` or `av://`  
-<a id="fmt">__fmt__</a> (str): name of device class. If not set, defaults to first device class  
-<a id="dev">__dev__</a> (str, default: _0_): name of device or index of device  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (str): url of device, `video://`, `audio://` or `av://`  
+</div>  
+<div markdown class="option">  
+<a id="fmt" data-level="basic">__fmt__</a> (str): name of device class. If not set, defaults to first device class  
+</div>  
+<div markdown class="option">  
+<a id="dev" data-level="basic">__dev__</a> (str, default: _0_): name of device or index of device  
+</div>  
+<div markdown class="option">  
 <a id="copy">__copy__</a> (enum, default: _A_): set copy mode of raw frames  
 
 - N: frames are only forwarded (shared memory, no copy)  
 - A: audio frames are copied, video frames are forwarded  
 - V: video frames are copied, audio frames are forwarded  
 - AV: all frames are copied  
+</div>  
   
+<div markdown class="option">  
 <a id="sclock">__sclock__</a> (bool, default: _false_): use system clock (us) instead of device timestamp (for buggy devices)  
+</div>  
+<div markdown class="option">  
 <a id="probes">__probes__</a> (uint, default: _10_, minmax: 0-100): probe a given number of video frames before emitting (this usually helps with bad timing of the first frames)  
-<a id="*">__*__</a> (str):     any possible options defined for AVInputFormat and AVFormatContext (see `gpac -hx ffavin` and `gpac -hx ffavin:*`)  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVInputFormat and AVFormatContext (see `gpac -hx ffavin` and `gpac -hx ffavin:*`)  
+</div>  
   

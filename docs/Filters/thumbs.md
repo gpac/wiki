@@ -37,13 +37,15 @@ A single line of text can be inserted over each frame. Predefined keywords can b
 Example
 ```
 gpac -i src reframer:saps=1 thumbs:snap=30:grid=6x30 -o dump/$num$.png
-```  
+```
+  
 This will generate images from key-frames only, inserting one image every 30 seconds. Using key-frame filtering is much faster but may give unexpected results if there are not enough key-frames in the source.  
   
 Example
 ```
 gpac -i src thumbs:snap=0:grid=5x5 -o dump/$num$.png
-```  
+```
+  
 This will generate one image containing 25 frames every second at 25 fps.  
   
 If a single image per output frame is used and the scaling factor is 1, the input packet is reused as input with text and graphics overlaid.  
@@ -51,7 +53,8 @@ If a single image per output frame is used and the scaling factor is 1, the inpu
 Example
 ```
 gpac -i src thumbs:grid=1x1:txt='Frame $time$' -o dump/$num$.png
-```  
+```
+  
 This will inject text over each frame and keep timing and other packet properties.  
   
 A json output can be specified in input [list](#list) to let applications retrieve frame position in output image from its timing.  
@@ -77,33 +80,78 @@ Since this is a costly process, it is recommended to use it combined with key-fr
 Example
 ```
 gpac -i src reframer:saps=1 thumbs:mae=15 -o dump/$num$.png
-```  
+```
+  
   
 The [maxsnap](#maxsnap) option can be used to force insertion after the given time if no scene cut is found.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="grid">__grid__</a> (v2di, default: _6x0_): number of images per lines and columns  
-<a id="scale">__scale__</a> (dbl, default: _-1_): scale factor for input size  
+<div markdown class="option">  
+<a id="grid" data-level="basic">__grid__</a> (v2di, default: _6x0_): number of images per lines and columns  
+</div>  
+<div markdown class="option">  
+<a id="scale" data-level="basic">__scale__</a> (dbl, default: _-1_): scale factor for input size  
+</div>  
+<div markdown class="option">  
 <a id="mae">__mae__</a> (uint, default: _0_, minmax: 0,100): scene diff threshold using Mean Absolute Error  
+</div>  
+<div markdown class="option">  
 <a id="mse">__mse__</a> (uint, default: _0_, minmax: 0,100): scene diff threshold using Mean Square Error  
+</div>  
+<div markdown class="option">  
 <a id="lw">__lw__</a> (dbl, default: _0.0_): line width between images in pixels  
+</div>  
+<div markdown class="option">  
 <a id="lc">__lc__</a> (str, default: _white_): line color  
+</div>  
+<div markdown class="option">  
 <a id="clear">__clear__</a> (str, default: _white_): clear color  
-<a id="snap">__snap__</a> (dbl, default: _-1_): duration between images, 0 for all images  
-<a id="maxsnap">__maxsnap__</a> (dbl, default: _-1_): maximum duration between two thumbnails when scene change detection is enabled  
+</div>  
+<div markdown class="option">  
+<a id="snap" data-level="basic">__snap__</a> (dbl, default: _-1_): duration between images, 0 for all images  
+</div>  
+<div markdown class="option">  
+<a id="maxsnap" data-level="basic">__maxsnap__</a> (dbl, default: _-1_): maximum duration between two thumbnails when scene change detection is enabled  
+</div>  
+<div markdown class="option">  
 <a id="pfmt">__pfmt__</a> (pfmt, default: _rgb_): output pixel format  
+</div>  
+<div markdown class="option">  
 <a id="txt">__txt__</a> (str, default: __): text to insert per thumbnail  
+</div>  
+<div markdown class="option">  
 <a id="tc">__tc__</a> (str, default: _white_): text color  
+</div>  
+<div markdown class="option">  
 <a id="tb">__tb__</a> (str, default: _black_): text shadow  
+</div>  
+<div markdown class="option">  
 <a id="font">__font__</a> (str, default: _SANS_): font to use  
+</div>  
+<div markdown class="option">  
 <a id="fs">__fs__</a> (dbl, default: _10_): font size to use in percent of scaled height  
+</div>  
+<div markdown class="option">  
 <a id="tv">__tv__</a> (dbl, default: _0_): text vertical position in percent of scaled height  
+</div>  
+<div markdown class="option">  
 <a id="thread">__thread__</a> (sint, default: _-1_): number of threads for software rasterizer, -1 for all available cores  
+</div>  
+<div markdown class="option">  
 <a id="blt">__blt__</a> (bool, default: _true_): use blit instead of software rasterizer  
+</div>  
+<div markdown class="option">  
 <a id="scref">__scref__</a> (bool, default: _false_): use last inserted image as reference for scene change detection  
+</div>  
+<div markdown class="option">  
 <a id="dropfirst">__dropfirst__</a> (bool, default: _false_): drop first image  
+</div>  
+<div markdown class="option">  
 <a id="list">__list__</a> (str, default: _null_): export json list of frame times and positions to given file  
+</div>  
+<div markdown class="option">  
 <a id="lxy">__lxy__</a> (bool, default: _false_): add explicit x and y in json export  
+</div>  
   

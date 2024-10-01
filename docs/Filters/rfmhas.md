@@ -10,10 +10,18 @@ By default, the filter expects a MHAS stream with SYNC packets set, otherwise tu
 The default behavior is to dispatch a framed MHAS bitstream. To demultiplex into a raw MPEG-H Audio, use [mpha](#mpha).  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="index">__index__</a> (dbl, default: _1.0_): indexing window length  
-<a id="mpha">__mpha__</a> (bool, default: _false_): demultiplex MHAS and only forward audio frames  
-<a id="pcksync">__pcksync__</a> (uint, default: _4_): number of unknown packets to tolerate before considering sync is lost  
-<a id="nosync">__nosync__</a> (bool, default: _true_): initial sync state  
+<div markdown class="option">  
+<a id="index" data-level="basic">__index__</a> (dbl, default: _1.0_): indexing window length  
+</div>  
+<div markdown class="option">  
+<a id="mpha" data-level="basic">__mpha__</a> (bool, default: _false_): demultiplex MHAS and only forward audio frames  
+</div>  
+<div markdown class="option">  
+<a id="pcksync" data-level="basic">__pcksync__</a> (uint, default: _4_): number of unknown packets to tolerate before considering sync is lost  
+</div>  
+<div markdown class="option">  
+<a id="nosync" data-level="basic">__nosync__</a> (bool, default: _true_): initial sync state  
+</div>  
   

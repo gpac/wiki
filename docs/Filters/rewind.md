@@ -9,7 +9,9 @@ This filter reverses audio and video frames in negative playback speed.
 The filter is in passthrough if speed is positive. Otherwise, it reverts decoded GOPs for video, or revert samples in decoded frame for audio (not really nice for most codecs).  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="rbuffer">__rbuffer__</a> (uint, default: _100_): size of video rewind buffer in frames. If more frames than this, flush is performed  
+</div>  
   

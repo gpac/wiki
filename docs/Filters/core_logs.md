@@ -3,12 +3,23 @@
 
 # libgpac logs options:  
   
+<div markdown class="option">
 <a id="noprog">__-noprog__</a>: disable progress messages  
+</div>
+<div markdown class="option">
 <a id="quiet">__-quiet__</a>:  disable all messages, including errors  
-<a id="log-file">__-log-file__</a>,__-lf__ (string): set output log file  
-<a id="log-clock">__-log-clock__</a>,__-lc__: log time in micro sec since start time of GPAC before each log line except for `app` tool  
-<a id="log-utc">__-log-utc__</a>,__-lu__: log UTC time in ms before each log line except for `app` tool  
-<a id="logs">__-logs__</a> (string): set log tools and levels.    
+</div>
+<div markdown class="option">
+<a id="log-file" data-level="basic">__-log-file__</a>,__-lf__ (string): set output log file  
+</div>
+<div markdown class="option">
+<a id="log-clock" data-level="basic">__-log-clock__</a>,__-lc__: log time in micro sec since start time of GPAC before each log line except for `app` tool  
+</div>
+<div markdown class="option">
+<a id="log-utc" data-level="basic">__-log-utc__</a>,__-lu__: log UTC time in ms before each log line except for `app` tool  
+</div>
+<div markdown class="option">
+<a id="logs" data-level="basic">__-logs__</a> (string): set log tools and levels.    
     
 You can independently log different tools involved in a session.    
 log_args is formatted as a colon (':') separated list of `toolX[:toolZ]@levelX`    
@@ -57,8 +68,14 @@ The special keyword `strict` can be set to exit at first error.
 Example
 ```
 -logs=all@info:dash@debug:ncl
-```  
-This moves all log to info level, dash to debug level and disable color logs  
+```
   
+This moves all log to info level, dash to debug level and disable color logs  
+</div>
+  
+<div markdown class="option">
 <a id="proglf">__-proglf__</a>: use new line at each progress messages  
-<a id="log-dual">__-log-dual__</a>,__-ld__: output to both file and stderr  
+</div>
+<div markdown class="option">
+<a id="log-dual" data-level="basic">__-log-dual__</a>,__-ld__: output to both file and stderr  
+</div>

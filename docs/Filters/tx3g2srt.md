@@ -8,7 +8,9 @@ This filter may be automatically loaded during graph resolution.
 This filter converts a single ISOBMFF TX3G stream to an SRT unframed stream.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="exporter">__exporter__</a> (bool, default: _false_): compatibility with old exporter, displays export results  
+</div>  
   

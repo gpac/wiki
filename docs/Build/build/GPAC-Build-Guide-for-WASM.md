@@ -1,10 +1,12 @@
 [**HOME**](Home) » [**Build**](Build-Introduction) » WASM
 
-This page describes how to build GPAC for WASM/Emscripten.
+_This page describes how to build GPAC for WASM/Emscripten._
 
-A live demo can be seen at [https://wasm.gpac.io](https://wasm.gpac.io)
+!!! note
+    You can check a live demo at [https://wasm.gpac.io](https://wasm.gpac.io).
 
-# (Recommended) Use Docker
+
+# (Recommended) Use Docker {: data-level="all"}
 
 The easiest way to build GPAC for WASM is to use the provided Dockerfile at `build/docker/wasm.Dockerfile` in the GPAC repository.
 

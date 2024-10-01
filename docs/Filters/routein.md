@@ -42,7 +42,8 @@ If needed, one PID per TSI can be used rather than a single PID. This avoids mix
 Example
 ```
 gpac -i atsc://gcache=false -o $ServiceID$/$File$:dynext
-```  
+```
+  
 This will grab the files and forward them as output PIDs, consumed by the [fout](fout) filter.  
   
 If [max_segs](#max_segs) is set, file deletion event will be triggered in the filter chain.  
@@ -53,7 +54,8 @@ In standalone mode, the filter does not produce any output PID and writes receiv
 Example
 ```
 gpac -i atsc://:odir=output
-```  
+```
+  
 This will grab the files and write them to `output` directory.  
   
 If [max_segs](#max_segs) is set, old files will be deleted.  
@@ -75,43 +77,91 @@ For ATSC, you will have to do this for the base signaling multicast (224.0.23.60
 Example
 ```
 route add -net 224.0.23.60/32 -interface vboxnet0
-```  
+```
+  
 Then for each multicast service in the multicast:  
 Example
 ```
 route add -net 239.255.1.4/32 -interface vboxnet0
-```  
+```
+  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (cstr): URL of source content  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (cstr): URL of source content  
+</div>  
+<div markdown class="option">  
 <a id="ifce">__ifce__</a> (str): default interface to use for multicast. If NULL, the default system interface will be used  
+</div>  
+<div markdown class="option">  
 <a id="gcache">__gcache__</a> (bool, default: _true_): indicate the files should populate GPAC HTTP cache  
-<a id="tunein">__tunein__</a> (sint, default: _-2_): service ID to bootstrap on for ATSC 3.0 mode (0 means tune to no service, -1 tune all services -2 means tune on first service found)  
+</div>  
+<div markdown class="option">  
+<a id="tunein" data-level="basic">__tunein__</a> (sint, default: _-2_): service ID to bootstrap on for ATSC 3.0 mode (0 means tune to no service, -1 tune all services -2 means tune on first service found)  
+</div>  
+<div markdown class="option">  
 <a id="buffer">__buffer__</a> (uint, default: _0x80000_): receive buffer size to use in bytes  
-<a id="timeout">__timeout__</a> (uint, default: _5000_): timeout in ms after which tunein fails  
+</div>  
+<div markdown class="option">  
+<a id="timeout" data-level="basic">__timeout__</a> (uint, default: _5000_): timeout in ms after which tunein fails  
+</div>  
+<div markdown class="option">  
 <a id="nbcached">__nbcached__</a> (uint, default: _8_): number of segments to keep in cache per service  
+</div>  
+<div markdown class="option">  
 <a id="kc">__kc__</a> (bool, default: _false_): keep corrupted file  
+</div>  
+<div markdown class="option">  
 <a id="skipr">__skipr__</a> (bool, default: _true_): skip repeated files (ignored in cache mode)  
+</div>  
+<div markdown class="option">  
 <a id="stsi">__stsi__</a> (bool, default: _false_): define one output PID per tsi/serviceID (ignored in cache mode)  
+</div>  
+<div markdown class="option">  
 <a id="stats">__stats__</a> (uint, default: _1000_): log statistics at the given rate in ms (0 disables stats)  
+</div>  
+<div markdown class="option">  
 <a id="tsidbg">__tsidbg__</a> (uint, default: _0_): gather only objects with given TSI (debug)  
+</div>  
+<div markdown class="option">  
 <a id="max_segs">__max_segs__</a> (uint, default: _0_): maximum number of segments to keep on disk  
+</div>  
+<div markdown class="option">  
 <a id="odir">__odir__</a> (str): output directory for standalone mode  
+</div>  
+<div markdown class="option">  
 <a id="reorder">__reorder__</a> (bool, default: _true_): consider packets are not always in order - if false, this will evaluate an LCT object as done when TOI changes  
-<a id="cloop">__cloop__</a> (bool, default: _false_): check for loops based on TOI (used for capture replay)  
-<a id="rtimeout">__rtimeout__</a> (uint, default: _1000_): default timeout in us to wait when gathering out-of-order packets  
+</div>  
+<div markdown class="option">  
+<a id="cloop" data-level="basic">__cloop__</a> (bool, default: _false_): check for loops based on TOI (used for capture replay)  
+</div>  
+<div markdown class="option">  
+<a id="rtimeout">__rtimeout__</a> (uint, default: _100000_): default timeout in us to wait when gathering out-of-order packets  
+</div>  
+<div markdown class="option">  
 <a id="fullseg">__fullseg__</a> (bool, default: _false_): only dispatch full segments in cache mode (always true for other modes)  
+</div>  
+<div markdown class="option">  
 <a id="repair">__repair__</a> (enum, default: _simple_): repair mode for corrupted files  
 
 - no: no repair is performed  
 - simple: simple repair is performed (incomplete `mdat` boxes will be kept)  
 - strict: incomplete mdat boxes will be lost as well as preceding `moof` boxes  
 - full: HTTP-based repair of all lost packets  
+</div>  
   
-<a id="repair_url">__repair_url__</a> (cstr): repair url  
-<a id="max_sess">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  
-<a id="llmode">__llmode__</a> (bool, default: _true_): enable low-latency access  
-<a id="dynsel">__dynsel__</a> (bool, default: _true_): dynamically enable and disable multicast groups based on their selection state  
+<div markdown class="option">  
+<a id="repair_url" data-level="basic">__repair_url__</a> (cstr): repair url  
+</div>  
+<div markdown class="option">  
+<a id="max_sess" data-level="basic">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  
+</div>  
+<div markdown class="option">  
+<a id="llmode" data-level="basic">__llmode__</a> (bool, default: _true_): enable low-latency access  
+</div>  
+<div markdown class="option">  
+<a id="dynsel" data-level="basic">__dynsel__</a> (bool, default: _true_): dynamically enable and disable multicast groups based on their selection state  
+</div>  
   

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-H Audio decoder  
+# MPEG-H Audio decoder  {:data-level="all"}  
   
 Register name used to load filter: __mpeghdec__  
 This filter may be automatically loaded during graph resolution.  

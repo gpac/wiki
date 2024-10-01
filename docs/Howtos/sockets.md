@@ -1,4 +1,4 @@
-# Overview
+# Overview {: data-level="all" }
 
 We discuss here how to use sockets in GPAC for generic IO.  
 

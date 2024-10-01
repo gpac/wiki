@@ -1,4 +1,4 @@
-# Overview
+# Overview {:data-level="all"}
 
 We discuss here how to use encryption in a filter chain in GPAC.  
 
@@ -65,6 +65,7 @@ Another possibility is to define the `CryptInfo` PID property rather than using 
 ```
 gpac -i udp://localhost:1234/:#CrypTrack=(audio)drm_audio.xml,(video)drm_video.xml cecrypt -o dest.mpd:profile=live:dmode=dynamic
 ```
+
 This example assigns:
 
 - a `CryptInfo` property to `drm_audio.xml` for PIDs of type audio

@@ -16,10 +16,18 @@ In stand-alone rendering (no associated video), the filter will use:
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="texture">__texture__</a> (bool, default: _false_): use texturing for output text  
+</div>  
+<div markdown class="option">  
 <a id="outline">__outline__</a> (bool, default: _false_): draw text outline  
+</div>  
+<div markdown class="option">  
 <a id="txtw">__txtw__</a> (uint, default: _400_): default width in standalone rendering  
+</div>  
+<div markdown class="option">  
 <a id="txth">__txth__</a> (uint, default: _200_): default height in standalone rendering  
+</div>  
   

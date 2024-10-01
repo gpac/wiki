@@ -8,7 +8,9 @@ This filter may be automatically loaded during graph resolution.
 This filter parses AC3 and E-AC3 files/data and outputs corresponding audio PID and frames.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="index">__index__</a> (dbl, default: _1.0_): indexing window length  
+<div markdown class="option">  
+<a id="index" data-level="basic">__index__</a> (dbl, default: _1.0_): indexing window length  
+</div>  
   

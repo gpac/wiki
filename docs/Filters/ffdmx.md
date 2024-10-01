@@ -13,11 +13,21 @@ Input protocols are listed with `Description: Input protocol`, and the subclass 
 For example, if `ffdmx:rtmp` is listed as input protocol, this means `rtmp://` source URLs are supported.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (cstr): URL of source content  
-<a id="reparse">__reparse__</a> (bool, default: _false_): force reparsing of stream content (AVC,HEVC,VVC,AV1 only for now)  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (cstr): URL of source content  
+</div>  
+<div markdown class="option">  
+<a id="reparse" data-level="basic">__reparse__</a> (bool, default: _false_): force reparsing of stream content (AVC,HEVC,VVC,AV1 only for now)  
+</div>  
+<div markdown class="option">  
 <a id="block_size">__block_size__</a> (uint, default: _4096_): block size used to read file when using GFIO context  
+</div>  
+<div markdown class="option">  
 <a id="strbuf_min">__strbuf_min__</a> (uint, default: _1MB_): internal buffer size when demuxing from GPAC's input stream  
-<a id="*">__*__</a> (str):     any possible options defined for AVFormatContext and sub-classes. See `gpac -hx ffdmx` and `gpac -hx ffdmx:*`  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVFormatContext and sub-classes. See `gpac -hx ffdmx` and `gpac -hx ffdmx:*`  
+</div>  
   

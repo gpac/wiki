@@ -10,8 +10,12 @@ This filter multiplexes audio and video to produce an OGG stream.
 The [cdur](#cdur) option allows specifying the interleaving duration (max time difference between consecutive packets of different streams).   
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="cdur">__cdur__</a> (frac, default: _1/10_): stream interleaving duration in seconds  
-<a id="rcfg">__rcfg__</a> (frac, default: _0/1_): stream config re-injection frequency in seconds  
+<div markdown class="option">  
+<a id="cdur" data-level="basic">__cdur__</a> (frac, default: _1/10_): stream interleaving duration in seconds  
+</div>  
+<div markdown class="option">  
+<a id="rcfg" data-level="basic">__rcfg__</a> (frac, default: _0/1_): stream config re-injection frequency in seconds  
+</div>  
   

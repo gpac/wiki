@@ -1,7 +1,7 @@
-Since the OSX build is essentially the same as the Linux build, this doc will be succinct. Please refer to the [Linux build guide](GPAC-Build-Guide-for-Linux) for further details. 
+_Since the OSX build is essentially the same as the Linux build, this doc will be succinct. Please refer to the [Linux build guide](GPAC-Build-Guide-for-Linux) for further details._ 
 
 
-# MP4Box only
+# MP4Box only {: data-level="all"}
 
 Same as Linux:
 

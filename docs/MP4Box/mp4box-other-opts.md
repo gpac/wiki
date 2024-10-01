@@ -7,24 +7,60 @@ MP4Box supports creation of hint tracks for RTSP servers supporting these such a
 _Note: GPAC streaming tools [rtp output](rtpout) and [rtsp server](rtspout) do not use hint tracks, they use on-the-fly packetization from any media sources, not just MP4_  
     
 Options:  
-<a id="hint">__-hint__</a>:    hint the file for RTP/RTSP  
-<a id="mtu">__-mtu__</a> (int, default: __1450__): specify RTP MTU (max size) in bytes (this includes 12 bytes RTP header)  
-<a id="copy">__-copy__</a>:    copy media data to hint track rather than reference (speeds up server but takes much more space)  
-<a id="multi">__-multi__</a> `[maxptime]`: enable frame concatenation in RTP packets if possible (with max duration 100 ms or `maxptime` ms if given)  
-<a id="rate">__-rate__</a> (int, default: __90000__): specify rtp rate in Hz when no default for payload  
-<a id="mpeg4">__-mpeg4__</a>:  force MPEG-4 generic payload whenever possible  
-<a id="latm">__-latm__</a>:    force MPG4-LATM transport for AAC streams  
-<a id="static">__-static__</a>: enable static RTP payload IDs whenever possible (by default, dynamic payloads are always used)  
-<a id="add-sdp">__-add-sdp__</a> (string): add given SDP string to movie (`string`) or track (`tkID:string`), `tkID` being the track ID or the hint track ID  
-<a id="no-offset">__-no-offset__</a>: signal no random offset for sequence number and timestamp (support will depend on server)  
-<a id="unhint">__-unhint__</a>: remove all hinting information from file  
-<a id="group-single">__-group-single__</a>: put all tracks in a single hint group  
-<a id="ocr">__-ocr__</a>:      force all MPEG-4 streams to be synchronized (MPEG-4 Systems only)  
-<a id="rap">__-rap__</a>:      signal random access points in RTP packets (MPEG-4 Systems)  
-<a id="ts">__-ts__</a>:        signal AU Time Stamps in RTP packets (MPEG-4 Systems)  
-<a id="size">__-size__</a>:    signal AU size in RTP packets (MPEG-4 Systems)  
-<a id="idx">__-idx__</a>:      signal AU sequence numbers in RTP packets (MPEG-4 Systems)  
-<a id="iod">__-iod__</a>:      prevent systems tracks embedding in IOD (MPEG-4 Systems), not compatible with [-isma](#isma)  
+<div markdown class="option">
+<a id="hint" data-level="basic">__-hint__</a>: hint the file for RTP/RTSP  
+</div>
+<div markdown class="option">
+<a id="mtu" data-level="basic">__-mtu__</a> (int, default: __1450__): specify RTP MTU (max size) in bytes (this includes 12 bytes RTP header)  
+</div>
+<div markdown class="option">
+<a id="copy" data-level="basic">__-copy__</a>: copy media data to hint track rather than reference (speeds up server but takes much more space)  
+</div>
+<div markdown class="option">
+<a id="multi" data-level="basic">__-multi__</a> `[maxptime]`: enable frame concatenation in RTP packets if possible (with max duration 100 ms or `maxptime` ms if given)  
+</div>
+<div markdown class="option">
+<a id="rate" data-level="basic">__-rate__</a> (int, default: __90000__): specify rtp rate in Hz when no default for payload  
+</div>
+<div markdown class="option">
+<a id="mpeg4" data-level="basic">__-mpeg4__</a>: force MPEG-4 generic payload whenever possible  
+</div>
+<div markdown class="option">
+<a id="latm" data-level="basic">__-latm__</a>: force MPG4-LATM transport for AAC streams  
+</div>
+<div markdown class="option">
+<a id="static" data-level="basic">__-static__</a>: enable static RTP payload IDs whenever possible (by default, dynamic payloads are always used)  
+</div>
+<div markdown class="option">
+<a id="add-sdp" data-level="basic">__-add-sdp__</a> (string): add given SDP string to movie (`string`) or track (`tkID:string`), `tkID` being the track ID or the hint track ID  
+</div>
+<div markdown class="option">
+<a id="no-offset" data-level="basic">__-no-offset__</a>: signal no random offset for sequence number and timestamp (support will depend on server)  
+</div>
+<div markdown class="option">
+<a id="unhint" data-level="basic">__-unhint__</a>: remove all hinting information from file  
+</div>
+<div markdown class="option">
+<a id="group-single" data-level="basic">__-group-single__</a>: put all tracks in a single hint group  
+</div>
+<div markdown class="option">
+<a id="ocr" data-level="basic">__-ocr__</a>: force all MPEG-4 streams to be synchronized (MPEG-4 Systems only)  
+</div>
+<div markdown class="option">
+<a id="rap" data-level="basic">__-rap__</a>: signal random access points in RTP packets (MPEG-4 Systems)  
+</div>
+<div markdown class="option">
+<a id="ts" data-level="basic">__-ts__</a>: signal AU Time Stamps in RTP packets (MPEG-4 Systems)  
+</div>
+<div markdown class="option">
+<a id="size" data-level="basic">__-size__</a>: signal AU size in RTP packets (MPEG-4 Systems)  
+</div>
+<div markdown class="option">
+<a id="idx" data-level="basic">__-idx__</a>: signal AU sequence numbers in RTP packets (MPEG-4 Systems)  
+</div>
+<div markdown class="option">
+<a id="iod" data-level="basic">__-iod__</a>: prevent systems tracks embedding in IOD (MPEG-4 Systems), not compatible with [-isma](#isma)  
+</div>
 
 # Tagging support  
   
@@ -65,7 +101,8 @@ To force a positive integer to use signed storage, add `+` in front of the numbe
 Example
 ```
 -tags io.gpac.some_tag=s+32
-```  
+```
+  
 This will force storing value `32` in signed 16 bit format.  
 The `tag_value` can also be formatted as:  
 

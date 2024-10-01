@@ -1,4 +1,4 @@
-# ISMACryp authoring
+# ISMACryp authoring {: data-level="all"}
 
 In order to encrypt an MP4 file, MP4Box will need a specific file containing all cryptographic information, usually referred to as `drm_file` in MP4Box documentation. The command line is as follows:
 

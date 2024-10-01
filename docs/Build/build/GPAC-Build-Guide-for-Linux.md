@@ -1,4 +1,6 @@
-_Preliminary notes: the following instructions will be based on Ubuntu and Debian. It should be easily applicable to other distributions, the only changes should be name of the packages to be installed, and the package manager used._
+!!! note
+    Preliminary notes: the following instructions will be based on Ubuntu and Debian. It should be easily applicable to other distributions, the only changes should be the name of the packages to be installed, and the package manager used.
+
 
 GPAC is a modular piece of software which depends on third-party libraries. During the build process it will try to detect and leverage the installed third-party libraries on your system. Here are the instructions to:
 
@@ -6,7 +8,7 @@ GPAC is a modular piece of software which depends on third-party libraries. Duri
  * build a minimal 'MP4Box' and 'gpac' (only contains GPAC core features like muxing and streaming),
  * build a complete GPAC by rebuilding all the dependencies manually.
 
-# General case for all builds
+# General case for all builds {: data-level="all" }
 
 ## Development tools
 
@@ -185,6 +187,7 @@ If you already have a gpac version installed, or if you have already built gpac 
 <GPAC_ROOT_DIR>/gpac_public$ make uninstall
 <GPAC_ROOT_DIR>/gpac_public$ make distclean
 ```
+
 **before** running `./configure`. 
 
 ### Install for developers
