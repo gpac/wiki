@@ -4,10 +4,10 @@
     display: none;
     margin-top: 10px;
     width: 90%;
-    max-width: 300px;
-    left: 70%;
-    top:270%;
-    opacity: 0.5;
+    max-width: 400px;
+    left: 100%;
+    top:145%;
+    opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     display: none;
