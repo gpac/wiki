@@ -1,3 +1,34 @@
+---
+tags:
+- pid
+- data
+- codec
+- filter
+- connection
+- multiplexer
+- session
+- compression
+- encode
+- dump
+- link
+- media
+- isobmff
+- property
+- box
+- h264
+- option
+- mp4
+- source
+- input
+- isomedia
+- output
+- mpeg
+- sink
+- encoder
+---
+
+
+
 # Overview {: data-level="all" }
 
 We discuss here how to use sockets in GPAC for generic IO.  

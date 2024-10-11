@@ -1,117 +1,111 @@
 .collapse-section {
-    margin-bottom: 1.5em;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: box-shadow 0.1s ease;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  margin-bottom: 1.5em;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.1s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .collapse-section:hover {
-    border-color: transparent;
-  
+  border-color: transparent;
 }
 
 .collapse-section h2 {
-    margin: 0;
-    padding: 1em;
-    background-color: #e7e6e6;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 1.2em;
-    color: #333;
-    transition: background-color 0.3s ease-in-out;
-    position: relative; 
+  margin: 0;
+  padding: 1em;
+  background: var(--collapse-bg-light);
+  cursor: pointer;
+  align-items: center;
+  font-size: 1.2em;
+  color: #333;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
 }
-
 
 .collapse-section h2 .headerlink {
-    position: absolute;
-    right: 10px; 
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-
 .collapse-section h2 .collapse-icon {
-    margin-right: 30px; 
-    margin-left: 15px;
+  margin-right: 30px;
+  margin-left: 15px;
 }
 
 .collapse-section h2:hover {
-    background-color: #dddcdc;
+  background: var(--collapse-hover-bg-light);
 }
 
 .collapse-section.active h2 {
-    color: #d94412;
+  color: #d94412;
 }
 
 [data-md-color-scheme="slate"] .collapse-section {
-    background-color:#333;
+  background-color: #333;
 }
 
-
-
 [data-md-color-scheme="slate"] .collapse-section h2 {
-    background-color: #333;
-    color: #e0e0e0;
+  background: var(--collapse-bg-dark);
+  color: #e0e0e0;
 }
 
 [data-md-color-scheme="slate"] .collapse-section h2:hover {
-    background-color: #3a3a3a;
+  background: var(--collapse-hover-bg-dark);
 }
 
 [data-md-color-scheme="slate"] .collapse-section.active h2 {
-    color: #ff6e42; 
+  color: #ff6e42;
 }
 
 [data-md-color-scheme="slate"] .collapse-section.active h2 {
-    color: #ff6e42;
+  color: #ff6e42;
 }
 
 .collapse-icon {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .collapse-section.active {
-    max-height: none; 
+  max-height: none;
 }
 
 .collapse-section.active .collapse-icon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .collapse-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.1s ease-in-out;
-    padding: 0 1em;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.1s ease-in-out;
+  padding: 0 1em;
 }
 
 .collapse-section.active .collapse-content {
-    max-height: 100%; 
-    padding: 1em;
+  max-height: 100%;
+  padding: 1em;
 }
 
 [data-md-color-scheme="slate"] .collapse-content {
-    background-color: #1E2229;
-    color: #e0e0e0;
+  background-color: #1e2229;
+  color: #e0e0e0;
 }
 
 .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .article-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .md-footer {
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-    z-index: 10;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
 }

@@ -1,9 +1,17 @@
 ---
 hide:
-  - toc
-  - navigation
-  - feedback
+- toc
+- navigation
+- feedback
+tags:
+- stream
+- data
+- media
 ---
+
+
+
+
 
 <p id="welcome">
     <img id="home-logo" src="/images/gpac-logo-full.svg" style="width: 128px; height: auto;" alt="GPAC logo"/>

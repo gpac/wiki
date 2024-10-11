@@ -1,3 +1,42 @@
+---
+tags:
+- heif
+- reframer
+- data
+- codec
+- filter
+- pipe
+- encrypt
+- session
+- pipeline
+- compression
+- connections
+- frame
+- raw
+- xml
+- stream
+- encode
+- dump
+- media
+- compositor
+- isobmff
+- property
+- h264
+- track
+- option
+- mp4
+- graph
+- source
+- chain
+- input
+- isomedia
+- output
+- sink
+- dash
+---
+
+
+
 # MP4Box vs gpac {: data-level="all" }
 
 Following the introduction of the filter architecture and the gpac application, you may have a hard time choosing between MP4Box and gpac.

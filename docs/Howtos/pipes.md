@@ -1,3 +1,34 @@
+---
+tags:
+- pid
+- data
+- codec
+- pipe
+- multiplexer
+- session
+- pipeline
+- compression
+- encode
+- dump
+- media
+- isobmff
+- property
+- box
+- h264
+- option
+- mp4
+- source
+- chain
+- input
+- isomedia
+- output
+- mpeg
+- sink
+- encoder
+---
+
+
+
 # Overview {: data-level="all" }
 
 We discuss here how to use pipes in GPAC.  

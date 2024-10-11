@@ -1,7 +1,27 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- source
+- transcode
+- chain
+- input
+- media
+- isomedia
+- data
+- isobmff
+- stream
+- output
+- codec
+- hevc
+- sink
+- dump
 ---
+
+
+
+
 
 `sink` refers to an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.
 

@@ -1,3 +1,22 @@
+---
+tags:
+- profile
+- mp4
+- mpd
+- media
+- isomedia
+- isobmff
+- data
+- stream
+- xml
+- mpeg
+- box
+- dash
+- track
+---
+
+
+
 MP4 files (and GPAC) have been using a 3-character-code to indicate the language of a track, following the standard [ISO 639-2:1998](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes). This way of language tagging has since then been superseded and the current practice is to use an IETF standard called [BCP-47](http://tools.ietf.org/html/bcp47) (Best Current Practice) a.k.a. RFC 5646.
 
 This new language tagging approach is a bit more complex. It uses mainly 2, 3 or 4 characters, possibly followed by extensions separated with "-" for instance for regional or script variations of a language. Examples of tags are: "en", "fr-FR" (French French) vs. "fr-CA" (Canadian French), ... see more examples [here](http://tools.ietf.org/html/rfc5646#appendix-A).

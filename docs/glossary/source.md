@@ -1,7 +1,24 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- source
+- input
+- chain
+- media
+- isomedia
+- isobmff
+- data
+- stream
+- output
+- filter
+- decoder
 ---
+
+
+
+
 
 
 `source` is a keyword in GPAC representing an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.

@@ -1,3 +1,16 @@
+---
+tags:
+- option
+- session
+- media
+- mpeg
+- filter
+- dash
+- latency
+---
+
+
+
 
 
 GPAC has extended support for MPEG-DASH and HLS content generation and playback. 

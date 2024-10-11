@@ -1,3 +1,22 @@
+---
+tags:
+- mp4
+- mpd
+- block
+- media
+- isomedia
+- segment
+- isobmff
+- data
+- stream
+- xml
+- mpeg
+- dash
+- chunk
+---
+
+
+
 _With [our work](https://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11076) on [Dynamic Adaptive Streaming over HTTP (DASH)](https://www.slideshare.net/christian.timmerer/http-streaming-of-mpeg-media), in the current version of GPAC (revision 2642 on SVN), we now have many options for interleaving, fragmenting and segmenting ... which may be confusing._
 
 It is time to clarify their usage in MP4Box. Some related aspects using MPEG-2 TS instead of MP4 can be seen in this [previous post](http://concolato.wp.imt.fr/2011/01/10/gpac-and-digital-radio-services/).

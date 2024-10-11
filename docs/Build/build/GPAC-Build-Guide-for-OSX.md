@@ -1,3 +1,12 @@
+---
+tags:
+- data
+- encode
+- encoder
+---
+
+
+
 _Since the OSX build is essentially the same as the Linux build, this doc will be succinct. Please refer to the [Linux build guide](GPAC-Build-Guide-for-Linux) for further details._ 
 
 
@@ -28,7 +37,7 @@ brew install cmake scons coreutils gettext yasm git wget pkg-config
 3. Install dependencies
 
 ```bash
-brew install freetype jpeg libpng openjpeg mad faad2 libogg libvorbis theora a52dec ffmpeg x264 aom xvid openssl@1.1 sdl2
+brew install freetype jpeg libpng openjpeg mad faad2 libogg libvorbis theora a52dec ffmpeg x264 aom xvid openssl@1.1 sdl2 libcaca kvazaar
 ```
 
 
@@ -84,9 +93,40 @@ total 42784
 
 _(contents and versions may differ depending on updates and deprecated features)_
 
+## Build Xcode additional dependencies
+
+Add these only if you explicitely need them or if you plan to use Xcode. The command-line build doesn't need these experimental tools.
+
+Make sure you have the required build tools:
+
+```bash
+brew install autoconf automake libtool
+```
+
+Install openvvc:
+
+```bash
+git clone https://github.com/OpenVVC/OpenVVC.git && cd OpenVVC && autoreconf -iv && ./configure && make
+make install
+```
+
+Install vvdec:
+
+```bash
+git clone https://github.com/fraunhoferhhi/vvdec.git && mkdir vvdec/build && cd vvdec/build && cmake .. && make -j && make install
+sudo cp -r ../install/* /usr/local/
+```
+
+Install vvenc:
+
+```bash
+git clone https://github.com/fraunhoferhhi/vvenc.git && mkdir vvenc/build && cd vvenc/build && cmake .. && make -j && make install
+sudo cp -r ../install/* /usr/local/
+```
+
 ## Build gpac
 
-```
+```bash
 cd ../gpac_public
 ./configure --extra-cflags=-Wno-deprecated
 make

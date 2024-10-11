@@ -1,48 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tocContent = document.getElementById("toc-content");
-    const navContent = document.getElementById("nav-content");
+    try {
+        const tocContent = document.getElementById("toc-content");
+        const navContent = document.getElementById("nav-content");
 
-    tocContent.style.display = "none";
-    navContent.style.display = "block";
+        tocContent.style.display = "none";
+        navContent.style.display = "block";
 
-    initializeGlossaryPage();
-    initializeCollapseSections();
-    handleTOCLinks();
-    handleInitialHash();
- 
-      
-
+        initializeGlossaryPage();
+        initializeCollapseSections();
+        handleTOCLinks();
+        handleInitialHash();
+        initializeHeaderTitle();
+    } catch (error) {
+        console.error("Error during DOMContentLoaded:", error);
+    }
 });
 
-
-
 function initializeGlossaryPage() {
-    if (window.location.pathname.includes("/glossary/")) {
-        document.body.classList.add("glossary-page");
+    try {
+        if (window.location.pathname.includes("/glossary/")) {
+            document.body.classList.add("glossary-page");
+        }
+    } catch (error) {
+        console.error("Error in initializeGlossaryPage:", error);
     }
 }
 
 function initializeCollapseSections() {
     try {
         const articleInner = document.querySelector('.md-content__inner');
-        if (!articleInner) throw new Error("Element with class 'md-content__inner' not found");
+        if (!articleInner) return;
 
-        const h1Element = articleInner.querySelector('h1');
-        const feedbackForm = articleInner.querySelector('.md-feedback');
+        const articleContentDiv = document.createElement('div');
+        articleContentDiv.classList.add('article-content');
 
-        if (h1Element && feedbackForm) {
-            createArticleContentDiv(h1Element, feedbackForm);
+        while (articleInner.firstChild) {
+            articleContentDiv.appendChild(articleInner.firstChild);
         }
 
-        const articleContent = document.querySelector('.article-content');
-        if (!articleContent) throw new Error("Element with class 'article-content' not found");
+        articleInner.appendChild(articleContentDiv);
 
-        const h2Elements = articleContent.querySelectorAll('h2');
-        if (!h2Elements.length) throw new Error("No <h2> elements found in 'article-content'");
-
+        const h2Elements = articleContentDiv.querySelectorAll('h2');
         h2Elements.forEach(createCollapseSection);
     } catch (error) {
-        console.error("Error initializing collapse sections:", error);
+        console.error("Error in initializeCollapseSections:", error);
     }
 }
 
@@ -62,7 +63,7 @@ function createArticleContentDiv(h1Element, feedbackForm) {
         articleContentDiv.appendChild(fragment);
         h1Element.insertAdjacentElement('afterend', articleContentDiv);
     } catch (error) {
-        console.error("Error creating article content div:", error);
+        console.error("Error in createArticleContentDiv:", error);
     }
 }
 
@@ -74,6 +75,7 @@ function createCollapseSection(h2) {
             content.push(sibling);
             sibling = sibling.nextElementSibling;
         }
+
         if (content.length === 0) {
             h2.classList.add('no-collapse');
             return;
@@ -104,7 +106,7 @@ function createCollapseSection(h2) {
 
         return collapseSection;
     } catch (error) {
-        console.error("Error creating collapse section:", error);
+        console.error("Error in createCollapseSection:", error);
     }
 }
 
@@ -117,7 +119,7 @@ function addCollapseIcon(h2) {
             h2.appendChild(collapseIcon);
         }
     } catch (error) {
-        console.error("Error adding collapse icon:", error);
+        console.error("Error in addCollapseIcon:", error);
     }
 }
 
@@ -125,7 +127,7 @@ function toggleSection(section) {
     try {
         section.classList.toggle('active');
     } catch (error) {
-        console.error("Error toggling section:", error);
+        console.error("Error in toggleSection:", error);
     }
 }
 
@@ -134,7 +136,7 @@ function handleTOCLinks() {
         const tocLinks = document.querySelectorAll('.md-nav__link');
         tocLinks.forEach(link => {
             if (link && link.hasAttribute('href')) {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     const hash = this.getAttribute('href');
                     if (hash.startsWith('#')) {
                         openCollapsedSection(hash);
@@ -143,7 +145,7 @@ function handleTOCLinks() {
             }
         });
     } catch (error) {
-        console.error("Error handling TOC links:", error);
+        console.error("Error in handleTOCLinks:", error);
     }
 }
 
@@ -153,7 +155,7 @@ function handleInitialHash() {
             openCollapsedSection(window.location.hash);
         }
     } catch (error) {
-        console.error("Error handling initial hash:", error);
+        console.error("Error in handleInitialHash:", error);
     }
 }
 
@@ -169,7 +171,7 @@ function openCollapsedSection(hash) {
             }
         }
     } catch (error) {
-        console.error("Error opening collapsed section:", error);
+        console.error("Error in openCollapsedSection:", error);
     }
 }
 
@@ -181,6 +183,38 @@ function handleAllSection(section, h2) {
             section.removeAttribute('data-was-active');
         }
     } catch (error) {
-        console.error("Error handling all section:", error);
+        console.error("Error in handleAllSection:", error);
+    }
+}
+
+function initializeHeaderTitle() {
+    try {
+        const header = document.querySelector('.md-header');
+        const siteNameTopic = document.querySelector('.md-header__topic--site-name');
+        const pageTitleTopic = document.querySelector('.md-header__topic--page-title');
+
+        if (!header || !siteNameTopic || !pageTitleTopic) {
+            console.error('Required elements not found for header title initialization');
+            return;
+        }
+
+        const showHeaderTitleThreshold = 100;
+        let isTransitioning = false;
+
+        window.addEventListener('scroll', () => {
+            if (isTransitioning) return;
+
+            if (window.scrollY > showHeaderTitleThreshold && !header.classList.contains('show-page-title')) {
+                isTransitioning = true;
+                header.classList.add('show-page-title');
+                setTimeout(() => { isTransitioning = false; }, 100);
+            } else if (window.scrollY <= showHeaderTitleThreshold && header.classList.contains('show-page-title')) {
+                isTransitioning = true;
+                header.classList.remove('show-page-title');
+                setTimeout(() => { isTransitioning = false; }, 100);
+            }
+        });
+    } catch (error) {
+        console.error("Error in initializeHeaderTitle:", error);
     }
 }

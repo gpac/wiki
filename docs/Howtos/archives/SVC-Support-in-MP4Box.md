@@ -1,3 +1,26 @@
+---
+tags:
+- option
+- mp4
+- source
+- pid
+- compression
+- layer
+- binary
+- data
+- raw
+- codec
+- mpeg
+- stream
+- bitstream
+- hevc
+- decoder
+- h264
+- track
+---
+
+
+
 GPAC supports packaging and playback of Scalable Video Coding (SVC) and layered-HEVC (L-HEVC).
 
 

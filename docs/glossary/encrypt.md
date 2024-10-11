@@ -1,7 +1,23 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- encrypt
+- source
+- input
+- isomedia
+- isobmff
+- decoder
+- output
+- xml
+- sink
+- dump
 ---
+
+
+
+
 
 `encrypt` is a function that allows you to encrypt multimedia files using specified encryption keys.
 

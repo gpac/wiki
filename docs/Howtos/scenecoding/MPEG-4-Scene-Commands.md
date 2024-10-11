@@ -1,3 +1,12 @@
+---
+tags:
+- scene
+- data
+- xml
+---
+
+
+
 # Foreword {:data-level="all"}
 
 We will now review the syntax of MPEG-4 scene commands in both BT and XMT-A formats. Please remember that BT and XMT languages are case sensitive.

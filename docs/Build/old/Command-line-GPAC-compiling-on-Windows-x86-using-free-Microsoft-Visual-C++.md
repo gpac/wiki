@@ -1,3 +1,15 @@
+---
+tags:
+- source
+- chain
+- data
+- output
+- sink
+- dump
+---
+
+
+
 # Overview {: data-level="all"}
 
 Windows users often ask about how to compile GPAC and generate an installer. The main problem on platforms, like Windows, that don't rely on a modern package system is to get your dependencies with the correct version. Fortunately, we release a package containing most of the extra-libs we use.

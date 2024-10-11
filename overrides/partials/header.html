@@ -21,18 +21,19 @@
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
-        <div class="md-header__topic">
+        <div class="md-header__topic md-header__topic--site-name">
           <span class="md-ellipsis">
-            {{ config.site_name }}
+            GPAC wiki
           </span>
         </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-         
-          <span class="md-ellipsis">
+        <div class="md-header__topic md-header__topic--page-title" data-md-component="header-topic">
+          <span class="md-ellipsis" id="page-title">
             {% if page.meta and page.meta.title %}
               {{ page.meta.title }}
+            {% elif page.title and not page.is_homepage %}
+              {{ page.title | striptags }}
             {% else %}
-              {{ page.title }}
+              {{ config.site_name }}
             {% endif %}
           </span>
         </div>
@@ -81,14 +82,14 @@
         </div>
         <div class="md-header__settings-separator"></div>
         <div class="md-header__settings-item">
-          <label for="level-switch" class="switch-label">Expert Mode</label>
+          <label for="level-switch" class="switch-label" aria-label="Levels"></label>
           <label class="switch">
             <input type="checkbox" id="level-switch">
             <span class="slider round"></span>
           </label>
         </div>
         <div class="md-header__settings-item">
-          <label for="collapse-all-switch" class="switch-label">Collapse </label>
+          <label for="collapse-all-switch" class="switch-label" aria-label="Collapse " >Collapse </label>
           <label class="switch">
             <input type="checkbox" id="collapse-all-switch">
             <span class="slider round"></span>

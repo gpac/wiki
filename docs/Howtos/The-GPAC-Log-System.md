@@ -1,3 +1,29 @@
+---
+tags:
+- pid
+- data
+- codec
+- session
+- stream
+- xml
+- hevc
+- dump
+- scene
+- media
+- signal
+- compositor
+- libgpac
+- option
+- graph
+- source
+- input
+- output
+- mpeg
+- sink
+---
+
+
+
 # Introduction {:data-level="all"}
 
 A log is a way of keeping record of what's happening when executing a software. The GPAC framework has log capabilities to analyze what is going on when running MP4Box, gpac or other libgpac based applications.

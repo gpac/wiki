@@ -28,6 +28,7 @@ extra_css:
   - stylesheets/feedback.css
   - stylesheets/levels.css
   - stylesheets/settings.css
+  - stylesheets/tags.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 theme:
   name: material
@@ -59,7 +60,6 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-    - navigation.expand
     - navigation.path
     - navigation.tabs
     - navigation.tracking
@@ -71,11 +71,17 @@ theme:
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
-  - tags
+  - tags:
+     tags_file: tags.md
+    
 
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
+- pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
 - admonition
 - attr_list
 - toc:
@@ -83,6 +89,8 @@ markdown_extensions:
 - nl2br
 - sane_lists      
 - md_in_html
+ 
+- pymdownx.snippets
 - pymdownx.details
 - pymdownx.superfences:
       custom_fences:
@@ -112,27 +120,29 @@ extra:
             Thanks for your feedback!
 nav:
   - Howtos:
+     
     - Howtos/howtos.md
-    - Filters One-Liners: Howtos/filters-oneliners.md
-    - File Inspection: Howtos/inspecting.md
-    - Using RAW formats: Howtos/raw-formats.md
-    - Encoding: Howtos/encoding.md
-    - Using data pipes: Howtos/pipes.md
-    - Using sockets: Howtos/sockets.md
-    - MP4Box vs gpac: Howtos/gpac-mp4box.md
-    - MP4Box and filters: Howtos/mp4box-filters.md
-    - Custom ISOBMFF files: Howtos/custom-boxes.md
-    - Logging in GPAC: Howtos/The-GPAC-Log-System.md
-    - Audio-Video Mixer: Howtos/avmix_tuto.md
-    - Dynamic Rate Control: Howtos/dynamic_rc.md
-    - In-place Editing: Howtos/mp4box-inplace.md
-    - Working with Network Captures: Howtos/network-capture.md
-    - GPAC and NodeJS: Howtos/nodejs.md
-    - Playlists/Splicing/Ad Insertion: Howtos/playlist.md
-    - GPAC and Python: Howtos/python.md
-    - Simulating Real-Time sources: Howtos/realtime.md
-    - ROUTE & ATSC3.0 services: Howtos/route.md
-    - SCTE-35, id3 markers, dynamic metadata: Howtos/scte35-markers.md
+    - Command Operations:
+      - Filters One-Liners: Howtos/filters-oneliners.md
+      - File Inspection: Howtos/inspecting.md
+      - Using RAW formats: Howtos/raw-formats.md
+      - Encoding: Howtos/encoding.md
+      - Using data pipes: Howtos/pipes.md
+      - Using sockets: Howtos/sockets.md
+      - MP4Box vs gpac: Howtos/gpac-mp4box.md
+      - MP4Box and filters: Howtos/mp4box-filters.md
+      - Custom ISOBMFF files: Howtos/custom-boxes.md
+      - Logging in GPAC: Howtos/The-GPAC-Log-System.md
+      - Audio-Video Mixer: Howtos/avmix_tuto.md
+      - Dynamic Rate Control: Howtos/dynamic_rc.md
+      - In-place Editing: Howtos/mp4box-inplace.md
+      - Working with Network Captures: Howtos/network-capture.md
+      - GPAC and NodeJS: Howtos/nodejs.md
+      - Playlists/Splicing/Ad Insertion: Howtos/playlist.md
+      - GPAC and Python: Howtos/python.md
+      - Simulating Real-Time sources: Howtos/realtime.md
+      - ROUTE & ATSC3.0 services: Howtos/route.md
+      - SCTE-35, id3 markers, dynamic metadata: Howtos/scte35-markers.md
     - DASH & HLS:
       - Introduction: Howtos/dash/DASH-intro.md
       - MPEG-DASH basics: Howtos/dash/DASH-basics.md

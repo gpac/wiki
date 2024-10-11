@@ -1,7 +1,25 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- media
+- isomedia
+- data
+- isobmff
+- stream
+- output
+- codec
+- hevc
+- decoding
+- decoder
+- sink
+- dump
 ---
+
+
+
+
 
 `output` refers to the destination file or format where the result of encoding, decoding, or transcoding processes will be stored.
 

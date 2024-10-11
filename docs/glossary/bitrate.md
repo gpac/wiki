@@ -1,7 +1,24 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- transcode
+- input
+- isomedia
+- bitrate
+- data
+- isobmff
+- output
+- codec
+- hevc
+- sink
+- dump
 ---
+
+
+
+
 
 `bitrate` refers to the amount of data processed per unit of time during encoding or streaming. It directly impacts the quality and size of multimedia files.
 

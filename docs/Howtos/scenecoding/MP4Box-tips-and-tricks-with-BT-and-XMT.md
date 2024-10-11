@@ -1,3 +1,19 @@
+---
+tags:
+- scene
+- media
+- binary
+- data
+- stream
+- xml
+- bitstream
+- sequence
+- track
+- macro
+---
+
+
+
 # Minimal Stream Descriptors for MP4Box (BT and XMT) {:data-level="all"}
 
 When encoding a BIFS or OD ES\_Descriptor, MP4Box must find at least:

@@ -1,3 +1,32 @@
+---
+tags:
+- pid
+- heif
+- data
+- overlay
+- filter
+- buffer
+- sample
+- packet
+- frame
+- raw
+- stream
+- dump
+- scene
+- media
+- compositor
+- rebuffer
+- track
+- source
+- packets
+- input
+- output
+- sink
+- dash
+---
+
+
+
 # Overview {:data-level="all"}
 
 We discuss here how to use the [JavaScript Filter](jsf) to generate 2D vector graphics in GPAC.  

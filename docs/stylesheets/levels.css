@@ -1,5 +1,5 @@
-.hidden-level { 
-  display: none; 
+.hidden-level {
+  display: none;
 }
 
 .level-tag {
@@ -10,20 +10,24 @@
   margin-right: 15px;
 }
 
-.level-beginner { background-color: #e6f3e6; color: #2e7d32; }
-.level-expert { background-color: #ffebee; color: #c62828; }
+.level-beginner {
+  background-color: #e6f3e6;
+  color: #2e7d32;
+}
+.level-expert {
+  background-color: #ffebee;
+  color: #c62828;
+}
 
 [data-md-color-scheme="slate"] .level-beginner {
   font-weight: 600;
-  color: #86efac;  
-  background-color: #14532d 
+  color: #86efac;
+  background-color: #14532d;
 }
 
 .switch-container {
   display: flex;
   align-items: center;
- 
-
 }
 
 .switch {
@@ -47,7 +51,7 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -58,7 +62,7 @@
   left: 4px;
   bottom: 0;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -84,17 +88,13 @@ input:checked + .slider:before {
 }
 
 .md-nav__item--nested .toc-toggle {
-background: none;
-border: none;
-cursor: pointer;
-padding: 0;
-margin-right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 5px;
 }
 
 .md-nav__item--nested.toc-collapsed > .md-nav__list {
-display: none;
+  display: none;
 }
-
-/* .md-nav__item--nested > .md-nav__link {
-display: inline-block;
-} */

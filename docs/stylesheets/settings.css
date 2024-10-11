@@ -1,7 +1,5 @@
 .md-header__settings {
   position: relative;
-  margin-left: 1rem;
-  
 }
 
 .md-header__settings-button {
@@ -10,6 +8,7 @@
   color: var(--md-primary-bg-color);
   cursor: pointer;
   font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
 .md-header__settings-dropdown {
@@ -19,25 +18,29 @@
   font-weight: 600;
   background-color: var(--md-primary-fg-color);
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   padding: 0rem 1.5rem;
   z-index: 1000;
 }
 
-.md-header__settings-title{
+.md-header__settings-title {
   text-align: center;
-
 }
 .md-header__settings-separator {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--md-primary-bg-color, #ffffff) 50%, transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--md-primary-bg-color, #ffffff) 50%,
+    transparent
+  );
   margin: 0.5rem 0 1rem;
   opacity: 0.2;
   position: relative;
 }
 
 .md-header__settings-separator::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: 50%;
@@ -56,7 +59,6 @@
   transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
-
 .md-header__settings-item:hover {
   opacity: 0.7;
   border-radius: 4px;
@@ -66,9 +68,8 @@
   transition: background-color 0.3s ease;
 }
 
-
 [data-md-color-scheme="slate"] .md-header__settings-item:hover {
-  background-color: #3A3A3A;
+  background-color: #3a3a3a;
   cursor: pointer;
 }
 .switch {
@@ -92,7 +93,7 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 20px;
 }
 
@@ -104,7 +105,7 @@
   left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
@@ -125,23 +126,19 @@ input:checked + .slider:before {
 }
 @media screen and (max-width: 1024px) {
   .md-header__settings-dropdown {
-  
     padding: 0rem 0.5rem;
     width: 211%;
     left: -120%;
-    top:110%;
+    top: 110%;
     font-size: 0.7rem;
-    
   }
   .md-header__settings-button {
-
-  margin-right: 2rem;
+    margin-right: 2rem;
   }
   .md-header__settings-item {
-    margin:0rem;
- 
+    margin: 0rem;
   }
   .md-header__settings-item {
     margin-bottom: 1.5rem;
-}
+  }
 }

@@ -1,3 +1,14 @@
+---
+tags:
+- source
+- input
+- binary
+- data
+- property
+---
+
+
+
 !!! note
     To build on Windows, you'll need: 
     * [Git](https://git-scm.com/download/win)

@@ -1,7 +1,24 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- transcode
+- input
+- isomedia
+- bitrate
+- isobmff
+- output
+- codec
+- hevc
+- decoding
+- sink
+- dump
 ---
+
+
+
+
 
 `transcode` is the process of converting a multimedia file from one format to another by decoding and re-encoding the file.
 

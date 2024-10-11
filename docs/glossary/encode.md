@@ -1,8 +1,25 @@
 ---
-hide:
 
-  - toc
+
+tags:
+- mp4
+- source
+- transcode
+- input
+- isomedia
+- bitrate
+- isobmff
+- encode
+- output
+- codec
+- hevc
+- sink
+- dump
 ---
+
+
+
+
 
 `encode` is a function that allows you to encode multimedia files into various formats using specified codecs.
 
@@ -39,7 +56,7 @@ encode("input.mp4", "output.mp4", "libx264")
 - **output_file**: Path where the encoded file will be saved.
 - **codec**: Codec to be used for encoding (e.g., libx264 for H.264 encoding).
   
-## See Also:
+## See Also 
 - [Codec](codec.md)
 - [Bitrate](bitrate.md)
 - [Transcode](transcode.md) 

@@ -1,3 +1,40 @@
+---
+tags:
+- mpd
+- ffmpeg
+- data
+- codec
+- multiplexer
+- sample
+- compression
+- frame
+- raw
+- stream
+- encode
+- bitstream
+- sequence
+- block
+- media
+- segment
+- isobmff
+- group
+- h264
+- chunk
+- track
+- profile
+- mp4
+- source
+- input
+- isomedia
+- binary
+- decoding
+- mpeg
+- dash
+- encoder
+---
+
+
+
 Telecom Paris has been generating a set of DASH sequences, and is making them available for DASH conformance testing. 
 
 These sequences are distributed under the terms of the [Creative Common by-nc-nd Licence](http://creativecommons.org/licenses/by-nc-nd/3.0).

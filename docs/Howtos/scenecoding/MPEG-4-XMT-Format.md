@@ -1,3 +1,17 @@
+---
+tags:
+- mp4
+- media
+- isomedia
+- data
+- encode
+- isobmff
+- xml
+- stream
+---
+
+
+
 # XMT Format {:data-level="all"}
 
 XMT is the official textural description of MPEG-4 scenes. It is part of ISO/IEC 14496-11, and is quite similar to the X3D XML language. 

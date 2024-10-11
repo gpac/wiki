@@ -1,3 +1,19 @@
+---
+tags:
+- profile
+- mp4
+- sample
+- ttml
+- isomedia
+- isobmff
+- stream
+- xml
+- dash
+- track
+---
+
+
+
 EBU released two specifications recently:
 
 *   [TECH 3380](https://tech.ebu.ch/docs/tech/tech3380.pdf) v1.0: EBU-TT-D SUBTITLING DISTRIBUTION FORMAT. This document aims to define a distribution subtitling format base on TTML. This is both a restriction (i.e. a profile) and an extension of TTML. The extensions are very limited. The restrictions allow to mitigate most of the TTML criticisms (especially an ability to express things in several ways, which led to a difficult generic parsing process).

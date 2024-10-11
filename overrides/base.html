@@ -44,7 +44,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-    <link rel="stylesheet" href="{{ 'assets/stylesheets/main.6543a935.min.css' | url }}">
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/main.35f28582.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
@@ -197,10 +197,49 @@
                       <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
                         {% include "partials/toc.html" %}
                       </ul>
+                   
                     </nav>
+                 
                   
                   </div>
                 </div>
+                {% if config.extra.analytics %}
+                {% set feedback = config.extra.analytics.feedback %}
+                {% if feedback %}
+                  <div class="md-nav__feedback md-nav__feedback--desktop">
+                    <p class="feedback-title">{{ feedback.title }}</p>
+                    <div class="md-feedback__inner">
+                      <div class="md-feedback__list">
+                        {% for rating in feedback.ratings %}
+                          <button class="md-feedback__icon md-icon" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
+                            {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                          </button>
+                        {% endfor %}
+                        <a href="https://github.com/gpac/wiki/issues" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page" target="_blank">
+                          {% include ".icons/material/plus-circle.svg" %}
+                        </a>
+                      </div>
+                      <div class="md-feedback__note" hidden></div>
+                    </div>
+                  </div>
+                  <div class="md-feedback md-feedback--mobile">
+                    <p>{{ feedback.title }}</p>
+                    <div class="md-feedback__inner">
+                      <div class="md-feedback__list">
+                        {% for rating in feedback.ratings %}
+                          <button class="md-feedback__icon md-icon" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
+                            {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                          </button>
+                        {% endfor %}
+                        <a href="https://github.com/gpac/wiki/issues" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page" target="_blank">
+                          {% include ".icons/material/plus-circle.svg" %}
+                        </a>
+                      </div>
+                      <div class="md-feedback__note" hidden></div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
               </div>
             {% endif %}
           {% endblock %}
@@ -215,6 +254,27 @@
           {% endblock %}
           {% include "partials/javascripts/content.html" %}
         </div>
+        {% if config.extra.analytics %}
+          {% set feedback = config.extra.analytics.feedback %}
+          {% if feedback %}
+            <div class="md-feedback md-feedback--mobile">
+              <p>{{ feedback.title }}</p>
+              <div class="md-feedback__inner">
+                <div class="md-feedback__list">
+                  {% for rating in feedback.ratings %}
+                    <button class="md-feedback__icon md-icon" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
+                      {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                    </button>
+                  {% endfor %}
+                  <a href="https://github.com/gpac/wiki/issues" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page" target="_blank">
+                    {% include ".icons/material/plus-circle.svg" %}
+                  </a>
+                </div>
+                <div class="md-feedback__note" hidden></div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
         
         
         
@@ -248,7 +308,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.b8dbb3d2.min.js" | url
+        "search": "assets/javascripts/workers/search.07f07601.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set mike = config.plugins.get("mike") -%}
@@ -279,7 +339,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-    <script src="{{ 'assets/javascripts/bundle.fe8b6f2b.min.js' | url }}"></script>
+    <script src="{{ 'assets/javascripts/bundle.56dfad97.min.js' | url }}"></script>
    
       <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
       {% for script in config.extra_javascript %}

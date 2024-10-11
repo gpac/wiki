@@ -10,6 +10,8 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
 			.then(data => {
 				const allDefinitions = data.definitions;
 				const lexique = Object.keys(allDefinitions);
+
+				
 				findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
 					cachedKeywords[currentPageMdPath] = filteredKeywords;
 					setCache('keywordsCache', cachedKeywords);
@@ -25,33 +27,28 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
 	}
 }
 
-function fetchDefinitions(keyword, cachedDefinitions, event) {
-	try {
-		fetch('/data/keywords.json')
-			.then(response => {
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				return response.json();
-			})
-			.then(data => {
-				const definition = data.definitions[keyword];
-				if (definition) {
-					cachedDefinitions[keyword] = definition;
-					setCache('definitionsCache', cachedDefinitions);
-					openModal(keyword, definition, event);
-				} else {
-					console.error('Definition not found for keyword:', keyword);
-					openModal(keyword, { description: 'Definition not found' }, event);
-				}
-			})
-			.catch(error => {
-				console.error('Error fetching definition:', error);
-			});
-	} catch (error) {
-		console.error('Unexpected error in fetchDefinitions:', error);
-	}
+function fetchDefinitions(keyword, cachedDefinitions) {
+    return new Promise((resolve, reject) => {
+        fetch('/data/keywords.json')
+            .then(response => response.json())
+            .then(data => {
+                const definition = data.definitions[keyword];
+                if (definition) {
+                    cachedDefinitions[keyword] = definition;
+                    setCache('definitionsCache', cachedDefinitions);
+                    resolve(definition);
+                } else {
+                    console.error('Definition not found for keyword:', keyword);
+                    resolve({ description: 'Definition not found' });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching definition:', error);
+                reject(error);
+            });
+    });
 }
+
 
 function fetchMarkdownContent(currentPageMdPath) {
 	try {

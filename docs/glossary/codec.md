@@ -1,7 +1,28 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- mp4
+- graph
+- source
+- transcode
+- input
+- media
+- isomedia
+- bitrate
+- data
+- encode
+- isobmff
+- output
+- codec
+- hevc
+- sink
+- dump
 ---
+
+
+
+
 `codec` refers to a compression algorithm used to encode and decode multimedia data (such as video, audio, etc.) into different formats for transmission and storage.
 
 ## Reference

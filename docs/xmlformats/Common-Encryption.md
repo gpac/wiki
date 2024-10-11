@@ -1,3 +1,36 @@
+---
+tags:
+- data
+- tile
+- codec
+- isma
+- encrypt
+- sample
+- compression
+- stream
+- subsample
+- xml
+- block
+- media
+- segment
+- isobmff
+- property
+- group
+- box
+- h264
+- chunk
+- track
+- mp4
+- source
+- packets
+- input
+- isomedia
+- binary
+- dash
+---
+
+
+
 _MP4Box is able to encrypt and decrypt ISOBMFF files according to CENC specification (ISO/IEC 23001-7:2016), including latest pattern encryption tools introduced in the standard._ 
 
 _In order to encrypt or decrypt an MP4 file, MP4Box will need a side file containing all information about crypto/DRM system and the information needed to encrypt a given track, hereafter referred as `drm_file`. Sample files are available in [GPAC's test suite](https://github.com/gpac/testsuite/tree/filters/media/encryption)._ 

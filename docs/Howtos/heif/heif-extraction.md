@@ -1,3 +1,30 @@
+---
+tags:
+- transcode
+- pid
+- heif
+- data
+- codec
+- compression
+- frame
+- stream
+- hevc
+- dump
+- media
+- decoder
+- box
+- track
+- option
+- mp4
+- source
+- input
+- output
+- mpeg
+- encoder
+---
+
+
+
 # Overview {:data-level="all"}
 
 We discuss here how to extract items from HEIF file collections. For track extraction, use the regular tools from GPAC.
