@@ -327,7 +327,7 @@ gpac -i source.mp4 dasher:gencues cecrypt:cfile=roll_seg.xml -o live.mpd
 This will allow the encrypter to locate dash boundaries and roll keys at segment boundaries.  
 Example
 ```
-gpac -i s1.mp4 -i s2.mp4:#CryptInfo=clear:#Period=3 -i s3.mp4:#Period=3 dasher:gencues cecrypt:cfile=roll_period.xml -o live.mpd
+gpac -i s1.mp4 -i s2.mp4:#CryptInfo=clear:#Period=2 -i s3.mp4:#Period=3 dasher:gencues cecrypt:cfile=roll_period.xml -o live.mpd
 ```  
 If the DRM file uses `keyRoll=period`, this will generate:  
 
