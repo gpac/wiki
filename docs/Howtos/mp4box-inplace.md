@@ -47,6 +47,10 @@ MP4Box -ab TEST -itags artist=GPAC movie.mp4
 Tests for in-place storage are available [here](https://github.com/gpac/testsuite/blob/master/scripts/mp4box-inplace.sh).
 
 
+__Warning: Use this option with caution: since this process moves bytes inside the file, any interruption of the program will in progress will likely result in a corrupted file. .__
+
+
+
 # Flat storage files 
 
 In files stored with flat storage (`-flat` in MP4Box), the media data is placed before the structured data (`moov` and `meta`  box) and usually does not need any shifting. There is one exception to this: when adding brands, since they must be located first in the file, it is necessary to shift the media data. There is currently no way to reserve space for future brand edition in MP4Box, and any brand add operation will result in media data shift. 
