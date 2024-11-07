@@ -1,4 +1,19 @@
-# Overview
+---
+tags:
+- option
+- mp4
+- media
+- isomedia
+- isobmff
+- data
+- stream
+- output
+- box
+---
+
+
+
+# Overview {: data-level="all" }
 
 As of GPAC 2.0, MP4Box supports in-place editing of MP4 files.
 
@@ -32,14 +47,14 @@ MP4Box -ab TEST -itags artist=GPAC movie.mp4
 Tests for in-place storage are available [here](https://github.com/gpac/testsuite/blob/master/scripts/mp4box-inplace.sh).
 
 
-# Flat storage files
+# Flat storage files 
 
 In files stored with flat storage (`-flat` in MP4Box), the media data is placed before the structured data (`moov` and `meta`  box) and usually does not need any shifting. There is one exception to this: when adding brands, since they must be located first in the file, it is necessary to shift the media data. There is currently no way to reserve space for future brand edition in MP4Box, and any brand add operation will result in media data shift. 
 
 We therefore recommend using interleaved storage (`moov`/ `meta`  first).
 
 
-# Interleaved files
+# Interleaved files 
 
 In files stored with interleaved storage (`-inter` in MP4Box), the media data is placed after the structured data (`moov` and `meta`  box) and may need shifting whenever the size of {ftyp, moov, meta} boxes changes. In order to avoid shifting when this size decreases, a `free` box is inserted before the media data.
 When this size increases, the media data is shifted if writing the structured data will overwrite the start of the media data. Otherwise, a `free` box is written between the `moov+meta` boxes and  the media data.
@@ -57,6 +72,7 @@ You can use `-moovpad` option in your in-place edit operations, to force moving 
 ```
 MP4Box -ab GPAC movie.mp4 -moovpad 5000
 ```
+
 This will perform in-place edit if the previously created file, but shift the media data to have 5000 bytes reserved for future edition; if more than 5000 free bytes are available, the media data is not shifted (i.e. `moovpad` is ignored in this case).
 
 

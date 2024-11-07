@@ -16,13 +16,27 @@ In stand-alone rendering (no associated video), the filter will use:
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="script">__script__</a> (str, default: _$GSHARE/scripts/webvtt-renderer.js_): location of WebVTT SVG JS renderer  
+</div>  
+<div markdown class="option">  
 <a id="font">__font__</a> (str, default: _SANS_, updatable): font  
+</div>  
+<div markdown class="option">  
 <a id="fontSize">__fontSize__</a> (flt, default: _20_, updatable): font size  
+</div>  
+<div markdown class="option">  
 <a id="color">__color__</a> (str, default: _white_, updatable): text color  
+</div>  
+<div markdown class="option">  
 <a id="lineSpacing">__lineSpacing__</a> (flt, default: _1.0_, updatable): line spacing as scaling factor to font size  
+</div>  
+<div markdown class="option">  
 <a id="txtw">__txtw__</a> (uint, default: _400_): default width in standalone rendering  
+</div>  
+<div markdown class="option">  
 <a id="txth">__txth__</a> (uint, default: _200_): default height in standalone rendering  
+</div>  
   

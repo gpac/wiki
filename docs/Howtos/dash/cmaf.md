@@ -1,3 +1,31 @@
+---
+tags:
+- mpd
+- data
+- codec
+- isma
+- encrypt
+- sample
+- manifest
+- compression
+- stream
+- xml
+- media
+- isobmff
+- box
+- h264
+- track
+- option
+- profile
+- mp4
+- source
+- input
+- isomedia
+- dash
+---
+
+
+
 # CMAF Generation
 
 GPAC can be used to generate DASH or HLS following the CMAF specification.

@@ -1,3 +1,21 @@
+---
+tags:
+- scene
+- source
+- input
+- media
+- data
+- stream
+- raw
+- output
+- frame
+- compositor
+- sink
+- dump
+---
+
+
+
 ## Objective
 
 This example shows a basic GPAC player application. It takes an URL as input and outputs it in a terminal.  

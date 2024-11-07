@@ -1,12 +1,24 @@
-The Android build is a bit complicated. The method described here is the one used for the official Android builds. It is fairly rigid, with some hard-coded paths and versions. It should not be too hard to adapt it to one's own set up, but there is no guarantee that it will work as is on (for example) more recent versions of the ndk/sdk. 
+---
+tags:
+- input
+- data
+- source
+- link
+---
 
-It was tested on Ubuntu 14 to 18. 
 
-The process has three main steps: set up the build environment, cross-compile the dependencies, build the GPAC apk. 
 
-In the following, we'll call the main working directory `<GPAC_ROOT_DIR>`.
+!!! note
+    The Android build is a bit complicated. The method described here is the one used for the official Android builds. It is fairly rigid, with some hard-coded paths and versions. It should not be too hard to adapt it to one's own setup, but there is no guarantee that it will work as is on (for example) more recent versions of the ndk/sdk. 
 
-# Set up the build toolchain
+    It was tested on Ubuntu 14 to 18. 
+
+    The process has three main steps: set up the build environment, cross-compile the dependencies, build the GPAC apk.
+
+    In the following, we'll call the main working directory `<GPAC_ROOT_DIR>`.
+
+
+# Set up the build toolchain {: data-level="all"}
 
 ## JVM and tools
 

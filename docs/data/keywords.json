@@ -1,0 +1,613 @@
+{
+    "definitions": {
+        "SOURCE": {
+            "description": "In GPAC, a source is an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.",
+            "level": "beginner",
+            "aliases": [
+                "INPUT"
+            ],
+            "category": ["Media Processing "]
+        },
+        "SINK": {
+            "description": "A sink in GPAC is an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.",
+            "level": "beginner",
+            "aliases": [
+                "OUTPUT"
+            ],
+            "category": "Media Processing "
+        },
+        "INPUT": {
+            "description": "An input refers to any data fed into the GPAC processing system, including video, audio, and other multimedia streams.",
+            "level": "beginner",
+            "aliases": [
+                "SOURCE"
+            ],
+            "category": "Media Processing"
+        },
+        "OUTPUT": {
+            "description": "Output in GPAC refers to the processed data that is generated after media processing, ready for storage or display.",
+            "level": "beginner",
+            "aliases": [
+                "SINK"
+            ],
+            "category": "Media Processing "
+        },
+        "PID": {
+            "description": "PID stands for Packet Identifier. It is used in GPAC to uniquely identify different streams within a media file, such as audio, video, and subtitles.",
+            "level": "expert",
+            "aliases": [
+                "PACKET IDENTIFIER"
+            ],
+            "category": "Data Structures and Formats "
+        },
+        "PACKET": {
+            "description": "Packets is unit of data transmitted over a network or stored in a media file. In GPAC, packets are processed to extract media streams.",
+            "level": "beginner",
+            "category": "Data Structures and Formats "
+        },
+        "DATA": {
+            "description": "Data in GPAC refers to the raw media content, including video frames, audio samples, and subtitles, that is processed and manipulated.",
+            "level": "beginner",
+            "aliases": [
+                "MEDIA"
+            ],
+            "category": "Data Structures and Formats "
+        },
+        "STREAM": {
+            "description": "A stream is a sequence of media data (audio, video, etc.) that is processed by GPAC. Streams are identified by PIDs and can be multiplexed or demultiplexed.",
+            "level": "beginner",
+            "aliases": [
+                "MEDIA",
+                "TRACK"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "MEDIA": {
+            "description": "Media refers to various types of content such as video, audio, and images. GPAC processes different media types to enable playback, editing, and streaming.",
+            "level": "beginner",
+            "aliases": [
+                "DATA",
+                "STREAM"
+            ],
+            "category": "Media Processing"
+        },
+        "FRAME": {
+            "description": "A frame is a single image in a sequence of images that make up a video. GPAC processes frames during video encoding and decoding.",
+            "level": "beginner",
+            "aliases": [
+                "IMAGE"
+            ],
+            "category": "Data Structures and Formats  "
+        },
+        "PROPERTY": {
+            "description": "Properties in GPAC refer to attributes of media streams or filters, such as resolution, bitrate, and codec type, that affect processing.",
+            "level": "expert",
+            "aliases": [
+                "ATTRIBUTE"
+            ],
+            "category": "GPAC Core "
+        },
+        "CODEC": {
+            "description": "A codec is a software or hardware tool that encodes or decodes media data. GPAC supports various codecs for compressing and decompressing media streams.",
+            "level": "beginner",
+            "aliases": [
+                "AVC",
+                "HEVC",
+                "AAC",
+                "MP3",
+                "AAC",
+                "VORBIS"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "SESSION": {
+            "description": "A session in GPAC is a context for managing the lifecycle of media processing tasks, including loading, configuring, and executing filters.",
+            "level": "expert",
+            "category": "GPAC Core "
+        },
+        "LINK": {
+            "description": "Links in GPAC connect different filters and processing elements, forming a processing chain or graph. They facilitate the flow of media data.",
+            "level": "beginner",
+            "aliases": [
+                "CONNECTION"
+            ],
+            "category": "GPAC Core "
+        },
+        "REMUX": {
+            "description": "Remuxing is the process of taking encoded media streams from one container format and repackaging them into another container format without altering the actual media data.",
+            "level": "beginner",
+            "aliases": [
+                "REMUXING"
+            ],
+            "category": "Media Processing "
+        },
+        "CHAIN": {
+            "description": "A chain in GPAC is a sequence of connected filters that process media data in a specific order. Chains define the processing pipeline.",
+            "level": "beginner",
+            "aliases": [
+                "PIPELINE","PIPE"
+            ],
+            "category": "GPAC Core"
+        },
+        "GRAPH": {
+            "description": "A graph in GPAC represents the entire media processing workflow, consisting of nodes (filters) and edges (connections) that define data flow.",
+            "level": "all",
+            "aliases": [
+               
+            ],
+          
+            "category": "GPAC Core "
+        },
+        "DECODING": {
+            "description": "Decoding is the process of converting compressed media data back into its original format. GPAC uses various codecs to decode audio and video streams.",
+            "level": "beginner",
+            "aliases": [
+                "DEC","FFDEC","AACD","MP3D"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "REFRAMER": {
+            "description": "A reframer in GPAC adjusts the timing and structure of media frames to meet specific requirements, such as alignment for streaming.",
+            "level": "expert",
+           
+            "category": "Media Processing"
+        },
+        "ENCRYPT": {
+            "description": "Encryption in GPAC refers to the process of securing media content by converting it into a code to prevent unauthorized access. GPAC supports various encryption standards like CENC and ISMA.",
+            "level": "expert",
+            "aliases": [
+                "ENCRYPTION","CRYPT","ENC"
+            ],
+            "category": "Security and Encryption"
+        },
+        "ENCODE": {
+            "description": "Encoding in GPAC is the process of converting raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
+            "level": "beginner",
+            "aliases": [
+                "ENC","FFENC","X264","X265","AAC","LIBOPUS"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "MP4": {
+            "description": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
+            "level": "beginner",
+            "aliases": [
+                "MOV",
+                "ISO",
+                "ISOBMFF"
+            ],
+            "category": "File Formats and Containers"
+        },
+        "FILTER": {
+            "description": "In GPAC, a filter is a processing unit that consumes and produces data packets. Filters can be chained together to form a media processing pipeline.",
+            "level": "all",
+            "category": "GPAC Core"
+        },
+        "TRACK": {
+            "description": "A track is a single stream of media data, such as audio or video, within a multimedia file.",
+            "level": "beginner",
+            "aliases": [
+                "STREAM"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "CHUNK": {
+            "description": "A chunk is a portion of media data used for storage and transmission. Chunks are relatively small blocks of data that can be used to divide larger multimedia files into more manageable parts.",
+            "level": "beginner",
+            "aliases": [
+                "SEGMENT"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "SEGMENT": {
+            "description": "A segment is a timed portion of a media file used primarily in adaptive streaming protocols like DASH and HLS. Each segment represents a specific time interval of the media content, allowing for dynamic adaptation to network conditions.",
+            "level": "beginner",
+            "aliases": [
+                "CHUNK","SEG"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "SAMPLE": {
+            "description": "A sample is an individual unit of audio or video data used in encoding and decoding processes.",
+            "level": "beginner",
+            "aliases": [
+                "FRAME"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "MPEG": {
+            "description": "MPEG (Moving Picture Experts Group) is a working group that sets standards for audio and video compression and transmission.",
+            "level": "all",
+            "aliases": [
+                "H264",
+                "HEVC"
+            ],
+            "category": "Standards and Specifications"
+        },
+        "TILE": {
+            "description": "A tile is a portion of a video frame, often used in advanced video coding techniques like HEVC.",
+            "level": "expert",
+            "aliases": [
+                "BLOCK"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "HEVC": {
+            "description": "HEVC (High Efficiency Video Coding) is a video compression standard designed as a successor to the widely used AVC (H.264).",
+            "level": "beginner",
+            "aliases": [
+                "CODEC"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "PIPE": {
+            "description": "A pipe is a method of inter-process communication that allows data to flow from one process to another.",
+            "level": "beginner",
+            "aliases": [
+                "PIPELINE"
+            ],
+            "category": "Networking and Protocols"
+        },
+        "DUMP": {
+            "description": "A dump in GPAC refers to the process of outputting raw media data to a file or stream.",
+            "level": "beginner",
+            "aliases": [
+                "OUTPUT"
+            ],
+            "category": "Tools and Utilities"
+        },
+        "ISOBMFF": {
+            "description": "ISOBMF (ISO Base Media File Format) is a file format that forms the basis for many other file formats, such as MP4 and MOV.",
+            "level": "all",
+            "aliases": [
+                "MP4",
+                "MOV"
+            ],
+            "category": "File Formats and Containers"
+        },
+        "RTCP": {
+            "description": "RTCP (Real-Time Control Protocol) is a companion protocol to RTP (Real-Time Protocol) that provides out-of-band control information for an RTP flow. It is primarily used for quality of service (QoS) monitoring and to convey information about participants in ongoing RTP sessions.",
+            "level": "beginner",
+            "aliases": [
+                "REAL-TIME CONTROL PROTOCOL",
+                "RTP CONTROL PROTOCOL"
+            ],
+            "category": "Networking and Protocols"
+        },
+        "TIMESHIFT" :{
+            "description": "Timeshift refers to the capability of a media player or streaming service to pause, rewind, or fast-forward live broadcast content. This feature allows users to view content on their own schedule without missing any part of the broadcast.",
+            "level": "beginner",
+            "aliases": [
+                "LIVE PAUSE",
+                "DELAYED VIEWING"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "BITSTREAM": {
+            "description": "A bitstream is a sequence of bits that represent encoded media data.",
+            "level": "beginner",
+            "aliases": [
+                "STREAM"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "SEQUENCE": {
+            "description": "A sequence in GPAC refers to a series of frames or samples that are processed together.",
+            "level": "all",
+            "aliases": [
+                "STREAM"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "COMPOSITOR": {
+            "description": "The compositor in GPAC is a filter used for rendering video and graphics, managing the display of visual elements.",
+            "level": "expert",
+            "category": "Graphics and Rendering"
+        },
+        "FFMPEG": {
+            "description": "FFmpeg is a free and open-source project consisting of a vast software suite for handling video, audio, and other multimedia files and streams.",
+            "level": "all",
+            "aliases": [
+                "FFENC","FFDEC"
+            ],
+            "category": "Libraries and Dependencies ",
+            "url":"https://www.ffmpeg.org/documentation.html"
+        },
+        "BIFS": {
+            "description": "BIFS (Binary Format for Scenes) is a binary format used to represent and encode multimedia scenes, part of the MPEG-4 standard.",
+            "level": "expert",
+            "aliases": [
+                "X3D"
+            ],
+            "category": "Standards and Specifications"
+        },
+        "H264": {
+            "description": "H.264 is a widely used video compression standard that allows for high-quality video at lower bitrates.",
+            "level": "all",
+            "aliases": [
+                "AVC"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "BLOCK": {
+            "description": "A block is a chunk of media data processed as a unit in encoding and decoding.",
+            "level": "beginner",
+            "aliases": [
+                "CHUNK","SEGMENT"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "MULTICAST": {
+            "description": "Multicast is a method of data transmission where data is sent to multiple destinations simultaneously.",
+            "level": "expert",
+            "category": "Networking and Protocols"
+        },
+        "LATENCY": {
+            "description": "Latency is the delay between the input and output of a data processing system, important in streaming and real-time applications.",
+            "level": "all",
+            "aliases": [
+                "DELAY"
+            ],
+            "category": "Performance and Optimization"
+        },
+        "SIGNAL": {
+            "description": "A signal in GPAC refers to a type of data that triggers events or actions in media processing.",
+            "level": "expert",
+            "category": "GPAC Core "
+        },
+        "OFFSCREEN": {
+            "description": "Offscreen processing in GPAC involves rendering or processing media data outside the visible display area.",
+            "level": "expert",
+            "category": "GPAC Core "
+        },
+        "RFRAWID": {
+            "description": "RFRAWID is a unique identifier used in GPAC to reference raw data streams.",
+            "level": "expert",
+            "category": "Graphics and Rendering",
+            "aliases": [
+                " RAW FILE IDENTIFIER"
+            ]
+        },
+        "TTML": {
+            "description": "TTML (Timed Text Markup Language) is a standard for representing timed text media, such as subtitles and captions.",
+            "level": "all",
+            "aliases": [
+                "SUBTITLE","XML SUBTITLE"
+            ],
+            "category": "Subtitles and Captioning"
+        },
+        "BINARY": {
+            "description": "Binary data in GPAC refers to data represented in binary format, essential for encoding and processing media files.",
+            "level": "beginner",
+            "aliases": [
+                "BITSTREAM"
+            ],
+            "category": "Data Structures and Formats"
+        },
+        "BITRATE": {
+            "description": "Bitrate is the number of bits processed per unit of time, important for defining the quality and bandwidth usage of multimedia streams.",
+            "level": "beginner",
+            "aliases": [
+                "BANDWIDTH"
+            ],
+            "category": "Performance and Optimization"
+        },
+        "LIBGPAC": {
+            "description": "LibGPAC is the core library of GPAC, providing essential functionalities for multimedia processing.",
+            "level": "expert",
+            "category": "Libraries and Dependencies ",
+            "url": "https://doxygen.gpac.io/"
+        },
+        "HEIF": {
+            "description": "HEIF (High Efficiency Image File Format) is a file format for individual images and image sequences, based on the HEVC standard.",
+            "level": "all",
+            "aliases": [
+                "IMAGE"
+            ],
+            "category": "File Formats and Containers"
+        },
+        "WEBVTT": {
+            "description": "WebVTT (Web Video Text Tracks) is a format used for displaying timed text tracks, such as subtitles or captions, with HTML5 video.",
+            "level": "all",
+            "aliases": [
+                "SUBTITLE"
+            ],
+            "category": "Subtitles and Captioning"
+        },
+        "NHNT": {
+            "description": "NHNT (Non-Hierarchical Naming Tables) is a format used in GPAC for structuring media data.",
+            "level": "expert",
+            "category": "File Formats and Containers"
+        },
+        "ISMA": {
+            "description": "ISMA (Internet Streaming Media Alliance) is a standard for streaming multimedia content over the internet.",
+            "level": "expert",
+            "aliases": [
+                "CENC"
+            ],
+            "category": "Security and Encryption"
+        },
+        "CAROUSEL": {
+            "description": "A carousel in GPAC refers to a method of cyclically transmitting media data, often used in broadcast and streaming applications.",
+            "level": "expert",
+            "category": "Streaming Technologies"
+        },
+        "SUBSAMPLE": {
+            "description": "Subsampling in GPAC involves reducing the resolution or frequency of media data for efficient processing and transmission.",
+            "level": "expert",
+            "category": "Media Processing "
+        },
+        "AVMIX": {
+            "description": "AVMix is a process in GPAC for mixing audio and video streams into a single synchronized output.",
+            "level": "expert",
+            "category": "Media Processing "
+        },
+        "CUE": {
+            "description": "A cue in GPAC is a marker used to indicate specific points in a media stream for navigation or synchronization.",
+            "level": "all",
+            "aliases": [
+                "MARKER"
+            ],
+            "category": "Media Processing "
+        },
+        "FLUSH": {
+            "description": "Flushing in GPAC involves clearing buffers and ensuring all processed data is output, important for maintaining data integrity.",
+            "level": "all",
+            "aliases": [
+                "FLUSHING"
+            ],
+            "category": "Media Processing "
+        },
+        "DASH": {
+            "description": "DASH (Dynamic Adaptive Streaming over HTTP) is an adaptive bitrate streaming technique that enables high-quality streaming of media content over the internet delivered from conventional HTTP web servers.",
+            "level": "all",
+            "aliases": [
+                "HLS"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "DECODER": {
+            "description": "A decoder is a device or software that converts compressed media data back into its original format. GPAC uses various codecs to decode audio and video streams.",
+            "level": "beginner",
+            "aliases": [
+                "AVDEC","HEVCD","VP9D","MPEG4D","AACD","MP3D"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "MANIFEST": {
+            "description": "A manifest is a file that provides information about the structure and components of a multimedia presentation, often used in streaming protocols like DASH and HLS.",
+            "level": "beginner",
+            "aliases": [
+                "PLAYLIST"
+            ],
+            "category": "Streaming Technologies"
+        },
+       "BUFFER": {
+            "description": "Rebuffering in GPAC refers to the process of refilling the buffer when data is being streamed, helping to prevent playback interruptions due to insufficient data.",
+            "level": "all",
+            "aliases": ["REBUFFER"],
+            "category": ["Streaming Technologies"]
+           
+        },
+        "ENCODER": {
+            "description": "An encoder is a device or software that converts raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
+            "level": "beginner",
+            "aliases": [
+                "FFENC","X264","X265","AAC","LIBOPUS"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "MULTIPLEXER": {
+            "description": "A multiplexer is a device or software that combines multiple signals into one signal over a shared medium. In GPAC, multiplexing is used to combine audio, video, and other data streams into a single container file like MP4.",
+            "level": "all",
+            "aliases": [
+                "MUX"
+            ],
+            "category": "Media Processing "
+        },
+        "CONNECTION": {
+            "description": "A connection in GPAC refers to the relationship between filters in a processing graph. They define how data flows from one filter to another.",
+            "level": "beginner",
+            "aliases": [
+                "LINK"
+            ],
+            "category": "GPAC Core"
+        },
+        "LAYER": {
+            "description": "A layer in GPAC refers to the hierarchical levels of data processing or display, such as video layers in a compositing process.",
+            "level": "beginner",
+            "category": "Graphics and Rendering"
+        },
+        "PIPELINE": {
+            "description": "A pipeline in GPAC is a sequence of connected filters that process media data in a specific order, defining the media processing workflow.",
+            "level": "beginner",
+            "aliases": [
+                "CHAIN",
+                "PIPE"
+            ],
+            "category": "GPAC Core"
+        },
+        "TRANSCODE": {
+            "description": "Transcoding is the process of converting a media file from one format to another. GPAC supports transcoding for various media formats to ensure compatibility and optimize playback.",
+            "level": "beginner",
+            "aliases": [
+                "TRANSCODING"
+            ],
+            "category": "Media Processing "
+        },
+        "TEMI": {
+            "description": "TEMI (Timed External Media Information) is a standard used to synchronize external media with broadcast content, allowing for accurate timing and synchronization of additional media streams.",
+            "level": "expert",
+            "category": "GPAC Core"
+        },
+        "OVERLAY": {
+            "description": "An overlay in GPAC is a graphical element that is superimposed on a video stream, such as subtitles, watermarks, or interactive graphics.",
+            "level": "beginner",
+            "category": "Standards and Specifications"
+        },
+        "ISOMEDIA": {
+            "description": "ISO Media refers to the family of media file formats based on the ISO Base Media File Format (ISOBMFF), including MP4 and MOV.",
+            "level": "all",
+            "aliases": [
+                "MP4",
+                "MOV"
+            ],
+            "category": "File Formats and Containers"
+        },
+      
+        "COMPRESSION": {
+            "description": "Compression is the process of reducing the size of a media file by encoding data using fewer bits. GPAC supports various compression algorithms to optimize storage and transmission.",
+            "level": "beginner",
+            "aliases": [
+                "AVC","HEVC","VP9"
+            ],
+            "category": "Codecs and Compression"
+        },
+        "BROADCAST": {
+            "description": "Broadcast in GPAC refers to the transmission of multimedia content to multiple receivers simultaneously, often used in live streaming and TV broadcasting.",
+            "level": "all",
+            "category": "Streaming Technologies"
+        },
+        "REPAIR": {
+            "description": "Repair in GPAC refers to the process of fixing errors or corruption in media files to ensure proper playback and processing.",
+            "level": "all",
+            "category": "Tools and Utilities"
+        },
+        "INTERLEAVE": {
+            "description": "Interleaving in GPAC refers to the process of mixing different types of media data for synchronous playback, ensuring that audio and video streams remain in sync.",
+            "level": "expert",
+            "category": "Media Processing "
+        },
+        "MACRO": {
+            "description": "A macro in GPAC is a predefined sequence of instructions or commands that can be used to automate repetitive tasks in media processing.",
+            "level": "expert",
+            "category": "Tools and Utilities "
+        },
+        "REBUFFER": {
+            "description": "Rebuffering in GPAC refers to the process of refilling the buffer when data is being streamed, helping to prevent playback interruptions due to insufficient data.",
+            "level": "all",
+            "aliases": [
+                "BUFFER"
+            ],
+            "category": "Streaming Technologies"
+        },
+        "OPENGL": {
+            "description": "OpenGL (Open Graphics Library) is a cross-language, cross-platform API for rendering 2D and 3D vector graphics.",
+            "level": "expert",
+            "aliases": [
+                "GL"
+            ],
+            "category": "Graphics and Rendering",
+            "url": "https://www.opengl.org/"
+        },
+        "WEBGL": {
+            "description": "WebGL (Web Graphics Library) is a JavaScript API for rendering high-performance interactive 3D and 2D graphics within any compatible web browser without the use of plug-ins.",
+            "level": "expert",
+            "aliases": [
+                "Web Graphics Library"
+            ],
+            "category": "Graphics and Rendering",
+            "url": "https://www.khronos.org/webgl/"
+        }
+    }
+}

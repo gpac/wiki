@@ -20,7 +20,9 @@ __Warning: The filter does not check if tiles are independently-coded (MCTS) !__
 __Warning: Support for dynamic changes of tiling grid has not been tested !__  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="tiledrop">__tiledrop__</a> (uintl, updatable): specify indexes of tiles to drop (0-based, in tile raster scan order)  
+<div markdown class="option">  
+<a id="tiledrop" data-level="basic">__tiledrop__</a> (uintl, updatable): specify indexes of tiles to drop (0-based, in tile raster scan order)  
+</div>  
   

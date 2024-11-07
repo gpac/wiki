@@ -1,0 +1,111 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% set class = "md-header" %}
+{% if "navigation.tabs.sticky" in features %}
+  {% set class = class ~ " md-header--shadow md-header--lifted" %}
+{% elif "navigation.tabs" not in features %}
+  {% set class = class ~ " md-header--shadow" %}
+{% endif %}
+<header class="{{ class }}" data-md-component="header">
+
+    
+  <link rel="preload" href="{{ 'stylesheets/extra.css' | url }}" as="style">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+      {% include "partials/logo.html" %}
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic md-header__topic--site-name">
+          <span class="md-ellipsis">
+            GPAC wiki
+          </span>
+        </div>
+        <div class="md-header__topic md-header__topic--page-title" data-md-component="header-topic">
+          <span class="md-ellipsis" id="page-title">
+            {% if page.meta and page.meta.title %}
+              {{ page.meta.title }}
+            {% elif page.title and not page.is_homepage %}
+              {{ page.title | striptags }}
+            {% else %}
+              {{ config.site_name }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  <!--   <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="level-switch">
+        <span class="slider round" data-md-tooltip="Switch between Beginner and Expert levels"></span>
+      </label>
+      <span class="switch-label" data-md-tooltip="Current content level"></span>
+    </div> -->
+    {% if config.theme.palette %}
+      {% if not config.theme.palette is mapping %}
+      
+      {% endif %}
+    {% endif %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+    {% if config.extra.alternate %}
+      {% include "partials/alternate.html" %}
+    {% endif %}
+    {% if "material/search" in config.plugins %}
+      <label class="md-header__button md-icon" for="__search">
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </label>
+      {% include "partials/search.html" %}
+    {% endif %}
+    {% if config.repo_url %}
+      <div class="md-header__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
+   <!--  <div class="md-header__option md-header__option--mobile">
+      {% include "partials/palette.html" %}
+    </div> -->
+    <div class="md-header__settings">
+      <button class="md-header__settings-button" aria-label="Settings" title="Settings"> 
+        <i class="fas fa-cog"></i>
+      </button>
+      <div class="md-header__settings-dropdown hidden">
+        <div class="md-header__settings-title">
+          <h4>Settings</h4>
+        </div>
+        <div class="md-header__settings-separator"></div>
+        <div class="md-header__settings-item">
+          <label for="level-switch" class="switch-label" aria-label="Levels"></label>
+          <label class="switch">
+            <input type="checkbox" id="level-switch">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="md-header__settings-item">
+          <label for="collapse-all-switch" class="switch-label" aria-label="Collapse " >Collapse </label>
+          <label class="switch">
+            <input type="checkbox" id="collapse-all-switch">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="md-header__settings-item">
+          <label class="switch-label">Dark Mode</label>
+          {% include "partials/palette.html" %}
+        </div>
+      </div>
+    </div>
+   
+  </nav>
+  {% if "navigation.tabs.sticky" in features %}
+    {% if "navigation.tabs" in features %}
+      {% include "partials/tabs.html" %}
+    {% endif %}
+  {% endif %}
+</header>

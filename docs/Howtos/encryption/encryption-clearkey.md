@@ -1,4 +1,25 @@
-# Overview
+---
+tags:
+- option
+- mp4
+- encrypt
+- mpd
+- source
+- pid
+- input
+- media
+- manifest
+- isomedia
+- data
+- isobmff
+- xml
+- property
+- dash
+---
+
+
+
+# Overview {:data-level="all"}
 
 We discuss here how to use ClearKey encryption in GPAC.  
 
@@ -10,11 +31,11 @@ For more info, check https://github.com/Dash-Industry-Forum/ClearKey-Content-Pro
 Fetching of keys through ClearKey is supported in GPAC decryptor and does not need to be configured.
 
 
-# DRM config file
+# DRM config file {:data-level="beginner"}
 
 ClearKey can be used with any scheme types defined in CENC, and does not need any specific info (e.g. PSSH). 
 
-# Using MP4Box
+# Using MP4Box {:data-level="beginner"}
 
 You first need to encrypt your source:
 
@@ -35,7 +56,7 @@ If each source has its own licence URL:
  ```
 
 
-# Using gpac for single-pass encrypt and dash
+# Using gpac for single-pass encrypt and dash 
 
 If all streams share the same ClearKey licence server URL, specify `ckurl` option of dasher:
 

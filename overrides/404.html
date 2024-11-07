@@ -1,0 +1,168 @@
+{#- This file was automatically generated - do not edit -#}
+{% extends "main.html" %}
+{% block content %}
+<div class="error-container">
+    <img src="/images/gpac-logo.svg" alt="GPAC Logo" class="error-icon">
+    <h1 class="error-title">404 - Page Not Found</h1>
+    <div id="error-message" class="error-message"></div>
+  
+    <div id="glossary-actions" style="display: none;">
+        <div class="action-buttons">
+            <a href="/glossary/encode/" class="action-button">View full glossary</a>
+           <button onclick="window.history.back()" class="action-button">Go back</button>
+        </div>
+        <div id="contribution-message" class="contribution-message">
+            <p>Do you know this term and wish to contribute to the page?</p>
+            <a href="https://github.com/gpac/wiki/issues" target="_blank" class="contribution-button">Contribute to GPAC Wiki</a>
+        </div>
+    </div>
+    
+    <div id="general-actions" style="display: none;">
+        <div class="action-buttons">
+            <a href="/" class="action-button">Return to homepage</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --md-primary-fg-color: #E0E0E0;
+        --md-primary-bg-color: #141414;
+        --md-accent-fg-color: #d94412;
+    }
+
+    [data-md-color-scheme="slate"] {
+        --md-hue: 217;
+        --md-typeset-a-color: #d94412 !important;
+        --md-accent-keywords-color: hsla(0, 0%, 75%, 1) !important;
+        --md-icon-color: #a7a7a7;
+    }
+
+    .error-container {
+        text-align: center;
+        padding: 50px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    [data-md-color-scheme="slate"] .error-container {
+        background-color: #1F2229;
+        box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+    }
+
+    .error-icon {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+
+    .error-title {
+        color: var(--md-accent-fg-color);
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .error-message {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    [data-md-color-scheme="slate"] .error-message {
+        color: #e0e0e0;
+    }
+
+
+
+    .action-buttons {
+        margin-bottom: 30px;
+    }
+
+    .action-button, .contribution-button {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333!important;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    [data-md-color-scheme="slate"] .action-button,
+    [data-md-color-scheme="slate"] .contribution-button {
+        background-color: #555;
+        color: white!important;
+    }
+    [data-md-color-scheme="slate"] .action-button:hover {
+background-color: #444!important;   
+    }
+
+   .contribution-button:hover {
+        background-color: var(--md-accent-fg-color);
+    }
+    .action-button:hover{
+        background-color: #dddcdc!important;
+    }
+
+    .contribution-message {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+    }
+
+    [data-md-color-scheme="slate"] .contribution-message {
+        background-color: #1F2229;
+    }
+
+    .contribution-message p {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    [data-md-color-scheme="slate"] .contribution-message p {
+        color: #e0e0e0;
+    }
+
+    .contribution-button {
+        background-color: #333!important;
+        color: white!important;
+    }
+
+ 
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorMessage = document.getElementById('error-message');
+        var glossaryActions = document.getElementById('glossary-actions');
+        var generalActions = document.getElementById('general-actions');
+    
+        let currentPagePath = window.location.pathname;
+    
+        if (currentPagePath.endsWith('/')) {
+            currentPagePath = currentPagePath.slice(0, -1);
+        }
+    
+        if (currentPagePath.startsWith('/glossary/')) {
+            const toggleButton = document.querySelector('#toggle-button');
+            if (toggleButton) {
+                toggleButton.style.display = 'none';
+            }
+            
+            var keyword = currentPagePath.split('/').pop().replace('.html', '').replace('.md', '');
+            console.log("Keyword not found:", keyword);
+            errorMessage.innerHTML = `The keyword "<strong>${keyword}</strong>" was not found in our GPAC glossary.`;
+            glossaryActions.style.display = 'block';
+        } else {
+            errorMessage.textContent = `Sorry, the page you are looking for does not exist.`;
+            generalActions.style.display = 'block';
+        }
+    });
+</script>
+{% endblock %}

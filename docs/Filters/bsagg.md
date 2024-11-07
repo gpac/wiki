@@ -18,7 +18,9 @@ The filter can also be used on AVC and HEVC DolbyVision dual-streams to aggregat
 The filter does not forward aggregator or extractor NAL units.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="svcqid">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
+<div markdown class="option">  
+<a id="svcqid" data-level="basic">__svcqid__</a> (bool, default: _false_): use qualityID instead of dependencyID for SVC splitting  
+</div>  
   

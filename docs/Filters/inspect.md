@@ -68,7 +68,8 @@ When the option is not present, all properties are dumped. Otherwise, only prope
 Example
 ```
 fmt="PID $pid.ID$ packet $pn$ DTS $dts$ CTS $cts$ $lf$"
-```  
+```
+  
 This dumps packet number, cts and dts as follows: `PID 1 packet 10 DTS 100 CTS 108 \n`  
     
 An unrecognized keyword or missing property will resolve to an empty string.  
@@ -84,13 +85,15 @@ If real-time consumption is required, a reframer filter must be setup before the
 Example
 ```
 gpac -i SRC reframer:rt=on inspect:buffer=10000:rbuffer=1000:mbuffer=30000:speed=2
-```  
+```
+  
 This will play the session at 2x speed, using 30s of maximum buffering, consuming packets after 10s of media are ready and rebuffering if less than 1s of media.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="log">__log__</a> (str, default: _stdout_, Enum: _any|stderr|stdout|GLOG|TL|null): set probe log filename  
+<div markdown class="option">  
+<a id="log" data-level="basic">__log__</a> (str, default: _stdout_, Enum: _any|stderr|stdout|GLOG|TL|null): set probe log filename  
 
 - _any: target file path and name  
 - stderr: dump to stderr  
@@ -98,42 +101,90 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 - GLOG: use GPAC logs `app@info`  
 - TL: use GPAC log tool `TL` at level `info`  
 - null: silent mode  
+</div>  
   
-<a id="mode">__mode__</a> (enum, default: _pck_): dump mode  
+<div markdown class="option">  
+<a id="mode" data-level="basic">__mode__</a> (enum, default: _pck_): dump mode  
 
 - pck: dump full packet  
 - blk: dump packets before reconstruction  
 - frame: force reframer  
 - raw: dump source packets without demultiplexing  
+</div>  
   
+<div markdown class="option">  
 <a id="interleave">__interleave__</a> (bool, default: _true_): dump packets as they are received on each PID. If false, logs are reported for each PID at end of session  
+</div>  
+<div markdown class="option">  
 <a id="deep">__deep__</a> (bool, default: _false_, updatable): dump packets along with PID state change, implied when [fmt](#fmt) is set  
+</div>  
+<div markdown class="option">  
 <a id="props">__props__</a> (bool, default: _true_, updatable): dump packet properties, ignored when [fmt](#fmt) is set  
+</div>  
+<div markdown class="option">  
 <a id="dump_data">__dump_data__</a> (bool, default: _false_, updatable): enable full data dump (_very large output_), ignored when [fmt](#fmt) is set  
+</div>  
+<div markdown class="option">  
 <a id="fmt">__fmt__</a> (str, updatable): set packet dump format  
+</div>  
+<div markdown class="option">  
 <a id="hdr">__hdr__</a> (bool, default: _true_): print a header corresponding to fmt string without '$' or "pid"  
+</div>  
+<div markdown class="option">  
 <a id="allp">__allp__</a> (bool, default: _false_): analyse for the entire duration, rather than stopping when all PIDs are found  
+</div>  
+<div markdown class="option">  
 <a id="info">__info__</a> (bool, default: _false_, updatable): monitor PID info changes  
+</div>  
+<div markdown class="option">  
 <a id="full">__full__</a> (bool, default: _false_, updatable): full dump of PID properties (always on if XML)  
+</div>  
+<div markdown class="option">  
 <a id="pcr">__pcr__</a> (bool, default: _false_, updatable): dump M2TS PCR info  
-<a id="speed">__speed__</a> (dbl, default: _1.0_): set playback command speed. If negative and start is 0, start is set to -1  
-<a id="start">__start__</a> (dbl, default: _0.0_): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
-<a id="dur">__dur__</a> (frac, default: _0/0_): set inspect duration  
+</div>  
+<div markdown class="option">  
+<a id="speed" data-level="basic">__speed__</a> (dbl, default: _1.0_): set playback command speed. If negative and start is 0, start is set to -1  
+</div>  
+<div markdown class="option">  
+<a id="start" data-level="basic">__start__</a> (dbl, default: _0.0_): set playback start offset. A negative value means percent of media duration with -1 equal to duration  
+</div>  
+<div markdown class="option">  
+<a id="dur" data-level="basic">__dur__</a> (frac, default: _0/0_): set inspect duration  
+</div>  
+<div markdown class="option">  
 <a id="analyze">__analyze__</a> (enum, default: _off_, updatable): analyze sample content (NALU, OBU), similar to `-bsdbg` option of reframer filters  
 
 - off: no analyzing  
 - on: simple analyzing  
 - bs: log bitstream syntax (all elements read from bitstream)  
 - full: log bitstream syntax and bit sizes signaled as `(N)` after field value, except 1-bit fields (omitted)  
+</div>  
   
-<a id="xml">__xml__</a> (bool, default: _false_, updatable): use xml formatting (implied if (-analyze]() is set) and disable [fmt](#fmt)  
-<a id="crc">__crc__</a> (bool, default: _false_, updatable): dump crc of samples of subsamples (NALU or OBU) when analyzing  
+<div markdown class="option">  
+<a id="xml" data-level="basic">__xml__</a> (bool, default: _false_, updatable): use xml formatting (implied if (-analyze]() is set) and disable [fmt](#fmt)  
+</div>  
+<div markdown class="option">  
+<a id="crc" data-level="basic">__crc__</a> (bool, default: _false_, updatable): dump crc of samples of subsamples (NALU or OBU) when analyzing  
+</div>  
+<div markdown class="option">  
 <a id="fftmcd">__fftmcd__</a> (bool, default: _false_, updatable): consider timecodes use ffmpeg-compatible signaling rather than QT compliant one  
-<a id="dtype">__dtype__</a> (bool, default: _false_, updatable): dump property type  
+</div>  
+<div markdown class="option">  
+<a id="dtype" data-level="basic">__dtype__</a> (bool, default: _false_, updatable): dump property type  
+</div>  
+<div markdown class="option">  
 <a id="buffer">__buffer__</a> (uint, default: _0_): set playback buffer in ms  
-<a id="mbuffer">__mbuffer__</a> (uint, default: _0_): set max buffer occupancy in ms. If less than buffer, use buffer  
-<a id="rbuffer">__rbuffer__</a> (uint, default: _0_, updatable): rebuffer trigger in ms. If 0 or more than buffer, disable rebuffering  
+</div>  
+<div markdown class="option">  
+<a id="mbuffer" data-level="basic">__mbuffer__</a> (uint, default: _0_): set max buffer occupancy in ms. If less than buffer, use buffer  
+</div>  
+<div markdown class="option">  
+<a id="rbuffer" data-level="basic">__rbuffer__</a> (uint, default: _0_, updatable): rebuffer trigger in ms. If 0 or more than buffer, disable rebuffering  
+</div>  
+<div markdown class="option">  
 <a id="stats">__stats__</a> (bool, default: _false_): compute statistics for PIDs  
+</div>  
+<div markdown class="option">  
 <a id="test">__test__</a> (enum, default: _no_, updatable): skip predefined set of properties, used for test mode  
 
 - no: no properties skipped  
@@ -144,5 +195,6 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 - encx: same as encode and skip bitrates, media data size and co  
 - nocrc: disable packet CRC dump  
 - nobr: skip bitrate  
+</div>  
   
   

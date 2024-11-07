@@ -230,13 +230,15 @@ The special URL scheme `ipid://` can be used to locate an input pid by link dire
 Example
 ```
 in=ipid://#foo=bar
-```  
+```
+  
 This will use pids having property `foo` with value `bar`, regardless of source filter ID.  
   
 Example
 ```
 in=ipid://TEST#foo=bar
-```  
+```
+  
 This will use pids having property `foo` with value `bar` coming from filter with ID `TEST`.  
   
 When using the `ipid://` scheme, filter chains cannot be specified (in accepts a single argument) and `port` is ignored.  
@@ -366,7 +368,8 @@ The `JSFun` may return false to indicate that the scene should be considered as 
 Example
 ```
 "mxjs": "tr.rotation = (get_media_time() % 8) * 360 / 8; tr.update=true;"
-```  
+```
+  
   
 ## Grouping  
 ### Properties for `group` objects  
@@ -465,7 +468,8 @@ The `JSFun` specified by `fun` takes one argument `ratio` and must return the re
 Example
 ```
 "fun": "return ratio*ratio;"
-```  
+```
+  
   
 ## Timers and animations  
 ### Properties for `timer` objects  
@@ -521,13 +525,15 @@ The `JSFun` specified by `mode` has one input parameter `interp` equal to the in
 Example
 ```
 "mode":"return interp*interp;" 
-```  
+```
+  
   
 The `JSFun` specified by `postfun` has two input parameters `res` (the current interplation result) and `interp` (the interpolation factor), and must return the new interpolated value.  
 Example
 ```
 "postfun": "if (interp<0.5) return res*res; return res;" 
-```  
+```
+  
   
 ## Scripts  
 ### Properties for `script` objects  
@@ -547,7 +553,8 @@ The `JSFun` function specified by `fun` has no input parameter. The return value
 Example
 ```
 { "script": "let s=get_scene('s1'); let rot = s.get('rotation'); rot += 10; s.set('rotation', rot); return 2;" }
-```  
+```
+  
 This will change scene `s1` rotation every 2 seconds   
   
 ## Watchers  
@@ -583,13 +590,15 @@ Only the `active` property can be animated or updated in a watcher.
 Example
 ```
 {'watch': 's1@rotation', 'target': 's2@rotation'}
-```  
+```
+  
 This will copy s1.rotation to s2.rotation.  
   
 Example
 ```
 {'watch': 's1@rotation', 'target': 'get_scene('s2').set('rotation', -value); }
-```  
+```
+  
 This will copy the -1*s1.rotation to s2.rotation.  
   
 ### Watching UI events  
@@ -610,7 +619,8 @@ The javascript function will be called with a single argument `evt` containing t
 Example
 ```
 {'watch': 'mousemove', 'target': 'let s = mouse_over(evt); get_scene('s2').set('fill', (s && (s.id=='s1') ? 'white' : 'black' );'}
-```  
+```
+  
 This will set s1 fill color to white of mouse is over s2 and to black otherwise.  
   
 ## Styles  
@@ -703,7 +713,8 @@ Example
   ]  
  }  
 ]
-```  
+```
+  
   
 # Updates Format  
   
@@ -744,7 +755,8 @@ Example
  {"replace": "scene1@x", "with": 20},  
  {"replace": "seq1@start", "with": "now"}  
 ]
-```  
+```
+  
   
 # Scene modules  
   
@@ -767,32 +779,6 @@ Options:
     - rec: mask is in record mode, further draw operations will be drawn on output and will set mask value to 0   
 
    
-
-## Scene `clear`  
-This scene clears the canvas area covered by the scene with a given color.   
-  
-The default clear color of the mixer is `black`.  
-  
-The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
-  
-Options:  
-
-- color ('none'): clear color  
-
-
-## Scene `clip`  
-This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
-  
-The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
-  
-Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
-If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
-  
-Options:  
-
-- reset (false): if set, reset clipper otherwise set it to scene position and size  
-- stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
-
 
 ## Scene `shape`  
 This scene can be used to setup a shape, its outline and specify the fill and strike modes.  
@@ -868,7 +854,8 @@ The code is exposed the scene as `this`. The variable `this.path` is created, re
 Example
 ```
 "shape": "this.path.add_rectangle(0, 0, this.width, this.height); let el = new evg.Path().ellipse(0, 0, this.width, this.height/3); this.path.add_path(el);"
-```  
+```
+  
   
 The default behaviour is to use the shape width and height as reference size for texture mapping.  
 If your custom path is textured, with bounding rectangle size different from the indicated shape size, set the variable `this.tx_adjust` to true.  
@@ -878,7 +865,8 @@ In the previous example, the texture mapping will not be impacted by the custom 
 Example
 ```
 "shape": "this.path.add_rectangle(0, 0, this.width, this.height); let el = new evg.Path().ellipse(0, 0, this.width, this.height/3); this.path.add_path(el); this.tx_adjust = true;"
-```  
+```
+  
 In this example, the texture mapping will be adjusted to the desired size.  
   
 The global variables and functions are available (c.f. `gpac -h avmix:global`):  
@@ -1014,8 +1002,41 @@ Options:
 - rt_rep (false): same as `rt` for local image in replace mode  
 
 
+## Scene `clip`  
+This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
+  
+The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
+  
+Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
+If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
+  
+Options:  
+
+- reset (false): if set, reset clipper otherwise set it to scene position and size  
+- stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
+
+
+## Scene `clear`  
+This scene clears the canvas area covered by the scene with a given color.   
+  
+The default clear color of the mixer is `black`.  
+  
+The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
+  
+Options:  
+
+- color ('none'): clear color  
+
+
 # Transition modules  
   
+## Transition `fade` - software/GPU  
+This transition performs fade to/from color of source videos  
+Options:  
+
+- color ('black'): fade color  
+
+
 ## Transition `gltrans` - GPU only  
 This transition module wraps gl-transitions, see https://gl-transitions.com/ and `gpac -h avmix:gltrans` for builtin transitions  
 Options:  
@@ -1051,42 +1072,69 @@ Options:
   
 ## Transition `mix` - software/GPU  
 This transition performs cross-fade of source videos  
-
-## Transition `fade` - software/GPU  
-This transition performs fade to/from color of source videos  
-Options:  
-
-- color ('black'): fade color  
-
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="pl">__pl__</a> (str, default: _avmix.json_): local playlist file to load  
-<a id="live">__live__</a> (bool, default: _true_): live mode  
+<div markdown class="option">  
+<a id="pl" data-level="basic">__pl__</a> (str, default: _avmix.json_): local playlist file to load  
+</div>  
+<div markdown class="option">  
+<a id="live" data-level="basic">__live__</a> (bool, default: _true_): live mode  
+</div>  
+<div markdown class="option">  
 <a id="gpu">__gpu__</a> (enum, default: _off_): enable GPU usage  
 
 - off: no GPU  
 - mix: only render textured path to GPU, use software rasterizer for the outlines, solid fills and gradients  
 - all: try to use GPU for everything  
+</div>  
   
+<div markdown class="option">  
 <a id="thread">__thread__</a> (sint, default: _-1_): use threads for software rasterizer (-1 for all available cores)  
+</div>  
+<div markdown class="option">  
 <a id="lwait">__lwait__</a> (uint, default: _1000_): timeout in ms before considering no signal is present  
+</div>  
+<div markdown class="option">  
 <a id="ltimeout">__ltimeout__</a> (uint, default: _4000_): timeout in ms before restarting child processes  
+</div>  
+<div markdown class="option">  
 <a id="maxdur">__maxdur__</a> (dbl, default: _0_): run for given seconds and exit, will not abort if 0 (used for live mode tests)  
+</div>  
+<div markdown class="option">  
 <a id="updates">__updates__</a> (str): local JSON files for playlist updates  
+</div>  
+<div markdown class="option">  
 <a id="maxdepth">__maxdepth__</a> (uint, default: _100_): maximum depth of a branch in the scene graph  
-<a id="vsize">__vsize__</a> (v2d, default: _1920x1080_): output video size, 0 disable video output  
-<a id="fps">__fps__</a> (frac, default: _25_): output video frame rate  
-<a id="pfmt">__pfmt__</a> (pfmt, default: _yuv_): output pixel format. Use `rgba` in GPU mode to force alpha channel  
+</div>  
+<div markdown class="option">  
+<a id="vsize" data-level="basic">__vsize__</a> (v2d, default: _1920x1080_): output video size, 0 disable video output  
+</div>  
+<div markdown class="option">  
+<a id="fps" data-level="basic">__fps__</a> (frac, default: _25_): output video frame rate  
+</div>  
+<div markdown class="option">  
+<a id="pfmt" data-level="basic">__pfmt__</a> (pfmt, default: _yuv_): output pixel format. Use `rgba` in GPU mode to force alpha channel  
+</div>  
+<div markdown class="option">  
 <a id="dynpfmt">__dynpfmt__</a> (enum, default: _init_): allow dynamic change of output pixel format in software mode  
 
 - off: pixel format is forced to desired value  
 - init: pixel format is forced to format of fullscreen input in first generated frame  
 - all: pixel format changes each time a full-screen input PID at same resolution is used  
+</div>  
   
-<a id="sr">__sr__</a> (uint, default: _44100_): output audio sample rate, 0 disable audio output  
-<a id="ch">__ch__</a> (uint, default: _2_): number of output audio channels, 0 disable audio output  
-<a id="afmt">__afmt__</a> (afmt, default: _s16_): output audio format (only s16, s32, flt and dbl are supported)  
+<div markdown class="option">  
+<a id="sr" data-level="basic">__sr__</a> (uint, default: _44100_): output audio sample rate, 0 disable audio output  
+</div>  
+<div markdown class="option">  
+<a id="ch" data-level="basic">__ch__</a> (uint, default: _2_): number of output audio channels, 0 disable audio output  
+</div>  
+<div markdown class="option">  
+<a id="afmt" data-level="basic">__afmt__</a> (afmt, default: _s16_): output audio format (only s16, s32, flt and dbl are supported)  
+</div>  
+<div markdown class="option">  
 <a id="alen">__alen__</a> (uint, default: _1024_): default number of samples per frame  
+</div>  
   

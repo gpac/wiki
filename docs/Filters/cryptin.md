@@ -14,8 +14,12 @@ The filter accepts URL with scheme `gcryp://URL`, where `URL` is the URL to decr
 The filter can process http(s) and local file key URLs (setup through HLS manifest), and expects a full key (16 bytes) as result of resource fetching.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (cstr): location of source file  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (cstr): location of source file  
+</div>  
+<div markdown class="option">  
 <a id="fullfile">__fullfile__</a> (bool, default: _false_): reassemble full file before decryption  
+</div>  
   

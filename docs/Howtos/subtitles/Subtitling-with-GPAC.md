@@ -1,3 +1,36 @@
+---
+tags:
+- heif
+- data
+- webvtt
+- filter
+- sample
+- session
+- ttml
+- frame
+- raw
+- xml
+- stream
+- dump
+- media
+- isobmff
+- group
+- box
+- track
+- mp4
+- source
+- input
+- isomedia
+- binary
+- output
+- decoding
+- mpeg
+- sink
+- dash
+---
+
+
+
 There are plenty of [subtitle formats](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Subtitle_formats) and plenty of [types](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Types) and [categories](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Categories) of subtitles. GPAC's support for subtitles is based on the support for the ISO Base Media File Format (ISOBMFF). 
 
 The ISOBMFF considers that any data that produces human readable text to be used as subtitles, closed captions, is, well, ...subtitles. It further considers that there are two major classes of subtitle formats: formats which require only text processing capabilities (text decoding, text layout) and formats which also require image processing capabilities. These classes are identified by the `Track Handler Type`.

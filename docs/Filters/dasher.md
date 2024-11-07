@@ -22,19 +22,22 @@ If you need per-frame real-time regulation on non-real-time inputs, insert a [re
 Example
 ```
 gpac -i file.mp4 reframer:rt=on -o live.mpd:dmode=dynamic
-```  
+```
+  
 
 ## Template strings  
 The segmenter uses templates to derive output file names, regardless of the DASH mode (even when templates are not used). The default one is `$File$_dash` for ondemand and single file modes, and `$File$_$Number$` for separate segment files  
 Example
 ```
 template=Great_$File$_$Width$_$Number$
-```  
+```
+  
 If input is `foo.mp4` with `640x360` video resolution, this will resolve in `Great_foo_640_$Number$` for the DASH template.  
 Example
 ```
 template=Great_$File$_$Width$
-```  
+```
+  
 If input is `foo.mp4` with `640x360` video resolution, this will resolve in `Great_foo_640.mp4` for onDemand case.  
   
 Standard DASH replacement strings:   
@@ -91,59 +94,70 @@ _Note: If multiple streams in source, only the first stream will have an AS ID a
 Example
 ```
 gpac -i test.mp4:#Bitrate=1M -o test.mpd
-```  
+```
+  
 This will force declaring a bitrate of 1M for the representation, regardless of actual input bitrate.  
 Example
 ```
 gpac -i muxav.mp4 -o test.mpd
-```  
+```
+  
 This will create un-multiplexed DASH segments.  
 Example
 ```
 gpac -i muxav.mp4:#Representation=1 -o test.mpd
-```  
+```
+  
 This will create multiplexed DASH segments.  
 Example
 ```
 gpac -i m1.mp4 -i m2.mp4:#Period=Yep -o test.mpd
-```  
+```
+  
 This will put src `m1.mp4` in first period, `m2.mp4` in second period.  
 Example
 ```
 gpac -i m1.mp4:#BUrl=http://foo/bar -o test.mpd
-```  
+```
+  
 This will assign a baseURL to src `m1.mp4`.  
 Example
 ```
 gpac -i m1.mp4:#ASCDesc=&lt;ElemName val="attval"&gt;text&lt;/ElemName&gt; -o test.mpd
-```  
+```
+  
 This will assign the specified XML descriptor to the adaptation set.  
 _Note:  this can be used to inject most DASH descriptors not natively handled by the segmenter._  
 The segmenter handles the XML descriptor as a string and does not attempt to validate it. Descriptors, as well as some segmenter filter arguments, are string lists (comma-separated by default), so that multiple descriptors can be added:  
 Example
 ```
 gpac -i m1.mp4:#RDesc=&lt;Elem attribute="1"/&gt;,&lt;Elem2&gt;text&lt;/Elem2&gt; -o test.mpd
-```  
+```
+  
 This will insert two descriptors in the representation(s) of `m1.mp4`.  
 Example
 ```
 gpac -i video.mp4:#Template=foo$Number$ -i audio.mp4:#Template=bar$Number$ -o test.mpd
-```  
+```
+  
 This will assign different templates to the audio and video sources.  
 Example
 ```
 gpac -i null:#xlink=http://foo/bar.xml:#PDur=4 -i m.mp4:#PStart=-1 -o test.mpd
-```  
+```
+  
 This will insert an create an MPD with first a remote period then a regular one.  
 Example
 ```
 gpac -i null:#xlink=http://foo/bar.xml:#PStart=6 -i m.mp4 -o test.mpd
-```  
+```
+  
 This will create an MPD with first a regular period, dashing only 6s of content, then a remote one.  
 Example
 ```
 gpac -i v1:#SRD=0x0x1280x360:#SRDRef=1280x720 -i v2:#SRD=0x360x1280x360 -o test.mpd
-```  
+```
+  
 This will layout the `v2` below `v1` using a global SRD size of 1280x720.  
   
 The segmenter will create multiplexing filter chains for each representation and will reassign PID IDs so that each media component (video, audio, ...) in an adaptation set has the same ID.  
@@ -155,7 +169,8 @@ When HLS mode is enabled, the segment [template](#template) is relative to the v
 Example
 ```
 gpac -i av.mp4:#HLSPL=$Type$/index.m3u8 -o dash/live.m3u8:dual:template='$Number$'
-```  
+```
+  
 This will put video segments and playlist in `dash/video/` and audio segments and playlist in `dash/audio/`  
   
 ## Segmentation  
@@ -186,7 +201,8 @@ For regular segmentation, you should enable segment regulation [sreg](#sreg) if 
 Example
 ```
 gpac -i source.mp4 -o live.mpd:segdur=2:profile=live:dmode=dynamic:sreg
-```  
+```
+  
   
 For low latency segmentation with fMP4, you will need to specify the following options:  
 
@@ -201,36 +217,42 @@ If your sources are not real-time, insert a reframer filter with real-time regul
 Example
 ```
 gpac -i source.mp4 reframer:rt=on -o live.mpd:segdur=2:cdur=0.2:asto=1.8:profile=live:dmode=dynamic
-```  
+```
+  
 This will create DASH segments of 2 seconds made of fragments of 200 ms and indicate to the client that requests can be made 1.8 seconds earlier than segment complete availability on server.  
 Example
 ```
 gpac -i source.mp4 reframer:rt=on -o live.m3u8:segdur=2:cdur=0.2:llhls=br:dmode=dynamic
-```  
+```
+  
 This will create DASH segments of 2 seconds made of fragments of 200 ms and produce HLS low latency parts using byte ranges in the final segment.  
 Example
 ```
 gpac -i source.mp4 reframer:rt=on -o live.m3u8:segdur=2:cdur=0.2:llhls=sf:dmode=dynamic
-```  
+```
+  
 This will create DASH segments of 2 seconds made of fragments of 200 ms and produce HLS low latency parts using dedicated files.  
   
 You can combine LL-HLS and DASH-LL generation:  
 Example
 ```
 gpac -i source.mp4 reframer:rt=on -o live.mpd:dual:segdur=2:cdur=0.2:asto=1.8:llhls=br:profile=live:dmode=dynamic
-```  
+```
+  
   
 For DASH, the filter will use the local clock for UTC anchor points in DASH.  
 The filter can fetch and signal clock in other ways using [utcs](#utcs).  
 Example
 ```
 [opts]:utcs=inband
-```  
+```
+  
 This will use the local clock and insert in the MPD a UTCTiming descriptor containing the local clock.  
 Example
 ```
 [opts]::utcs=http://time.akamai.com[::opts]
-```  
+```
+  
 This will fetch time from `http://time.akamai.com`, use it as the UTC reference for segment generation and insert in the MPD a UTCTiming descriptor containing the time server URL.  
 _Note: if not set as a global option using `--utcs=`, you must escape the url using double `::` or use other separators._  
   
@@ -260,7 +282,8 @@ This feature is typically combined with a list of files as input:
 Example
 ```
 gpac -i list.m3u:sigcues -o res/live.mpd
-```  
+```
+  
 This will load the `flist` filter in cue mode, generating continuous timelines from the sources and injecting a `CueStart` property at each new file.  
   
 If the [cues](#cues) option equals `none`, the `DashCue` property of input PIDs will be ignored.  
@@ -287,22 +310,26 @@ The manifest generation-only mode supports both MPD and HLS generation.
 Example
 ```
 gpac -i ondemand_src.mp4 -o dash.mpd:sigfrag:profile=onDemand
-```  
+```
+  
 This will generate a DASH manifest for onDemand Profile based on the input file.  
 Example
 ```
 gpac -i ondemand_src.mp4 -o dash.m3u8:sigfrag
-```  
+```
+  
 This will generate a HLS manifest based on the input file.  
 Example
 ```
 gpac -i seglist.txt -o dash.mpd:sigfrag
-```  
+```
+  
 This will generate a DASH manifest in Main Profile based on the input files.  
 Example
 ```
 gpac -i seglist.txt:Template=$XInit=init$$q1/$Number$ -o dash.mpd:sigfrag:profile=live
-```  
+```
+  
 This will generate a DASH manifest in live Profile based on the input files. The input file will contain `init.mp4`, `q1/1.m4s`, `q1/2.m4s`...  
   
 ## Cue Generation only mode  
@@ -323,12 +350,14 @@ This mode can be used to pre-segment the streams for later processing that must 
 Example
 ```
 gpac -i source.mp4 dasher:gencues cecrypt:cfile=roll_seg.xml -o live.mpd
-```  
+```
+  
 This will allow the encrypter to locate dash boundaries and roll keys at segment boundaries.  
 Example
 ```
 gpac -i s1.mp4 -i s2.mp4:#CryptInfo=clear:#Period=3 -i s3.mp4:#Period=3 dasher:gencues cecrypt:cfile=roll_period.xml -o live.mpd
-```  
+```
+  
 If the DRM file uses `keyRoll=period`, this will generate:  
 
 - first period crypted with one key  
@@ -342,7 +371,8 @@ This is typically used to redirect segments to a given destination regardless of
 Example
 ```
 gpac -i SRC -o null:ext=mpd:tpl_force --template=pipe://mypipe
-```  
+```
+  
 This will trash the manifest and open `mypipe` as destination for the muxer result.  
 
 __Warning: Options for segment destination cannot be set through the [template](#template), global options must be used.__  
@@ -367,22 +397,26 @@ To avoid this behaviour, the [sflush](#sflush) option should be set to `end` or 
 Example
 ```
 gpac -i SRC -o dash.mpd:segdur=2:state=CTX && gpac -i SRC -o dash.mpd:segdur=2:state=CTX
-```  
+```
+  
 This will generate all dash segments for `SRC` (last one possibly shorter) and create a new period at end of input.  
 Example
 ```
 gpac -i SRC -o dash.mpd:segdur=2:state=CTX:loop && gpac -i SRC -o dash.mpd:segdur=2:state=CTX:loop
-```  
+```
+  
 This will generate all dash segments for `SRC` and restart `SRC` to fill-up last segment.  
 Example
 ```
 gpac -i SRC -o dash.mpd:segdur=2:state=CTX:sflush=end && gpac -i SRC -o dash.mpd:segdur=2:state=CTX:sflush=end
-```  
+```
+  
 This will generate all dash segments for `SRC` without looping/closing the period at end of input. Timestamps in the second call will be rewritten to be contiguous with timestamp at end of first call.  
 Example
 ```
 gpac -i SRC1 -o dash.mpd:segdur=2:state=CTX:sflush=end:keep_ts && gpac -i SRC2 -o dash.mpd:segdur=2:state=CTX:sflush=end:keep_ts
-```  
+```
+  
 This will generate all dash segments for `SRC1` without looping/closing the period at end of input, then for `SRC2`. Timestamps of the sources will not be rewritten.  
   
 _Note: The default behaviour of MP4Box `-dash-ctx` option is to set the (-loop)[] to true._  
@@ -392,7 +426,8 @@ When loaded implicitly during link resolution, the dasher will only link its out
 Example
 ```
 gpac -i SRC -o URL1:OPTS1 -o URL2:OPTS1
-```  
+```
+  
 This will create one dasher (with options OPTS1) for the URL1 and one dasher (with options OPTS1) for URL2.  
 This allows dashing to multiple outputs with different formats, dash durations, etc.  
   
@@ -401,7 +436,8 @@ In order to do this, the filter MUST be explicitly loaded and all options relate
 Example
 ```
 gpac -i SRC dasher:cmfc:segdur=2 -o URL1 -o URL2
-```  
+```
+  
 This will create a single dasher whose outputs (manifests and segments) will be redirected to the given URLs.  
 When explicitly loading the filter, the [dual](#dual) option will be disabled unless [mname](#mname) is set to the alternate output name.  
   
@@ -435,30 +471,53 @@ The segmenter adds the following properties to the output PIDs:
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="segdur">__segdur__</a> (frac, default: _0/0_): target segment duration in seconds. A value less than or equal to 0 defaults to 1.0 second  
-<a id="tpl">__tpl__</a> (bool, default: _true_): use template mode (multiple segment, template URLs)  
-<a id="stl">__stl__</a> (bool, default: _false_): use segment timeline (ignored in on_demand mode)  
-<a id="dmode">__dmode__</a> (enum, default: _static_, updatable): dash content mode  
+<div markdown class="option">  
+<a id="segdur" data-level="basic">__segdur__</a> (frac, default: _0/0_): target segment duration in seconds. A value less than or equal to 0 defaults to 1.0 second  
+</div>  
+<div markdown class="option">  
+<a id="tpl" data-level="basic">__tpl__</a> (bool, default: _true_): use template mode (multiple segment, template URLs)  
+</div>  
+<div markdown class="option">  
+<a id="stl" data-level="basic">__stl__</a> (bool, default: _false_): use segment timeline (ignored in on_demand mode)  
+</div>  
+<div markdown class="option">  
+<a id="dmode" data-level="basic">__dmode__</a> (enum, default: _static_, updatable): dash content mode  
 
 - static: static content  
 - dynamic: live generation  
 - dynlast: last call for live, will turn the MPD into static  
 - dynauto: live generation and move to static manifest upon end of stream  
+</div>  
   
+<div markdown class="option">  
 <a id="sseg">__sseg__</a> (bool, default: _false_): single segment is used  
+</div>  
+<div markdown class="option">  
 <a id="sfile">__sfile__</a> (bool, default: _false_): use a single file for all segments (default in on_demand)  
+</div>  
+<div markdown class="option">  
 <a id="align">__align__</a> (bool, default: _true_): enable segment time alignment between representations  
-<a id="sap">__sap__</a> (bool, default: _true_): enable splitting segments at SAP boundaries  
+</div>  
+<div markdown class="option">  
+<a id="sap" data-level="basic">__sap__</a> (bool, default: _true_): enable splitting segments at SAP boundaries  
+</div>  
+<div markdown class="option">  
 <a id="mix_codecs">__mix_codecs__</a> (bool, default: _false_): enable mixing different codecs in an adaptation set  
+</div>  
+<div markdown class="option">  
 <a id="ntp">__ntp__</a> (enum, default: _rem_): insert/override NTP clock at the beginning of each segment  
 
 - rem: removes NTP from all input packets  
 - yes: inserts NTP at each segment start  
 - keep: leaves input packet NTP untouched  
+</div>  
   
+<div markdown class="option">  
 <a id="no_sar">__no_sar__</a> (bool, default: _false_): do not check for identical sample aspect ratio for adaptation sets  
+</div>  
+<div markdown class="option">  
 <a id="bs_switch">__bs_switch__</a> (enum, default: _def_): bitstream switching mode (single init segment)  
 
 - def: resolves to off for onDemand and inband for live  
@@ -469,11 +528,19 @@ The segmenter adds the following properties to the output PIDs:
 - pps: moves PPS and APS inband, keep VPS,SPS and DCI out of band (used for VVC RPR)  
 - force: enables it even if only one representation  
 - multi: uses multiple stsd entries in ISOBMFF  
+</div>  
   
-<a id="template">__template__</a> (str): template string to use to generate segment name  
-<a id="segext">__segext__</a> (str): file extension to use for segments  
-<a id="initext">__initext__</a> (str): file extension to use for the init segment  
-<a id="muxtype">__muxtype__</a> (enum, default: _auto_): muxtype to use for the segments  
+<div markdown class="option">  
+<a id="template" data-level="basic">__template__</a> (str): template string to use to generate segment name  
+</div>  
+<div markdown class="option">  
+<a id="segext" data-level="basic">__segext__</a> (str): file extension to use for segments  
+</div>  
+<div markdown class="option">  
+<a id="initext" data-level="basic">__initext__</a> (str): file extension to use for the init segment  
+</div>  
+<div markdown class="option">  
+<a id="muxtype" data-level="basic">__muxtype__</a> (enum, default: _auto_): muxtype to use for the segments  
 
 - mp4: uses ISOBMFF format  
 - ts: uses MPEG-2 TS format  
@@ -482,10 +549,16 @@ The segmenter adds the following properties to the output PIDs:
 - ogg: uses OGG format  
 - raw: uses raw media format (disables multiplexed representations)  
 - auto: guess format based on extension, default to mp4 if no extension  
+</div>  
   
+<div markdown class="option">  
 <a id="rawsub">__rawsub__</a> (bool, default: _no_): use raw subtitle format instead of encapsulating in container  
+</div>  
+<div markdown class="option">  
 <a id="asto">__asto__</a> (dbl, default: _0_): availabilityStartTimeOffset to use in seconds. A negative value simply increases the AST, a positive value sets the ASToffset to representations  
-<a id="profile">__profile__</a> (enum, default: _auto_): target DASH profile. This will set default option values to ensure conformance to the desired profile. For MPEG-2 TS, only main and live are used, others default to main  
+</div>  
+<div markdown class="option">  
+<a id="profile" data-level="basic">__profile__</a> (enum, default: _auto_): target DASH profile. This will set default option values to ensure conformance to the desired profile. For MPEG-2 TS, only main and live are used, others default to main  
 
 - auto: turns profile to live for dynamic and full for non-dynamic  
 - live: DASH live profile, using segment template  
@@ -496,14 +569,20 @@ The segmenter adds the following properties to the output PIDs:
 - dashavc264.live: DASH-IF live profile  
 - dashavc264.onDemand: DASH-IF onDemand profile  
 - dashif.ll: DASH IF low-latency profile (set UTC server to time.akamai.com if none set)  
+</div>  
   
+<div markdown class="option">  
 <a id="profX">__profX__</a> (str): list of profile extensions, as used by DASH-IF and DVB. The string will be colon-concatenated with the profile used. If starting with `+`, the profile string by default is erased and `+` is skipped  
+</div>  
+<div markdown class="option">  
 <a id="cp">__cp__</a> (enum, default: _set_): content protection element location  
 
 - set: in adaptation set element  
 - rep: in representation element  
 - both: in both adaptation set and representation elements  
+</div>  
   
+<div markdown class="option">  
 <a id="pssh">__pssh__</a> (enum, default: _v_): storage mode for PSSH box  
 
 - f: stores in movie fragment only  
@@ -512,123 +591,246 @@ The segmenter adds the following properties to the output PIDs:
 - mf: stores in mpd and movie fragment  
 - mv: stores in mpd and movie  
 - n: discard pssh from mpd and segments  
+</div>  
   
-<a id="buf">__buf__</a> (sint, default: _-100_): min buffer duration in ms. negative value means percent of segment duration (e.g. -150 = 1.5*seg_dur)  
-<a id="spd">__spd__</a> (sint, default: _0_): suggested presentation delay in ms  
+<div markdown class="option">  
+<a id="buf" data-level="basic">__buf__</a> (sint, default: _-100_): min buffer duration in ms. negative value means percent of segment duration (e.g. -150 = 1.5*seg_dur)  
+</div>  
+<div markdown class="option">  
+<a id="spd" data-level="basic">__spd__</a> (sint, default: _0_): suggested presentation delay in ms  
+</div>  
+<div markdown class="option">  
 <a id="timescale">__timescale__</a> (sint, default: _0_): set timescale for timeline and segment list/template. A value of 0 picks up the first timescale of the first stream in an adaptation set. A negative value forces using stream timescales for each timed element (multiplication of segment list/template/timelines). A positive value enforces the MPD timescale  
-<a id="check_dur">__check_dur__</a> (bool, default: _true_): check duration of sources in period, trying to have roughly equal duration. Enforced whenever period start times are used  
+</div>  
+<div markdown class="option">  
+<a id="check_dur" data-level="basic">__check_dur__</a> (bool, default: _true_): check duration of sources in period, trying to have roughly equal duration. Enforced whenever period start times are used  
+</div>  
+<div markdown class="option">  
 <a id="skip_seg">__skip_seg__</a> (bool, default: _false_): increment segment number whenever an empty segment would be produced - NOT DASH COMPLIANT  
-<a id="title">__title__</a> (str): MPD title  
-<a id="source">__source__</a> (str): MPD Source  
-<a id="info">__info__</a> (str): MPD info url  
-<a id="cprt">__cprt__</a> (str): MPD copyright string  
-<a id="lang">__lang__</a> (str): language of MPD Info  
-<a id="location">__location__</a> (strl): set MPD locations to given URL  
+</div>  
+<div markdown class="option">  
+<a id="title" data-level="basic">__title__</a> (str): MPD title  
+</div>  
+<div markdown class="option">  
+<a id="source" data-level="basic">__source__</a> (str): MPD Source  
+</div>  
+<div markdown class="option">  
+<a id="info" data-level="basic">__info__</a> (str): MPD info url  
+</div>  
+<div markdown class="option">  
+<a id="cprt" data-level="basic">__cprt__</a> (str): MPD copyright string  
+</div>  
+<div markdown class="option">  
+<a id="lang" data-level="basic">__lang__</a> (str): language of MPD Info  
+</div>  
+<div markdown class="option">  
+<a id="location" data-level="basic">__location__</a> (strl): set MPD locations to given URL  
+</div>  
+<div markdown class="option">  
 <a id="base">__base__</a> (strl): set base URLs of MPD  
+</div>  
+<div markdown class="option">  
 <a id="refresh">__refresh__</a> (dbl, default: _0_): refresh rate for dynamic manifests, in seconds (a negative value sets the MPD duration, value 0 uses dash duration)  
-<a id="tsb">__tsb__</a> (dbl, default: _30_): time-shift buffer depth in seconds (a negative value means infinity)  
-<a id="keep_segs">__keep_segs__</a> (bool, default: _false_): do not delete segments no longer in time-shift buffer  
+</div>  
+<div markdown class="option">  
+<a id="tsb" data-level="basic">__tsb__</a> (dbl, default: _30_): time-shift buffer depth in seconds (a negative value means infinity)  
+</div>  
+<div markdown class="option">  
+<a id="keep_segs" data-level="basic">__keep_segs__</a> (bool, default: _false_): do not delete segments no longer in time-shift buffer  
+</div>  
+<div markdown class="option">  
 <a id="ast">__ast__</a> (str): set start date (as xs:date, e.g. YYYY-MM-DDTHH:MM:SSZ) for live mode. Default is now. !! Do not use with multiple periods, nor when DASH duration is not a multiple of GOP size !!  
+</div>  
+<div markdown class="option">  
 <a id="state">__state__</a> (str): path to file used to store/reload state info when simulating live. This is stored as a valid MPD with GPAC XML extensions  
+</div>  
+<div markdown class="option">  
 <a id="keep_ts">__keep_ts__</a> (bool, default: _false_): do not shift timestamp when reloading a context  
+</div>  
+<div markdown class="option">  
 <a id="loop">__loop__</a> (bool, default: _false_): loop sources when dashing with subdur and state. If not set, a new period is created once the sources are over  
+</div>  
+<div markdown class="option">  
 <a id="subdur">__subdur__</a> (dbl, default: _0_): maximum duration of the input file to be segmented. This does not change the segment duration, segmentation stops once segments produced exceeded the duration  
+</div>  
+<div markdown class="option">  
 <a id="split">__split__</a> (bool, default: _true_): enable cloning samples for text/metadata/scene description streams, marking further clones as redundant  
+</div>  
+<div markdown class="option">  
 <a id="hlsc">__hlsc__</a> (bool, default: _false_): insert clock reference in variant playlist in live HLS  
+</div>  
+<div markdown class="option">  
 <a id="cues">__cues__</a> (str): set cue file  
+</div>  
+<div markdown class="option">  
 <a id="strict_cues">__strict_cues__</a> (bool, default: _false_): strict mode for cues, complains if splitting is not on SAP type 1/2/3 or if unused cue is found  
+</div>  
+<div markdown class="option">  
 <a id="strict_sap">__strict_sap__</a> (enum, default: _off_): strict mode for sap  
 
 - off: ignore SAP types for PID other than video, enforcing `AdaptationSet@startsWithSAP=1`  
 - sig: same as [off](#off) but keep `AdaptationSet@startsWithSAP` to the true SAP value  
 - on: warn if any PID uses SAP 3 or 4 and switch to FULL profile  
 - intra: ignore SAP types greater than 3 on all media types  
+</div>  
   
+<div markdown class="option">  
 <a id="subs_sidx">__subs_sidx__</a> (sint, default: _-1_): number of subsegments per sidx. Negative value disables sidx. Only used to inherit sidx option of destination  
+</div>  
+<div markdown class="option">  
 <a id="cmpd">__cmpd__</a> (bool, default: _false_): skip line feed and spaces in MPD XML for compactness  
+</div>  
+<div markdown class="option">  
 <a id="styp">__styp__</a> (str): indicate the 4CC to use for styp boxes when using ISOBMFF output  
+</div>  
+<div markdown class="option">  
 <a id="dual">__dual__</a> (bool): indicate to produce both MPD and M3U files  
+</div>  
+<div markdown class="option">  
 <a id="sigfrag">__sigfrag__</a> (bool): use manifest generation only mode  
+</div>  
+<div markdown class="option">  
 <a id="sbound">__sbound__</a> (enum, default: _out_): indicate how the theoretical segment start `TSS (= segment_number * duration)` should be handled  
 
 - out: segment split as soon as `TSS` is exceeded (`TSS` <= segment_start)  
 - closest: segment split at closest SAP to theoretical bound  
 - in: `TSS` is always in segment (`TSS` >= segment_start)  
+</div>  
   
+<div markdown class="option">  
 <a id="reschedule">__reschedule__</a> (bool, default: _false_): reschedule sources with no period ID assigned once done (dynamic mode only)  
+</div>  
+<div markdown class="option">  
 <a id="sreg">__sreg__</a> (bool, default: _false_): regulate the session  
 
 - when using subdur and context, only generate segments from the past up to live edge  
 - otherwise in dynamic mode without context, do not generate segments ahead of time  
+</div>  
   
+<div markdown class="option">  
 <a id="scope_deps">__scope_deps__</a> (bool, default: _true_): scope PID dependencies to be within source. If disabled, PID dependencies will be checked across all input PIDs regardless of their sources  
+</div>  
+<div markdown class="option">  
 <a id="utcs">__utcs__</a> (str): URL to use as time server / UTCTiming source. Special value `inband` enables inband UTC (same as publishTime), special prefix `xsd@` uses xsDateTime schemeURI rather than ISO  
+</div>  
+<div markdown class="option">  
 <a id="sflush">__sflush__</a> (enum, default: _off_): segment flush mode - see filter help:  
 
 - off: no specific actions  
 - single: force generating a single segment for each input  
 - end: skip loop detection and clamp duration adjustment at end of input, used for state mode  
+</div>  
   
+<div markdown class="option">  
 <a id="last_seg_merge">__last_seg_merge__</a> (bool, default: _false_): force merging last segment if less than half the target duration  
+</div>  
+<div markdown class="option">  
 <a id="mha_compat">__mha_compat__</a> (enum, default: _no_): adaptation set generation mode for compatible MPEG-H Audio profile  
 
 - no: only generate the adaptation set for the main profile  
 - comp: only generate the adaptation sets for all compatible profiles  
 - all: generate the adaptation set for the main profile and all compatible profiles  
+</div>  
   
+<div markdown class="option">  
 <a id="mname">__mname__</a> (str): output manifest name for ATSC3 multiplexing (using 'm3u8' only toggles HLS generation)  
+</div>  
+<div markdown class="option">  
 <a id="llhls">__llhls__</a> (enum, default: _off_): HLS low latency type  
 
 - off: do not use LL-HLS  
 - br: use LL-HLS with byte-range for segment parts, pointing to full segment (DASH-LL compatible)  
 - sf: use separate files for segment parts (post-fixed .1, .2 etc.)  
 - brsf: generate two sets of manifest, one for byte-range and one for files (`_IF` added before extension of manifest)  
+</div>  
   
+<div markdown class="option">  
 <a id="hlsdrm">__hlsdrm__</a> (str): cryp file info for HLS full segment encryption  
+</div>  
+<div markdown class="option">  
 <a id="hlsx">__hlsx__</a> (strl): list of string to append to master HLS header before variants with `['#foo','#bar=val']` added as `#foo \n #bar=val`  
+</div>  
+<div markdown class="option">  
 <a id="hlsiv">__hlsiv__</a> (bool, default: _true_): inject IV in variant HLS playlist``  
+</div>  
+<div markdown class="option">  
 <a id="ll_preload_hint">__ll_preload_hint__</a> (bool, default: _true_): inject preload hint for LL-HLS  
+</div>  
+<div markdown class="option">  
 <a id="ll_rend_rep">__ll_rend_rep__</a> (bool, default: _true_): inject rendition reports for LL-HLS  
+</div>  
+<div markdown class="option">  
 <a id="ll_part_hb">__ll_part_hb__</a> (dbl, default: _-1_): user-defined part hold-back for LLHLS, negative value means 3 times max part duration in session  
+</div>  
+<div markdown class="option">  
 <a id="ckurl">__ckurl__</a> (str): set the ClearKey URL common to all encrypted streams (overriden by `CKUrl` pid property)  
+</div>  
+<div markdown class="option">  
 <a id="hls_absu">__hls_absu__</a> (enum, default: _no_): use absolute url in HLS generation using first URL in [base]()  
 
 - no: do not use absolute URL  
 - var: use absolute URL only in variant playlists  
 - mas: use absolute URL only in master playlist  
 - both: use absolute URL everywhere  
+</div>  
   
+<div markdown class="option">  
 <a id="hls_ap">__hls_ap__</a> (bool, default: _false_): use audio as primary media instead of video when generating playlists  
+</div>  
+<div markdown class="option">  
 <a id="seg_sync">__seg_sync__</a> (enum, default: _auto_): control how waiting on last packet P of fragment/segment to be written impacts segment injection in manifest  
 
 - no: do not wait for P  
 - yes: wait for P  
 - auto: wait for P if HLS is used  
+</div>  
   
+<div markdown class="option">  
 <a id="cmaf">__cmaf__</a> (enum, default: _no_): use cmaf guidelines  
 
 - no: CMAF not enforced  
 - cmfc: use CMAF `cmfc` guidelines  
 - cmf2: use CMAF `cmf2` guidelines  
+</div>  
   
+<div markdown class="option">  
 <a id="pswitch">__pswitch__</a> (enum, default: _single_): period switch control mode  
 
 - single: change period if PID configuration changes  
 - force: force period switch at each PID reconfiguration instead of absorbing PID reconfiguration (for splicing or add insertion not using periodID)  
 - stsd: change period if PID configuration changes unless new configuration was advertised in initial config  
+</div>  
   
+<div markdown class="option">  
 <a id="chain">__chain__</a> (str): URL of next MPD for regular chaining  
+</div>  
+<div markdown class="option">  
 <a id="chain_fbk">__chain_fbk__</a> (str): URL of fallback MPD  
+</div>  
+<div markdown class="option">  
 <a id="gencues">__gencues__</a> (bool, default: _false_): only insert segment boundaries and do not generate manifests  
+</div>  
+<div markdown class="option">  
 <a id="force_init">__force_init__</a> (bool, default: _false_): force init segment creation in bitstream switching mode  
+</div>  
+<div markdown class="option">  
 <a id="keep_src">__keep_src__</a> (bool, default: _false_): keep source URLs in manifest generation mode  
+</div>  
+<div markdown class="option">  
 <a id="gxns">__gxns__</a> (bool, default: _false_): insert some gpac extensions in manifest (for now, only tfdt of first segment)  
+</div>  
+<div markdown class="option">  
 <a id="dkid">__dkid__</a> (enum, default: _auto_): control injection of default KID in MPD  
 
 - off: default KID not injected  
 - on: default KID always injected  
 - auto: default KID only injected if no key roll is detected (as per DASH-IF guidelines)  
+</div>  
   
+<div markdown class="option">  
 <a id="tpl_force">__tpl_force__</a> (bool, default: _false_): use template string as is without trying to add extension or solve conflicts in names  
+</div>  
+<div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  
+</div>  
   

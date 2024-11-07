@@ -9,8 +9,12 @@ This filter reads NHNT files/data to produce a media PID and frames.
 NHNT documentation is available at https://wiki.gpac.io/xmlformats/NHNT-Format  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="reframe">__reframe__</a> (bool, default: _false_): force re-parsing of referenced content  
-<a id="index">__index__</a> (dbl, default: _1.0_): indexing window length  
+</div>  
+<div markdown class="option">  
+<a id="index" data-level="basic">__index__</a> (dbl, default: _1.0_): indexing window length  
+</div>  
   

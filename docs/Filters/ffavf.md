@@ -16,25 +16,29 @@ The filter loads a filter or a filter chain description from the [f](#f) option.
 Example
 ```
 ffavf:f=showspectrum
-```  
+```
+  
   
 Unlike other FFmpeg bindings in GPAC, this filter does not parse other libavfilter options, you must specify them directly in the filter chain, and the [f](#f) option will have to be escaped.  
 Example
 ```
 ffavf::f=showspectrum=size=320x320 or ffavf::f=showspectrum=size=320x320::pfmt=rgb  
 ffavf::f=anullsrc=channel_layout=5.1:sample_rate=48000
-```  
+```
+  
   
 For complex filter graphs, it is possible to store options in a file (e.g. `opts.txt`):  
 Example
 ```
 :f=anullsrc=channel_layout=5.1:sample_rate=48000
-```  
+```
+  
 And load arguments from file:  
 Example
 ```
 ffavf:opts.txt aout
-```  
+```
+  
   
 The filter will automatically create `buffer` and `buffersink` AV filters for data exchange between GPAC and libavfilter.  
 The builtin options ( [pfmt](#pfmt), [afmt](#afmt) ...) can be used to configure the `buffersink` filter to set the output format of the filter.  
@@ -47,7 +51,8 @@ When a graph has several inputs, input PID names shall be assigned by the user u
 Example
 ```
 gpac -i video:#ffid=a -i logo:#ffid=b ffavf::f=[a][b]overlay=main_w-overlay_w-10:main_h-overlay_h-10 vout
-```  
+```
+  
 In this example:  
 
 - the video source is identified as `a`  
@@ -59,7 +64,8 @@ When a graph has several outputs, output PIDs will be identified using the `ffid
 Example
 ```
 gpac -i source ffavf::f=split inspect:SID=#ffid=out0 vout#SID=out1
-```  
+```
+  
 In this example:  
 
 - the splitter produces 2 video streams `out0` and `out1`  
@@ -78,13 +84,27 @@ The filter handles option updates as commands passed to the AV filter graph. The
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="f">__f__</a> (str):     filter or filter chain description  
-<a id="pfmt">__pfmt__</a> (pfmt, default: _none_): pixel format of output. If not set, let AVFilter decide  
-<a id="afmt">__afmt__</a> (afmt, default: _none_): audio format of output. If not set, let AVFilter decide  
-<a id="sr">__sr__</a> (uint, default: _0_): sample rate of output. If not set, let AVFilter decide  
-<a id="ch">__ch__</a> (uint, default: _0_): number of channels of output. If not set, let AVFilter decide  
-<a id="dump">__dump__</a> (bool, default: _false_, updatable): dump graph as log media@info or stderr if not set  
-<a id="*">__*__</a> (str):     any possible options defined for AVFilter and sub-classes (see `gpac -hx ffavf` and `gpac -hx ffavf:*`)  
+<div markdown class="option">  
+<a id="f" data-level="basic">__f__</a> (str): filter or filter chain description  
+</div>  
+<div markdown class="option">  
+<a id="pfmt" data-level="basic">__pfmt__</a> (pfmt, default: _none_): pixel format of output. If not set, let AVFilter decide  
+</div>  
+<div markdown class="option">  
+<a id="afmt" data-level="basic">__afmt__</a> (afmt, default: _none_): audio format of output. If not set, let AVFilter decide  
+</div>  
+<div markdown class="option">  
+<a id="sr" data-level="basic">__sr__</a> (uint, default: _0_): sample rate of output. If not set, let AVFilter decide  
+</div>  
+<div markdown class="option">  
+<a id="ch" data-level="basic">__ch__</a> (uint, default: _0_): number of channels of output. If not set, let AVFilter decide  
+</div>  
+<div markdown class="option">  
+<a id="dump" data-level="basic">__dump__</a> (bool, default: _false_, updatable): dump graph as log media@info or stderr if not set  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVFilter and sub-classes (see `gpac -hx ffavf` and `gpac -hx ffavf:*`)  
+</div>  
   

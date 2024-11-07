@@ -1,9 +1,17 @@
 ---
 hide:
-  - toc
-  - navigation
-  - feedback
+- toc
+- navigation
+- feedback
+tags:
+- stream
+- data
+- media
 ---
+
+
+
+
 
 <p id="welcome">
     <img id="home-logo" src="/images/gpac-logo-full.svg" style="width: 128px; height: auto;" alt="GPAC logo"/>
@@ -32,3 +40,5 @@ hide:
     The documentation assumes GPAC 2.0 or above. Some informations relative to MP4Box may still be useful for older versions.
 
 .
+
+

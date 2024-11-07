@@ -39,26 +39,58 @@ The filter can currently modify the following properties in the stream configura
 The filter will work in passthrough mode for all other codecs and media types.  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="cprim">__cprim__</a> (cprm, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470G|SMPTE170|SMPTE240|FILM|BT2020|SMPTE428|SMPTE431|SMPTE432|EBU3213, updatable): color primaries according to ISO/IEC 23001-8 / 23091-2  
+<div markdown class="option">  
+<a id="cprim" data-level="basic">__cprim__</a> (cprm, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470G|SMPTE170|SMPTE240|FILM|BT2020|SMPTE428|SMPTE431|SMPTE432|EBU3213, updatable): color primaries according to ISO/IEC 23001-8 / 23091-2  
+</div>  
   
-<a id="ctfc">__ctfc__</a> (ctfc, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470BG|SMPTE170|SMPTE249|Linear|Log100|Log316|IEC61966|BT1361|sRGB|BT2020_10|BT2020_12|SMPTE2084|SMPTE428|STDB67, updatable): color transfer characteristics according to ISO/IEC 23001-8 / 23091-2  
+<div markdown class="option">  
+<a id="ctfc" data-level="basic">__ctfc__</a> (ctfc, default: _-1_, Enum: reserved0|BT709|undef|reserved3|BT470M|BT470BG|SMPTE170|SMPTE249|Linear|Log100|Log316|IEC61966|BT1361|sRGB|BT2020_10|BT2020_12|SMPTE2084|SMPTE428|STDB67, updatable): color transfer characteristics according to ISO/IEC 23001-8 / 23091-2  
+</div>  
   
-<a id="cmx">__cmx__</a> (cmxc, default: _-1_, Enum: GBR|BT709|undef|FCC|BT601|SMPTE170|SMPTE240|YCgCo|BT2020|BT2020cl|YDzDx, updatable): color matrix coeficients according to ISO/IEC 23001-8 / 23091-2  
+<div markdown class="option">  
+<a id="cmx" data-level="basic">__cmx__</a> (cmxc, default: _-1_, Enum: GBR|BT709|undef|FCC|BT601|SMPTE170|SMPTE240|YCgCo|BT2020|BT2020cl|YDzDx, updatable): color matrix coeficients according to ISO/IEC 23001-8 / 23091-2  
+</div>  
   
-<a id="sar">__sar__</a> (frac, default: _-1/-1_, updatable): aspect ratio to rewrite  
-<a id="m4vpl">__m4vpl__</a> (sint, default: _-1_, updatable): set ProfileLevel for MPEG-4 video part two  
-<a id="fullrange">__fullrange__</a> (bool, default: _false_, updatable): video full range flag  
-<a id="novsi">__novsi__</a> (bool, default: _false_, updatable): remove video_signal_type from VUI in AVC|H264 and HEVC  
-<a id="novuitiming">__novuitiming__</a> (bool, default: _false_, updatable): remove timing_info from VUI in AVC|H264 and HEVC  
-<a id="prof">__prof__</a> (sint, default: _-1_, updatable): profile indication for AVC|H264  
-<a id="lev">__lev__</a> (sint, default: _-1_, updatable): level indication for AVC|H264, level_idc for VVC  
-<a id="pcomp">__pcomp__</a> (sint, default: _-1_, updatable): profile compatibility for AVC|H264  
-<a id="pidc">__pidc__</a> (sint, default: _-1_, updatable): profile IDC for HEVC and VVC  
-<a id="pspace">__pspace__</a> (sint, default: _-1_, updatable): profile space for HEVC  
-<a id="gpcflags">__gpcflags__</a> (sint, default: _-1_, updatable): general compatibility flags for HEVC  
-<a id="rmsei">__rmsei__</a> (bool, default: _false_, updatable): remove SEI messages from bitstream for AVC|H264, HEVC and VVC  
-<a id="vidfmt">__vidfmt__</a> (enum, default: _-1_, updatable): video format for AVC|H264, HEVC and VVC (component|pal|ntsc|secam|mac|undef)  
+<div markdown class="option">  
+<a id="sar" data-level="basic">__sar__</a> (frac, default: _-1/-1_, updatable): aspect ratio to rewrite  
+</div>  
+<div markdown class="option">  
+<a id="m4vpl" data-level="basic">__m4vpl__</a> (sint, default: _-1_, updatable): set ProfileLevel for MPEG-4 video part two  
+</div>  
+<div markdown class="option">  
+<a id="fullrange" data-level="basic">__fullrange__</a> (bool, default: _false_, updatable): video full range flag  
+</div>  
+<div markdown class="option">  
+<a id="novsi" data-level="basic">__novsi__</a> (bool, default: _false_, updatable): remove video_signal_type from VUI in AVC|H264 and HEVC  
+</div>  
+<div markdown class="option">  
+<a id="novuitiming" data-level="basic">__novuitiming__</a> (bool, default: _false_, updatable): remove timing_info from VUI in AVC|H264 and HEVC  
+</div>  
+<div markdown class="option">  
+<a id="prof" data-level="basic">__prof__</a> (sint, default: _-1_, updatable): profile indication for AVC|H264  
+</div>  
+<div markdown class="option">  
+<a id="lev" data-level="basic">__lev__</a> (sint, default: _-1_, updatable): level indication for AVC|H264, level_idc for VVC  
+</div>  
+<div markdown class="option">  
+<a id="pcomp" data-level="basic">__pcomp__</a> (sint, default: _-1_, updatable): profile compatibility for AVC|H264  
+</div>  
+<div markdown class="option">  
+<a id="pidc" data-level="basic">__pidc__</a> (sint, default: _-1_, updatable): profile IDC for HEVC and VVC  
+</div>  
+<div markdown class="option">  
+<a id="pspace" data-level="basic">__pspace__</a> (sint, default: _-1_, updatable): profile space for HEVC  
+</div>  
+<div markdown class="option">  
+<a id="gpcflags" data-level="basic">__gpcflags__</a> (sint, default: _-1_, updatable): general compatibility flags for HEVC  
+</div>  
+<div markdown class="option">  
+<a id="rmsei" data-level="basic">__rmsei__</a> (bool, default: _false_, updatable): remove SEI messages from bitstream for AVC|H264, HEVC and VVC  
+</div>  
+<div markdown class="option">  
+<a id="vidfmt" data-level="basic">__vidfmt__</a> (enum, default: _-1_, updatable): video format for AVC|H264, HEVC and VVC (component|pal|ntsc|secam|mac|undef)  
+</div>  
   
   

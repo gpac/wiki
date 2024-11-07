@@ -1,11 +1,45 @@
-# Overview
+---
+tags:
+- pid
+- data
+- codec
+- filter
+- buffer
+- packet
+- pipeline
+- connections
+- frame
+- raw
+- stream
+- hevc
+- bitstream
+- sequence
+- dump
+- media
+- property
+- rebuffer
+- track
+- option
+- mp4
+- graph
+- source
+- packets
+- chain
+- input
+- output
+- sink
+---
+
+
+
+# Overview {:data-level="all"} 
 
 We discuss here how to use the [JavaScript Filter](jsf) to write JavaScript-based custom filters in GPAC.  
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the gpac test suite are also a good source of examples.
 
 The JS filter provides JS bindings to the GPAC filter architecture. JavaScript support in GPAC is powered by QuickJS. Check the documentation of the [JS APIs](https://doxygen.gpac.io/group__jsf__grp.html) for more details. 
 
-# Principles
+# Principles {:data-level="beginner"}
 
 In order to load, a JS filter requires a source JS, specified in the filter  [js](jsf#js) option. A short-cut syntax is to directly specify the js script. In other words, the following syntaxes are equivalent:
 ```
@@ -48,7 +82,7 @@ If you need to pass JS data across filters, you will have to serialize to JSON y
 - send it as associated property on existing packets
 
 
-# Declaring a filter (optional)
+# Declaring a filter (optional) {:data-level="beginner"}
 
 The first thing to do when creating a filter is to setup a few things about your filter. 
 
@@ -62,6 +96,7 @@ Give a description to your filter  (optional):
  ```
  filter.set_desc("A demonstration JS filter");
  ```
+
  This description should provide a quick hint as to what the purpose of the filter is.  It will be shown by the command  `gpac -h script.js`.
 
 
@@ -75,6 +110,7 @@ You should finally set some help for your filter (optional):
  ```
  filter.set_help("This filter provides a very simple javascript filter");
 ```
+
 This will help other users understand what your filter does and how to use it. It will be shown by the command  `gpac -h script.js`.
 
 You can specify arguments to your filter  (optional):
@@ -83,6 +119,7 @@ filter.set_arg({ name: "raw", desc: "if set, accept non-demultiplexed input PIDs
 ...
 filter.set_arg({name: "str", desc: "string to send", type: GF_PROP_STRING, def: "GPAC JS Filter Packet"} );
 ```
+
 Arguments simplify script configuration and usage, and will be shown by the command  `gpac -h script.js`.
 
 Defined arguments  will be parsed from command line. Each defined argument results in a JS property in the `filter` object with the given value. 
@@ -136,6 +173,7 @@ __Discussion__
 GPAC uses a concept of capabilities bundles for complex filters, allowing to describe characteristics of different classes of input or output PIDs. This is also possible using JS filters, by adding an empty cap to your filter:
 
 ```
+
 filter.set_cap({id: "StreamType", value: "Visual", inout: true});
 filter.set_cap({id: "CodecID", value: "raw", inout: true} );
 //video specific PID characteristics for input and output
@@ -156,6 +194,7 @@ You can check your JS filter sources and sinks links by using `gpac -h links scr
 Once your capabilities are setup, you can get notifications of new inputs through the `filter.configure_pid` callback. This allows you to keep track of PID re-configurations, for later processing.
 
 ```
+
 ...
 filter.pids=[];
 ...
@@ -324,6 +363,7 @@ filter.opid.set_prop("StreamType", "Video");
 filter.opid.set_prop("CodecID", "raw");
 filter.opid.set_prop("PixelFormat", "rgb");
 ```
+
 You can also assign user-defined properties to the PID as follows:
 ```
 filter.opid.set_prop("MyTestProperty", "My Current State", true);
@@ -479,6 +519,7 @@ When you're ready, it's time to send your packet:
 ```
 dst_pck.send();
 ```
+
 Once send, the packet cannot be resent: it is in a detached state and has no longer any underlying native packet. As a general rule, you should consider a packet send as no longer accessible. 
 
 
@@ -541,6 +582,7 @@ let src_f = filter.add_destination("myfile.ts");
 let src_f = filter.add_destination("pipe://mymux.gsf");
 
 ```
+
 Any URL supported by GPAC  for destination/sink filter loading can be used.
 
 * load a generic filter: this allows loading any filter supported by GPAC
@@ -548,6 +590,7 @@ Any URL supported by GPAC  for destination/sink filter loading can be used.
 let vout_f = filter.add_filter("vout");
 
 ```
+
 This will load the video output filter with no specific arguments. 
 
 For each of these methods, the filter name or URL used  can specify filter options, as usual within GPAC filter chains. For example:
@@ -555,6 +598,7 @@ For each of these methods, the filter name or URL used  can specify filter optio
 let vout_f = filter.add_filter("vout:vsync=no");
 
 ```
+
 This will load the video output filter with vsync disabled. 
 
 
@@ -584,7 +628,7 @@ vout_f.set_source(filter, "MuxSrc=myPid");
 ```
 
 
-# Including filters in your distribution
+# Including filters in your distribution {:data-level=beginner"}
 
 JS files located in GPAC distribution or in the directories indicated using [-js-dirs](core_options#js-dirs) option can describe filters usable by the filter engine based on their name (file without extension or directory name).
 

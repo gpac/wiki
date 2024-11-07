@@ -1,4 +1,43 @@
-# MP4Box vs gpac
+---
+tags:
+- heif
+- reframer
+- data
+- codec
+- filter
+- pipe
+- encrypt
+- session
+- pipeline
+- compression
+- connections
+- frame
+- raw
+- xml
+- stream
+- encode
+- dump
+- media
+- compositor
+- isobmff
+- property
+- h264
+- track
+- option
+- mp4
+- graph
+- source
+- chain
+- input
+- isomedia
+- output
+- sink
+- dash
+---
+
+
+
+# MP4Box vs gpac {: data-level="all" }
 
 Following the introduction of the filter architecture and the gpac application, you may have a hard time choosing between MP4Box and gpac.
  
@@ -95,11 +134,13 @@ In both cases, we still use temporary storage for the final file interleaving. S
 ```
 MP4Box -add video.264:options -add audio_en.264:options -add audio_fr.264:options -frag 100 -crypt DRM.xml -new result.mp4
 ```
+
 We got rid of the temporary storage due do file interleaving, but we still need an intermediate file to store the import result.
 
 ```
 gpac -i video.264:options -i audio_en.264:options -i audio_fr.264:options cecrypt:cfile=DRM.xml -o result.mp4:frag:cdur=100
 ```
+
 We use no longer use temporary storage.
 
 
@@ -125,8 +166,10 @@ source_vid -> rescale -> encode1 \
                       -> encode2 -> dasher
                       -> encode3 /
 ```
+
 This cannot be described using MP4Box, this must be converted into something like:
 ```
+
 source_vid -> rescale -> encode1 -> dasher
 source_vid -> rescale -> encode2 /
 source_vid -> rescale -> encode3 /

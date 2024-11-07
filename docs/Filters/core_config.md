@@ -32,7 +32,8 @@ Example
 ```
 [core]  
 threads=2
-```  
+```
+  
 Setting this in the config file is equivalent to using `-threads=2`.  
 The options specified at prompt overrides the value of the config file.  
 
@@ -43,7 +44,8 @@ Example
 ```
 [filter@rtpin]  
 interleave=yes
-```  
+```
+  
 This will force the rtp input filter to always request RTP over RTSP by default.  
 To generate a configuration file with all filters options serialized, use [-wf](gpac_general/#wf).  
 
@@ -54,12 +56,14 @@ This will set option `OPTNAME`, when present, to `VAL` in any loaded filter.
 Example
 ```
 --buffer=100 -i file vout aout
-```  
+```
+  
 This is equivalent to specifying `vout:buffer=100 aout:buffer=100`.  
 Example
 ```
 --buffer=100 -i file vout aout:buffer=10
-```  
+```
+  
 This is equivalent to specifying `vout:buffer=100 aout:buffer=10`.  
 
 __Warning: This syntax only applies to regular filter options. It cannot be used with builtin shortcuts (gfreg, enc, ...).__  
@@ -68,7 +72,8 @@ Meta-filter options can be set in the same way using the syntax `--OPT_NAME=VAL`
 Example
 ```
 --profile=Baseline -i file.cmp -o dump.264
-```  
+```
+  
 This is equivalent to specifying `-o dump.264:profile=Baseline`.  
     
 For both syntaxes, it is possible to specify the filter registry name of the option, using `--FNAME:OPTNAME=VAL` or `--FNAME@OPTNAME=VAL`.  
@@ -76,5 +81,6 @@ In this case the option will only be set for filters which are instances of regi
 Example
 ```
 --flist@timescale=100 -i plist1 -i plist2 -o live.mpd
-```  
+```
+  
 This will set the timescale option on the playlists filters but not on the dasher filter.  

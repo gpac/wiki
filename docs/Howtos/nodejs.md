@@ -1,4 +1,48 @@
-# Overview
+---
+tags:
+- mpd
+- pid
+- reframer
+- data
+- tile
+- codec
+- filter
+- connection
+- pipe
+- session
+- packet
+- pipeline
+- remux
+- stream
+- bitstream
+- sequence
+- dump
+- block
+- link
+- media
+- segment
+- isobmff
+- property
+- group
+- libgpac
+- chunk
+- track
+- option
+- profile
+- mp4
+- source
+- packets
+- chain
+- input
+- isomedia
+- output
+- sink
+- dash
+---
+
+
+
+# Overview {: data-level="all" }
 
 We discuss here how to use [GPAC Filters](Filters) in NodeJS. 
 
@@ -11,7 +55,7 @@ You can also have a look at the  [test script](https://github.com/gpac/gpac/tree
 
 __Warning GPAC NodeJS bindings are only available starting from GPAC 2.0.__
 
-# Before you begin
+# Before you begin {: data-level="beginner" }
    
 The GPAC NodeJS bindings are using [n-api](https://nodejs.org/api/n-api.html) for interfacing with libgpac filter session, while providing an object-oriented wrapper hiding all GPAC C design.
 
@@ -82,7 +126,7 @@ Running this should print your current GPAC version.
 
 A test program [gpac.js](https://github.com/gpac/gpac/blob/master/share/nodejs/test/gpac.js) exercising most of the NodeJS GPAC bindings is available in  `gpac/share/nodejs/test`
 
-# Tuning up GPAC
+# Tuning up GPAC {: data-level="beginner" }
 
 
 The first thing to do is to initialize libgpac. This is done by default while importing the bindings with the following settings:
@@ -95,6 +139,7 @@ If you want to change these, you need to re-init libgpac right after import:
 ```
 gpac.init(1, "customprofile");
 ```
+
 Any call other than `init`  to GPAC will prevent any subsequent call to `init` to be executed.
 
 Before starting any filter session, you may also need to pass some global configuration options (libgpac core or filter options) to GPAC:
@@ -117,7 +162,7 @@ gpac.set_logs("dash@info");
 ```
 
 
-# Setting up filter sessions
+# Setting up filter sessions {: data-level="beginner" }
 ## Simple sessions
 
 To create a filter session, the simplest way is to use all defaults value, creating a single-threaded blocking session:
@@ -237,6 +282,7 @@ You can specify the usual link filtering as an optional argument to `set_source`
 ```
 f_dst.set_source(reframer, "#PID=1");
 ```
+
 This will instruct that the destination only accepts PIDs coming from the reframer filter, and with ID 1.
 
 
@@ -254,7 +300,7 @@ Note that  (as in GPAC JS or Python) properties referring to constant values are
 - AudioFormat: string containing the audio format name
 
 
-# Custom Filters
+# Custom Filters {: data-level="expert" }
 
 You can define your own filter(s) to interact with the media pipeline. As usual in GPAC filters, a custom filter can be a source, a sink or any other filter. It can consume packets from input PIDs and produce packets on output PIDs. 
 
@@ -437,7 +483,7 @@ fs.run();
 
 
 
-# Custom GPAC callbacks
+# Custom GPAC callbacks {: data-level="expert" }
 Some callbacks from libgpac are made available in NodeJS
 
 ## Remotery interaction
@@ -716,7 +762,7 @@ _NOTE When running the session in multi-thread mode, file IO callbacks are alway
 
 
 
-# Multithread support
+# Multithread support {: data-level="expert" }
 
 Multithreaded filter sessions can be used with NodeJS, however the binding currently only supports executing callbacks into NodeJS from the main thread (main NodeJS or worker). 
 

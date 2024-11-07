@@ -18,7 +18,8 @@ When output sample aspect ratio is set, the output dimensions are divided by the
 Example
 ```
 ffsws:osize=288x240:osar=3/2
-```  
+```
+  
 The output dimensions will be 192x240.  
   
 When aspect ratio is not kept ([keepar=off](#keepar=off)):  
@@ -51,27 +52,55 @@ When sample aspect ratio is kept, the filter will:
 See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="osize">__osize__</a> (v2di): osize of output video  
-<a id="ofmt">__ofmt__</a> (pfmt, default: _none_, Enum: none|yuv420|yvu420|yuv420_10|yuv422|yuv422_10|yuv444|yuv444_10|uyvy|vyuy|yuyv|yvyu|uyvl|vyul|yuyl|yvyl|nv12|nv21|nv1l|nv2l|yuva|yuvd|yuv444a|yuv444p|v308|yuv444ap|v408|v410|v210|grey|algr|gral|rgb4|rgb5|rgb6|rgba|argb|bgra|abgr|rgb|bgr|xrgb|rgbx|xbgr|bgrx|rgbd|rgbds|uncv): pixel format for output video. When not set, input format is used  
+<div markdown class="option">  
+<a id="osize" data-level="basic">__osize__</a> (v2di): osize of output video  
+</div>  
+<div markdown class="option">  
+<a id="ofmt" data-level="basic">__ofmt__</a> (pfmt, default: _none_, Enum: none|yuv420|yvu420|yuv420_10|yuv422|yuv422_10|yuv444|yuv444_10|uyvy|vyuy|yuyv|yvyu|uyvl|vyul|yuyl|yvyl|nv12|nv21|nv1l|nv2l|yuva|yuvd|yuv444a|yuv444p|v308|yuv444ap|v408|v410|v210|grey|algr|gral|rgb4|rgb5|rgb6|rgba|argb|bgra|abgr|rgb|bgr|xrgb|rgbx|xbgr|bgrx|rgbd|rgbds|uncv): pixel format for output video. When not set, input format is used  
+</div>  
   
+<div markdown class="option">  
 <a id="scale">__scale__</a> (enum, default: _bicubic_): scaling mode (see filter help) (fastbilinear|bilinear|bicubic|X|point|area|bicublin|gauss|sinc|lanzcos|spline)  
+</div>  
   
+<div markdown class="option">  
 <a id="p1">__p1__</a> (dbl, default: _+I_): scaling algo param1  
+</div>  
+<div markdown class="option">  
 <a id="p2">__p2__</a> (dbl, default: _+I_): scaling algo param2  
+</div>  
+<div markdown class="option">  
 <a id="ofr">__ofr__</a> (bool, default: _false_): force output full range  
+</div>  
+<div markdown class="option">  
 <a id="brightness">__brightness__</a> (bool, default: _0_): 16.16 fixed point brightness correction, 0 means use default  
+</div>  
+<div markdown class="option">  
 <a id="contrast">__contrast__</a> (uint, default: _0_): 16.16 fixed point brightness correction, 0 means use default  
+</div>  
+<div markdown class="option">  
 <a id="saturation">__saturation__</a> (uint, default: _0_): 16.16 fixed point brightness correction, 0 means use default  
+</div>  
+<div markdown class="option">  
 <a id="otable">__otable__</a> (sintl): the yuv2rgb coefficients describing the output yuv space, normally ff_yuv2rgb_coeffs[x], use default if not set  
+</div>  
+<div markdown class="option">  
 <a id="itable">__itable__</a> (sintl): the yuv2rgb coefficients describing the input yuv space, normally ff_yuv2rgb_coeffs[x], use default if not set  
+</div>  
+<div markdown class="option">  
 <a id="keepar">__keepar__</a> (enum, default: _off_): keep aspect ratio  
 
 - off: ignore aspect ratio  
 - full: respect aspect ratio, applying input sample aspect ratio info  
 - nosrc: respect aspect ratio but ignore input sample aspect ratio  
+</div>  
   
+<div markdown class="option">  
 <a id="padclr">__padclr__</a> (str, default: _black_): clear color when aspect ration preservation is used  
+</div>  
+<div markdown class="option">  
 <a id="osar">__osar__</a> (frac, default: _0/1_): force output pixel aspect ratio  
+</div>  
   

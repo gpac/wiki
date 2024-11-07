@@ -1,4 +1,16 @@
-## Overview
+---
+tags:
+- source
+- chain
+- data
+- output
+- sink
+- dump
+---
+
+
+
+# Overview {: data-level="all"}
 
 Windows users often ask about how to compile GPAC and generate an installer. The main problem on platforms, like Windows, that don't rely on a modern package system is to get your dependencies with the correct version. Fortunately, we release a package containing most of the extra-libs we use.
 
@@ -6,7 +18,7 @@ The first reaction of unix users when compiling GPAC is to use an existing gnu/g
 
 **This article was made using a clean install within a virtualized Windows XP. It focuses on command-lines but converting and compiling projects from the GUI works.**
 
-## Getting the tools
+# Getting the tools
 
 *   [Download Visual C++ Express](http://www.microsoft.com/express/Downloads/) on the web (2010 has been used for this article).
 *   Ensure you have access to msbuild.exe which is provided with [the .NET framework 3.5](http://www.microsoft.com/downloads/en/details.aspx?FamilyId=333325fd-ae52-4e35-b531-508d977d32a6&displaylang=en) (it should be installed on any up-to-date Windows): `%WINDIR%\Microsoft.NET\Framework\v3.5\MSBuild.exe`
@@ -21,7 +33,7 @@ Rem: some users told us June 2010 DirectX SDK got rid of some needed components.
 
 Note: if you don't have the MFC/AFX headers, GPAC still provides you with SDL as an audio/video output.
 
-## Getting the source code (or organizing it)
+# Getting the source code (or organizing it)
 
 Make sure you have git and [subversion installed on your system](http://subversion.apache.org/), and **add the subversion binaries to your path**.
 
@@ -35,7 +47,7 @@ Download the file at <https://download.tsi.telecom-paristech.fr/gpac/gpac_extra_
 
 Unzip `gpac_extra_libs.zip` so that you have a gpac\_extra\_libs directory containing the files.
 
-## Compiling GPAC dependencies (extra libs)
+# Compiling GPAC dependencies (extra libs)
 
 The GPAC extra\_libs package is provided with a Visual Studio 2005 solution, we need to upgrade it (note: if you use the graphical interface, Visual C++ will try to convert it automatically) :
 
@@ -78,7 +90,7 @@ Copy the binaries to the right GPAC directories. Execute:
 ```
     
 
-## Compiling GPAC
+# Compiling GPAC
 
 
 ```
@@ -93,7 +105,7 @@ All projects won't compile on your desktop using this configuration. For instanc
 
 If you want to have some audio/video support, make sure you installed the optional packages at the "Getting the tools" step.
 
-## Making an installer
+# Making an installer
 
 GPAC uses [NSIS](http://nsis.sourceforge.net) to generate an installer. The NSIS script is located at `bin\Win32\release\nsis_install\gpac_installer.nsi`.
 

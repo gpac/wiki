@@ -17,8 +17,12 @@ Unframed WebVTT packets consist in single cues:
 
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="fontname">__fontname__</a> (str): default font  
-<a id="fontsize">__fontsize__</a> (uint, default: _18_): default font size  
+<div markdown class="option">  
+<a id="fontname" data-level="basic">__fontname__</a> (str): default font  
+</div>  
+<div markdown class="option">  
+<a id="fontsize" data-level="basic">__fontsize__</a> (uint, default: _18_): default font size  
+</div>  
   

@@ -1,10 +1,41 @@
-# Overview
+---
+tags:
+- pid
+- data
+- codec
+- pipe
+- multiplexer
+- session
+- pipeline
+- compression
+- encode
+- dump
+- media
+- isobmff
+- property
+- box
+- h264
+- option
+- mp4
+- source
+- chain
+- input
+- isomedia
+- output
+- mpeg
+- sink
+- encoder
+---
+
+
+
+# Overview {: data-level="all" }
 
 We discuss here how to use pipes in GPAC.  
 
 GPAC supports data piping on Linux, OSX and Windows. The pipe is unidirectional, and can be used as source or as destination.
  
-# Input pipe
+# Input pipe {: data-level="beginner" }
 
 ## Simple reception of data
 
@@ -36,7 +67,7 @@ The above command will run forever, since broken pipe messages are ignored. You 
 There is currently no way to signal from the sender that the session should be closed, we might add this feature in the near future.
 
 
-# Output pipe
+# Output pipe 
 
 
 Assume you have an app that consumes AVC|H264 in Annex B format from a pipe `myavcpipe`. You can direct GPAC output to this pipe:

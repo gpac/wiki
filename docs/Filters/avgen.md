@@ -27,7 +27,8 @@ Target encoding bitrates can be assigned to each output using [rates](#rates). T
 Example
 ```
 gpac avgen:sizes=1280x720,1920x1080:rates=2M,5M c=aac:FID=1 c=264:FID=2:clone -o live.mpd:SID=1,2
-```  
+```
+  
   
 # Multiview generation  
   
@@ -44,38 +45,82 @@ If multiple video PIDs are produced, they are assigned the names `videoN` and ID
 If multiple [views](#views) are generated, they are assigned the names `videoN_vK` and ID `N*views+K-1`, N in [1, sizes], K in [1, views].  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="type">__type__</a> (enum, default: _av_): output selection  
+<div markdown class="option">  
+<a id="type" data-level="basic">__type__</a> (enum, default: _av_): output selection  
 
 - a: audio only  
 - v: video only  
 - av: audio and video  
+</div>  
   
-<a id="freq">__freq__</a> (uint, default: _440_): frequency of beep  
-<a id="freq2">__freq2__</a> (uint, default: _659_): frequency of odd beep  
-<a id="sr">__sr__</a> (uint, default: _44100_): output samplerate  
-<a id="flen">__flen__</a> (uint, default: _1024_): output frame length in samples  
-<a id="ch">__ch__</a> (uint, default: _1_): number of channels  
-<a id="alter">__alter__</a> (bool, default: _false_): beep alternatively on each channel  
-<a id="blen">__blen__</a> (uint, default: _50_): length of beep in milliseconds  
-<a id="fps">__fps__</a> (frac, default: _25_): video frame rate  
-<a id="sizes">__sizes__</a> (v2il, default: _1280x720_): video size in pixels  
-<a id="pfmt">__pfmt__</a> (pfmt, default: _yuv_): output pixel format  
-<a id="lock">__lock__</a> (bool, default: _false_): lock timing to video generation  
-<a id="dyn">__dyn__</a> (bool, default: _true_): move bottom banner  
-<a id="ntp">__ntp__</a> (bool, default: _true_): send NTP along with packets  
-<a id="copy">__copy__</a> (bool, default: _false_): copy the framebuffer into each video packet instead of using packet references  
-<a id="dur">__dur__</a> (frac, default: _0/0_): run for the given time in second  
-<a id="adjust">__adjust__</a> (bool, default: _true_): adjust start time to synchronize counter and UTC  
-<a id="pack">__pack__</a> (enum, default: _no_): packing mode for stereo views  
+<div markdown class="option">  
+<a id="freq" data-level="basic">__freq__</a> (uint, default: _440_): frequency of beep  
+</div>  
+<div markdown class="option">  
+<a id="freq2" data-level="basic">__freq2__</a> (uint, default: _659_): frequency of odd beep  
+</div>  
+<div markdown class="option">  
+<a id="sr" data-level="basic">__sr__</a> (uint, default: _44100_): output samplerate  
+</div>  
+<div markdown class="option">  
+<a id="flen" data-level="basic">__flen__</a> (uint, default: _1024_): output frame length in samples  
+</div>  
+<div markdown class="option">  
+<a id="ch" data-level="basic">__ch__</a> (uint, default: _1_): number of channels  
+</div>  
+<div markdown class="option">  
+<a id="alter" data-level="basic">__alter__</a> (bool, default: _false_): beep alternatively on each channel  
+</div>  
+<div markdown class="option">  
+<a id="blen" data-level="basic">__blen__</a> (uint, default: _50_): length of beep in milliseconds  
+</div>  
+<div markdown class="option">  
+<a id="fps" data-level="basic">__fps__</a> (frac, default: _25_): video frame rate  
+</div>  
+<div markdown class="option">  
+<a id="sizes" data-level="basic">__sizes__</a> (v2il, default: _1280x720_): video size in pixels  
+</div>  
+<div markdown class="option">  
+<a id="pfmt" data-level="basic">__pfmt__</a> (pfmt, default: _yuv_): output pixel format  
+</div>  
+<div markdown class="option">  
+<a id="lock" data-level="basic">__lock__</a> (bool, default: _false_): lock timing to video generation  
+</div>  
+<div markdown class="option">  
+<a id="dyn" data-level="basic">__dyn__</a> (bool, default: _true_): move bottom banner  
+</div>  
+<div markdown class="option">  
+<a id="ntp" data-level="basic">__ntp__</a> (bool, default: _true_): send NTP along with packets  
+</div>  
+<div markdown class="option">  
+<a id="copy" data-level="basic">__copy__</a> (bool, default: _false_): copy the framebuffer into each video packet instead of using packet references  
+</div>  
+<div markdown class="option">  
+<a id="dur" data-level="basic">__dur__</a> (frac, default: _0/0_): run for the given time in second  
+</div>  
+<div markdown class="option">  
+<a id="adjust" data-level="basic">__adjust__</a> (bool, default: _true_): adjust start time to synchronize counter and UTC  
+</div>  
+<div markdown class="option">  
+<a id="pack" data-level="basic">__pack__</a> (enum, default: _no_): packing mode for stereo views  
 
 - no: no packing  
 - ss: side by side packing, forces [views](#views) to 2  
 - tb: top-bottom packing, forces [views](#views) to 2  
+</div>  
   
-<a id="disparity">__disparity__</a> (uint, default: _20_): disparity in pixels between left-most and right-most views  
-<a id="views">__views__</a> (uint, default: _1_): number of views  
-<a id="rates">__rates__</a> (strl): number of target bitrates to assign, one per size  
-<a id="logt">__logt__</a> (bool): log frame time to console  
+<div markdown class="option">  
+<a id="disparity" data-level="basic">__disparity__</a> (uint, default: _20_): disparity in pixels between left-most and right-most views  
+</div>  
+<div markdown class="option">  
+<a id="views" data-level="basic">__views__</a> (uint, default: _1_): number of views  
+</div>  
+<div markdown class="option">  
+<a id="rates" data-level="basic">__rates__</a> (strl): number of target bitrates to assign, one per size  
+</div>  
+<div markdown class="option">  
+<a id="logt" data-level="basic">__logt__</a> (bool): log frame time to console  
+</div>  
   

@@ -1,3 +1,35 @@
+---
+tags:
+- mpd
+- data
+- sample
+- session
+- pipeline
+- frame
+- stream
+- xml
+- bitstream
+- sequence
+- block
+- media
+- segment
+- isobmff
+- box
+- track
+- chunk
+- option
+- profile
+- mp4
+- chain
+- isomedia
+- binary
+- decoding
+- mpeg
+- dash
+---
+
+
+
 ## DASH Basics: MPD and Segments
 
 Let's quickly summarize how a DASH content is made of:

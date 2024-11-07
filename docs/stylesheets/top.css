@@ -1,0 +1,31 @@
+.md-top.md-icon {
+ 
+  background-color: #fff !important;
+  color: #8e8686;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.md-top:focus, .md-top:hover {
+  background-color: #d7d7d7 !important;
+  color: black !important;
+  border: 1px solid var(--md-default-fg-color--light) !important;
+  transition-duration: 300ms !important;
+}
+
+.md-top[hidden] {
+  transition-duration: 300ms !important;
+}
+
+
+[data-md-color-scheme="slate"] .md-top.md-icon {
+  background-color: #2e2e2e !important;
+  color: #a7a7a7;
+  border: 1px solid #444;
+}
+
+[data-md-color-scheme="slate"] .md-top:focus,
+[data-md-color-scheme="slate"] .md-top:hover {
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+  border: 1px solid #ff6633 !important;
+}

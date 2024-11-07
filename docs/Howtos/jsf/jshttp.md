@@ -1,11 +1,23 @@
-# Overview
+---
+tags:
+- option
+- mp4
+- session
+- media
+- data
+- filter
+---
+
+
+
+# Overview {:data-level="all"}
 
 We discuss here how to implement your custom HTTP server logic in JS.
 
 A custom logic can be defined using a standalone script, or by attaching a JS object to the httpout filter in a JS session.
 
 
-# Standalone script
+# Standalone script {: data-level ="beginner"}
 
 The standalone mode works by specifying a JS file to the httpin filter using its [-js](httpout#js) option:
 
@@ -40,7 +52,7 @@ httpout.on_request = function (request)
 
 ```
 
-# Attaching from a JS session
+# Attaching from a JS session {: data-level ="beginner"}
 
 The first step in your JS is to create an object implementing the callback previously indicated:
 

@@ -19,7 +19,8 @@ Example
 ```
 gpac -i - vout  
 gpac -i stdin vout
-```  
+```
+  
   
 # Named pipes  
   
@@ -52,17 +53,39 @@ This is typically needed for mux filters waiting for EOS to flush their data.
 If [marker](#marker) is set, the following strings (all 8-bytes with ``  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="src">__src__</a> (cstr): name of source pipe  
+<div markdown class="option">  
+<a id="src" data-level="basic">__src__</a> (cstr): name of source pipe  
+</div>  
+<div markdown class="option">  
 <a id="block_size">__block_size__</a> (uint, default: _5000_): buffer size used to read pipe  
-<a id="ext">__ext__</a> (str): indicate file extension of pipe data  
-<a id="mime">__mime__</a> (str): indicate mime type of pipe data  
+</div>  
+<div markdown class="option">  
+<a id="ext" data-level="basic">__ext__</a> (str): indicate file extension of pipe data  
+</div>  
+<div markdown class="option">  
+<a id="mime" data-level="basic">__mime__</a> (str): indicate mime type of pipe data  
+</div>  
+<div markdown class="option">  
 <a id="blk">__blk__</a> (bool, default: _false_): open pipe in block mode  
+</div>  
+<div markdown class="option">  
 <a id="ka">__ka__</a> (bool, default: _false_): keep-alive pipe when end of input is detected  
-<a id="mkp">__mkp__</a> (bool, default: _false_): create pipe if not found  
+</div>  
+<div markdown class="option">  
+<a id="mkp" data-level="basic">__mkp__</a> (bool, default: _false_): create pipe if not found  
+</div>  
+<div markdown class="option">  
 <a id="sigflush">__sigflush__</a> (bool, default: _false_): signal end of stream upon pipe close - cf filter help  
+</div>  
+<div markdown class="option">  
 <a id="marker">__marker__</a> (bool, default: _false_): inspect payload for flush and reconfigure signals - cf filter help  
+</div>  
+<div markdown class="option">  
 <a id="bpcnt">__bpcnt__</a> (uint, default: _0_): number of broken pipe allowed before exiting, 0 means forever  
+</div>  
+<div markdown class="option">  
 <a id="timeout">__timeout__</a> (uint, default: _0_): timeout in ms before considering input is in end of stream (0: no timeout)  
+</div>  
   

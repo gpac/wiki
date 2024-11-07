@@ -1,4 +1,55 @@
-# Overview
+---
+tags:
+- mpd
+- pid
+- reframer
+- data
+- tile
+- codec
+- filter
+- buffer
+- connection
+- pipe
+- sample
+- session
+- packet
+- pipeline
+- remux
+- frame
+- raw
+- stream
+- hevc
+- bitrate
+- dump
+- opengl
+- block
+- link
+- media
+- segment
+- isobmff
+- decoder
+- property
+- group
+- libgpac
+- rebuffer
+- chunk
+- track
+- option
+- profile
+- mp4
+- source
+- packets
+- chain
+- input
+- isomedia
+- output
+- sink
+- dash
+---
+
+
+
+# Overview {:data-level="all"}
 
 We discuss here how to use [GPAC Filters](Filters) in Python. 
 
@@ -12,7 +63,7 @@ __Warning__
 
 GPAC Python bindings are only available starting from GPAC 2.0.
 
-# Before you begin
+# Before you begin {:data-level="all"}
    
 The GPAC Python bindings use [ctypes](https://docs.python.org/3/library/ctypes.html) for interfacing with libgpac filter session, while providing an object-oriented wrapper hiding all ctypes internals and GPAC C design.
 
@@ -49,7 +100,7 @@ Running this should print your current GPAC version.
 You can also install libgpac bindings using PIP, see [this post](https://github.com/gpac/gpac/issues/2161#issuecomment-1087281505).
 
  
-# Tuning up GPAC
+# Tuning up GPAC 
 
 The first thing to do is to initialize libgpac. This is done by default while importing the bindings with the following settings:
 
@@ -118,7 +169,7 @@ fs.delete()
 gpac.close()
 ```
 
-## Non-blocking sessions
+## Non-blocking sessions 
 
 A non-blocking session will need to be called on regular basis to process pending filter tasks. It is useful if you need to do other tasks while the session is running and do not want to use callbacks from GPAC for that.
 
@@ -184,6 +235,7 @@ You can specify the usual link filtering as an optional argument to `set_source`
 ```
 f_dst.set_source(reframer, "#PID=1")
 ```
+
 This will instruct that the destination only accepts PIDs coming from the reframer filter, and with ID 1.
 
 

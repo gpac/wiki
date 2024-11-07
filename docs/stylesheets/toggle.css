@@ -1,0 +1,25 @@
+@media screen and (min-width: 76.25em) {
+  .md-nav--secondary .md-nav__title .md-nav__icon {
+    display: block;
+  }
+}
+@media screen and (min-width: 76.25em) {
+  .md-nav__icon {
+    transition: background-color 0.25s;
+  }
+}
+@media screen and (min-width: 76.25em) {
+  label[for="__toc"] .md-nav__icon.md-icon {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-nav__icon:hover {
+    background-color: transparent;
+  }
+}
+
+.toggle-btn {
+  display: none;
+}

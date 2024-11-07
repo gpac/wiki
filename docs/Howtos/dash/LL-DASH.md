@@ -1,3 +1,43 @@
+---
+tags:
+- mpd
+- reframer
+- data
+- codec
+- filter
+- multiplexer
+- encrypt
+- session
+- manifest
+- compression
+- frame
+- raw
+- xml
+- stream
+- encode
+- dump
+- block
+- link
+- media
+- segment
+- property
+- h264
+- chunk
+- latency
+- option
+- profile
+- graph
+- source
+- packets
+- input
+- output
+- sink
+- dash
+- encoder
+---
+
+
+
 # Foreword
 Please make sure you are familiar with [DASH terminology](DASH-basics) before reading. 
 
@@ -79,6 +119,7 @@ You can now do a live (dynamic) DASH session:
 ```
 MP4Box -dash-live 10000 -subdur 10000 -frag 1000 -profile live -out DST_URL source1 ... source2
 ```
+
 This will generate a live session, dashing 10s (`-subdur`) of content into 10s (`-dash-live`) segments, each containing 10 fragments of 1s (`-frag`). If your sources are live, you don't need to specify the `-subdur`option since real-time regulation of source is not needed. 
 
 or
@@ -86,6 +127,7 @@ or
 ```
 gpac -i source1 -i source2 -o DST_URL:segdur=10:cdur=1:profile=live:dmode=dynamic:sreg
 ```
+
 This will generate a live session, dashing content into 10s (`segdur`) segments, each containing 10 fragments of 1s (`cdur`), performing real-time regulation after each segment generation (`sreg`). If your sources are live, you don't need to specify the `sreg`option since real-time regulation of source is not needed. 
 
 
@@ -95,6 +137,7 @@ The above commands do not perform fragment regulation, which means that the cont
 MP4Box -frag-rt -dash-live 10000 -frag 1000 -profile live -out res/live.mpd source1 source2
 gpac -i source1 -i source2 reframer:rt=on -o res/live.mpd:segdur=10:cdur=1:profile=live:dmode=dynamic
 ```
+
 The `-frag-rt` simply injects a [reframer](reframer) in the filter graph performing real-time regulation on media frames. This will ensure that both segments and fragments are written to disk in real-time.
 
 
@@ -110,6 +153,7 @@ You now have low-latency producing of your DASH session, however in terms of DAS
 MP4Box -ast-offset 9000 -dash-live 10000 -frag 1000 -profile live -out res/live.mpd udp://IP:PORT
 gpac -i udp://IP:PORT -o res/live.mpd:segdur=10:cdur=1:profile=live:dmode=dynamic:asto=9
 ```
+
 In the above example, we indicate the requests can be issued 9s (`asto` or `-ast-offset`) before the segment is fully produced. Your typical setup should have `cdur + asto = segdur`. 
 If `asto` is greater than `segdur + cdur`, this will results in 404; if is is less, this will increase the client delay to the live edge.
 

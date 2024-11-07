@@ -1,4 +1,13 @@
-# In source tree building
+---
+tags:
+- input
+- data
+- source
+---
+
+
+
+# In source tree building {: data-level="all" }
 If you build GPAC directly in the source tree (i.e., running `./configure && make` in the same directory as the configure script), the following steps must be done when upgrading your code base to a new version of GPAC, or when switching branches:
 
 - uninstall any previous version of GPAC (optional, the build system as of 1.0 is independent from the presence of any other version of libgpac headers on the system)

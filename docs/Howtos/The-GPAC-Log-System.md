@@ -1,10 +1,36 @@
-# Introduction
+---
+tags:
+- pid
+- data
+- codec
+- session
+- stream
+- xml
+- hevc
+- dump
+- scene
+- media
+- signal
+- compositor
+- libgpac
+- option
+- graph
+- source
+- input
+- output
+- mpeg
+- sink
+---
+
+
+
+# Introduction {:data-level="all"}
 
 A log is a way of keeping record of what's happening when executing a software. The GPAC framework has log capabilities to analyze what is going on when running MP4Box, gpac or other libgpac based applications.
 
 This article explains the features of the log system and how to use it. For more information on latest syntax and options, [check here](core_logs).
 
-# Overview
+# Overview {:data-level="all"}
 
 The GPAC log system is based on two orthogonal concepts:
 
@@ -22,8 +48,7 @@ The general syntax is:
 
 Concrete examples are given further in this article.
 
-# Example of available Tools
-
+# Example of available Tools 
 - GF_LOG_CORE      (core)     : log message from the core library (init, threads, network calls, etc)
 - GF_LOG_FILTERS    (filters) : log message from the filter session
 - GF_LOG_CONTAINER (container): log message from a bitstream parser (IsoMedia, MPEG-2 TS, OGG, ...)
@@ -43,7 +68,7 @@ Concrete examples are given further in this article.
 - GF_LOG_ALL       (all)      : all available logs
 
 
-# Available Levels
+# Available Levels 
 
 - GF_LOG_QUIET   (quiet)  : disable all Log message
 - GF_LOG_ERROR   (error)  : log message describes an error

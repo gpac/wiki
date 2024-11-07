@@ -61,7 +61,8 @@ MP4Box -add test.ttml:sopt:ttml_zero=T10:00:00 [...]
 gpac -i test.ttml --ttml_zero=10:00:00 [...]  
 gpac -i test.ttml --ttml_zero=T10:00:00 [...]  
 MP4Box -add test.ttml --ttml_zero=10:00:00 [...]
-```  
+```
+  
   
 # Simple Text Support  
   
@@ -70,7 +71,8 @@ Example
 ```
 gpac -i test.txt:#CodecID=stxt  [...]  
 gpac fin:pck="Text Data":#CodecID=stxt  [...]
-```  
+```
+  
   
 The content of the source file will be the payload of the text sample. The [stxtmod](#stxtmod) option allows specifying WebVTT, TX3G or simple text mode for output format.  
 In this mode, the [stxtdur](#stxtdur) option is used to control the duration of the generated subtitle:  
@@ -86,26 +88,63 @@ When reframing simple text streams from demuxers (e.g. subtitles from MKV), the 
 When importing SRT, SUB or SSA files, the output format of the PID can be selected using [stxtmod](#stxtmod).  
   
 
-# Options    
+# Options  {.no-collapse}  
   
+<div markdown class="option">  
 <a id="nodefbox">__nodefbox__</a> (bool, default: _false_): skip default text box  
+</div>  
+<div markdown class="option">  
 <a id="noflush">__noflush__</a> (bool, default: _false_): skip final sample flush for srt  
-<a id="fontname">__fontname__</a> (str): default font  
-<a id="fontsize">__fontsize__</a> (uint, default: _18_): default font size  
-<a id="lang">__lang__</a> (str): default language  
-<a id="width">__width__</a> (uint, default: _0_): default width of text area  
-<a id="height">__height__</a> (uint, default: _0_): default height of text area  
-<a id="txtx">__txtx__</a> (uint, default: _0_): default horizontal offset of text area: -1 (left), 0 (center) or 1 (right)  
-<a id="txty">__txty__</a> (uint, default: _0_): default vertical offset of text area: -1 (bottom), 0 (center) or 1 (top)  
+</div>  
+<div markdown class="option">  
+<a id="fontname" data-level="basic">__fontname__</a> (str): default font  
+</div>  
+<div markdown class="option">  
+<a id="fontsize" data-level="basic">__fontsize__</a> (uint, default: _18_): default font size  
+</div>  
+<div markdown class="option">  
+<a id="lang" data-level="basic">__lang__</a> (str): default language  
+</div>  
+<div markdown class="option">  
+<a id="width" data-level="basic">__width__</a> (uint, default: _0_): default width of text area  
+</div>  
+<div markdown class="option">  
+<a id="height" data-level="basic">__height__</a> (uint, default: _0_): default height of text area  
+</div>  
+<div markdown class="option">  
+<a id="txtx" data-level="basic">__txtx__</a> (uint, default: _0_): default horizontal offset of text area: -1 (left), 0 (center) or 1 (right)  
+</div>  
+<div markdown class="option">  
+<a id="txty" data-level="basic">__txty__</a> (uint, default: _0_): default vertical offset of text area: -1 (bottom), 0 (center) or 1 (top)  
+</div>  
+<div markdown class="option">  
 <a id="zorder">__zorder__</a> (sint, default: _0_): default z-order of the PID  
+</div>  
+<div markdown class="option">  
 <a id="timescale">__timescale__</a> (uint, default: _1000_): default timescale of the PID  
+</div>  
+<div markdown class="option">  
 <a id="ttml_split">__ttml_split__</a> (bool, default: _true_): split ttml doc in non-overlapping samples  
+</div>  
+<div markdown class="option">  
 <a id="ttml_cts">__ttml_cts__</a> (lfrac, default: _-1/1_): first sample cts - see filter help  
+</div>  
+<div markdown class="option">  
 <a id="ttml_dur">__ttml_dur__</a> (frac, default: _0/1_): sample duration when not spliting split - see filter help  
+</div>  
+<div markdown class="option">  
 <a id="ttml_embed">__ttml_embed__</a> (bool, default: _false_): force embedding TTML resources  
+</div>  
+<div markdown class="option">  
 <a id="ttml_zero">__ttml_zero__</a> (str): set subtitle zero time for TTML  
+</div>  
+<div markdown class="option">  
 <a id="no_empty">__no_empty__</a> (bool, default: _false_): do not send empty samples  
+</div>  
+<div markdown class="option">  
 <a id="stxtdur">__stxtdur__</a> (frac, default: _1_): duration for simple text  
+</div>  
+<div markdown class="option">  
 <a id="stxtmod">__stxtmod__</a> (enum, default: _tx3g_): text stream mode for simple text streams and SRT inputs  
 
 - stxt: output PID formatted as simple text stream  
@@ -113,5 +152,6 @@ When importing SRT, SUB or SSA files, the output format of the PID can be select
 - tx3g: output PID formatted as TX3G/Apple stream  
 - vtt: output PID formatted as WebVTT stream  
 - webvtt: same as vtt (for backward compatiblity  
+</div>  
   
   

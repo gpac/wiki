@@ -274,11 +274,11 @@ MaxBuffer | uint | D | Maximum buffer occupancy in ms | PBMX
 ReBuffer | uint | D | Rebuffer threshold in ms, 0 disable rebuffering | PBRE    
 ViewIdx | uint | D | View index for multiview (1 being left) | VIDX    
 FragURL | str | D | Fragment URL (without '#') of original URL (used by some filters to set the property on media PIDs) | OFRA    
-ROUTEIP | str | D | ROUTE session IP address | RSIP    
-ROUTEPort | uint | D | ROUTE session port number | RSPN    
-ROUTEName | str | D | Name (location) of raw file to advertise in ROUTE session | RSFN    
-ROUTECarousel | frac | D | Carousel period in seconds of raw file in ROUTE session | RSCR    
-ROUTEUpload | frac | D | Upload time in seconds of raw file in ROUTE session | RSST    
+MCASTIP | str | D | session Multicast IP address for ROUTE/MABR | MSIP    
+MCASTPort | uint | D | session port number for ROUTE/MABR | MSPN    
+MCASTName | str | D | Name (location) of raw file to advertise in ROUTE/MABR session | MSFN    
+MCASTCarousel | frac | D | Carousel period in seconds of raw file or low-latency manifest/init segments for ROUTE/MABR sessions | MSCR    
+MCASTUpload | frac | D | Upload time in seconds of raw files for ROUTE/MABR sessions | MSST    
 Stereo | uint | D | Stereo type of video | PSTT    
 Projection | uint | D | Projection type of video | PPJT    
 InitalPose | v3di | D | Initial pose for 360 video, in degrees expressed as 16.16 bits (x is yaw, y is pitch, z is roll) | PPOS    
@@ -305,6 +305,8 @@ DownloadSession | ptr | D | Pointer to download session | GHTT
 HasTemi | bool | D | TEMI present flag | PTEM    
 XPSMask | uint | DP | Parameter set mask | PXPM    
 RangeEnd | bool | P | Signal packet is the last in the desired play range | PCER    
+RefID | sint | P | packet identifier for dependency (usually POC for video) | PKID    
+Refs | sintl | P | list of packet identifier this packet depends on | PRFS    
 
 # Pixel formats  
   
@@ -852,10 +854,15 @@ gopher | httpin |  n/a
 gophers | httpin |  n/a  
 imap | httpin |  n/a  
 imaps | httpin |  n/a  
+ldap | httpin |  n/a  
+ldaps | httpin |  n/a  
 mqtt | httpin |  n/a  
 pop3 | httpin |  n/a  
 pop3s | httpin |  n/a  
+rtmp | httpin |  n/a  
 rtsp | httpin rtpin | rtspout  
+scp | httpin |  n/a  
+sftp | httpin |  n/a  
 smb | httpin |  n/a  
 smbs | httpin |  n/a  
 smtp | httpin |  n/a  

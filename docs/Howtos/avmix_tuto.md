@@ -1,4 +1,43 @@
-# Overview
+---
+tags:
+- heif
+- data
+- overlay
+- filter
+- pipe
+- encrypt
+- sample
+- manifest
+- pipeline
+- frame
+- raw
+- stream
+- encode
+- bitstream
+- avmix
+- sequence
+- dump
+- offscreen
+- scene
+- media
+- isobmff
+- property
+- group
+- track
+- option
+- mp4
+- source
+- chain
+- input
+- isomedia
+- output
+- decoding
+- sink
+---
+
+
+
+# Overview {:data-level="all"}
 
 We discuss here how to use the AVMix filter to do offline or live video editing.
 This filter is a [JS filter](jsf) and can be modified fairly simply.
@@ -32,7 +71,7 @@ By default, the filter will run in live mode, and will never stop. You can run i
 ```
 
 
-# General concepts
+# General concepts {:data-level="beginner"}
 ## Declaring media
 
 To declare media for the mixer, you need to use a sequence object along with your media source. Typically:
@@ -216,6 +255,7 @@ A group with `opacity` less than 1 will be rendered offscreen and drawn with the
 ]}
 ]
 ```
+
 You can also use the `scaler` property to change the offscreen resolution of the group, to create a pixelated effect, here combined with opacity changing: 
 
 ```
@@ -337,6 +377,7 @@ For example, load:
 {"seq": [ { "src": [{"in": "media.mp4"}], "start": 1, "stop": 5} ] }
 ]
 ```
+
 then load (updating `loop` parameter):
 ```
 [
@@ -373,6 +414,7 @@ You should now see "no input" message when playing. Without closing the player, 
 { "id": "scene1", "sources": ["seq1"]}
 ]
 ```
+
 And the video sequence will start ! You can use for start and stop time values:
 
 - "now": will resolve to current UTC time
@@ -380,7 +422,7 @@ And the video sequence will start ! You can use for start and stop time values:
 - date: will use the date as the start/stop time
 
  
-# Some examples
+# Some examples {:data-level="beginner"}
 ## Transparent Logo insertion
 
 Simplified version of above example, with a single source and logo
@@ -731,6 +773,7 @@ The following shows a cross-fade of two inputs using an offscreen group in alpha
 ] }
 ]
 ```
+
 In this mode, the texturing parameters used by the offscreen group can be modified using the properties `*_rep`of the shape object.
 
 
@@ -820,6 +863,7 @@ The simplest usage of a watcher is to forward a property to another object prope
 {"watch": "s1@y", "target": "s2@y"}
 ]
 ```
+
 In this example, any modification to `s1.x` (resp `s1.y`) through timers, playlist update or other JS code will automatically copy the values to  `s2.x` (resp `s2.y`) .
 
 If you want to modify the value, simply use a script instead of a builtin target:
@@ -827,10 +871,12 @@ If you want to modify the value, simply use a script instead of a builtin target
 ```
 {"watch": "s1@x", "target": "get_scene('s2').set('x', value/2);"},
 ```
+
 If you need to modify something other than group or scene:
 ```
 {"watch": "s1@x", "target": "update_element('timer', 'loop',  (x<0) ? false : true);"},
 ```
+
 This will pause the timer `timer` whenever the x coordinate of `s1` is greater than 0, and resume the timer otherwise.
 
 
@@ -840,6 +886,7 @@ As indicated in the scripting section, you can also add watcher redirecting to m
 {"id": "mod", "js": "mymod.js"},
 {"watch": "s1@x", "target": "mod.on_x"},
 ```
+
 And in `mymod.js`:
 
 ```

@@ -1,11 +1,44 @@
-MP4Box is able to encrypt and decrypt ISOBMFF files according to CENC specification (ISO/IEC 23001-7:2016), including latest pattern encryption tools introduced in the standard. 
+---
+tags:
+- data
+- tile
+- codec
+- isma
+- encrypt
+- sample
+- compression
+- stream
+- subsample
+- xml
+- block
+- media
+- segment
+- isobmff
+- property
+- group
+- box
+- h264
+- chunk
+- track
+- mp4
+- source
+- packets
+- input
+- isomedia
+- binary
+- dash
+---
 
-In order to encrypt or decrypt an MP4 file, MP4Box will need a side file containing all information about crypto/DRM system and the information needed to encrypt a given track, hereafter referred as `drm_file`. Sample files are available in [GPAC's test suite](https://github.com/gpac/testsuite/tree/filters/media/encryption). 
 
-The file is an XML with a root element called `GPACDRM` with one or more `CrypTrack` children, zero or more `DRMInfo` children and  zero or more `DRMInfoTemplate` children.
-Just like any XML file, the file must begin with the usual xml header. The file MUST be encoded in UTF-8. 
 
-## XML Syntax
+_MP4Box is able to encrypt and decrypt ISOBMFF files according to CENC specification (ISO/IEC 23001-7:2016), including latest pattern encryption tools introduced in the standard._ 
+
+_In order to encrypt or decrypt an MP4 file, MP4Box will need a side file containing all information about crypto/DRM system and the information needed to encrypt a given track, hereafter referred as `drm_file`. Sample files are available in [GPAC's test suite](https://github.com/gpac/testsuite/tree/filters/media/encryption)._ 
+
+_The file is an XML with a root element called `GPACDRM` with one or more `CrypTrack` children, zero or more `DRMInfo` children and  zero or more `DRMInfoTemplate` children._
+_Just like any XML file, the file must begin with the usual xml header. The file MUST be encoded in UTF-8._ 
+
+# XML Syntax {: data-level="all"}
 
 ```xml
 <GPACDRM type="...">
@@ -19,7 +52,7 @@ Just like any XML file, the file must begin with the usual xml header. The file 
 </GPACDRM>
 ```
 
-## GPACDRM Element Semantics
+# GPACDRM Element Semantics
 
 *   `type` : is the default protection scheme type used for all tracks in the source media file. The possible values are (full name or 4 char code):
     *   **ISMA** or **iAEC**: ISMA E&A (ISMACryp) Scheme
@@ -52,7 +85,7 @@ The payload of a DRMInfo describing a PSSH blob can be encrypted using AES-128 C
 
 The following example shows a simple GPAC DRM system info:
     
-    ### Simple GPAC DRM system info
+### Simple GPAC DRM system info
     
     ```xml
     <!-- example for GPAC 'clear' DRM System - keys are listed after the content and UL follows -->

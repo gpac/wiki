@@ -1,3 +1,18 @@
+---
+tags:
+- scene
+- graph
+- source
+- input
+- data
+- compositor
+- xml
+- property
+- bifs
+---
+
+
+
 # Overview
 
 This page describes the status of the implementation in the GPAC project of the Scalable Vector Graphics (SVG) language. It describes the features that are implemented and the roadmap for missing or new features.
