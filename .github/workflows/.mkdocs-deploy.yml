@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.10' 
       - name: install mkdocs-material
-        run: pip install mkdocs-material==9.5.26 
+        run: pip install mkdocs-material==9.5.44 
       - name: build mkdocs
         env:
             GOOGLE_ANALYTICS_KEY: ${{secrets.GOOGLE_ANALYTICS_KEY}}
