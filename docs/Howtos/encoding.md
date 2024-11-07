@@ -103,11 +103,11 @@ The above command will encode the video track in  `source.mp4`  into AVC|H264 at
 The above command will encode the video track in  `source.mp4`  into AVC|H264 at 500 kbps and enforce intra frames using [fintra](ffenc) every 2 seconds. This doesn't prevent the encoder to produce intra frames within this period (e.g. scene cut), but ensures you always have IDRs at the right period. This is obviously designed for HTTP Adaptive Streaming.
 
 
-```gpac -i source.mp4 c=avc::x264-params=no-mbtree:sync-lookahead=0::profile=baseline -o test.avc```
+```gpac -i source.mp4 c=avc::x264-params=no-mbtree=1:sync-lookahead=0::profile=baseline -o test.avc```
 
 The above command will encode the video track in  `source.mp4`  into AVC|H264 and pass two options to FFmpeg encoder:
 
--  `x264-params`, with value `no-mbtree:sync-lookahead=0`
+-  `x264-params`, with value `no-mbtree=1:sync-lookahead=0`
 -  `profile`, with value `baseline`
 
 __Discussion__  

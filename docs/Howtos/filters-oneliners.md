@@ -301,7 +301,7 @@ gpac -i source.pcm:sr=44100:ch=1 resample:sr=48k -o dump.pcm
 
 Setting FFmpeg and x264 options - _see [filter](ffenc)_  
 ```
-gpac -i vid.mp4 enc:c=avc:b=2m:fintra=2:vprofile=baseline:preset=ultrafast:tune=zerolatency::x264-params=no-mbtree:sliced-threads:sync-lookahead=0 -o dst.mp4
+gpac -i vid.mp4 enc:c=avc:b=2m:fintra=2:profile=baseline:preset=ultrafast:tune=zerolatency::x264-params=no-mbtree=1:sliced-threads=1:sync-lookahead=0 -o dst.mp4
 ```
 
 Transcode to AVC 1mbps and aac 128k while monitoring video output and filter stats- _see [filter](ffenc)_  

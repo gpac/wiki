@@ -2498,7 +2498,6 @@ Muxing
 remux
 khz
 FFmpeg
-vprofile
 ultrafast
 zerolatency
 mbps
