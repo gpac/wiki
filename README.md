@@ -23,7 +23,7 @@ This documentation uses the [**materials** theme](https://squidfunk.github.io/mk
 
 **Intall all dependencies**:
 ```bash
-python3 -m pip install mkdocs-material
+python3 -m pip install mkdocs-material==9.5.26
 ```
 
 **Local preview with hot reloading**:
