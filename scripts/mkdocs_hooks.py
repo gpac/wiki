@@ -208,23 +208,31 @@ def gh_wiki_cleanup():
 #     gh_wiki_cleanup()
 
 def heading_level(line):
-    hx = 0
-    for char in line.lstrip():
-        if char != "#":
-            return hx
-        hx+=1
-    return hx
+   hx = 0
+   for char in line.lstrip():
+       if char != "#":
+           return hx
+       hx+=1
+   return hx
+
 
 def fix_md_headings(md_content):
-    md_fixed = []
-    for l in md_content.splitlines():
-        hx = heading_level(l)
-        if hx > 0 and hx < 6:
-            l = "#"+l
-        elif hx >= 6:
-            logger.warning("h6 detected - could not be fixed using mkdocs hooks")
-        md_fixed.append(l)
-    return '\n'.join(md_fixed)
+   md_fixed = []
+   incode = False
+   for l in md_content.splitlines():
+       if (l.startswith("```")):
+           incode = not incode
+       if incode:
+           md_fixed.append(l)
+       else:
+           hx = heading_level(l)
+           if hx > 0 and hx < 6:
+               l = "#"+l
+           elif hx >= 6:
+               logger.warning("h6 detected - could not be fixed using mkdocs hooks")
+           md_fixed.append(l)
+   return '\n'.join(md_fixed)
+
 
 if __name__ == "__main__":
-    gh_wiki_cleanup()
+   gh_wiki_cleanup()
