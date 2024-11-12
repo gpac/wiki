@@ -153,11 +153,9 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
             assert target_uri is not None
             assert target_file is not None
             if target_file.inclusion.is_excluded():
-                target = target_uri
-                link_error = LINKED_PAGE_EXCLUDED
+                self.add_broken_link(LINKED_PAGE_EXCLUDED, target_uri, None)
 
             path = utils.get_relative_url(target_file.url, self.file.url)
-            self.add_broken_link(link_error, target, None)
             return urlunsplit(('', '', path, query, fragment))
 
 
