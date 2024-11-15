@@ -1,10 +1,69 @@
-{#-
-    This file was automatically generated - do not edit
-  -#}
-  {% extends "base.html" %}
+{#- 
+  This file is an override of the original base.html 
+  It includes only custom blocks. Do not edit the original base.html directly. 
+-#}
 
-  {% block content %}
-  <article class="md-content__inner md-typeset">
-    {{ page.content }}
-  </article>
+{% extends "base.html" %}
+
+{# Block Scripts: Ajout de vos scripts personnalisés #}
+{% block scripts %}
+  <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
+  <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
+  {% for script in config.extra_javascript %}
+    {{ script | script_tag }}
+  {% endfor %}
+{% endblock %}
+
+{# Block Styles: Ajout de vos feuilles de style personnalisées #}
+{% block styles %}
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
+  {% if config.theme.palette %}
+    {% set palette = config.theme.palette %}
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
+  {% endif %}
+  {% include "partials/icons.html" %}
+{% endblock %}
+
+{# Block Config: Ajout ou modification de configuration JSON #}
+{% block config %}
+  {%- set app = {
+    "base": base_url,
+    "features": features,
+    "translations": {},
+    "search": "assets/javascripts/workers/search.6ce7567c.min.js" | url
+  } -%}
+  {%- if config.extra.version -%}
+    {%- set mike = config.plugins.get("mike") -%}
+    {%- if not mike or mike.config.version_selector -%}
+      {%- set _ = app.update({ "version": config.extra.version }) -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if config.extra.tags -%}
+    {%- set _ = app.update({ "tags": config.extra.tags }) -%}
+  {%- endif -%}
+  {%- set translations = app.translations -%}
+  {%- for key in [
+    "clipboard.copy",
+    "clipboard.copied",
+    "search.result.placeholder",
+    "search.result.none",
+    "search.result.one",
+    "search.result.other",
+    "search.result.more.one",
+    "search.result.more.other",
+    "search.result.term.missing",
+    "select.version"
+  ] -%}
+    {%- set _ = translations.update({ key: lang.t(key) }) -%}
+  {%- endfor -%}
+  <script id="__config" type="application/json">
+    {{- app | tojson -}}
+  </script>
+{% endblock %}
+
+{# Block Content: Personnalisation de la zone de contenu principal si nécessaire #}
+{% block content %}
+<article class="md-content__inner md-typeset">
+  {{ page.content }}
+</article>
 {% endblock %}
