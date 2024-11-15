@@ -1,11 +1,5 @@
-{#- 
-  This file is an override of the original base.html 
-  It includes only custom blocks. Do not edit the original base.html directly. 
--#}
-
 {% extends "base.html" %}
 
-{# Block Scripts: Ajout de vos scripts personnalisés #}
 {% block scripts %}
   <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
   <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
@@ -14,7 +8,6 @@
   {% endfor %}
 {% endblock %}
 
-{# Block Styles: Ajout de vos feuilles de style personnalisées #}
 {% block styles %}
   <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
   {% if config.theme.palette %}
@@ -24,7 +17,6 @@
   {% include "partials/icons.html" %}
 {% endblock %}
 
-{# Block Config: Ajout ou modification de configuration JSON #}
 {% block config %}
   {%- set app = {
     "base": base_url,
@@ -61,7 +53,6 @@
   </script>
 {% endblock %}
 
-{# Block Content: Personnalisation de la zone de contenu principal si nécessaire #}
 {% block content %}
 <article class="md-content__inner md-typeset">
   {{ page.content }}
