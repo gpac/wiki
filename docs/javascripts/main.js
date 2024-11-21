@@ -103,70 +103,65 @@ function handlePopState() {
 }
 
 // Feedback
+
+// Feedback State Management
+const FeedbackState = {
+    INITIAL: 'initial',
+    SUBMITTED: 'submitted'
+};
+
 function initializeFeedback(selector) {
-    try {
-        const feedback = document.querySelector(selector);
-        if (!feedback) return;
+    const feedback = document.querySelector(selector);
+    if (!feedback) return;
 
-        const buttons = feedback.querySelectorAll('.md-feedback__icon:not(.md-feedback__contribute)');
-        const note = getFeedbackNote(feedback);
+    const buttons = feedback.querySelectorAll('.md-feedback__icon:not(.md-feedback__contribute)');
+    const feedbackContainer = feedback.querySelector('.md-feedback__inner');
+    const feedbackNote = feedback.querySelector('.md-feedback__note');
+    let currentState = FeedbackState.INITIAL;
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => handleFeedbackClick(button, buttons, note));
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            handleFeedbackClick(button, buttons, feedbackContainer, feedbackNote);
+            initializeContributeIcon(feedback);
         });
+    });
 
-        initializeContributeIcon(feedback);
-    } catch (error) {
-        console.error("Error in initializeFeedback:", error);
-    }
-}
-
-function getFeedbackNote(feedback) {
-    try {
-        let note = feedback.querySelector('.md-feedback__note');
-        if (!note) {
-            note = document.createElement('div');
-            note.className = 'md-feedback__note';
-            note.hidden = true;
-            feedback.querySelector('.md-feedback__inner').appendChild(note);
-        }
-        return note;
-    } catch (error) {
-        console.error("Error in getFeedbackNote:", error);
-        return null;
-    }
-}
-
-function handleFeedbackClick(button, allButtons, note) {
-    try {
+    function handleFeedbackClick(button, allButtons, container, note) {
         const data = button.getAttribute('data-md-value');
-        const url = `/${window.location.pathname}`;
-        const title = document.querySelector('.md-content__inner h1')?.textContent || '';
+        
+   
 
-        console.log(`Feedback: ${data} for page ${url} (${title})`);
-
-        note.textContent = `Thank you for your feedback!`;
-        note.hidden = false;
-
+        // Disable all buttons
         allButtons.forEach(btn => btn.disabled = true);
-    } catch (error) {
-        console.error("Error in handleFeedbackClick:", error);
+
+        // Show thank you message using existing note element
+        if (note) {
+            note.textContent = 'Thank you for your feedback!';
+            note.hidden = false;
+        }
+        
+        // Fade out and hide feedback after delay
+        setTimeout(() => {
+            feedback.classList.add('md-feedback--fade-out');
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 100);
+        }, 1000);
     }
 }
 
 function initializeContributeIcon(feedback) {
-    try {
-        const contributeIcon = feedback.querySelector('.md-feedback__contribute');
-        const contributeNote = feedback.querySelector('.md-feedback__contribute-note');
+    const contributeIcon = feedback.querySelector('.md-feedback__contribute');
+    const contributeNote = feedback.querySelector('.md-feedback__contribute-note');
 
-        if (contributeIcon && contributeNote) {
-            contributeIcon.addEventListener('mouseenter', () => contributeNote.hidden = false);
-            contributeIcon.addEventListener('mouseleave', () => contributeNote.hidden = true);
-        }
-    } catch (error) {
-        console.error("Error in initializeContributeIcon:", error);
+    if (contributeIcon && contributeNote) {
+        contributeIcon.addEventListener('mouseenter', () => contributeNote.hidden = false);
+        contributeIcon.addEventListener('mouseleave', () => contributeNote.hidden = true);
     }
 }
+
+
+
 
 // Collapse 
 function handleSearchPageCollapse() {

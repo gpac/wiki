@@ -1,50 +1,96 @@
-<!-- {#-
+ {#-
     This file was automatically generated - do not edit
 -#}
-{% if config.extra.analytics %}
-  {% set feedback = config.extra.analytics.feedback %}
-{% endif %}
-{% if page.meta and page.meta.hide %}
-  {% if "feedback" in page.meta.hide %}
-    {% set feedback = None %}
-  {% endif %}
-{% endif %}
-{% if feedback %}
-  <form class="md-feedback" name="feedback" hidden>
-    <fieldset>
-      <legend class="md-feedback__title">
-        {{ feedback.title }}
-      </legend>
-      <div class="md-feedback__inner">
-        <div class="md-feedback__list">
-          {% for rating in feedback.ratings %}
-            <button class="md-feedback__icon md-icon" type="submit" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
-              {% include ".icons/" ~ rating.icon ~ ".svg" %}
-            </button>
-          {% endfor %}
-          <!-- Contribute icon -->
-<!--           <a href="https://github.com/gpac/wiki/issues" target="_blank" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page">
-            {% include ".icons/material/plus-circle.svg" %}
-          </a>
-        </div>
-        <div class="md-feedback__note">
-          {% for rating in feedback.ratings %}
-            <div data-md-value="{{ rating.data }}" hidden>
-              {% set url = "/" ~ page.url %}
-              {% if page.meta and page.meta.title %}
-                {% set title = page.meta.title | urlencode %}
-              {% else %}
-                {% set title = page.title | urlencode %}
+     {% if config.extra.analytics %}
+                {% set feedback = config.extra.analytics.feedback %}
+                {% if feedback %}
+                <div class="md-nav__feedback md-nav__feedback--desktop">
+                  <form class="md-feedback" name="feedback" hidden>
+                    <fieldset>
+                      <legend class="md-feedback__title">
+                        {{ feedback.title }}
+                      </legend>
+                      <div class="md-feedback__inner">
+                        <div class="md-feedback__list">
+                          {% for rating in feedback.ratings %}
+                            <button 
+                              class="md-feedback__icon md-icon" 
+                              type="submit" 
+                              title="{{ rating.name }}" 
+                              data-md-value="{{ rating.data }}"
+                            >
+                              {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                            </button>
+                          {% endfor %}
+                          <a href="https://github.com/gpac/wiki/issues" 
+                             class="md-feedback__icon md-icon md-feedback__contribute" 
+                             title="Contribute to this page" 
+                             target="_blank"
+                          >
+                            {% include ".icons/material/plus-circle.svg" %}
+                          </a>
+                        </div>
+                        <div class="md-feedback__note">
+                          {% for rating in feedback.ratings %}
+                            <div data-md-value="{{ rating.data }}" hidden>
+                              {{ rating.note }}
+                              {% if not rating.note %}
+                                Thanks for your feedback!
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                          <div class="md-feedback__contribute-note" hidden>
+                            Contribute to improve this page
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+            
+                {# Mobile feedback section#}
+                <div class="md-feedback md-feedback--mobile">
+                  <form class="md-feedback" name="feedback" hidden>
+                    <fieldset>
+                      <legend class="md-feedback__title">
+                        {{ feedback.title }}
+                      </legend>
+                      <div class="md-feedback__inner">
+                        <div class="md-feedback__list">
+                          {% for rating in feedback.ratings %}
+                            <button 
+                              class="md-feedback__icon md-icon" 
+                              type="submit" 
+                              title="{{ rating.name }}" 
+                              data-md-value="{{ rating.data }}"
+                            >
+                              {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                            </button>
+                          {% endfor %}
+                          <a href="https://github.com/gpac/wiki/issues" 
+                             class="md-feedback__icon md-icon md-feedback__contribute" 
+                             title="Contribute to this page" 
+                             target="_blank"
+                          >
+                            {% include ".icons/material/plus-circle.svg" %}
+                          </a>
+                        </div>
+                        <div class="md-feedback__note">
+                          {% for rating in feedback.ratings %}
+                            <div data-md-value="{{ rating.data }}" hidden>
+                              {{ rating.note }}
+                              {% if not rating.note %}
+                                Thanks for your feedback!
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                          <div class="md-feedback__contribute-note" hidden>
+                            Contribute to improve this page
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
               {% endif %}
-              {{ rating.note.format(url = url, title = title) }}
-            </div>
-          {% endfor %}
-          <!-- Contribute note -->
-<!--           <div class="md-feedback__contribute-note" hidden>
-            Contribute to improve this page
-          </div>
-        </div>
-      </div>
-    </fieldset>
-  </form>
-{% endif %} --> <!-- --> 
+            {% endif %}

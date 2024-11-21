@@ -3,16 +3,15 @@
 }
 .md-feedback,
 .md-nav__feedback {
-  padding: 1rem;
-  margin-top: 1rem;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
+  padding: 0.1rem;
+
 }
 
 .md-feedback p,
 .md-nav__feedback p {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.1rem;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--md-default-fg-color--light);
 }
 
@@ -20,7 +19,34 @@
 .md-nav__feedback .md-feedback__inner {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+}
+.md-feedback__inner--fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+
+
+.feedback-success {
+  color: #45a049;
+}
+
+.feedback-neutral {
+  color: #666;
+}
+
+.md-feedback--fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feedback-text {
+  font-size: 12px;
+  color: #666;
 }
 
 .md-feedback__list,
@@ -33,7 +59,6 @@
 .md-feedback__icon,
 .md-nav__feedback .md-feedback__icon {
   margin-right: 0.5rem;
-  padding: 0.25rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -69,9 +94,9 @@
     display: block;
     position: fixed;
     bottom: 4%;
+
     background-color: var(--md-default-bg-color);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
     border-radius: 0.2rem;
   }
 
