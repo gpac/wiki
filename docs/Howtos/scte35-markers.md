@@ -31,14 +31,14 @@ tags:
 We discuss here about the ability to deal with dynamic metadata such as SCTE-35 in GPAC Filters.
 The information is this page applies to other metadata such as ID3 markers (e.g. Nielsen), timecodes (TEMI, QT), or virtually any type of dynamic metadata.
 
-A special [dec_scte35 filter](dec_scte35) allows to segment SCTE-35 content for 23001-18 CMAF Event Track creation.
+A special dec_scte35 [filter](scte35dec) allows to segment SCTE-35 content for 23001-18 CMAF Event Track creation.
 
 GPAC is able to:
 - inspect,
 - remux or transmux,
 - segment for DASH,
 - create 23001-18 ISOBMFF Event Track (with ```emib``` and ```emeb``` boxes),
-- edit these data to some extend.
+- edit these data to some extent.
 
 # Inspection
 
@@ -112,7 +112,7 @@ The format is selected automatically depending on the file extension (or can be 
 
 Adaptive streaming with DASH or HLS requires the content to be segmented. Simple segmentation (where content can be replicated over several segments without any change) works for all kind of streams.
 
-For SCTE-35 streams the [dec_scte35 filter](dec_scte35) must be explicitly loaded.
+For SCTE-35 streams the dec_scte35 [filter](scte35dec) must be explicitly loaded.
 Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you:
 
 ```
