@@ -53,7 +53,6 @@ gpac -i input.mp4 -o output.mp4
 - **options**: Additional parameters to control the behavior of the source filter (e.g., loop, start time).
   
 ## See Also
-- [Input](input)
-- [Filter](filter.md)
+
 - [Decoder](decoder.md)
 
