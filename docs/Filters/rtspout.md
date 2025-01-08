@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# RTSP Server  
+# RTSP server  
   
 Register name used to load filter: __rtspout__  
 This filter may be automatically loaded during graph resolution.  
@@ -154,7 +154,7 @@ The tunnel conforms to QT specification, and only HTTP 1.0 and 1.1 tunnels are s
 <a id="close">__close__</a> (bool, default: _false_): close RTSP connection after each request, except when RTP over RTSP is used  
 </div>  
 <div markdown class="option">  
-<a id="loop">__loop__</a> (bool, default: _true_): loop all streams in session (not always possible depending on source type)  
+<a id="loop">__loop__</a> (bool, default: _false_): loop all streams in session (not always possible depending on source type)  
 </div>  
 <div markdown class="option">  
 <a id="dynurl">__dynurl__</a> (bool, default: _false_): allow dynamic service assembly  

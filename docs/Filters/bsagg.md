@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed layered bitstream aggregator  
+# Layered bitstream aggregator  
   
 Register name used to load filter: __bsagg__  
 This filter is not checked during graph resolution and needs explicit loading.  

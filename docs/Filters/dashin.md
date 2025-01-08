@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG-DASH and HLS client  
+# DASH & HLS client  
   
 Register name used to load filter: __dashin__  
 This filter may be automatically loaded during graph resolution.  
@@ -255,6 +255,14 @@ When the [dasher](dasher) is used together with this mode, this will force all g
 <a id="groupsel">__groupsel__</a> (bool, default: _no_): select groups based on language (by default all playable groups are exposed)  
 </div>  
 <div markdown class="option">  
+<a id="xas">__xas__</a> (enum, default: _codec_): enable cross adaptation set switching (disabled if [split_as](#split_as) is set)  
+
+- no: disabled  
+- codec: switching across sets only allowed for same codec  
+- all: switching across sets allowed across any representation types  
+</div>  
+  
+<div markdown class="option">  
 <a id="chain_mode">__chain_mode__</a> (enum, default: _on_): MPD chaining mode  
 
 - off: do not use MPD chaining  
@@ -267,5 +275,16 @@ When the [dasher](dasher) is used together with this mode, this will force all g
 </div>  
 <div markdown class="option">  
 <a id="bsmerge">__bsmerge__</a> (bool, default: _true_): allow merging of video bitstreams (only HEVC for now)  
+</div>  
+<div markdown class="option">  
+<a id="keep_burl">__keep_burl__</a> (enum, default: _strip_): control BaseURL in manifest  
+
+- strip: strip BaseURL (default)  
+- keep: keep BaseURL  
+- inject: inject local relative URL before BaseURL value specified by relative_url option  
+</div>  
+  
+<div markdown class="option">  
+<a id="relative_url">__relative_url__</a> (str, default: _./_): relative string to inject before BaseURL when keep_base_url is set to inject  
 </div>  
   

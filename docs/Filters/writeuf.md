@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Stream to unframed format  
+# Framed to Unframed converter  
   
 Register name used to load filter: __writeuf__  
 This filter may be automatically loaded during graph resolution.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# GSF Multiplexer  
+# GSF multiplexer  
   
 Register name used to load filter: __gsfmx__  
 This filter may be automatically loaded during graph resolution.  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Stream unframer  
+# Stream rewriter  
   
 Register name used to load filter: __unframer__  
 This filter is not checked during graph resolution and needs explicit loading.  

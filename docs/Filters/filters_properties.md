@@ -74,7 +74,8 @@ InitialObjectDescriptor | bool |  | PID is declared in the IOD for MPEG-4 | PIOD
 Unframed | bool |  | The media data is not framed, i.e. each packet is not a complete AU/frame or is not in internal format (e.g. annexB for avc/hevc, adts for aac) | PFRM    
 UnframedAU | bool |  | The unframed media still has correct AU boundaries: one packet is one full AU, but the packet format might not be the internal one (e.g. annexB for avc/hevc, adts for aac) | PFRF    
 LATM | bool |  | Media is unframed AAC in LATM format | LATM    
-Duration | lfrac |  | Media duration (a negative value means an estimated duration based on rate) | PDUR    
+Duration | lfrac |  | Media duration | PDUR    
+EstimatedDuration | bool |  | Media duration is an estimated duration based on rate | EDUR    
 NumFrames | uint | D | Number of frames in the stream | NFRM    
 FrameOffset | uint | D | Index of first frame in the stream (used for reporting) | FRMO    
 ConstantFrameSize | uint |  | Size of the frames for constant frame size streams | CFRS    
@@ -118,7 +119,7 @@ TransYTop | sint |  | Vertical translation of the video (0 is top, positive towa
 Hidden | bool |  | PID is hidden in visual/audio rendering | HIDE    
 CropOrigin | v2di |  | Position in source window, X,Y indicate coordinates in source (0,0 for top-left) | VCXY    
 OriginalSize | v2di |  | Original resolution of video | VOWH    
-SRD | v4di |  | Position and size of the video in the referential given by SRDRef | SRD     
+SRD | v4di |  | Position and size of the video in the referential given by SRDRef | SRDI    
 SRDRef | v2di |  | Width and Height of the SRD referential | SRDR    
 SRDMap | uintl |  | Mapping of input videos in reconstructed video, expressed as {Ox,Oy,Ow,Oh,Dx,Dy,Dw,Dh} per input, with:  <br/>
 - Ox,Oy,Ow,Oh: position and size of the input video (usually matching its `SRD` property), expressed in the output referential given by `SRDRef`  <br/>- Dx,Dy,Dw,Dh: Position and Size of the input video in the reconstructed output, expressed in the output referential given by `SRDRef` | SRDM    
@@ -140,6 +141,7 @@ URL | str | D | URL of source | FURL
 RemoteURL | str | D | Remote URL of source - used for MPEG-4 systems | RURL    
 RedirectURL | str | D | Redirection URL of source | RELO    
 SourcePath | str | D | Path of source file on file system | FSRC    
+FileAlias | str | D | Alias name for source file, replace $URL$ and $File$ in templates | FALI    
 MIMEType | str | D | MIME type of source | MIME    
 Extension | str | D | File extension of source | FEXT    
 Cached | bool | D | File is completely cached | CACH    
@@ -185,7 +187,7 @@ CENCStore | 4cc |  | Storage location 4CC of SAI data | CSTR
 CENCstsdMode | uint |  | Mode for CENC sample description when using clear samples:  <br/>
 - 0: single sample description is used  <br/>- 1: a clear clone of the sample description is created, inserted before the CENC sample description  <br/>- 2: a clear clone of the sample description is created, inserted after the CENC sample description | CSTM    
 AMRModeSet | uint |  | ModeSet for AMR and AMR-WideBand | AMST    
-SubSampleInfo | mem |  | Binary blob describing N subsamples of the sample, formatted as N [(u32)flags(u32)size(u32)codec_param(u8)priority(u8) discardable]. Subsamples for a given flag MUST appear in order, however flags can be interleaved | SUBS    
+SubSampleInfo | mem | P | Binary blob describing N subsamples of the sample, formatted as N [(u32)flags(u32)size(u32)codec_param(u8)priority(u8) discardable]. Subsamples for a given flag MUST appear in order, however flags can be interleaved | SUBS    
 NALUMaxSize | uint |  | Max size of NAL units in stream - changes are signaled through PID info change (no reconfigure) | NALS    
 FileNumber | uint | P | Index of file when dumping to files | FNUM    
 FileName | str | P | Name of output file when dumping / dashing. Must be set on first packet belonging to new file | FNAM    
@@ -193,7 +195,7 @@ IDXName | str | P | Name of index file when dashing MPEG-2 TS. Must be set on fi
 FileSuffix | str | P | File suffix name, replacement for $FS$ in tile templates | FSUF    
 EODS | bool | P | End of DASH segment | EODS    
 CueStart | bool | P | Set on packets marking the beginning of a DASH/HLS segment for cue-driven segmentation - see dasher help | PCUS    
-MediaTime | dbl | D | Corresponding media time of the parent packet (0 being the origin) | MTIM    
+MediaTime | dbl | DP | Corresponding media time of the parent packet (0 being the origin) | MTIM    
 MaxFrameSize | uint | D | Max size of frame in stream - changes are signaled through PID info change (no reconfigure) | MFRS    
 AvgFrameSize | uint | D | Average size of frame in stream (ISOBMFF only, static property) | AFRS    
 MaxTSDelta | uint | D | Maximum DTS delta between frames (ISOBMFF only, static property) | MTSD    
@@ -201,7 +203,7 @@ MaxCTSOffset | uint | D | Maximum absolute CTS offset (ISOBMFF only, static prop
 ConstantDuration | uint | D | Constant duration of samples, 0 means variable duration (ISOBMFF only, static property) | SCTD    
 TrackTemplate | mem | D | ISOBMFF serialized track box for this PID, without any sample info (empty stbl and empty dref) | ITKT    
 TrexTemplate | mem | D | ISOBMFF serialized trex box for this PID | ITXT    
-STSDTemplate | mem | D | ISOBMFF serialized sample description box (stsd entry) for this PID | ISTD    
+STSDTemplate | mem | D | ISOBMFF serialized sample description entry for this PID | ISTD    
 MovieUserData | mem | D | ISOBMFF serialized moov UDTA and other moov-level boxes (list) for this PID | IMUD    
 HandlerName | str | D | ISOBMFF track handler name | IHDL    
 TrackFlags | uint | D | ISOBMFF track header flags | ITKF    
@@ -213,11 +215,17 @@ Period | str | D | ID of DASH period | PEID
 PStart | lfrac | D | DASH Period start - cf dasher help | PEST    
 PDur | lfrac | D | DASH Period duration - cf dasher help | PEDU    
 Representation | str | D | ID of DASH representation | DRID    
-ASID | uint | D | ID of parent DASH AS | DAID    
+ASID | uint | D | ID of parent DASH Adaptation Set | DAID    
+SSR | sint | D | ID of Adaptation Set:  <br/>
+- same value as ASID: regular SSR not used for cross-AS switching  <br/>- ID of another AdaptationSet: enable cross-AS switching between this AS and the referenced one  <br/>- negative value: LL-HLS compatability mode | SSRR    
 MuxSrc | str | D | Name of mux source(s), set by dasher to direct its outputs | MSRC    
 DashMode | uint | D | DASH mode to be used by multiplexer if any, set by dasher. 0 is no DASH, 1 is regular DASH, 2 is VoD | DMOD    
 SegSync | bool | D | Indicate segment must be completely flushed before sending segment/fragment size events | DFSS    
 DashDur | frac | D | DASH target segment duration in seconds | DDUR    
+FragDur | frac | D | DASH target fragment duration in seconds | FDUR    
+DashMultiPid | ptr | D | Pointer to the GF_List of input PIDs for multi-stsd entries segments, set by dasher | DMSD    
+DashMultiPidIdx | uint | D | 1-based index of PID in the multi PID list, set by dasher | DMSI    
+DashMultiTrack | ptr | D | Pointer to the GF_List of input PIDs for multi-tracks segments, set by dasher | DMTK    
 Role | strl | D | List of roles for this PID, where each role string can be a DASH role, a `URN:role-value` or any other string (this will throw a warning and use a custom URI for the role) | ROLE    
 PDesc | strl | D | List of descriptors for the DASH period containing this PID | PDES    
 ASDesc | strl | D | List of conditional descriptors for the DASH AdaptationSet containing this PID. If a PID with the same property type but different value is found, the PIDs will be in different AdaptationSets | ACDS    
@@ -240,10 +248,11 @@ SingleScale | bool | D | Movie header should use the media timescale of the firs
 RequireReorder | bool | D | PID packets come from source with losses and reordering happening (UDP) | PUDP    
 Primary | bool | D | Primary item in ISOBMFF | PITM    
 DFMode | uint | D | DASH forward mode is used for this PID. If 2, the manifest is also carried in packet propery | DFWD    
-DFManifest | str | D | Value of manifest in forward mode | DMPD    
-DFVariant | strl | D | Value of variant playlist in forward mode | DHLV    
-DFVariantName | strl | D | Value of variant playlist name in forward mode | DHLN    
-DFPStart | luint | D | Value of active period start time in forward mode | DPST    
+DFManifest | str | DP | Value of manifest in forward mode | DMPD    
+DFVariant | strl | DP | Value of variant playlist in forward mode | DHLV    
+DFVariantName | strl | DP | Value of variant playlist name in forward mode | DHLN    
+DFPStart | luint | D | Value of active period start time in ms in forward mode | DPST    
+DFPckPStart | bool | DP | Indicate new period start (only set on first packets of non-first periods) | PDPS    
 HLSKey | str |  | URI, KEYFORMAT and KEYFORMATVERSIONS for HLS full segment encryption creation, Key URI otherwise ( decoding and sample-AES) | HLSK    
 HLSIV | mem |  | Init Vector for HLS decode | HLSI    
 CKUrl | str |  | URL for ClearKey licence server | CCKU    
@@ -263,7 +272,8 @@ MHAProfiles | uintl | D | List of compatible profiles for this MPEG-H Audio obje
 FragStart | uint | DP | Packet is a fragment start (value 1) or a segment start (value 2) | PFRB    
 FragRange | lfrac | DP | Start and end position in bytes of fragment if packet is a fragment or segment start | PFRR    
 FragTFDT | luint | DP | Decode time of first packet in fragmentt | PFRT    
-SIDXRange | lfrac | DP | Start and end position in bytes of sidx if packet is a fragment or segment start | PFSR    
+SIDXRange | lfrac | DP | Start and end position in bytes of sidx in segment if any | PFSR    
+VODSIDXRange | lfrac | D | Start and end position in bytes of root sidx | PRSR    
 MoofTemplate | mem | DP | Serialized moof box corresponding to the start of a movie fragment or segment (with styp and optionally sidx) | MFTP    
 InitSeg | bool | P | Set to true if packet is a complete DASH init segment file | PCKI    
 RawGrab | uint | D | PID is a raw media grabber (webcam, microphone, etc...). Value 2 is used for front camera | PGRB    
@@ -287,26 +297,57 @@ EQRClamp | v4di | D | Clamping of frame for EQR as 0.32 fixed point (x is top, y
 SceneNode | bool |  | PID is a scene node decoder (AFX BitWrapper in BIFS) | PSND    
 OrigCryptoScheme | 4cc |  | Original crypto scheme on a decrypted PID | POCS    
 TSBSegs | uint | D | Time shift in number of segments for HAS streams, only set by dashin and dasher filters | PTSN    
-IsManifest | uint | D | PID is a HAS manifest (MSB=1 if live)  <br/>
+IsManifest | uint | D | PID is a HAS manifest (bit 9 set to 1 if live), lower 8 bits value can be  <br/>
 - 0: not a manifest  <br/>- 1: DASH manifest  <br/>- 2: HLS manifest  <br/>- 3: GHI(X) manifest | PHSM    
 Sparse | bool | D | PID has potentially empty times between packets | PSPA    
 CharSet | str | D | Character set for input text PID | PCHS    
-ForcedSub | uint | D | PID or Packet is forced sub  <br/>0: not forced  <br/>1: forced frame  <br/>2: all frames are forced (PID only) | PFCS    
+ForcedSub | uint | D | PID or Packet is forced sub  <br/>
+- 0: not forced  <br/>- 1: forced frame  <br/>- 2: all frames are forced (PID only) | PFCS    
 ChapTimes | uintl | D | Chapter start times | CHPT    
 ChapNames | strl | D | Chapter names | CHPN    
 IsChap | bool | D | Subtitle PID is chapter (for QT-like chapters) | PCHP    
-SkipBegin | uint | P | Amount of media to skip from beginning of packet in PID timescale | PCKS    
+SkipBegin | uint | P | Amount of media to skip from beginning of packet in PID timescale (when set o PID, indicate packets with skip will be present) | PCKS    
 SkipPres | bool | P | Packet and any following with CTS greater than this packet shall not be presented (used by reframer to create edit lists) | PCKD    
 OriginalDuration | frac | P | Elapsed time (.num) and original duration (.den, 0 if last copy of packet) for redundant packets | PCOD    
-HLSRef | luint | DP | HLS playlist reference, gives a unique ID identifying media mux, and indicated in packets carrying child playlists | HPLR    
-LLHLS | uint | D | HLS low latency mode | HLSL    
-LLHLSFragNum | uint | P | LLHLS fragment number | HLSN    
+HasSkipBegin | bool |  | Indicate if PID will carry packets with `SkipBegin` properties | PSBP    
+HLSRef | luint | D | HLS playlist reference, gives a unique ID identifying media mux, and indicated in packets carrying child playlists | PHLR    
+PckHLSRef | luint | DP | Same as `HLSRef` but carried on packets for ROUTE/MABR file transfer | HPLR    
+LLHAS | uint | D | DASH/HLS low latency mode | HLHS    
+LLHASFragNum | uint | DP | DASH-SSR/LLHLS fragment number | HLSN    
 DownloadSession | ptr | D | Pointer to download session | GHTT    
 HasTemi | bool | D | TEMI present flag | PTEM    
 XPSMask | uint | DP | Parameter set mask | PXPM    
 RangeEnd | bool | P | Signal packet is the last in the desired play range | PCER    
 RefID | sint | P | packet identifier for dependency (usually POC for video) | PKID    
 Refs | sintl | P | list of packet identifier this packet depends on | PRFS    
+UDTA | ptr | DP | User data for the packet | PUDT    
+Timecodes | uintl | P | list of timecodes as extracted from SEI (if present) | TCOD    
+DOVI | mem |  | DolbyVision configuration | DOVI    
+OutPath | str |  | Output file name of PID used by some filters creating additional raw PIDs | FDST    
+ACrypMeta | mem |  | Meta-data for Adobe encryption | AMET    
+HasCRoll | bool |  | Indicates if key roll is used in CENC | CROL    
+STSDAllTemplates | mem | D | ISOBMFF serialized sample description box for this PID | ISTA    
+STSDTemplateIdx | uint | D | Index of corresponding `STSDAllTemplates` | ISTI    
+PremuxType | uint |  | Main streamtype of the PID before mux, only used for ROUTE/MABR setup | PPST    
+CodecMerge | uint | D | Indicate the PID can be merged with other streams with same value for single decoding  (HEVC only for now) | PCMB    
+RelativePath | bool | DP | Indicate the packet file name uses relative path | FNRL    
+ClearKeyID | mem | D | Key ID for ClearKey scheme | CCKI    
+DashSparse | bool | D | indicate DASH segments are generated in sparse mode (from context) | DSSG    
+DashDepGroup | uint | D | indicate DASH dependency group ID | DGDI    
+SC35Ref | uint | D | PID has SCTE35 information carried on indicated PID number | SC35    
+NoInit | bool | D | PID does not use any init segment in DASH (file forward mode of dasher, only used for ROUTE/MABR) | PNIN    
+ForceUnframe | bool | D | force creation of rewriter filter (only used for forcing reparse of NALU-based codecs) | PFUF    
+MetaCodecID | uint | D | identifier for meta codecs (FFmpeg, ...) | MDCI    
+MetaCodecName | str | D | Name used by for meta codecs (FFmpeg, ...) | MDCN    
+MetaCodecOpaque | uint | D | Internal property used for meta demuxers ( FFmpeg, ...) codec opaque data | MDOP    
+HASSegStart | lfrac | DP | Start time of segment for ROUTE/MABR scheduling | FMSS    
+SplitStart | uint | DP | split start time of packet in PID timescale, for index-based dashing | PSPS    
+SplitEnd | uint | DP | split end time of packet in PID timescale, for index-based dashing | PSPE    
+InitName | str | D | Name of init segment when dashing, used for ROUTE/MABR | PINM    
+SegURL | str | DP | URL of source segment (when forwarding fragment boundaries) | SURL    
+DynPSSH | mem | P | PSSH blob for CENC, same format as `CENC_PSSH`, used when using master key and roll keys, signaled on first packet of segment where the PSSH changes | PSHP    
+LLHASTemplate | str | P | Template for DASH-SSR and LLHLS sub-segments | PSRT    
+PartialRepair | bool | P | indicate the mux data in the associated data is parsable but contains errors (only set on corrupted packets) | PCPR    
 
 # Pixel formats  
   
@@ -463,9 +504,9 @@ eac3 | Enhanced AC3 Audio
 mlp | Dolby TrueHD    
 dra | DRA Audio    
 g719 | G719 Audio    
-dstc | DTS Coherent Acoustics and Digital Surround Audio    
+dtsc | DTS Coherent Acoustics and Digital Surround Audio    
 dtsh | DTS-HD High Resolution Audio and DTS-Master Audio    
-dstl | DTS-HD Substream containing only XLLAudio    
+dtsl | DTS-HD Substream containing only XLLAudio    
 dtse | DTS Express low bit rate Audio    
 dtsx | DTS-X UHD Audio Profile 2    
 dtsy | DTS-X UHD Audio Profile 3    
@@ -519,7 +560,7 @@ prores ap4x | ProRes Video 4444 XQ
 prores ap4h | ProRes Video 4444    
 ffmpeg | FFmpeg unmapped codec    
 tmcd | QT TimeCode    
-scte | SCTE35    
+sc35 | SCTE35    
 evte | Event Messages    
 vvc 266 h266 | VVC Video    
 vvs1 | VVC Subpicture Video    
@@ -854,15 +895,10 @@ gopher | httpin |  n/a
 gophers | httpin |  n/a  
 imap | httpin |  n/a  
 imaps | httpin |  n/a  
-ldap | httpin |  n/a  
-ldaps | httpin |  n/a  
 mqtt | httpin |  n/a  
 pop3 | httpin |  n/a  
 pop3s | httpin |  n/a  
-rtmp | httpin |  n/a  
 rtsp | httpin rtpin | rtspout  
-scp | httpin |  n/a  
-sftp | httpin |  n/a  
 smb | httpin |  n/a  
 smbs | httpin |  n/a  
 smtp | httpin |  n/a  

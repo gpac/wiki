@@ -10,6 +10,7 @@ See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more detail
 To list all supported decoders for your GPAC build, use `gpac -h ffdec:*`.  
   
 Options can be passed from prompt using `--OPT=VAL`  
+Decoder flags can be passed directly as `:FLAGNAME`.  
 The default threading mode is to let libavcodec decide how many threads to use. To enforce single thread, use `--threads=1`  
   
 # Codec Map  

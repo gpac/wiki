@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Thumbnail collection generator  
+# Thumbnail generator  
   
 Register name used to load filter: __thumbs__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  

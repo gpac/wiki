@@ -143,7 +143,7 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="cache">__-cache__</a> (string): cache directory location  
 </div>
 <div markdown class="option">
-<a id="proxy">__-proxy__</a> (string): set HTTP proxy server address and port  
+<a id="proxy">__-proxy__</a> (string): set HTTP proxy server address and port (if no protocol scheme is set, use same as target)  
 </div>
 <div markdown class="option">
 <a id="maxrate">__-maxrate__</a> (int): set max HTTP download rate in bits per sec. 0 means unlimited  
@@ -158,7 +158,10 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="clean-cache" data-level="basic">__-clean-cache__</a>: indicate if HTTP cache should be clean upon launch/exit  
 </div>
 <div markdown class="option">
-<a id="cache-size">__-cache-size__</a> (int, default: __100M__): specify cache size in bytes  
+<a id="cache-size">__-cache-size__</a> (int, default: __100M__): specify maximum cache size on disk in bytes  
+</div>
+<div markdown class="option">
+<a id="cache-check">__-cache-check__</a> (int, default: __60__): cache clean interval in seconds, 0 only clean cache at startup  
 </div>
 <div markdown class="option">
 <a id="tcp-timeout">__-tcp-timeout__</a> (int, default: __5000__): time in milliseconds to wait for HTTP/RTSP connect before error  
@@ -171,6 +174,9 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 </div>
 <div markdown class="option">
 <a id="broken-cert">__-broken-cert__</a>: enable accepting broken SSL certificates  
+</div>
+<div markdown class="option">
+<a id="ca-bundle">__-ca-bundle__</a> (string): path to a custom CA certificates bundle file  
 </div>
 <div markdown class="option">
 <a id="user-agent">__-user-agent__</a>,__-ua__ (string): set user agent name for HTTP/RTSP  
@@ -278,6 +284,9 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="buffer-units">__-buffer-units__</a> (int, default: __1__): default buffer size in frames when timing is not available  
 </div>
 <div markdown class="option">
+<a id="check-props">__-check-props__</a>: check known property types upon assignment and PID vs packet types upon fetch (in test mode, exit with error code 5 if mismatch)  
+</div>
+<div markdown class="option">
 <a id="gl-bits-comp">__-gl-bits-comp__</a> (int, default: __8__): number of bits per color component in OpenGL  
 </div>
 <div markdown class="option">
@@ -360,4 +369,7 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 </div>
 <div markdown class="option">
 <a id="boxdir">__-boxdir__</a> (string): use box definitions in the given directory for XML dump  
+</div>
+<div markdown class="option">
+<a id="no-mabr-patch">__-no-mabr-patch__</a>: disable GPAC parsing of patched isom boxes from mabr (will behave like most browsers/players)  
 </div>

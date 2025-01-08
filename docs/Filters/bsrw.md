@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed bitstream rewriter  
+# Bitstream metadata rewriter  
   
 Register name used to load filter: __bsrw__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -90,7 +90,7 @@ The filter will work in passthrough mode for all other codecs and media types.
 <a id="rmsei" data-level="basic">__rmsei__</a> (bool, default: _false_, updatable): remove SEI messages from bitstream for AVC|H264, HEVC and VVC  
 </div>  
 <div markdown class="option">  
-<a id="vidfmt" data-level="basic">__vidfmt__</a> (enum, default: _-1_, updatable): video format for AVC|H264, HEVC and VVC (component|pal|ntsc|secam|mac|undef)  
+<a id="vidfmt" data-level="basic">__vidfmt__</a> (sint, default: _-1_, Enum: component|pal|ntsc|secam|mac|undef, updatable): video format for AVC|H264, HEVC and VVC  
 </div>  
   
   

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEG Transport Stream splitter  
+# MPEG-2 TS splitter  
   
 Register name used to load filter: __tssplit__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -23,5 +23,11 @@ If [dvb](#dvb) is set, global DVB tables of the input multiplex are forwarded to
 </div>  
 <div markdown class="option">  
 <a id="nb_pack">__nb_pack__</a> (uint, default: _10_): pack N packets before sending  
+</div>  
+<div markdown class="option">  
+<a id="gendts">__gendts__</a> (bool, default: _false_): generate timestamps on output packets based on PCR  
+</div>  
+<div markdown class="option">  
+<a id="kpad">__kpad__</a> (bool, default: _false_): keep padding (null) TS packets  
 </div>  
   

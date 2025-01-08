@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE output  
+# MABR & ROUTE output  
   
 Register name used to load filter: __routeout__  
 This filter may be automatically loaded during graph resolution.  
@@ -62,7 +62,7 @@ TSI are assigned as follows:
 - otherwise, the first PID found is assigned TSI 10, the second TSI 20 etc ...  
 
   
-When [splitlct](#splitlct) is set to `mcast`, the IP multicast adress is computed as follows:  
+When [splitlct](#splitlct) is set to `mcast`, the IP multicast address is computed as follows:  
 
     - if `MCASTIP` is set on the PID and is different from the service multicast IP, it is used  
     - otherwise the service multicast IP plus one is used  
@@ -186,7 +186,7 @@ Example
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
 ```
   
-for a 1.0 percent chance to transition to error (not sending data over the network) and 98.0 to transition from error back to OK.  
+This will set a 1.0 percent chance to transition to error (not sending data over the network) and 98.0 percent chance to transition from error back to OK.  
   
 
 # Options  {.no-collapse}  

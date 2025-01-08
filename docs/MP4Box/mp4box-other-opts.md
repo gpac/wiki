@@ -115,18 +115,18 @@ The `tag_value` can also be formatted as:
     
 
 ## Supported tag names (name, value, type, aliases)  
-__title__ (A9nam) string (`alias` name)  
-__artist__ (A9ART) string  
+__title__ (©nam) string (`alias` name)  
+__artist__ (©ART) string  
 __album_artist__ (aART) string (`alias` albumArtist)  
-__album__ (A9alb) string  
-__group__ (A9grp) string (`alias` grouping)  
-__composer__ (A9com) string  
-__writer__ (A9wrt) string  
-__conductor__ (A9con) string  
-__comment__ (A9cmt) string (`alias` comments)  
+__album__ (©alb) string  
+__group__ (©grp) string (`alias` grouping)  
+__composer__ (©com) string  
+__writer__ (©wrt) string  
+__conductor__ (©con) string  
+__comment__ (©cmt) string (`alias` comments)  
 __genre__ (gnre) string (ID3 genre tag)  
-__created__ (A9day) string (`alias` releaseDate)  
-__track__ (A9trk) string  
+__created__ (©day) string (`alias` releaseDate)  
+__track__ (©trk) string  
 __tracknum__ (trkn) fraction (syntax: `A/B` or `A`, B will be 0)  
 __disk__ (disk) fraction (syntax: `A/B` or `A`, B will be 0)  
 __tempo__ (tmpo) integer  
@@ -138,7 +138,7 @@ __episode__ (tves) integer (`alias` tvEPisode)
 __network__ (tvnn) string (`alias` tvNetwork)  
 __sdesc__ (desc) string (`alias` description)  
 __ldesc__ (ldes) string (`alias` longDescription)  
-__lyrics__ (A9lyr) string  
+__lyrics__ (©lyr) string  
 __sort_name__ (sonm) string (`alias` sortName)  
 __sort_artist__ (soar) string (`alias` sortArtist)  
 __sort_album_artist__ (soaa) string (`alias` sortAlbumArtist)  
@@ -147,8 +147,8 @@ __sort_composer__ (soco) string (`alias` sortComposer)
 __sort_show__ (sosn) string (`alias` sortShow)  
 __cover__ (covr) file path (`alias` artwork)  
 __copyright__ (cprt) string  
-__tool__ (A9too) string (`alias` encodingTool)  
-__encoder__ (A9enc) string (`alias` encodedBy)  
+__tool__ (©too) string (`alias` encodingTool)  
+__encoder__ (©enc) string (`alias` encodedBy)  
 __pdate__ (purd) string (`alias` purchaseDate)  
 __podcast__ (pcst) bool (`yes` or `no`)  
 __url__ (purl) string (`alias` podcastURL)  
@@ -158,25 +158,25 @@ __hdvideo__ (hdvd) integer
 __media__ (stik) integer (`alias` mediaType)  
 __rating__ (rtng) integer (`alias` contentRating)  
 __gapless__ (pgap) bool (`yes` or `no`)  
-__art_director__ (A9ard) string  
-__arranger__ (A9arg) string  
-__lyricist__ (A9aut) string  
-__acknowledgement__ (A9cak) string  
-__song_description__ (A9des) string  
-__director__ (A9dir) string  
-__equalizer__ (A9equ) string  
-__liner__ (A9lnt) string  
-__record_company__ (A9mak) string  
-__original_artist__ (A9ope) string  
-__phono_rights__ (A9phg) string  
-__producer__ (A9prd) string  
-__performer__ (A9prf) string  
-__publisher__ (A9pub) string  
-__sound_engineer__ (A9sne) string  
-__soloist__ (A9sol) string  
-__credits__ (A9src) string  
-__thanks__ (A9thx) string  
-__online_info__ (A9url) string  
-__exec_producer__ (A9xpd) string  
-__genre__ (A9gen) string (ID3 genre tag)  
-__location__ (A9xyz) string  
+__art_director__ (©ard) string  
+__arranger__ (©arg) string  
+__lyricist__ (©aut) string  
+__acknowledgement__ (©cak) string  
+__song_description__ (©des) string  
+__director__ (©dir) string  
+__equalizer__ (©equ) string  
+__liner__ (©lnt) string  
+__record_company__ (©mak) string  
+__original_artist__ (©ope) string  
+__phono_rights__ (©phg) string  
+__producer__ (©prd) string  
+__performer__ (©prf) string  
+__publisher__ (©pub) string  
+__sound_engineer__ (©sne) string  
+__soloist__ (©sol) string  
+__credits__ (©src) string  
+__thanks__ (©thx) string  
+__online_info__ (©url) string  
+__exec_producer__ (©xpd) string  
+__genre__ (©gen) string (ID3 genre tag)  
+__location__ (©xyz) string  

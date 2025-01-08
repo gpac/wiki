@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Stream to file  
+# Stream to File converter  
   
 Register name used to load filter: __writegen__  
 This filter may be automatically loaded during graph resolution.  
@@ -32,7 +32,7 @@ The writegen filter should usually not be explicitly loaded without a source ID 
 </div>  
   
 <div markdown class="option">  
-<a id="split">__split__</a> (bool, default: _false_): force one file per decoded frame  
+<a id="split">__split__</a> (bool, default: _false_): force one file per frame  
 </div>  
 <div markdown class="option">  
 <a id="frame" data-level="basic">__frame__</a> (bool, default: _false_): force single frame dump with no rewrite. In this mode, all codec types are supported  

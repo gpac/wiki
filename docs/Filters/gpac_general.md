@@ -20,10 +20,16 @@ The session can be interrupted at any time using `ctrl+c`, which can also be use
 The possible options for gpac are:  
   
 <div markdown class="option">
+<a id="mem-track">__-mem-track__</a>: enable memory tracker  
+</div>
+<div markdown class="option">
+<a id="mem-track-stack">__-mem-track-stack__</a>: enable memory tracker with stack dumping  
+</div>
+<div markdown class="option">
 <a id="ltf">__-ltf__</a>:      load test-unit filters (used for for unit tests only)  
 </div>
 <div markdown class="option">
-<a id="sloop">__-sloop__</a> (int): loop execution of session, creating a session at each loop, mainly used for testing. If no value is given, loops forever  
+<a id="sloop">__-sloop__</a> (int): loop execution of session, creating a session at each loop, mainly used for testing, breaking at first error. If no value is given, loops forever  
 </div>
 <div markdown class="option">
 <a id="runfor">__-runfor__</a> (int): run for the given amount of milliseconds, exit with full session flush  
@@ -153,7 +159,26 @@ Appending `:reload` to the profile name will force recreating a new configuratio
 <a id="aliasdoc">__-aliasdoc__</a> (string): assign documentation for a given alias (optional). Can be specified several times  
 </div>
 <div markdown class="option">
-<a id="uncache">__-uncache__</a>: revert all items in GPAC cache directory to their original name and server path  
+<a id="cache-info">__-cache-info__</a>: show cache info. Argument can be:  
+
+- absent: the entire cache is inspected  
+- B: filter entries created after `B`, with `B` a number of seconds prior to now or a date (0 means now)  
+- B;C: filter entries created after `B` but before `C`, with `B` and `C` either a number of seconds prior to now or a date  
+
+    - If `B` is 0, min time is UTC=0  
+    - If `C` is 0, max time is now  
+
+The argument syntax is the same for all cache options  
+</div>
+  
+<div markdown class="option">
+<a id="cache-unflat">__-cache-unflat__</a>: revert all items in GPAC cache directory to their original name and server path  
+</div>
+<div markdown class="option">
+<a id="cache-list">__-cache-list__</a>: list entries in cache  
+</div>
+<div markdown class="option">
+<a id="cache-clean">__-cache-clean__</a> (int): clean cache  
 </div>
 <div markdown class="option">
 <a id="js">__-js__</a> (string): specify javascript file to use as controller of filter session  
@@ -252,6 +277,9 @@ The following libgpac core options allow customizing the filter session:
 </div>
 <div markdown class="option">
 <a id="buffer-units">__-buffer-units__</a> (int, default: __1__): default buffer size in frames when timing is not available  
+</div>
+<div markdown class="option">
+<a id="check-props">__-check-props__</a>: check known property types upon assignment and PID vs packet types upon fetch (in test mode, exit with error code 5 if mismatch)  
 </div>
 # Using Aliases
 The gpac command line can become quite complex when many sources or filters are used. In order to simplify this, an alias system is provided.  
@@ -387,7 +415,7 @@ Servers in GPAC currently only support the `Basic` HTTP authentication scheme, a
 This mode can be used to test loading filters one by one and asking for link resolution explicitly.  
 This is mostly used to reproduce how sessions are build in more complex applications.  
   
-The options `rl`, `pi`, `pl` and `pd` allow adressing a filter by index `F` in a list.  
+The options `rl`, `pi`, `pl` and `pd` allow addressing a filter by index `F` in a list.  
 
 - if the option is suffixed with an `x` (e.g. `rlx=`), `F=0` means the last filter in the list of filters in the session  
 - otherwise, `F=0` means the last filter declared before the option  

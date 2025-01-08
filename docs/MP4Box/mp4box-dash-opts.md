@@ -12,11 +12,11 @@ Also see:
   
 Input media files to dash can use the following modifiers  
 
-- #trackID=N: only use the track ID N from the source file  
-- #N: only use the track ID N from the source file (mapped to [-tkid](mp4dmx/#tkid))  
-- #video: only use the first video track from the source file  
-- #audio: only use the first audio track from the source file  
-- #Prop=Value: add PID filtering using the same syntax as SID fragments (cf `gpac -h doc`)  
+- `#trackID=N`: only use the track ID N from the source file  
+- `#N`: only use the track ID N from the source file (mapped to [-tkid](mp4dmx/#tkid))  
+- `#video`: only use the first video track from the source file  
+- `#audio`: only use the first audio track from the source file  
+- `#Prop=Value`: add PID filtering using the same syntax as SID fragments (cf `gpac -h doc`)  
 - :id=NAME: set the representation ID to NAME. Reserved value `NULL` disables representation ID for multiplexed inputs. If not set, a default value is computed and all selected tracks from the source will be in the same output multiplex.  
 - :dur=VALUE: process VALUE seconds (fraction) from the media. If VALUE is longer than media duration, last sample duration is extended.  
 - :period=NAME: set the representation's period to NAME. Multiple periods may be used. Periods appear in the MPD in the same order as specified with this option  
@@ -99,6 +99,7 @@ _Note: Descriptors value must be a properly formatted XML element(s), value is n
 - $Init=NAME$ is replaced by NAME for init segment, ignored otherwise  
 - $Index=NAME$ is replaced by NAME for index segments, ignored otherwise  
 - $Path=PATH$ is replaced by PATH when creating segments, ignored otherwise  
+- $SubNumber[%%0Nd]$ is replaced by the segment subnumber in segment sequences, possibly prefixed with 0  
 - $Segment=NAME$ is replaced by NAME for media segments, ignored for init segments  
 </div>
   

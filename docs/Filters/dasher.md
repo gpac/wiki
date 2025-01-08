@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# DASH and HLS segmenter  
+# DASH & HLS segmenter  
   
 Register name used to load filter: __dasher__  
 This filter may be automatically loaded during graph resolution.  
@@ -26,7 +26,7 @@ gpac -i file.mp4 reframer:rt=on -o live.mpd:dmode=dynamic
   
 
 ## Template strings  
-The segmenter uses templates to derive output file names, regardless of the DASH mode (even when templates are not used). The default one is `$File$_dash` for ondemand and single file modes, and `$File$_$Number$` for separate segment files  
+The segmenter uses templates to derive output file names and folder, regardless of the DASH mode (even when templates are not used). The default one is `$File$_dash` for ondemand and single file modes, and `$File$_$Number$` for separate segment files  
 Example
 ```
 template=Great_$File$_$Width$_$Number$
@@ -46,6 +46,7 @@ Standard DASH replacement strings:
 - $RepresentationID$: replaced by representation name  
 - $Time$: replaced by segment start time  
 - $Bandwidth$: replaced by representation bandwidth.  
+- $SubNumber[%%0Nd]$: replaced by the segment number in the segment sequence, possibly prefixed with 0  
 
 _Note: these strings are not replaced in the manifest templates elements._  
   
@@ -61,6 +62,8 @@ Additional replacement strings (not DASH, not generic GPAC replacements but may 
 - $FS$ (FileSuffix): replaced by `_trackN` in case the input is an AV multiplex, or kept empty otherwise  
 
 _Note: these strings are replaced in the manifest templates elements._  
+  
+Other properties can also be set, see below.  
   
 ## PID assignment and configuration  
 To assign PIDs into periods and adaptation sets and configure the session, the segmenter looks for the following properties on each input PID:  
@@ -355,7 +358,7 @@ gpac -i source.mp4 dasher:gencues cecrypt:cfile=roll_seg.xml -o live.mpd
 This will allow the encrypter to locate dash boundaries and roll keys at segment boundaries.  
 Example
 ```
-gpac -i s1.mp4 -i s2.mp4:#CryptInfo=clear:#Period=3 -i s3.mp4:#Period=3 dasher:gencues cecrypt:cfile=roll_period.xml -o live.mpd
+gpac -i s1.mp4 -i s2.mp4:#CryptInfo=clear:#Period=2 -i s3.mp4:#Period=3 dasher:gencues cecrypt:cfile=roll_period.xml -o live.mpd
 ```
   
 If the DRM file uses `keyRoll=period`, this will generate:  
@@ -525,7 +528,7 @@ The segmenter adds the following properties to the output PIDs:
 - on: enables it if same decoder configuration is possible  
 - inband: moves decoder config inband if possible  
 - both: inband and outband parameter sets  
-- pps: moves PPS and APS inband, keep VPS,SPS and DCI out of band (used for VVC RPR)  
+- pps: moves PPS and APS inband, keep VPS, SPS and DCI out of band (used for VVC RPR)  
 - force: enables it even if only one representation  
 - multi: uses multiple stsd entries in ISOBMFF  
 </div>  
@@ -797,7 +800,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="pswitch">__pswitch__</a> (enum, default: _single_): period switch control mode  
 
 - single: change period if PID configuration changes  
-- force: force period switch at each PID reconfiguration instead of absorbing PID reconfiguration (for splicing or add insertion not using periodID)  
+- force: force period switch at each PID reconfiguration instead of absorbing PID reconfiguration (for splicing or ad insertion not using periodID)  
 - stsd: change period if PID configuration changes unless new configuration was advertised in initial config  
 </div>  
   
@@ -829,6 +832,9 @@ The segmenter adds the following properties to the output PIDs:
   
 <div markdown class="option">  
 <a id="tpl_force">__tpl_force__</a> (bool, default: _false_): use template string as is without trying to add extension or solve conflicts in names  
+</div>  
+<div markdown class="option">  
+<a id="inband_event" data-level="basic">__inband_event__</a> (bool, default: _false_): insert a default inband event stream in the DASH manifest  
 </div>  
 <div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  

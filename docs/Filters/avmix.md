@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Audio Video Mixer  
+# Audio Video mixer  
   
 Register name used to load filter: __avmix__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  
@@ -780,6 +780,32 @@ Options:
 
    
 
+## Scene `clear`  
+This scene clears the canvas area covered by the scene with a given color.   
+  
+The default clear color of the mixer is `black`.  
+  
+The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
+  
+Options:  
+
+- color ('none'): clear color  
+
+
+## Scene `clip`  
+This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
+  
+The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
+  
+Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
+If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
+  
+Options:  
+
+- reset (false): if set, reset clipper otherwise set it to scene position and size  
+- stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
+
+
 ## Scene `shape`  
 This scene can be used to setup a shape, its outline and specify the fill and strike modes.  
 Supported shapes include:  
@@ -1002,41 +1028,8 @@ Options:
 - rt_rep (false): same as `rt` for local image in replace mode  
 
 
-## Scene `clip`  
-This scene resets the canvas clipper or sets the canvas clipper to the scene area.  
-  
-The clipper is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed clipper will be used.  
-  
-Clippers are handled through a stack, resetting the clipper pops the stack and restores previous clipper.  
-If a clipper is already defined when setting the clipper, the clipper set is the intersection of the two clippers.  
-  
-Options:  
-
-- reset (false): if set, reset clipper otherwise set it to scene position and size  
-- stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
-
-
-## Scene `clear`  
-This scene clears the canvas area covered by the scene with a given color.   
-  
-The default clear color of the mixer is `black`.  
-  
-The clear area is always axis-aligned in output frame, so when skew/rotation are present, the axis-aligned bounding box of the transformed scene area will be cleared.  
-  
-Options:  
-
-- color ('none'): clear color  
-
-
 # Transition modules  
   
-## Transition `fade` - software/GPU  
-This transition performs fade to/from color of source videos  
-Options:  
-
-- color ('black'): fade color  
-
-
 ## Transition `gltrans` - GPU only  
 This transition module wraps gl-transitions, see https://gl-transitions.com/ and `gpac -h avmix:gltrans` for builtin transitions  
 Options:  
@@ -1072,6 +1065,13 @@ Options:
   
 ## Transition `mix` - software/GPU  
 This transition performs cross-fade of source videos  
+
+## Transition `fade` - software/GPU  
+This transition performs fade to/from color of source videos  
+Options:  
+
+- color ('black'): fade color  
+
   
 
 # Options  {.no-collapse}  

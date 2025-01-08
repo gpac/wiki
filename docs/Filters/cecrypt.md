@@ -24,4 +24,7 @@ If no DRM config file is defined for a given PID, this PID will not be encrypted
 <div markdown class="option">  
 <a id="bk_stats" data-level="basic">__bk_stats__</a> (bool): print number of encrypted blocks to stdout upon exit  
 </div>  
+<div markdown class="option">  
+<a id="bk_skip">__bk_skip__</a> (bool): skip encryption but performs all other tasks (test mode)  
+</div>  
   

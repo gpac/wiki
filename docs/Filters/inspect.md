@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Inspect packets  
+# Packet inspector  
   
 Register name used to load filter: __inspect__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -23,6 +23,7 @@ When the option is not present, all properties are dumped. Otherwise, only prope
 - cts: composition time stamp in stream timescale, N/A if not available  
 - dcts: difference between current and previous packets composition time stamp in stream timescale, N/A if not available  
 - ctso: difference between composition time stamp and decoding time stamp in stream timescale, N/A if not available  
+- tmcd: timecode as provided in SEI, N/A if not available (requires reframer)  
 - dur: duration in stream timescale  
 - frame: framing status  
 

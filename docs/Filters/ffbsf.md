@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg BitStream filter  {:data-level="all"}  
+# FFmpeg bitstream filter  
   
 Register name used to load filter: __ffbsf__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -21,8 +21,12 @@ Options are specified after the desired filters:
 _Note: Using BSFs on some media types (e.g. avc, hevc) may trigger creation of a reframer filter (e.g. rfnalu)_  
   
 
-# Options    
+# Options  {.no-collapse}  
   
-<a id="f">__f__</a> (strl):    bitstream filters name - see filter help  
-<a id="*">__*__</a> (str):     any possible options defined for AVBitstreamFilter and sub-classes. See `gpac -hx ffbsf` and `gpac -hx ffbsf:*`  
+<div markdown class="option">  
+<a id="f" data-level="basic">__f__</a> (strl): bitstream filters name - see filter help  
+</div>  
+<div markdown class="option">  
+<a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVBitstreamFilter and sub-classes. See `gpac -hx ffbsf` and `gpac -hx ffbsf:*`  
+</div>  
   

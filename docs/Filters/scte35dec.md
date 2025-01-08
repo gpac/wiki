@@ -5,9 +5,9 @@
 Register name used to load filter: __scte35dec__  
 This filter is not checked during graph resolution and needs explicit loading.  
   
-This filter extracts SCTE-35 markers attached as properties to audio and video  
-packets as 23001-18 'emib' boxes. It also creates empty 'emeb' box in between  
-following segmentation as hinted by the graph.  
+This filter writes the SCTE-35 markers attached as properties to audio and video  
+packets or inside a dedicated stream, as 23001-18 'emib' boxes. It also creates  
+empty 'emeb' box in between following segmentation as hinted by the graph.  
   
 
 # Options  {.no-collapse}  

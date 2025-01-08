@@ -28,6 +28,8 @@ When the socket is listening in keep-alive [ka](#ka) mode:
 - each connection close event will triger a pipeline flush  
 
   
+On OSX with VM packet replay you will need to force multicast routing, e.g. `route add -net 239.255.1.4/32 -interface vboxnet0`  
+  
 
 # Options  {.no-collapse}  
   

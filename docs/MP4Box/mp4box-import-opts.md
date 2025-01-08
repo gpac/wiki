@@ -10,14 +10,14 @@ The supported input media types depend on your installation, check [filters docu
     
 To select a desired media track from a source, a fragment identifier '#' can be specified, before any other options. The following syntax is used:  
 
-- `#video`: adds the first video track found in source  
-- `#audio`: adds the first audio track found in source  
-- `#auxv`: adds the first auxiliary video track found in source  
-- `#pict`: adds the first picture track found in source  
-- `#trackID=ID` or `#ID`: adds the specified track. For IsoMedia files, ID is the track ID. For other media files, ID is the value indicated by `MP4Box -info inputFile`  
-- `#pid=ID`: number of desired PID for MPEG-2 TS sources  
-- `#prog_id=ID`: number of desired program for MPEG-2 TS sources  
-- `#program=NAME`: name of desired program for MPEG-2 TS sources  
+- ``#video``: adds the first video track found in source  
+- ``#audio``: adds the first audio track found in source  
+- ``#auxv``: adds the first auxiliary video track found in source  
+- ``#pict``: adds the first picture track found in source  
+- ``#trackID=ID` or `#ID``: adds the specified track. For IsoMedia files, ID is the track ID. For other media files, ID is the value indicated by `MP4Box -info inputFile`  
+- ``#pid=ID``: number of desired PID for MPEG-2 TS sources  
+- ``#prog_id=ID``: number of desired program for MPEG-2 TS sources  
+- ``#program=NAME``: name of desired program for MPEG-2 TS sources  
 
     
 By default all imports are performed sequentially, and final interleaving is done at the end; this however requires a temporary file holding original ISOBMF file (if any) and added files before creating the final output. Since this can become quite large, it is possible to add media to a new file without temporary storage, using [-flat](mp4box-gen-opts/#flat) option, but this disables media interleaving.  
@@ -52,10 +52,12 @@ Only per-file options marked with a `S` are possible in this mode.
     
 When importing an ISOBMFF/QT file, only options marked as `C` or `S` can be used.  
     
+When importing as an external track, only options marked as `E` can be used.  
+    
 Allowed per-file options:  
   
 <div markdown class="option">
-__dur__ (int):                 `XC` import only the specified duration from the media. Value can be:  
+__dur__ (int):                 `XCE` import only the specified duration from the media. Value can be:  
 
     - positive float: specifies duration in seconds  
     - fraction: specifies duration as NUM/DEN fraction  
@@ -66,10 +68,10 @@ __dur__ (int):                 `XC` import only the specified duration from the 
 __start__ (number):            `C` target start time in source media, may not be supported depending on the source  
 </div>
 <div markdown class="option">
-__lang__ (string):             `S` set imported media language code  
+__lang__ (string):             `SE` set imported media language code  
 </div>
 <div markdown class="option">
-__delay__ (int):               `S` set imported media initial delay (>0) or initial skip (<0) in ms or as fractional seconds (`N/D`)  
+__delay__ (int):               `SE` set imported media initial delay (>0) or initial skip (<0) in ms or as fractional seconds (`N/D`)  
 </div>
 <div markdown class="option">
 __par__ (string):              `S` set visual pixel aspect ratio (see [-par](mp4box-gen-opts/#par) )  
@@ -78,7 +80,7 @@ __par__ (string):              `S` set visual pixel aspect ratio (see [-par](mp4
 __clap__ (string):             `S` set visual clean aperture (see [-clap](mp4box-gen-opts/#clap) )  
 </div>
 <div markdown class="option">
-__mx__ (string):               `S` set track matrix (see [-mx](mp4box-gen-opts/#mx) )  
+__mx__ (string):               `SE` set track matrix (see [-mx](mp4box-gen-opts/#mx) )  
 </div>
 <div markdown class="option">
 __name__ (string):             `S` set track handler name  
@@ -93,13 +95,13 @@ __hdlr__ (string):             `S` set track handler type to the given code poin
 __stype__ (string):            `S` force sample description type to given code point (4CC), may likely break the file  
 </div>
 <div markdown class="option">
-__tkhd__ (int):                `S` set track header flags has hex integer or as comma-separated list of `enable`, `movie`, `preview`, `size_ar` keywords (use `tkhd+=FLAGS` to add and `tkhd-=FLAGS` to remove)  
+__tkhd__ (int):                `SE` set track header flags has hex integer or as comma-separated list of `enable`, `movie`, `preview`, `size_ar` keywords (use `tkhd+=FLAGS` to add and `tkhd-=FLAGS` to remove)  
 </div>
 <div markdown class="option">
-__disable__:                   `S` disable imported track(s), use `disable=no` to force enabling a disabled track  
+__disable__:                   `SE` disable imported track(s), use `disable=no` to force enabling a disabled track  
 </div>
 <div markdown class="option">
-__group__ (int):               `S` add the track as part of the G alternate group. If G is 0, the first available GroupID will be picked  
+__group__ (int):               `SE` add the track as part of the G alternate group. If G is 0, the first available GroupID will be picked  
 </div>
 <div markdown class="option">
 __fps__ (string):              `S` same as [-fps](#fps)  
@@ -231,16 +233,16 @@ __split_tiles__:               `DS` split HEVC tiles into different tile tracks,
 __negctts__:                   `S` use negative CTS-DTS offsets (ISO4 brand). Use `negctts=no` to force using positive offset on existing track  
 </div>
 <div markdown class="option">
-__chap__:                      `S` specify the track is a chapter track  
+__chap__:                      `SE` specify the track is a chapter track  
 </div>
 <div markdown class="option">
-__chapter__ (string):          `S` add a single chapter (old nero format) with given name lasting the entire file  
+__chapter__ (string):          `SE` add a single chapter (old nero format) with given name lasting the entire file  
 </div>
 <div markdown class="option">
-__chapfile__ (string):         `S` add a chapter file (old nero format)  
+__chapfile__ (string):         `SE` add a chapter file (old nero format)  
 </div>
 <div markdown class="option">
-__layout__ (string):           `S` specify the track layout as `WxH[xXxY][xLAYER]`. If `W` (resp `H`) is 0, the max width (resp height) of the tracks in the file are used  
+__layout__ (string):           `SE` specify the track layout as `WxH[xXxY][xLAYER]`. If `W` (resp `H`) is 0, the max width (resp height) of the tracks in the file are used  
 </div>
 <div markdown class="option">
 __rescale__ (int):             `S` force media timescale to TS  (int or fraction) and change the media duration  
@@ -252,7 +254,7 @@ __sampdur__ (int):             `S` force all samples duration (`D`) or sample du
 __timescale__ (int):           `S` set imported media timescale to TS  
 </div>
 <div markdown class="option">
-__moovts__ (int):              `S` set movie timescale to TS. A negative value picks the media timescale of the first track imported  
+__moovts__ (int):              `SE` set movie timescale to TS. A negative value picks the media timescale of the first track imported  
 </div>
 <div markdown class="option">
 __noedit__:                    `XS` do not set edit list when importing B-frames video tracks  
@@ -335,7 +337,7 @@ __swf-same-app__:              appearance nodes are reused
 __swf-flatten__ (number):      complementary angle below which 2 lines are merged, `0` means no flattening  
 </div>
 <div markdown class="option">
-__kind__ (string):             `S` set kind for the track as `schemeURI=value`  
+__kind__ (string):             `SE` set kind for the track as `schemeURI=value`  
 </div>
 <div markdown class="option">
 __txtflags__ (int):            set display flags (hexa number) of text track. Use `txtflags+=FLAGS` to add flags and `txtflags-=FLAGS` to remove flags  
@@ -387,7 +389,7 @@ __colortfc__ (string):         `S` force transfer characteristics in VUI for AVC
 __colormx__ (string):          `S` force the matrix coefficients in VUI for the AVC|H264 and HEVC content (int or string, cf `-h cicp`)  
 </div>
 <div markdown class="option">
-__tc__ (string):               `S` inject a single QT timecode. Value is formatted as:  
+__tc__ (string):               `SE` inject a single QT timecode. Value is formatted as:  
 
     - [d]FPS[/FPS_den],h,m,s,f[,framespertick]: optional drop flag, framerate (integer or fractional), hours, minutes, seconds and frame number  
     - : `d` is an optional flag used to indicate that the counter is in drop-frame format  
@@ -395,7 +397,7 @@ __tc__ (string):               `S` inject a single QT timecode. Value is formatt
 </div>
   
 <div markdown class="option">
-__edits__ (string):            `S` override edit list, same syntax as [-edits](#edits)  
+__edits__ (string):            `SE` override edit list, same syntax as [-edits](#edits)  
 </div>
 <div markdown class="option">
 __lastsampdur__ (string):      `S` set duration of the last sample. Value is formatted as:  
@@ -406,7 +408,7 @@ __lastsampdur__ (string):      `S` set duration of the last sample. Value is for
 </div>
   
 <div markdown class="option">
-__ID__ (int):                  `S` set target ID  
+__ID__ (int):                  `SE` set target ID  
 
     - a value of 0 (default) will try to keep source track ID  
     - a value of -1 will ignore source track ID  
@@ -414,10 +416,13 @@ __ID__ (int):                  `S` set target ID
 </div>
   
 <div markdown class="option">
-__tkgp__ (string):             `S` assign track group to track. Value is formatted as `TYPE,N` with TYPE the track group type (4CC) and N the track group ID. A negative ID removes from track group ID -N  
+__tkgp__ (string):             `SE` assign track group to track. Value is formatted as `TYPE,N` with TYPE the track group type (4CC) and N the track group ID. A negative ID removes from track group ID -N  
 </div>
 <div markdown class="option">
-__tkidx__ (string):            `S` set track position in track list, 1 being first track in file  
+__tkidx__ (string):            `SE` set track position in track list, 1 being first track in file  
+</div>
+<div markdown class="option">
+__extk__:                      `CE` add track as external track  
 </div>
 <div markdown class="option">
 __stats__,__-fstat__:          `C` print filter session stats after import  

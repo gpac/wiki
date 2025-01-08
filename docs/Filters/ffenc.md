@@ -6,13 +6,17 @@ Register name used to load filter: __ffenc__
 This filter may be automatically loaded during graph resolution.  
   
 This filter encodes audio and video streams using FFmpeg.  
-See FFmpeg documentation [FFmpeg Documentation](https://ffmpeg.org/documentation.html)for more details.  
+See FFmpeg documentation (https://ffmpeg.org/documentation.html) for more details.  
 To list all supported encoders for your GPAC build, use `gpac -h ffenc:*`.  
   
 The filter will try to resolve the codec name in [c](#c) against a libavcodec codec name (e.g. `libx264`) and use it if found.  
 If not found, it will consider the name to be a GPAC codec name and find a codec for it. In that case, if no pixel format is given, codecs will be enumerated to find a matching pixel format.  
   
 Options can be passed from prompt using `--OPT=VAL` (global options) or appending `::OPT=VAL` to the desired encoder filter.  
+Encoder flags can be passed directly as `:FLAGNAME`.  
+  
+Note  
+Setting the `:low_delay` flag will set by default `profile=baseline`, `preset=ultrafast` and `tune=zerolatency` options as well as `x264-params` for AVC|H264. If one or more of these options are set as filter arguments, no defaulting is used for all these options.  
   
 The filter will look for property `TargetRate` on input PID to set the desired bitrate per PID.  
   
@@ -55,6 +59,15 @@ The [rld](#rld) option is usually needed for dynamic updates of rate control par
 <div markdown class="option">  
 <a id="rld">__rld__</a> (bool, default: _false_, updatable): force reloading of encoder when arguments are updated  
 </div>  
+<div markdown class="option">  
+<a id="round">__round__</a> (sint, default: _1_, updatable): round video up or down  
+
+- 0: no rounding  
+- 1: round up to match codec YUF format requirements  
+- -1: round down to match codec YUF format requirements  
+- other: round to lower (negative value) or higher (positive value), for example CTU size  
+</div>  
+  
 <div markdown class="option">  
 <a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVCodecContext and sub-classes. see `gpac -hx ffenc` and `gpac -hx ffenc:*`  
 </div>  

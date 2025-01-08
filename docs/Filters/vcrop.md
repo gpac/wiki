@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Video crop  
+# Video cropper  
   
 Register name used to load filter: __vcrop__  
 This filter is not checked during graph resolution and needs explicit loading.  

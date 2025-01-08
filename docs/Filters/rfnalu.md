@@ -22,6 +22,9 @@ _Note: The filter uses negative CTS offsets: CTS is correct, but some frames may
 <a id="explicit">__explicit__</a> (bool, default: _false_): use explicit layered (SVC/LHVC) import  
 </div>  
 <div markdown class="option">  
+<a id="force_sync">__force_sync__</a> (bool, default: _false_): force sync points on non-IDR samples with I slices (not compliant)  
+</div>  
+<div markdown class="option">  
 <a id="strict_poc">__strict_poc__</a> (enum, default: _off_): delay frame output of an entire GOP to ensure CTS info is correct when POC suddenly changes  
 
 - off: disable GOP buffering  

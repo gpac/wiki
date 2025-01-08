@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MHAS writer  
+# MHAS rewriter  
   
 Register name used to load filter: __ufmhas__  
 This filter may be automatically loaded during graph resolution.  

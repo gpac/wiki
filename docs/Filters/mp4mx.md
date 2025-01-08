@@ -426,7 +426,7 @@ This will force the text stream to be used as a QT chapter track.
 <a id="dvsingle">__dvsingle__</a> (bool, default: _false_): ignore DolbyVision profile 8 in xps inband mode if profile 5 is already set  
 </div>  
 <div markdown class="option">  
-<a id="tsalign">__tsalign__</a> (bool, default: _true_): enable timeline realignment to 0 for first sample - if false, this will keep original timing with empty edit (possibly long) at begin)  
+<a id="tsalign">__tsalign__</a> (bool, default: _true_): enable timeline realignment to 0 for first sample - if false, this will keep original timing with empty edit (possibly long) at begin  
 </div>  
 <div markdown class="option">  
 <a id="chapm">__chapm__</a> (enum, default: _both_): chapter storage mode  

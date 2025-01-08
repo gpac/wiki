@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Media Reframer  
+# Media reframer  
   
 Register name used to load filter: __reframer__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -56,6 +56,7 @@ gpac -i m.mp4 reframer:rt=on -o live.mpd:dynamic
 The filter can perform time range extraction of the source using [xs](#xs) and [xe](#xe) options.  
 The formats allowed for times specifiers are:  
 
+- 'TC'HH:MM:SS:FF specify time in timecode  
 - 'T'H:M:S, 'T'M:S: specify time in hours, minutes, seconds  
 - 'T'H:M:S.MS, 'T'M:S.MS, 'T'S.MS: specify time in hours, minutes, seconds and milliseconds  
 - INT, FLOAT, NUM/DEN: specify time in seconds (number or fraction)  
@@ -223,6 +224,9 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 <a id="xots">__xots__</a> (bool, default: _false_): keep original timestamps after extraction  
 </div>  
 <div markdown class="option">  
+<a id="xdts">__xdts__</a> (bool, default: _false_): compute start times based on DTS and not CTS  
+</div>  
+<div markdown class="option">  
 <a id="nosap">__nosap__</a> (bool, default: _false_): do not cut at SAP when extracting range (may result in broken streams)  
 </div>  
 <div markdown class="option">  
@@ -265,6 +269,9 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 - frags: only forward frames marked as fragment start  
 </div>  
   
+<div markdown class="option">  
+<a id="sapcue">__sapcue__</a> (uint, default: _0_): treat SAPs smaller than or equal to this value as cue points  
+</div>  
 <div markdown class="option">  
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
 </div>  

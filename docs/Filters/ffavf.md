@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg AVFilter  
+# FFmpeg AV Filter  
   
 Register name used to load filter: __ffavf__  
 This filter is not checked during graph resolution and needs explicit loading.  

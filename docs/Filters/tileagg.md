@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HEVC tile aggregator  
+# HEVC Tile aggregator  
   
 Register name used to load filter: __tileagg__  
 This filter may be automatically loaded during graph resolution.  

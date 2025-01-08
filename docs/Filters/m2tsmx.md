@@ -82,6 +82,8 @@ Inserts an external TEMI with ID 4 and timescale 30000, NTP injection and carous
   
 __Warning: multipliers (k,m,g) are not supported in TEMI options.__  
   
+When input TEMI properties are found, they can be removed using [drop_temi](#drop_temi). When rewritten, any NTP information present is rewritten to the current NTP.  
+
 # Adaptive Streaming  
   
 In DASH and HLS mode:  
@@ -204,4 +206,12 @@ In LATM mux mode, the decoder configuration is inserted at the given [repeat_rat
 <div markdown class="option">  
 <a id="keepts">__keepts__</a> (bool, default: _false_): keep cts/dts untouched and adjust PCR accordingly, used to keep TS unmodified when dashing  
 </div>  
+<div markdown class="option">  
+<a id="temi_fwd">__temi_fwd__</a> (enum, default: _fwd_): input TEMI properties when remuwing  
+
+- drop: remove input descriptors  
+- fwd: forward input descriptors  
+- ntp: forward input descriptors after NTP rewriting  
+</div>  
+  
   

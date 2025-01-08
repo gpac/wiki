@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# BT/XMT/X3D loader  
+# BT/XMT/X3D decoder  
   
 Register name used to load filter: __btplay__  
 This filter may be automatically loaded during graph resolution.  

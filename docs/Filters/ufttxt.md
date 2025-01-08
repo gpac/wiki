@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# TX3G unframer  
+# TX3G rewriter  
   
 Register name used to load filter: __ufttxt__  
 This filter may be automatically loaded during graph resolution.  

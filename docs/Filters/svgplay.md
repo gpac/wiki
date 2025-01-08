@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# SVG loader  
+# SVG decoder  
   
 Register name used to load filter: __svgplay__  
 This filter may be automatically loaded during graph resolution.  

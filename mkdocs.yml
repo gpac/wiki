@@ -212,146 +212,163 @@ nav:
     - Global options: Filters/core_options.md
     - Logging: Filters/core_logs.md
     - All filters:
-      - a52dec: Filters/a52dec.md
-      - aout: Filters/aout.md
-      - avgen: Filters/avgen.md
-      - avidmx: Filters/avidmx.md
-      - avimx: Filters/avimx.md
-      - avmix: Filters/avmix.md
-      - bifsdec: Filters/bifsdec.md
-      - bsagg: Filters/bsagg.md
-      - bsrw: Filters/bsrw.md
-      - bssplit: Filters/bssplit.md
-      - btplay: Filters/btplay.md
-      - ccdec: Filters/ccdec.md
-      - cdcrypt: Filters/cdcrypt.md
-      - cecrypt: Filters/cecrypt.md
-      - compositor: Filters/compositor.md
-      - cryptin: Filters/cryptin.md
-      - cryptout: Filters/cryptout.md
-      - dasher: Filters/dasher.md
-      - dashin: Filters/dashin.md
-      - dtout: Filters/dtout.md
-      - dvbin: Filters/dvbin.md
-      - evgs: Filters/evgs.md
-      - faad: Filters/faad.md
-      - ffavf: Filters/ffavf.md
-      - ffavin: Filters/ffavin.md
-      - ffbsf: Filters/ffbsf.md
-      - ffdec: Filters/ffdec.md
-      - ffdmx: Filters/ffdmx.md
-      - ffenc: Filters/ffenc.md
-      - ffmx: Filters/ffmx.md
-      - ffsws: Filters/ffsws.md
-      - fin: Filters/fin.md
-      - flist: Filters/flist.md
-      - fout: Filters/fout.md
-      - ghidmx: Filters/ghidmx.md
-      - glpush: Filters/glpush.md
-      - gsfdmx: Filters/gsfdmx.md
-      - gsfmx: Filters/gsfmx.md
-      - hevcmerge: Filters/hevcmerge.md
-      - hevcsplit: Filters/hevcsplit.md
-      - httpin: Filters/httpin.md
-      - httpout: Filters/httpout.md
-      - imgdec: Filters/imgdec.md
-      - inspect: Filters/inspect.md
-      - j2kdec: Filters/j2kdec.md
-      - jpgenc: Filters/jpgenc.md
-      - jsf: Filters/jsf.md
-      - lsrdec: Filters/lsrdec.md
-      - m2psdmx: Filters/m2psdmx.md
-      - m2tsdmx: Filters/m2tsdmx.md
-      - m2tsmx: Filters/m2tsmx.md
-      - maddec: Filters/maddec.md
-      - mcdec: Filters/mcdec.md
-      - mp4dmx: Filters/mp4dmx.md
-      - mp4mx: Filters/mp4mx.md
-      - mpeghdec: Filters/mpeghdec.md
-      - nhmlr: Filters/nhmlr.md
-      - nhmlw: Filters/nhmlw.md
-      - nhntr: Filters/nhntr.md
-      - nhntw: Filters/nhntw.md
-      - nvdec: Filters/nvdec.md
-      - odfdec: Filters/odfdec.md
-      - oggdmx: Filters/oggdmx.md
-      - oggmx: Filters/oggmx.md
-      - ohevcdec: Filters/ohevcdec.md
-      - osvcdec: Filters/osvcdec.md
-      - pin: Filters/pin.md
-      - pngenc: Filters/pngenc.md
-      - pout: Filters/pout.md
-      - probe: Filters/probe.md
-      - reframer: Filters/reframer.md
-      - resample: Filters/resample.md
-      - restamp: Filters/restamp.md
-      - rewind: Filters/rewind.md
-      - rfac3: Filters/rfac3.md
-      - rfadts: Filters/rfadts.md
-      - rfamr: Filters/rfamr.md
-      - rfav1: Filters/rfav1.md
-      - rfflac: Filters/rfflac.md
-      - rfh263: Filters/rfh263.md
-      - rfimg: Filters/rfimg.md
-      - rflatm: Filters/rflatm.md
-      - rfmhas: Filters/rfmhas.md
-      - rfmp3: Filters/rfmp3.md
-      - rfmpgvid: Filters/rfmpgvid.md
-      - rfnalu: Filters/rfnalu.md
-      - rfpcm: Filters/rfpcm.md
-      - rfprores: Filters/rfprores.md
-      - rfqcp: Filters/rfqcp.md
-      - rfrawvid: Filters/rfrawvid.md
-      - rfsrt: Filters/rfsrt.md
-      - rftruehd: Filters/rftruehd.md
-      - routein: Filters/routein.md
-      - routeout: Filters/routeout.md
-      - rtpin: Filters/rtpin.md
-      - rtpout: Filters/rtpout.md
-      - rtspout: Filters/rtspout.md
-      - safdmx: Filters/safdmx.md
-      - scte35dec: Filters/scte35dec.md
-      - sockin: Filters/sockin.md
-      - sockout: Filters/sockout.md
-      - svgplay: Filters/svgplay.md
-      - theoradec: Filters/theoradec.md
-      - thumbs: Filters/thumbs.md
-      - tileagg: Filters/tileagg.md
-      - tilesplit: Filters/tilesplit.md
-      - tssplit: Filters/tssplit.md
-      - ttml2srt: Filters/ttml2srt.md
-      - ttml2vtt: Filters/ttml2vtt.md
-      - ttmldec: Filters/ttmldec.md
-      - ttmlmerge: Filters/ttmlmerge.md
-      - ttxtdec: Filters/ttxtdec.md
-      - tx3g2srt: Filters/tx3g2srt.md
-      - tx3g2ttml: Filters/tx3g2ttml.md
-      - tx3g2vtt: Filters/tx3g2vtt.md
-      - txtin: Filters/txtin.md
-      - ufadts: Filters/ufadts.md
-      - uflatm: Filters/uflatm.md
-      - ufm4v: Filters/ufm4v.md
-      - ufmhas: Filters/ufmhas.md
-      - ufnalu: Filters/ufnalu.md
-      - ufobu: Filters/ufobu.md
-      - ufttxt: Filters/ufttxt.md
-      - ufvc1: Filters/ufvc1.md
-      - ufvtt: Filters/ufvtt.md
-      - uncvdec: Filters/uncvdec.md
-      - uncvg: Filters/uncvg.md
-      - unframer: Filters/unframer.md
-      - vcrop: Filters/vcrop.md
-      - vflip: Filters/vflip.md
-      - vobsubdmx: Filters/vobsubdmx.md
-      - vorbisdec: Filters/vorbisdec.md
-      - vout: Filters/vout.md
-      - vtbdec: Filters/vtbdec.md
-      - vtt2tx3g: Filters/vtt2tx3g.md
-      - vttdec: Filters/vttdec.md
-      - writegen: Filters/writegen.md
-      - writeqcp: Filters/writeqcp.md
-      - writeuf: Filters/writeuf.md
-      - xviddec: Filters/xviddec.md
+      - Stream Manipulation:
+        - Audio/Video rewinder: Filters/rewind.md
+        - Bitstream metadata rewriter: Filters/bsrw.md
+        - FFmpeg bitstream filter: Filters/ffbsf.md
+        - HEVC Tile aggregator: Filters/tileagg.md
+        - HEVC Tile extractor: Filters/hevcsplit.md
+        - HEVC Tile merger: Filters/hevcmerge.md
+        - HEVC Tile splitter: Filters/tilesplit.md
+        - Layered bitstream aggregator: Filters/bsagg.md
+        - Layered bitstream splitter: Filters/bssplit.md
+        - MPEG-2 TS splitter: Filters/tssplit.md
+        - MPEG-2 TS timestamper: Filters/tsgendts.md
+        - Media reframer: Filters/reframer.md
+        - Sources concatenator: Filters/flist.md
+        - Timestamp rewriter: Filters/restamp.md
+      - Multimedia I/O:
+        - AV Counter Generator: Filters/avgen.md
+        - Audio output: Filters/aout.md
+        - DVB for Linux: Filters/dvbin.md
+        - DekTec SDI output: Filters/dtout.md
+        - FFmpeg AV capture: Filters/ffavin.md
+        - Uncompressed Video Generator: Filters/uncvg.md
+        - Video output: Filters/vout.md
+        - Web-based AV capture: Filters/webgrab.md
+      - Protocols I/O:
+        - DASH & HLS client: Filters/dashin.md
+        - DASH & HLS segmenter: Filters/dasher.md
+        - File input: Filters/fin.md
+        - File output: Filters/fout.md
+        - HTTP input: Filters/httpin.md
+        - HTTP server: Filters/httpout.md
+        - MABR & ROUTE input: Filters/routein.md
+        - MABR & ROUTE output: Filters/routeout.md
+        - Pipe input: Filters/pin.md
+        - Pipe output: Filters/pout.md
+        - RTP Streamer: Filters/rtpout.md
+        - RTP/RTSP/SDP input: Filters/rtpin.md
+        - RTSP server: Filters/rtspout.md
+        - Streaming Media Gateway and Server: Filters/mediaserver.md
+        - UDP/TCP input: Filters/sockin.md
+        - UDP/TCP output: Filters/sockout.md
+      - Text & Subtitles:
+        - Closed-Caption decoder: Filters/ccdec.md
+        - Subtitle loader: Filters/txtin.md
+        - TTML sample merger: Filters/ttmlmerge.md
+        - TTML to SRT: Filters/ttml2srt.md
+        - TTML to WebVTT: Filters/ttml2vtt.md
+        - TX3G to SRT: Filters/tx3g2srt.md
+        - TX3G to TTML: Filters/tx3g2ttml.md
+        - TX3G to WebVTT: Filters/tx3g2vtt.md
+        - WebVTT to TX3G: Filters/vtt2tx3g.md
+      - Audio & Video Processing:
+        - Audio Video mixer: Filters/avmix.md
+        - Audio resampler: Filters/resample.md
+        - Compositor: Filters/compositor.md
+        - EVG video rescaler: Filters/evgs.md
+        - FFmpeg AV Filter: Filters/ffavf.md
+        - FFmpeg video rescaler: Filters/ffsws.md
+        - GPU texture uploader: Filters/glpush.md
+        - Thumbnail generator: Filters/thumbs.md
+        - Video cropper: Filters/vcrop.md
+        - Video flipper: Filters/vflip.md
+      - Utilities & Tools:
+        - JavaScript filter: Filters/jsf.md
+        - NHML reader: Filters/nhmlr.md
+        - NHML writer: Filters/nhmlw.md
+        - NHNT reader: Filters/nhntr.md
+        - NHNT writer: Filters/nhntw.md
+        - Packet inspector: Filters/inspect.md
+        - Source prober: Filters/probe.md
+        - Stream rewriter: Filters/unframer.md
+        - Stream to File converter: Filters/writegen.md
+      - Cryptography:
+        - CENC decryptor: Filters/cdcrypt.md
+        - CENC encryptor: Filters/cecrypt.md
+        - CryptFile input: Filters/cryptin.md
+        - CryptFile output: Filters/cryptout.md
+      - Bitstream Framing:
+        - AC3 reframer: Filters/rfac3.md
+        - ADTS reframer: Filters/rfadts.md
+        - ADTS rewriter: Filters/ufadts.md
+        - AMR/EVRC reframer: Filters/rfamr.md
+        - AV1/IVF/VP9 reframer: Filters/rfav1.md
+        - AVC/HEVC reframer: Filters/rfnalu.md
+        - AVC/HEVC to AnnexB rewriter: Filters/ufnalu.md
+        - FLAC reframer: Filters/rfflac.md
+        - Framed to Unframed converter: Filters/writeuf.md
+        - H263 reframer: Filters/rfh263.md
+        - IVF/OBU/annexB rewriter: Filters/ufobu.md
+        - JPG/J2K/PNG/BMP reframer: Filters/rfimg.md
+        - LATM reframer: Filters/rflatm.md
+        - LATM rewriter: Filters/uflatm.md
+        - M1V/M2V/M4V reframer: Filters/rfmpgvid.md
+        - M4V rewriter: Filters/ufm4v.md
+        - MHAS rewriter: Filters/ufmhas.md
+        - MP3 reframer: Filters/rfmp3.md
+        - MPEH-H Audio Stream reframer: Filters/rfmhas.md
+        - PCM reframer: Filters/rfpcm.md
+        - ProRes reframer: Filters/rfprores.md
+        - QCP reframer: Filters/rfqcp.md
+        - QCP writer: Filters/writeqcp.md
+        - RAW video reframer: Filters/rfrawvid.md
+        - SRT reframer: Filters/rfsrt.md
+        - TX3G rewriter: Filters/ufttxt.md
+        - TrueHD reframer: Filters/rftruehd.md
+        - VC1 rewriter: Filters/ufvc1.md
+        - WebVTT rewriter: Filters/ufvtt.md
+      - Demultiplexers:
+        - AVI: Filters/avidmx.md
+        - FFmpeg: Filters/ffdmx.md
+        - GHI: Filters/ghidmx.md
+        - GSF: Filters/gsfdmx.md
+        - ISOBMFF/QT: Filters/mp4dmx.md
+        - MPEG PS: Filters/m2psdmx.md
+        - MPEG-2 TS: Filters/m2tsdmx.md
+        - OGG: Filters/oggdmx.md
+        - SAF: Filters/safdmx.md
+        - VobSub: Filters/vobsubdmx.md
+      - Mulitplexers:
+        - AVI: Filters/avimx.md
+        - FFmpeg: Filters/ffmx.md
+        - GSF: Filters/gsfmx.md
+        - ISOBMFF/QT: Filters/mp4mx.md
+        - MPEG-2 TS: Filters/m2tsmx.md
+        - OGG: Filters/oggmx.md
+      - Decoders:
+        - A52: Filters/a52dec.md
+        - BT/XMT/X3D: Filters/btplay.md
+        - FAAD: Filters/faad.md
+        - FFmpeg: Filters/ffdec.md
+        - MAD: Filters/maddec.md
+        - MPEG-4 BIFS: Filters/bifsdec.md
+        - MPEG-4 LASeR: Filters/lsrdec.md
+        - MPEG-4 OD: Filters/odfdec.md
+        - MPEG-H Audio: Filters/mpeghdec.md
+        - MediaCodec: Filters/mcdec.md
+        - NVidia: Filters/nvdec.md
+        - OpenHEVC: Filters/ohevcdec.md
+        - OpenJPEG2000: Filters/j2kdec.md
+        - OpenSVC: Filters/osvcdec.md
+        - PNG/JPG: Filters/imgdec.md
+        - SCTE35: Filters/scte35dec.md
+        - SVG: Filters/svgplay.md
+        - TTML: Filters/ttmldec.md
+        - TTXT/TX3G: Filters/ttxtdec.md
+        - Theora: Filters/theoradec.md
+        - UNCV: Filters/uncvdec.md
+        - VideoToolBox: Filters/vtbdec.md
+        - Vorbis: Filters/vorbisdec.md
+        - WebCodec: Filters/wcdec.md
+        - WebVTT: Filters/vttdec.md
+        - XVid: Filters/xviddec.md
+      - Encoders:
+        - FFmpeg: Filters/ffenc.md
+        - JPG: Filters/jpgenc.md
+        - PNG: Filters/pngenc.md
+        - WebCodec: Filters/wcenc.md
   - Build:
     - Overview: Build/Build-Introduction.md
     - Upgrading or Changing Branch: Build/Upgrading.md

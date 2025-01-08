@@ -48,7 +48,7 @@ The filter does not check for RTCP timeout and will run until all input PIDs rea
 <a id="port" data-level="basic">__port__</a> (uint, default: _7000_): port for first stream in session  
 </div>  
 <div markdown class="option">  
-<a id="loop" data-level="basic">__loop__</a> (bool, default: _true_): loop all streams in session (not always possible depending on source type)  
+<a id="loop" data-level="basic">__loop__</a> (bool, default: _false_): loop all streams in session (not always possible depending on source type)  
 </div>  
 <div markdown class="option">  
 <a id="mpeg4">__mpeg4__</a> (bool, default: _false_): send all streams using MPEG-4 generic payload format if possible  
@@ -91,5 +91,11 @@ The filter does not check for RTCP timeout and will run until all input PIDs rea
 </div>  
 <div markdown class="option">  
 <a id="mime">__mime__</a> (cstr): set mime type for direct RTP mode  
+</div>  
+<div markdown class="option">  
+<a id="speed" data-level="basic">__speed__</a> (dbl, default: _1.0_): set streaming speed. If negative and start is 0, start is set to -1  
+</div>  
+<div markdown class="option">  
+<a id="start" data-level="basic">__start__</a> (dbl, default: _0.0_): set streaming start offset. A negative value means percent of media duration with -1 equal to duration  
 </div>  
   

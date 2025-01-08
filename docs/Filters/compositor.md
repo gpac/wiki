@@ -260,8 +260,8 @@ Whether the setting is applied or not depends on the graphics module and player 
 <div markdown class="option">  
 <a id="epow2">__epow2__</a> (bool, default: _true_, updatable): emulate power-of-2 textures for OpenGL (old hardware). Ignored if OpenGL rectangular texture extension is enabled  
 
-- yes: video texture is not resized but emulated with padding. This usually speeds up video mapping on shapes but disables texture transformations  
-- no: video is resized to a power of 2 texture when mapping to a shape  
+- true: video texture is not resized but emulated with padding. This usually speeds up video mapping on shapes but disables texture transformations  
+- false: video is resized to a power of 2 texture when mapping to a shape  
 </div>  
   
 <div markdown class="option">  

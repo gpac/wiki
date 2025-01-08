@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# FFmpeg AV Capture  
+# FFmpeg AV capture  
   
 Register name used to load filter: __ffavin__  
 This filter may be automatically loaded during graph resolution.  

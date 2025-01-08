@@ -26,7 +26,7 @@ _Note: Unless disabled at session level (see [-no-probe](core_options/#no-probe)
 <a id="cache">__cache__</a> (enum, default: _none_): set cache mode  
 
 - auto: cache to disk if content length is known, no cache otherwise  
-- disk: cache to disk,  discard once session is no longer used  
+- disk: cache to disk, discard once session is no longer used  
 - keep: cache to disk and keep  
 - mem: stores to memory, discard once session is no longer used  
 - mem_keep: stores to memory, keep after session is reassigned but move to `mem` after first download  
@@ -45,5 +45,8 @@ _Note: Unless disabled at session level (see [-no-probe](core_options/#no-probe)
 </div>  
 <div markdown class="option">  
 <a id="blockio">__blockio__</a> (bool, default: _false_): use blocking IO  
+</div>  
+<div markdown class="option">  
+<a id="idelay">__idelay__</a> (uint, default: _0_): delay first request by the given number of ms  
 </div>  
   

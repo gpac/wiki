@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Compressed layered bitstream splitter  
+# Layered bitstream splitter  
   
 Register name used to load filter: __bssplit__  
 This filter is not checked during graph resolution and needs explicit loading.  

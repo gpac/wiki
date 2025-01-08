@@ -88,6 +88,9 @@ Options:
 <a id="disox" data-level="basic">__-disox__</a>: dump IsoMedia file boxes except sample tables in XML output  
 </div>
 <div markdown class="option">
+<a id="keep-comp" data-level="basic">__-keep-comp__</a>: do not decompress boxes when dumping  
+</div>
+<div markdown class="option">
 <a id="keep-ods" data-level="basic">__-keep-ods__</a>: do not translate ISOM ODs and ESDs tags (debug purpose only)  
 </div>
 <div markdown class="option">
@@ -271,7 +274,7 @@ Multiple time ranges can be specified as a comma-separated list for `-splitx`, `
 </div>
   
 <div markdown class="option">
-<a id="split-rap" data-level="basic">__-split-rap__</a>,__-splitr__ (string): split in files at each new RAP  
+<a id="split-rap" data-level="basic">__-split-rap__</a>,__-splitr__: split in files at each new RAP  
 </div>
 <div markdown class="option">
 <a id="split-size" data-level="basic">__-split-size__</a>,__-splits__ (string): split in files of given max size (integer number) in kilobytes. A trailing unit can be specified:  

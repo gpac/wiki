@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Uncompressed Video File Format Generator Utility  
+# Uncompressed Video Generator  
   
 Register name used to load filter: __uncvg__  
 This is a JavaScript filter. It is not checked during graph resolution and needs explicit loading.  

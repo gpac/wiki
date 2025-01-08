@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Packet timestamp rewriter  
+# Timestamp rewriter  
   
 Register name used to load filter: __restamp__  
 This filter is not checked during graph resolution and needs explicit loading.  

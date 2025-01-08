@@ -30,6 +30,7 @@ log_args is formatted as a colon (':') separated list of `toolX[:toolZ]@levelX`
 - warning: logs error+warning messages  
 - info: logs error+warning+info messages  
 - debug: logs all messages  
+- strict: exit if error for this log tool and use default log level if tool  
 
   
 `toolX` can be one of:  
@@ -60,10 +61,11 @@ log_args is formatted as a colon (':') separated list of `toolX[:toolZ]@levelX`
 - ctime: media and SMIL timing info from composition engine  
 - interact: interaction messages (UI events and triggered DOM events and VRML route)  
 - rti: run-time stats of compositor  
-- all: all tools logged - other tools can be specified afterwards.    
+- all: all tools logged - other tools can be specified afterwards  
 
 The special keyword `ncl` can be set to disable color logs.    
-The special keyword `strict` can be set to exit at first error.    
+The special keyword `strict` can be set to exit at first error on any tool.    
+`levelX` can accept the suffix `+strict` to force strict error only for the given log tool(s).     
   
 Example
 ```

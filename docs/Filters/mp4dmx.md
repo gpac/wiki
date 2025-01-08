@@ -12,15 +12,15 @@ Input ISOBMFF/QT can be regular or fragmented, and available as files or as raw 
   
 The filter can use fragment identifiers of source to select a single track for playback. The allowed fragments are:  
 
-    - #audio: only use the first audio track  
-    - #video: only use the first video track  
-    - #auxv: only use the first auxiliary video track  
-    - #pict: only use the first picture track  
-    - #text: only use the first text track  
-    - #trackID=VAL: only use the track with given ID  
-    - #itemID=VAL: only use the item with given ID  
-    - #ID=VAL: only use the track/item with given ID  
-    - #VAL: only use the track/item with given ID  
+    - `#audio`: only use the first audio track  
+    - `#video`: only use the first video track  
+    - `#auxv`: only use the first auxiliary video track  
+    - `#pict`: only use the first picture track  
+    - `#text`: only use the first text track  
+    - `#trackID=VAL`: only use the track with given ID  
+    - `#itemID=VAL`: only use the item with given ID  
+    - `#ID=VAL`: only use the track/item with given ID  
+    - `#VAL`: only use the track/item with given ID  
 
   
 # Scalable Tracks  
@@ -132,6 +132,9 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
 </div>  
 <div markdown class="option">  
 <a id="initseg">__initseg__</a> (str): local init segment name when input is a single ISOBMFF segment  
+</div>  
+<div markdown class="option">  
+<a id="extk">__extk__</a> (bool, default: _true_): allow external track loading  
 </div>  
 <div markdown class="option">  
 <a id="ctso">__ctso__</a> (sint): value to add to CTS offset for tracks using negative ctts  

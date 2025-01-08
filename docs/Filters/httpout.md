@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HTTP Server  
+# HTTP server  
   
 Register name used to load filter: __httpout__  
 This filter may be automatically loaded during graph resolution.  
@@ -42,6 +42,15 @@ name=bar
 ```
   
 Content `RES` of this directory is exposed as `http://SERVER/bar/RES`.  
+    
+To authenticate services handled by bindings, use a non-existing directory and a name describing the authentication.  
+Example
+```
+[NonExistingDir]  
+name=service_root
+```
+  
+Requests in the form `http://SERVER/service_root/*` will be authenticated by this rule.  
     
 Listing can be enabled on server using [dlist](#dlist).  
 When disabled, a GET on a directory will fail.  
@@ -203,7 +212,7 @@ This will:
 <a id="dst" data-level="basic">__dst__</a> (cstr): location of destination resource  
 </div>  
 <div markdown class="option">  
-<a id="port" data-level="basic">__port__</a> (uint, default: _0_): server port  
+<a id="port" data-level="basic">__port__</a> (uintl, default: _0_): server port  
 </div>  
 <div markdown class="option">  
 <a id="ifce">__ifce__</a> (str): default network interface to use  
@@ -313,5 +322,11 @@ This will:
 </div>  
 <div markdown class="option">  
 <a id="cte">__cte__</a> (bool, default: _true_): use chunked transfer-encoding mode when possible  
+</div>  
+<div markdown class="option">  
+<a id="maxs">__maxs__</a> (uint, default: _50M_): maximum upload size allowed in bytes  
+</div>  
+<div markdown class="option">  
+<a id="norange">__norange__</a> (bool, default: _false_): disable byte range support in GET (reply 200 on partial requests)  
 </div>  
   

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE input  
+# MABR & ROUTE input  
   
 Register name used to load filter: __routein__  
 This filter may be automatically loaded during graph resolution.  
@@ -38,7 +38,6 @@ If [max_segs](#max_segs) is set, file deletion event will be triggered in the fi
 # Source mode  
   
 In source mode, the filter outputs files on a single output PID of type `file`. The files are dispatched once fully received, the output PID carries a sequence of complete files. Repeated files are not sent unless requested.  
-If needed, one PID per TSI can be used rather than a single PID. This avoids mixing files of different mime types on the same PID (e.g. HAS manifest and ISOBMFF).  
 Example
 ```
 gpac -i atsc://gcache=false -o $ServiceID$/$File$:dynext
@@ -46,7 +45,11 @@ gpac -i atsc://gcache=false -o $ServiceID$/$File$:dynext
   
 This will grab the files and forward them as output PIDs, consumed by the [fout](fout) filter.  
   
+If needed, one PID per TSI can be used rather than a single PID using [stsi](#stsi). This avoids mixing files of different mime types on the same PID (e.g. HAS manifest and ISOBMFF).  
+In this mode, each packet starting a new file carries the file name as a property. If [repair](#repair) is enabled in this mode, progressive dispatch of files will be done.  
+  
 If [max_segs](#max_segs) is set, file deletion event will be triggered in the filter chain.  
+_Note: The [nbcached](#nbcached) option is ignored in this mode._  
   
 # Standalone mode  
   
@@ -58,14 +61,20 @@ gpac -i atsc://:odir=output
   
 This will grab the files and write them to `output` directory.  
   
+In this mode, files are always written once completely recieved, regardless of the [repair](#repair) option.  
+  
 If [max_segs](#max_segs) is set, old files will be deleted.  
+_Note: The [nbcached](#nbcached) option is ignored in this mode._  
   
 # File Repair  
   
 In case of losses or incomplete segment reception (during tune-in), the files are patched as follows:  
 
 - MPEG-2 TS: all lost ranges are adjusted to 188-bytes boundaries, and transformed into NULL TS packets.  
-- ISOBMFF: all top-level boxes are scanned, and incomplete boxes are transformed in `free` boxes, except mdat kept as is if [repair](#repair) is set to simple.  
+- ISOBMFF: all top-level boxes are scanned, and incomplete boxes are transformed in `free` boxes, except `mdat`:  
+
+    - if `repair=simple`, `mdat` is kept if incomplete (broken file),  
+    - if `repair=strict`, `mdat` is moved to `free` if incomplete and the preceeding `moof` is also moved to `free`.  
 
   
 If [kc](#kc) option is set, corrupted files will be kept. If [fullseg](#fullseg) is not set and files are only partially received, they will be kept.  
@@ -99,8 +108,14 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="gcache">__gcache__</a> (bool, default: _true_): indicate the files should populate GPAC HTTP cache  
 </div>  
 <div markdown class="option">  
-<a id="tunein" data-level="basic">__tunein__</a> (sint, default: _-2_): service ID to bootstrap on for ATSC 3.0 mode (0 means tune to no service, -1 tune all services -2 means tune on first service found)  
+<a id="tunein" data-level="basic">__tunein__</a> (sint, default: _-2_): service ID to bootstrap on. Special values:  
+
+- 0: tune to no service  
+- -1: tune all services  
+- -2: tune on first service found  
+- -3: detect all services and do not join multicast  
 </div>  
+  
 <div markdown class="option">  
 <a id="buffer">__buffer__</a> (uint, default: _0x80000_): receive buffer size to use in bytes  
 </div>  
@@ -138,13 +153,13 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="cloop" data-level="basic">__cloop__</a> (bool, default: _false_): check for loops based on TOI (used for capture replay)  
 </div>  
 <div markdown class="option">  
-<a id="rtimeout">__rtimeout__</a> (uint, default: _100000_): default timeout in us to wait when gathering out-of-order packets  
+<a id="rtimeout">__rtimeout__</a> (uint, default: _500000_): default timeout in us to wait when gathering out-of-order packets  
 </div>  
 <div markdown class="option">  
 <a id="fullseg">__fullseg__</a> (bool, default: _false_): only dispatch full segments in cache mode (always true for other modes)  
 </div>  
 <div markdown class="option">  
-<a id="repair">__repair__</a> (enum, default: _simple_): repair mode for corrupted files  
+<a id="repair">__repair__</a> (enum, default: _strict_): repair mode for corrupted files  
 
 - no: no repair is performed  
 - simple: simple repair is performed (incomplete `mdat` boxes will be kept)  
@@ -153,7 +168,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 </div>  
   
 <div markdown class="option">  
-<a id="repair_url" data-level="basic">__repair_url__</a> (cstr): repair url  
+<a id="repair_urls" data-level="basic">__repair_urls__</a> (strl): repair servers urls  
 </div>  
 <div markdown class="option">  
 <a id="max_sess" data-level="basic">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  
@@ -163,5 +178,11 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 </div>  
 <div markdown class="option">  
 <a id="dynsel" data-level="basic">__dynsel__</a> (bool, default: _true_): dynamically enable and disable multicast groups based on their selection state  
+</div>  
+<div markdown class="option">  
+<a id="range_merge" data-level="basic">__range_merge__</a> (uint, default: _10000_): merge ranges in HTTP repair if distant from less than given amount of bytes  
+</div>  
+<div markdown class="option">  
+<a id="minrecv" data-level="basic">__minrecv__</a> (uint, default: _20_): redownload full file in HTTP repair if received bytes is less than given percentage of file size  
 </div>  
   

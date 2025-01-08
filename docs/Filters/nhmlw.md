@@ -27,6 +27,9 @@ NHML documentation is available at https://wiki.gpac.io/xmlformats/NHML-Format
 <a id="pckp">__pckp__</a> (bool, default: _false_): full NHML dump  
 </div>  
 <div markdown class="option">  
+<a id="payload">__payload__</a> (bool, default: _false_): dump payload (scte35 only at the moment), should be combined with ǹhmlonly``  
+</div>  
+<div markdown class="option">  
 <a id="chksum">__chksum__</a> (enum, default: _none_): insert frame checksum  
 
 - none: no checksum  

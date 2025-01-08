@@ -174,7 +174,7 @@ This will set option `a` to `foo`, `b` to `bar:c` and the option `d` to `fun` on
 # Filter linking [_LINK_]  
   
 Each filter exposes one or more sets of capabilities, called _capability bundle_, which are property type and values that must be matched or excluded by connecting PIDs.  
-To check the possible sources and destination for a filter `FNAME`, use `gpac -h links FNAME`  
+To check the possible sources and destinations for a filter `FNAME`, use `gpac -h links FNAME`  
   
 The filter graph resolver uses this information together with the PID properties to link the different filters.  
   
@@ -187,7 +187,7 @@ Each PID is checked for possible connection to all defined filters, in their dec
 For each filter `DST` accepting a connection from the PID, directly or with intermediate filters:  
 
 - if `DST` filter has link directives, use them to allow or reject PID connection.  
-- otherwise, if _complete mode_ is enabled, allow connection..  
+- otherwise, if _complete mode_ is enabled, allow connection.  
 - otherwise (_implicit mode_):  
 
     - if `DST` is not a sink and is the first matching filter with no link directive, allow connection.  
@@ -507,7 +507,7 @@ Destination URLs can be dynamically constructed using templates. Pattern `$KEYWO
 - OTHER: locates property 4CC for the given name, or property name if no 4CC matches.  
 
     
-`$$` is an escape for $  
+`$$` is an escape for `$`. For shells automatically replacing `$$` with `$`, the syntax `$;$` can be used to express `$$`.  
   
 Templating can be useful when encoding several qualities in one pass.  
 Example
