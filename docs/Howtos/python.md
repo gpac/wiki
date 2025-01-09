@@ -634,7 +634,7 @@ else:
 
 And let your OpenGL skills do the rest !
 
-A simple example illustrating this is available [here](examples/python/pygl_gpac.py), using input file "video.mp4" and PyGame + OpenGL.
+A simple example illustrating this is available [here](/examples/python/pygl_gpac.py), using input file "video.mp4" and PyGame + OpenGL.
 
 
 # Custom GPAC callbacks

@@ -23,7 +23,6 @@ The [IV](#IV) is constant to avoid packet overhead, randomly generated if not se
   
 The header/tunein packet may get quite big when all PID properties are kept. In order to help reduce its size, the [minp](#minp) option can be used: this will remove all built-in properties marked as droppable (cf property help) as well as all non built-in properties.  
 The [skp](#skp) option may also be used to specify which property to drop:  
-Example
 ```
 skp="4CC1,Name2
 ```
@@ -40,7 +39,6 @@ gpac -i source.mp4 gsfmx:dst=manifest.mpd -o dump.gsf
   
 This will DASH the source and store every files produced as PIDs in the GSF mux.  
 In order to demultiplex such a file, the `gsfdmx`filter will likely need to be explicitly loaded:  
-Example
 ```
 gpac -i mux.gsf gsfdmx -o dump/$File$:dynext
 ```
@@ -49,7 +47,6 @@ This will extract all files from the GSF mux.
   
 By default when working in file mode, the filter only accepts PIDs of type `file` as input.  
 To allow a mix of files and streams, use [mixed](#mixed):  
-Example
 ```
 gpac -i source.mp4 gsfmx:dst=manifest.mpd:mixed -o dump.gsf
 ```

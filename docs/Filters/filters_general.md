@@ -520,7 +520,6 @@ This will create a cropped version of the source, encoded in AVC at 1M, and a fu
 # Cloning filters  
   
 When a filter accepts a single connection and has a connected input, it is no longer available for dynamic resolution. There may be cases where this behavior is undesired. Take a HEIF file with N items and do:  
-Example
 ```
 gpac -i img.heif -o dump_$ItemID$.jpg
 ```
@@ -548,7 +547,6 @@ gpac -i dual_audio resample:osr=48k c=aac -o dst
   
 The `resampler` filter will be cloned for each audio PID, and the encoder will be cloned for each resampler output.  
 You can explicitly deactivate the cloning instructions:  
-Example
 ```
 gpac -i dual_audio resample:osr=48k:clone=0 c=aac -o dst
 ```
@@ -571,7 +569,6 @@ gpac -i source.ts -o file_$ServiceID$.mp4:SID=#ServiceID=
 In this case, each new `ServiceID` value found when connecting PIDs to the destination will create a new destination file.  
   
 Cloning in implicit linking mode applies to output as well:  
-Example
 ```
 gpac -i dual_audio -o dst_$PID$.aac
 ```
@@ -724,7 +721,6 @@ Defined keywords:
 
   
 The `$GINC` construct can be used to dynamically assign numbers in filter chains:  
-Example
 ```
 gpac -i source.ts tssplit @#ServiceID= -o dump_$GINC(10,2).ts
 ```

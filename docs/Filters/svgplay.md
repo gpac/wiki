@@ -7,7 +7,7 @@ This filter may be automatically loaded during graph resolution.
   
 This filter parses SVG files directly into the scene graph of the compositor.  
   
-When [sax_dur=N](#sax_dur=N) is set, the filter will do a progressive load of the source and cancel current loading when processing time is higher than `N`.  
+When [sax_dur](#sax_dur) is set to `N`, the filter will do a progressive load of the source and cancel current loading when processing time is higher than `N`.  
   
 
 # Options  {.no-collapse}  

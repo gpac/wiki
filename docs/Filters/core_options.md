@@ -4,6 +4,9 @@
 # libgpac core options:  
   
 <div markdown class="option">
+<a id="tmp" data-level="basic">__-tmp__</a> (string): specify directory for temporary file creation instead of OS-default temporary file management  
+</div>
+<div markdown class="option">
 <a id="noprog">__-noprog__</a>: disable progress messages  
 </div>
 <div markdown class="option">
@@ -92,6 +95,9 @@
 </div>
 <div markdown class="option">
 <a id="xml-max-csize">__-xml-max-csize__</a> (int, default: __100k__): maximum XML content or attribute size  
+</div>
+<div markdown class="option">
+<a id="users">__-users__</a> (string): authentication configuration file for users and groups  
 </div>
 <div markdown class="option">
 <a id="netcap">__-netcap__</a> (string): set packet capture and filtering rules formatted as [CFG][RULES]. Each `-netcap` argument will define a configuration  

@@ -38,7 +38,6 @@ In this mode, the manifest is forwarded as an output PID.
 __Warning: This mode cannot be set through inheritance as it changes the link capabilities of the filter. The filter MUST be explicitly declared.__  
   
 To expose a live DASH session to route:  
-Example
 ```
 gpac -i MANIFEST_URL dashin:forward=file -o route://225.0.0.1:8000/
 ```

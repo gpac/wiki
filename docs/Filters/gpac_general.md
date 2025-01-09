@@ -4,7 +4,7 @@ Usage: gpac [options] FILTER [LINK] FILTER [...]
 gpac is GPAC's command line tool for setting up and running filter chains.  
   
 _FILTER_: a single filter declaration (e.g., `-i file`, `-o dump`, `inspect`, ...), see [gpac -h doc](filters_general#filter-declaration-filter).  
-_[LINK]_: a link instruction (e.g., `@`, `@2`, `@2#StreamType=Visual`, ...), see [gpac -h doc](filters_general#explicit-links-between-filters-link).  
+_[LINK]_: a link instruction (e.g., `@`, `@2`, `@2#StreamType=Visual`, ...), see [gpac -h doc](filters_general#filter-linking-link).  
 _[options]_: one or more option strings, each starting with a `-` character.  
 
     - an option using a single `-` indicates an option of gpac (see [gpac -hx](gpac_general#h)) or of libgpac (see [gpac -hx core](core_options))  

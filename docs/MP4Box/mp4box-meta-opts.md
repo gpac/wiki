@@ -61,7 +61,7 @@ These information can be stored at the file root level, as is the case for HEIF/
 - keep_props=4CCs: coma-separated list of properties types to keep when replacing the image, e.g. `keep_props=auxC`  
 - auxt=URN: mark image as auxiliary using given `URN`  
 - auxd=FILE: use data from `FILE` as auxiliary extensions (cf `auxC` box)  
-- any other options will be passed as options to the media importer, see [-add](#add)  
+- any other options will be passed as options to the media importer, see [-add](mp4box-import-opts/#add)  
 </div>
   
 <div markdown class="option">

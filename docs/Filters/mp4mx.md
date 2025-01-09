@@ -19,7 +19,6 @@ gpac -i source.mp4:itemid=false -o file.mp4
   
     
 To force non-item streams to be multiplexed as items, use _#ItemID_ option on that PID:  
-Example
 ```
 gpac -i source.jpg:#ItemID=1 -o file.mp4
 ```
@@ -65,7 +64,7 @@ The box patch can either be a filename or the full XML string.
 When tagging is enabled, the filter will watch the property `CoverArt` and all custom properties on incoming PID.  
 The built-in tag names are indicated by `MP4Box -h tags`.  
 QT tags can be specified using `qtt_NAME` property names, and will be added using formatting specified in `MP4Box -h tags`.  
-Other tag class may be specified using `tag_NAME` property names, and will be added if [tags](#tags) is set to `all` using:  
+Other tag class may be specified using `tag_NAME` property names, and will be added if [itags](#itags) is set to `all` using:  
 
 - `NAME` as a box 4CC if `NAME` is four characters long  
 - `NAME` as a box 4CC if `NAME` is 3 characters long, and will be prefixed by 0xA9  

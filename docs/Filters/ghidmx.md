@@ -72,7 +72,6 @@ This generates init segment for representation `FOO` in file `BAR2`.
 The filter outputs are PIDs using framed packets marked with segment boundaries and can be chained to other filters before entering the dasher (e.g. for encryption, transcode...).  
   
 If representation IDs are not assigned during index creation, they default to the 1-based index of the source. You can check them using:  
-Example
 ```
 gpac -i src.ghi inspect:full
 ```

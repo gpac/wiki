@@ -11,7 +11,7 @@ MP4Box provides a large set of options, classified by categories (see [-h](#h)).
 By default, MP4Box rewrites the input file. You can change this behavior by using the [-out](#out) option.  
 MP4Box stores by default the file with 0.5 second interleaving and meta-data (`moov` ...) at the beginning, making it suitable for HTTP download-and-play. This may however takes longer to store the file, use [-flat](#flat) to change this behavior.  
     
-MP4Box usually generates a temporary file when creating a new IsoMedia file. The location of this temporary file is OS-dependent, and it may happen that the drive/partition the temporary file is created on has not enough space or no write access. In such a case, you can specify a temporary file location with [-tmp](#tmp).  
+MP4Box usually generates a temporary file when creating a new IsoMedia file. The location of this temporary file is OS-dependent, and it may happen that the drive/partition the temporary file is created on has not enough space or no write access. In such a case, you can specify a temporary file location with [-tmp](core_options/#tmp).  
     
 Track identifier for track-based operations (usually referred to as `tkID` in the help) use the following syntax:  
 

@@ -39,7 +39,7 @@ We discuss here how to work with RAW, uncompressed audio and video data in GPAC.
 ```gpac -i source.mp4 -o test.yuv```
 
 The above command will dump the video content from `source.mp4` into a YUV420 8-bits `test.yuv`.   
-If the source contains other tracks such as audio or text, they will be ignored as [described here](filters_general#general).  
+If the source contains other tracks such as audio or text, they will be ignored as [described here](filters_general#overview).  
 
 __Discussion__  
 In GPAC, file extension are used to infer the type of data being produced. Note that unless data probing is disabled, this is not the case for input files. 
@@ -81,7 +81,9 @@ The link directive `@` is used to prevent the decoded YUV/RGB data PID to link a
 
 The simplest way to resize a video in GPAC at the current time is to use the FFmpeg-based [rescaler](ffsws).
 
-The [writegen](writegen) filter used in the extraction process can be used to specify an extraction range using its [start](writegen#start) and [dur](writegen#dur) options:
+The [writegen](writegen) filter used in the extraction process can be used to specify an extraction range:
+- start time is defined by the sink [start](fout#start) option
+- duration is defined by the writegen [dur](writegen#dur) option
 
 ```gpac -i source.mp4 ffsws:osize=128x128 -o test.yuv:start=10:dur=5```
 
@@ -106,7 +108,7 @@ Resizing images while extracting is similar as previously:
 
 ```gpac -i source.mp4 ffsws:osize=128x128 -o dump_$num$.png```
 
-The [writegen](writegen) filter used in the extraction process can be used to specify an extraction range using its [start](writegen#start) and [dur](writegen#dur) options:
+The [writegen](writegen) filter used in the extraction process can be used to specify an extraction range (c.f. above):
 
 ```gpac -i source.mp4 ffsws:osize=128x128 -o dump_$num$.png:start=10:dur=5```
 

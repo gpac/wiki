@@ -11,7 +11,7 @@ This filter rescales raw video data using FFmpeg to the specified size and pixel
 ## Output size assignment  
 If [osize](#osize) is {0,0}, the output dimensions will be set to the input size, and input aspect ratio will be ignored.  
   
-If [osize](#osize) is {0,H} (resp. {W,0}), the output width (resp. height) will be set to respect input aspect ratio. If [keepar=nosrc](#keepar=nosrc), input sample aspect ratio is ignored.  
+If [osize](#osize) is {0,H} (resp. {W,0}), the output width (resp. height) will be set to respect input aspect ratio. If [keepar](#keepar) = `nosrc`, input sample aspect ratio is ignored.  
 
 ## Aspect Ratio and Sample Aspect Ratio  
 When output sample aspect ratio is set, the output dimensions are divided by the output sample aspect ratio.  
@@ -22,19 +22,19 @@ ffsws:osize=288x240:osar=3/2
   
 The output dimensions will be 192x240.  
   
-When aspect ratio is not kept ([keepar=off](#keepar=off)):  
+When aspect ratio is not kept ([keepar](#keepar) = `off`):  
 
 - source is resampled to desired dimensions  
 - if output aspect ratio is not set, output will use source sample aspect ratio  
 
   
-When aspect ratio is partially kept ([keepar=nosrc](#keepar=nosrc)):  
+When aspect ratio is partially kept ([keepar](#keepar) = `nosrc`):  
 
 - resampling is done on the input data without taking input sample aspect ratio into account  
-- if output sample aspect ratio is not set ([osar=0/N](#osar=0/N)), source aspect ratio is forwarded to output.  
+- if output sample aspect ratio is not set ([osar](#osar) = `0/N`), source aspect ratio is forwarded to output.  
 
   
-When aspect ratio is fully kept ([keepar=full](#keepar=full)), output aspect ratio is force to 1/1 if not set.  
+When aspect ratio is fully kept ([keepar](#keepar) = `full`), output aspect ratio is force to 1/1 if not set.  
   
 When sample aspect ratio is kept, the filter will:  
 

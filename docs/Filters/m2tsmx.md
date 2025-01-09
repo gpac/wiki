@@ -82,7 +82,7 @@ Inserts an external TEMI with ID 4 and timescale 30000, NTP injection and carous
   
 __Warning: multipliers (k,m,g) are not supported in TEMI options.__  
   
-When input TEMI properties are found, they can be removed using [drop_temi](#drop_temi). When rewritten, any NTP information present is rewritten to the current NTP.  
+When input TEMI properties are found, they can be removed using [temi_fwd](#temi_fwd). When rewritten, any NTP information present is rewritten to the current NTP.  
 
 # Adaptive Streaming  
   

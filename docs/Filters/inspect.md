@@ -8,7 +8,7 @@ This filter is not checked during graph resolution and needs explicit loading.
 The inspect filter can be used to dump PID and packets. It may also be used to check parts of payload of the packets.  
   
 The default options inspect only PID changes.  
-If [full](#full) is not set, [mode=frame](#mode=frame) is forced and PID properties are formatted in human-readable form, one PID per line.  
+If [full](#full) is not set, [mode](#mode) is forced to `frame` and PID properties are formatted in human-readable form, one PID per line.  
 Otherwise, all properties are dumped.  
 _Note: specifying [xml](#xml), [analyze](#analyze), [fmt](#fmt) or using `-for-test` will force [full](#full) to true._  
   

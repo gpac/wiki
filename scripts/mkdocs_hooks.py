@@ -50,6 +50,8 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
             return "index.md"
         elif target == "MP4Client":
             return "#"
+        elif target.startswith("jsf/"):
+            return f"Howtos/{target}.md"
         elif target.startswith("examples"):
             return f"/{target}"
 
@@ -58,7 +60,7 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
         if len(parts) > 2:
             raise Exception('Invalid target URL')
         path = parts[0].rstrip("/") + '.md'
-        anchor = parts[0] if len(parts) == 2 else None
+        anchor = parts[1] if len(parts) == 2 else None
         fix_candidates = [ f.src_uri for f in files._files if path == f.src_uri.split("/")[-1] ]
         if len(fix_candidates) > 1:
             logging.warning(f"Too many fix candidates:")

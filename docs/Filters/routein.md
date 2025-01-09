@@ -83,13 +83,11 @@ If [kc](#kc) option is set, corrupted files will be kept. If [fullseg](#fullseg)
   
 On some systems (OSX), when using VM packet replay, you may need to force multicast routing on your local interface.  
 For ATSC, you will have to do this for the base signaling multicast (224.0.23.60):  
-Example
 ```
 route add -net 224.0.23.60/32 -interface vboxnet0
 ```
   
 Then for each multicast service in the multicast:  
-Example
 ```
 route add -net 239.255.1.4/32 -interface vboxnet0
 ```

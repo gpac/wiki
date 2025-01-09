@@ -54,7 +54,6 @@ A `subtitle zero` may be specified using [ttml_zero](#ttml_zero). This will remo
 __Warning: Original time formatting (tick, frames/subframe ...) will be lost when this option is used, converted to `HH:MM:SS.ms`.__  
   
 The subtitle zero time __must__ be prefixed with `T` when the option is not set as a global argument:  
-Example
 ```
 gpac -i test.ttml:ttml_zero=T10:00:00 [...]  
 MP4Box -add test.ttml:sopt:ttml_zero=T10:00:00 [...]  
@@ -67,7 +66,6 @@ MP4Box -add test.ttml --ttml_zero=10:00:00 [...]
 # Simple Text Support  
   
 The text loader can convert input files in simple text streams of a single packet, by forcing the codec type on the input:  
-Example
 ```
 gpac -i test.txt:#CodecID=stxt  [...]  
 gpac fin:pck="Text Data":#CodecID=stxt  [...]

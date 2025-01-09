@@ -59,7 +59,7 @@ Options:
 <a id="idx" data-level="basic">__-idx__</a>: signal AU sequence numbers in RTP packets (MPEG-4 Systems)  
 </div>
 <div markdown class="option">
-<a id="iod" data-level="basic">__-iod__</a>: prevent systems tracks embedding in IOD (MPEG-4 Systems), not compatible with [-isma](#isma)  
+<a id="iod" data-level="basic">__-iod__</a>: prevent systems tracks embedding in IOD (MPEG-4 Systems), not compatible with [-isma](mp4box-gen-opts/#isma)  
 </div>
 
 # Tagging support  

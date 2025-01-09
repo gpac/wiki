@@ -15,9 +15,9 @@ tags:
 
 ## What is GPAC ?
 
-The **GPAC Filter API** is at the core of the [MP4Box and GPAC](Howtos/gpac-mp4box) applications.
+The **GPAC Filter API** is at the core of the [MP4Box and GPAC](/Howtos/gpac-mp4box) applications.
 
-The `gpac` application allows building media pipelines by conveniently [combining and configuring Filters](Filters/filters_general) from the command line. 
+The `gpac` application allows building media pipelines by conveniently [combining and configuring Filters](/Filters/filters_general) from the command line. 
 
 Filters are configurable processing units consuming and producing data packets. 
 

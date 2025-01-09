@@ -15,7 +15,7 @@ Javascript developers have two options to work with GPAC, the most appropriate s
 
 The JS filter API makes it easy to **extend gpac** using the internal QuickJS runtime, giving access to the Filter API for frame and packet processing, but also APIs for adaptative streaming, compositing, storage, ...
 
-Some of the gpac built-in filters - eg. [avgen](Filters/avgen), [avmix](Filters/avmix) - are actualy implemented as custom javascript filters. Their source code can be found under the[`share/scripts/jsf`](https://github.com/gpac/gpac/tree/master/share/scripts/jsf) directory.
+Some of the gpac built-in filters - eg. [avgen](/Filters/avgen), [avmix](/Filters/avmix) - are actualy implemented as custom javascript filters. Their source code can be found under the[`share/scripts/jsf`](https://github.com/gpac/gpac/tree/master/share/scripts/jsf) directory.
 
 [JSF documentation](/Howtos/jsf/jsfilter){ .md-button }
 

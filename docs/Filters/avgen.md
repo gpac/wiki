@@ -24,7 +24,6 @@ If NTP injection is used, each video packet (but not audio ones) has a `SenderNT
 More than one output size can be specified. This will result in multiple sources being generated, one per size.  
 A size can be specified more than once, resulting in packet references when [copy](#copy) is not set, or full copies otherwise.  
 Target encoding bitrates can be assigned to each output using [rates](#rates). This can be useful when generating dash:  
-Example
 ```
 gpac avgen:sizes=1280x720,1920x1080:rates=2M,5M c=aac:FID=1 c=264:FID=2:clone -o live.mpd:SID=1,2
 ```

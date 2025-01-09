@@ -22,7 +22,7 @@ To select a desired media track from a source, a fragment identifier '#' can be 
     
 By default all imports are performed sequentially, and final interleaving is done at the end; this however requires a temporary file holding original ISOBMF file (if any) and added files before creating the final output. Since this can become quite large, it is possible to add media to a new file without temporary storage, using [-flat](mp4box-gen-opts/#flat) option, but this disables media interleaving.  
     
-If you wish to create an interleaved new file with no temporary storage, use the [-newfs](mp4box-gen-opts/#newfs) option. The interleaving might not be as precise as when using [-new](#new) since it is dependent on multiplexer input scheduling (each execution might lead to a slightly different result). Additionally in this mode:   
+If you wish to create an interleaved new file with no temporary storage, use the [-newfs](mp4box-gen-opts/#newfs) option. The interleaving might not be as precise as when using [-new](mp4box-gen-opts/#new) since it is dependent on multiplexer input scheduling (each execution might lead to a slightly different result). Additionally in this mode:   
 
     - Some multiplexing options (marked with `X` below) will be activated for all inputs (e.g. it is not possible to import one AVC track with `xps_inband` and another without).  
     - Some multiplexing options (marked as `D` below) cannot be used as they require temporary storage for file edition.  
@@ -125,7 +125,7 @@ __dref__:                      `XC` same as [-dref](#dref)
 __keep_refs__:                 `C` keep track reference when importing a single track  
 </div>
 <div markdown class="option">
-__nodrop__:                    same as [-nodrop](#nodrop)  
+__nodrop__:                    same as [-no-drop](#no-drop)  
 </div>
 <div markdown class="option">
 __packed__:                    `X` same as [-packed](#packed)  
@@ -397,7 +397,7 @@ __tc__ (string):               `SE` inject a single QT timecode. Value is format
 </div>
   
 <div markdown class="option">
-__edits__ (string):            `SE` override edit list, same syntax as [-edits](#edits)  
+__edits__ (string):            `SE` override edit list, same syntax as [-edits](mp4box-gen-opts/#edits)  
 </div>
 <div markdown class="option">
 __lastsampdur__ (string):      `S` set duration of the last sample. Value is formatted as:  

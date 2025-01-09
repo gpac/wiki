@@ -57,14 +57,12 @@ For `views://` syntax, the number of rendered views is set by [nbviews](#nbviews
 
   
 The compositor can act as a source filter when the [src](#src) option is explicitly set, independently from the operating mode:  
-Example
 ```
 gpac compositor:src=source.mp4 vout
 ```
   
   
 The compositor can act as a source filter when the source url uses one of the compositor built-in protocol schemes:  
-Example
 ```
 gpac -i mosaic://URL1:URL2 vout
 ```

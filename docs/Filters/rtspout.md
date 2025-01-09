@@ -19,7 +19,6 @@ The server can run over TLS by specifying [cert](#cert) and [pkey](#pkey), in wh
 # Sink mode  
   
 The filter can work as a simple output filter by specifying the [dst](#dst) option:  
-Example
 ```
 gpac -i source -o rtsp://myip/sessionname  
 gpac -i source -o rtsp://myip/sessionname
@@ -30,7 +29,6 @@ In this mode, only one session is possible. It is possible to [loop](#loop) the 
 # Server mode  
   
 The filter can work as a regular RTSP server by specifying the [mounts](#mounts) option to indicate paths of media file to be served:  
-Example
 ```
 gpac rtspout:mounts=mydir1,mydir2
 ```

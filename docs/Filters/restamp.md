@@ -17,9 +17,9 @@ The specified [fps](#fps) can be either 0, positive or negative.
 - otherwise if positive and the stream is not video, stream rate is not modified.  
 - otherwise (video PID), constant frame rate is assumed and:  
 
-    - if [rawv=no](#rawv=no), video frame rate is changed to the specified rate (speed-up or slow-down).  
-    - if [rawv=force](#rawv=force), input video stream is decoded and video frames are dropped/copied to match the new rate.  
-    - if [rawv=dyn](#rawv=dyn), input video stream is decoded if not all-intra and video frames are dropped/copied to match the new rate.  
+    - if [rawv](#rawv) = `no`, video frame rate is changed to the specified rate (speed-up or slow-down).  
+    - if [rawv](#rawv) = `force`, input video stream is decoded and video frames are dropped/copied to match the new rate.  
+    - if [rawv](#rawv) = `dyn`, input video stream is decoded if not all-intra and video frames are dropped/copied to match the new rate.  
 
   
 _Note: frames are simply copied or dropped with no motion compensation._  

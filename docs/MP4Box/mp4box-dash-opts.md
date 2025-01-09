@@ -168,7 +168,7 @@ __Warning: this does not  modify generated files location__
 <a id="ast-offset" data-level="basic">__-ast-offset__</a> (int): specify MPD AvailabilityStartTime offset in ms if positive, or availabilityTimeOffset of each representation if negative  
 </div>
 <div markdown class="option">
-<a id="dash-scale" data-level="basic">__-dash-scale__</a> (int): specify that timing for [-dash](#dash),  [-dash-live](#dash-live), [-subdur](#subdur) and [-do_frag](#do_frag) are expressed in given timescale (units per seconds) rather than ms  
+<a id="dash-scale" data-level="basic">__-dash-scale__</a> (int): specify that timing for [-dash](#dash),  [-dash-live](#dash-live), [-subdur](#subdur) and [-frag](#frag) are expressed in given timescale (units per seconds) rather than ms  
 </div>
 <div markdown class="option">
 <a id="mem-frags" data-level="basic">__-mem-frags__</a>: fragmentation happens in memory rather than on disk before flushing to disk  

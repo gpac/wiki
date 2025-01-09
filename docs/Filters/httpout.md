@@ -58,7 +58,7 @@ When enabled, a GET on a directory will return a simple HTML listing of the cont
     
 Custom headers can be specified using [hdrs](#hdrs), they apply to all requests. For more advanced control on requests, use a javascript binding (see [js](#js) and howtos).  
     
-Text files are compressed using gzip or deflate if the client accepts these encodings, unless [no_z](#no_z) is set.  
+Text files are compressed using gzip or deflate if the client accepts these encodings, unless [zmax](#zmax) is set to 0.  
     
 
 # Simple HTTP server  
@@ -92,7 +92,6 @@ This sets up a read-write server running on [port](#port) 8080.
 In this mode, the filter will forward input PIDs to connected clients, trashing the data if no client is connected unless [hold](#hold) is specified.  
 The filter does not use any read directory in this mode.  
 This mode is mostly useful to setup live HTTP streaming of media sessions such as MP3, MPEG-2 TS or other multiplexed representations:  
-Example
 ```
 gpac -i MP3_SOURCE -o http://localhost/live.mp3 --hold
 ```

@@ -44,7 +44,6 @@ gpac -i m.mp4 reframer:raw=av [dst]
   
 The filter can perform real-time regulation of input packets, based on their timescale and timestamps.  
 For example to simulate a live DASH:  
-Example
 ```
 gpac -i m.mp4 reframer:rt=on -o live.mpd:dynamic
 ```

@@ -178,7 +178,7 @@ filter.process = function()
 And that's it !
 
 
-The complete code for this example is [here](examples/three/ex1.js).
+The complete code for this example is [here](/examples/three/ex1.js).
 
 
 # Using textures
@@ -274,7 +274,7 @@ scene.add(cube);
 
 ```
 
-The complete code for this example is [here](examples/three/ex2.js).
+The complete code for this example is [here](/examples/three/ex2.js).
 
 You can expand this to create textures containing the result of an EVG canvas draw, as long as what you return is an object that is accepted by GPAC as a WebGL texture, as explained [here](https://doxygen.gpac.io/group__webgl__grp.html).
 
@@ -317,7 +317,7 @@ gltfLoader.load('Cube.gltf', (gltf) => {
 });
 ```
 
-The complete code for this example is [here](examples/three/ex3.js).
+The complete code for this example is [here](/examples/three/ex3.js).
 
 
 
@@ -468,7 +468,7 @@ And that's it. You will also need to cleanup your packets once no longer used, e
 In this example,  we assume the source is 25fps just like our filter, but you may decide otherwise and not trash a packet at each generated frame.
 
 
-The complete code for this example is [here](examples/three/ex4.js).
+The complete code for this example is [here](/examples/three/ex4.js).
 
 
 # Using Controls
@@ -624,4 +624,4 @@ filter.process_event = function(pid, evt)
 
 You can now pan/rotate your models !
 
-The complete code for this example is [here](examples/three/ex5.js).
+The complete code for this example is [here](/examples/three/ex5.js).

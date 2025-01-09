@@ -73,7 +73,7 @@ Set the process event callback for a custom filter. This callback handles events
 
 The reconfigure_output callback may be needed to reconfigure the output PID(s) of a filter during the execution of a filters session. 
 
-### [gf_filter_set_probe_data_cbk()](%28https://doxygen.gpac.io/group__filters____cust__grp.html#ga3b067ec9d2067d683ea5d3fdb4d32833%29)
+### [gf_filter_set_probe_data_cbk()](https://doxygen.gpac.io/group__filters____cust__grp.html#ga3b067ec9d2067d683ea5d3fdb4d32833%29)
 
 Set the data prober function for a custom filter. 
   

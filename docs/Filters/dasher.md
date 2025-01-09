@@ -132,7 +132,6 @@ gpac -i m1.mp4:#ASCDesc=&lt;ElemName val="attval"&gt;text&lt;/ElemName&gt; -o te
 This will assign the specified XML descriptor to the adaptation set.  
 _Note:  this can be used to inject most DASH descriptors not natively handled by the segmenter._  
 The segmenter handles the XML descriptor as a string and does not attempt to validate it. Descriptors, as well as some segmenter filter arguments, are string lists (comma-separated by default), so that multiple descriptors can be added:  
-Example
 ```
 gpac -i m1.mp4:#RDesc=&lt;Elem attribute="1"/&gt;,&lt;Elem2&gt;text&lt;/Elem2&gt; -o test.mpd
 ```
@@ -237,7 +236,6 @@ gpac -i source.mp4 reframer:rt=on -o live.m3u8:segdur=2:cdur=0.2:llhls=sf:dmode=
 This will create DASH segments of 2 seconds made of fragments of 200 ms and produce HLS low latency parts using dedicated files.  
   
 You can combine LL-HLS and DASH-LL generation:  
-Example
 ```
 gpac -i source.mp4 reframer:rt=on -o live.mpd:dual:segdur=2:cdur=0.2:asto=1.8:llhls=br:profile=live:dmode=dynamic
 ```
@@ -282,7 +280,6 @@ __Warning: Cues shall be listed in decoding order.__
   
 If the `DashCue` property of a PID equals `inband`, the PID will be segmented according to the `CueStart` property of input packets.  
 This feature is typically combined with a list of files as input:  
-Example
 ```
 gpac -i list.m3u:sigcues -o res/live.mpd
 ```
@@ -672,7 +669,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="strict_sap">__strict_sap__</a> (enum, default: _off_): strict mode for sap  
 
 - off: ignore SAP types for PID other than video, enforcing `AdaptationSet@startsWithSAP=1`  
-- sig: same as [off](#off) but keep `AdaptationSet@startsWithSAP` to the true SAP value  
+- sig: same as `-off` but keep `AdaptationSet@startsWithSAP` to the true SAP value  
 - on: warn if any PID uses SAP 3 or 4 and switch to FULL profile  
 - intra: ignore SAP types greater than 3 on all media types  
 </div>  

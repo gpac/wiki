@@ -48,7 +48,7 @@ GPAC comes with a various set of adaptation algorithms:
 - BBA0, BOLA, basic throughput (called `conventional` in the literature)
 - Custom throughput-based (`gbuf`) and buffer-based (`grate`) algorithms
 
-The algorithm can be replaced by your own algo in [JS](/jsdash) or [Python](python#custom-gpac-callbacks).
+The algorithm can be replaced by your own algo in [JS](jsf/jsdash) or [Python](python#custom-gpac-callbacks).
  
 [Low-Latency DASH](LL-DASH) streaming is supported, and [HLS](LL-HLS) is supported starting from GPAC 2.0. 
 

@@ -43,7 +43,6 @@ Example
 ```
   
 If multiple services with different formats are needed, you will need to explicit your filters:  
-Example
 ```
 gpac -i DASH_URL:#ServiceID=1 dashin:forward=file:FID=1 -i HLS_URL:#ServiceID=2 dashin:forward=file:FID=2 -o atsc://:SID=1,2  
 gpac -i MOVIE1:#ServiceID=1 dasher:FID=1:mname=manifest.mpd -i MOVIE2:#ServiceID=2 dasher:FID=2:mname=manifest.m3u8 -o atsc://:SID=1,2
@@ -77,8 +76,7 @@ Init segments and HLS child playlists are sent before each new segment, independ
 # ATSC 3.0 mode  
   
 In this mode, the filter allows multiple service multiplexing, identified through the `ServiceID` property.  
-By default, a single multicast IP is used for route sessions, each service will be assigned a different port.  
-The filter will look for `MCASTIP` and `MCASTPort` properties on the incoming PID. If not found, the default [ip](#ip) and [port](#port) will be used.  
+By default (see above), a single multicast IP is used for route sessions, each service will be assigned a different port.  
   
 ATSC 3.0 attributes set by using the following PID properties:  
 
@@ -126,39 +124,33 @@ Since the ROUTE filter only consumes files, it is required to insert:
 
   
 Multiplexing an existing DASH session in route:  
-Example
 ```
 gpac -i source.mpd dashin:forward=file -o route://225.1.1.0:6000/
 ```
   
 Multiplexing an existing DASH session in atsc:  
-Example
 ```
 gpac -i source.mpd dashin:forward=file -o atsc://
 ```
   
 Dashing and multiplexing in route:  
-Example
 ```
 gpac -i source.mp4 dasher:profile=live -o route://225.1.1.0:6000/manifest.mpd
 ```
   
 Dashing and multiplexing in route Low Latency:  
-Example
 ```
 gpac -i source.mp4 dasher -o route://225.1.1.0:6000/manifest.mpd:profile=live:cdur=0.2:llmode
 ```
   
   
 Sending a single file in ROUTE using half a second upload time, 2 seconds carousel:  
-Example
 ```
 gpac -i URL:#MCASTUpload=0.5:#MCASTCarousel=2 -o route://225.1.1.0:6000/
 ```
   
   
 Common mistakes:  
-Example
 ```
 gpac -i source.mpd -o route://225.1.1.0:6000/
 ```
@@ -181,7 +173,6 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
 # Error simulation  
   
 It is possible to simulate errors with (-errsim)(). In this mode the LCT network sender implements a 2-state Markov chain:  
-Example
 ```
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
 ```

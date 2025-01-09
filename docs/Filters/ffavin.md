@@ -35,7 +35,6 @@ gpac -i av://:fmt=libndi_newtek:dev=MY_NDI_TEST ...
   
   
 You may need to escape the [dev](#dev) option if the format uses ':' as separator, as is the case for AVFoundation:  
-Example
 ```
 gpac -i av://::dev=0:1 ...
 ```

@@ -28,13 +28,11 @@ ffavf::f=anullsrc=channel_layout=5.1:sample_rate=48000
   
   
 For complex filter graphs, it is possible to store options in a file (e.g. `opts.txt`):  
-Example
 ```
 :f=anullsrc=channel_layout=5.1:sample_rate=48000
 ```
   
 And load arguments from file:  
-Example
 ```
 ffavf:opts.txt aout
 ```

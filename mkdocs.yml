@@ -2,7 +2,6 @@ site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
 extra:
-  
   keywords_file: 'data/keywords.json'
 extra_javascript:
    - javascripts/levels.js
@@ -14,9 +13,6 @@ extra_javascript:
    - javascripts/cache.js
    - javascripts/modalFunctions.js
 
-   
-   
-    
 extra_css:
   - stylesheets/extra.css
   - stylesheets/keyword-cloud.css
@@ -73,7 +69,6 @@ plugins:
   - search
   - tags:
      tags_file: tags.md
-    
 
 hooks:
   - scripts/mkdocs_hooks.py
@@ -87,9 +82,8 @@ markdown_extensions:
 - toc:
       permalink: true
 - nl2br
-- sane_lists      
+- sane_lists
 - md_in_html
- 
 - pymdownx.snippets
 - pymdownx.details
 - pymdownx.superfences:
@@ -120,7 +114,6 @@ extra:
             Thanks for your feedback!
 nav:
   - Howtos:
-     
     - Howtos/howtos.md
     - Command Operations:
       - Filters One-Liners: Howtos/filters-oneliners.md
@@ -211,7 +204,7 @@ nav:
     - GPAC configuration file: Filters/core_config.md
     - Global options: Filters/core_options.md
     - Logging: Filters/core_logs.md
-    - All filters:
+    - Filters:
       - Stream Manipulation:
         - Audio/Video rewinder: Filters/rewind.md
         - Bitstream metadata rewriter: Filters/bsrw.md
@@ -245,12 +238,12 @@ nav:
         - HTTP server: Filters/httpout.md
         - MABR & ROUTE input: Filters/routein.md
         - MABR & ROUTE output: Filters/routeout.md
+        - Media Server: Filters/mediaserver.md
         - Pipe input: Filters/pin.md
         - Pipe output: Filters/pout.md
         - RTP Streamer: Filters/rtpout.md
         - RTP/RTSP/SDP input: Filters/rtpin.md
         - RTSP server: Filters/rtspout.md
-        - Streaming Media Gateway and Server: Filters/mediaserver.md
         - UDP/TCP input: Filters/sockin.md
         - UDP/TCP output: Filters/sockout.md
       - Text & Subtitles:
