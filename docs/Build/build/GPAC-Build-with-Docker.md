@@ -71,7 +71,7 @@ You can use the gpac image a number of way.
 
 The image contains binaries for: 
 - a minimal statically linked executable for MP4Box and gpac CLI tools
-- deb packages for the OS used in the image (currently Ubuntu 22.04)
+- deb packages for the OS used in the image (`ubuntu-latest` as defined on the [ubuntu dockerhub page](https://hub.docker.com/_/ubuntu))
 
 You can use these binaries on your host OS if it is relevant.
 
