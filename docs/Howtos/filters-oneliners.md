@@ -335,7 +335,7 @@ rescale respecting aspect ratio and pad color to red
 gpac -i source1.mp4 ffsws:osize=512x512:keepar=full:padclr=red vout
 ```
 
-rescale without respecting aspect ratio nut set output aspect ratio, output video will be 340x512 (`340=510*2/3` )
+rescale without respecting aspect ratio but set output aspect ratio, output video will be 340x512 (`340=510*2/3` )
 ```
 gpac -i source1.mp4 ffsws:osize=510x512:osr=3/2 vout
 ```
