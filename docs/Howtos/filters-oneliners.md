@@ -502,7 +502,7 @@ gpac -i source reframer:xs=T00:01:00:xe=T00:02:30 -o dst
 
 Extract from 1min to 2min30s after decoding (sample-accurate audio) - _see [filter](restamp)_  
 ```
-gpac -i source reframer:raw=av::xs=T00:01:00:xe=T00:02:30 -o dst
+gpac -i source reframer:raw=av:xs=T00:01:00:xe=T00:02:30 -o dst
 ```
 
 
