@@ -78,7 +78,7 @@ To get a better understanding of each command illustrated in this case, it is re
 Whenever an option is specified, e.g. `dest.mp4:foo`, you can get more info and locate the parent filter of this option  using `gpac -h foo`.
 
 The filter session is by default quiet, except for warnings and error reporting. To get information on the session while running, use [-r](gpac_general#r) option. To get more runtime information, use the [log system](core_logs).
-sectionLevel === null || 
+
 Given the configurable nature of the filter architecture, most examples given in one context can be reused in another context. For example:
 
 - from the dump examples:
