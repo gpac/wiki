@@ -6,7 +6,8 @@
             "aliases": [
                 "INPUT"
             ],
-            "category": ["Media Processing "]
+            "category": ["Media Processing "],
+            "glossaryPage": true
         },
         "SINK": {
             "description": "A sink in GPAC is an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.",
@@ -14,7 +15,8 @@
             "aliases": [
                 "OUTPUT"
             ],
-            "category": "Media Processing "
+            "category": "Media Processing ",
+            "glossaryPage": true
         },
         "INPUT": {
             "description": "An input refers to any data fed into the GPAC processing system, including video, audio, and other multimedia streams.",
@@ -30,7 +32,8 @@
             "aliases": [
                 "SINK"
             ],
-            "category": "Media Processing "
+            "category": "Media Processing ",
+            "glossaryPage": true
         },
         "PID": {
             "description": "PID stands for Packet Identifier. It is used in GPAC to uniquely identify different streams within a media file, such as audio, video, and subtitles.",
@@ -98,7 +101,8 @@
                 "AAC",
                 "VORBIS"
             ],
-            "category": "Codecs and Compression"
+            "category": "Codecs and Compression",
+            "glossaryPage": true
         },
         "SESSION": {
             "description": "A session in GPAC is a context for managing the lifecycle of media processing tasks, including loading, configuring, and executing filters.",
@@ -158,7 +162,8 @@
             "aliases": [
                 "ENCRYPTION","CRYPT","ENC"
             ],
-            "category": "Security and Encryption"
+            "category": "Security and Encryption",
+            "glossaryPage": true
         },
         "ENCODE": {
             "description": "Encoding in GPAC is the process of converting raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
@@ -166,7 +171,8 @@
             "aliases": [
                 "ENC","FFENC","X264","X265","AAC","LIBOPUS"
             ],
-            "category": "Codecs and Compression"
+            "category": "Codecs and Compression",
+            "glossaryPage": true
         },
         "MP4": {
             "description": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
@@ -304,6 +310,13 @@
             "level": "expert",
             "category": "Graphics and Rendering"
         },
+        "SAP": {
+    "description": "SAP stands for Stream Access Points or Session Announcement Protocol. In GPAC, it typically refers to Stream Access Points, which enable random access and rendering of a stream in a media container.",
+    "level": "beginner",
+    "category": "Streaming Technologies",
+    "glossaryPage": true
+}
+        ,
         "FFMPEG": {
             "description": "FFmpeg is a free and open-source project consisting of a vast software suite for handling video, audio, and other multimedia files and streams.",
             "level": "all",
@@ -390,7 +403,8 @@
             "aliases": [
                 "BANDWIDTH"
             ],
-            "category": "Performance and Optimization"
+            "category": "Performance and Optimization",
+            "glossaryPage": true
         },
         "LIBGPAC": {
             "description": "LibGPAC is the core library of GPAC, providing essential functionalities for multimedia processing.",
@@ -472,7 +486,8 @@
             "aliases": [
                 "AVDEC","HEVCD","VP9D","MPEG4D","AACD","MP3D"
             ],
-            "category": "Codecs and Compression"
+            "category": "Codecs and Compression",
+            "glossaryPage": true
         },
         "MANIFEST": {
             "description": "A manifest is a file that provides information about the structure and components of a multimedia presentation, often used in streaming protocols like DASH and HLS.",
@@ -495,7 +510,8 @@
             "aliases": [
                 "FFENC","X264","X265","AAC","LIBOPUS"
             ],
-            "category": "Codecs and Compression"
+            "category": "Codecs and Compression",
+            "glossaryPage": true
         },
         "MULTIPLEXER": {
             "description": "A multiplexer is a device or software that combines multiple signals into one signal over a shared medium. In GPAC, multiplexing is used to combine audio, video, and other data streams into a single container file like MP4.",
@@ -533,7 +549,8 @@
             "aliases": [
                 "TRANSCODING"
             ],
-            "category": "Media Processing "
+            "category": "Media Processing ",
+            "glossaryPage": true
         },
         "TEMI": {
             "description": "TEMI (Timed External Media Information) is a standard used to synchronize external media with broadcast content, allowing for accurate timing and synchronization of additional media streams.",
