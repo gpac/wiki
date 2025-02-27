@@ -138,7 +138,7 @@ Injecting a filter in the middle of a connected chain (i.e. going from A->B to A
 
 ```
 //load a source
-let src = session.add_filter("video.mp4");
+let src = session.add_filter("src=video.mp4");
 //load an inspect filter, getting its input only from src
 let f = session.add_filter("inspect", src);
 ```
@@ -147,9 +147,9 @@ All filter options valid in [GPAC](filters_general) can be used. This means that
 
 ```
 //load 3 sources
-let src1 = session.add_filter("video.mp4:FID=1");
-let src2 = session.add_filter("video.mp4:FID=2");
-let src3 = session.add_filter("video.mp4:FID=1");
+let src1 = session.add_filter("src=video.mp4:FID=1");
+let src2 = session.add_filter("src=video.mp4:FID=2");
+let src3 = session.add_filter("src=video.mp4:FID=1");
 //load an inspect filter, getting its input only from src1 and src2
 let f = session.add_filter("inspect:SID=1,2");
 
