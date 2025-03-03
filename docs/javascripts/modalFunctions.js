@@ -71,8 +71,12 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
       const aliasesSection = createAliasesSection(definition.aliases);
       modalDefinition.appendChild(aliasesSection);
     }
-
-    modalLink.href = definition.url || glossaryPageUrl;
+    if (definition.glossaryPage) {
+      modalLink.href = definition.url || glossaryPageUrl;
+      modalLink.style.display = "inline-block";
+    } else {
+      modalLink.style.display = "none";
+    }
   } catch (error) {
     console.error("Error setting modal content:", error);
   }
