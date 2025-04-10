@@ -136,6 +136,7 @@ nav:
       - Simulating Real-Time sources: Howtos/realtime.md
       - ROUTE & ATSC3.0 services: Howtos/route.md
       - SCTE-35, id3 markers, dynamic metadata: Howtos/scte35-markers.md
+      - Working with Timecodes: Howtos/timecodes.md
     - DASH & HLS:
       - Introduction: Howtos/dash/DASH-intro.md
       - MPEG-DASH basics: Howtos/dash/DASH-basics.md
