@@ -76,14 +76,15 @@ The [`inspect`](inspect) filter can be used to view the timecodes present in a s
     - Allows extracting specific properties, including the timecode (`$tmcd$`). `$lf$` represents a line feed.
     - Command: `gpac -i input.mp4 inspect:fmt="$tmcd$$lf$"`
     - Example Output:
-      `    tmcd
-    00:00:04:00
-    00:00:04:01
-    00:00:04:02
-    00:00:04:03
-    00:00:04:04
-    ...
-   `
+      ```
+      tmcd
+      00:00:04:00
+      00:00:04:01
+      00:00:04:02
+      00:00:04:03
+      00:00:04:04
+      ...
+      ```
       _(Note: The exact format might vary slightly, e.g., using ';' or ':' as frame separators depending on whether the timecode uses drop-frame counting)._
 
 ## Timecode Splitting ([`reframer`](reframer) filter)
