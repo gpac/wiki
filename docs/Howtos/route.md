@@ -38,7 +38,7 @@ These protocols allow to broadcast local file systems requiring live updates. Th
 
 ## Client
 
-Receiving ROUTE or FLUTE implies to dump the local file system described in the "session". This is done using the [GPAC cache](routein#gcache).
+Receiving ROUTE or FLUTE implies downloading the files described in the "session". This is done using the [GPAC cache](routein#gcache). GPAC allows processing this input like any input in GPAC. This includes (but is not limited to) downloading the files on disk or exposing them through the GPAC embedded HTTP server. See examples below.
 
 GPAC allows to process this input like any input in GPAC. This includes (but don't limit to) dumping the files on disk or exposing them through the GPAC embedded HTTP server. See examples below.
 
