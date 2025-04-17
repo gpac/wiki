@@ -37,7 +37,7 @@ GPAC supports streaming HEVC tiled DASH videos. In this page, you will find some
 
 # How to generate tiled streamable video content
 
-The open-source "Kvazaar encoder":https://github.com/ultravideo/kvazaar allows encoding HEVC with motion constrained tiling. To instruct the encoder to encapsulate each tile in a separate slice, the `--slices` option is used with the value `tiles`. Motion vectors are then constrained within in each tile using `--mv-constraint`.
+The open-source [Kvazaar encoder](https://github.com/ultravideo/kvazaar) allows encoding HEVC with motion constrained tiling. To instruct the encoder to encapsulate each tile in a separate slice, the `--slices` option is used with the value `tiles`. Motion vectors are then constrained within in each tile using `--mv-constraint`.
 
 ```bash
 kvazaar -i input.yuv --input-res 3840x2160 -o output.hvc --tiles 3x3 --slices tiles --mv-constraint frametilemargin --bitrate 128000 --period 30 --input-fps 30
@@ -61,7 +61,8 @@ MP4Box can also generate an MPD with multiple representations by adding more inp
 MP4Box -dash 1000 -rap -frag-rap -profile live -out dash_tiled.mpd video_tiled_rep1.mp4 video_tiled_rep2.mp4
 ```
 
-For more information, please refer [this article](https://gpac.io/2017/02/01/hevc-tile-based-adaptation-guide/).
+For more information, please refer [the HEVC Tile based adaptation guide](https://wiki.gpac.io/Howtos/dash/HEVC-Tile-based-adaptation-guide/).
+
 
 # How to stream 360 video content
 
