@@ -168,7 +168,7 @@ gpac -i source_1080p.mp4 @ c=avc:b=4m @@ c=avc:b=2m @@ ffsws:osize=1280x720 @ c=
 
 If you add more encoders, it may be simpler to understand the command line using explicit IDs:
 ```
-gpac -i source_1080p.mp4:FID=S c=avc:b=4m:SID=S:FID=V1 c=avc:b=2m:SID=S:FID=V2 ffsws:osize=1280x720:SID=RZ c=avc:b=1m:SID=RZ:FID=V3 c=avc:b=500k:SID=RZ:FID=V4 -o dash/live.mpd:segdur=2:SID=V1,V2,V3,V4
+gpac -i source_1080p.mp4:FID=S c=avc:b=4m:SID=S:FID=V1 c=avc:b=2m:SID=S:FID=V2 ffsws:osize=1280x720:SID=S:FID=RZ c=avc:b=1m:SID=RZ:FID=V3 c=avc:b=500k:SID=RZ:FID=V4 -o dash/live.mpd:segdur=2:SID=V1,V2,V3,V4
 ```
 
 # Live Transcoding
