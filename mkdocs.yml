@@ -70,6 +70,11 @@ plugins:
   - tags:
      tags_file: tags.md
 
+algolia:
+  app_id: !ENV ALGOLIA_APP_ID
+  api_key: !ENV ALGOLIA_API_KEY
+  index_name: gpac
+
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
