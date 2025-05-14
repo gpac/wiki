@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# MPEH-H Audio Stream reframer  
+# MPEG-H Audio Stream reframer
   
 Register name used to load filter: __rfmhas__  
 This filter may be automatically loaded during graph resolution.  

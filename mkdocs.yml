@@ -302,7 +302,7 @@ nav:
         - M4V rewriter: Filters/ufm4v.md
         - MHAS rewriter: Filters/ufmhas.md
         - MP3 reframer: Filters/rfmp3.md
-        - MPEH-H Audio Stream reframer: Filters/rfmhas.md
+        - MPEG-H Audio Stream reframer: Filters/rfmhas.md
         - PCM reframer: Filters/rfpcm.md
         - ProRes reframer: Filters/rfprores.md
         - QCP reframer: Filters/rfqcp.md
