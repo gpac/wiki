@@ -106,10 +106,37 @@ MP4Box -add-image ref:time=-1/30 image.heic
 
 In this example, the first key frame of every 30s window of the source track will be added as an item sharing the data with the track sample.
 
-# Creating grids
-Grids can be created using `add-image-grid`, as illustrated in [these tests](https://github.com/gpac/testsuite/blob/filters/scripts/iff-grid.sh).
+# Creating derived image items
 
-There is also a quick grid creation option called `agrid` which automatically computes a grid from the items present in the file. 
+Derived image items such as grids and overlays can be created using `-add-derived-image`.
+
+All options from `-add-image` are available, in addition to some options specific to derived image items
+such as `image-grid-size`, `image-overlay-offsets`.
+
+The `ref=dimg,id` option (where 'id' is an item ID number) is used to indicate the source items of the image derivation.
+
+Example of a 2x2 grid:
+```
+MP4BOX -add-derived-image type=grid:id=1:image-pixi=8,8,8:image-size=4096x1716:image-grid-size=2x2:ref=dimg,2:ref=dimg,3:ref=dimg,4:ref=dimg,5:primary \
+-add-image tile1.av1:id=2 -add-image tile2.av1:id=3 -add-image tile3.av1:id=4 -add-image tile4.av1:id=5 \
+-ab avif -ab miaf -out 2x2grid.avif
+```
+
+Alternative entity groups (`group=altr,groupId`) can be used to add derived image items in a way that is backward compatible with readers that do not support them.
+
+Example of a backward compatible overlay: readers that do not support overlays will show item 2 (layer1.av1, the primary item).
+Readers that do support overlays will show item 1 since it's part of the same 'altr' group as the primary item but appears before it and is therefore preferred.
+```
+MP4BOX -add-derived-image type=iovl:id=1:image-pixi=8,8,8:image-size=2000x2000:image-overlay-offsets=100,100,50,500:image-overlay-color=65535,0,0,32125:ref=dimg,2:ref=dimg,3:group=altr,4 \
+-add-image layer1.av1:id=2:primary:group=altr,4 -add-image layer2.av1:id=2 -ab avif -ab miaf -out overlay.avif
+```
+
+More examples are available in [these tests](https://github.com/gpac/testsuite/blob/master/scripts/iff-grid.sh).
+
+# Automatic grids
+
+Grids can be created using `add-derived-image` as explained above, but there is also a quick grid creation option called `agrid` which automatically computes a grid from the items present in the file.
+
 It will hide all these items and make the grid a primary item, resulting in a thumbnail-like grid picture.
 All images in the file must have the same width and height. If the number of images is not even, the last image will be ignored. 
 
