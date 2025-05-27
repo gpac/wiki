@@ -138,7 +138,7 @@ This will read the HAS session and invoke a dash segmenter which will operate wi
 
 When forcing segment boundaries signalling:
 ```
-gpac -i $HAS_URL --forward:segb reframer -o re_has.mpd
+gpac -i $HAS_URL --forward=segb reframer -o re_has.mpd
 ```
 
 then the dasher will operate in [cue-driven mode](dasher#cue-driven-segmentation) and will reproduce the same boundaries as the input, using the input default segment duration. It will also use the same file name for segments as the source ones.
@@ -146,7 +146,7 @@ then the dasher will operate in [cue-driven mode](dasher#cue-driven-segmentation
 By replacing the reframer with a media processor, for example an encrypter:
 
 ```
-gpac -i $HAS_URL --forward:segb cecrypt:cfile=DRM.xml -o encrypted_has.mpd
+gpac -i $HAS_URL --forward=segb cecrypt:cfile=DRM.xml -o encrypted_has.mpd
 ```
 
 this creates a DASH/HLS encryption gateway. And, as usual, the output can be a ROUTE session, an HTTP server or an HTTP push sink.
@@ -156,7 +156,7 @@ In this mode, the dasher will however recreate its own manifest. If the source m
 To avoid this, the `mani` mode can then be used to tell the dasher to use the source manifest, patch it and republish it.
  
 ```
-gpac -i $DASH_URL --forward:mani cecrypt:cfile=DRM.xml -o encrypted_dash.mpd
+gpac -i $DASH_URL --forward=mani cecrypt:cfile=DRM.xml -o encrypted_dash.mpd
 ```
 
 
