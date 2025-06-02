@@ -284,9 +284,11 @@ GPAC provides a websocket server that can be used for live monotiring of the JS 
 Quick example:
 
 ```js
-session.enable_rmtws();
+import { Sys as sys } from 'gpaccore'
 
-session.rmt_on_new_client = function(client) {
+sys.enable_rmtws();
+
+sys.rmt_on_new_client = function(client) {
 	console.log("rmt new client", client.peer_address);
 
 	client.on_data = (msg) =>  {

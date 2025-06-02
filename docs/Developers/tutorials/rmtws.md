@@ -23,14 +23,16 @@ Other options are available to control things like the port used, tls usage, etc
 
 # Javascript
 
-The first option for a RMTWS controller is to use the [JS filter session](/Howtos/jsf/jssession.md). 
+The first option for a RMTWS controller is to use the Javascript controller for GPAC defined via the [-js](gpac_general#js) option.
 
-To do this you simply have to define the `session.rmt_on_new_client` attribute. 
+To do this you simply have to define the `sys.rmt_on_new_client` attribute.
 
 e.g.:
 
 ```js
-session.rmt_on_new_client = function(client) {
+import { Sys as sys } from 'gpaccore'
+
+sys.rmt_on_new_client = function(client) {
 	console.log("rmt new client", client.peer_address);
 
 	client.on_data = (msg) =>  {
@@ -46,7 +48,7 @@ session.rmt_on_new_client = function(client) {
 }
 ```
 
-When defined the `session.rmt_on_new_client` function will be called everytime a client connects to the websocket. A `client` object will be passed as parameter. 
+When defined the `sys.rmt_on_new_client` function will be called everytime a client connects to the websocket. A `client` object will be passed as parameter.
 
 This `client` object has several methods and callbacks that can be used: 
  
