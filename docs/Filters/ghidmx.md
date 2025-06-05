@@ -113,7 +113,7 @@ Indexing supports fragmented and non-fragmented MP4, MPEG-2 TS and seekable inpu
 
 - It is recommended to use fragmented MP4 as input format since this greatly reduces file loading times.  
 - If non-fragmented MP4 are used, it is recommended to use single-track files to decrease the movie box size and speedup parsing.  
-- MPEG-2 TS sources will be slower since they require PES reframing and AU reformating, resulting in more IOs than with mp4.  
+- MPEG-2 TS sources will be slower since they require PES reframing and AU reformatting, resulting in more IOs than with mp4.  
 - other seekable sources will likely be slower (seeking, reframing) and are not recommended.  
 
   

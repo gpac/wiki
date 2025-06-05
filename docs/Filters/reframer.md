@@ -55,7 +55,7 @@ gpac -i m.mp4 reframer:rt=on -o live.mpd:dynamic
 The filter can perform time range extraction of the source using [xs](#xs) and [xe](#xe) options.  
 The formats allowed for times specifiers are:  
 
-- 'TC'HH:MM:SS:FF specify time in timecode  
+- 'TC'HH:MM:SS:FF: specify time in timecode  
 - 'T'H:M:S, 'T'M:S: specify time in hours, minutes, seconds  
 - 'T'H:M:S.MS, 'T'M:S.MS, 'T'S.MS: specify time in hours, minutes, seconds and milliseconds  
 - INT, FLOAT, NUM/DEN: specify time in seconds (number or fraction)  
@@ -252,6 +252,7 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 - local: use UTC of local host  
 - any: use UTC of media, or UTC of local host if not found in media after probing time  
 - media: use UTC of media (abort if none found)  
+- tc: use timecode  
 </div>  
   
 <div markdown class="option">  

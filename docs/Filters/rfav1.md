@@ -1,11 +1,11 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# AV1/IVF/VP9 reframer  
+# AV1/IVF/VP9/IAMF reframer  
   
 Register name used to load filter: __rfav1__  
 This filter may be automatically loaded during graph resolution.  
   
-This filter parses AV1 OBU, AV1 AnnexB or IVF with AV1 or VP9 files/data and outputs corresponding visual PID and frames.  
+This filter parses AV1 OBU, AV1 AnnexB or IVF with AV1 or VP9 files/data and outputs corresponding visual PID and frames. It also parses IAMF OBU and outputs corresponding temporal units containing audio frames and parameter blocks.  
   
 
 # Options  {.no-collapse}  

@@ -55,6 +55,13 @@ If multiple [views](#views) are generated, they are assigned the names `videoN_v
 </div>  
   
 <div markdown class="option">  
+<a id="evte" data-level="basic">__evte__</a> (uint, default: _0_): output event stream  
+
+- 0: disable  
+- 1+: period (sec) of dummy events  
+</div>  
+  
+<div markdown class="option">  
 <a id="freq" data-level="basic">__freq__</a> (uint, default: _440_): frequency of beep  
 </div>  
 <div markdown class="option">  
@@ -121,5 +128,8 @@ If multiple [views](#views) are generated, they are assigned the names `videoN_v
 </div>  
 <div markdown class="option">  
 <a id="logt" data-level="basic">__logt__</a> (bool): log frame time to console  
+</div>  
+<div markdown class="option">  
+<a id="banner" data-level="basic">__banner__</a> (str, default: _many thanks to QuickJS, FreeType, OpenSSL, SDL, FFmpeg, OpenHEVC, libjpeg, libpng, faad2, libmad, a52dec, xvid, OGG ..._): banner text to display  
 </div>  
   

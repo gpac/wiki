@@ -144,9 +144,9 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
 </div>  
   
 <div markdown class="option">  
-<a id="norw">__norw__</a> (bool, default: _false_): skip reformating of samples - should only be used when rewriting fragments  
+<a id="norw">__norw__</a> (bool, default: _false_): skip reformatting of samples - should only be used when rewriting fragments  
 </div>  
 <div markdown class="option">  
-<a id="keepc">__keepc__</a> (bool, default: _false_): keep corrupted samples - should only be used in multicast modes  
+<a id="keepc">__keepc__</a> (bool, default: _true_): keep corrupted samples (for multicast sources only)  
 </div>  
   

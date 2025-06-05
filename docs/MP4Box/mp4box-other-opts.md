@@ -67,6 +67,13 @@ Options:
 Tags are specified as a colon-separated list `tag_name=tag_value[:tag2=val2]`  
 Setting a tag with no value or value `NULL` removes the tag.  
 Special tag value `clear` (or `reset`) removes all tags.  
+Special tag value `cust` indicates a custom domain tag, in which case the tag value must start with `DOMAIN,MEAN,`.  
+Example
+```
+-itags cust='com.apple.iTunes,iTunEXTC,My Tag Value'
+```
+  
+The `DOMAIN` and/or `NAME` strings can be empty.  
 Unsupported tags can be added using their four character code as a tag name, and string value will be assumed.  
 If the tag name length is 3, the prefix 0xA9 is used to create the four character code.  
     

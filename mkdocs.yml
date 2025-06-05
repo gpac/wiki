@@ -219,6 +219,7 @@ nav:
         - MPEG-2 TS splitter: Filters/tssplit.md
         - MPEG-2 TS timestamper: Filters/tsgendts.md
         - Media reframer: Filters/reframer.md
+        - SEI message loader: Filters/seiload.md
         - Sources concatenator: Filters/flist.md
         - Timestamp rewriter: Filters/restamp.md
       - Multimedia I/O:
@@ -227,6 +228,7 @@ nav:
         - DVB for Linux: Filters/dvbin.md
         - DekTec SDI output: Filters/dtout.md
         - FFmpeg AV capture: Filters/ffavin.md
+        - Text Generator: Filters/txtgen.md
         - Uncompressed Video Generator: Filters/uncvg.md
         - Video output: Filters/vout.md
         - Web-based AV capture: Filters/webgrab.md
@@ -288,7 +290,7 @@ nav:
         - ADTS reframer: Filters/rfadts.md
         - ADTS rewriter: Filters/ufadts.md
         - AMR/EVRC reframer: Filters/rfamr.md
-        - AV1/IVF/VP9 reframer: Filters/rfav1.md
+        - AV1/IVF/VP9/IAMF reframer: Filters/rfav1.md
         - AVC/HEVC reframer: Filters/rfnalu.md
         - AVC/HEVC to AnnexB rewriter: Filters/ufnalu.md
         - FLAC reframer: Filters/rfflac.md
@@ -302,7 +304,7 @@ nav:
         - M4V rewriter: Filters/ufm4v.md
         - MHAS rewriter: Filters/ufmhas.md
         - MP3 reframer: Filters/rfmp3.md
-        - MPEG-H Audio Stream reframer: Filters/rfmhas.md
+        - MPEH-H Audio Stream reframer: Filters/rfmhas.md
         - PCM reframer: Filters/rfpcm.md
         - ProRes reframer: Filters/rfprores.md
         - QCP reframer: Filters/rfqcp.md
@@ -340,10 +342,8 @@ nav:
         - MPEG-4 BIFS: Filters/bifsdec.md
         - MPEG-4 LASeR: Filters/lsrdec.md
         - MPEG-4 OD: Filters/odfdec.md
-        - MPEG-H Audio: Filters/mpeghdec.md
         - MediaCodec: Filters/mcdec.md
         - NVidia: Filters/nvdec.md
-        - OpenHEVC: Filters/ohevcdec.md
         - OpenJPEG2000: Filters/j2kdec.md
         - OpenSVC: Filters/osvcdec.md
         - PNG/JPG: Filters/imgdec.md
@@ -353,7 +353,6 @@ nav:
         - TTXT/TX3G: Filters/ttxtdec.md
         - Theora: Filters/theoradec.md
         - UNCV: Filters/uncvdec.md
-        - VideoToolBox: Filters/vtbdec.md
         - Vorbis: Filters/vorbisdec.md
         - WebCodec: Filters/wcdec.md
         - WebVTT: Filters/vttdec.md

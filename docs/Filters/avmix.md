@@ -760,26 +760,6 @@ Example
   
 # Scene modules  
   
-## Scene `mask`  
-This scene sets the canvas alpha mask mode.  
-  
-The canvas alpha mask is always full screen.  
-  
-In software mode, combining mask effect in record mode and reverse group drawing allows drawing front to back while writing pixels only once.  
-  
-Options:  
-
-- mode ('off'): if set, reset clipper otherwise set it to scene position and size  
-
-    - off: mask is disabled  
-    - on: mask is enabled and cleared, further draw operations will take place on mask  
-    - onkeep: mask is enabled but not cleared, further draw operations will take place on mask  
-    - use: mask is enabled, further draw operations will be filtered by mask  
-    - use_inv: mask is enabled, further draw operations will be filtered by 1-mask  
-    - rec: mask is in record mode, further draw operations will be drawn on output and will set mask value to 0   
-
-   
-
 ## Scene `clear`  
 This scene clears the canvas area covered by the scene with a given color.   
   
@@ -805,6 +785,26 @@ Options:
 - reset (false): if set, reset clipper otherwise set it to scene position and size  
 - stack (true): if false, clipper is set/reset independently of the clipper stack (no intersection, no push/pop of the stack)  
 
+
+## Scene `mask`  
+This scene sets the canvas alpha mask mode.  
+  
+The canvas alpha mask is always full screen.  
+  
+In software mode, combining mask effect in record mode and reverse group drawing allows drawing front to back while writing pixels only once.  
+  
+Options:  
+
+- mode ('off'): if set, reset clipper otherwise set it to scene position and size  
+
+    - off: mask is disabled  
+    - on: mask is enabled and cleared, further draw operations will take place on mask  
+    - onkeep: mask is enabled but not cleared, further draw operations will take place on mask  
+    - use: mask is enabled, further draw operations will be filtered by mask  
+    - use_inv: mask is enabled, further draw operations will be filtered by 1-mask  
+    - rec: mask is in record mode, further draw operations will be drawn on output and will set mask value to 0   
+
+   
 
 ## Scene `shape`  
 This scene can be used to setup a shape, its outline and specify the fill and strike modes.  
@@ -1030,12 +1030,22 @@ Options:
 
 # Transition modules  
   
+## Transition `fade` - software/GPU  
+This transition performs fade to/from color of source videos  
+Options:  
+
+- color ('black'): fade color  
+
+
 ## Transition `gltrans` - GPU only  
 This transition module wraps gl-transitions, see https://gl-transitions.com/ and `gpac -h avmix:gltrans` for builtin transitions  
 Options:  
 
 - fx (''): effect name for built-in effects, or path to gl-transition GLSL file  
 
+
+## Transition `mix` - software/GPU  
+This transition performs cross-fade of source videos  
 
 ## Transition `swipe` - software/GPU  
 This transition performs simple 2D affine transformations for source videos transitions, with configurable effect origin  
@@ -1061,16 +1071,6 @@ Options:
     - squeeze: video 2 squeezes video 1 along opposite edge  
     - grow: video 2 size increases, video 1 not modified  
     - swap: video 2 size increases, video 1 size decreases  
-
-  
-## Transition `mix` - software/GPU  
-This transition performs cross-fade of source videos  
-
-## Transition `fade` - software/GPU  
-This transition performs fade to/from color of source videos  
-Options:  
-
-- color ('black'): fade color  
 
   
 

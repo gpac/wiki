@@ -145,8 +145,8 @@ When importing SRT, SUB or SSA files, the output format of the PID can be select
 <div markdown class="option">  
 <a id="stxtmod">__stxtmod__</a> (enum, default: _tx3g_): text stream mode for simple text streams and SRT inputs  
 
-- stxt: output PID formatted as simple text stream  
-- sbtt: output PID formatted as subtitle text stream  
+- stxt: output PID formatted as simple text stream (remove markup in VTT/SRT payload)  
+- sbtt: output PID formatted as subtitle text stream (keep markup in VTT/SRT payload)  
 - tx3g: output PID formatted as TX3G/Apple stream  
 - vtt: output PID formatted as WebVTT stream  
 - webvtt: same as vtt (for backward compatiblity  

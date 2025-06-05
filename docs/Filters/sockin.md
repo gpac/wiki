@@ -28,7 +28,9 @@ When the socket is listening in keep-alive [ka](#ka) mode:
 - each connection close event will triger a pipeline flush  
 
   
-On OSX with VM packet replay you will need to force multicast routing, e.g. `route add -net 239.255.1.4/32 -interface vboxnet0`  
+# Time Regulation  
+  
+The filter uses the time between the last two received packets to estimates how often it should check for inputs. The maximum and minimum times to wait between two calls is given by the [mwait](#mwait) option. The maximum time may need to be reduced for very high bitrates sources.  
   
 
 # Options  {.no-collapse}  
@@ -68,6 +70,9 @@ On OSX with VM packet replay you will need to force multicast routing, e.g. `rou
 </div>  
 <div markdown class="option">  
 <a id="timeout">__timeout__</a> (uint, default: _10000_): set timeout in ms for UDP socket(s), 0 to disable timeout  
+</div>  
+<div markdown class="option">  
+<a id="mwait">__mwait__</a> (v2di, default: _1x30_): set min and max wait times in ms to avoid too frequent polling  
 </div>  
 <div markdown class="option">  
 <a id="reorder_pck">__reorder_pck__</a> (uint, default: _100_): number of packets delay for RTP reordering (M2TS over RTP)   

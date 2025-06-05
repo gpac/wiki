@@ -29,6 +29,10 @@ When a single read directory is specified, the server root `/` is the content of
 When multiple read directories are specified, the server root `/` contains the list of the mount points with their directory names.  
 When a write directory is specified, the upload resource name identifies a file in this directory (the write directory name is not present in the URL).  
     
+
+__Warning: files uploaded / created in the write directory are always created in non-atomic modes.__  
+  
+    
 A directory rule file (cf `gpac -h creds`) can be specified in [rdirs](#rdirs) but NOT in [wdir](#wdir). When rules are used:  
 
 - if a directory has a `name` rule, it will be used in the URL  

@@ -25,4 +25,12 @@ This filter demultiplexes MPEG-2 Transport Stream files/data into a set of media
 <div markdown class="option">  
 <a id="dvbtxt">__dvbtxt__</a> (bool, default: _false_): export DVB teletext streams  
 </div>  
+<div markdown class="option">  
+<a id="upes">__upes__</a> (enum, default: _no_): keep unknown PES streams  
+
+- no: ignored the streams  
+- info: declare the stream as fake (no data forward), turns on dvbtxt  
+- full: declare the stream and sends data  
+</div>  
+  
   

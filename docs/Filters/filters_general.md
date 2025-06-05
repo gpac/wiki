@@ -715,6 +715,7 @@ Defined keywords:
     - `EXTERNAL_STORAGE` environment variable if present or `/sdcard` otherwise for Android  
     - user home directory for other platforms  
 
+- $GCFG: replaced by system path to folder containing GPAC config  
 - $GLANG: replaced by the global config language option [-lang](core_options/#lang)  
 - $GUA: replaced by the global config user agent option [-user-agent](core_options/#user-agent)  
 - $GINC(init_val[,inc]): replaced by `init_val` and increment `init_val` by `inc` (positive or negative number, 1 if not specified) each time a new filter using this string is created.  

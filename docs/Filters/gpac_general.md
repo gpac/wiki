@@ -20,16 +20,13 @@ The session can be interrupted at any time using `ctrl+c`, which can also be use
 The possible options for gpac are:  
   
 <div markdown class="option">
-<a id="mem-track">__-mem-track__</a>: enable memory tracker  
-</div>
-<div markdown class="option">
-<a id="mem-track-stack">__-mem-track-stack__</a>: enable memory tracker with stack dumping  
-</div>
-<div markdown class="option">
 <a id="ltf">__-ltf__</a>:      load test-unit filters (used for for unit tests only)  
 </div>
 <div markdown class="option">
 <a id="sloop">__-sloop__</a> (int): loop execution of session, creating a session at each loop, mainly used for testing, breaking at first error. If no value is given, loops forever  
+</div>
+<div markdown class="option">
+<a id="eloop">__-eloop__</a> (int): same as sloop but does not break if error  
 </div>
 <div markdown class="option">
 <a id="runfor">__-runfor__</a> (int): run for the given amount of milliseconds, exit with full session flush  
