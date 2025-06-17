@@ -151,7 +151,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="cloop" data-level="basic">__cloop__</a> (bool, default: _false_): check for loops based on TOI (used for capture replay)  
 </div>  
 <div markdown class="option">  
-<a id="rtimeout">__rtimeout__</a> (uint, default: _500000_): default timeout in us to wait when gathering out-of-order packets  
+<a id="rtimeout">__rtimeout__</a> (uint, default: _500000_): default timeout in µs to wait when gathering out-of-order packets  
 </div>  
 <div markdown class="option">  
 <a id="fullseg">__fullseg__</a> (bool, default: _false_): only dispatch full segments in cache mode (always true for other modes)  

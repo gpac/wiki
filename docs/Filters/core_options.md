@@ -119,8 +119,10 @@
 - f=K: drop first `n` packets every `K`  
 - d=K: reorder `n` packets after the next `K` packets, can be used with `f` or `r` rules  
 - p=K: filter packets on port `K` only, if not set the rule applies to all packets  
-- o=K: patch packet instead of droping (always true for TCP), replacing byte at offset `K` (0 is first byte, <0 for random)  
+- o=K: patch packet instead of dropping (always true for TCP), replacing byte at offset `K` (0 is first byte, <0 for random)  
 - v=K: set patch byte value to `K` (hexa) or negative value for random (default)  
+- S=K: same as `s` but adds number of capture file reload/loop  
+- E=K: same as `e` but adds number of capture file reload/loop  
 
   
 Example
@@ -218,8 +220,14 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="curl">__-curl__</a>:    use CURL instead of GPAC HTTP stack  
 </div>
 <div markdown class="option">
-<a id="no-h3">__-no-h3__</a>:  disable HTTP3 (CURL only)  
+<a id="h3">__-h3__</a> (Enum, default: __auto__): set HTTP/3 mode  
+
+- no: disable HTTP/3  
+- first: force trying first with HTTP/3  
+- auto: connect using HTTP 1 or 2 and use HTTP/3 for next request(s) if announced  
+- only: only use HTTP/3  
 </div>
+  
 <div markdown class="option">
 <a id="dbg-edges">__-dbg-edges__</a>: log edges status in filter graph before dijkstra resolution (for debug). Edges are logged as edge_source(status(disable_depth), weight, src_cap_idx -> dst_cap_idx)  
 </div>

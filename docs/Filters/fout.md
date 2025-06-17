@@ -10,6 +10,9 @@ In regular mode, the filter only accept PID of type file. It will dump to file i
 If the output file name is `std` or `stdout`, writes to stdout.  
 The output file name can use gpac templating mechanism, see `gpac -h doc`.The filter watches the property `FileNumber` on incoming packets to create new files.  
   
+By default output files are created directly, which may lead to issues if concourrent programs attempt to access them.  
+By enabling [atomic](#atomic), files will be created in target destination folder with the `.gftmp` suffix and move to their final name upon close.  
+  
 # Discard sink mode  
   
 When the destination is `null`, the filter is a sink dropping all input packets.  
@@ -82,5 +85,8 @@ This will force keeping a maximum of 3 media segments while recording the DASH s
 </div>  
 <div markdown class="option">  
 <a id="force_null">__force_null__</a> (bool, default: _false_): force no output regardless of file name  
+</div>  
+<div markdown class="option">  
+<a id="atomic">__atomic__</a> (bool, default: _false_): use atomic file write for non append modes  
 </div>  
   

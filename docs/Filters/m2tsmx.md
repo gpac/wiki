@@ -46,6 +46,7 @@ Each TEMI description is formatted as ID_OR_URL or #OPT1[#OPT2]#ID_OR_URL. Optio
     - `N`: use 32 bit signaling only and wrap around timecode value.  
 
 - N: insert NTP timestamp in TEMI timeline descriptor  
+- n: insert NTP timestamp using NTP for first packet than incrementing based on media timestamp (for non real-time)  
 - ID_OR_URL: If number, indicate the TEMI ID to use for external timeline. Otherwise, give the URL to insert  
 
     
@@ -94,12 +95,31 @@ In DASH and HLS mode:
 
   
 The filter watches the property `FileNumber` on incoming packets to create new files, or new segments in DASH mode.  
+
+# Custom streams  
+  
 The filter will look for property `M2TSRA` set on the input stream.  
 The value can either be a 4CC or a string, indicating the MP2G-2 TS Registration tag for unknown media types.  
+The value `SRT ` (alias: `srt`, `SRT`) will inject an SRT header with frame number increasing at each packet and start time 0.  
+Example
+```
+gpac -i source.srt:#M2TSRA='SRT ' -o mux.ts
+```
+  
+This will inject the content of the source SRT as a PES data stream, removing any markup.  
+Example
+```
+gpac -i source.srt:stxtmod=sbtt:#M2TSRA='SRT ' -o mux.ts
+```
+  
+This will inject the content of the source SRT as a PES data stream, keeping the markup.  
   
 # Notes  
   
 In LATM mux mode, the decoder configuration is inserted at the given [repeat_rate](#repeat_rate) or `CarouselRate` PID property if defined.  
+  
+By default text streams are embeded using HLS ID3 schemes, use `M2TSRA` property to use raw private PES.  
+WebVTT header and TX3G formatting are removed, only the text data is injected.  
   
 
 # Options  {.no-collapse}  

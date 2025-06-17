@@ -19,6 +19,13 @@ The filter watches the property `FileNumber` on incoming packets to create new f
   
 All PID properties prefixed with `meta:` will be added as metadata.  
   
+The [proto](#proto) flag will disable FFmpeg muxer and use GPAC instead. Default format is MPEG-2 TS and can be specified using [ext](#ext) or [mime](#mime).  
+Example
+```
+gpac -i SRC -o srt://127.0.0.1:1234:gpac:proto[:ext=mp4:frag]This will use the SRT protocol handler but GPAC m2ts multiplexer or mp4 muxer if `ext=mp4:frag` is set
+```
+  
+  
 
 # Options  {.no-collapse}  
   
@@ -51,6 +58,12 @@ All PID properties prefixed with `meta:` will be added as metadata.
 </div>  
 <div markdown class="option">  
 <a id="keepts">__keepts__</a> (bool, default: _true_): do not shift input timeline back to 0  
+</div>  
+<div markdown class="option">  
+<a id="proto">__proto__</a> (bool, default: _false_): use protocol only: do not try to mux (useful when sending a SRT stream with remuxing)  
+</div>  
+<div markdown class="option">  
+<a id="psleep">__psleep__</a> (uint, default: _1000_): in protocol only mode, sleep for given amount of ms before EOS (do not kill connection right away for some protocols)  
 </div>  
 <div markdown class="option">  
 <a id="*" data-level="basic">__*__</a> (str): any possible options defined for AVFormatContext and sub-classes (see `gpac -hx ffmx` and `gpac -hx ffmx:*`)  

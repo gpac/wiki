@@ -63,8 +63,8 @@ Scalable | bool |  | Scalable stream | SCAL
 TileBase | bool |  | Tile base stream | SABT    
 TileID | uint |  | ID of the tile for hvt1/hvt2 PIDs | PTID    
 Language | cstr |  | Language code: ISO639 2/3 character code or RFC 4646 | LANG    
-ServiceName | str | D | Name of parent service | SNAM    
-ServiceProvider | str | D | Provider of parent service | SPRO    
+ServiceName | str | D | Name of parent service, signled as PID info | SNAM    
+ServiceProvider | str | D | Provider of parent service, signled as PID info | SPRO    
 StreamType | uint |  | Media stream type | PMST    
 StreamSubtype | 4cc | D | Media subtype 4CC (auxiliary, pic sequence, etc ..), matches ISOM handler type | PSST    
 ISOMSubtype | 4cc | D | ISOM media subtype 4CC (avc1 avc2...) | PIST    
@@ -74,6 +74,7 @@ InitialObjectDescriptor | bool |  | PID is declared in the IOD for MPEG-4 | PIOD
 Unframed | bool |  | The media data is not framed, i.e. each packet is not a complete AU/frame or is not in internal format (e.g. annexB for avc/hevc, adts for aac) | PFRM    
 UnframedAU | bool |  | The unframed media still has correct AU boundaries: one packet is one full AU, but the packet format might not be the internal one (e.g. annexB for avc/hevc, adts for aac) | PFRF    
 LATM | bool |  | Media is unframed AAC in LATM format | LATM    
+USRT | bool |  | Media is unframed SRT, header is in payload with 0 start time | USRT    
 Duration | lfrac |  | Media duration | PDUR    
 EstimatedDuration | bool |  | Media duration is an estimated duration based on rate | EDUR    
 NumFrames | uint | D | Number of frames in the stream | NFRM    
@@ -238,6 +239,7 @@ xlink | str | D | Remote period URL for DASH - cf dasher help | XLNK
 ClampDur | lfrac | D | Max media duration to process from PID in DASH mode | DCMD    
 HLSPL | str | D | Name of the HLS variant playlist for this media | HLVP    
 HLSGroup | str | D | Name of HLS Group of a stream | HLGI    
+HLSRend | strl | D | List of HLS group allowed in group rendition - when not set, all groups are allowed | HLGR    
 HLSForce | str | D | Force writing EXT-X-STREAM-INF if stream is in a rendition group, value is the name of associated groups (can be empty) | HLFI    
 HLSMExt | strl | D | List of extensions to add to the master playlist for this PID | HLMX    
 HLSVExt | strl | D | List of extensions to add to the variant playlist for this PID | HLVX    
@@ -258,6 +260,7 @@ HLSIV | mem |  | Init Vector for HLS decode | HLSI
 CKUrl | str |  | URL for ClearKey licence server | CCKU    
 ColorPrimaries | cprm | D | Color primaries | CPRM    
 ColorTransfer | ctfc | D | Color transfer characteristics | CTRC    
+ColorTransferAlternative | ctfc | D | Alternative Color transfer characteristics | CATC    
 ColorMatrix | cmxc | D | Color matrix coefficient | CMXC    
 FullRange | bool | D | Color full range flag | CFRA    
 Chroma | uint | D | Chroma format (see ISO/IEC 23001-8 / 23091-2) | CFMT    
@@ -271,7 +274,7 @@ NoTSLoop | bool |  | Timestamps on this PID are adjusted in case of loops (used 
 MHAProfiles | uintl | D | List of compatible profiles for this MPEG-H Audio object | MHCP    
 FragStart | uint | DP | Packet is a fragment start (value 1) or a segment start (value 2) | PFRB    
 FragRange | lfrac | DP | Start and end position in bytes of fragment if packet is a fragment or segment start | PFRR    
-FragTFDT | luint | DP | Decode time of first packet in fragmentt | PFRT    
+FragTFDT | luint | DP | Decode time of first packet in fragment | PFRT    
 SIDXRange | lfrac | DP | Start and end position in bytes of sidx in segment if any | PFSR    
 VODSIDXRange | lfrac | D | Start and end position in bytes of root sidx | PRSR    
 MoofTemplate | mem | DP | Serialized moof box corresponding to the start of a movie fragment or segment (with styp and optionally sidx) | MFTP    
@@ -291,7 +294,7 @@ MCASTCarousel | frac | D | Carousel period in seconds of raw file or low-latency
 MCASTUpload | frac | D | Upload time in seconds of raw files for ROUTE/MABR sessions | MSST    
 Stereo | uint | D | Stereo type of video | PSTT    
 Projection | uint | D | Projection type of video | PPJT    
-InitalPose | v3di | D | Initial pose for 360 video, in degrees expressed as 16.16 bits (x is yaw, y is pitch, z is roll) | PPOS    
+InitialPose | v3di | D | Initial pose for 360 video, in degrees expressed as 16.16 bits (x is yaw, y is pitch, z is roll) | PPOS    
 CMPad | uint | D | Number of pixels to pad from edge of each face in cube map | PCMP    
 EQRClamp | v4di | D | Clamping of frame for EQR as 0.32 fixed point (x is top, y is bottom, z is left and w is right) | PEQC    
 SceneNode | bool |  | PID is a scene node decoder (AFX BitWrapper in BIFS) | PSND    
@@ -321,7 +324,7 @@ RangeEnd | bool | P | Signal packet is the last in the desired play range | PCER
 RefID | sint | P | packet identifier for dependency (usually POC for video) | PKID    
 Refs | sintl | P | list of packet identifier this packet depends on | PRFS    
 UDTA | ptr | DP | User data for the packet | PUDT    
-Timecodes | uintl | P | list of timecodes as extracted from SEI (if present) | TCOD    
+Timecode | mem | P | First timecode extracted from SEI (if present) | TCOD    
 DOVI | mem |  | DolbyVision configuration | DOVI    
 OutPath | str |  | Output file name of PID used by some filters creating additional raw PIDs | FDST    
 ACrypMeta | mem |  | Meta-data for Adobe encryption | AMET    
@@ -348,6 +351,11 @@ SegURL | str | DP | URL of source segment (when forwarding fragment boundaries) 
 DynPSSH | mem | P | PSSH blob for CENC, same format as `CENC_PSSH`, used when using master key and roll keys, signaled on first packet of segment where the PSSH changes | PSHP    
 LLHASTemplate | str | P | Template for DASH-SSR and LLHLS sub-segments | PSRT    
 PartialRepair | bool | P | indicate the mux data in the associated data is parsable but contains errors (only set on corrupted packets) | PCPR    
+SEILoaded | bool | D | indicate that PID is extracting SEI/inband data from packets | PSEI    
+Fake | bool | D | Indicate a stream present in the source but not delivered as a PID | PFAK    
+ContentLightLevel | mem | DP | Content light level, payload of clli box (see ISO/IEC 14496-12), can be set as a list of 2 integers in fragment declaration (e.g. "=max_cll,max_pic_avg_ll") | CLLP    
+MasterDisplayColour | mem | DP | Master display colour info, payload of mdcv box (see ISO/IEC 14496-12), can be set as a list of 10 integers in fragment declaration (e.g. "=dpx0,dpy0,dpx1,dpy1,dpx2,dpy2,wpx,wpy,max,min") | MDCP    
+SEILoaded | bool | DP | indicate that packet has SEI/inband data in its properties | SEIP    
 
 # Pixel formats  
   
@@ -781,8 +789,8 @@ sub | txtin vobsubdmx | n/a | subtitle/sub
 vtt | txtin | writegen | subtitle/vtt   
 txml | txtin | writegen | x-quicktime/text   
 ttml | txtin | writegen | subtitle/ttml   
-ssa | txtin | n/a | subtitle/ssa   
-ass | txtin | n/a | subtitle/ssa   
+ssa | txtin | writegen | subtitle/ssa   
+ass | txtin | writegen | subtitle/ssa   
 sdp | rtpin | rtpout | application/sdp   
 yuv | rfrawvid | writegen | video/x-raw   
 yvu | rfrawvid | writegen | video/x-raw   
@@ -874,6 +882,7 @@ pl | flist | n/a | application/x-gpac-playlist
 ghix | ghidmx | dasher | application/dash+xml video/vnd.3gpp.mpd audio/vnd.3gpp.mpd video/vnd.mpeg.dash.mpd audio/vnd.mpeg.dash.mpd audio/mpegurl video/mpegurl application/vnd.ms-sstr+xml application/x-gpac-ghi application/x-gpac-ghix   
 ghi | n/a | dasher | application/dash+xml video/vnd.3gpp.mpd audio/vnd.3gpp.mpd video/vnd.mpeg.dash.mpd audio/vnd.mpeg.dash.mpd audio/mpegurl video/mpegurl application/vnd.ms-sstr+xml application/x-gpac-ghi application/x-gpac-ghix   
 gsf | gsfdmx | gsfmx | application/x-gpac-sf   
+iamf | rfav1 | n/a | audio/iamf   
 `ignore | `n/a | writeuf | n/a   
 
 # Protocol Schemes  
@@ -895,10 +904,20 @@ gopher | httpin |  n/a
 gophers | httpin |  n/a  
 imap | httpin |  n/a  
 imaps | httpin |  n/a  
+ldap | httpin |  n/a  
+ldaps | httpin |  n/a  
 mqtt | httpin |  n/a  
 pop3 | httpin |  n/a  
 pop3s | httpin |  n/a  
+rtmp | httpin |  n/a  
+rtmpe | httpin |  n/a  
+rtmps | httpin |  n/a  
+rtmpt | httpin |  n/a  
+rtmpte | httpin |  n/a  
+rtmpts | httpin |  n/a  
 rtsp | httpin rtpin | rtspout  
+scp | httpin |  n/a  
+sftp | httpin |  n/a  
 smb | httpin |  n/a  
 smbs | httpin |  n/a  
 smtp | httpin |  n/a  
@@ -909,6 +928,7 @@ tcp | sockin | sockout
 udp | sockin | sockout  
 tcpu | sockin | sockout  
 udpu | sockin | sockout  
+dvb | dvbin |  n/a  
 rtp | rtpin | rtpout  
 rtspu | rtpin |  n/a  
 rtsph | rtpin | rtspout  

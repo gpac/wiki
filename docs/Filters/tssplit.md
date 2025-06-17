@@ -30,4 +30,7 @@ If [dvb](#dvb) is set, global DVB tables of the input multiplex are forwarded to
 <div markdown class="option">  
 <a id="kpad">__kpad__</a> (bool, default: _false_): keep padding (null) TS packets  
 </div>  
+<div markdown class="option">  
+<a id="rt">__rt__</a> (bool, default: _false_): enable real-time regulation  
+</div>  
   

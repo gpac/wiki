@@ -548,7 +548,7 @@ The segmenter adds the following properties to the output PIDs:
 - webm: uses WebM format  
 - ogg: uses OGG format  
 - raw: uses raw media format (disables multiplexed representations)  
-- auto: guess format based on extension, default to mp4 if no extension  
+- auto: guesses format based on extension, defaults to mp4 if no extension is provided  
 </div>  
   
 <div markdown class="option">  
@@ -685,6 +685,9 @@ The segmenter adds the following properties to the output PIDs:
 </div>  
 <div markdown class="option">  
 <a id="dual">__dual__</a> (bool): indicate to produce both MPD and M3U files  
+</div>  
+<div markdown class="option">  
+<a id="segcts">__segcts__</a> (bool): compute the segment number by dividing the first CTS by [segdur](#segdur)  
 </div>  
 <div markdown class="option">  
 <a id="sigfrag">__sigfrag__</a> (bool): use manifest generation only mode  

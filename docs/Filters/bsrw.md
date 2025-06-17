@@ -20,6 +20,8 @@ The filter can currently modify the following properties in video bitstreams:
     - profile, level, profile compatibility  
     - video format, video fullrange  
     - color primaries, transfer characteristics and matrix coefficients (or remove all info)  
+    - (AVC|HEVC) timecode- AV1:  
+    - timecode  
 
 - ProRes:  
 
@@ -37,6 +39,42 @@ The filter can currently modify the following properties in the stream configura
 
     
 The filter will work in passthrough mode for all other codecs and media types.  
+
+# Timecode Manipulation  
+  
+One can optionally set the [tcxs](#tcxs) and [tcxe](#tcxe) to define the start and end of timecode manipulation. By default, the filter will process all packets.  
+Some modes require you to define [tcsc](#tcsc). This follows the same format as the timecode itself ([-]() to `first` to infer the value from the first timecode when timecode manipulation starts. In this case, unless a timecode is found, the filter will not perform any operation./#). The use of negative values is only meaningful in the `shift` mode. It's also possible to set [tcsc](#tcsc) to `first` to infer the value from the first timecode when timecode manipulation starts. In this case, unless a timecode is found, the filter will not perform any operation.  
+
+## Modes  
+Timecode manipulation has four modes and they all have their own operating nuances.  
+### Remove  
+  
+Remove all timecodes from the bitstream.  
+### Insert  
+  
+Insert timecodes based on the CTS. If [tcsc](#tcsc) is set, it will be used as timecode offset.  
+This mode will overwrite existing timecodes (if any).  
+### Shift  
+  
+Shift all timecodes by the value defined in [tcsc](#tcsc).  
+This mode will only modify timecodes if they exists, no new timecode will be inserted.  
+### Constant  
+  
+Set all timecodes to the value defined in [tcsc](#tcsc).  
+Again, this mode wouldn't insert new timecodes.  
+### UTC  
+  
+Uses the `SenderNTP` property, `UTC` property on the packet, or the current UTC time to set the timecode.  
+This mode will overwrite existing timecodes (if any).  
+
+## Examples  
+Example
+```
+gpac -i in.mp4 bsrw:tc=insert [dst]  
+gpac -i in.mp4 bsrw:tc=insert:tcsc=TC00:00:10:00 [dst]  
+gpac -i in.mp4 bsrw:tc=shift:tcsc=TC00:00:10:00:tcxs=TC00:01:00:00 [dst]
+```
+  
   
 
 # Options  {.no-collapse}  
@@ -50,7 +88,7 @@ The filter will work in passthrough mode for all other codecs and media types.
 </div>  
   
 <div markdown class="option">  
-<a id="cmx" data-level="basic">__cmx__</a> (cmxc, default: _-1_, Enum: GBR|BT709|undef|FCC|BT601|SMPTE170|SMPTE240|YCgCo|BT2020|BT2020cl|YDzDx, updatable): color matrix coeficients according to ISO/IEC 23001-8 / 23091-2  
+<a id="cmx" data-level="basic">__cmx__</a> (cmxc, default: _-1_, Enum: GBR|BT709|undef|FCC|BT601|SMPTE170|SMPTE240|YCgCo|BT2020|BT2020cl|YDzDx, updatable): color matrix coefficients according to ISO/IEC 23001-8 / 23091-2  
 </div>  
   
 <div markdown class="option">  
@@ -85,6 +123,32 @@ The filter will work in passthrough mode for all other codecs and media types.
 </div>  
 <div markdown class="option">  
 <a id="gpcflags" data-level="basic">__gpcflags__</a> (sint, default: _-1_, updatable): general compatibility flags for HEVC  
+</div>  
+<div markdown class="option">  
+<a id="tcxs" data-level="basic">__tcxs__</a> (str, updatable): timecode manipulation start  
+</div>  
+<div markdown class="option">  
+<a id="tcxe" data-level="basic">__tcxe__</a> (str, updatable): timecode manipulation end  
+</div>  
+<div markdown class="option">  
+<a id="tcdf" data-level="basic">__tcdf__</a> (bool, default: _false_, updatable): use NTSC drop-frame counting for timecodes  
+</div>  
+<div markdown class="option">  
+<a id="tcsc" data-level="basic">__tcsc__</a> (str, updatable): timecode constant for use with shift/constant modes  
+</div>  
+<div markdown class="option">  
+<a id="tc" data-level="basic">__tc__</a> (enum, default: _none_, updatable): timecode manipulation mode  
+
+- none: do not change anything  
+- remove: remove timecodes  
+- insert: insert timecodes based on cts or `tcsc` (if provided)  
+- shift: shift timecodes based by `tcsc`  
+- constant: overwrite timecodes with `tcsc`  
+- utc: insert timecodes based on the utc time on the packet or the current time  
+</div>  
+  
+<div markdown class="option">  
+<a id="seis">__seis__</a> (uintl, updatable): list of SEI message types (4,137,144,...). When used with `rmsei`, this serves as a blacklist. If left empty, all SEIs will be removed. Otherwise, it serves as a whitelist  
 </div>  
 <div markdown class="option">  
 <a id="rmsei" data-level="basic">__rmsei__</a> (bool, default: _false_, updatable): remove SEI messages from bitstream for AVC|H264, HEVC and VVC  

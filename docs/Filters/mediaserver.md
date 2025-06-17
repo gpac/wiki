@@ -143,7 +143,7 @@ The `local` service configuration option can be set to:
   
 # Multicast ABR Gateway  
   
-The server can be configured to use a multicast ANR source for an HTTP streaming service, without any HTTP source.  
+The server can be configured to use a multicast ABR source for an HTTP streaming service, without any HTTP source.  
   
 _Service configuration parameters used :_ `mabr` (mandatory), `local` (mandatory), `corrupted`, `timeshift` and `keepalive`.  
   
@@ -166,7 +166,7 @@ Configuration for exposing a MABR session:
   
 The server can be configured to use a multicast source as an alternate data source of a given HTTP streaming service.  
   
-_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `corrupted`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `active` and `keepalive`.  
+_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `corrupted`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `active`, `keepalive` and `js`.  
   
 The multicast service can be dynamically loaded at run-time using the `unload` service configuration option:  
 
@@ -196,7 +196,7 @@ If `check_ip` is set to true, the remote IP address+port are used instead of the
   
 If `timeshift` is 0 for the service, multicast segments will be trashed as soon as not in use (potentially before the client request).  
   
-_Note: Manifests files coming from multicast are currently never cached._  
+_Note: Manifest files coming from multicast are currently never cached._  
   
 Configuration for caching a live HTTP streaming service with MABR backup:  
 ```
@@ -206,13 +206,39 @@ Configuration for caching a live HTTP streaming service with MABR backup:
   
 For such services, the custom HTTP header `X-From-MABR` is defined:  
 
-- for client requests, a value of `no` will disable MABR cache for this request; if absent or value is `yes`, MABR cache will be used if available  
+- for client request, a value of `no` will disable MABR cache for this request; if absent or value is `yes`, MABR cache will be used if available  
 - for client response, a value of `yes` indicates the content comes from the MABR cache; if absent or value is `no`, the content comes from HTTP  
+
+  
+The `js` option can be set to a JS module exporting the following functions:  
+
+- init : (mandatory) The function is called once at the start of the server. Parameters:  
+
+    - scfg: the service configuration object  
+    - return value: must be true if configuration and initialization are successful, false otherwise.  
+
+  
+
+- service_activation : (optional) The function is called when the service is activated or deactivated. Parameters:  
+
+    - do_activate (boolean): if true, service is being loaded otherwise it is being unloaded  
+    - return value: none  
+
+  
+
+- quality_activation : (mandatory) The function is called when the given quality is to be activated service is activated or deactivated. Parameters (in order):  
+
+    - do_activate (boolean): if true, quality is being activated otherwise it is being deactivated  
+    - service_id (integer): ID of the service as announced in the multicast  
+    - period_id (string): ID of the DASH Period, ignored for HLS  
+    - adaptationSet_ID (integer): ID of the DASH AdaptationSet, ignored for HLS  
+    - representation_ID (string): ID of the DASH representation or name of the HLS variant playlist  
+    - return value: shall be true if activation/deactivation shall proceed and false if activation/deactivation shall be canceled.  
 
   
 # File Services  
   
-A file system directory can be exposed as a service.   
+A file system directory can be exposed as a service.  
   
 _Service configuration parameters used :_ `local` (mandatory), `sources` (mandatory), `gcache` and `keepalive`.  
   
@@ -241,7 +267,7 @@ return value must be true if configuration and initialization are successful, fa
 ## resolve (mandatory)  
 Parameter: an HTTP request object from GPAC  
   
-The function returns an array of two values:  
+The function returns an array of two values `[result, delay]`:  
 
 - result: null if error, a resolved string indicating either a local file or the reply body, or an object  
 - delay: if true, the reply is being delayed by the module for later processing  

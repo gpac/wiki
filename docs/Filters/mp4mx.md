@@ -71,6 +71,7 @@ Other tag class may be specified using `tag_NAME` property names, and will be ad
 - the CRC32 of the `NAME` as a box 4CC if `NAME` is not four characters long  
 
     
+Property names formatted as `cust_NAME@MEAN` are added as a custom tag with name `NAME` and mean `MEAN`. Both `NAME` and `MEAN` can be empty.  
 
 # User data  
   
@@ -314,6 +315,9 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
 <div markdown class="option">  
 <a id="styp" data-level="basic">__styp__</a> (str): set segment `styp` major brand (and optionally version) to the given 4CC[.version]  
+</div>  
+<div markdown class="option">  
+<a id="lmsg" data-level="basic">__lmsg__</a> (bool, default: _false_): set `lmsg` brand for the last segment or fragment  
 </div>  
 <div markdown class="option">  
 <a id="mediats" data-level="basic">__mediats__</a> (sint, default: _0_): set media timescale. A value of 0 means inherit from PID, a value of -1 means derive from samplerate or frame rate  

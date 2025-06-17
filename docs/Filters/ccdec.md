@@ -14,6 +14,9 @@ Only a subset of CEA 608/708 is supported.
 # Options  {.no-collapse}  
   
 <div markdown class="option">  
+<a id="field" data-level="basic">__field__</a> (uint, default: _1_): field to decode  
+</div>  
+<div markdown class="option">  
 <a id="agg" data-level="basic">__agg__</a> (enum, default: _none_): output aggregation mode  
 
 - none: forward data as decoded (default)  

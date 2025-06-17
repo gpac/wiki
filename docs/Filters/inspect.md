@@ -186,6 +186,9 @@ This will play the session at 2x speed, using 30s of maximum buffering, consumin
 <a id="stats">__stats__</a> (bool, default: _false_): compute statistics for PIDs  
 </div>  
 <div markdown class="option">  
+<a id="timeout">__timeout__</a> (uint, default: _5000_): timeout in ms when doing simple inspection in case no packets are received on some PIDs  
+</div>  
+<div markdown class="option">  
 <a id="test">__test__</a> (enum, default: _no_, updatable): skip predefined set of properties, used for test mode  
 
 - no: no properties skipped  

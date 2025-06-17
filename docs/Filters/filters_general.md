@@ -151,7 +151,7 @@ gpac -i file.mp4 reframer:raw=av -o null
 This will force decoding media from `file.mp4` and trash (send to `null`) the result (doing a decoder benchmark for example).  
 
 ## Escaping option separators  
-When a filter uses an option defined as a string using the same separator character as gpac, you can either modify the set of separators, or escape the separator by duplicating it. The options enclosed by duplicated separator are not parsed. This is mostly used for meta filters, such as ffmpeg, to pass options to sub-filters such as libx264 (cf `x264opts` parameter).  
+When a filter uses an option defined as a string using the same separator character as gpac, you can either modify the set of separators, or escape the separator by duplicating it. The options enclosed by duplicated separator are not parsed. This is mostly used for meta filters, such as ffmpeg, to pass options to sub-filters such as libx264 (cf `x264opts` parameter). This can also be used to escape a list value containing the comma separator character.  
 Example
 ```
 f:a=foo:b=bar
@@ -170,6 +170,12 @@ f:a=foo::b=bar:c::d=fun
 ```
   
 This will set option `a` to `foo`, `b` to `bar:c` and the option `d` to `fun` on the filter.  
+Example
+```
+f:list=a,b1,,b2,c
+```
+  
+This will set list values to `a`, `b1,b2`, and `c`.  
   
 # Filter linking [_LINK_]  
   
@@ -715,6 +721,7 @@ Defined keywords:
     - `EXTERNAL_STORAGE` environment variable if present or `/sdcard` otherwise for Android  
     - user home directory for other platforms  
 
+- $GCFG: replaced by system path to folder containing GPAC config  
 - $GLANG: replaced by the global config language option [-lang](core_options/#lang)  
 - $GUA: replaced by the global config user agent option [-user-agent](core_options/#user-agent)  
 - $GINC(init_val[,inc]): replaced by `init_val` and increment `init_val` by `inc` (positive or negative number, 1 if not specified) each time a new filter using this string is created.  

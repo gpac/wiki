@@ -16,7 +16,4 @@ _Note: VP8/9 codecs will only use IVF output (equivalent to file extension `.ivf
 <div markdown class="option">  
 <a id="rcfg" data-level="basic">__rcfg__</a> (bool, default: _true_): force repeating decoder config at each I-frame  
 </div>  
-<div markdown class="option">  
-<a id="tc" data-level="basic">__tc__</a> (bool, default: _false_): inject metadata timecodes  
-</div>  
   

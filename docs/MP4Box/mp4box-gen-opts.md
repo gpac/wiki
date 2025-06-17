@@ -26,12 +26,6 @@ Unless specified otherwise, a track operation option of type `integer` expects a
 An option of type `boolean` expects no following value.  
     
 <div markdown class="option">
-<a id="mem-track">__-mem-track__</a>: enable memory tracker  
-</div>
-<div markdown class="option">
-<a id="mem-track-stack">__-mem-track-stack__</a>: enable memory tracker with stack dumping  
-</div>
-<div markdown class="option">
 <a id="p">__-p__</a> (string): use indicated profile for the global GPAC config. If not found, config file is created. If a file path is indicated, this will load profile from that file. Otherwise, this will create a directory of the specified name and store new config there. Reserved name `0` means a new profile, not stored to disk. Works using -p=NAME or -p NAME  
 </div>
 <div markdown class="option">
