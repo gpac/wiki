@@ -488,7 +488,7 @@ Some callbacks from libgpac are made available in NodeJS
 
 ## Monitoring
 
-GPAC provides a websocket server that can be used for live monotiring of the JS session.
+GPAC provides a websocket server that can be used for live monitoring of a running filter session, or as an entry point for communication between an external tool (e.g. a UI) and a running gpac instance.
 
 Quick example:
 

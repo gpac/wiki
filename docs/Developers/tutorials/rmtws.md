@@ -1,6 +1,6 @@
 # Overview
 
-GPAC includes a websocket server (called RMTWS) that can be used to develop monitoring applications using the gpac bindings. 
+GPAC includes a websocket server (called RMTWS) that can be used to develop monitoring applications using the gpac bindings.
 
 The basic architecture to acheive this contains 3 elements:
 
@@ -9,14 +9,14 @@ The basic architecture to acheive this contains 3 elements:
  - a UI that connects to the websocket and displays this information
 
 
-RMTWS is completly protocol-agnostic meaning that the nature and content of the messages exchanged between the UI and the controller are entirely up to the developers of the monitoring application (e.g. you can exchange a json object containing a list of filters info, or binary data representing a processed frame, or anything else). 
+RMTWS is completly protocol-agnostic meaning that the nature and content of the messages exchanged between the UI and the controller are entirely up to the developers of the monitoring application (e.g. you can exchange a json object containing a list of filters info, or binary data representing a processed frame, or anything else).
 
-Basic examples can be found in [share/rmtws](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws) in the gpac repo. 
+Basic examples can be found in [share/rmtws](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws) in the gpac repo.
 
 
 # GPAC options
 
-Using gpac with the [-rmt](core_options#rmt) parameter will enable the websocket server. 
+Using gpac with the [-rmt](core_options#rmt) parameter will enable the websocket server.
 
 Other options are available to control things like the port used, tls usage, etc. see the `-rmt-*` options in the [gpac usage](core_options#rmt).
 
@@ -36,7 +36,7 @@ sys.rmt_on_new_client = function(client) {
 	console.log("rmt new client", client.peer_address);
 
 	client.on_data = (msg) =>  {
-		
+
         console.log("Client ", client.peer_address, " got message: ", msg);
 
 		client.send("ACK");
@@ -50,16 +50,16 @@ sys.rmt_on_new_client = function(client) {
 
 When defined the `sys.rmt_on_new_client` function will be called everytime a client connects to the websocket. A `client` object will be passed as parameter.
 
-This `client` object has several methods and callbacks that can be used: 
- 
+This `client` object has several methods and callbacks that can be used:
+
  - `client.peer_address` is an identifier of the client in the form `ip:port`
  - `client.send(data)` sends data to the client on the websocket
  - `client.on_data(data)` is a callback called when the controller receives data from the client
- - `client.on_close()` is a callback called when the client disconnects 
+ - `client.on_close()` is a callback called when the client disconnects
 
 You can see the API documentation of these here: TODO doxygen links
 
-From there you can build more complex interaction between this controller and the UI. 
+From there you can build more complex interaction between this controller and the UI.
 
 For example in [share/rmtws](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws) you have a JS controller called `jsrmt.js` that can be used with
 
@@ -74,9 +74,9 @@ with this command running you can open the basic UI at [share/rmtws/index.html](
 
 # NodeJS
 
-Another way to run a RMTWS controller is to use the [NodeJS bindings](/Howtos/nodejs) of GPAC. 
+Another way to run a RMTWS controller is to use the [NodeJS bindings](/Howtos/nodejs) of GPAC.
 
-The code is very similar to the javascript example. 
+The code is very similar to the javascript example.
 
 ```js
 const gpac = require('../nodejs');
@@ -98,20 +98,20 @@ gpac.rmt_on_new_client = function(client) {
 }
 ```
 
-The method are the same as the javascript example above. 
+The method are the same as the javascript example above.
 
-For example you can use the nodejs controller in [share/rmtws/nodermt.js](https://github.com/gpac/gpac/blob/buildbot-rmtws/share/rmtws/nodermt.js) with 
+For example you can use the nodejs controller in [share/rmtws/nodermt.js](https://github.com/gpac/gpac/blob/buildbot-rmtws/share/rmtws/nodermt.js) with
 
 ```bash
 node nodermt.js -f=avgen -f=reframer:rt=on -f=inspect:deep # or any other gpac filters
 ```
 
-and open the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) to get a live JSON of the filters in the session. 
+and open the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) to get a live JSON of the filters in the session.
 
 
-# Python 
+# Python
 
-Finally, the same thing can be acheived using the [Python bindings](Howtos/python.md). 
+Finally, the same thing can be acheived using the [Python bindings](Howtos/python.md).
 
 The basic code here is slightly different but the same methods can be found.
 
@@ -147,4 +147,4 @@ The example in [share/rmtws/pyrmt.py](https://github.com/gpac/gpac/blob/buildbot
 python pyrmt.py -f=avgen -f=reframer:rt=on -f=inspect:deep
 ```
 
-and the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) should display a live JSON of the filters in the session. 
+and the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) should display a live JSON of the filters in the session.
