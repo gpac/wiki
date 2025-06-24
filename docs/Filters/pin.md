@@ -22,6 +22,8 @@ gpac -i stdin vout
 ```
   
   
+When reading from stdin, the default [timeout]() is 10 seconds.  
+
 # Named pipes  
   
 The filter can handle reading from named pipes. The associated protocol scheme is `pipe://` when loaded as a generic input (e.g. `-i pipe://URL` where URL is a relative or absolute pipe name).  
