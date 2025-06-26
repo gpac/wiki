@@ -23,16 +23,16 @@ These information can be stored at the file root level, as is the case for HEIF/
 - type=itype: item 4cc type (not needed if mime is provided)  
 - mime=mtype: item mime type, none if not set  
 - encoding=enctype: item content-encoding type, none if not set  
-- id=ID: item ID  
-- ref=4cc,id: reference of type 4cc to an other item (can be set multiple times)  
-- group=id,type: indicate the id and type of an alternate group for this item  
+- id=ID: item ID (strictly positive integer)  
+- ref=4cc,id: reference of type 4cc (such as 'dimg', 'auxl', 'cdsc') to an other item (can be set multiple times)  
+- group=4cc,id: indicate the type 4cc (such as 'altr') and id of an entity group this item belongs to  
 - replace: replace existing item by new item  
 </div>
   
 <div markdown class="option">
 <a id="add-image" data-level="basic">__-add-image__</a> (string): add the given file as HEIF image item, with parameter syntax `file_path[:opt1:optN]`. If `filepath` is omitted, source is the input MP4 file  
 
-- name, id, ref: see [-add-item](#add-item)  
+- name, id, ref, group: see [-add-item](#add-item)  
 - primary: indicate that this item should be the primary item  
 - time=t[-e][/i]: use the next sync sample after time t (float, in sec, default 0). A negative time imports ALL intra frames as items  
 
