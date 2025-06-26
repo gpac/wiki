@@ -356,6 +356,8 @@ Fake | bool | D | Indicate a stream present in the source but not delivered as a
 ContentLightLevel | mem | DP | Content light level, payload of clli box (see ISO/IEC 14496-12), can be set as a list of 2 integers in fragment declaration (e.g. "=max_cll,max_pic_avg_ll") | CLLP    
 MasterDisplayColour | mem | DP | Master display colour info, payload of mdcv box (see ISO/IEC 14496-12), can be set as a list of 10 integers in fragment declaration (e.g. "=dpx0,dpy0,dpx1,dpy1,dpx2,dpy2,wpx,wpy,max,min") | MDCP    
 SEILoaded | bool | DP | indicate that packet has SEI/inband data in its properties | SEIP    
+OriginalPTS | luint | DP | indicate original PTS or PCR when remapping M2TS PCR | OPTS    
+OriginalDTS | luint | DP | indicate original DTS when remapping M2TS PCR | ODTS    
 
 # Pixel formats  
   
