@@ -511,6 +511,7 @@ vc1 | SMPTE VC-1 Video
 dirac | Dirac Video    
 ac3 | AC3 Audio    
 eac3 | Enhanced AC3 Audio    
+ac4 | AC4 Audio    
 mlp | Dolby TrueHD    
 dra | DRA Audio    
 g719 | G719 Audio    
@@ -730,6 +731,7 @@ mp1 | rfmp3 | writegen | audio/mp3 audio/x-mp3
 ac3 | rfac3 | writegen | audio/ac3   
 eac3 | rfac3 | writegen | audio/eac3   
 ec3 | rfac3 | n/a | audio/x-ac3 audio/ac3 audio/x-eac3 audio/eac3   
+ac4 | rfac4 | writegen | audio/x-ac4 audio/ac4   
 amr | rfamr | writegen | audio/amr   
 awb | rfamr | writegen | audio/amr   
 evc | rfamr | writegen | audio/x-evc   
