@@ -60,4 +60,7 @@ The writegen filter should usually not be explicitly loaded without a source ID 
 <div markdown class="option">  
 <a id="add_nl" data-level="basic">__add_nl__</a> (bool, default: _false_): add new line after each packet when dumping text streams  
 </div>  
+<div markdown class="option">  
+<a id="rawb">__rawb__</a> (bool, default: _false_): force direct dump of input without framing rewrite. In this mode, all codec types are supported  
+</div>  
   

@@ -63,6 +63,9 @@ _Note: The filter uses negative CTS offsets: CTS is correct, but some frames may
 <a id="audelim">__audelim__</a> (bool, default: _false_): keep Access Unit delimiter in payload  
 </div>  
 <div markdown class="option">  
+<a id="keepfiller">__keepfiller__</a> (bool, default: _false_): keep filler NAL units in output  
+</div>  
+<div markdown class="option">  
 <a id="notime">__notime__</a> (bool, default: _false_): ignore input timestamps, rebuild from 0  
 </div>  
 <div markdown class="option">  
