@@ -343,31 +343,22 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 </div>
   
 <div markdown class="option">
-<a id="rmt">__-rmt__</a>:      enable profiling through [Remotery](https://github.com/Celtoys/Remotery). A copy of Remotery visualizer is in gpac/share/vis, usually installed in _/usr/share/gpac/vis_ or _Program Files/GPAC/vis_  
+<a id="rmt">__-rmt__</a>:      enable remote monitoring webserver  
 </div>
 <div markdown class="option">
-<a id="rmt-port">__-rmt-port__</a> (int, default: __17815__): set remotery port  
+<a id="rmt-port">__-rmt-port__</a> (int, default: __6363__): set rmt ws port  
 </div>
 <div markdown class="option">
-<a id="rmt-reuse">__-rmt-reuse__</a>: allow remotery to reuse port  
+<a id="rmt-localhost">__-rmt-localhost__</a>: make rmt ws only accepts localhost connection  
 </div>
 <div markdown class="option">
-<a id="rmt-localhost">__-rmt-localhost__</a>: make remotery only accepts localhost connection  
+<a id="rmt-sleep">__-rmt-sleep__</a> (int, default: __10__): set rmt ws sleep (ms) between server updates  
 </div>
 <div markdown class="option">
-<a id="rmt-sleep">__-rmt-sleep__</a> (int, default: __10__): set remotery sleep (ms) between server updates  
+<a id="rmt-cert">__-rmt-cert__</a> (string): rmt ws: certificate file in PEM format to use for TLS mode  
 </div>
 <div markdown class="option">
-<a id="rmt-nmsg">__-rmt-nmsg__</a> (int, default: __10__): set remotery number of messages per update  
-</div>
-<div markdown class="option">
-<a id="rmt-qsize">__-rmt-qsize__</a> (int, default: __131072__): set remotery message queue size in bytes  
-</div>
-<div markdown class="option">
-<a id="rmt-log">__-rmt-log__</a>: redirect logs to remotery (experimental, usually not well handled by browser)  
-</div>
-<div markdown class="option">
-<a id="rmt-ogl">__-rmt-ogl__</a>: make remotery sample opengl calls  
+<a id="rmt-pkey">__-rmt-pkey__</a> (string): rmt ws: private key file in PEM format to use for TLS mode  
 </div>
 <div markdown class="option">
 <a id="m2ts-vvc-old">__-m2ts-vvc-old__</a>: hack for old TS streams using 0x32 for VVC instead of 0x33  
