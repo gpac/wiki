@@ -11,7 +11,7 @@ The basic architecture to acheive this contains 3 elements:
 
 RMTWS is completly protocol-agnostic meaning that the nature and content of the messages exchanged between the UI and the controller are entirely up to the developers of the monitoring application (e.g. you can exchange a json object containing a list of filters info, or binary data representing a processed frame, or anything else).
 
-Basic examples can be found in [share/rmtws](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws) in the gpac repo.
+Basic examples can be found in [share/rmtws](https://github.com/gpac/gpac/tree/master/share/rmtws) in the gpac repo.
 
 
 # GPAC options
@@ -57,11 +57,11 @@ This `client` object has several methods and callbacks that can be used:
  - `client.on_data(data)` is a callback called when the controller receives data from the client
  - `client.on_close()` is a callback called when the client disconnects
 
-You can see the API documentation of these here: TODO doxygen links
+You can see the API documentation of these here: https://doxygen.gpac.io/interface_j_s___r_m_t_client.html
 
 From there you can build more complex interaction between this controller and the UI.
 
-For example in [share/rmtws](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws) you have a JS controller called `jsrmt.js` that can be used with
+For example in [share/rmtws](https://github.com/gpac/gpac/tree/master/share/rmtws) you have a JS controller called `jsrmt.js` that can be used with
 
 ```bash
 gpac -rmt -js=jsrmt.js  #<rest of your gpac command>
@@ -69,7 +69,7 @@ gpac -rmt -js=jsrmt.js  #<rest of your gpac command>
 gpac -rmt -js=jsrmt.js avgen reframer:rt=on inspect:deep
 ```
 
-with this command running you can open the basic UI at [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) which should display a JSON of the filter in the session with live updates. 
+with this command running you can open the basic UI at [share/rmtws/index.html](https://github.com/gpac/gpac/tree/master/share/rmtws/index.html) which should display a JSON of the filter in the session with live updates.
 
 
 # NodeJS
@@ -98,15 +98,15 @@ gpac.rmt_on_new_client = function(client) {
 }
 ```
 
-The method are the same as the javascript example above.
+The method are the same as the javascript example above. More info can be found in the [doxygen API documentation](https://doxygen.gpac.io/interface___r_m_t_client.html).
 
-For example you can use the nodejs controller in [share/rmtws/nodermt.js](https://github.com/gpac/gpac/blob/buildbot-rmtws/share/rmtws/nodermt.js) with
+For example you can use the nodejs controller in [share/rmtws/nodermt.js](https://github.com/gpac/gpac/blob/master/share/rmtws/nodermt.js) with
 
 ```bash
 node nodermt.js -f=avgen -f=reframer:rt=on -f=inspect:deep # or any other gpac filters
 ```
 
-and open the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) to get a live JSON of the filters in the session.
+and open the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/master/share/rmtws/index.html) to get a live JSON of the filters in the session.
 
 
 # Python
@@ -139,12 +139,12 @@ rmt_handler = MyRMTHandler()
 gpac.set_rmt_handler(rmt_handler)
 ```
 
-The API documentation is here: TODO doxygen link
+The API documentation is here: https://doxygen.gpac.io/group__pycore__grp.html with details about [clients](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_client.html) and [events](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_handler.html).
 
-The example in [share/rmtws/pyrmt.py](https://github.com/gpac/gpac/blob/buildbot-rmtws/share/rmtws/pyrmt.py) can be run with
+The example in [share/rmtws/pyrmt.py](https://github.com/gpac/gpac/blob/master/share/rmtws/pyrmt.py) can be run with
 
 ```sh
 python pyrmt.py -f=avgen -f=reframer:rt=on -f=inspect:deep
 ```
 
-and the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/buildbot-rmtws/share/rmtws/index.html) should display a live JSON of the filters in the session.
+and the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/master/share/rmtws/index.html) should display a live JSON of the filters in the session.
