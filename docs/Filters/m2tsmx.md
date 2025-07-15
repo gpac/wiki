@@ -197,7 +197,7 @@ WebVTT header and TX3G formatting are removed, only the text data is injected.
 <a id="pcr_only">__pcr_only__</a> (bool, default: _false_): enable PCR-only TS packets  
 </div>  
 <div markdown class="option">  
-<a id="pcr_init" data-level="basic">__pcr_init__</a> (lsint, default: _-1_): set initial PCR value for the programs. A negative value means random value is picked  
+<a id="pcr_init" data-level="basic">__pcr_init__</a> (lsint, default: _-1_): set initial PCR value for the programs. -1 means random value is picked, other negative value means offset to maximum PCR  
 </div>  
 <div markdown class="option">  
 <a id="sid" data-level="basic">__sid__</a> (uint, default: _0_): set service ID for the program  
