@@ -640,25 +640,37 @@ A simple example illustrating this is available [here](/examples/python/pygl_gpa
 # Custom GPAC callbacks
 Some callbacks from libgpac are made available in Python
 
-## Remotery interaction
+## Monitoring
 
-GPAC is by default compiled with [Remotery](https://github.com/Celtoys/Remotery) support for remote profiling. 
-You can interact with Remotery websocket server by sending messages to the remote browser, or receiving messages from it:
+GPAC provides a websocket server that can be used for live monitoring of a running filter session, or as an entry point for communication between an external tool (e.g. a UI) and a running gpac instance.
 
+Quick example:
+
+```python
+import libgpac as gpac
+
+gpac.enable_rmtws()
+
+class MyRMTHandler(gpac.RMTHandler):
+
+    def on_new_client(self, client):
+        print(f"new client {client} {client.peer_address()}")
+
+    def on_client_data(self, client, data):
+        print(f"client {client.peer_address()} got data: {data}")
+
+        client.send("ACK")
+
+
+    def on_client_close(self, client):
+        print(f"del client {client} {client.peer_address()}")
+
+
+rmt_handler = MyRMTHandler()
+gpac.set_rmt_handler(rmt_handler)
 ```
-class MyRemotery:
-	def on_rmt_event(self, text):
-		print('Remotery got message ' + text)
-		gpac.rmt_send('Some response text')
 
-my_rmt = MyRemotery()
-gpac.set_rmt_fun(my_rmt)
-
-```
-
-You will need to enable Remotery in GPAC by setting the option `-rmt`, as this cannot be enabled or disabled at run time.
-
-You can however enable or disable Remotery profiler using `gpac.rmt_enable(True/False)`.
+See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
 
 
 ## DASH Client
@@ -1122,4 +1134,3 @@ if __name__ == '__main__':
 
 
 ```
-

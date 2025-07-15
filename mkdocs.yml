@@ -130,9 +130,7 @@ nav:
       - Dynamic Rate Control: Howtos/dynamic_rc.md
       - In-place Editing: Howtos/mp4box-inplace.md
       - Working with Network Captures: Howtos/network-capture.md
-      - GPAC and NodeJS: Howtos/nodejs.md
       - Playlists/Splicing/Ad Insertion: Howtos/playlist.md
-      - GPAC and Python: Howtos/python.md
       - Simulating Real-Time sources: Howtos/realtime.md
       - ROUTE & ATSC3.0 services: Howtos/route.md
       - SCTE-35, id3 markers, dynamic metadata: Howtos/scte35-markers.md
@@ -389,11 +387,14 @@ nav:
   - Developers:
     - Developers/index.md
     - API documentation: https://doxygen.gpac.io/modules.html
-    - tutorials:
+    - Bindings:
+      - JavaScript: Developers/javascript.md
+      - Python: Howtos/python.md
+      - NodeJS: Howtos/nodejs.md
+    - Tutorials:
       - Intro to Filter Session: Developers/tutorials/filter-session-intro.md
       - Writing a custom Filter: Developers/tutorials/custom-filter.md
-    - JavaScript: Developers/javascript.md
-    - Python: Howtos/python.md
+      - Websocket monitoring: Developers/tutorials/rmtws.md
   - Playback:
     - Overview: Player/Player.md
     # - Introduction: Player/Playback.md

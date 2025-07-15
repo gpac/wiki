@@ -486,22 +486,32 @@ fs.run();
 # Custom GPAC callbacks {: data-level="expert" }
 Some callbacks from libgpac are made available in NodeJS
 
-## Remotery interaction
+## Monitoring
 
-GPAC is by default compiled with [Remotery](https://github.com/Celtoys/Remotery) support for remote profiling. 
-You can interact with Remotery websocket server by sending messages to the remote browser, or receiving messages from it:
+GPAC provides a websocket server that can be used for live monitoring of a running filter session, or as an entry point for communication between an external tool (e.g. a UI) and a running gpac instance.
 
+Quick example:
+
+```js
+gpac.enable_rmtws(true);
+
+gpac.rmt_on_new_client = function(client) {
+
+    console.log("[RMTWS] new client ", client.peer_address);
+
+    client.on_data = (msg) =>  {
+        console.log("[RMTWS] client", client.peer_address, "received", msg);
+
+        client.send("ACK");
+    }
+
+    client.on_close = () => {
+        console.log("[RMTWS] client", client.peer_address, "disconnected");
+    }
+}
 ```
-gpac.set_rmt_fun( text => {
-	console.log('Remotery got message ' + text);
-	gpac.rmt_send('Some response text');
-});
 
-```
-
-You will need to enable Remotery in GPAC by setting the option `-rmt`, as this cannot be enabled or disabled at run time.
-
-You can however enable or disable Remotery profiler using `gpac.rmt_enable(true)`.
+See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
 
 
 ## DASH Client

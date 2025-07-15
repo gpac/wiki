@@ -277,40 +277,35 @@ session.fire_event(f_evt, target_filter);
 ```
 
 
-# Remote interaction
+# Monitoring
 
-GPAC is by default compiled with [Remotery](https://github.com/Celtoys/Remotery) support, and can use the underlying websocket server of remotery to communicate with a web browser.
+GPAC provides a websocket server that can be used for live monitoring of a running filter session, or as an entry point for communication between an external tool (e.g. a UI) and a running gpac instance.
 
-You will need for this:
+Quick example:
 
-- to launch GPAC with remotery activate by specifying [-rmt](core_options#rmt)
-- set a handler function to listen to messages from the web client using `session.set_rmt_fun`
-- send messsages to the web client using `session.rmt_send`
+```js
+import { Sys as sys } from 'gpaccore'
 
-The following is an example of using remotery in JS:
+sys.enable_rmtws();
 
+sys.rmt_on_new_client = function(client) {
+	console.log("rmt new client", client.peer_address);
+
+	client.on_data = (msg) =>  {
+
+        console.log("Client ", client.peer_address, " got message: ", msg);
+
+		client.send("ACK");
+	}
+
+	client.on_close = function() {
+		console.log("ON_CLOSE on client ", client.peer_address);
+	}
+}
 ```
-session.set_rmt_fun( (text)=> {
-	print("rmt message " + text);
-	//do something
-	
-	//reply, either at once or later
-	session.rmt_send("yep !");
-});
 
-```
+See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
 
-Since the remotery code in GPAC is not modified, only text messages can currently be sent. We recommend exchanging data through JSON.
-
-By default, sampling times collecting is enabled in remotery. You can enable or disable at runtime this:
-
-```
-if (session.rmt_enabled)
-	print("disabling rmt sampling!");
-session.rmt_enabled = false;
-});
-
-```
 
 # Creating custom filters
 
