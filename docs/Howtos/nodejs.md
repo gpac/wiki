@@ -44,7 +44,7 @@ tags:
 
 # Overview {: data-level="all" }
 
-We discuss here how to use [GPAC Filters](Filters) in NodeJS. 
+We discuss here how to use [GPAC Filters](Filters) in NodeJS.
 
 This GPAC node-API provides bindings to GPAC filter session. The design is almost identical to the [Python](python) bindings, closely inspired from the [JS FilterSession](jssession) API used in GPAC.
 
@@ -56,7 +56,7 @@ You can also have a look at the  [test script](https://github.com/gpac/gpac/tree
 __Warning GPAC NodeJS bindings are only available starting from GPAC 2.0.__
 
 # Before you begin {: data-level="beginner" }
-   
+
 The GPAC NodeJS bindings are using [n-api](https://nodejs.org/api/n-api.html) for interfacing with libgpac filter session, while providing an object-oriented wrapper hiding all GPAC C design.
 
 The binding is called gpac_napi.c, and is hosted in GPAC [source tree](https://github.com/gpac/gpac/blob/master/share/nodejs/). It is NOT installed during default install step.
@@ -122,7 +122,7 @@ const gpac = require('./build/Release/gpac');
 console.log("Welcome to GPAC NodeJS !\nVersion: " + gpac.version);
 ```
 
-Running this should print your current GPAC version. 
+Running this should print your current GPAC version.
 
 A test program [gpac.js](https://github.com/gpac/gpac/blob/master/share/nodejs/test/gpac.js) exercising most of the NodeJS GPAC bindings is available in  `gpac/share/nodejs/test`
 
@@ -155,7 +155,7 @@ gpac.set_args(process.argv);
 ```
 
 __WARNING: the arguments must all be set together, only the first call to set_args() will be taken into account__
- 
+
 You may want to adjust the log tools and levels of GPAC:
 ```
 gpac.set_logs("dash@info");
@@ -171,7 +171,7 @@ To create a filter session, the simplest way is to use all defaults value, creat
 fs = new gpac.FilterSession();
 ```
 
-You can then add your filters as usual. 
+You can then add your filters as usual.
 
 Playback example:
 
@@ -245,7 +245,7 @@ console.log('Entering NodeJS EventLoop');
 
 Regardless of the way you run the session, you can request for being called back once or on regular basis. This is achieved by posting tasks to the GPAC session scheduler. A task object shall provide an `execute` method to be called. This function may return:
 
--  `false` to cancel the task, 
+-  `false` to cancel the task,
 - `true` to reschedule the task asap
 - a positive integer giving the time of next task callback in milliseconds
 
@@ -255,14 +255,14 @@ The callback function is called with `this` set to the task object.
 //create a custom task
 task = {};
 task.execute = () => {
-	console.log('in task'); 
+	console.log('in task');
 	return 1000;
 };
 fs.post(task);
 
 //run as usual
 ```
-  
+
 Tasks can be created at any time, either at the beginning or in a callback function (e.g., another task).
 
 _NOTE When running the session in multi-thread mode, callback tasks are always executed by the main thread (NodeJS main)._
@@ -302,7 +302,7 @@ Note that  (as in GPAC JS or Python) properties referring to constant values are
 
 # Custom Filters {: data-level="expert" }
 
-You can define your own filter(s) to interact with the media pipeline. As usual in GPAC filters, a custom filter can be a source, a sink or any other filter. It can consume packets from input PIDs and produce packets on output PIDs. 
+You can define your own filter(s) to interact with the media pipeline. As usual in GPAC filters, a custom filter can be a source, a sink or any other filter. It can consume packets from input PIDs and produce packets on output PIDs.
 
 Custom filters are created through the `new_filter` function of the filter session object. The custom filter can then assign its callbacks functions:
 
@@ -319,7 +319,7 @@ _NOTE When running the session in multi-thread mode, custom filter callbacks are
 
 ## Custom Sink example
 
-The following defines a custom filter doing simple inspection of the pipeline (sink filter) 
+The following defines a custom filter doing simple inspection of the pipeline (sink filter)
 ```
 
 let cust = fs.new_filter('MyFilterJS');
@@ -343,11 +343,11 @@ cust.configure_pid = (pid, is_remove) => {
 		console.log('PID reconfigure !');
 	}
 
-	//enumerate all props 
+	//enumerate all props
 	pid.enum_props( (type, val) => {
 			console.log('\t' + type + ': ' + val);
 	});
-	
+
 	//we are a sink, we MUST fire a play event
 	evt = new gpac.FilterEvent(gpac.GF_FEVT_PLAY);
 	pid.send_event(evt);
@@ -511,7 +511,7 @@ gpac.rmt_on_new_client = function(client) {
 }
 ```
 
-See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
+See [the RMTWS tutorial](/Developers/tutorials/rmtws) for more details.
 
 
 ## DASH Client
@@ -524,7 +524,7 @@ The principle is as follows:
 - the script can get notified of each created group (AdaptationSet in DASH, Variant Stream in HLS) with its various qualities. For HEVC tiling, each tile will be declared as a group, as well as the base tile track
 - the script is notified after each segment download on which quality to pickup next
 - the script can get notified while downloading a segment to decide if the download should be aborted
- 
+
 ```
 
 let dash_algo = {};
@@ -579,7 +579,7 @@ The principle is as follows:
 - the script can decide to let GPAC handle the request as usual (typically used for injecting http headers, throttling and monitoring)
 - the script can feed the data to GPAC (GET) or receive the data from GPAC (PUT/POST)
 
- 
+
 ```
 
 let http_req = {
@@ -654,7 +654,7 @@ A FileIO wrapper is constructed using:
 - the URL you want to wrap
 - a 'factory' object providing the callbacks for GPAC.
 - an optional boolean indicating if direct memory should be used (default), or if array buffers are copied between GPAC and NodeJS.
- 
+
 Let's define a factory that simply calls NodeJS file system calls:
 
 ```
@@ -774,7 +774,7 @@ _NOTE When running the session in multi-thread mode, file IO callbacks are alway
 
 # Multithread support {: data-level="expert" }
 
-Multithreaded filter sessions can be used with NodeJS, however the binding currently only supports executing callbacks into NodeJS from the main thread (main NodeJS or worker). 
+Multithreaded filter sessions can be used with NodeJS, however the binding currently only supports executing callbacks into NodeJS from the main thread (main NodeJS or worker).
 
 A multithreaded session is created by specifying the `-threads=N` option to libgpac:
 
@@ -782,7 +782,7 @@ A multithreaded session is created by specifying the `-threads=N` option to libg
 gpac.set_args(['libgpac', '-threads=2']);
 
 ```
- 
+
 This implies a few limitations detailed below.
 
 ## Remotery handling
@@ -799,7 +799,7 @@ gpac.set_args(['libgpac', '-rmt']);
 gpac.set_rmt_fun( (msg) => {
 	console.log('RMT got message ' + msg);
 	gpac.rmt_send('ACK for ' + msg);
-}); 
+});
 
 let fs_rmt = new gpac.FilterSession(gpac.GF_FS_FLAG_NON_BLOCKING);
 //create a simple task running forever every 100 ms - you can return false once you are done
@@ -813,7 +813,7 @@ fs_rmt.post_task(rmt_task);
 
 ## Custom filters
 
-In multi-threaded mode, custom filters are always scheduled on the main thread. 
+In multi-threaded mode, custom filters are always scheduled on the main thread.
 
 If your custom filter is sending packets requiring callbacks into NodeJS, typically shared data with JS packet finalizer, these packets will force all consuming filters to be scheduled on the main thread.
 
@@ -822,6 +822,6 @@ You should therefore avoid using shared JS data in your custom filter whenever p
 
 ## Custom bindings
 
-In multi-threaded mode, custom filter bindings (`dashin` filter for now) must be called on the main thread. 
+In multi-threaded mode, custom filter bindings (`dashin` filter for now) must be called on the main thread.
 
 This implies that the filter bound will be forced to run on the main thread. Packets dispatched by a JS-bound filter may still be processed by other threads, unless they are JS shared data packets.

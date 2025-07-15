@@ -57,7 +57,7 @@ This `client` object has several methods and callbacks that can be used:
  - `client.on_data(data)` is a callback called when the controller receives data from the client
  - `client.on_close()` is a callback called when the client disconnects
 
-You can see the API documentation of these here: https://doxygen.gpac.io/interface_j_s___r_m_t_client.html
+You can see the [API documentation of these here](https://doxygen.gpac.io/interface_j_s___r_m_t_client.html).
 
 From there you can build more complex interaction between this controller and the UI.
 
@@ -111,7 +111,7 @@ and open the UI in [share/rmtws/index.html](https://github.com/gpac/gpac/tree/ma
 
 # Python
 
-Finally, the same thing can be acheived using the [Python bindings](Howtos/python.md).
+Finally, the same thing can be acheived using the [Python bindings](/Howtos/python).
 
 The basic code here is slightly different but the same methods can be found.
 
@@ -139,7 +139,7 @@ rmt_handler = MyRMTHandler()
 gpac.set_rmt_handler(rmt_handler)
 ```
 
-The API documentation is here: https://doxygen.gpac.io/group__pycore__grp.html with details about [clients](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_client.html) and [events](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_handler.html).
+The [API documentation is here](https://doxygen.gpac.io/group__pycore__grp.html) with details about [clients](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_client.html) and [events](https://doxygen.gpac.io/classpython_1_1libgpac_1_1libgpac_1_1_r_m_t_handler.html).
 
 The example in [share/rmtws/pyrmt.py](https://github.com/gpac/gpac/blob/master/share/rmtws/pyrmt.py) can be run with
 

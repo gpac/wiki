@@ -51,7 +51,7 @@ tags:
 
 # Overview {:data-level="all"}
 
-We discuss here how to use [GPAC Filters](Filters) in Python. 
+We discuss here how to use [GPAC Filters](Filters) in Python.
 
 The GPAC Python API provides Python bindings to GPAC filter session. The design is closely inspired from the [JS FilterSession](jssession) API used in GPAC.
 The GPAC Python API is [documented here](https://doxygen.gpac.io/group__pyapi__grp.html).
@@ -64,7 +64,7 @@ __Warning__
 GPAC Python bindings are only available starting from GPAC 2.0.
 
 # Before you begin {:data-level="all"}
-   
+
 The GPAC Python bindings use [ctypes](https://docs.python.org/3/library/ctypes.html) for interfacing with libgpac filter session, while providing an object-oriented wrapper hiding all ctypes internals and GPAC C design.
 
 You __must__:
@@ -99,8 +99,8 @@ Running this should print your current GPAC version.
 
 You can also install libgpac bindings using PIP, see [this post](https://github.com/gpac/gpac/issues/2161#issuecomment-1087281505).
 
- 
-# Tuning up GPAC 
+
+# Tuning up GPAC
 
 The first thing to do is to initialize libgpac. This is done by default while importing the bindings with the following settings:
 
@@ -144,7 +144,7 @@ To create a filter session, the simplest way is to use all defaults value, creat
 fs = gpac.FilterSession()
 ```
 
-You can then add your filters as usual. 
+You can then add your filters as usual.
 
 Playback example:
 
@@ -162,14 +162,14 @@ f2 = fs.load_dst("test.ts")
 fs.run()
 ```
 
-Once you are done, you must explicitly destroy the filter session and uninit libgpac to cleanup all resources. 
+Once you are done, you must explicitly destroy the filter session and uninit libgpac to cleanup all resources.
 
 ```
 fs.delete()
 gpac.close()
 ```
 
-## Non-blocking sessions 
+## Non-blocking sessions
 
 A non-blocking session will need to be called on regular basis to process pending filter tasks. It is useful if you need to do other tasks while the session is running and do not want to use callbacks from GPAC for that.
 
@@ -195,7 +195,7 @@ Alternatively, you may run the session in blocking mode, and ask for being calle
 
 ```
 
-#custom task callback 
+#custom task callback
 #- returns -1: indicates the task is done, it will no longer get called and will be destroyed
 #- returns >=0 (None handled as 0): indicates the task is still active and should be
 #called again in the returned number of milliseconds
@@ -215,7 +215,7 @@ fs.post(task)
 
 #run as usual
 ```
-  
+
 Tasks can be created at any time, either at the beginning or in a callback function (e.g., another task).
 
 Tasks can be created in non-blocking sessions; in this case their execution timing will depend on the frequency at which your application calls `fs.run()`.
@@ -261,7 +261,7 @@ Your filter must derive from the FilterCustom class, and must provide a `process
 
 ## Custom Sink example
 
-The following defines a custom filter doing simple inspection of the pipeline (sink filter) 
+The following defines a custom filter doing simple inspection of the pipeline (sink filter)
 ```
 #define a custom filter
 class MyFilter(gpac.FilterCustom):
@@ -283,7 +283,7 @@ class MyFilter(gpac.FilterCustom):
 		#otherwise this is our first configure
 		else:
 			print('PID configured - props:')
-			
+
 			#enumerate all props using ourselves as the callback, getting called back in `on_prop_enum` below
 			pid.enum_props(self)
 			#we are a sink, we MUST fire a play event
@@ -370,7 +370,7 @@ class MyFilter(gpac.FilterCustom):
 				print("packet data is in GPU/filter shared memory")
 			else:
 				data = pck.data
-				#if numpy support, you can access the packet data as NPArray 
+				#if numpy support, you can access the packet data as NPArray
 				if gpac.numpy_support:
 					print("packet buffer class " + data.__class__.__name__ + " size " + str(len(data) ) )
 				else:
@@ -395,8 +395,8 @@ class MyFilter(gpac.FilterCustom):
 				if gpac.numpy_support:
 					numpy.copyto(odata, data)
 				opck.send()
-			#test new packet using shared data (data owned by the filter) 
-			#in this case our shared data is the data from the source packet, 
+			#test new packet using shared data (data owned by the filter)
+			#in this case our shared data is the data from the source packet,
 			#so we need to track when our new packet is consumed before
 			#releasing the source packet, and keep a reference to the source
 			#for as long as our new packet is alive
@@ -614,7 +614,7 @@ if pck.frame_ifce_gl:
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
 
-		#YUV 
+		#YUV
 		if nb_textures>2:
 			tx = pck.get_gl_texture(2)
 			texture3 = tx.id
@@ -629,7 +629,7 @@ else:
 		clone=pck.clone()
 		data = clone.data
 	#push data or parts of data to appropriate textures using glTexImage2D & co
-	
+
 ```
 
 And let your OpenGL skills do the rest !
@@ -670,7 +670,7 @@ rmt_handler = MyRMTHandler()
 gpac.set_rmt_handler(rmt_handler)
 ```
 
-See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
+See [the RMTWS tutorial](/Developers/tutorials/rmtws) for more details.
 
 
 ## DASH Client
@@ -683,14 +683,14 @@ The principle is as follows:
 - the script can get notification of each created group (AdaptationSet in DASH, Variant Stream in HLS) with its various qualities. For HEVC tiling, each tile will be declared as a group, as well as the base tile track
 - the script is notified after each segment download on which quality to pickup next
 - the script can be notified while downloading a segment to decide if the download should be aborted
- 
+
 ```
 class MyCustomDASHAlgo:
-	#get notifications when a DASH period starts or ends 
+	#get notifications when a DASH period starts or ends
 	def on_period_reset(self, type):
 		print('period reset type ' + str(type))
 
-	#get notification when a new group (i.e., set of adaptable qualities, `AdaptationSet` in DASH) is created. Some groups may be left unexposed by the DASH client 
+	#get notification when a new group (i.e., set of adaptable qualities, `AdaptationSet` in DASH) is created. Some groups may be left unexposed by the DASH client
 	#the qualities are sorted from min bandwidth/quality to max bandwidth/quality
 	def on_new_group(self, group):
 		print('new group ' + str(group.idx) + ' qualities ' + str(len(group.qualities)) + ' codec ' + group.qualities[0].codec);
@@ -700,7 +700,7 @@ class MyCustomDASHAlgo:
 		print('We are adapting on group ' + str(group.idx) )
 		print('' + str(stats))
 		# perform adaptation, check group.SRD to perform spatial adaptation, ...
-		# 
+		#
 		#in this example we simply cycle through qualities
 		newq = stats.active_quality_idx + 1
 		if newq >= len(group.qualities):
@@ -821,7 +821,7 @@ f2 = fs.load_dst(dst_wrap.url+':option')
 
 File IO wrapping can be useful when you want to distribute produced content through other means that GPAC built-in sinks, or if your source content is not a file.
 
-When opening a file, the factory object is cloned and the 'open' callback is called on the clone. 
+When opening a file, the factory object is cloned and the 'open' callback is called on the clone.
 This allows handling, with a single wrapper, cases where a URL resolves in multiple URLs when processing, for example DASH or HLS with manifest file(s) and media segments.
 
 
@@ -1046,13 +1046,13 @@ class MyFilter(gpac.FilterCustom):
                     self.buffering = False
 
                 if self.re_buffer:
-                    #playout buffer underflow 
+                    #playout buffer underflow
                     if buffer < self.re_buffer:
                         title += " - low buffer, pausing"
                         self.buffering = True
                         break
 
-                #show max buffer level 
+                #show max buffer level
                 if self.max_buffer > self.play_buffer:
                         pc = buffer / self.max_buffer * 100
                         title += " - buffer " + str(int(buffer/1000000)) + 's ' + str(int(pc)) + ' %'
@@ -1093,7 +1093,7 @@ class MyFilter(gpac.FilterCustom):
             #get packet duration for later sleep
             dur = pck.dur
             dur /= self.timescale
-            
+
             pid.drop_packet()
 
             k = cv2.waitKey(1)
@@ -1128,7 +1128,7 @@ if __name__ == '__main__':
     fs.run()
 
     fs.print_graph()
-    
+
     fs.delete()
     gpac.close()
 

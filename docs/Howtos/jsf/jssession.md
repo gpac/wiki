@@ -26,12 +26,12 @@ tags:
 
 
 
-# Overview {:data-level="all"} 
+# Overview {:data-level="all"}
 
-We discuss here how to use [gpac](gpac_general) or the [JavaScript Filter](jsf) to query and control from JavaScript the filter session in GPAC.  
+We discuss here how to use [gpac](gpac_general) or the [JavaScript Filter](jsf) to query and control from JavaScript the filter session in GPAC.
 The [JS scripts](https://github.com/gpac/testsuite/tree/filters/media/jsf) in the gpac test suite are also a good source of examples.
 
-The [JS FilterSession](https://doxygen.gpac.io/group__fsess__grp.html) provides JS bindings to the GPAC filter session object. It is recommended to also check the documentation of the [JS APIs](https://doxygen.gpac.io/group__jsf__grp.html) for more details. 
+The [JS FilterSession](https://doxygen.gpac.io/group__fsess__grp.html) provides JS bindings to the GPAC filter session object. It is recommended to also check the documentation of the [JS APIs](https://doxygen.gpac.io/group__jsf__grp.html) for more details.
 
 
 The FilterSession JS bindings can be loaded in three different ways in GPAC.
@@ -45,20 +45,20 @@ The FilterSession JS bindings can be loaded in three different ways in GPAC.
 
 The filter session object is exposed as a global variable named `session`.
 
-__WARNING__  
+__WARNING__
 The filter session API can only be loaded once per session. The implies that using both `-js` and the compositor, or `-js` and a JSFilter using this API will fail.
 
-__Discussion__  
+__Discussion__
 Since the session API is available in a JSFilter, you can load a script directly using `gpac script.js`. This will however create a JSFilter inside the session, but this filter will be automatically disabled (not used in the graph resolution, leaving it not connected) if the following conditions are met after initialization:
 
 - filter did not assign any capabilities
 - filter did not create any output PID
 - filter did not post any task using filter.post_task
- 
+
 # Listing filters in a session
 
 
-__WARNING__  
+__WARNING__
 The [filter object](https://doxygen.gpac.io/interface_j_s_f_s_filter.html) exposed by this API different from the [JavaScript Filter](https://doxygen.gpac.io/group__jsf__grp.html) one: it cannot be used to create packets, PIDs and so on on a given filter.
 
 
@@ -84,18 +84,18 @@ session.set_new_filter_fun( (f) => {
 	print("new filter " + f.name);
 	f.iname = "JS"+f.name;
 	all_filters.push(f);
-} ); 
+} );
 
 session.set_del_filter_fun( (f) => {
 	print("delete filter " + f.iname);
 	let idx = all_filters.indexOf(f);
 	if (idx>=0)
 		all_filters.splice (idx, 1);
-}); 
+});
 
 ```
 
-You can also check if a filter has not been destroyed by using `is_destroyed()` function. 
+You can also check if a filter has not been destroyed by using `is_destroyed()` function.
 
 
 The specific property `iname` is a string identifier reserved for JS, and used to query a filter by name in the session:
@@ -116,7 +116,7 @@ The filter session is running through an internal task scheduler. You can post t
 session.post_task( ()=> {
 	if (session.last_task) {
 		print("we are done ");
-		//the task will no longer be called 
+		//the task will no longer be called
 		return false;
 	}
 	all_filters.forEach( (f) => { print('Name: '+f.name)});
@@ -128,11 +128,11 @@ session.post_task( ()=> {
 
 # Creating filters
 
-You can load any filter during the session, connecting it from any existing filter if needed. 
+You can load any filter during the session, connecting it from any existing filter if needed.
 - source filters must be loaded as `src=URL:opts`
 - destination filters must be loaded as `dst=URL:opts`
 
-__Note__  
+__Note__
 Injecting a filter in the middle of a connected chain (i.e. going from A->B to A->newF->B) is currently not supported.
 
 
@@ -207,7 +207,7 @@ for (i=0; i<f.nb_opid; i++) {
 ```
 
 Reminder: The list of available properties is [`gpac -h props`](filters_properties).
- 
+
 
 You can query the source filter of a given input PID:
 
@@ -257,7 +257,7 @@ if (evt.ui_type == GF_EVENT_SIZE) {
 
 ```
 
-The filter session can also be used to fire events events on filters accepting UI events. 
+The filter session can also be used to fire events events on filters accepting UI events.
 
 ```
 let f_evt = new FilterEvent(GF_FEVT_USER);
@@ -304,7 +304,7 @@ sys.rmt_on_new_client = function(client) {
 }
 ```
 
-See [the RMTWS tutorial](Developers/tutorials/rmtws.md) for more details.
+See [the RMTWS tutorial](/Developers/tutorials/rmtws) for more details.
 
 
 # Creating custom filters
