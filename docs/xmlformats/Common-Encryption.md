@@ -135,7 +135,11 @@ The following example shows a simple GPAC DRM system info:
 *   `byte_offset` : number of bytes to leave in the clear (defaut: auto) at the begining of each NALU/OBU/etc. The final value will be at least the slice header size.
 *   `constant_IV_size` : size of constant IV used in pattern encryption mode. When not set, guessed from the size of the `constant_IV` attribute.
 *   `constant_IV` : constant IV used for all samples in cbcs pattern encryption mode. If `IV_size` is set, constant IV is ignored and each sample has a dedicated IV.  If the scheme type does not use constant IV and `first_IV` attribute is not present, this will be used as the first IV.
-*   `encryptSliceHeader`: enables old behavior for cenc scheme for AVC in avc1 mode, for which slice headers (and other nal such as SEI) can be encrypted.
+*   `encryptSliceHeader`: enables old behavior for cenc v1 scheme for AVC in avc1 mode only, for which slice headers (and other nal such as SEI, see `encryptNonVCLs` attribute) can be encrypted.
+*   `encryptNonVCLs`: fine-tune which non-VCL nal units are encrypted for old cenc v1 scheme for AVC in avc1 mode only. Possible values are:
+    *   **yes**: all non-VCL nal units are encrypted (GPAC's default behaviour up through v2.4 for avc1 CENCv1).
+    *   **no**: non-VCL nal units stay in clear. 
+    *   **(any)** (default): SEIs and AUDs are left in clear, the rest being encrypted.
 *   `clear_bytes`: number of bytes to leave in the clear for non NAL-based tracks. Only used in cbcs mode.
 *   `blockAlign`: for 'cenc' scheme, enforces block alignment (multiple of 16 bytes) for encrypted part of subsamples to avoid partial cipher blocks at the end of subsamples. The possible values are:
     *   **always**: always perform block alignment, even if resulting sample is not encrypted
