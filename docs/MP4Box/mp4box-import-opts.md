@@ -425,6 +425,14 @@ __tkidx__ (string):            `SE` set track position in track list, 1 being fi
 __extk__:                      `CE` add track as external track  
 </div>
 <div markdown class="option">
+__times__ (string):            `SE` modify timestamps using timestamp file specified in value. Timestamp file is formatted as:  
+
+    - a line starting with `#` is a comment, in which `timescale=V` can be used to set timescale (1000 by default)  
+    - empty lines are ignored  
+    - one line per sample in decode order, formated as `cts` or `dts cts`  
+</div>
+  
+<div markdown class="option">
 __stats__,__-fstat__:          `C` print filter session stats after import  
 </div>
 <div markdown class="option">
