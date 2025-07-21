@@ -358,6 +358,7 @@ MasterDisplayColour | mem | DP | Master display colour info, payload of mdcv box
 SEILoaded | bool | DP | indicate that packet has SEI/inband data in its properties | SEIP    
 OriginalPTS | luint | DP | indicate original PTS or PCR when remapping M2TS PCR | OPTS    
 OriginalDTS | luint | DP | indicate original DTS when remapping M2TS PCR | ODTS    
+MABRBaseURLs | strl | D | optionnal URLs for MABR - if first is `none`source server is not declared as repair server | MABU    
 
 # Pixel formats  
   

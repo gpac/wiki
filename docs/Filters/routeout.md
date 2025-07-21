@@ -98,11 +98,25 @@ The ROUTE session will include a multi-part MIME unsigned package containing man
 # DVB-MABR mode  
   
 In this mode, the filter allows multiple service multiplexing, identified through the `ServiceID` and `ServiceName` properties.  
-_Note: [ip](#ip) and [first_port](#first_port) are used to send the multicast gateway configuration, init segments and manifests. [first_port](#first_port) is used only if no port is specified in [dst](#dst)._  
+_Note: [ip](#ip) and [first_port](#first_port) are used to send the multicast gateway configuration. [first_port](#first_port) is used only if no port is specified in [dst](#dst)._  
   
-The session will carry DVB-MABR gateway configuration, maifests and init segments on `TSI=1`  
+The session will carry DVB-MABR gateway configuration, maifests and init segments on `TSI=1`. The [use_inband](#use_inband) option can be used to send manifests and init segments in media multicast sessions.  
   
 The FLUTE session always uses a symbol length of [mtu](#mtu) minus 44 bytes.  
+  
+The `MABRBaseURLs` property can be set on sources to declare a list of alternate repair servers to be injected.  
+Each base URL can be prefixed with `N;`, where `N` gives the relative weight of the server, a negative value skipping the server.  
+The special value `src` is used to indicate the source of the session.  
+Example
+```
+gpac -i HTTP_MPD_URL:gpac::#MABRBaseURLs=-1;src,SOME_ALT_URL dashin:forward=file -o mabr://225.0.0.1:1234/
+```
+  
+This will forward the source DASH session to multicast and:  
+
+- hide the source server as a repair URL  
+- add `SOME_ALT_URL` as a repair URL  
+
   
 # Low latency mode  
   
@@ -240,9 +254,6 @@ This will set a 1.0 percent chance to transition to error (not sending data over
 <a id="nozip" data-level="basic">__nozip__</a> (bool, default: _false_): do not zip signaling package (STSID+manifest)  
 </div>  
 <div markdown class="option">  
-<a id="furl" data-level="basic">__furl__</a> (bool, default: _false_): inject full URLs of source service in the signaling instead of stripped server path  
-</div>  
-<div markdown class="option">  
 <a id="flute" data-level="basic">__flute__</a> (bool, default: _true_): use flute for DVB-MABR object delivery  
 </div>  
 <div markdown class="option">  
@@ -260,7 +271,7 @@ This will set a 1.0 percent chance to transition to error (not sending data over
 <a id="errsim" data-level="basic">__errsim__</a> (v2d, default: _0.0x100.0_): simulate errors using a 2-state Markov chain. Value are percentages  
 </div>  
 <div markdown class="option">  
-<a id="use_inband" data-level="basic">__use_inband__</a> (bool, default: _false_): DVB mabr option: If true send the mani and init segment in content transport sessions instead of configuration transport session  
+<a id="use_inband" data-level="basic">__use_inband__</a> (bool, default: _false_): send manifest and init segments in media transport sessions for MABR  
 </div>  
 <div markdown class="option">  
 <a id="ssm" data-level="basic">__ssm__</a> (bool, default: _false_): indicate source-specific multicast for DVB-MABR, requires `ifce` to be set  
