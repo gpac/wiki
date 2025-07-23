@@ -395,6 +395,7 @@ v210 | v210 | v210 | Packed UYVY 422 10 bit LE
 grey | grey |  | Greyscale 8 bit    
 algr | algr |  | Alpha+Grey 8 bit    
 gral | gral |  | Grey+Alpha 8 bit    
+rgb8 | rgb8 |  | RGB 332, 8 bits / pixel    
 rgb4 | rgb4 |  | RGB 444, 12 bits (16 stored) / pixel    
 rgb5 | rgb5 |  | RGB 555, 15 bits (16 stored) / pixel    
 rgb6 | rgb6 |  | RGB 555, 16 bits / pixel    
@@ -828,6 +829,7 @@ v210 | rfrawvid | writegen | video/x-raw
 grey | rfrawvid | writegen | video/x-raw   
 algr | rfrawvid | writegen | video/x-raw   
 gral | rfrawvid | writegen | video/x-raw   
+rgb8 | rfrawvid | writegen | video/x-raw   
 rgb4 | rfrawvid | writegen | video/x-raw   
 rgb5 | rfrawvid | writegen | video/x-raw   
 rgb6 | rfrawvid | writegen | video/x-raw   
