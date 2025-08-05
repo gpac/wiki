@@ -344,6 +344,7 @@ nav:
         - MPEG-4 OD: Filters/odfdec.md
         - MediaCodec: Filters/mcdec.md
         - NVidia: Filters/nvdec.md
+        - OpenHEVC: Filters/ohevcdec.md
         - OpenJPEG2000: Filters/j2kdec.md
         - OpenSVC: Filters/osvcdec.md
         - PNG/JPG: Filters/imgdec.md
