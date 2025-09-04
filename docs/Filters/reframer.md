@@ -252,7 +252,7 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 - local: use UTC of local host  
 - any: use UTC of media, or UTC of local host if not found in media after probing time  
 - media: use UTC of media (abort if none found)  
-- tc: use timecode  
+- tc: use timecode of media (be careful: considered day will be today)  
 </div>  
   
 <div markdown class="option">  
