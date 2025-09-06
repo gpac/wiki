@@ -539,6 +539,7 @@ ssa | SSA /ASS Subtitles
 theo theora | Theora Video    
 vorb vorbis | Vorbis Audio    
 opus | Opus Audio    
+iamf | AOM IAMF (Immersive Audio Model and Formats)    
 flac | Flac Audio    
 spx speex | Speex Audio    
 vobsub | VobSub Subtitle    
