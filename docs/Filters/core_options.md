@@ -379,5 +379,5 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="no-mabr-patch">__-no-mabr-patch__</a>: disable GPAC parsing of patched isom boxes from mabr (will behave like most browsers/players)  
 </div>
 <div markdown class="option">
-<a id="cdrf">__-cdrf__</a>:    use compact sample dep (experimental)  
+<a id="no-cdrf">__-no-cdrf__</a>: disable cdrf sample dep  
 </div>
