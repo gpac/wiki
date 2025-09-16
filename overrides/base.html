@@ -82,9 +82,10 @@
       {% endfor %}
     {% endif %}
     {% block extrahead %}{% endblock %}
-   
-
-
+    {% if config.algolia %}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+      <link rel="preconnect" href="https://{{ config.algolia.app_id }}-dsn.algolia.net" crossorigin />
+    {% endif %}
   </head>
   {% set direction = config.theme.direction or lang.t("direction") %}
   {% if config.theme.palette %}
@@ -396,13 +397,53 @@
     {% endblock %}
     {% block scripts %}
     <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
-   
-      <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
-      {% for script in config.extra_javascript %}
-        {{ script | script_tag }}
-      {% endfor %}
+    <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
+    {% for script in config.extra_javascript %}
+      {{ script | script_tag }}
+    {% endfor %}
     {% endblock %}
-   
-</body>
+    {% if config.algolia %}
+      <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+      <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.querySelector('.md-search');
+        const algoliaContainer = document.createElement('div');
+        algoliaContainer.className = 'algolia-container';
+        document.body.appendChild(algoliaContainer);
+
+        if (searchInput) {
+          // Remove existing event listeners by replacing the element
+          const newSearchInput = searchInput.cloneNode(true);
+          searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+
+          docsearch({
+            appId: '{{ config.algolia.app_id }}',
+            apiKey: '{{ config.algolia.api_key }}',
+            indexName: '{{ config.algolia.index_name }}',
+            container: algoliaContainer,
+            transformItems(items) {
+              return items.map((item) => ({
+                  ...item,
+                  hierarchy: Object.entries(item.hierarchy).reduce((acc, [key, value]) => {
+                    if (value) {
+                      acc[key] = value.trim().replace('¶', '');
+                    } else {
+                      acc[key] = value;
+                    }
+                    return acc;
+                  }, {}),
+                }
+              ));
+            }
+          });
+
+          newSearchInput.addEventListener('click', function() {
+            const algoliaButton = document.querySelector('.algolia-container button');
+            if (algoliaButton) algoliaButton.click();
+          });
+        }
+      });
+      </script>
+    {% endif %}
   </body>
 </html>
