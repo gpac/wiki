@@ -582,4 +582,3 @@ In the following example we reproduce a [testsuite example](https://github.com/g
     if __name__ == "__main__":
         sys.exit(main())
     ```
-```
