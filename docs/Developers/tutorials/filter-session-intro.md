@@ -57,13 +57,15 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
-    // session is accessible globally
-    if (!session) {
-        console.error("Failed to create GPAC session");
-    }
+   try {
+    const session = new gpac.FilterSession();
+    console.log("GPAC FilterSession created!");
+} catch (e) {
+    console.error("Failed to create GPAC session :", e);
+}
     ```
 
 === "Python"
@@ -106,10 +108,10 @@ Alternatively to [gf_fs_load_source](https://doxygen.gpac.io/group__fs__grp.html
     GF_Filter *src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
-    let src_filter = session.add_filter("fin:src=logo.png");
+      const src_filter = session.load_src("logo.png");
     ```
 
 
@@ -146,11 +148,11 @@ The following code snippet provides an example to load the [reframer](/Filters/r
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
    
-    let refr = session.add_filter("reframer");
+    let refr = session.load("reframer");
     if (!refr) {
         throw new Error("Failed to load filter: reframer");
     }
@@ -178,11 +180,11 @@ options can be specified the same way as in the CLI of gpac, as stated with ‘f
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
 
-    let refrRT = session.add_filter("reframer:rt=on");
+    let refrRT = session.load("reframer:rt=on");
     if (!refrRT) {
         throw new Error("Failed to load filter: reframer:rt=on");
     }
@@ -215,18 +217,16 @@ by using [gf_fs_load_destination()](https://doxygen.gpac.io/group__fs__grp.html#
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
-    // Assume a global FilterSession object "session" exists
+
     try {
-        let dst_filter_direct = session.add_destination("logo_result.png");
-        if (!dst_filter_direct) {
-            throw new Error("Failed to load destination filter via add_destination");
-        }
+        let dst_filter = session.load_dst("logo_result.png");
+       
     } catch (e) {
-        console.error("JavaScript error: " + e.message);
-        session.abort(1);
+        console.error("Error: " + e.message);
+       
     }
     ```
 
@@ -257,18 +257,16 @@ Or by using the gf_fs_load_filter and use the Fout filter (or any alternative ou
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
     // Assume a global FilterSession object "session" exists
     try {
-        let dst_filter_fout = session.add_filter("fout:dst=logo_result.png");
-        if (!dst_filter_fout) {
-            throw new Error("Failed to load destination filter via fout");
-        }
+        let  dst_filter = session.load("fout:dst=logo_result.png");
+       
     } catch (e) {
-        console.error("JavaScript error: " + e.message);
-        session.abort(1);
+        console.error("Error: " + e.message);
+        
     }
     ```
 
@@ -336,34 +334,35 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
     session = NULL;  
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
-    // Assume a global GPAC FilterSession object: `session`
+
+    // Ensure gpac the module is loaded
+
+    let session = null; 
 
     try {
-        let gf_err = session.run();
-
-        if (gf_err >= 0) {
-            const connect_error = session.last_connect_error;
-            const process_error = session.last_process_error;
-            if (connect_error < 0) {
-                console.error(`Last connection error: ${connect_error}`);
-            }
-            if (process_error < 0) {
-                console.error(`Last process error: ${process_error}`);
-            }
+        session = new gpac.FilterSession();
+        /*
+            * ... Here, your code  ...
+            */
+        // Run the session in blocking mode
+        const err = session.run();
+        if (err < gpac.GF_OK) {
+            console.error("Session execution failed with error: " + gpac.e2s(err));
         } else {
-            console.error(`Session run error: ${gf_err}`);
+            session.print_graph(); 
+            session.print_stats(); 
         }
-
-        session.print_connections();
-        session.print_stats();
-    } catch (e) {
-        console.error("JavaScript exception:", e);
-
-        session.abort(1);
-    }
+        } catch (e) {
+        console.error("A JavaScript exception was thrown: ", e);
+        } finally {
+        if (session) {
+            session.abort();
+            session = null;
+        }
+        }
     ```
 
 === "Python"
@@ -372,39 +371,32 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
 
     import sys
     sys.path.append('/usr/share/gpac/python')   
-    import libgpac as gpac     
+    import libgpac as gpac 
 
-    fs = gpac.FilterSession()
+    fs = None
     try:
-       
-        fs.run()
-
-        try:
-            connect_error = getattr(fs, "last_connect_error", None)
-            process_error = getattr(fs, "last_process_error", None)
-            if connect_error is not None and connect_error < gpac.GF_OK:
-                print(f"Last connection error: {connect_error}")
-            if process_error is not None and process_error < gpac.GF_OK:
-                print(f"Last process error: {process_error}")
-        except Exception:
-            pass
-
-        try:
+        fs = gpac.FilterSession()
+        /*... Here, your code ...*/
+        err_code = fs.run()
+        if err_code < gpac.GF_OK:
+            print(f"L'exécution de la session a échoué avec l'erreur : {gpac.e2s(err_code)}")
+        else:
             fs.print_graph()
-        except Exception:
-            pass
-        try:
             fs.print_stats()
-        except Exception:
-            pass
+
+    except Exception as e:
+        print(f"Error: {e}")
 
     finally:
-        fs.delete()
+        if fs:
+            fs.delete()
+            fs = None
         try:
             gpac.close()
         except Exception:
             pass
     ```
+    
 
 
 
@@ -476,42 +468,53 @@ In the following example we reproduce a [testsuite example](https://github.com/g
     }
     ```
 
-=== "JavaScript"
+=== "NodeJS"
 
     ```javascript
+
+    let session = null;
+
     try {
-        // Load filters
-        let src = session.add_filter("fin:src=logo.png");
-        let reframer = session.add_filter("reframer");
-        let writegen = session.add_filter("writegen");
-        let dst = session.add_filter("fout:dst=logo_result.png");
+    session = new gpac.FilterSession();
+        if (!session) {
+            throw new Error("Failed to create GPAC session.");
+        }
+  
+    const src_filter = session.load_src("logo.png");
+    const reframer_filter = session.load("reframer");
+    const writegen_filter = session.load("writegen");
+    const dst_filter = session.load("fout:dst=logo_result.png");
+    
+        if (!dst_filter || !reframer_filter || !writegen_filter || !src_filter) {
+            throw new Error("Failed to load one or more filters.");
+        }
+   
+    reframer_filter.set_source(src_filter);
+    writegen_filter.set_source(reframer_filter);
+    dst_filter.set_source(writegen_filter);
+ 
 
-        if (!src || !reframer || !writegen || !dst) {
-            throw new Error("Failed to load one or more filters");
+    const err = session.run();
+
+        if (err < gpac.GF_OK) {
+            console.error("Session execution failed with error: " + gpac.e2s(err));
+        } else {
+            
+            session.print_graph();
+            session.print_stats();
         }
 
-        let gf_err = session.run();
-        if (gf_err >= 0) {
-        const connect_error = session.last_connect_error;
-        const process_error = session.last_process_error;
-        if (connect_error < 0) {
-            console.error(`Last connection error: ${connect_error}`);
-        }
-        if (process_error < 0) {
-            console.error(`Last process error: ${process_error}`);
-        }
-    } else {
-        console.error(`Session run error: ${gf_err}`);
-    }
-        // Print connections and stats
-        session.print_connections();
-        session.print_stats();
     } catch (e) {
-        console.error("JavaScript exception:", e);
-        session.abort(1);
+    console.error("A JavaScript exception was thrown: ", e);
+    } finally {
+
+        if (session) {
+            session.abort();
+            session = null;
+
+        }
     }
     ```
-
 === "Python"
 
     ```python
