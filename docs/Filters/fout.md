@@ -10,7 +10,7 @@ In regular mode, the filter only accept PID of type file. It will dump to file i
 If the output file name is `std` or `stdout`, writes to stdout.  
 The output file name can use gpac templating mechanism, see `gpac -h doc`.The filter watches the property `FileNumber` on incoming packets to create new files.  
   
-By default output files are created directly, which may lead to issues if concourrent programs attempt to access them.  
+By default output files are created directly, which may lead to issues if concurrent programs attempt to access them.  
 By enabling [atomic](#atomic), files will be created in target destination folder with the `.gftmp` suffix and move to their final name upon close.  
   
 # Discard sink mode  
