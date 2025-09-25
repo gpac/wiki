@@ -60,6 +60,9 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
 === "NodeJS"
 
     ```javascript
+
+    const gpac = require(path/to/gpac/share/nodejs);
+    
     try {
     let session = new gpac.FilterSession();
   
