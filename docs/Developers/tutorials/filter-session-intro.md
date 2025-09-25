@@ -60,14 +60,14 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
 === "NodeJS"
 
     ```javascript
-   try {
-    const session = new gpac.FilterSession();
-    console.log("GPAC FilterSession created!");
-} catch (e) {
-    console.error("Failed to create GPAC session :", e);
-}
+    try {
+    let session = new gpac.FilterSession();
+  
+    } catch (e) {
+        console.error("Failed to create GPAC session :", e);
+    }
+    
     ```
-
 === "Python"
 
     ```python
