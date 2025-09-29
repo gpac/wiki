@@ -244,8 +244,7 @@ by using [gf_fs_load_destination()](https://doxygen.gpac.io/group__fs__grp.html#
         if not dst_filter:
             print("Failed to load destination filter via load_dst")
    
-        fs.delete()
-        gpac.close()
+        
     ```
 
 
