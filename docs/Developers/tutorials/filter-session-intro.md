@@ -70,7 +70,6 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
         console.error("Failed to create GPAC session :", e);
     }
     ```
-
 === "Python"
 
     ```python
