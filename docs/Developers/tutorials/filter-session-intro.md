@@ -60,12 +60,15 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
 === "NodeJS"
 
     ```javascript
-   try {
-    const session = new gpac.FilterSession();
-    console.log("GPAC FilterSession created!");
-} catch (e) {
-    console.error("Failed to create GPAC session :", e);
-}
+    const gpac = require(path/to/gpac/share/nodejs);
+
+    try {
+
+    let session = new gpac.FilterSession();
+   
+    } catch (e) {
+        console.error("Failed to create GPAC session :", e);
+    }
     ```
 
 === "Python"
@@ -75,7 +78,8 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
     sys.path.append('/usr/share/gpac/python')   
     import libgpac as gpac                      
 
-    fs = gpac.FilterSession()                 
+    fs = gpac.FilterSession()  
+
     if not fs:
         print("Failed to create GPAC session")
     ```
@@ -119,7 +123,7 @@ Alternatively to [gf_fs_load_source](https://doxygen.gpac.io/group__fs__grp.html
 === "Python"
 
     ```python
-    src = fs.load("fin:src=logo.png")
+    src = fs.load_src("logo.png")
     ```
 
   
@@ -164,7 +168,7 @@ The following code snippet provides an example to load the [reframer](/Filters/r
 
     refr = fs.load("reframer")
     if not refr:
-        raise RuntimeError("Failed to load filter: reframer")
+        print("Failed to load filter: reframer")
     ```
 
 
@@ -194,8 +198,9 @@ options can be specified the same way as in the CLI of gpac, as stated with ‘f
 
     ```python
     refr_rt = fs.load("reframer:rt=on")
+
     if not refr_rt:
-        raise RuntimeError("Failed to load filter: reframer:rt=on")
+        print("Failed to load filter: reframer:rt=on")
     ```
 
 
@@ -234,11 +239,12 @@ by using [gf_fs_load_destination()](https://doxygen.gpac.io/group__fs__grp.html#
 
     ```python
 
-    try:
-        dst_filter_direct = fs.load_dst("logo_result.png")
-        if not dst_filter_direct:
-            raise RuntimeError("Failed to load destination filter via load_dst")
-    finally:
+    
+        dst_filter = fs.load_dst("logo_result.png")
+
+        if not dst_filter:
+            print("Failed to load destination filter via load_dst")
+   
         fs.delete()
         gpac.close()
     ```
@@ -260,26 +266,21 @@ Or by using the gf_fs_load_filter and use the Fout filter (or any alternative ou
 === "NodeJS"
 
     ```javascript
-    // Assume a global FilterSession object "session" exists
+   
     try {
         let  dst_filter = session.load("fout:dst=logo_result.png");
        
     } catch (e) {
-        console.error("Error: " + e.message);
-        
+        console.error("Error: " + e.message);  
     }
     ```
 
 === "Python"
 
     ```python
-    try:
+    
         dst_filter_fout = fs.load("fout:dst=logo_result.png")
-        if not dst_filter_fout:
-            raise RuntimeError("Failed to load destination filter via fout")
-    finally:
-        fs.delete()
-        gpac.close()
+       
     ```
 
 
@@ -338,7 +339,7 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
 
     ```javascript
 
-    // Ensure gpac the module is loaded
+    const gpac = require(path/to/gpac/share/nodejs);
 
     let session = null; 
 
@@ -371,31 +372,21 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
 
     import sys
     sys.path.append('/usr/share/gpac/python')   
-    import libgpac as gpac 
+    import libgpac as gpac                      
 
-    fs = None
-    try:
-        fs = gpac.FilterSession()
-        /*... Here, your code ...*/
-        err_code = fs.run()
-        if err_code < gpac.GF_OK:
-            print(f"L'exécution de la session a échoué avec l'erreur : {gpac.e2s(err_code)}")
-        else:
-            fs.print_graph()
-            fs.print_stats()
 
-    except Exception as e:
-        print(f"Error: {e}")
+    fs = gpac.FilterSession()
+    //.. Here, your code ...
 
-    finally:
-        if fs:
-            fs.delete()
-            fs = None
-        try:
-            gpac.close()
-        except Exception:
-            pass
-    ```
+    fs.run()
+    fs.print_graph()
+    fs.print_stats()
+
+
+    fs.delete()
+    gpac.close()
+    ```    
+    
     
 
 
@@ -472,6 +463,8 @@ In the following example we reproduce a [testsuite example](https://github.com/g
 
     ```javascript
 
+    const gpac = require(path/to/gpac/share/nodejs);
+
     let session = null;
 
     try {
@@ -494,7 +487,7 @@ In the following example we reproduce a [testsuite example](https://github.com/g
     dst_filter.set_source(writegen_filter);
  
 
-    const err = session.run();
+    session.run();
 
         if (err < gpac.GF_OK) {
             console.error("Session execution failed with error: " + gpac.e2s(err));
@@ -523,65 +516,28 @@ In the following example we reproduce a [testsuite example](https://github.com/g
     import libgpac as gpac   
 
     def main():
-        fs = None
-        try:
-            fs = gpac.FilterSession()
+        
+        fs = gpac.FilterSession()
 
-            src = fs.load_src("logo.png")
-            if not src:
-                raise RuntimeError("Failed to load source filter: 'fin:src=logo.png'")
+        src = fs.load_src("logo.png")
+        reframer = fs.load("reframer")
+        writer = fs.load("writegen")
+        dst = fs.load_dst("logo_result.png")
 
-            reframer = fs.load("reframer")
-            if not reframer:
-                raise RuntimeError("Failed to load filter 'reframer'")
+      
+        reframer.set_source(src)
+        writer.set_source(reframer)
+        dst.set_source(writer)
 
-            writegen = fs.load("writegen")
-            if not writegen:
-                raise RuntimeError("Failed to load filter 'writegen'")
+      
+        fs.run()
 
-            dst = fs.load_dst("logo_result.png")
-            if not dst:
-                raise RuntimeError("Failed to load destination filter: 'fout:dst=logo_result.png'")
+        fs.print_graph()
+        fs.print_stats()
 
-            reframer.set_source(src)
-            writegen.set_source(reframer)
-            dst.set_source(writegen)
-
-            fs.run()
-
-            try:
-                connect_error = getattr(fs, "last_connect_error", None)
-                process_error = getattr(fs, "last_process_error", None)
-                if connect_error is not None and connect_error < gpac.GF_OK:
-                    print(f"Last connection error: {connect_error}", file=sys.stderr)
-                if process_error is not None and process_error < gpac.GF_OK:
-                    print(f"Last process error: {process_error}", file=sys.stderr)
-            except Exception:
-                pass
-
-            try:
-                fs.print_graph()
-            except Exception:
-                pass
-
-            try:
-                fs.print_stats()
-            except Exception:
-                pass
-
-        except RuntimeError as e:
-            print(f"Runtime error: {e}", file=sys.stderr)
-            return 1
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}", file=sys.stderr)
-            return 1
-        finally:
-            if fs:
-                fs.delete()
-            gpac.close()
-
-        return 0
+        fs.delete()
+        gpac.close()
 
     if __name__ == "__main__":
-        sys.exit(main())
+    main()
     ```
