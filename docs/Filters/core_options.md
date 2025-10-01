@@ -343,6 +343,9 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 </div>
   
 <div markdown class="option">
+<a id="srt-forced">__-srt-forced__</a>: enable SRT with forced subtitles extensions  
+</div>
+<div markdown class="option">
 <a id="rmt">__-rmt__</a>:      enable remote monitoring webserver  
 </div>
 <div markdown class="option">
