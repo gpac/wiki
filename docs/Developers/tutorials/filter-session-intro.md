@@ -60,7 +60,7 @@ The simplest way to create a session object is to use the gf_fs_new_defaults() f
 === "NodeJS"
 
     ```javascript
-    const gpac = require(path/to/gpac/share/nodejs);
+    const gpac = require('path/to/gpac/share/nodejs');
 
     try {
 
@@ -337,7 +337,7 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
 
     ```javascript
 
-    const gpac = require(path/to/gpac/share/nodejs);
+    const gpac = require('path/to/gpac/share/nodejs');
 
     let session = null; 
 
@@ -374,7 +374,7 @@ The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e20
 
 
     fs = gpac.FilterSession()
-    //.. Here, your code ...
+    // Here, your code ...
 
     fs.run()
     fs.print_graph()
@@ -461,7 +461,7 @@ In the following example we reproduce a [testsuite example](https://github.com/g
 
     ```javascript
 
-    const gpac = require(path/to/gpac/share/nodejs);
+    const gpac = require('path/to/gpac/share/nodejs');
 
     let session = null;
 
@@ -485,7 +485,7 @@ In the following example we reproduce a [testsuite example](https://github.com/g
     dst_filter.set_source(writegen_filter);
  
 
-    session.run();
+    const err = session.run();
 
         if (err < gpac.GF_OK) {
             console.error("Session execution failed with error: " + gpac.e2s(err));
@@ -537,5 +537,5 @@ In the following example we reproduce a [testsuite example](https://github.com/g
         gpac.close()
 
     if __name__ == "__main__":
-    main()
+        main()
     ```
