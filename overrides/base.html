@@ -303,7 +303,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
  {% set p = page and page.file and page.file.src_path %}
-{% if page and page.edit_url and not page.is_homepage and not (p and (p.startswith('Filters/') or p.startswith('MP4Box/') or p.startswith('/'))) %}
+{% if page and page.edit_url and not page.is_homepage and not (p and (p.startswith('Filters/') or p.startswith('MP4Box/'))) %}
   {% include "partials/actions.html" %}
 {% endif %}
                 {% block content %}
