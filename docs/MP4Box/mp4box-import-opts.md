@@ -180,7 +180,7 @@ __svcmode__ (string):          `DS` set SVC/LHVC import mode. Value can be:
 
     - split: each layer is in its own track  
     - merge: all layers are merged in a single track  
-    - splitbase: all layers are merged in a track, and the AVC base in another  
+    - splitbase: all layers are merged in a track, and the base in another  
     - splitnox: each layer is in its own track, and no extractors are written  
     - splitnoxib: each layer is in its own track, no extractors are written, using inband param set signaling  
 </div>
