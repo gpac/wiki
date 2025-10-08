@@ -20,6 +20,6 @@ empty 'emeb' box in between following segmentation as hinted by the graph.
 </div>  
   
 <div markdown class="option">  
-<a id="segdur" data-level="basic">__segdur__</a> (frac, default: _1/1_): segmentation duration in seconds. 0/0 flushes immediately for each input packet (beware of the bitrate overhead)  
+<a id="sampdur" data-level="basic">__sampdur__</a> (frac, default: _0/1_): segmentation duration in seconds. Default value 0 only flushes when content changes  
 </div>  
   

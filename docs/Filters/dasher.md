@@ -555,7 +555,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="rawsub">__rawsub__</a> (bool, default: _no_): use raw subtitle format instead of encapsulating in container  
 </div>  
 <div markdown class="option">  
-<a id="asto">__asto__</a> (dbl, default: _0_): availabilityStartTimeOffset to use in seconds. A negative value simply increases the AST, a positive value sets the ASToffset to representations  
+<a id="asto">__asto__</a> (dbl, default: _0_): availabilityTimeOffset to use in seconds. A negative value simply increases the AST, a positive value sets the ASToffset to representations  
 </div>  
 <div markdown class="option">  
 <a id="profile" data-level="basic">__profile__</a> (enum, default: _auto_): target DASH profile. This will set default option values to ensure conformance to the desired profile. For MPEG-2 TS, only main and live are used, others default to main  
@@ -838,5 +838,8 @@ The segmenter adds the following properties to the output PIDs:
 </div>  
 <div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  
+</div>  
+<div markdown class="option">  
+<a id="evte_agg">__evte_agg__</a> (bool, default: _false_): force aggregation of Event Track samples of a DASH segment into a single sample  
 </div>  
   
