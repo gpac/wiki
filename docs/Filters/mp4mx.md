@@ -252,8 +252,13 @@ This will force the text stream to be used as a QT chapter track.
 <a id="strun">__strun__</a> (bool, default: _false_): use a single trun per traf (smooth streaming and co)  
 </div>  
 <div markdown class="option">  
-<a id="prft">__prft__</a> (bool, default: _true_): set `prft` box at segment start, disabled if not fragmented mode  
+<a id="prft">__prft__</a> (enum, default: _sender_): set `prft` box mode, disabled if not fragmented mode  
+
+- off: disable `prft` box  
+- sender: put ntp time before encoder  
+- both: put sender time (if available) and ntp time when writing the moof  
 </div>  
+  
 <div markdown class="option">  
 <a id="psshs">__psshs__</a> (enum, default: _moov_): set `pssh` boxes store mode  
 
