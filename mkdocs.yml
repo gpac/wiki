@@ -387,7 +387,7 @@ nav:
       - MP4 dmx examples: Build/MP4-dmx-examples.md
   - Developers:
     - Developers/index.md
-    - API documentation: https://doxygen.gpac.io/modules.html
+    - API documentation: https://doxygen.gpac.io
     - Bindings:
       - JavaScript: Developers/javascript.md
       - Python: Howtos/python.md
