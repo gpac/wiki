@@ -243,7 +243,7 @@ This will force the text stream to be used as a QT chapter track.
 <a id="tfdt_traf" data-level="basic">__tfdt_traf__</a> (bool, default: _false_): force `tfdt` box in each traf  
 </div>  
 <div markdown class="option">  
-<a id="nofragdef" data-level="basic">__nofragdef__</a> (bool, default: _false_): disable default flags in fragments  
+<a id="nofragdef" data-level="basic">__nofragdef__</a> (bool, default: _false_): disable default fragment flags in initial `moov`  
 </div>  
 <div markdown class="option">  
 <a id="straf">__straf__</a> (bool, default: _false_): use a single traf per moof (smooth streaming and co)  
@@ -275,7 +275,7 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
   
 <div markdown class="option">  
-<a id="noinit">__noinit__</a> (bool, default: _false_): do not produce initial `moov, used for DASH bitstream switching mode`  
+<a id="noinit">__noinit__</a> (bool, default: _false_): do not produce initial `moov`, used for DASH bitstream switching mode  
 </div>  
 <div markdown class="option">  
 <a id="tktpl">__tktpl__</a> (enum, default: _yes_): use track box from input if any as a template to create new track  
