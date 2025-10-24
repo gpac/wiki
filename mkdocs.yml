@@ -249,6 +249,7 @@ nav:
         - UDP/TCP output: Filters/sockout.md
       - Text & Subtitles:
         - Closed-Caption decoder: Filters/ccdec.md
+        - Closed-Caption encoder: Filters/ccenc.md
         - Subtitle loader: Filters/txtin.md
         - TTML sample merger: Filters/ttmlmerge.md
         - TTML to SRT: Filters/ttml2srt.md
