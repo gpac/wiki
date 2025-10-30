@@ -364,6 +364,9 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="rmt-pkey">__-rmt-pkey__</a> (string): rmt ws: private key file in PEM format to use for TLS mode  
 </div>
 <div markdown class="option">
+<a id="diso-nosize">__-diso-nosize__</a>: skip box size info when dumping ISOBMFF  
+</div>
+<div markdown class="option">
 <a id="m2ts-vvc-old">__-m2ts-vvc-old__</a>: hack for old TS streams using 0x32 for VVC instead of 0x33  
 </div>
 <div markdown class="option">
