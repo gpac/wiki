@@ -221,7 +221,7 @@ SSR | sint | D | ID of Adaptation Set:  <br/>
 - same value as ASID: regular SSR not used for cross-AS switching  <br/>- ID of another AdaptationSet: enable cross-AS switching between this AS and the referenced one  <br/>- negative value: LL-HLS compatability mode | SSRR    
 MuxSrc | str | D | Name of mux source(s), set by dasher to direct its outputs | MSRC    
 DashMode | uint | D | DASH mode to be used by multiplexer if any, set by dasher. 0 is no DASH, 1 is regular DASH, 2 is VoD | DMOD    
-InitBase64 | bool | D | Inidcate that multiplexer should send the base64 encoded version of the init segment | IB64    
+InitBase64 | bool | D | Indicate that multiplexer should send the base64 encoded version of the init segment | IB64    
 SegSync | bool | D | Indicate segment must be completely flushed before sending segment/fragment size events | DFSS    
 DashDur | frac | D | DASH target segment duration in seconds | DDUR    
 FragDur | frac | D | DASH target fragment duration in seconds | FDUR    
