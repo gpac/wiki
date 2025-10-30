@@ -468,6 +468,7 @@ The segmenter adds the following properties to the output PIDs:
 - DashDur: identifies target DASH segment duration - this can be used to estimate the SIDX size for example  
 - LLHLS: identifies LLHLS is used; the multiplexer must send fragment size events back to the dasher, and set `LLHLSFragNum` on the first packet of each fragment  
 - SegSync: indicates that fragments/segments must be completely flushed before sending back size events  
+- InitBase64: inidcates that the base64-encoded init segment must be set in the init segment size event  
 
   
 
@@ -841,5 +842,8 @@ The segmenter adds the following properties to the output PIDs:
 </div>  
 <div markdown class="option">  
 <a id="evte_agg">__evte_agg__</a> (bool, default: _false_): force aggregation of Event Track samples of a DASH segment into a single sample  
+</div>  
+<div markdown class="option">  
+<a id="base64">__base64__</a> (bool, default: _false_): embed init segments in manifests as base64  
 </div>  
   
