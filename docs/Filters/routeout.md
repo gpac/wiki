@@ -186,7 +186,7 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
   
 # Error simulation  
   
-It is possible to simulate errors with (-errsim)(). In this mode the LCT network sender implements a 2-state Markov chain:  
+It is possible to simulate errors with (-errsim)[]. In this mode the LCT network sender implements a 2-state Markov chain:  
 ```
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
 ```

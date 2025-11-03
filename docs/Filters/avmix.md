@@ -589,14 +589,14 @@ Only the `active` property can be animated or updated in a watcher.
   
 Example
 ```
-{'watch': 's1@rotation', 'target': 's2@rotation'}
+{"watch": "s1@rotation", "target": "s2@rotation"}
 ```
   
 This will copy s1.rotation to s2.rotation.  
   
 Example
 ```
-{'watch': 's1@rotation', 'target': 'get_scene('s2').set('rotation', -value); }
+{"watch": "s1@rotation", "target": "get_scene('s2').set('rotation', -value);" }
 ```
   
 This will copy the -1*s1.rotation to s2.rotation.  
@@ -618,7 +618,7 @@ The javascript function will be called with a single argument `evt` containing t
   
 Example
 ```
-{'watch': 'mousemove', 'target': 'let s = mouse_over(evt); get_scene('s2').set('fill', (s && (s.id=='s1') ? 'white' : 'black' );'}
+{"watch": "mousemove", "target": "let s = mouse_over(evt); get_scene('s2').set('fill', (s && (s.id=='s1') ? 'white' : 'black' );"}
 ```
   
 This will set s1 fill color to white of mouse is over s2 and to black otherwise.  
