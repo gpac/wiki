@@ -120,13 +120,13 @@ This will forward the source DASH session to multicast and:
   
 # Low latency mode  
   
-When using low-latency mode (-llmode)(), the input media segments are not re-assembled in a single packet but are instead sent as they are received.  
+When using low-latency mode [llmode](#llmode), the input media segments are not re-assembled in a single packet but are instead sent as they are received.  
 In order for the real-time scheduling of data chunks to work, each fragment of the segment should have a CTS and timestamp describing its timing.  
 If this is not the case (typically when used with an existing DASH session in file mode), the scheduler will estimate CTS and duration based on the stream bitrate and segment duration. The indicated bitrate is increased by [brinc](#brinc) percent for safety.  
 If this fails, the filter will trigger warnings and send as fast as possible.  
 _Note: The LCT objects are sent with no length (TOL header) assigned until the final segment size is known, potentially leading to a final 0-size LCT fragment signaling only the final size._  
   
-In this mode, init segments and manifests are sent at the frequency given by property `MCASTCarousel` of the source PID if set or by (-carousel)[] option.  
+In this mode, init segments and manifests are sent at the frequency given by property `MCASTCarousel` of the source PID if set or by [carousel](#carousel) option.  
 Indicating `MCASTCarousel=0` will disable mid-segment repeating of manifests and init segments.  
 
 # Examples  
@@ -186,7 +186,7 @@ These will demultiplex the input, re-dash it and send the output of the dasher t
   
 # Error simulation  
   
-It is possible to simulate errors with (-errsim)[]. In this mode the LCT network sender implements a 2-state Markov chain:  
+It is possible to simulate errors with [errsim](#errsim). In this mode the LCT network sender implements a 2-state Markov chain:  
 ```
 gpac -i source.mpd dasher -o route://225.1.1.0:6000/:errsim=1.0x98.0
 ```

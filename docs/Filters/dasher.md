@@ -195,7 +195,7 @@ When [seg_sync](#seg_sync) is disabled, the segmenter will by default announce a
 This may result in temporary mismatches between segment/part size currently received versus size as advertized in manifest.  
 When [seg_sync](#seg_sync) is enabled, the segmenter will wait for the last byte of the fragment/segment to be pushed before announcing a new segment in the manifest(s). This can however slightly increase the latency in MPEG-DASH low-latency.  
   
-When (-sflush)[] is set to `single`, segmentation is skipped and a single segment is generated per input.  
+When [sflush](#sflush) is set to `single`, segmentation is skipped and a single segment is generated per input.  
   
 ## Dynamic (real-time live) Mode  
 The dasher does not perform real-time regulation by default.  
@@ -392,7 +392,7 @@ If the inputs change but form a continuous timeline, [-keep_ts])() must be used 
   
 The inputs will be segmented for a duration of [subdur](#subdur) if set, otherwise the input media duration.  
 When inputs are over, they are restarted if [loop](#loop) is set otherwise a new period is created.  
-To avoid this behaviour, the [sflush](#sflush) option should be set to `end` or `single`, indicating that further sources for the same representations will be added in subsequent calls. When [sflush](#sflush) is not `off`, the (-loop)[] option is ignored.  
+To avoid this behaviour, the [sflush](#sflush) option should be set to `end` or `single`, indicating that further sources for the same representations will be added in subsequent calls. When [sflush](#sflush) is not `off`, the [loop](#loop) option is ignored.  
   
 Example
 ```
@@ -419,7 +419,7 @@ gpac -i SRC1 -o dash.mpd:segdur=2:state=CTX:sflush=end:keep_ts && gpac -i SRC2 -
   
 This will generate all dash segments for `SRC1` without looping/closing the period at end of input, then for `SRC2`. Timestamps of the sources will not be rewritten.  
   
-_Note: The default behaviour of MP4Box `-dash-ctx` option is to set the (-loop)[] to true._  
+_Note: The default behaviour of MP4Box `-dash-ctx` option is to set the [loop](#loop) to true._  
   
 ## Output redirecting  
 When loaded implicitly during link resolution, the dasher will only link its outputs to the target sink  

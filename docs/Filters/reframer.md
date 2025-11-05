@@ -167,8 +167,8 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
   
 # Absorbing stream discontinuities  
   
-Discontinuities may happen quite ofter in streaming sessions due to resolution switching, codec change, etc ...  
-While GPAC handles these discontinuities internally, it may be desired to ignore them, for example when a source is knwon to have no discontinuity but GPAC detects some due to network errors or other changing properties that should be ignored.  
+Discontinuities may happen quite often in streaming sessions due to resolution switching, codec change, etc ...  
+While GPAC handles these discontinuities internally, it may be desired to ignore them, for example when a source is known to have no discontinuity but GPAC detects some due to network errors or other changing properties that should be ignored.  
 The [nodisc](#nodisc) option allows removing all discontinuities once a stream is setup.  
 
 __Warning: Make sure you know what you are doing as using this option could make the stream not playable (ignoring a codec config change).__  
