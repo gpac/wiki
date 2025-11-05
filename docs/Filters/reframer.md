@@ -189,9 +189,10 @@ In this example, the dasher filter will never trigger a period switch due to inp
 <div markdown class="option">  
 <a id="rt" data-level="basic">__rt__</a> (enum, default: _off_, updatable): real-time regulation mode of input  
 
-- off: disables real-time regulation  
-- on: enables real-time regulation, one clock per PID  
-- sync: enables real-time regulation one clock for all PIDs  
+- off: disable real-time regulation  
+- on: enable real-time regulation, one clock per PID  
+- sync: enable real-time regulation, one clock for all PIDs  
+- align: send packets in DTS order following one clock for all PIDs (undo input packet bursts), no real-time regulation  
 </div>  
   
 <div markdown class="option">  
