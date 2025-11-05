@@ -165,6 +165,21 @@ The additional formats allowed for [xs](#xs) option are:
   
 _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are implicitly set._  
   
+# Absorbing stream discontinuities  
+  
+Discontinuities may happen quite ofter in streaming sessions due to resolution switching, codec change, etc ...  
+While GPAC handles these discontinuities internally, it may be desired to ignore them, for example when a source is knwon to have no discontinuity but GPAC detects some due to network errors or other changing properties that should be ignored.  
+The [nodisc](#nodisc) option allows removing all discontinuities once a stream is setup.  
+
+__Warning: Make sure you know what you are doing as using this option could make the stream not playable (ignoring a codec config change).__  
+  
+Example
+```
+gpac -i SOMEURL reframer:nodisc -o DASH_ORIGIN
+```
+  
+In this example, the dasher filter will never trigger a period switch due to input stream discontinuity.  
+  
 
 # Options  {.no-collapse}  
   
@@ -274,5 +289,8 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 </div>  
 <div markdown class="option">  
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
+</div>  
+<div markdown class="option">  
+<a id="nodisc">__nodisc__</a> (bool, default: _false_, updatable): ignore all discontinuities from input - see filter help  
 </div>  
   

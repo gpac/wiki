@@ -57,7 +57,7 @@ Playlist refreshing will abort:
 ## Playlist directives  
 A playlist directive line can contain zero or more directives, separated with space. The following directives are supported:  
 
-- repeat=N: repeats `N` times the content (hence played N+1).  
+- repeat=N: repeats `N` times the content (hence played N+1), infinite loop if negative.  
 - start=T: tries to play the file from start time `T` seconds (double format only). This may not work with some files/formats not supporting seeking.  
 - stop=T: stops source playback after `T` seconds (double format only). This works on any source (implemented independently from seek support).  
 - cat: specifies that the following entry should be concatenated to the previous source rather than opening a new source. This can optionally specify a byte range if desired, otherwise the full file is concatenated.  
