@@ -576,6 +576,9 @@ The segmenter adds the following properties to the output PIDs:
 <a id="profX">__profX__</a> (str): list of profile extensions, as used by DASH-IF and DVB. The string will be colon-concatenated with the profile used. If starting with `+`, the profile string by default is erased and `+` is skipped  
 </div>  
 <div markdown class="option">  
+<a id="query">__query__</a> (str): query parameters to append for segment requests (Annex I)  
+</div>  
+<div markdown class="option">  
 <a id="cp">__cp__</a> (enum, default: _set_): content protection element location  
 
 - set: in adaptation set element  
