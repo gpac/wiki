@@ -218,7 +218,7 @@ In this example, the dasher filter will never trigger a period switch due to inp
 <a id="frames">__frames__</a> (sintl, updatable): drop all except listed frames (first being 1). A negative value `-V` keeps only first frame every `V` frames  
 </div>  
 <div markdown class="option">  
-<a id="xs" data-level="basic">__xs__</a> (strl): extraction start time(s)  
+<a id="xs" data-level="basic">__xs__</a> (strl): extraction start time(s). If not set and an extraction end time is set, 0 is used  
 </div>  
 <div markdown class="option">  
 <a id="xe" data-level="basic">__xe__</a> (strl): extraction end time(s). If less values than start times, the last time interval extracted is an open range  
