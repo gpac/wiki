@@ -240,6 +240,9 @@ Directives `mark`, `keep` and `sprops` are reset at the end of the splice period
 <a id="sigcues">__sigcues__</a> (bool, default: _false_): inject `CueStart` property at each source begin (new or repeated) for DASHing  
 </div>  
 <div markdown class="option">  
+<a id="sigperiods">__sigperiods__</a> (bool, default: _false_): ask for a new DASH Period at each source begin ; useful when media timing needs to be reset at loops (TTML, ...)  
+</div>  
+<div markdown class="option">  
 <a id="fdel">__fdel__</a> (bool, default: _false_): delete source files after processing in playlist mode (does not delete the playlist)  
 </div>  
 <div markdown class="option">  
