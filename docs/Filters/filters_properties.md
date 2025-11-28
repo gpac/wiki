@@ -567,6 +567,8 @@ av1 ivf obu av1b | AOM AV1 Video
 vp8 ivf | VP8 Video    
 vp9 ivf | VP9 Video    
 vp10 ivf | VP10 Video    
+avsv avs3 | AVS3 Video    
+avsa avs3 | AVS3 Audio    
 mhas | MPEG-H Audio    
 mhas | MPEG-H AudioMux    
 prores apch | ProRes Video 422 HQ    
