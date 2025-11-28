@@ -16,8 +16,8 @@ The special file name `randsc` is used to generate random data with `0x000001` s
 The filter handles both files and GF_FileIO objects as input URL.  
   
 ## Packet Injecting  
-The filter can be used to inject a single packet instead of a file using (-pck)[] option.  
-No specific properties are attached, except a timescale if (-ptime)[] is set.  
+The filter can be used to inject a single packet instead of a file using [pck](#pck) option.  
+No specific properties are attached, except a timescale if [ptime](#ptime) is set.  
 Example
 ```
 gpac fin:pck=str@"My Sample Text":ptime=2500/100:#CodecID=stxt:#StreamType=text

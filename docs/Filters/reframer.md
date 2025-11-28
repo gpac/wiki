@@ -165,6 +165,21 @@ The additional formats allowed for [xs](#xs) option are:
   
 _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are implicitly set._  
   
+# Absorbing stream discontinuities  
+  
+Discontinuities may happen quite often in streaming sessions due to resolution switching, codec change, etc ...  
+While GPAC handles these discontinuities internally, it may be desired to ignore them, for example when a source is known to have no discontinuity but GPAC detects some due to network errors or other changing properties that should be ignored.  
+The [nodisc](#nodisc) option allows removing all discontinuities once a stream is setup.  
+
+__Warning: Make sure you know what you are doing as using this option could make the stream not playable (ignoring a codec config change).__  
+  
+Example
+```
+gpac -i SOMEURL reframer:nodisc -o DASH_ORIGIN
+```
+  
+In this example, the dasher filter will never trigger a period switch due to input stream discontinuity.  
+  
 
 # Options  {.no-collapse}  
   
@@ -174,9 +189,10 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 <div markdown class="option">  
 <a id="rt" data-level="basic">__rt__</a> (enum, default: _off_, updatable): real-time regulation mode of input  
 
-- off: disables real-time regulation  
-- on: enables real-time regulation, one clock per PID  
-- sync: enables real-time regulation one clock for all PIDs  
+- off: disable real-time regulation  
+- on: enable real-time regulation, one clock per PID  
+- sync: enable real-time regulation, one clock for all PIDs  
+- align: send packets in DTS order following one clock for all PIDs (undo input packet bursts), no real-time regulation  
 </div>  
   
 <div markdown class="option">  
@@ -202,7 +218,7 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 <a id="frames">__frames__</a> (sintl, updatable): drop all except listed frames (first being 1). A negative value `-V` keeps only first frame every `V` frames  
 </div>  
 <div markdown class="option">  
-<a id="xs" data-level="basic">__xs__</a> (strl): extraction start time(s)  
+<a id="xs" data-level="basic">__xs__</a> (strl): extraction start time(s). If not set and an extraction end time is set, 0 is used  
 </div>  
 <div markdown class="option">  
 <a id="xe" data-level="basic">__xe__</a> (strl): extraction end time(s). If less values than start times, the last time interval extracted is an open range  
@@ -274,5 +290,8 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 </div>  
 <div markdown class="option">  
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
+</div>  
+<div markdown class="option">  
+<a id="nodisc">__nodisc__</a> (bool, default: _false_, updatable): ignore all discontinuities from input - see filter help  
 </div>  
   

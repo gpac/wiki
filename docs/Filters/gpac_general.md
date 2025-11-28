@@ -440,7 +440,7 @@ Linking can be done once filters are loaded, using the syntax `@F@SRC` or `@@F@S
 - `@@F` indicates the target filter using a 0-based index `F` starting from the first laoded filter, e.g. `@@1` indicates the second loaded filter.  
 - `@SRC`or `@@SRC`: same syntax as link directives  
 
-Sources MUST be set before relinking outputs using (-rl)[].  
+Sources MUST be set before relinking outputs using [rl](#rl).  
 Example
 ```
 gpac -dl -i SRC F1 F2 [...] @1@2 @0@2

@@ -195,7 +195,7 @@ When [seg_sync](#seg_sync) is disabled, the segmenter will by default announce a
 This may result in temporary mismatches between segment/part size currently received versus size as advertized in manifest.  
 When [seg_sync](#seg_sync) is enabled, the segmenter will wait for the last byte of the fragment/segment to be pushed before announcing a new segment in the manifest(s). This can however slightly increase the latency in MPEG-DASH low-latency.  
   
-When (-sflush)[] is set to `single`, segmentation is skipped and a single segment is generated per input.  
+When [sflush](#sflush) is set to `single`, segmentation is skipped and a single segment is generated per input.  
   
 ## Dynamic (real-time live) Mode  
 The dasher does not perform real-time regulation by default.  
@@ -392,7 +392,7 @@ If the inputs change but form a continuous timeline, [-keep_ts])() must be used 
   
 The inputs will be segmented for a duration of [subdur](#subdur) if set, otherwise the input media duration.  
 When inputs are over, they are restarted if [loop](#loop) is set otherwise a new period is created.  
-To avoid this behaviour, the [sflush](#sflush) option should be set to `end` or `single`, indicating that further sources for the same representations will be added in subsequent calls. When [sflush](#sflush) is not `off`, the (-loop)[] option is ignored.  
+To avoid this behaviour, the [sflush](#sflush) option should be set to `end` or `single`, indicating that further sources for the same representations will be added in subsequent calls. When [sflush](#sflush) is not `off`, the [loop](#loop) option is ignored.  
   
 Example
 ```
@@ -419,7 +419,7 @@ gpac -i SRC1 -o dash.mpd:segdur=2:state=CTX:sflush=end:keep_ts && gpac -i SRC2 -
   
 This will generate all dash segments for `SRC1` without looping/closing the period at end of input, then for `SRC2`. Timestamps of the sources will not be rewritten.  
   
-_Note: The default behaviour of MP4Box `-dash-ctx` option is to set the (-loop)[] to true._  
+_Note: The default behaviour of MP4Box `-dash-ctx` option is to set the [loop](#loop) to true._  
   
 ## Output redirecting  
 When loaded implicitly during link resolution, the dasher will only link its outputs to the target sink  
@@ -468,6 +468,7 @@ The segmenter adds the following properties to the output PIDs:
 - DashDur: identifies target DASH segment duration - this can be used to estimate the SIDX size for example  
 - LLHLS: identifies LLHLS is used; the multiplexer must send fragment size events back to the dasher, and set `LLHLSFragNum` on the first packet of each fragment  
 - SegSync: indicates that fragments/segments must be completely flushed before sending back size events  
+- InitBase64: indicates that the base64-encoded init segment must be set in the init segment size event  
 
   
 
@@ -555,7 +556,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="rawsub">__rawsub__</a> (bool, default: _no_): use raw subtitle format instead of encapsulating in container  
 </div>  
 <div markdown class="option">  
-<a id="asto">__asto__</a> (dbl, default: _0_): availabilityStartTimeOffset to use in seconds. A negative value simply increases the AST, a positive value sets the ASToffset to representations  
+<a id="asto">__asto__</a> (dbl, default: _0_): availabilityTimeOffset to use in seconds. A negative value simply increases the AST, a positive value sets the ASToffset to representations  
 </div>  
 <div markdown class="option">  
 <a id="profile" data-level="basic">__profile__</a> (enum, default: _auto_): target DASH profile. This will set default option values to ensure conformance to the desired profile. For MPEG-2 TS, only main and live are used, others default to main  
@@ -573,6 +574,9 @@ The segmenter adds the following properties to the output PIDs:
   
 <div markdown class="option">  
 <a id="profX">__profX__</a> (str): list of profile extensions, as used by DASH-IF and DVB. The string will be colon-concatenated with the profile used. If starting with `+`, the profile string by default is erased and `+` is skipped  
+</div>  
+<div markdown class="option">  
+<a id="query">__query__</a> (str): query parameters to append for segment requests (Annex I)  
 </div>  
 <div markdown class="option">  
 <a id="cp">__cp__</a> (enum, default: _set_): content protection element location  
@@ -838,5 +842,11 @@ The segmenter adds the following properties to the output PIDs:
 </div>  
 <div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  
+</div>  
+<div markdown class="option">  
+<a id="evte_agg">__evte_agg__</a> (bool, default: _false_): force aggregation of Event Track samples of a DASH segment into a single sample  
+</div>  
+<div markdown class="option">  
+<a id="base64">__base64__</a> (bool, default: _false_): embed init segments in manifests as base64  
 </div>  
   

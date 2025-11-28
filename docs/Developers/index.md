@@ -20,9 +20,9 @@ Please use [github issues](https://github.com/gpac/gpac/issues) for feature requ
 
 ## API documentation
 
-The [API documentation](https://doxygen.gpac.io/modules.html) provides information on the GPAC  Filter API.
+The [API documentation](https://doxygen.gpac.io) provides information on the GPAC  Filter API.
 
-GPAC's core is writen in C, but it can be easily extended using [Javascipt Filters](/Developers/javascript), used in a [Python](/Howtos/python) or [NodeJS application](/Developers/javascript).
+GPAC's core is writen in C, but it can be easily extended using [Javascript Filters](/Developers/javascript), used in a [Python](/Howtos/python) or [NodeJS application](/Developers/javascript).
 
 
 ## Tutorials

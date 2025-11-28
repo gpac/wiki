@@ -153,7 +153,7 @@ __Warning: this does not  modify generated files location__
 <a id="mpd-refresh" data-level="basic">__-mpd-refresh__</a> (number): specify MPD update time in seconds  
 </div>
 <div markdown class="option">
-<a id="time-shift" data-level="basic">__-time-shift__</a> (int): specify MPD time shift buffer depth in seconds, `-1` to keep all files)  
+<a id="time-shift" data-level="basic">__-time-shift__</a> (int): specify MPD time shift buffer depth in seconds, `-1` to keep all files. Default is 0  
 </div>
 <div markdown class="option">
 <a id="subdur" data-level="basic">__-subdur__</a> (number): specify maximum duration in ms of the input file to be dashed in LIVE or context mode. This does not change the segment duration, but stops dashing once segments produced exceeded the duration. If there is not enough samples to finish a segment, data is looped unless [-no-loop](#no-loop) is used which triggers a period end  

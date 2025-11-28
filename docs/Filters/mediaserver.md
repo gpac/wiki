@@ -40,12 +40,17 @@ Each service is a JSON object with one or more of the following properties:
 - keepalive: (number, default 4) remove the service if no request received for the indicated delay in seconds (0 force service to stay in memory forever)  
 - mabr: (string, default null) address of multicast ABR source for this service  
 - timeshift: (number, default 10) time in seconds a cached file remains in memory  
-- unload: (number, default 4 multicast unload policy  
+- unload: (number, default 4) multicast unload policy  
 - activate: (number, default 1) multicast activation policy  
-- repair: (boolean, default false) enable unicast repair in MABR stack  
-- mcache: (boolean, default false) cache manifest files (experimental)  
+- mcache: (boolean, default false) cache manifest files  
+- repair: (string, default false) enable unicast repair in MABR stack  
+
+    - false: disable repair  
+    - true: enable repair using source URL or repair servers indicated in MABR  
+    - auto: enable repair only from repair servers indicated in MABR  
+
 - corrupted: (boolean, default false) forward corrupted files if parsable (valid container syntax, broken media)  
-- check_ip: (boolean, , default false monitor IP address and port rather than connection when tracking active clients  
+- check_ip: (boolean, , default false) monitor IP address and port rather than connection when tracking active clients  
 - noproxy: (boolean) disable proxy for service when local mount point is set. Default is `true` if both `local` and `http` are set, `false` otherwise  
 - sources: (array, default null) list of sources objects for file-only services. Each source has the following property:  
 - name: name as used in resource path,  
@@ -67,14 +72,14 @@ All services using `http` option can be exposed by the server without exposing t
   
 Example
 ```
-{ 'http': 'https://test.com/live/dash/live.mpd', 'local': '/service1/'}
+{ "http": "https://test.com/live/dash/live.mpd", "local": "/service1/"}
 ```
   
 The server will translate any request `/service1/foo/bar.ext` into `https://test.com/live/dash/foo/bar.ext`.  
   
 Example
 ```
-{ 'http': 'https://test.com/live/dash/live.mpd', 'local': '/service1/manifest.mpd'}
+{ "http": "https://test.com/live/dash/live.mpd", "local": "/service1/manifest.mpd"}
 ```
   
 The server will translate:  
@@ -97,19 +102,19 @@ _Service configuration parameters used :_ `http` (mandatory), `gcache`, `local`.
   
 Configuration for activating proxy for a specific network path:  
 ```
-{ 'http': 'https://test.com/video/'}
+{ "http": "https://test.com/video/"}
 ```
   
   
 Configuration for activating proxy for any network path:  
 ```
-{ 'http': '*'}
+{ "http": "*"}
 ```
   
   
 Configuration for a relay on a given path:  
 ```
-{ 'http': 'https://test.com/some/path/to/video/', 'local': '/myvids/'}
+{ "http": "https://test.com/some/path/to/video/", "local": "/myvids/"}
 ```
   
   
@@ -125,13 +130,13 @@ _Service configuration parameters used :_ `http` ( mandatory), `timeshift`, `mca
   
 Configuration for proxying while caching a live HTTP streaming service:  
 ```
-{ 'http': 'https://test.com/dash/live.mpd', 'timeshift': '30' }
+{ "http": "https://test.com/dash/live.mpd", "timeshift": 30 }
 ```
   
   
 Configuration for relay caching a live HTTP streaming service:  
 ```
-{ 'http': 'https://test.com/dash/live.mpd', 'timeshift': '30', 'local': '/myservice/test.mpd'}
+{ "http": "https://test.com/dash/live.mpd", "timeshift": 30, "local": "/myservice/test.mpd"}
 ```
   
   
@@ -158,7 +163,7 @@ The manifest name can be omitted, in which case the exact manifest name used in 
   
 Configuration for exposing a MABR session:  
 ```
-{ 'mabr': 'mabr://234.0.0.1:1234', 'local': '/service1', 'timeshift': '30' }
+{ "mabr": "mabr://234.0.0.1:1234", "local": "/service1", "timeshift": 30 }
 ```
   
   
@@ -166,7 +171,7 @@ Configuration for exposing a MABR session:
   
 The server can be configured to use a multicast source as an alternate data source of a given HTTP streaming service.  
   
-_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `corrupted`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `active`, `keepalive` and `js`.  
+_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `corrupted`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `activate`, `keepalive` and `js`.  
   
 The multicast service can be dynamically loaded at run-time using the `unload` service configuration option:  
 
@@ -177,7 +182,7 @@ The multicast service can be dynamically loaded at run-time using the `unload` s
 The qualities in the multicast service can be dynamically activated or deactivated using the `activate` service configuration option:  
 
 - if 0, multicast streams are never deactivated,  
-- otherwise, a multicast representation is activated only if at least `active` clients are consuming it, and deactivated otherwise.  
+- otherwise, a multicast representation is activated only if at least `activate` clients are consuming it, and deactivated otherwise.  
 
   
 The multicast service can use repair options of the MABR stack using `repair` service configuration option:  
@@ -200,14 +205,14 @@ _Note: Manifest files coming from multicast are currently never cached._
   
 Configuration for caching a live HTTP streaming service with MABR backup:  
 ```
-{ 'http': 'https://test.com/dash/live.mpd', 'mabr': 'mabr://234.0.0.1:1234', 'timeshift': '30'}
+{ "http": "https://test.com/dash/live.mpd", "mabr": "mabr://234.0.0.1:1234", "timeshift": 30}
 ```
   
   
 For such services, the custom HTTP header `X-From-MABR` is defined:  
 
 - for client request, a value of `no` will disable MABR cache for this request; if absent or value is `yes`, MABR cache will be used if available  
-- for client response, a value of `yes` indicates the content comes from the MABR cache; if absent or value is `no`, the content comes from HTTP  
+- for client response, a value of `yes` indicates the content comes from the MABR cache; if absent or value is `no` or `off-edge`, the content comes from HTTP (`off-edge` indicates a request outside of the timeshift buffer)  
 
   
 The `js` option can be set to a JS module exporting the following functions:  
@@ -226,14 +231,21 @@ The `js` option can be set to a JS module exporting the following functions:
 
   
 
-- quality_activation : (mandatory) The function is called when the given quality is to be activated service is activated or deactivated. Parameters (in order):  
+- quality_activation : (optional) The function is called when the given quality is to be activated or deactivated. If not present, (de)activation always happens. Parameters (in order):  
 
     - do_activate (boolean): if true, quality is being activated otherwise it is being deactivated  
     - service_id (integer): ID of the service as announced in the multicast  
-    - period_id (string): ID of the DASH Period, ignored for HLS  
-    - adaptationSet_ID (integer): ID of the DASH AdaptationSet, ignored for HLS  
+    - period_id (string): ID of the DASH Period, ignored (empty) for HLS  
+    - adaptationSet_ID (integer): ID of the DASH AdaptationSet, ignored (-1) for HLS  
     - representation_ID (string): ID of the DASH representation or name of the HLS variant playlist  
     - return value: shall be true if activation/deactivation shall proceed and false if activation/deactivation shall be canceled.  
+
+  
+
+- get_mcast_address : (optional) The function is called when the service is activated. Parameters:  
+
+    - service_url (string): URL of service for which the multicast adress is queried  
+    - return value: shall be the multicast address to use for the service or null if no multicast is used (active multicast wil then be deactivated).  
 
   
 # File Services  
@@ -247,7 +259,7 @@ Each source is either a file, a directory or a remote URL.
   
 Configuration for exposing a directory:  
 ```
-{ 'local': '/dserv/', 'sources': [ { 'name': 'foo/', 'url': 'my_dir/' } ] }
+{ "local": "/dserv/", "sources": [ { "name": "foo/", "url": "my_dir/" } ] }
 ```
   
 This service will expose the content of directory `my_dir/*` as `http://localhost/dserv/foo/*`.  
@@ -316,7 +328,7 @@ CGI parameters for request are:
   
 Configuration for serving a directory with remultiplexing to mp4:  
 ```
-{'local': '/service1/', 'js': 'remux', 'sources': ['name': 'vids', 'url': '/path/to/vids/'}], 'fmt': 'mp4'}
+{"local": "/service1/", "js": "remux", "sources": [{"name": "vids", "url": "/path/to/vids/"}], "fmt": "mp4"}
 ```
   
   

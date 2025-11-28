@@ -57,7 +57,7 @@ Playlist refreshing will abort:
 ## Playlist directives  
 A playlist directive line can contain zero or more directives, separated with space. The following directives are supported:  
 
-- repeat=N: repeats `N` times the content (hence played N+1).  
+- repeat=N: repeats `N` times the content (hence played N+1), infinite loop if negative.  
 - start=T: tries to play the file from start time `T` seconds (double format only). This may not work with some files/formats not supporting seeking.  
 - stop=T: stops source playback after `T` seconds (double format only). This works on any source (implemented independently from seek support).  
 - cat: specifies that the following entry should be concatenated to the previous source rather than opening a new source. This can optionally specify a byte range if desired, otherwise the full file is concatenated.  
@@ -238,6 +238,9 @@ Directives `mark`, `keep` and `sprops` are reset at the end of the splice period
   
 <div markdown class="option">  
 <a id="sigcues">__sigcues__</a> (bool, default: _false_): inject `CueStart` property at each source begin (new or repeated) for DASHing  
+</div>  
+<div markdown class="option">  
+<a id="sigperiods">__sigperiods__</a> (bool, default: _false_): ask for a new DASH Period at each source begin ; useful when media timing needs to be reset at loops (TTML, ...)  
 </div>  
 <div markdown class="option">  
 <a id="fdel">__fdel__</a> (bool, default: _false_): delete source files after processing in playlist mode (does not delete the playlist)  

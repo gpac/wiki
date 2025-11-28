@@ -79,6 +79,8 @@ In case of losses or incomplete segment reception (during tune-in), the files ar
   
 If [kc](#kc) option is set, corrupted files will be kept. If [fullseg](#fullseg) is not set and files are only partially received, they will be kept.  
   
+_Note: A partially patched segment is no longer considered corrupted and will be dispatched regardless of [kc](#kc)._  
+  
 # Interface setup  
   
 On some systems (OSX), when using VM packet replay, you may need to force multicast routing on your local interface.  
@@ -181,6 +183,22 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="range_merge" data-level="basic">__range_merge__</a> (uint, default: _10000_): merge ranges in HTTP repair if distant from less than given amount of bytes  
 </div>  
 <div markdown class="option">  
-<a id="minrecv" data-level="basic">__minrecv__</a> (uint, default: _20_): redownload full file in HTTP repair if received bytes is less than given percentage of file size  
+<a id="minrecv" data-level="basic">__minrecv__</a> (uint, default: _20_): redownload full file in HTTP repair if received bytes is less than given percentage of file size, 0 means complete file redownload if any error  
+</div>  
+<div markdown class="option">  
+<a id="riso" data-level="basic">__riso__</a> (enum, default: _none_): advanced options for ISOBMFF HTTP repair  
+
+- none: use regular http repair  
+- simple: first repair all non-mdat boxes then repair mdat in order  
+- partial: only repair all non-mdat moxes, leaving holes in mdat  
+- deps: same as simple and repair only samples depended upon by other samples  
+- depx: same as deps but do not hide moof of incomplete mdat (tests only)  
+</div>  
+  
+<div markdown class="option">  
+<a id="ka">__ka__</a> (bool, default: _false_): keep service alive if multicast is down  
+</div>  
+<div markdown class="option">  
+<a id="chkiso">__chkiso__</a> (bool, default: _false_): check isobmf structure after repair (debug)  
 </div>  
   

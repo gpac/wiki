@@ -243,7 +243,7 @@ This will force the text stream to be used as a QT chapter track.
 <a id="tfdt_traf" data-level="basic">__tfdt_traf__</a> (bool, default: _false_): force `tfdt` box in each traf  
 </div>  
 <div markdown class="option">  
-<a id="nofragdef" data-level="basic">__nofragdef__</a> (bool, default: _false_): disable default flags in fragments  
+<a id="nofragdef" data-level="basic">__nofragdef__</a> (bool, default: _false_): disable default fragment flags in initial `moov`  
 </div>  
 <div markdown class="option">  
 <a id="straf">__straf__</a> (bool, default: _false_): use a single traf per moof (smooth streaming and co)  
@@ -252,8 +252,13 @@ This will force the text stream to be used as a QT chapter track.
 <a id="strun">__strun__</a> (bool, default: _false_): use a single trun per traf (smooth streaming and co)  
 </div>  
 <div markdown class="option">  
-<a id="prft">__prft__</a> (bool, default: _true_): set `prft` box at segment start, disabled if not fragmented mode  
+<a id="prft">__prft__</a> (enum, default: _sender_): set `prft` box mode, disabled if not fragmented mode  
+
+- off: disable `prft` box  
+- sender: put ntp time before encoder  
+- both: put sender time (if available) and ntp time when writing the moof  
 </div>  
+  
 <div markdown class="option">  
 <a id="psshs">__psshs__</a> (enum, default: _moov_): set `pssh` boxes store mode  
 
@@ -275,7 +280,7 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
   
 <div markdown class="option">  
-<a id="noinit">__noinit__</a> (bool, default: _false_): do not produce initial `moov, used for DASH bitstream switching mode`  
+<a id="noinit">__noinit__</a> (bool, default: _false_): do not produce initial `moov`, used for DASH bitstream switching mode  
 </div>  
 <div markdown class="option">  
 <a id="tktpl">__tktpl__</a> (enum, default: _yes_): use track box from input if any as a template to create new track  

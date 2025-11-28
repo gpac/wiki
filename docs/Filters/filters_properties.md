@@ -219,8 +219,10 @@ Representation | str | D | ID of DASH representation | DRID
 ASID | uint | D | ID of parent DASH Adaptation Set | DAID    
 SSR | sint | D | ID of Adaptation Set:  <br/>
 - same value as ASID: regular SSR not used for cross-AS switching  <br/>- ID of another AdaptationSet: enable cross-AS switching between this AS and the referenced one  <br/>- negative value: LL-HLS compatability mode | SSRR    
+ASQuery | str | D | Query string to add to this Adaptation Set when requesting segments | ASQR    
 MuxSrc | str | D | Name of mux source(s), set by dasher to direct its outputs | MSRC    
 DashMode | uint | D | DASH mode to be used by multiplexer if any, set by dasher. 0 is no DASH, 1 is regular DASH, 2 is VoD | DMOD    
+InitBase64 | bool | D | Indicate that multiplexer should send the base64 encoded version of the init segment | IB64    
 SegSync | bool | D | Indicate segment must be completely flushed before sending segment/fragment size events | DFSS    
 DashDur | frac | D | DASH target segment duration in seconds | DDUR    
 FragDur | frac | D | DASH target fragment duration in seconds | FDUR    
@@ -304,8 +306,8 @@ IsManifest | uint | D | PID is a HAS manifest (bit 9 set to 1 if live), lower 8 
 - 0: not a manifest  <br/>- 1: DASH manifest  <br/>- 2: HLS manifest  <br/>- 3: GHI(X) manifest | PHSM    
 Sparse | bool | D | PID has potentially empty times between packets | PSPA    
 CharSet | str | D | Character set for input text PID | PCHS    
-ForcedSub | uint | D | PID or Packet is forced sub  <br/>
-- 0: not forced  <br/>- 1: forced frame  <br/>- 2: all frames are forced (PID only) | PFCS    
+ForcedSub | uint | D | PID forced sub  <br/>
+- 0: not forced  <br/>- 1: some frames are forced  <br/>- 2: all frames are forced | PFCS    
 ChapTimes | uintl | D | Chapter start times | CHPT    
 ChapNames | strl | D | Chapter names | CHPN    
 IsChap | bool | D | Subtitle PID is chapter (for QT-like chapters) | PCHP    
@@ -359,6 +361,7 @@ SEILoaded | bool | DP | indicate that packet has SEI/inband data in its properti
 OriginalPTS | luint | DP | indicate original PTS or PCR when remapping M2TS PCR | OPTS    
 OriginalDTS | luint | DP | indicate original DTS when remapping M2TS PCR | ODTS    
 MABRBaseURLs | strl | D | optionnal URLs for MABR - if first is `none`source server is not declared as repair server | MABU    
+Forced | bool | DP | indicate packet is a forced subtitle | PCFS    
 
 # Pixel formats  
   
@@ -564,6 +567,8 @@ av1 ivf obu av1b | AOM AV1 Video
 vp8 ivf | VP8 Video    
 vp9 ivf | VP9 Video    
 vp10 ivf | VP10 Video    
+avsv avs3 | AVS3 Video    
+avsa avs3 | AVS3 Audio    
 mhas | MPEG-H Audio    
 mhas | MPEG-H AudioMux    
 prores apch | ProRes Video 422 HQ    
