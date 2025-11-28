@@ -1,8 +1,14 @@
 site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
+repo_name: gpac/wiki
+edit_uri: edit/master/docs/
 site_author: GPAC contributors
 extra:
   keywords_file: 'data/keywords.json'
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/gpac/gpac
+    name: GPAC source code
 extra_javascript:
    - javascripts/levels.js
    - javascripts/main.js
@@ -52,6 +58,7 @@ theme:
     - navigation.top
     - tables
     - def_list
+    - content.action.edit
     - content.code.select
     - content.code.annotate
     - content.code.copy
@@ -64,7 +71,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-repo_url: https://github.com/gpac/gpac/
+repo_url: https://github.com/gpac/wiki
 plugins:
   - search
   - tags:
