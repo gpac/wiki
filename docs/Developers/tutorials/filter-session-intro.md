@@ -47,12 +47,43 @@ The GPAC filter session object allows building media pipelines using multiple so
 
 The simplest way to create a session object is to use the gf_fs_new_defaults() function.
 
-```C 
-GF_FilterSession *session = gf_fs_new_defaults(0u);  
-if (session == NULL) {  
-    fprintf(stderr, "Failed to create GPAC session\n");  
-}
-```
+
+=== "C"
+
+    ```c
+    GF_FilterSession *session = gf_fs_new_defaults(0u);  
+    if (session == NULL) {  
+        fprintf(stderr, "Failed to create GPAC session\n");  
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+    const gpac = require('path/to/gpac/share/nodejs');
+
+    try {
+
+    let session = new gpac.FilterSession();
+   
+    } catch (e) {
+        console.error("Failed to create GPAC session :", e);
+    }
+    ```
+=== "Python"
+
+    ```python
+    import sys
+    sys.path.append('/usr/share/gpac/python')   
+    import libgpac as gpac                      
+
+    fs = gpac.FilterSession()  
+
+    if not fs:
+        print("Failed to create GPAC session")
+    ```
+  
+
 
 This function will create a new filter session, loading parameters from [gpac config](/Filters/core_config). This will also load all available filter registers not blacklisted.
 
@@ -74,10 +105,29 @@ if (gf_err != GF_OK)
 ```
 
 Alternatively to [gf_fs_load_source](https://doxygen.gpac.io/group__fs__grp.html#gafce8e6e28696bc68e863bd4153282f80) function we can use the more generic [gf_fs_load_filter](https://doxygen.gpac.io/group__fs__grp.html#ga962fa3063a69ef02e43f06abe14cfe65) and use the [Fin](/Filters/fin) filter (followed by its options with the syntax :opt=val) as follows:
+=== "C"
 
-```C
-GF_Filter *src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);
-```
+    ```c
+    GF_Filter *src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+      const src_filter = session.load_src("logo.png");
+    ```
+
+
+
+=== "Python"
+
+    ```python
+    src = fs.load_src("logo.png")
+    ```
+
+  
+
+
 
 ### Loading a filter
 
@@ -92,19 +142,66 @@ The filter session keeps an internal graph representation of all available filte
 The following code snippet provides an example to load the [reframer](/Filters/reframer) filter.
 
   
-```C
-GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer", &gf_err);  
-if (gf_err != GF_OK)  
-{  
-    fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-}
-```
+=== "C"
+
+    ```c
+    GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer", &gf_err);  
+    if (gf_err != GF_OK) {  
+        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+   
+    let refr = session.load("reframer");
+    if (!refr) {
+        throw new Error("Failed to load filter: reframer");
+    }
+    ```
+
+=== "Python"
+
+    ```python
+
+    refr = fs.load("reframer")
+    if not refr:
+        print("Failed to load filter: reframer")
+    ```
+
+
 
 options can be specified the same way as in the CLI of gpac, as stated with ‘fin’ above. Here is another example:
 
-```C
-GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer:rt=on", &gf_err);
-```
+=== "C"
+
+    ```c
+    GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer:rt=on", &gf_err);
+    if (gf_err != GF_OK) {
+        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+
+    let refrRT = session.load("reframer:rt=on");
+    if (!refrRT) {
+        throw new Error("Failed to load filter: reframer:rt=on");
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    refr_rt = fs.load("reframer:rt=on")
+
+    if not refr_rt:
+        print("Failed to load filter: reframer:rt=on")
+    ```
+
 
 ### Loading a destination filter
 
@@ -114,26 +211,76 @@ Loading a destination filter, exactly like loading a source filter mentioned abo
 
 by using [gf_fs_load_destination()](https://doxygen.gpac.io/group__fs__grp.html#ga2fd8f1f59622bc781cc81aafee99ee7d) function :
 
-  
-```C
-GF_Err gf_err = GF_OK;  
-GF Filter *src_filter = gf_fs_load_destination(session, "logo_result.png", NULL, NULL, &gf_err);  
-if (gf_err != GF_OK)  
-{  
-    fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-}
-```
+=== "C"
+
+    ```c
+    GF_Err gf_err = GF_OK;
+    GF_Filter *src_filter = gf_fs_load_destination(session, "logo_result.png", NULL, NULL, &gf_err);
+    if (gf_err != GF_OK) {
+        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+
+    try {
+        let dst_filter = session.load_dst("logo_result.png");
+       
+    } catch (e) {
+        console.error("Error: " + e.message);
+       
+    }
+    ```
+
+=== "Python"
+
+    ```python
+
+    
+        dst_filter = fs.load_dst("logo_result.png")
+
+        if not dst_filter:
+            print("Failed to load destination filter via load_dst")
+   
+        
+    ```
+
+
 
 Or by using the gf_fs_load_filter and use the Fout filter (or any alternative output destinations pipes, sockets.. ) as follows:
   
-```C
-//load destination filter  
-GF_Filter *dst_filter = gf_fs_load_filter(session, "fout:dst=logo_result.png", &gf_err);  
-if (gf_err != GF_OK)
-{  
-    fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-}
-```
+=== "C"
+
+    ```c
+    GF_Err gf_err = GF_OK;
+    GF_Filter *dst_filter = gf_fs_load_filter(session, "fout:dst=logo_result.png", &gf_err);
+    if (gf_err != GF_OK) {
+        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+   
+    try {
+        let  dst_filter = session.load("fout:dst=logo_result.png");
+       
+    } catch (e) {
+        console.error("Error: " + e.message);  
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    
+        dst_filter_fout = fs.load("fout:dst=logo_result.png")
+       
+    ```
+
 
 ## Connecting filters and creating a filter chain
 
@@ -167,23 +314,81 @@ By default, the gpac filters session operates in a semi-blocking state. meaning 
 
 The function [gf_fs_run](https://doxygen.gpac.io/group__fs__grp.html#gafdef85e209aef33193e02f83ff5fcbab)() allows for executing the filter session. When the session is non-blocking, it processes tasks of the oldest scheduled filter, manages pending PID connections, and then returns. In the case of a blocking session, gf_fs_run() continues to run until the session concludes or is aborted. The function returns an error if any issues arise during execution, and the last errors can be retrieved using [gf_fs_get_last_connect_error](https://doxygen.gpac.io/group__fs__grp.html#ga026f96a009dd073700b7339fb3ade492) and [gf_fs_get_last_process_error](https://doxygen.gpac.io/group__fs__grp.html#ga2a217d0b7f3f44050f9f78cab10e577d).
 
-  
-```C
-gf_err = gf_fs_run(session);  
+=== "C"
 
-if (gf_err>=GF_OK) {  
-    gf_err = gf_fs_get_last_connect_error(session);  
-if (gf_err>=GF_OK)  
-    gf_err = gf_fs_get_last_process_error(session);  
-}  
-      
-//print connections  
-gf_fs_print_connections(session);  
-gf_fs_print_stats(session);  
-      
-gf_fs_del(session);  
-session = NULL;  
-```
+    ```c
+    gf_err = gf_fs_run(session);  
+
+    if (gf_err >= GF_OK) {  
+        gf_err = gf_fs_get_last_connect_error(session);  
+    if (gf_err >= GF_OK)  
+        gf_err = gf_fs_get_last_process_error(session);  
+    }  
+
+    // Print connections  
+    gf_fs_print_connections(session);  
+    gf_fs_print_stats(session);  
+
+    gf_fs_del(session);  
+    session = NULL;  
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+
+    const gpac = require('path/to/gpac/share/nodejs');
+
+    let session = null; 
+
+    try {
+        session = new gpac.FilterSession();
+        /*
+            * ... Here, your code  ...
+            */
+        // Run the session in blocking mode
+        const err = session.run();
+        if (err < gpac.GF_OK) {
+            console.error("Session execution failed with error: " + gpac.e2s(err));
+        } else {
+            session.print_graph(); 
+            session.print_stats(); 
+        }
+        } catch (e) {
+        console.error("A JavaScript exception was thrown: ", e);
+        } finally {
+        if (session) {
+            session.abort();
+            session = null;
+        }
+        }
+    ```
+
+=== "Python"
+
+    ```python
+
+    import sys
+    sys.path.append('/usr/share/gpac/python')   
+    import libgpac as gpac                      
+
+
+    fs = gpac.FilterSession()
+    // Here, your code ...
+
+    fs.run()
+    fs.print_graph()
+    fs.print_stats()
+
+
+    fs.delete()
+    gpac.close()
+    ```    
+    
+    
+
+
+
 
 ## Sample code
 
@@ -193,63 +398,144 @@ In the following example we reproduce a [testsuite example](https://github.com/g
 
 **_NOTE:_**: the reframer filter has no functionnnal use in this particular example. the example is just an illustartion of a filters chain.     
 
-```C
-int  main(int argc, char *argv[])  
-{
-    GF_Err gf_err = GF_OK;  
-        
-    // session scheme for testing reframer with fin filter  
-    GF_FilterSession *session = gf_fs_new_defaults(0u);  
-    if (session == NULL) {
-        fprintf(stderr, "Failed to create GPAC session\n");
-        return EXIT_FAILURE;
-    }  
-      
-    // load source filter
-    GF_Filter * src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);  
-    if (gf_err != GF_OK)  
-    {  
-        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-    }
-    //load reframer filter  
-    GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer", &gf_err);  
-    if (gf_err != GF_OK)  
-    {  
-        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-    }
-    //load writergen filter    
-    GF_Filter *writegen_filter = gf_fs_load_filter(session, "writegen", &gf_err);  
-    if (gf_err != GF_OK)  
-    {  
-        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-    }
-      
-    //load destination filter
-    GF_Filter *dst_filter = gf_fs_load_filter(session, "fout:dst=logo_result.png", &gf_err);  
-    if (gf_err != GF_OK)  
-    {  
-        fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));  
-    }  
-      
-    gf_filter_set_source(reframer_filter, src_filter, NULL);  
-    gf_filter_set_source(writegen_filter,reframer_filter,NULL);  
-    gf_filter_set_source(dst_filter ,writegen_filter,NULL);  
-      
-    gf_err = gf_fs_run(session);  
-      
-    if (gf_err>=GF_OK)
-    {  
-        gf_err = gf_fs_get_last_connect_error(session);   
-        if (gf_err>=GF_OK)
-            gf_err = gf_fs_get_last_process_error(session);
-    }
+=== "C"
 
-    //print connections  
-    gf_fs_print_connections(session);  
-    gf_fs_print_stats(session);  
+    ```c
+    int main(int argc, char *argv[]) 
+    {
+        GF_Err gf_err = GF_OK;
+
+        // session scheme for testing reframer with fin filter
+        GF_FilterSession *session = gf_fs_new_defaults(0u);
+        if (session == NULL) {
+            fprintf(stderr, "Failed to create GPAC session\n");
+            return EXIT_FAILURE;
+        }
+
+        // load source filter
+        GF_Filter *src_filter = gf_fs_load_filter(session, "fin:src=logo.png", &gf_err);
+        if (gf_err != GF_OK) {
+            fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+        }
+
+        // load reframer filter
+        GF_Filter *reframer_filter = gf_fs_load_filter(session, "reframer", &gf_err);
+        if (gf_err != GF_OK) {
+            fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+        }
+
+        // load writergen filter
+        GF_Filter *writegen_filter = gf_fs_load_filter(session, "writegen", &gf_err);
+        if (gf_err != GF_OK) {
+            fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+        }
+
+        // load destination filter
+        GF_Filter *dst_filter = gf_fs_load_filter(session, "fout:dst=logo_result.png", &gf_err);
+        if (gf_err != GF_OK) {
+            fprintf(stderr, "Failed to load filter: %s", gf_error_to_string(gf_err));
+        }
+
+        gf_filter_set_source(reframer_filter, src_filter, NULL);
+        gf_filter_set_source(writegen_filter, reframer_filter, NULL);
+        gf_filter_set_source(dst_filter, writegen_filter, NULL);
+
+        gf_err = gf_fs_run(session);
+        if (gf_err >= GF_OK) {
+            gf_err = gf_fs_get_last_connect_error(session);
+            if (gf_err >= GF_OK)
+                gf_err = gf_fs_get_last_process_error(session);
+        }
+
+        // print connections 
+        gf_fs_print_connections(session);
+        gf_fs_print_stats(session);
+
+        gf_fs_del(session);
+        session = NULL;
+        return EXIT_SUCCESS;
+    }
+    ```
+
+=== "NodeJS"
+
+    ```javascript
+
+    const gpac = require('path/to/gpac/share/nodejs');
+
+    let session = null;
+
+    try {
+    session = new gpac.FilterSession();
+        if (!session) {
+            throw new Error("Failed to create GPAC session.");
+        }
+  
+    const src_filter = session.load_src("logo.png");
+    const reframer_filter = session.load("reframer");
+    const writegen_filter = session.load("writegen");
+    const dst_filter = session.load("fout:dst=logo_result.png");
+    
+        if (!dst_filter || !reframer_filter || !writegen_filter || !src_filter) {
+            throw new Error("Failed to load one or more filters.");
+        }
+   
+    reframer_filter.set_source(src_filter);
+    writegen_filter.set_source(reframer_filter);
+    dst_filter.set_source(writegen_filter);
+ 
+
+    const err = session.run();
+
+        if (err < gpac.GF_OK) {
+            console.error("Session execution failed with error: " + gpac.e2s(err));
+        } else {
+            
+            session.print_graph();
+            session.print_stats();
+        }
+
+    } catch (e) {
+    console.error("A JavaScript exception was thrown: ", e);
+    } finally {
+
+        if (session) {
+            session.abort();
+            session = null;
+
+        }
+    }
+    ```
+=== "Python"
+
+    ```python
+    import sys
+    sys.path.append('/usr/share/gpac/python')   
+    import libgpac as gpac   
+
+    def main():
+        
+        fs = gpac.FilterSession()
+
+        src = fs.load_src("logo.png")
+        reframer = fs.load("reframer")
+        writer = fs.load("writegen")
+        dst = fs.load_dst("logo_result.png")
+
       
-    gf_fs_del(session);  
-    session = NULL;  
-    return EXIT_SUCCESS;  
-}  
-```  
+        reframer.set_source(src)
+        writer.set_source(reframer)
+        dst.set_source(writer)
+
+      
+        fs.run()
+
+        fs.print_graph()
+        fs.print_stats()
+
+        fs.delete()
+        gpac.close()
+
+    if __name__ == "__main__":
+        main()
+    ```

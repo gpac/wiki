@@ -80,6 +80,9 @@ plugins:
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
+- pymdownx.tabbed:
+      alternate_style: true
+      
 - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
