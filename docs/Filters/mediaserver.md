@@ -215,6 +215,8 @@ For such services, the custom HTTP header `X-From-MABR` is defined:
 - for client response, a value of `yes` indicates the content comes from the MABR cache; if absent or value is `no` or `off-edge`, the content comes from HTTP (`off-edge` indicates a request outside of the timeshift buffer)  
 
   
+The dedicated root endpoint `/stats` returns, the response content type's count (`yes`, `no`, `off-edge`) served by the gateway.  
+  
 The `js` option can be set to a JS module exporting the following functions:  
 
 - init : (mandatory) The function is called once at the start of the server. Parameters:  
