@@ -770,7 +770,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="ll_part_hb">__ll_part_hb__</a> (dbl, default: _-1_): user-defined part hold-back for LLHLS, negative value means 3 times max part duration in session  
 </div>  
 <div markdown class="option">  
-<a id="ckurl">__ckurl__</a> (str): set the ClearKey URL common to all encrypted streams (overriden by `CKUrl` pid property)  
+<a id="ckurl">__ckurl__</a> (str): set the ClearKey URL common to all encrypted streams (overridden by `CKUrl` pid property)  
 </div>  
 <div markdown class="option">  
 <a id="hls_absu">__hls_absu__</a> (enum, default: _no_): use absolute url in HLS generation using first URL in [base]()  

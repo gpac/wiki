@@ -129,7 +129,7 @@ Such packets are only injected when a whole in the timeline is detected.
 - if `Sparse` is false, empty packet is never injected  
 
     
-The default media type used for a PID can be overriden using property `StreamSubtype`.   
+The default media type used for a PID can be overridden using property `StreamSubtype`.   
 Example
 ```
 -i src.srt:#StreamSubtype=sbtl [-i ...]  -o test.mp4 
