@@ -203,7 +203,7 @@ __deps__:                      import sample dependency information for AVC and 
 __ccst__:                      `S` add default HEIF ccst box to visual sample entry  
 </div>
 <div markdown class="option">
-__forcesync__:                 force non IDR samples with I slices (OpenGOP or GDR) to be marked as sync points  
+__forcesync__:                 `SE` force non IDR samples with I slices (OpenGOP or GDR) to be marked as sync points  
 
 __Warning: RESULTING FILE IS NOT COMPLIANT WITH THE SPEC but will fix seeking in most players__  
   
