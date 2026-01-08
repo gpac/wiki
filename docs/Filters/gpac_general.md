@@ -178,7 +178,7 @@ The argument syntax is the same for all cache options
 <a id="cache-clean">__-cache-clean__</a> (int): clean cache  
 </div>
 <div markdown class="option">
-<a id="js">__-js__</a> (string): specify javascript file to use as controller of filter session  
+<a id="js">__-js__</a> (string): specify javascript file to use as controller of filter session (can be set multiple times for multiple scripts)  
 </div>
 <div markdown class="option">
 <a id="wc">__-wc__</a>:        write all core options in the config file unless already set  
