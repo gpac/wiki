@@ -68,7 +68,7 @@ _Note: The [nbcached](#nbcached) option is ignored in this mode._
   
 # File Repair  
   
-In case of losses or incomplete segment reception (during tune-in), the files are patched as follows:  
+In case of losses or incomplete segment reception (during tune-in or HTTP partial repair), the files are patched as follows:  
 
 - MPEG-2 TS: all lost ranges are adjusted to 188-bytes boundaries, and transformed into NULL TS packets.  
 - ISOBMFF: all top-level boxes are scanned, and incomplete boxes are transformed in `free` boxes, except `mdat`:  
@@ -168,7 +168,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 </div>  
   
 <div markdown class="option">  
-<a id="repair_urls" data-level="basic">__repair_urls__</a> (strl): repair servers urls  
+<a id="repair_urls" data-level="basic">__repair_urls__</a> (strl): repair servers urls - if set, `repair` is set to `full`  
 </div>  
 <div markdown class="option">  
 <a id="max_sess" data-level="basic">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  
@@ -188,7 +188,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <div markdown class="option">  
 <a id="riso" data-level="basic">__riso__</a> (enum, default: _none_): advanced options for ISOBMFF HTTP repair  
 
-- none: use regular http repair  
+- none: use regular http repair (sequential repair)  
 - simple: first repair all non-mdat boxes then repair mdat in order  
 - partial: only repair all non-mdat moxes, leaving holes in mdat  
 - deps: same as simple and repair only samples depended upon by other samples  
