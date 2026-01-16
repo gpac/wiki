@@ -254,8 +254,8 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <div markdown class="option">
 <a id="sched">__-sched__</a> (Enum, default: __free__): set scheduler mode  
 
-- free: lock-free queues except for task list (default)  
-- lock: mutexes for queues when several threads  
+- free: lock-free queues except for task list (default on most platforms)  
+- lock: mutexes for queues when several threads (default on arm64/aarch64)  
 - freex: lock-free queues including for task lists (experimental)  
 - flock: mutexes for queues even when no thread (debug mode)  
 - direct: no threads and direct dispatch of tasks whenever possible (debug mode)  
