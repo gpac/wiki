@@ -75,6 +75,7 @@ _Note: When sources are ISOBMFF files or segments on local storage or GF_FileIO 
 - mark: only inject marker for the splice period and do not load any replacement content (cf below).  
 - sprops=STR: assigns properties described in `STR` to all PIDs of the main content during a splice (cf below). `STR` is formatted according to `gpac -h doc` using the default parameter set.  
 - chap=NAME: assigns chapter name at the start of next URL (filter always removes source chapter names).  
+- base_url=PATH: overrides base URL for all following entries in the playlist. To reset, use an empty string.  
 
   
 The following global options (applying to the filter, not the sources) may also be set in the playlist:  
