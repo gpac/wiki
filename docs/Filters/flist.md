@@ -53,7 +53,9 @@ Playlist refreshing will abort:
 - if the input playlist has a line not ending with a LF `(\n)` character, in order to avoid asynchronous issues when reading the playlist.  
 - if the input playlist has not been modified for the [timeout](#timeout) option value (infinite by default).  
 
-
+  
+_Note: When the source playlist is a GFIO object, URLs inside the playlist are NOT translated into GFIO objects._  
+  
 ## Playlist directives  
 A playlist directive line can contain zero or more directives, separated with space. The following directives are supported:  
 
