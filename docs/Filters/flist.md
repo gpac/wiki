@@ -78,6 +78,12 @@ _Note: When sources are ISOBMFF files or segments on local storage or GF_FileIO 
 - base_url=PATH: overrides base URL for all following entries in the playlist. To reset, use an empty string.  
 
   
+When the playlist is transmitted as packets (pipes, sockets, ...), the following directives also apply:  
+
+- replace: replaces the entire playlist content with new packet payload, otherwise concatenate (payload must start with `#replace`).  
+- purge: avoids having the playlist continuously growing by removing all inactive content before previous `#purge` directive, evaluated at each new packet only (payload must start with `#purge`).  
+
+  
 The following global options (applying to the filter, not the sources) may also be set in the playlist:  
 
 - ka=N: force [ka](#ka) option to `N` millisecond refresh.  
