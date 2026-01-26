@@ -364,6 +364,9 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="rmt-pkey">__-rmt-pkey__</a> (string): rmt ws: private key file in PEM format to use for TLS mode  
 </div>
 <div markdown class="option">
+<a id="rmt-path">__-rmt-path__</a> (string, default: __$GSHARE/scripts/rmt/server.js__): rmt ws: path to JS backend  
+</div>
+<div markdown class="option">
 <a id="userws-port">__-userws-port__</a> (int, default: __6364__): set user ws port  
 </div>
 <div markdown class="option">
