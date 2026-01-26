@@ -188,3 +188,18 @@
     background-color: #ffffff;
   }
 }
+
+
+.md-typeset__scrollwrap table {
+  width: 100%;
+  table-layout: fixed;          
+}
+
+/* Force wrapping in long text */
+.md-typeset__scrollwrap td,
+.md-typeset__scrollwrap th {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
