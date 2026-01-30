@@ -132,9 +132,9 @@ The `NHNTStream` element describes stream properties applying throughout the str
 
 ### Defined Attributes
 *   `streamType` : identifies the media streamType as specified in MPEG-4, either the integer value or [GPAC name](filters_properties#stream-types).
-*   `mediaType` : indicates the 4CC media type (handler) as used in IsoMedia. Not needed if streamType is specified. Value Type: 4 byte string. Officially supported handler types are listed [here](http://www.mp4ra.org/handler.html).
-*   `mediaSubType` : indicates the 4CC media subtype (codec) to use in IsoMedia. This subtype will identify the sample description used (stsd table). Not needed if streamType is specified. Value Type: 4 byte string. Officially supported codec types are listed [here](http://www.mp4ra.org/codecs.html).
-*   `objectTypeIndication` : identifies the media type as specified in MPEG-4. For example, 0x40 for MPEG-4 AAC. Officially supported object types are listed [here](http://www.mp4ra.org/object.html).
+*   `mediaType` : indicates the 4CC media type (handler) as used in IsoMedia. Not needed if streamType is specified. Value Type: 4 byte string. Officially supported handler types are listed [here](https://mp4ra.org/registered-types/handlers).
+*   `mediaSubType` : indicates the 4CC media subtype (codec) to use in IsoMedia. This subtype will identify the sample description used (stsd table). Not needed if streamType is specified. Value Type: 4 byte string. Officially supported codec types are listed [here](https://mp4ra.org/registered-types/codecs).
+*   `objectTypeIndication` : identifies the media type as specified in MPEG-4. For example, 0x40 for MPEG-4 AAC. Officially supported object types are listed [here](https://mp4ra.org/registered-types/object-types).
 *   `codecID` : codec identifier (needed if neither `mediaSubType` nor `objectTypeIndication` is set). Can be a 4CC or [GPAC codec name](filters_properties#codecs).
 *   `timeScale` : indicates the time scale in which the time stamps are given. Value type: unsigned integer. Default Value: 1000 or sample rate if specified.
 *   `width`, `height` : indicates the dimension of a visual media. Ignored if the media is not video (streamType 0x04 or mediaType "vide"). Value Type: unsigned integer.
