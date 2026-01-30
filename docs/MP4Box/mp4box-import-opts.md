@@ -148,8 +148,9 @@ __psx__:                       same as [-psx](#psx)
 <div markdown class="option">
 __asemode__ (string):          `XS` set the mode to create the AudioSampleEntry. Value can be:  
 
-    - v0-bs: use MPEG AudioSampleEntry v0 and the channel count from the bitstream (even if greater than 2) - default  
+    - v0-s: use MPEG AudioSampleEntry v0 and the channel count from the bitstream (even if greater than 2, except for Dolby (e)AC3) - default  
     - v0-2: use MPEG AudioSampleEntry v0 and the channel count is forced to 2  
+    - v0-bs: use MPEG AudioSampleEntry v0 and the channel count from the bitstream  
     - v1: use MPEG AudioSampleEntry v1 and the channel count from the bitstream  
     - v1-qt: use QuickTime Sound Sample Description Version 1 and the channel count from the bitstream (even if greater than 2). This will also trigger using alis data references instead of url, even for non-audio tracks  
 </div>
