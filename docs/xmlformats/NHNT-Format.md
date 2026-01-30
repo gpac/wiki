@@ -55,8 +55,8 @@ bit(32) timeStampResolution;
 
 *   `Signature` : identifies the file as an NHNT file. The signature must be 'NHnt' or 'NHnl' for large files (using 64 bits offsets and timestamps).
 *   `version` : identifies the NHNT version used to produce the file. Default version is 0.
-*   `streamType` : identifies the media streamType as specified in MPEG-4 (0x04: Visual, 0x05: audio, ...). Officially supported stream types are listed [here](http://www.mp4ra.org/object.html).
-*   `objectTypeIndication` : identifies the media type as specified in MPEG-4. For example, 0x40 for MPEG-4 AAC. Officially supported object types are listed [here](http://www.mp4ra.org/object.html).
+*   `streamType` : identifies the media streamType as specified in MPEG-4 (0x04: Visual, 0x05: audio, ...). Officially supported stream types are listed [here](https://mp4ra.org/registered-types/object-types).
+*   `objectTypeIndication` : identifies the media type as specified in MPEG-4. For example, 0x40 for MPEG-4 AAC. Officially supported object types are listed [here](https://mp4ra.org/registered-types/object-types).
 *   `bufferSizeDB` : indicates the size of the decoding buffer for this stream in byte.
 *   `avgBitRate` : indicates the average bitrate in bits per second of this elementary stream. For streams with variable bitrate this value shall be set to zero.
 *   `maxBitRate` : indicates the maximum bitrate in bits per second of this elementary stream in any time window of one second duration.
