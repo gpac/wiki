@@ -30,6 +30,16 @@ L3D DASH (Low Latency Live Delivery) extends the Low Latency DASH capabilities b
 
 Both modes use CMAF chunks (partial segments) to enable fast initial playback and reduced latency. The essential property `urn:mpeg:dash:ssr:2023` is signaled in the manifest to indicate SSR support.
 
+## Encoding Requirements
+
+The `#SSR` property controls manifest signaling and partial segment representation only. **Encoding is the user's responsibility.** You must configure your encoder with appropriate IDR frame periods using the `fintra=<period>` option to match your desired SSR mode:
+
+- **For tune-in representations (G.28.1)**: Set `fintra=<cdur>` to place IDR frames at each partial segment boundary
+- **For main representations (G.28.2)**: Set `fintra=<segdur>` to place IDR frames at segment boundaries only
+
+Misaligned encoder IDR configuration will result in improper segmentation and manifest signaling, regardless of the `#SSR` setting.
+
+
 # SSR Modes
 
 L3D DASH supports two modes through the `#SSR` property:
@@ -58,7 +68,7 @@ _The user is responsible for encoding content with the appropriate IDR frame per
 
 # Basic Examples
 
-## G.28.1 Low Delay Representation
+## Low Delay Representation
 
 Single bitrate with extra tune-in adaptation set:
 
@@ -83,7 +93,7 @@ In this example:
 - `cmf2` uses CMAF brand `cmf2`
 - `sreg` performs real-time segment regulation
 
-## G.28.1.2 Low Delay Representation with Audio
+## Low Delay Representation with Audio
 
 Single bitrate with extra tune-in adaptation set and audio adaptation set in LL-HLS compatibility mode:
 
@@ -101,7 +111,7 @@ This example adds:
 - Audio adaptation set (`ASID=3`) using LL-HLS compatibility mode (`#SSR=-1`)
 - All three adaptation sets (main video, tune-in video, audio) are included via `SID=SMV,STV,SMA`
 
-## G.28.2 Low Latency Segment Sequence Representation
+## Low Latency Segment Sequence Representation
 
 Single bitrate with LL-HLS compatibility mode:
 
