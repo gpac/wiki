@@ -50,7 +50,7 @@ These information can be stored at the file root level, as is the case for HEIF/
 - icc_path: path to icc data to add as color info  
 - alpha: indicate that the image is an alpha image (should use ref=auxl also)  
 - depth: indicate that the image is a depth image (should use ref=auxl also)  
-- it=ID: indicate the item ID of the source item to import  
+- it=ID: indicate the item ID of the source item to import. If unspecified and source has no tracks, all items are imported  
 - itp=ID: same as `it=` but copy over all properties of the source item  
 - tk=tkID: indicate the track ID of the source sample. If 0, uses the first video track in the file  
 - samp=N: indicate the sample number of the source sample  
