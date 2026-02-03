@@ -152,6 +152,7 @@ nav:
       - HLS Generation: Howtos/dash/hls.md
       - CMAF Generation: Howtos/dash/cmaf.md
       - DASH Low Latency: Howtos/dash/LL-DASH.md
+      - L3D-DASH: Howtos/dash/L3D-DASH.md
       - HLS Low Latency: Howtos/dash/LL-HLS.md
       - Custom DASH Algorithms: Howtos/jsf/jsdash.md
       - Complex DASH/HLS use cases: Howtos/dash/HAS-advanced.md
