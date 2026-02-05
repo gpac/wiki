@@ -19,11 +19,11 @@ tags:
 
 Please make sure you are familiar with [DASH terminology](DASH-basics) and [Low Latency DASH](LL-DASH) before reading.
 
-In this howto, we will study various setups for L3D (Low Latency Live Delivery) DASH streaming using [gpac](gpac_general). L3D follows the MPEG-DASH Segment Sequence Representation (SSR) defined in Annex G.28 of the DASH specification, which enables low latency, low delay streaming through partial segment delivery.
+In this HowTo, we will study various setups for L3D (Low Latency Live Delivery) MPEG-DASH streaming using [gpac](gpac_general). L3D is is the Segment Sequence Representation (SSR) extension defined in Annex G.28 of the DASH specification, which enables low latency, low delay streaming through partial segment delivery.
 
 # L3D DASH Overview
 
-L3D DASH (Low Latency Live Delivery) extends the Low Latency DASH capabilities by implementing Segment Sequence Representation (SSR) as defined in MPEG-DASH Annex G.28. This approach provides two distinct modes for achieving ultra-low latency:
+The L3D DASH (Low Latency Live Delivery) approach extends the Low Latency DASH capabilities by implementing Segment Sequence Representation (SSR) as defined in MPEG-DASH Annex G.28. It provides two distinct modes for achieving ultra-low latency:
 
 - **Low Delay Representation (G.28.1)**: Uses IDR frames at each partial segment boundary, requiring a dedicated tune-in adaptation set
 - **Low Latency Segment Sequence Representation (G.28.2)**: Uses IDR frames at segment boundaries only, compatible with LL-HLS
@@ -42,7 +42,7 @@ Misaligned encoder IDR configuration will result in improper segmentation and ma
 
 # SSR Modes
 
-L3D DASH supports two modes through the `#SSR` property:
+L3D DASH supports two modes through the `#SSR` property containing an AdaptationSet ID:
 
 ## LL-HLS Compatibility Mode
 
@@ -86,8 +86,8 @@ In this example:
 - Second encoder creates the tune-in adaptation set (`ASID=2`) with frequent IDR frames every 0.1 seconds (`fintra=0.1`)
 - `#SSR=1` indicates this is a tune-in representation for adaptation set 1
 - `segdur=2` sets segment duration to 2 seconds
-- `cdur=0.1` sets CMAF chunk (partial segment) duration to 0.1 seconds
-- `asto=1.7` sets availability start offset for low latency
+- `cdur=0.1` sets CMAF chunk (ISOBMMF fragment) duration to 0.1 seconds
+- `asto=1.7` tells the player that data is available 1.7s before the full segment availability (leaving a 3-chunk buffer)
 - `stl` enables segment timeline
 - `ntp=yes` enables NTP timing
 - `cmf2` uses CMAF brand `cmf2`
@@ -153,7 +153,7 @@ This simplified example:
 
 The generated L3D DASH content can be played back using:
 
-- GPAC player: `gpac -play http://localhost:8080/dash/live.mpd`
+- The GPAC player: `gpac -play http://localhost:8080/dash/live.mpd`
 - [dash.js](https://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html) reference player
 - [Shaka Player](https://shaka-player-demo.appspot.com/demo/) with appropriate low latency settings
 
