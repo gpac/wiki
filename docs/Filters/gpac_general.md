@@ -89,6 +89,12 @@ The possible options for gpac are:
 <a id="ibx">__-ibx__</a> (string): specify an input file to wrap as GF_FileIO object without caching (testing of GF_FileIO)  
 </div>
 <div markdown class="option">
+<a id="ibb">__-ibb__</a> (string): specify an input file to wrap as blob object (testing of GF_Blob)  
+</div>
+<div markdown class="option">
+<a id="ibm">__-ibm__</a> (string): specify an input file to wrap as GF_FileIO object from mem (testing of GF_Blob + GF_FileIO)  
+</div>
+<div markdown class="option">
 <a id="ob">__-ob__</a> (string): specify an output file to wrap as GF_FileIO object (testing of GF_FileIO)  
 </div>
 <div markdown class="option">
