@@ -27,7 +27,10 @@ gpac -i source.jpg:#ItemID=1 -o file.mp4
 
 # Storage  
   
-The [store](#store) option allows controlling if the file is fragmented or not, and when not fragmented, how interleaving is done. For cases where disk requirements are tight and fragmentation cannot be used, it is recommended to use either `flat` or `fstart` modes.  
+The [store](#store) option allows controlling if the file is fragmented (`frag`) or not, and when not fragmented, how interleaving (`inter`) is done.  
+For cases where disk requirements are tight and fragmentation cannot be used, it is recommended to use either `flat` or `fstart` (fast-start) modes.  
+`sfrag` mode is similar `frag` mode but aligns fragments on SAP samples. It is implied when using `sfrag_tolerance`.  
+`sfrag_tolerance` is expressed as a percentage of the fragment duration (`cdur`). It allows to modulate the fragment durations while keeping the same number of fragments per segment. This is useful to align fragments on randomly placed SAP samples (typically scene-cuts or events).  
     
 The [vodcache](#vodcache) option allows controlling how DASH onDemand segments are generated:  
 
@@ -463,5 +466,8 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
 <div markdown class="option">  
 <a id="rsot">__rsot__</a> (bool, default: _false_): inject redundant sample timing information when present  
+</div>  
+<div markdown class="option">  
+<a id="sfrag_tolerance">__sfrag_tolerance__</a> (uint, default: _0_): start fragment on SAP if previous fragment is not shorter than the indicated percentage of cdur  
 </div>  
   
