@@ -128,6 +128,12 @@ An option of type `boolean` expects no following value.
 <a id="timescale" data-level="basic">__-timescale__</a> (int, default: __600__): set movie timescale to given value (ticks per second)  
 </div>
 <div markdown class="option">
+<a id="set-vexu" data-level="basic">__-set-vexu__</a>: add vexu box into MV-HEVC MP4 file  
+</div>
+<div markdown class="option">
+<a id="hero-eye" data-level="basic">__-hero-eye__</a> (int, default: __0__): set the hero_eye_indicator in HeroStereoEyeDescriptionBox (0 = none, 1 = left, 2 = right)  
+</div>
+<div markdown class="option">
 <a id="lang" data-level="basic">__-lang__</a> `[tkID=]LAN`: set language. LAN is the BCP-47 code (eng, en-UK, ...). If no track ID is given, sets language to all tracks  
 </div>
 <div markdown class="option">

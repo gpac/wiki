@@ -375,6 +375,9 @@ __dvp__,__-dv-profile__ (string): `S` set the Dolby Vision profile on imported t
 </div>
   
 <div markdown class="option">
+__dvmdc__ (int):               `S` set the Dolby Vision metadata compression (valid value: 0, 1, 3. default = 0)  
+</div>
+<div markdown class="option">
 __fullrange__ (string):        `S` force the video fullrange type in VUI for the AVC|H264 content (value `yes`, `on` or `no`, `off`)  
 </div>
 <div markdown class="option">
