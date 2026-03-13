@@ -764,6 +764,9 @@ mpd | dashin | dasher | application/dash+xml
 m3u8 | dashin | dasher | application/vnd.apple.mpegurl   
 3gm | dashin | dasher | application/vnd.3gpp.mpd   
 ism | dashin | dasher | application/vnd.ms-sstr+xml   
+cmfv | n/a | mp4mx | video/mp4 audio/mp4 application/mp4 video/3gpp audio/3gpp video/3gp2 audio/3gp2 video/iso.segment audio/iso.segment image/heif image/heic image/avci video/jp2 video/quicktime   
+cmfa | n/a | mp4mx | video/mp4 audio/mp4 application/mp4 video/3gpp audio/3gpp video/3gp2 audio/3gp2 video/iso.segment audio/iso.segment image/heif image/heic image/avci video/jp2 video/quicktime   
+cmft | n/a | mp4mx | video/mp4 audio/mp4 application/mp4 video/3gpp audio/3gpp video/3gp2 audio/3gp2 video/iso.segment audio/iso.segment image/heif image/heic image/avci video/jp2 video/quicktime   
 qcp | rfqcp | writeqcp | audio/qcelp audio/evr-qcp audio/smv-qcp   
 263 | rfh263 | writegen | video/h263   
 h263 | rfh263 | writegen | video/h263   

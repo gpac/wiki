@@ -569,7 +569,7 @@ The segmenter adds the following properties to the output PIDs:
 - hbbtv1.5.live: HBBTV 1.5 DASH profile  
 - dashavc264.live: DASH-IF live profile  
 - dashavc264.onDemand: DASH-IF onDemand profile  
-- dashif.ll: DASH IF low-latency profile (set UTC server to time.akamai.com if none set)  
+- dashif.ll: DASH IF low-latency profile (set UTC server to time.akamai.com if none set)- dashif.ingest: DASH-IF CMAF ingest profile (inherits dashif.ll and enforces CMAF, template, and segcts)  
 </div>  
   
 <div markdown class="option">  
