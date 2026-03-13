@@ -299,6 +299,11 @@ gpac -i source resample:sr=48k -o dump.pcm
 gpac -i source.pcm:sr=44100:ch=1 resample:sr=48k -o dump.pcm
 ```
 
+Cut sequence from second 1 to 3 and convert to 10-fps GIF with 320-pixels width
+```
+gpac -i source reframer:xs=1:xe=3 ffavf::f=fps=10,scale=320:-1 @#video -o 2s.gif
+```
+
 Setting FFmpeg and x264 options - _see [filter](ffenc)_  
 ```
 gpac -i vid.mp4 enc:c=avc:b=2m:fintra=2:profile=baseline:preset=ultrafast:tune=zerolatency::x264-params=no-mbtree=1:sliced-threads=1:sync-lookahead=0 -o dst.mp4
