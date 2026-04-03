@@ -797,9 +797,9 @@ mhvc | rfnalu | writegen | video/mhvc
 h266 | rfnalu | writegen | video/vvc   
 vvc | rfnalu | writegen | video/vvc   
 lvvc | rfnalu | writegen | video/vvc   
-mpg | m2psdmx | n/a | video/mpeg audio/mpeg video/mpegps   
-mpeg | m2psdmx | n/a | video/mpeg audio/mpeg video/mpegps   
-vob | m2psdmx | n/a | video/mpeg audio/mpeg video/mpegps   
+mpg | m2psdmx | n/a | video/mpeg video/mpegps   
+mpeg | m2psdmx | n/a | video/mpeg video/mpegps   
+vob | m2psdmx | n/a | video/mpeg video/mpegps   
 avi | avidmx | n/a | video/avi video/x-avi   
 srt | txtin | writegen | subtitle/srt   
 ttxt | txtin | writegen | subtitle/x-ttxt   
