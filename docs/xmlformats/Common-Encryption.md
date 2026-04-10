@@ -178,6 +178,8 @@ If the KID attribute is not specified, the key will match any KID in the file. S
 *   `rep` : ID of DASH representation (decryption only).
 *   `period` : ID of DASH period (decryption only).
 *   `as` : ID of DASH AdaptationSet (decryption only).
+*   `spatialId` (optional) : which spatial layer to encrypt when using scalable codecs (tested with AV1). If not set (along with `temporalId`), all layers are encrypted.
+*   `temporalId` (optional) : which temporal layer to encrypt when using scalable codecs (tested with AV1). If not set (along with `spatialId`), all layers are encrypted.
 
 
 The `rep`, `period` and `as` attributes can be used to differentiate keys with the same KID but with different key values used in different DASH qualities, Adaptation Sets or periods while using a single DRM file.
