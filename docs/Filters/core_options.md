@@ -405,3 +405,6 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <div markdown class="option">
 <a id="no-cdrf">__-no-cdrf__</a>: disable cdrf sample dep  
 </div>
+<div markdown class="option">
+<a id="no-evp">__-no-evp__</a>: disable all OpenSSL hardware acceleration  
+</div>
