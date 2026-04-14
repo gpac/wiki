@@ -47,7 +47,7 @@ Just a few remarks about this implementation:
   **EBU-TTD current limitations** /!\\ These limitations don't exist if you [use NHML](https://concolato.wp.imt.fr/2014/01/27/first-attempt-at-storing-ttml-in-mp4/) /!\\
 
 *   Overlapping times are not supported.
-*   Multiple <region> elements may trigger errors.
+*   Multiple `<region>` elements may trigger errors.
 
 /!\\ Fixed limitations /\\
 
