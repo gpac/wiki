@@ -333,7 +333,7 @@ This will force the text stream to be used as a QT chapter track.
 <div markdown class="option">  
 <a id="ase" data-level="basic">__ase__</a> (enum, default: _v0_): set audio sample entry mode for more than stereo layouts  
 
-- v0: use v0 signaling with channel count from stream (except for (e)AC3), recommended for backward compatibility  
+- v0: use v0 signaling with channel count from stream (except for (e)AC3/4), recommended for backward compatibility  
 - v0s: use v0 signaling and force channel count to 2 (stereo) if more than 2 channels  
 - v0bs: use v0 signaling from bitstream only  
 - v1: use v1 signaling, ISOBMFF style (will mux raw PCM as ISOBMFF style)  
