@@ -165,20 +165,31 @@ The additional formats allowed for [xs](#xs) option are:
   
 _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are implicitly set._  
   
-# Absorbing stream discontinuities  
+# Handling stream discontinuities  
   
 Discontinuities may happen quite often in streaming sessions due to resolution switching, codec change, etc ...  
 While GPAC handles these discontinuities internally, it may be desired to ignore them, for example when a source is known to have no discontinuity but GPAC detects some due to network errors or other changing properties that should be ignored.  
-The [nodisc](#nodisc) option allows removing all discontinuities once a stream is setup.  
+A negative value for [chkdisc](#chkdisc) option allows removing all discontinuities once a stream is setup.  
 
 __Warning: Make sure you know what you are doing as using this option could make the stream not playable (ignoring a codec config change).__  
   
 Example
 ```
-gpac -i SOMEURL reframer:nodisc -o DASH_ORIGIN
+gpac -i SOMEURL reframer:chkdisc=-1 -o DASH_ORIGIN
 ```
   
 In this example, the dasher filter will never trigger a period switch due to input stream discontinuity.  
+  
+A value of 0 for [chkdisc](#chkdisc) option does not change the behaviour of the filter.  
+  
+A positive value for [chkdisc](#chkdisc) option will check timestamp continuity in input stream.  
+A Discontinuity is triggered when:  
+
+- current packet decoding is strictly less than previous packet deocding time  
+- current packet decoding is strictly more than previous packet deocding time plus [chkdisc](#chkdisc)  
+
+  
+When triggered, the PID property `Discontinuity` is updated, allowing next filters to decide what to do.  
   
 
 # Options  {.no-collapse}  
@@ -292,6 +303,6 @@ In this example, the dasher filter will never trigger a period switch due to inp
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
 </div>  
 <div markdown class="option">  
-<a id="nodisc">__nodisc__</a> (bool, default: _false_, updatable): ignore all discontinuities from input - see filter help  
+<a id="chkdisc">__chkdisc__</a> (frac, default: _0/1_, updatable): discontinuity detection in milliseconds - see filter help  
 </div>  
   

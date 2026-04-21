@@ -362,6 +362,7 @@ OriginalPTS | luint | DP | indicate original PTS or PCR when remapping M2TS PCR 
 OriginalDTS | luint | DP | indicate original DTS when remapping M2TS PCR | ODTS    
 MABRBaseURLs | strl | D | optionnal URLs for MABR - if first is `none`source server is not declared as repair server | MABU    
 Forced | bool | DP | indicate packet is a forced subtitle | PCFS    
+TimeDiscontinuity | uint | D | indicate a time discontinuity in PID - the value increases by one between each discontinuity | PDIS    
 AmbientIlluminance | uint | D | indicate the ambient illuminance extracted from the stream | AMIL    
 AmbientLightX | uint | D | indicate the ambient light x extracted from the stream | AMLX    
 AmbientLightY | uint | D | indicate the ambient light y extracted from the stream | AMLY    

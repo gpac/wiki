@@ -91,6 +91,7 @@ _Note: If multiple streams in source, only the first stream will have an AS ID a
 - `HLSPL`: name of variant playlist, can use templates  
 - `HLSMExt`: list of extensions to add to master playlist entries, ['foo','bar=val'] added as `,foo,bar=val`  
 - `HLSVExt`: list of extensions to add to variant playlist, ['#foo','#bar=val'] added as `#foo \n #bar=val`  
+- `Discontinuity`: indicate a time discontinuity in source, triggering a new period  
 - Non-dash properties: `Bitrate`, `SAR`, `Language`, `Width`, `Height`, `SampleRate`, `NumChannels`, `Language`, `ID`, `DependencyID`, `FPS`, `Interlaced`, `Codec`. These properties are used to setup each representation and can be overridden on input PIDs using the general PID property settings (cf global help).  
 
     
@@ -848,5 +849,11 @@ The segmenter adds the following properties to the output PIDs:
 </div>  
 <div markdown class="option">  
 <a id="base64">__base64__</a> (bool, default: _false_): embed init segments in manifests as base64  
+</div>  
+<div markdown class="option">  
+<a id="td_limit">__td_limit__</a> (uint, default: _5_): number of seconds below which a time discontinuity is considered normal (eg loss) - 0 disables checking  
+</div>  
+<div markdown class="option">  
+<a id="td_detect">__td_detect__</a> (uint, default: _5_): number of seconds between DTS above which a discontinuity is triggered - 0 disables checking  
 </div>  
   

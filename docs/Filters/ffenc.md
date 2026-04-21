@@ -23,6 +23,7 @@ The filter will look for property `TargetRate` on input PID to set the desired b
 The filter will force a closed gop boundary:  
 
 - at each packet with a `FileNumber` property set or a `CueStart` property set to true.  
+- at time discontinuities if [rtd](#rtd) is set.  
 - if [fintra](#fintra) and [rc](#rc) is set.  
 
   
@@ -58,6 +59,9 @@ The [rld](#rld) option is usually needed for dynamic updates of rate control par
 </div>  
 <div markdown class="option">  
 <a id="rld">__rld__</a> (bool, default: _false_, updatable): force reloading of encoder when arguments are updated  
+</div>  
+<div markdown class="option">  
+<a id="rtd">__rtd__</a> (bool, default: _true_): inject IDR at each time discontinuity  
 </div>  
 <div markdown class="option">  
 <a id="round">__round__</a> (sint, default: _1_, updatable): round video up or down  

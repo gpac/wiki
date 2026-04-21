@@ -42,6 +42,10 @@ The audio PID is assigned the name `audio` and ID `1`.
 If a single video PID is produced, it is assigned the name `video` and ID `2`.  
 If multiple video PIDs are produced, they are assigned the names `videoN` and ID `N+1`, N in [1, sizes].  
 If multiple [views](#views) are generated, they are assigned the names `videoN_vK` and ID `N*views+K-1`, N in [1, sizes], K in [1, views].  
+
+# Discontinuity simulation  
+  
+Using [disc](#disc), discontinuities can be simulated at given interval. The timestamp will be reset to 0 at each discontinuity.  
   
 
 # Options  {.no-collapse}  
@@ -87,6 +91,9 @@ If multiple [views](#views) are generated, they are assigned the names `videoN_v
 </div>  
 <div markdown class="option">  
 <a id="sizes" data-level="basic">__sizes__</a> (v2il, default: _1280x720_): video size in pixels  
+</div>  
+<div markdown class="option">  
+<a id="disc" data-level="basic">__disc__</a> (frac, default: _-1/1_): discontinuity interval - see filter help  
 </div>  
 <div markdown class="option">  
 <a id="pfmt" data-level="basic">__pfmt__</a> (pfmt, default: _yuv_): output pixel format  

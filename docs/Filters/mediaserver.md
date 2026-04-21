@@ -49,7 +49,6 @@ Each service is a JSON object with one or more of the following properties:
     - true: enable repair using source URL or repair servers indicated in MABR  
     - auto: enable repair only from repair servers indicated in MABR  
 
-- corrupted: (boolean, default false) forward corrupted files if parsable (valid container syntax, broken media)  
 - check_ip: (boolean, , default false) monitor IP address and port rather than connection when tracking active clients  
 - noproxy: (boolean) disable proxy for service when local mount point is set. Default is `true` if both `local` and `http` are set, `false` otherwise  
 - sources: (array, default null) list of sources objects for file-only services. Each source has the following property:  
@@ -150,7 +149,7 @@ The `local` service configuration option can be set to:
   
 The server can be configured to use a multicast ABR source for an HTTP streaming service, without any HTTP source.  
   
-_Service configuration parameters used :_ `mabr` (mandatory), `local` (mandatory), `corrupted`, `timeshift` and `keepalive`.  
+_Service configuration parameters used :_ `mabr` (mandatory), `local` (mandatory), `timeshift` and `keepalive`.  
   
 The multicast source can be DVB-MABR (e.g. `mabr://235.0.0.1:1234/`), ATSC3.0 (e.g. `atsc://`) or ROUTE (e.g. `route://235.0.0.1:1234/`).  
 
@@ -171,7 +170,7 @@ Configuration for exposing a MABR session:
   
 The server can be configured to use a multicast source as an alternate data source of a given HTTP streaming service.  
   
-_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `corrupted`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `activate`, `keepalive` and `js`.  
+_Service configuration parameters used :_ `http` (mandatory), `mabr` (mandatory), `local`, `timeshift`, `repair`, `gcache`, `mcache`, `unload`, `activate`, `keepalive` and `js`.  
   
 The multicast service can be dynamically loaded at run-time using the `unload` service configuration option:  
 
@@ -190,11 +189,6 @@ The multicast service can use repair options of the MABR stack using `repair` se
 - if false, the file will not be sent until completely received (this increases latency),  
 - otherwise, file data will be pushed as soon as available in order (after reception or repair).  
 
-  
-If the `corrupted` option is set together with `repair`, HTTP-based repair is disabled and corrupted files are patched using the `repair=strict` mode of the `routein` filter.  
-If files are completely lost, they will be fetched from `http`source.  
-
-__Warning: This may likely result in decoding/buffering pipeline errors and could fail with some players expecting no timeline holes (such as browsers). GPAC supports this.__  
   
 The number of active clients on a given quality is computed using the client connection state: any disconnect/reconnect from a client for the same quality will trigger a deactivate+activate sequence.  
 If `check_ip` is set to true, the remote IP address+port are used instead of the connection. This however assumes that each client has a unique IP/port which may not always be true (NATs).  
