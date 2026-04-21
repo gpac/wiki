@@ -110,7 +110,7 @@ You now know how to create a compliant DASH content from a given file, but what 
 
 ```
 MP4Box -dash 10000 -segment-name mysegs_%s -url-template
-         -out final.mpd file1.mp4 ... fileN.mp
+         -out final.mpd file1.mp4 ... fileN.mp4
 ```
 
 ## Playback
