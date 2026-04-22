@@ -149,4 +149,7 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
 <div markdown class="option">  
 <a id="keepc">__keepc__</a> (bool, default: _true_): keep corrupted samples (for multicast sources only)  
 </div>  
+<div markdown class="option">  
+<a id="sigfo">__sigfo__</a> (bool, default: _false_): signal segment boundaries on output packets for DASH or HLS sources (same as sigfrag but independent from dasher options)  
+</div>  
   

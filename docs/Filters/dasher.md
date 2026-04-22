@@ -856,4 +856,7 @@ The segmenter adds the following properties to the output PIDs:
 <div markdown class="option">  
 <a id="td_detect">__td_detect__</a> (uint, default: _5_): number of seconds between DTS above which a discontinuity is triggered - 0 disables checking  
 </div>  
+<div markdown class="option">  
+<a id="sigfo">__sigfo__</a> (bool): use fragment offsets if available when generating index (implicit if sigfrag is used)  
+</div>  
   

@@ -36,4 +36,7 @@ This filter demultiplexes MPEG-2 Transport Stream files/data into a set of media
 <div markdown class="option">  
 <a id="mappcr">__mappcr__</a> (bool, default: _true_): remap PCR and timestamps into continuous timeline  
 </div>  
+<div markdown class="option">  
+<a id="sigfo">__sigfo__</a> (bool, default: _false_): signal segment boundaries on output packets for DASH or HLS sources (same as sigfrag but independent from dasher options)  
+</div>  
   
