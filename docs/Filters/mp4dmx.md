@@ -100,7 +100,7 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
 <a id="nocrypt">__nocrypt__</a> (bool): signal encrypted tracks as non encrypted (mostly used for export)  
 </div>  
 <div markdown class="option">  
-<a id="mstore_size">__mstore_size__</a> (uint, default: _1000000_): target buffer size in bytes when reading from memory stream (pipe etc...)  
+<a id="mstore_size">__mstore_size__</a> (uint, default: _10000000_): target buffer size in bytes when reading from memory stream (pipe etc...)  
 </div>  
 <div markdown class="option">  
 <a id="mstore_purge">__mstore_purge__</a> (uint, default: _50000_): minimum size in bytes between memory purges when reading from memory stream, 0 means purge as soon as possible  

@@ -54,6 +54,8 @@ Playlist refreshing will abort:
 - if the input playlist has not been modified for the [timeout](#timeout) option value (infinite by default).  
 
   
+The special line `##GPACPL` can be used to identify the file as a GPAC playlist, usefull when playlist has no initial content in keep-alive mode.  
+  
 _Note: When the source playlist is a GFIO object, URLs inside the playlist are NOT translated into GFIO objects._  
   
 ## Playlist directives  
