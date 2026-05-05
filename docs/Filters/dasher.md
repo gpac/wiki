@@ -378,6 +378,15 @@ This will trash the manifest and open `mypipe` as destination for the muxer resu
 
 __Warning: Options for segment destination cannot be set through the [template](#template), global options must be used.__  
   
+## Inband and outband events  
+Inband events syntax is a list of triplets {scheme_id_uri,value,stream_type} separated by '@'.  
+Example
+```
+gpac -i SRC -o dash.mpd::inband_event=https://aomedia.org/emsg/ID3@https://aomedia.org/emsg/ID3@audio,https://aomedia.org/emsg/ID3@www.nielsen.com:id3:v1@audio
+```
+  
+The doubled colon (::) is used to avoid escaping the colons in the nielsen.com value.  
+  
 ## Batch Operations  
 The segmentation can be performed in multiple calls using a DASH context set with [state](#state).  
 Between calls, the PIDs are reassigned by checking that the PID ID match between the calls and:  
@@ -839,7 +848,8 @@ The segmenter adds the following properties to the output PIDs:
 <a id="tpl_force">__tpl_force__</a> (bool, default: _false_): use template string as is without trying to add extension or solve conflicts in names  
 </div>  
 <div markdown class="option">  
-<a id="inband_event" data-level="basic">__inband_event__</a> (bool, default: _false_): insert a default inband event stream in the DASH manifest  
+<a id="inband_event">__inband_event__</a> (strl): insert inband event in the DASH manifest described as triplets {schemeIdUri,value,streamType}  
+with streamType being "audio", "video", "text", or "all"  
 </div>  
 <div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  
@@ -847,6 +857,15 @@ The segmenter adds the following properties to the output PIDs:
 <div markdown class="option">  
 <a id="evte_agg">__evte_agg__</a> (bool, default: _false_): force aggregation of Event Track samples of a DASH segment into a single sample  
 </div>  
+<div markdown class="option">  
+<a id="scte35">__scte35__</a> (enum, default: _xml+bin_): SCTE-35 signalling  
+
+- xml+bin: out-of-band (MPD) EventStream with xml+bin (recommended default)  
+- inband: in-band `emsg` boxes  
+- all: signal everywhere detected  
+- none: no EventStream  
+</div>  
+  
 <div markdown class="option">  
 <a id="base64">__base64__</a> (bool, default: _false_): embed init segments in manifests as base64  
 </div>  
