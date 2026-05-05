@@ -33,14 +33,14 @@ GPAC is able to:
 - edit to some extent via [NHML](NHML-Format),
 - insert dynamically via the C/JS/Python/... API,
 - remux or transmux between MPEG-TS and ISOBMFF-based formats (MP4, MPEG-DASH, HLS, CMAF),
-- create 23001-18 Event Tracks and DASH content,
+- create 23001-18 Event Tracks and DASH content for both inband (CSAI, SGAI) or out-of-band (SSAI),
 - align IDRs with events in case of transcoding.
 
 A special [dec_scte35 filter](scte35dec) was created to segment SCTE-35 content or insert cue start property on splice points to align transcoded GOPs with SCTE-35 events. The [dec_scte35 filter](scte35dec) needs to be explicitely added to the graph (or requested from the [dasher](dasher) with the `evte_agg` option).
 
 # Inspection {:data-level="all"}
 
-The content can be inspect like any other content in GPAC. Packet-based inspection may allow to dump useful information for analysis and reprocessing.
+The content can be inspected like any other content in GPAC. Packet-based inspection may allow to dump useful information for analysis and reprocessing.
 
 ## GPAC inspect
 
@@ -87,7 +87,7 @@ scte35_dump.xml would contain for instance such descriptions for a sample:
 [...]
 ```
 
-# Edit metadata
+# Edit metadata {:deta-level="all"}
 
 It is possible to edit data using the [NHML](NHML-Format) serialization format.
 
@@ -112,6 +112,7 @@ For example some inspected content can be re-injected, see [this example from th
 </NHNTStream>
 ```
 
+This is particularly useful when dynamically editing and injecting metadata.
 
 
 # Remux and transmux {:data-level="all"}
@@ -120,7 +121,8 @@ GPAC is able to remux any to any, including but not limited to:
 - TS to TS
 - MP4 (23001-18) to MP4 (23001-18)
 - TS to MP4 (23001-18)
-- NHML to TS or MP4
+- TS to DASH out-of-band `EventStream` element
+- NHML to TS or MP4 or DASH
 
 See specific instructions in the next section when segmenting for OTT packaging (MPEG-DASH, HLS).
 
@@ -130,14 +132,32 @@ The command-line is trivial:
 gpac -i input -o output
 ```
 
-The format is selected automatically depending on the file extension (or can be forced with ```:ext=```).
+The format is selected automatically depending on the file extension (or can be forced with `:ext=`).
 
-# Segmentation and 23001-18 ISOBMFF Event Track {:data-level="all"}
+# Manifest, Segmentation and 23001-18 ISOBMFF Event Track {:data-level="all"}
 
-Adaptive streaming with DASH or HLS requires the content to be segmented. Simple segmentation (where content can be replicated over several segments without any change) works for all kind of streams.
+## Introduction
 
-For SCTE-35 streams the dec_scte35 [filter](scte35dec) must be either explicitly loaded or the [dasher](dasher) `evte_agg` option must be set.
-Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you:
+The core concept is that metadata can be signalled "in-band" or "out-of-band".
+
+"Out-of-band" (sometimes also referred as "outband") means that the content is in the manifest. In DASH this is done with `EventStream` in the manifest. In HLS, input can be in the variant playlist.
+
+"Inband" means that the metadata leaves inside the media content. This can be done with extra `emsg` boxes inside an existing (typically video) track, or as a separate Event Track (`evte`). In both cases, recommendations require some manifest signalling (e.g. with GPAC's `dasher` `:inband_event` option).
+
+The `:scte35` option controls the signalling using `DATERANGE` and `CUE-OUT/CUE-IN`. If you need other modes, contact us.
+
+## How it works
+
+The source metadata is usually presented as a MPEG-TS section PID input or `emsg` boxes in ISOBMFF or `evte`event tracks. This may require GPAC to analyze or extract metadata for you. There are many use-cases so this can't be fully automated. Please read this document carefully to set the appropriate filters ([dec_scte35](scte35dec)) or options (`scte35`, `evte_agg`) appropriately.
+
+Adaptive streaming with DASH or HLS requires the content to be segmented. Simple segmentation (where metadata content can be replicated over several segments without any change) works for all kind of streams. More advanced SCTE-35 segmentation is presented below.
+
+Note: HLS was only tested with out-of-band signalling.
+
+## SCTE-35 segmentation
+
+For SCTE-35 streams the [dec_scte35 filter](scte35dec) must be either explicitly loaded or the [dasher](dasher) `evte_agg` option must be set.
+Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you (both with in-band and out-of-band):
 
 ```
 gpac -i input scte35dec -o output.mpd:segdur=2:evte_agg
@@ -145,9 +165,23 @@ gpac -i input scte35dec -o output.mpd:segdur=2:evte_agg
 
 Whenever possible the content is in the form of 23001-18 ISOBMFF Event Tracks. `emib` and `emeb` boxes are inserted automatically.
 
+Same works with HLS (with in-band):
+
+```
+gpac -i input.ts -o output.m3u8:segdur=6:dmode=dynamic:tsb=-1:hlsc
+```
+
+## Special case of in-band signalling
+
+In the case where GPAC wouldn't automatically detect your in-band content, you can add it manually to the manifest. Here is an example with ID3 tags e.g. for Nielsen:
+
+```
+gpac -i file.mp4 -o file.mpd::inband_event=https://aomedia.org/emsg/ID3@https://aomedia.org/emsg/ID3@audio,https://aomedia.org/emsg/ID3@www.nielsen.com:id3:v1@audio
+```
+
 # Align IDRs with events in case of transcoding {:data-level="all"}
 
-The following example will transcode a MPEG-TS file while inserting IDRs atSCTE-35 cue points and copying all the other data: 
+The following example will transcode a MPEG-TS file while inserting IDRs at SCTE-35 cue points and copying all the other data:
 
 ```
 gpac -i video.ts scte35dec:mode=passthrough c=avc -o output.ts
