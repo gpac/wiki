@@ -944,6 +944,8 @@ smtp | httpin |  n/a
 smtps | httpin |  n/a  
 telnet | httpin |  n/a  
 tftp | httpin |  n/a  
+ws | httpin |  n/a  
+wss | httpin |  n/a  
 tcp | sockin | sockout  
 udp | sockin | sockout  
 tcpu | sockin | sockout  
