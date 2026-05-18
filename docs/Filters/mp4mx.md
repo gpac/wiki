@@ -479,4 +479,7 @@ This will force the text stream to be used as a QT chapter track.
 - none: no EventStream  
 </div>  
   
+<div markdown class="option">  
+<a id="auto_reorder">__auto_reorder__</a> (bool, default: _false_): reorder tracks in moov (first video, then audio, then text then other)  
+</div>  
   
