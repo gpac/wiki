@@ -83,10 +83,10 @@ An option of type `boolean` expects no following value.
 <a id="brand">__-brand__</a> (string): set major brand of file (`ABCD`) or brand with optional version (`ABCD:v`)  
 </div>
 <div markdown class="option">
-<a id="ab">__-ab__</a> (string): add given brand to file's alternate brand list  
+<a id="ab">__-ab__</a> (string): add given brand to alternate brand list  
 </div>
 <div markdown class="option">
-<a id="rb">__-rb__</a> (string): remove given brand to file's alternate brand list  
+<a id="rb">__-rb__</a> (string): remove given brand from alternate brand list  
 </div>
 <div markdown class="option">
 <a id="cprt">__-cprt__</a> (string): add copyright string to file  
