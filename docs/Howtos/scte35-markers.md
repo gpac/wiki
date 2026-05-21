@@ -134,6 +134,20 @@ gpac -i input -o output
 
 The format is selected automatically depending on the file extension (or can be forced with `:ext=`).
 
+Examples provided by the community:
+- Input is TS (embedding the "scte35 property"):
+  - TS -> MP4 (emsg) : `gpac -i input.ts -o output.mp4:scte35=inband`
+  - TS -> MP4 (evte: call `scte35dec` explicitely) : `gpac -i input.ts @#video scte35dec @ @@ -o output.mp4` (`MP4Box -add input.ts -add input.ts#video:@scte35dec -new output.mp4`)
+  - TS -> HLS (outband) : `gpac -i input.ts -o output.m3u8:segdur=6:dmode=dynamic:tsb=-1:hlsc`
+  - TS -> DASH (auto mode: outband, `<EventStream>` 'xml+bin') : `gpac -i input.ts -o output.mpd`
+  - TS -> DASH (inband, emsg) : `gpac -i input.ts -o output.mpd:scte35=inband`
+  - TS -> DASH (evte: force segmentation) : `gpac -i input.ts -o output.mpd:evte_agg`
+  - TS -> TS : `gpac -i input.ts -o output.ts`
+- Input is EVTE/MP4 (Event Stream track with its own GPAC PID):
+  - MP4 -> DASH (evte, auto mode): `gpac -i input.mp4 -o output.mpd` 
+  - MP4 -> DASH (outband, `<EventStream>` 'xml+bin'): `gpac -i input.mp4 scte35dec:prop -o output.mpd:scte35=xmlbin` 
+- NB: the input can also be in a third format: raw SCTE35 frames embedded in MPEG-2 TS Sections (see `gpac -h scte35dec.mode`).
+
 # Manifest, Segmentation and 23001-18 ISOBMFF Event Track {:data-level="all"}
 
 ## Introduction
@@ -160,7 +174,7 @@ For SCTE-35 streams the [dec_scte35 filter](scte35dec) must be either explicitly
 Note that it can detect the segment duration from the [dasher](dasher) to create the right segmentation for you (both with in-band and out-of-band):
 
 ```
-gpac -i input scte35dec -o output.mpd:segdur=2:evte_agg
+gpac -i input -o output.mpd:segdur=2:evte_agg
 ```
 
 Whenever possible the content is in the form of 23001-18 ISOBMFF Event Tracks. `emib` and `emeb` boxes are inserted automatically.
