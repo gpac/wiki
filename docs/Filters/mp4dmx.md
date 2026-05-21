@@ -152,4 +152,7 @@ __Warning: smode=splitx will result in extractor NAL units still present in the 
 <div markdown class="option">  
 <a id="sigfo">__sigfo__</a> (bool, default: _false_): signal segment boundaries on output packets for DASH or HLS sources (same as sigfrag but independent from dasher options)  
 </div>  
+<div markdown class="option">  
+<a id="drefu">__drefu__</a> (str): override dref URL in source file with given value  
+</div>  
   
