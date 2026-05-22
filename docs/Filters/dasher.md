@@ -858,12 +858,13 @@ with streamType being "audio", "video", "text", or "all"
 <a id="evte_agg">__evte_agg__</a> (bool, default: _false_): force aggregation of Event Track samples of a DASH segment into a single sample  
 </div>  
 <div markdown class="option">  
-<a id="scte35">__scte35__</a> (enum, default: _xml+bin_): SCTE-35 signalling  
+<a id="scte35">__scte35__</a> (enum, default: _auto_): SCTE-35 signalling  
 
-- xml+bin: out-of-band (MPD) EventStream with xml+bin (recommended default)  
+- auto: 'xmlbin' or 'evte' depending on the input  
+- xmlbin: out-of-band (MPD) EventStream with xml+bin (recommended)  
 - inband: in-band `emsg` boxes  
 - all: signal everywhere detected  
-- none: no EventStream  
+- none: no EventStream nor `emsg` boxes  
 </div>  
   
 <div markdown class="option">  

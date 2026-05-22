@@ -471,12 +471,13 @@ This will force the text stream to be used as a QT chapter track.
 <a id="sfrag_tolerance">__sfrag_tolerance__</a> (uint, default: _0_): start fragment on SAP if previous fragment is not shorter than the indicated percentage of cdur  
 </div>  
 <div markdown class="option">  
-<a id="scte35">__scte35__</a> (enum, default: _xml+bin_): SCTE-35 signalling  
+<a id="scte35">__scte35__</a> (enum, default: _auto_): SCTE-35 signalling  
 
-- xml+bin: out-of-band (MPD) EventStream with xml+bin (recommended default)  
+- auto: 'xmlbin' or 'evte' depending on the input  
+- xmlbin: out-of-band (MPD) EventStream with xml+bin (recommended)  
 - inband: in-band `emsg` boxes  
 - all: signal everywhere detected  
-- none: no EventStream  
+- none: no EventStream nor `emsg` boxes  
 </div>  
   
 <div markdown class="option">  
