@@ -575,6 +575,7 @@ avsv avs3 | AVS3 Video
 avsa avs3 | AVS3 Audio    
 mhas | MPEG-H Audio    
 mhas | MPEG-H AudioMux    
+iamf | AOM IAMF (Immersive Audio Model and Formats)    
 prores apch | ProRes Video 422 HQ    
 prores apco | ProRes Video 422 Proxy    
 prores apcn | ProRes Video 422 STD    
@@ -882,6 +883,7 @@ av1 | rfav1 | writegen | video/x-ivf video/av1
 av1b | rfav1 | writegen | video/x-ivf video/av1   
 ivf | rfav1 | writegen | video/x-ivf video/av1   
 prores | rfprores | writegen | video/prores   
+iamf | rfav1 | writegen | audio/iamf   
 txt | n/a | writegen | x-subtitle/srt subtitle/srt text/srt   
 xml | n/a | writegen | subtitle/ttml text/ttml application/xml+ttml   
 qcelp | n/a | writegen | audio/x-qcelp   
@@ -902,7 +904,6 @@ pl | flist | n/a | application/x-gpac-playlist
 ghix | ghidmx | dasher | application/dash+xml video/vnd.3gpp.mpd audio/vnd.3gpp.mpd video/vnd.mpeg.dash.mpd audio/vnd.mpeg.dash.mpd audio/mpegurl video/mpegurl application/vnd.ms-sstr+xml application/x-gpac-ghi application/x-gpac-ghix   
 ghi | n/a | dasher | application/dash+xml video/vnd.3gpp.mpd audio/vnd.3gpp.mpd video/vnd.mpeg.dash.mpd audio/vnd.mpeg.dash.mpd audio/mpegurl video/mpegurl application/vnd.ms-sstr+xml application/x-gpac-ghi application/x-gpac-ghix   
 gsf | gsfdmx | gsfmx | application/x-gpac-sf   
-iamf | rfav1 | n/a | audio/iamf   
 `ignore | `n/a | writeuf | n/a   
 
 # Protocol Schemes  

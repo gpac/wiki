@@ -272,6 +272,9 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
   
 <div markdown class="option">  
+<a id="force_seig">__force_seig__</a> (bool, default: _false_): force writing `seig` sample group for encrypted samples, even when all samples use the default single-key CENC configuration  
+</div>  
+<div markdown class="option">  
 <a id="sgpd_traf">__sgpd_traf__</a> (bool, default: _false_): store sample group descriptions in traf (duplicated for each traf). If not used, sample group descriptions are stored in the movie box  
 </div>  
 <div markdown class="option">  
