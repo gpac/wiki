@@ -170,6 +170,7 @@ nav:
       - Introduction: Howtos/encryption/Encryption-Introduction.md
       - Encryption and filters: Howtos/encryption/encryption-filters.md
       - Clearkey: Howtos/encryption/encryption-clearkey.md
+      - Commercial DRMs: Howtos/encryption/encryption-commercial-DRMs-CPIX.md
     - Javascript Filters:
       - Overview: Howtos/jsf/jsfilter.md
       - JavaScript Session: Howtos/jsf/jssession.md
