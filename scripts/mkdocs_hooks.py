@@ -92,7 +92,7 @@ class BrokenLinkProcessor(pages._RelativePathTreeprocessor):
             # logging.warn(f"Fixed link to '{target}' with target '{fix}'")
 
         return md
-    
+
     def path_to_url(self, url: str) -> str:
             scheme, netloc, path, query, fragment = urlsplit(url)
 
