@@ -11,8 +11,8 @@ The `scripts/` directory contains the existing tests and can be used as examples
 GPAC test suite is composed of scripts written in the Bash language. Tests are placed in testsuite/scripts/. Each `.sh` file in that folder will be executed when running the entire test suite or may be run individually.
 
 Media files used in a test can be anywhere (local file, http URL).
-- the environment variable `$MEDIA_DIR` can be used to access to data located in testsuite/media (located in this repository).
-- the environment variable `$EXTERNAL_MEDIA_DIR` can be used to access to data located in testsuite/external_media (not hosted in this repository).
+- the environment variable `$MEDIA_DIR` can be used to access data located in testsuite/media (located in the testsuite repository).
+- the environment variable `$EXTERNAL_MEDIA_DIR` can be used to access data located in testsuite/external_media (not hosted in the testsuite repository).
 
 Scripts should use the `$TEMP_DIR` environment variable to get a directory where to place the file they generate.
 
@@ -28,7 +28,9 @@ A simple GPAC test can be:
 #!/bin/sh
 MP4Box -add $MEDIA_DIR/foo.bar $TEMP_DIR/foo.mp4
 ```
+
 or
+
 ```
 #!/bin/sh
 gpac -play $MEDIA_DIR/foo.mp4
@@ -43,7 +45,7 @@ The environment variable `$GPAC_OSTYPE` can be used to test the binary version u
 The environment variable `$GPAC_CPU`can be used to test the cpu type; the currently defined values are `x86` and `arm`.
 
 ## Simple Testing
-A simple test whose result will be integrated in the test suite report is run using the single_test function.
+A simple test whose result will be integrated in the test suite report is run using the `single_test` function.
 
 ### single_test
 Two arguments:
@@ -60,7 +62,9 @@ A simple test using `single_test` looks like:
 #!/bin/sh
 single_test "MP4Box -add $MEDIA_DIR/foo.bar $TEMP_DIR/foo.mp4" test01
 ```
+
 or
+
 ```
 #!/bin/sh
 single_test "gpac -play $MEDIA_DIR/foo.mp4" test02
@@ -109,10 +113,10 @@ No argument.
 This function triggers the end of the test and writes all logs and statistics.
 
 The function evaluates the variable `$result`. If not empty, the test is considered failed, otherwise (default) the test has passed.
-All results of subtests are automatically appended to the `$result` variable in the `end_test` function.
+Error codes of all failing subtests are automatically added to the `$result` variable.
 
 __WARNING__
-This variable can not be set in a subshell (eg in `some_function SOME_PARAM &` called during a test), it must be set in the shell calling `test_begin`.
+The `$result` variable can not be set in a subshell (eg in `some_function SOME_PARAM &` called during a test), it must be set in the shell calling `test_begin`.
 
 ### do_test
 Two arguments:
@@ -135,7 +139,7 @@ To customize a test, a file named `$TESTNAME.sh` can be placed in the gpac/rules
 
 ## Testing and caching results
 In order to avoid running all tests again whenever one test fails, the GPAC testing environment caches previous test results. If an XML file corresponding to the test or subtest exists in the results folder, the test or subtest is not run. If you want to ignore previous results, use `make_tests.sh -clean` before running the test suite. If you only want to invalidate tests of a given script, use  `make_tests.sh -clean script.sh`
-In case a test requires generating files before testing, it is recommended to check the variable `test_skip` to check if the test is being skipped because cached.
+In case a test requires generating files before testing, it is recommended to check the variable `test_skip` to check if the test is being skipped because cached (`test_end` is ignored when `test_skip=1`).
 
 A typical test with several subtests checking for cache looks like:
 ```
@@ -151,7 +155,8 @@ do_test CMD_LINE2 "Name2"
 
 test_end
 ```
-In this example, failure to check `$test_skip` will make the script import 4GB.src even though all `do_test` calls will be skipped.
+
+In this example, failure to check `$test_skip` will make the script import `4GB.src` even though all `do_test` calls will be skipped.
 
 ## Parallel tests with subscripts
 
@@ -206,7 +211,7 @@ Two arguments
 - `FILE1`
 - `FILE2`
 Compares hashes of `FILE1` and `FILE2`. returns 0 if OK or error code otherwise.
-Function does nothing when the test is skipped (see below) or a previous error occurred in the parent test `TESTNAME`.
+Function does nothing when the test is skipped or a previous error occurred in the parent test `TESTNAME`.
 
 A typical test with several subtests and hash testing looks like:
 ```
