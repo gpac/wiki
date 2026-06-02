@@ -55,7 +55,7 @@ There are two options to trigger a rebuild a PR with buildbot:
 
 By default, all buildbot builds are tested against **the HEAD of the master branch of testsuite repo** (ignoring the specific commit stored as the git submodule in the main repo, for historic reasons).
 
-However, in there exist a testsuite branch **of the same name as the built GPAC branch**, buildbot will test that build against that testsuite branch.
+However, if there is a testsuite branch **of the same name as the built GPAC branch**, buildbot will test that build against that testsuite branch.
 
 So if a PR needs to update the testsuite (add some tests, change a hash, etc.) it is possible, the workflow depends on the source of the branch
 
@@ -66,7 +66,7 @@ If an internal branch needs changes to the testsuite, the simple workflow is to:
  - push a branch `buildbot-mybranch` to the testsuite **first**, open a PR on the testsuite repo
  - push a branch `buildbot-mybranch` to gpac, open a PR on the gpac repo if not already done
 
-When merging, the order is reversed:
+When merging, the order is:
 
  - merge the testsuite PR into master
  - merge the gpac PR into master
