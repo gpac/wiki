@@ -82,7 +82,7 @@ hooks:
 markdown_extensions:
 - pymdownx.tabbed:
       alternate_style: true
-      
+
 - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -385,16 +385,18 @@ nav:
       - MSYS2: Build/build/GPAC-Build-Guide-for-MSYS-MinGW.md
       - Docker: Build/build/GPAC-Build-with-Docker.md
       - WASM: Build/build/GPAC-Build-Guide-for-WASM.md
-    - Old Build Docs:
-      - Building MP4Box only: Build/GPAC-build-MP4Box-only-all-platforms.md
-      - Windows: Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
-      - Linux: Build/old/Compiling-GPAC-on-Debian-and-Ubuntu-and-other-Unix.md
-      - OSX: Build/old/Compiling-GPAC-for-MacOS-X.md
     - Testing:
-      - GPAC Tests: Build/tests/GPAC_tests.md
+      - CI and Github: Build/tests/CI-and-Github.md
+      - Using the testsuite: Build/tests/Using-the-testsuite.md
+      - Writing tests: Build/tests/Writing-tests.md
     - Archives:
       - Basic player application using GPAC: Build/Basic-Player-Application-using-GPAC.md
       - MP4 dmx examples: Build/MP4-dmx-examples.md
+      - Old Build Docs:
+        - Building MP4Box only: Build/GPAC-build-MP4Box-only-all-platforms.md
+        - Windows: Build/old/Command-line-GPAC-compiling-on-Windows-x86-using-free-Microsoft-Visual-C++.md
+        - Linux: Build/old/Compiling-GPAC-on-Debian-and-Ubuntu-and-other-Unix.md
+        - OSX: Build/old/Compiling-GPAC-for-MacOS-X.md
   - Developers:
     - Developers/index.md
     - API documentation: https://doxygen.gpac.io
