@@ -365,6 +365,7 @@ If the DRM file uses `keyRoll=period`, this will generate:
 - second period clear  
 - third period crypted with another key  
 
+When period signaling is not explicit, [kpswitch](#kpswitch) can be used to force a new period whenever CENC key information changes.  
   
 ## Forced-Template mode  
 When [tpl_force](#tpl_force) is set, the [template](#template) string is not analyzed nor modified for missing elements.  
@@ -818,6 +819,9 @@ The segmenter adds the following properties to the output PIDs:
 - stsd: change period if PID configuration changes unless new configuration was advertised in initial config  
 </div>  
   
+<div markdown class="option">  
+<a id="kpswitch">__kpswitch__</a> (bool, default: _false_): force a new period when CENC key info changes, including encrypted/clear transitions  
+</div>  
 <div markdown class="option">  
 <a id="chain">__chain__</a> (str): URL of next MPD for regular chaining  
 </div>  
