@@ -217,6 +217,18 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="h2-copy">__-h2-copy__</a>: enable intermediate copy of data in nghttp2 (default is disabled but may report as broken frames in wireshark)  
 </div>
 <div markdown class="option">
+<a id="h2-max-frame">__-h2-max-frame__</a> (int, default: __1m__): set HTTP2 maximum frame size  
+</div>
+<div markdown class="option">
+<a id="hx-max-st">__-hx-max-st__</a> (int, default: __100__): set maximum number of HTTP2 or QUIC/HTTP3 concurrent streams  
+</div>
+<div markdown class="option">
+<a id="hx-iwnd">__-hx-iwnd__</a> (int, default: __64m__): set initial HTTP2 or QUIC/HTTP3 connection window size  
+</div>
+<div markdown class="option">
+<a id="hx-st-iwnd">__-hx-st-iwnd__</a> (int, default: __32m__): set initial HTTP2 or QUIC/HTTP3 stream window size  
+</div>
+<div markdown class="option">
 <a id="curl">__-curl__</a>:    use CURL instead of GPAC HTTP stack  
 </div>
 <div markdown class="option">
