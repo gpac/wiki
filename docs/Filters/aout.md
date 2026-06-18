@@ -45,7 +45,7 @@ If [clock](#clock) is set, the filter will report system time (in us) and corres
 <a id="pan" data-level="basic">__pan__</a> (uint, default: _50_, minmax: 0-100, updatable): set stereo pan, as a percentage between 0 and 100, 50 being centered  
 </div>  
 <div markdown class="option">  
-<a id="buffer" data-level="basic">__buffer__</a> (uint, default: _200_): set playout buffer in ms  
+<a id="buffer" data-level="basic">__buffer__</a> (uint, default: _100_): set playout buffer in ms  
 </div>  
 <div markdown class="option">  
 <a id="mbuffer" data-level="basic">__mbuffer__</a> (uint, default: _0_): set max buffer occupancy in ms. If less than buffer, use buffer  

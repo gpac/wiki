@@ -135,7 +135,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 <a id="stsi">__stsi__</a> (bool, default: _false_): define one output PID per tsi/serviceID (ignored in cache mode)  
 </div>  
 <div markdown class="option">  
-<a id="stats">__stats__</a> (uint, default: _1000_): log statistics at the given rate in ms (0 disables stats)  
+<a id="stats">__stats__</a> (sint, default: _1000_): log statistics at the given rate in ms (0 disables stats, negative values never reset stats)  
 </div>  
 <div markdown class="option">  
 <a id="tsidbg">__tsidbg__</a> (uint, default: _0_): gather only objects with given TSI (debug)  
