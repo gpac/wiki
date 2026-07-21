@@ -370,28 +370,31 @@ This will use regular network interface and drop packets 100 to 119 on port 1234
 <a id="rmt-sleep">__-rmt-sleep__</a> (int, default: __10__): set rmt ws sleep (ms) between server updates  
 </div>
 <div markdown class="option">
-<a id="rmt-cert">__-rmt-cert__</a> (string): rmt ws: certificate file in PEM format to use for TLS mode  
+<a id="rmt-cert">__-rmt-cert__</a> (string): certificate file in PEM format to use for TLS mode of rmt ws  
 </div>
 <div markdown class="option">
-<a id="rmt-pkey">__-rmt-pkey__</a> (string): rmt ws: private key file in PEM format to use for TLS mode  
+<a id="rmt-pkey">__-rmt-pkey__</a> (string): private key file in PEM format to use for TLS mode of rmt ws  
 </div>
 <div markdown class="option">
-<a id="rmt-path">__-rmt-path__</a> (string, default: __$GSHARE/scripts/rmt/server.js__): rmt ws: path to JS backend  
+<a id="rmt-path">__-rmt-path__</a> (string, default: __$GSHARE/scripts/rmt/server.js__): path to rmt ws JS backend  
+</div>
+<div markdown class="option">
+<a id="rmt-log">__-rmt-log__</a> (string): path to backend log recording, skip recording if NULL  
 </div>
 <div markdown class="option">
 <a id="userws-port">__-userws-port__</a> (int, default: __6364__): set user ws port  
 </div>
 <div markdown class="option">
-<a id="userws-localhost">__-userws-localhost__</a>: make userws ws only accepts localhost connection  
+<a id="userws-localhost">__-userws-localhost__</a>: make user ws only accepts localhost connection  
 </div>
 <div markdown class="option">
-<a id="userws-sleep">__-userws-sleep__</a> (int, default: __10__): set userws sleep (ms) between server updates  
+<a id="userws-sleep">__-userws-sleep__</a> (int, default: __10__): set user ws sleep (ms) between server updates  
 </div>
 <div markdown class="option">
-<a id="userws-cert">__-userws-cert__</a> (string): userws: certificate file in PEM format to use for TLS mode  
+<a id="userws-cert">__-userws-cert__</a> (string): certificate file in PEM format to use for TLS mode for user ws  
 </div>
 <div markdown class="option">
-<a id="userws-pkey">__-userws-pkey__</a> (string): userws: private key file in PEM format to use for TLS mode  
+<a id="userws-pkey">__-userws-pkey__</a> (string): private key file in PEM format to use for TLS mode for user ws  
 </div>
 <div markdown class="option">
 <a id="diso-nosize">__-diso-nosize__</a>: skip box size info when dumping ISOBMFF  
