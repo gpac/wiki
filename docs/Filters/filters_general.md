@@ -322,6 +322,14 @@ fA:FID=1 fB:FID=2 fC:SID=1 fD:SID=1,2
 This indicates that `fD` only accepts input from `fA` and `fB` and `fC` only from `fA`  
 _Note: A filter with sourceID set cannot get input from filters with no IDs._  
   
+A sourceID name can end with `*` to match by prefix rather than full name, the prefix being all the characters up to `*`.  
+Example
+```
+fA:FID=AB1 fB:FID=ABCD fC:FID=B1 fD:SID=AB*
+```
+  
+This indicates that `fD` only accepts input from `fA` and `fB` but not from `fC`  
+  
 A sourceID name can be further extended using fragment identifier (`#` by default):  
 
 - name#PIDNAME: accepts only PID(s) with name `PIDNAME`  
@@ -736,7 +744,7 @@ This will dump first service in dump_10.ts, second service in dump_12.ts, etc...
   
 As seen previously, the following options may be set on any filter, but are not visible in individual filter help:  
 
-- FID: filter identifier  
+- FID: filter identifier (string value)  
 - SID: filter source(s) (string value)  
 - N=NAME: filter name (string value)  
 - FS: sub-session identifier (unsigned int value)  
