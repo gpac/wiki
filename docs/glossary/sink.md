@@ -19,43 +19,17 @@ tags:
 - dump
 ---
 
+# Sink
 
+A sink is a filter with no output PID — the terminal point of a GPAC filter graph, such as [vout](vout) (video display), [aout](aout) (audio playback), or [fout](fout) (file output).
 
+## Usage in GPAC
 
-
-`sink` refers to an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.
-
-## Reference
-
-`SINK`
-
-## Usage
-
--  **Finalizing the media processing chain by writing the output data.**
--  **Exporting media streams to various file formats (e.g., MP4, AVI).**
-- **Displaying processed media in a player or exporting to a network stream.**
-
-## Troubleshooting
-
-### Output file not created
-- Check the file path permissions and ensure the output format is supported.
-
-### Corrupted output data
-- Confirm that the input data is correctly processed and compatible with the specified output format.
-
-## Example
-
-```plaintext
+```bash
 gpac -i input.mp4 -o output.avi
 ```
-
-## Parameters
-
-- **output_file**: Path where the processed media data will be saved.
-- **options**: Additional parameters to control the output settings (e.g., format, quality).
+Here the destination `output.avi` resolves to a [fout](fout) sink. For on-screen/audio playback instead of a file, use `gpac -play source`, which opens [vout](vout)/[aout](aout) sinks — see [playback](filters-playback).
 
 ## See Also
-- [Output](output.md) 
-- [Codec](codec.md)
-- [Transcode](transcode.md)
-
+- [Source](source.md)
+- [Output](output.md)

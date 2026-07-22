@@ -15,48 +15,18 @@ tags:
 - bitrate
 ---
 
+# Decoder
 
+A decoder is a filter that converts compressed media data back into raw, uncompressed samples (e.g. YUV video, PCM audio). GPAC's filter graph resolver loads a decoder automatically whenever a destination needs raw data that the source doesn't already provide, and can just as easily leave the data compressed if the destination accepts it directly.
 
+## Usage in GPAC
 
-
-### **Decoder**
-
-A `decoder` is responsible for converting encoded multimedia data back into its original format or an uncompressed format that can be processed by media players or other applications.
-
-## Reference
-
-### 
+Dumping an MP4 video track to raw YUV forces a decode, with no decoder named explicitly:
 ```bash
-decoder(input_file, output_file, codec)
+gpac -i source.mp4 -o dst_$Width$_$Height$.yuv
 ```
-## Usage
+GPAC ships several decoder filters, e.g. [ffdec](ffdec) (FFmpeg), [ohevcdec](ohevcdec) (OpenHEVC), [nvdec](nvdec) (NVIDIA). Use `gpac -h FNAME` (e.g. `gpac -h ffdec`) to see a specific decoder's options, or `gpac -h filters` to list all filters available in your build.
 
-- **Decoding video files for playback**
-- **Decoding audio files for editing or playback**
-- **Converting encoded formats into raw data for further processing**
-
-## Troubleshooting
-
-### File not playing correctly after decoding
-- Ensure the correct codec was used for decoding.
-
-### Decoding is slow
-- Check if the system has enough resources or try using a different decoder.
-
-## Example
-
-```bash
-decoder("input.mp4", "output.yuv", "libx264")
-```
-
-## Parameters
-
-- **input_file**: Path to the encoded multimedia file.
-- **output_file**: Path where the decoded file will be saved.
-- **codec**: Codec used for decoding (e.g., `libx264` for H.264).
-
-## See Also:
+## See Also
 - [Codec](codec.md)
-- [Bitrate](bitrate.md)
-
-
+- [Source](source.md)

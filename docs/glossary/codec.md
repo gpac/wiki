@@ -20,52 +20,20 @@ tags:
 - dump
 ---
 
+# Codec
 
+A codec identifies the compression format used to encode or decode audio, video, or other media data — for example AVC/H.264, HEVC, or AAC. In GPAC, a codec is named on an encoder or decoder filter, or resolved automatically from a PID's `CodecID` property.
 
+## Usage in GPAC
 
-`codec` refers to a compression algorithm used to encode and decode multimedia data (such as video, audio, etc.) into different formats for transmission and storage.
-
-## Reference
-
-### 
+Encode raw YUV video to AVC|H264 by naming the codec on the [enc](filters_general#specifying-encoders-and-decoders) filter shortcut:
 ```bash
-codec(input_file, output_file, codec_name)
+gpac -i source.yuv:size=1280x720 enc:c=avc -o test.mp4
 ```
-## Usage
-
-- **Compressing video or audio using different codecs**
-- **Optimizing multimedia files for storage or streaming**
-- **Converting between different codecs for compatibility**
-
-## Troubleshooting
-
-### File not playing correctly
-- Ensure the codec used is compatible with the media player.
-
-### Poor quality
-- Verify that the encoding settings for the codec are optimized, such as using higher bitrates.
-
-## Example
-
-```bash
-codec("input.mp4", "output.mp4", "libx265")
-```
-
-```mermaid
-
-graph LR;
-    A[input.mp4] --> B[libx265];
-    B --> C[output.mp4];
-```
-
-
-## Parameters
-
-- **input_file**: Path to the multimedia file.
-- **output_file**: Path where the output file will be saved.
-- **codec_name**: The codec to be used for encoding, e.g., `libx265` for HEVC.
+See [Encoding](../Howtos/encoding.md) for choosing and configuring codecs, including passing codec-specific options through to the underlying encoder.
 
 ## See Also
+- [Decoder](decoder.md)
 - [Bitrate](bitrate.md)
+- [Encode](encode.md)
 - [Transcode](transcode.md)
-

@@ -17,46 +17,18 @@ tags:
 - dump
 ---
 
+# Encode
 
+Encoding is the process of compressing raw media (video, audio) into a target codec using an encoder filter. In GPAC, the [enc](filters_general#specifying-encoders-and-decoders) filter shortcut loads whichever encoder filter provides the codec requested via `c=`.
 
-
-
-`encode` is a function that allows you to encode multimedia files into various formats using specified codecs.
-
-## Reference
-
-### 
-```bash
-encode(input_file, output_file, codec)`
-```
-## Usage
-
-- **Encoding video files**
-- **Encoding audio files**
-- **Transcoding multimedia streams to different formats**
-- **Setting encoding parameters such as bitrate and resolution**
-
-## Troubleshooting
-
-### The output file is not playing correctly
-- Verify that the codec specified is compatible with the input multimedia file.
-
-### Encoding is very slow
-- Ensure your system has sufficient resources and consider reducing the quality or complexity of the encoding settings.
-
-## Example
+## Usage in GPAC
 
 ```bash
-encode("input.mp4", "output.mp4", "libx264")
+gpac -i source.yuv:size=1280x720 enc:c=avc -o test.mp4
 ```
+This encodes raw YUV420 video into AVC|H264 and multiplexes the result into an MP4 file. See [Encoding](../Howtos/encoding.md) for audio encoding, transcoding, and setting encoder-specific options.
 
-## Parameters
-
-- **input_file**: Path to the multimedia file to be encoded.
-- **output_file**: Path where the encoded file will be saved.
-- **codec**: Codec to be used for encoding (e.g., libx264 for H.264 encoding).
-  
-## See Also 
+## See Also
 - [Codec](codec.md)
 - [Bitrate](bitrate.md)
-- [Transcode](transcode.md) 
+- [Transcode](transcode.md)

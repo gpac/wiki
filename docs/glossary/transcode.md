@@ -16,47 +16,23 @@ tags:
 - dump
 ---
 
+# Transcode
 
+Transcoding is decoding a source into raw samples and re-encoding it into a different codec, bitrate, or resolution. In GPAC this happens automatically whenever the graph resolver can't connect a source directly to a destination in its existing format.
 
-
-
-`transcode` is the process of converting a multimedia file from one format to another by decoding and re-encoding the file.
-
-## Reference
-
-### 
-```bash
-transcode(input_file, output_file, codec, bitrate)
-```
-
-## Usage
-
-- **Converting between formats for different devices**
-- **Changing video resolution or quality while preserving content**
-- **Adjusting parameters like codec and bitrate for various outputs**
-
-## Troubleshooting
-
-### File does not play after transcoding
-- Ensure you used the correct codec and bitrate for the target platform.
-
-### File quality is too low
-- Check your codec and bitrate settings for proper optimization.
-
-## Example
+## Usage in GPAC
 
 ```bash
-transcode("input.mp4", "output.mp4", "libvpx", "500k")
+gpac -i av_source c=avc:b=2m c=aac:b=128k -o test.mp4
+```
+This transcodes both tracks of `av_source` — video to AVC|H264 at 2 Mbit/s, audio to AAC at 128 kbit/s — and multiplexes the result into `test.mp4`. Omit either encoder to transcode just one track; see [Encoding](../Howtos/encoding.md) for more.
+
+To change resolution while transcoding, add a rescaler such as [ffsws](ffsws):
+```bash
+gpac -i source.mp4 ffsws:osize=1280x720 c=avc:b=1m -o test.avc
 ```
 
-## Parameters
-
-- **input_file**: File to be transcoded.
-- **output_file**: Output file path.
-- **codec**: Codec to be used (e.g., `libvpx` for VP8).
-- **bitrate**: Desired bitrate for the output file.
-
-## See Also:
+## See Also
 - [Codec](codec.md)
 - [Bitrate](bitrate.md)
-
+- [Encode](encode.md)

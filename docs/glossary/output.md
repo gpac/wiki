@@ -17,44 +17,17 @@ tags:
 - dump
 ---
 
+# Output
 
+Output refers to the destination of a GPAC filter pipeline — a file, stream, or device that the final filter(s) write to. It's specified with `-o`/`-dst`, or by using a destination filter directly, e.g. [fout](fout) (file), [pout](pout) (pipe), [sockout](sockout) (socket).
 
-
-
-`output` refers to the destination file or format where the result of encoding, decoding, or transcoding processes will be stored.
-
-## Reference
-
-### 
-```bash
-output(output_file, format)
-```
-## Usage
-
-- **Saving encoded or decoded multimedia files**
-- **Specifying the format of the output file**
-- **Exporting processed media streams**
-
-## Troubleshooting
-
-### Output file is corrupted or not working
-- Verify the format and codec compatibility with the output media player.
-
-### Output file size is too large
-- Consider adjusting the bitrate or encoding settings.
-
-## Example
+## Usage in GPAC
 
 ```bash
-output("output.mp4", "mp4")
+gpac -i source.mp4 -o dst.aac
 ```
+This finds a filter able to write `dst.aac` (here, [fout](fout)), transcoding the source if needed to match. The same result can be written explicitly as `fout:dst=dst.aac`. See [Source and Sink filters](filters_general#source-and-sink-filters) for the full `src=`/`dst=` syntax.
 
-## Parameters
-
-- **output_file**: Path to save the output file.
-- **format**: Format of the output file (e.g., `mp4`, `mkv`, `avi`).
-
-## See Also:
-- [Decoder](decoder.md)
-- [Codec](codec.md)
-
+## See Also
+- [Source](source.md)
+- [Sink](sink.md)

@@ -16,43 +16,17 @@ tags:
 - decoder
 ---
 
+# Source
 
+A source is a filter that provides media data into a GPAC pipeline — a file, live capture device, or network stream. It's specified with `-i`/`-src`, or by using a source filter directly, e.g. [fin](fin) (file), [pin](pin) (pipe), [sockin](sockin) (socket).
 
+## Usage in GPAC
 
-
-
-`source` is a keyword in GPAC representing an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.
-
-## Reference
-
-`SOURCE`
-
-## Usage
-
-- Serving as the entry point in a media processing chain.
-- Loading various media types (e.g., video, audio) for further processing.
-- Configuring the initial properties of media streams before processing.
-
-## Troubleshooting
-
-### No input data available
-- Ensure the correct path or media source is specified and accessible.
-
-### Invalid media format
-- Verify that the source format is supported by GPAC and correctly configured.
-
-## Example
-
-```plaintext
-gpac -i input.mp4 -o output.mp4
+```bash
+gpac -i source.mp4 -o output.mp4
 ```
+This finds a filter able to read `source.mp4` (here, [fin](fin)) and connects its output PID(s) to the destination. The same result can be written explicitly as `fin:src=source.mp4`. See [Source and Sink filters](filters_general#source-and-sink-filters) for the full `src=`/`dst=` syntax.
 
-## Parameters
-
-- **input_file**: Path to the multimedia file to be loaded as a source.
-- **options**: Additional parameters to control the behavior of the source filter (e.g., loop, start time).
-  
 ## See Also
-
-- [Decoder](decoder.md)
-
+- [Sink](sink.md)
+- [Output](output.md)
