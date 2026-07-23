@@ -476,6 +476,7 @@ nav:
       - HEVC: Howtos/archives/MPEG-HEVC-Support-in-GPAC.md
       - SVC: Howtos/archives/SVC-Support-in-MP4Box.md
       - Dump TS streams: Howtos/archives/Use-MP4Box-to-dump-and-analyze-broadcast-TS-streams.md
+  - Glossary: glossary/glossary.md
   - MP4Box:
     - Overview: MP4Box/MP4Box.md
     - General Usage: MP4Box/mp4box-gen-opts.md
