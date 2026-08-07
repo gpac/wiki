@@ -97,6 +97,12 @@ The DRM config file ([syntax](https://wiki.gpac.io/xmlformats/Common-Encryption/
 </GPACDRM>
 ```
 
+A corresponding PlayReady command-line is:
+
+```
+gpac -i input.mp4 cecrypt:cfile=playready.xml -o output/dash.mpd:pssh=mv:laurl=(playready)https://drm.com/auth?p=my_id
+```
+
 Some [examples](https://github.com/search?q=repo%3Agpac%2Ftestsuite%20playready&type=code) were contributed to the GPAC's testsuite too.
 
 ## Widevine DRM
@@ -120,6 +126,12 @@ The DRM config file ([syntax](https://wiki.gpac.io/xmlformats/Common-Encryption/
 </GPACDRM>
 ```
 
+A corresponding Widevine command-line is:
+
+```
+gpac -i input.mp4 cecrypt:cfile=../widevine.xml -o output/dash.mpd:pssh=mv:laurl=(widevine)https://drm.com/proxy?p=my_id
+```
+
 ## FairPlay DRM
 
 The DRM config file ([syntax](https://wiki.gpac.io/xmlformats/Common-Encryption/)) for FairPlay looks like (replace the three dots by your DRM vendor information - more on that above):
@@ -138,6 +150,12 @@ The DRM config file ([syntax](https://wiki.gpac.io/xmlformats/Common-Encryption/
 </CrypTrack>
 
 </GPACDRM>
+```
+
+A corresponding FairPlay command-line is:
+
+```
+gpac -i input.mp4 cecrypt:cfile=fairplay.xml -o output/dash.mpd:pssh=mv:laurl=(fairplay)https://drm.com/auth?p=my_id&assetID=01234567-8901-2345-6789-012345678901:certurl=https://drm.com/cert.cer
 ```
 
 ## Other DRMs
@@ -174,4 +192,10 @@ Combining DRMs consist in stacking options. Make sure the encryption parameters 
 </CrypTrack>
 
 </GPACDRM>
+```
+
+A corresponding multi-DRM command-line is:
+
+```
+gpac -i input.mp4 cecrypt:cfile=../widevine.xml -o output/dash.mpd:pssh=mv:laurl=(widevine)https://drm.com/proxy?p=my_id,(widevine)https://drm.com/proxy?p=my_id,(fairplay)https://drm.com/auth?p=my_id&assetID=01234567-8901-2345-6789-012345678901:certurl=https://drm.com/cert.cer
 ```
