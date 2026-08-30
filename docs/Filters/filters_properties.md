@@ -87,6 +87,7 @@ Timescale | uint |  | Media timescale (a timestamp delta of N is N/timescale sec
 ProfileLevel | uint | D | Profile and level indication | PRPL    
 DecoderConfig | mem |  | Decoder configuration data | DCFG    
 DecoderConfigEnhancement | mem |  | Decoder configuration data of the enhancement layer(s). Also used by 3GPP/Apple text streams to give the full sample description table used in SDP. | ECFG    
+Preselection | mem |  | Serialized preselection configuration | PRES    
 DSISuperset | bool |  | Decoder config is a superset of previous decoder config | DCFS    
 DecoderConfigIndex | uint |  | 1-based index of decoder config for ISO base media files | ICFG    
 SampleRate | uint |  | Audio sample rate | AUSR    

@@ -474,6 +474,9 @@ This will force the text stream to be used as a QT chapter track.
 <a id="sfrag_tolerance">__sfrag_tolerance__</a> (uint, default: _0_): start fragment on SAP if previous fragment is not shorter than the indicated percentage of cdur  
 </div>  
 <div markdown class="option">  
+<a id="preselection">__preselection__</a> (str): apply preselection entity  
+</div>  
+<div markdown class="option">  
 <a id="scte35">__scte35__</a> (enum, default: _auto_): SCTE-35 signalling  
 
 - auto: 'xmlbin' or 'evte' depending on the input  
