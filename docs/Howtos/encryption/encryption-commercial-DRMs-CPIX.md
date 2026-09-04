@@ -199,3 +199,11 @@ A corresponding multi-DRM command-line is:
 ```
 gpac -i input.mp4 cecrypt:cfile=../widevine.xml -o output/dash.mpd:pssh=mv:laurl=(widevine)https://drm.com/proxy?p=my_id,(widevine)https://drm.com/proxy?p=my_id,(fairplay)https://drm.com/auth?p=my_id&assetID=01234567-8901-2345-6789-012345678901:certurl=https://drm.com/cert.cer
 ```
+
+# Using CPIX
+
+[CPIX](https://dashif.org/CPIX/) is a document format for DRM information exchange. GPAC offers to parse CPIX documents. If the current parsing is too limited for your needs, please contact our [open-source](https://github.com/gpac/gpac/issues/new) or [commercial teams](mailto:romain.bouqueau@motionspell.com).
+
+```
+gpac -i input.mp4 cecrypt:cfile=cpix.xml:laurl=... -o output/dash.mpd:pssh=mv"
+```
