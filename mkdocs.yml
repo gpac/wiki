@@ -141,6 +141,7 @@ nav:
       - MP4Box and filters: Howtos/mp4box-filters.md
       - Custom ISOBMFF files: Howtos/custom-boxes.md
       - Logging in GPAC: Howtos/The-GPAC-Log-System.md
+      - Remote monitoring: Howtos/remote-monitoring.md
       - Audio-Video Mixer: Howtos/avmix_tuto.md
       - Dynamic Rate Control: Howtos/dynamic_rc.md
       - In-place Editing: Howtos/mp4box-inplace.md
