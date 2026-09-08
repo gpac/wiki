@@ -4,7 +4,7 @@ GPAC provides a remote monitoring system for inspecting a running filter session
 Remote monitoring is enabled using the `-rmt` option. Once enabled, the GPAC session exposes monitoring information through a WebSocket server.
 
 The session can then be inspected using the monitoring interface available at: https://monitor.gpac.io
-The monitoring application connects directly to the running GPAC instance and does not store the monitoring data.
+The monitoring application connects directly to the running GPAC instance and does not store monitoring data on a remote server. 
 
 The same interface is also distributed with GPAC and can be opened locally from:
 
@@ -80,3 +80,26 @@ This starts the same live monitoring session as before and additionally records 
 Recorded sessions can be loaded directly from a local session directory, or remotely through a WebSocket connection to a GPAC instance.
 
 ![Loading a recorded session in the monitoring interface](images/recording.png)
+
+# Monitoring interface {:data-level="all"}
+
+The monitoring interface provides several widgets for inspecting the running session.
+
+## Pipeline Graph
+
+The Pipeline Graph displays the filter graph and the connections between filters. 
+## Session Filters
+
+The Session Filters widget provides an overview of the filters in the session, including their processing activity and status.
+
+Selecting a filter opens a detailed view with its statistics, inputs and outputs. 
+
+![Display of filter metrics](images/filter_metrics.png)
+
+## System Logs
+
+The System Logs widget displays GPAC logs during execution. It can be used to inspect messages, warnings and errors produced by the running session.
+
+## System Metrics
+
+The System Metrics widget displays system resource usage, including CPU and memory, with graphical representations of the collected metrics.
