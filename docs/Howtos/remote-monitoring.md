@@ -128,6 +128,4 @@ The System Metrics widget displays system resource usage, including CPU and memo
 
 ## Timeline and Event Journal
 
-When inspecting a recorded session, a timeline is shown at the bottom of the interface. It lets
-you play, pause and scrub through the recorded session, and zoom in and out on a specific time
-range.
+When inspecting a recorded session, a timeline is shown at the bottom of the interface. It lets you play, pause and scrub through the recorded session, and zoom in and out on a specific time range.
