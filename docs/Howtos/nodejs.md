@@ -330,7 +330,7 @@ cust.ipids=[];
 cust.push_cap("StreamType", "Visual", gpac.GF_CAPS_INPUT);
 
 //we accept one or more input video PID, we must configure them
-cust.configure_pid = (pid, is_remove) => {
+cust.configure_pid = function(pid, is_remove) {
 	if (is_remove) {
 		console.log('PID removed !');
 		return gpac.GF_OK;
@@ -354,13 +354,13 @@ cust.configure_pid = (pid, is_remove) => {
 	return gpac.GF_OK;
 };
 
-cust.process() = () => {
+cust.process = function() {
 	this.ipids.forEach(pid => {
 		pck = pid.get_packet();
-		if (!pck) break;
-		console.log('Got Packet DTS ' + str(pck.dts) + ' CTS ' + str(pck.cts) + ' SAP ' + str(pck.sap) + ' dur ' + str(pck.dur) + ' size ' + str(pck.size) );
+		if (!pck) return;
+		console.log('Got Packet DTS ' + pck.dts + ' CTS ' + pck.cts + ' SAP ' + pck.sap + ' dur ' + pck.dur + ' size ' + pck.size );
 		pid.drop_packet();
-	}
+	});
 	return gpac.GF_OK;
 };
 
