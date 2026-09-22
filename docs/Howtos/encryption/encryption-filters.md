@@ -94,7 +94,7 @@ gpac -i udp://localhost:1234/:FID=in cecrypt:cfile=drm_audio.xml:SID=in#audio:FI
 
 Another possibility is to define the `CryptInfo` PID property rather than using a global DRM config file. Combining this with conditional PID property assignment you get:
 ```
-gpac -i udp://localhost:1234/:#CrypTrack=(audio)drm_audio.xml,(video)drm_video.xml cecrypt -o dest.mpd:profile=live:dmode=dynamic
+gpac -i udp://localhost:1234/:#CryptInfo=(audio)drm_audio.xml,(video)drm_video.xml cecrypt -o dest.mpd:profile=live:dmode=dynamic
 ```
 
 This example assigns:
