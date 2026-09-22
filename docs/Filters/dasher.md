@@ -784,6 +784,12 @@ The segmenter adds the following properties to the output PIDs:
 <a id="ckurl">__ckurl__</a> (str): set the ClearKey URL common to all encrypted streams (overridden by `CKUrl` pid property)  
 </div>  
 <div markdown class="option">  
+<a id="laurl">__laurl__</a> (str): set the License Acquisition URL common to all encrypted streams (overridden by `LAUrl` pid property)  
+</div>  
+<div markdown class="option">  
+<a id="certurl">__certurl__</a> (str): set the Certificate URL for Apple FairPlay (overridden by `CertUrl` pid property)  
+</div>  
+<div markdown class="option">  
 <a id="hls_absu">__hls_absu__</a> (enum, default: _no_): use absolute url in HLS generation using first URL in [base]()  
 
 - no: do not use absolute URL  
