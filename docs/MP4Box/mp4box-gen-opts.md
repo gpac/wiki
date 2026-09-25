@@ -167,6 +167,12 @@ An option of type `boolean` expects no following value.
 <a id="kind-rem" data-level="basic">__-kind-rem__</a> `tkID=schemeURI=value`: remove kind if given schemeID for the track or for all tracks with `all=schemeURI=value`  
 </div>
 <div markdown class="option">
+<a id="ctlc" data-level="basic">__-ctlc__</a> `tkID=content_type[:flags]`: set Content Type for Loudness Control metadata for the track or for all tracks using `all=content_type[:flags]`. flags default to 0 and may use bits 0 (advertisement) and 1 (immersive audio)  
+</div>
+<div markdown class="option">
+<a id="ctlc-rem" data-level="basic">__-ctlc-rem__</a> `tkID`: remove Content Type for Loudness Control metadata from the track or from all tracks using `all`  
+</div>
+<div markdown class="option">
 <a id="name">__-name__</a> `tkID=NAME`: set track handler name to NAME (UTF-8 string)  
 </div>
 <div markdown class="option">

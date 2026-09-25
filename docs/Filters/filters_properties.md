@@ -258,8 +258,10 @@ DFVariant | strl | DP | Value of variant playlist in forward mode | DHLV
 DFVariantName | strl | DP | Value of variant playlist name in forward mode | DHLN    
 DFPStart | luint | D | Value of active period start time in ms in forward mode | DPST    
 DFPckPStart | bool | DP | Indicate new period start (only set on first packets of non-first periods) | PDPS    
-HLSKey | str |  | URI, KEYFORMAT and KEYFORMATVERSIONS for HLS full segment encryption creation, Key URI otherwise ( decoding and sample-AES) | HLSK    
+HLSKey | str |  | URI, KEYFORMAT and KEYFORMATVERSIONS for HLS full segment encryption creation, Key URI otherwise (decoding and sample-AES) | HLSK    
 HLSIV | mem |  | Init Vector for HLS decode | HLSI    
+LAUrl | str |  | URLs for License Acquisition server, formatted as a comma-separated list of (System)URL | LAUR    
+CertUrl | str |  | Certificate URLs, formatted as a comma-separated list of (System)URL | CEUR    
 CKUrl | str |  | URL for ClearKey licence server | CCKU    
 ColorPrimaries | cprm | D | Color primaries | CPRM    
 ColorTransfer | ctfc | D | Color transfer characteristics | CTRC    
