@@ -20,7 +20,7 @@ tags:
 
 # Introduction {:data-level="all"}
 
-GPAC provides a remote monitoring system for inspecting a running filter session.
+We discuss here how to remotely monitor a running GPAC filter session.
 Remote monitoring is enabled using the `-rmt` option. Once enabled, the GPAC session exposes monitoring information through a WebSocket server.
 
 The session can then be inspected using the monitoring interface available at: https://monitor.gpac.io
@@ -29,7 +29,7 @@ The monitoring application connects directly to the running GPAC instance and do
 The same interface is also distributed with GPAC and can be opened locally from
 `GPAC_ROOT_DIR/share/scripts/rmt/index.html`.
 
-This article explains how to monitor a running GPAC session and how to record monitoring data for later inspection.
+This article explains how to monitor a GPAC session and how to record monitoring data for later inspection.
 
 # Overview {:data-level="all"}
 
@@ -87,7 +87,7 @@ The monitoring interface can then be used to inspect the filters involved in the
 
 # Session recording {:data-level="all"}
 
-To record a monitoring session for later inspection, add the option `-rmt-log=<path-to-logs>`.
+To record a monitoring session , add the option `-rmt-log=<path-to-logs>`.
 ```bash
 gpac -i file.mp4 vout aout -rmt -rmt-log=MySessionLog
 ```
@@ -122,7 +122,7 @@ The System Logs widget displays GPAC logs during execution. It can be used to in
 
 ## System Metrics
 
-The System Metrics widget displays system resource usage, including CPU and memory, with graphical representations of the collected metrics.
+The System Metrics widget displays system resource usage ( CPU and memory ).
 
 ![CPU and memory usage in the System Metrics widget](images/cpu.png)
 
