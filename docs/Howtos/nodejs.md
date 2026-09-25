@@ -102,7 +102,7 @@ You will also likely need to update the `libraries` property to add the path to 
 
 ```
 
-The build is usually located in `$GPAC_SRC/share/node/build/Release` so you will need to specify the full path to the module in your JS file:
+The build is usually located in `$GPAC_SRC/share/nodejs/build/Release` so you will need to specify the full path to the module in your JS file:
 
 ```
 const gpac = require('./build/Release/gpac');
@@ -232,10 +232,10 @@ const FilterSessionPromise = (fs_run_task) => {
 
 const run_task = () => {
 	return new Promise((resolve, reject) => {
-	  resolve( fs.run_step() );
+	  resolve( fs.run() );
 	});
 }
-FilterSessionPromise(run_task).then( ).finally( ()=> { console.log('session is done'); } ) );
+FilterSessionPromise(run_task).then( ).finally( ()=> { console.log('session is done'); } );
 
 console.log('Entering NodeJS EventLoop');
 ```
