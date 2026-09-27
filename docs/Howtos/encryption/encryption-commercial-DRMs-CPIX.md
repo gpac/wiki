@@ -28,11 +28,11 @@ GPAC provides a generic framework for protecting data with encryption. As Free S
 
 ## Introduction
 
-For historical reasons, commercial DRMs require some custom processing and fields, often centralized in the `pssh` box or thr MPEG-DASH MPD manifest, but not only. GPAC tries an automatic detection or relies on user-based input such as a [DRM config file](Common-Encryption).
+For historical reasons, commercial DRMs require some custom processing and fields, often centralized in the `pssh` box or the MPEG-DASH MPD manifest, but not only. GPAC tries an automatic detection or relies on user-based input such as a [DRM config file](Common-Encryption).
 
 ## PSSH box localisation
 
-With adapting streaming (`dasher` filter), the `pssh` box can be set both inband (in the global `moov` or the fragment `moof`) or outband (in the manifest). Most DRMs mandate both (`dasher:pssh=mv`).
+With adapting streaming (`dasher` filter), the `pssh` box can be set both inband (in the global `moov` or the fragment `moof`) or outband (in the manifest). Most DRMs mandate both (`dasher:pssh=mv`) ; however CMAF and DASH-IOP recommend against duplication in media file when already present in the manifest.
 
 ## Specifying right management servers
 
