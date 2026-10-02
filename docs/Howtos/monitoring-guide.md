@@ -33,30 +33,33 @@ Reload the page with the reload button at the left of the connection selector. Y
 
 The **Pipeline Graph** shows more filters than your command names: the extra ones were created implicitly by GPAC to resolve the graph.
 
-Each edge is a connection between two filters, and its color tells which kind of stream it carries: green for audio, blue for video, yellow for text, red for files, as recalled by the legend at the top left of the graph. At a glance, you see which stream travels through each connection.
+Each edge is a connection between two filters, and its color tells which kind of stream it carries: green for audio, blue for video, yellow for text, red for files. At a glance, you see which stream travels through each connection: 
+
 ![Edges colored by stream type in the Pipeline Graph](images/edges_nodes.png)
 
 # 3. Open the encoder {:data-level="all"}
 
-Click the encoder node in the graph. The filter opens in its own tab of the **Session Filters** widget, on its **Overview** tab, next to the **Dashboard** that lists every filter of the session.
+Click the encoder node in the graph. The filter opens in its own tab of the **Session Filters** widget, on its Overview tab, next to the Dashboard that lists every filter of the session.
 
 ![The encoder opened from the graph](images/encoder_overview.png)
 
-The **Status** chart plots the values the encoder reports, such as **Fps**, **Frames**, **Q** (quality of the last frame, lower is better) and **LAT** (internal latency: the number of frames the encoder holds, received but not yet output). Click a name in the legend to hide its curve, or to show it again: to follow only **Fps**, click the others. Hover the info icon next to a name to read what it measures.
+The Status chart plots the values the encoder reports, such as **Fps**, **Frames**, **Q** (quality of the last frame, lower is better) and **LAT** (internal latency: the number of frames the encoder holds, received but not yet output). Click a name in the legend to hide its curve, or to show it again: to follow only **Fps**, click the others. Hover the info icon next to a name to read what it measures.
 
-Below the chart, the **P** badge shows the type of the last encoded frame (I, P or B). The **Packets** card counts the packets the encoder received (**Done**) and output (**Sent**): their difference is the **LAT** value. The **Data** card shows the compression at work: the encoder receives raw frames and outputs far fewer bytes.
+Below the chart, the P badge shows the type of the last encoded frame (I, P or B). The Packets card counts the packets the encoder received (Done) and output (Sent): their difference is the **LAT** value. The Data card shows the compression at work: the encoder receives raw frames and outputs far fewer bytes.
 
 # 4. Follow a stream {:data-level="all"}
 
-Each edge of the graph carries a stream, a PID. Click an edge that enters a muxer: the muxer opens directly on its **Inputs** tab, with one line per incoming PID and its statistics: buffer, average bitrate, processing rate, last processing time.
+Each edge of the graph carries a stream, a PID. Click an edge that enters a muxer: the muxer opens directly on its Inputs tab, with one line per incoming PID and its statistics: buffer, average bitrate, processing rate, last processing time.
 
 ![Statistics and bitrate chart of the audio PID entering a muxer](images/pid_metrics.png)
 
-Click a statistic label, such as **AVG BITRATE**, to display the complementary statistics of the same family. Then click the eye icon of the PID: all its properties open at once, with a search field to find one quickly. Look for the ones you already know about your input file, such as its timescale or duration.
+The chart below the table plots one statistic for the selected PIDs. Click a column label, such as **AVG BITRATE**, to choose that statistic. Hover a value to see the related statistics of the same family, and click **+** next to one to plot it. Use the radio button at the left of a PID to add it to the chart or remove it.
 
-![All properties of the audio PID, opened with the eye icon](images/pid_properties.png)
+![All properties of the audio PID, opened with the eye icon](images/pid_properties.png){ align=left }
 
-The **Outputs** tab shows the same view for the PIDs the filter produces. Comparing the two tabs of one filter tells you whether data enters it, and whether it leaves it.
+Then click the eye icon of the PID: all its properties open at once, with a search field to find one quickly. Look for the ones you already know about your input file, such as its timescale or duration.
+
+The Outputs tab lists the PIDs the filter produces, with the same statistics. Comparing the two tabs of one filter tells you whether data enters it, and whether it leaves it.
 
 # 5. Check what GPAC reports {:data-level="all"}
 
