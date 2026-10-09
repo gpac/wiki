@@ -102,7 +102,7 @@ You will also likely need to update the `libraries` property to add the path to 
 
 ```
 
-The build is usually located in `$GPAC_SRC/share/node/build/Release` so you will need to specify the full path to the module in your JS file:
+The build is usually located in `$GPAC_SRC/share/nodejs/build/Release` so you will need to specify the full path to the module in your JS file:
 
 ```
 const gpac = require('./build/Release/gpac');
@@ -232,10 +232,10 @@ const FilterSessionPromise = (fs_run_task) => {
 
 const run_task = () => {
 	return new Promise((resolve, reject) => {
-	  resolve( fs.run_step() );
+	  resolve( fs.run() );
 	});
 }
-FilterSessionPromise(run_task).then( ).finally( ()=> { console.log('session is done'); } ) );
+FilterSessionPromise(run_task).then( ).finally( ()=> { console.log('session is done'); } );
 
 console.log('Entering NodeJS EventLoop');
 ```
@@ -330,7 +330,7 @@ cust.ipids=[];
 cust.push_cap("StreamType", "Visual", gpac.GF_CAPS_INPUT);
 
 //we accept one or more input video PID, we must configure them
-cust.configure_pid = (pid, is_remove) => {
+cust.configure_pid = function(pid, is_remove) {
 	if (is_remove) {
 		console.log('PID removed !');
 		return gpac.GF_OK;
@@ -354,13 +354,13 @@ cust.configure_pid = (pid, is_remove) => {
 	return gpac.GF_OK;
 };
 
-cust.process() = () => {
+cust.process = function() {
 	this.ipids.forEach(pid => {
 		pck = pid.get_packet();
-		if (!pck) break;
-		console.log('Got Packet DTS ' + str(pck.dts) + ' CTS ' + str(pck.cts) + ' SAP ' + str(pck.sap) + ' dur ' + str(pck.dur) + ' size ' + str(pck.size) );
+		if (!pck) return;
+		console.log('Got Packet DTS ' + pck.dts + ' CTS ' + pck.cts + ' SAP ' + pck.sap + ' dur ' + pck.dur + ' size ' + pck.size );
 		pid.drop_packet();
-	}
+	});
 	return gpac.GF_OK;
 };
 
