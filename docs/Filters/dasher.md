@@ -489,6 +489,9 @@ The segmenter adds the following properties to the output PIDs:
 <a id="segdur" data-level="basic">__segdur__</a> (frac, default: _0/0_): target segment duration in seconds. A value less than or equal to 0 defaults to 1.0 second  
 </div>  
 <div markdown class="option">  
+<a id="hls_tdur">__hls_tdur__</a> (frac, default: _0/0_): optional fixed HLS target duration in seconds; signal error if a segment exceeds it (0: legacy behavior)  
+</div>  
+<div markdown class="option">  
 <a id="tpl" data-level="basic">__tpl__</a> (bool, default: _true_): use template mode (multiple segment, template URLs)  
 </div>  
 <div markdown class="option">  
