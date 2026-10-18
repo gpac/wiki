@@ -513,6 +513,9 @@ The segmenter adds the following properties to the output PIDs:
 <a id="align">__align__</a> (bool, default: _true_): enable segment time alignment between representations  
 </div>  
 <div markdown class="option">  
+<a id="ssai_align">__ssai_align__</a> (bool, default: _false_): opt-in strict A/V segment-cut coordination for HLS SSAI (video RAP is reference; incompatible video RAPs abort rather than drift)  
+</div>  
+<div markdown class="option">  
 <a id="sap" data-level="basic">__sap__</a> (bool, default: _true_): enable splitting segments at SAP boundaries  
 </div>  
 <div markdown class="option">  
