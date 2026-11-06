@@ -57,9 +57,9 @@ The chart below the table plots one statistic for the selected PIDs. Click a col
 
 ![All properties of the audio PID, opened with the eye icon](images/pid_properties.png){ align=left }
 
-Then click the eye icon of the PID: all its properties open at once, with a search field to find one quickly. Look for the ones you already know about your input file, such as its timescale or duration.
+Then click the eye icon of the PID: all its properties open at once, with a search field to find one quickly. Look for the ones you already know about your input file, such as its timescale.
 
-The Outputs tab lists the PIDs the filter produces, with the same statistics. Comparing the two tabs of one filter tells you whether data enters it, and whether it leaves it.
+The Outputs tab lists the PIDs the filter produces, with the same statistics. Comparing the two tabs of one filter tells you whether data enters it, and whether it leaves it. To see the properties of an output PID, click the edge that leaves the filter and open its eye icon in the next filter's Inputs tab.
 
 # 5. Check what GPAC reports {:data-level="all"}
 
