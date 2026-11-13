@@ -153,4 +153,4 @@ The **Event Journal** on the left lists the events of the visible period. Click 
   ![The event filter and the Event Journal](images/timeline_journal.png)
 </figure>
 
-Use **Events:** to show one kind of event only, in the rows and in the journal: **Errors**, **Graph**, **PIDs** or **Args**. **All** shows them all again.
+Use **Events:** to show one kind of event only, in the rows and in the journal: **Errors**, **Graph**, **PIDs** or **Args**. **Errors** keeps the errors only, without the warnings shown on the **Errors** row. **All** shows them all again.
