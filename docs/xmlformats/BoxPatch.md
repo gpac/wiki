@@ -35,6 +35,7 @@ The path is formatted as a series of 4CC separated by a `.` indicating target ch
 - no character: the last 4CC shall identify a container box, and this specifies that the new box shall be inserted at the end of this container, e.g. `trak.mdia` means insert box as the last child of the media box
 - `+`: specifies that the new box shall be inserted after the indicated box, e.g. `trak.tkhd+` means insert box after track header
 - `-`: specifies that the new box shall be inserted before the indicated box, e.g. `trak.tkhd-` means insert box before track header
+- `*`: when applicable, specifies that any level of boxes my be in between, e.g. `trak.*.mdcv` means remove all mdcv boxes of the track header
 
 To insert a box at the root level, simply indicate after or before which root box you want to insert the file, e.g. `moov-`or `moov+`.
 
