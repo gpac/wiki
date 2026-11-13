@@ -27,7 +27,9 @@ gpac -i file.mp4 reframer:rt=on c=avc:b=1m -o dash/test.mpd:segdur=2 -rmt
 
 Reload the page with the reload button at the left of the connection selector. You should now see the whole session.
 
-![The monitoring interface connected to the running session](images/all_session.png)
+<figure markdown="span">
+  ![The monitoring interface connected to the running session](images/all_session.png)
+</figure>
 
 # 2. Compare the graph with your command {:data-level="all"}
 
@@ -35,13 +37,17 @@ The **Pipeline Graph** shows more filters than your command names: the extra one
 
 Each edge is a connection between two filters, and its color tells which kind of stream it carries: green for audio, blue for video, yellow for text, red for files. At a glance, you see which stream travels through each connection: 
 
-![Edges colored by stream type in the Pipeline Graph](images/edges_nodes.png)
+<figure markdown="span">
+  ![Edges colored by stream type in the Pipeline Graph](images/edges_nodes.png)
+</figure>
 
 # 3. Open the encoder {:data-level="all"}
 
 Click the encoder node in the graph. The filter opens in its own tab of the **Session Filters** widget, on its Overview tab, next to the Dashboard that lists every filter of the session.
 
-![The encoder opened from the graph](images/encoder_overview.png)
+<figure markdown="span">
+  ![The encoder opened from the graph](images/encoder_overview.png)
+</figure>
 
 Switch between the four tabs of the filter. Overview summarizes what the filter reports: its status, packets and data. Stats shows the bytes it receives and sends per second, with a chart over a time window you choose. Inputs and Outputs list the PIDs entering and leaving the filter, their number shown in the tab name.
 
@@ -53,13 +59,17 @@ Below the chart, the P badge shows the type of the last encoded frame (I, P or B
 
 Each edge of the graph carries a stream, a PID. Click an edge that enters a muxer: the muxer opens directly on its Inputs tab, with one line per incoming PID and its statistics: buffer, average bitrate, processing rate, last processing time.
 
-![Statistics and bitrate chart of the audio PID entering a muxer](images/pid_metrics.png)
+<figure markdown="span">
+  ![Statistics and bitrate chart of the audio PID entering a muxer](images/pid_metrics.png)
+</figure>
 
 The chart below the table plots one statistic for the selected PIDs. Click a column label, such as **AVG BITRATE**, to choose that statistic. Hover a value to see the related statistics of the same family, and click **+** next to one to plot it. Use the radio button at the left of a PID to add it to the chart or remove it.
 
 ## Read the properties of a PID
 
-![All properties of the audio PID, opened with the eye icon](images/pid_properties.png){ align=left }
+<figure markdown="span">
+  ![All properties of the audio PID, opened with the eye icon](images/pid_properties.png)
+</figure>
 
 Then click the eye icon of the PID: all its properties open at once, with a search field to find one quickly. Look for the ones you already know about your input file, such as its timescale.
 
@@ -69,11 +79,15 @@ The Outputs tab lists the PIDs the filter produces, with the same statistics. Co
 
 Look at the Logs counters in the header: errors, warnings and info messages currently held by the monitor. Click a counter to display the corresponding messages in the **System Logs** widget.
 
-![Error and warning counters in the header](images/log_counters.png)
+<figure markdown="span">
+  ![Error and warning counters in the header](images/log_counters.png)
+</figure>
 
 To see more about one part of GPAC, open the gear icon of **System Logs**: every GPAC log tool is listed with its level. Raise only the tool you are investigating, for example **Media** to **Info**, and leave the others at **Warning**. The header then shows the active configuration, here `all@warning:media@info`.
 
-![Raising the level of one log tool](images/log_config.png)
+<figure markdown="span">
+  ![Raising the level of one log tool](images/log_config.png)
+</figure>
 
 # 6. Check resource usage {:data-level="all"}
 
@@ -87,6 +101,8 @@ To see more about one part of GPAC, open the gear icon of **System Logs**: every
 
 Move, resize, close or reopen the widgets until the layout suits the investigation, then save it from **Layouts** to restore it the next time you monitor the same kind of pipeline.
 
-![Saving and restoring a layout](images/layout.png)
+<figure markdown="span">
+  ![Saving and restoring a layout](images/layout.png)
+</figure>
 
 To inspect a session after it ends, record it with `-rmt-log` as described in [Session recording](remote-monitoring#session-recording); the replay opens in a separate window, where some header controls are not available.
