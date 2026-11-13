@@ -78,4 +78,7 @@ Assuming the two sources are encoded at 320x240 and merged as src1 above src2, t
 <div markdown class="option">  
 <a id="mrows">__mrows__</a> (bool, default: _false_): signal multiple rows in tile grid when possible  
 </div>  
+<div markdown class="option">  
+<a id="minl">__minl__</a> (bool, default: _false_): rewrite level to minimum value acceptable for each stream  
+</div>  
   

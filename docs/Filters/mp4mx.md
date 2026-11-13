@@ -154,6 +154,9 @@ This will force the text stream to be used as a QT chapter track.
 <a id="m4sys">__m4sys__</a> (bool, default: _false_): force MPEG-4 Systems signaling of tracks  
 </div>  
 <div markdown class="option">  
+<a id="strack">__strack__</a> (bool, default: _false_): force single-track file  
+</div>  
+<div markdown class="option">  
 <a id="dref">__dref__</a> (bool, default: _false_): only reference data from source file - not compatible with all media sources  
 </div>  
 <div markdown class="option">  
