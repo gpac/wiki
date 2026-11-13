@@ -43,17 +43,21 @@ Click the encoder node in the graph. The filter opens in its own tab of the **Se
 
 ![The encoder opened from the graph](images/encoder_overview.png)
 
+Switch between the four tabs of the filter. Overview summarizes what the filter reports: its status, packets and data. Stats shows the bytes it receives and sends per second, with a chart over a time window you choose. Inputs and Outputs list the PIDs entering and leaving the filter, their number shown in the tab name.
+
 The Status chart plots the values the encoder reports, such as **Fps**, **Frames**, **Q** (quality of the last frame, lower is better) and **LAT** (internal latency: the number of frames the encoder holds, received but not yet output). Click a name in the legend to hide its curve, or to show it again: to follow only **Fps**, click the others. Hover the info icon next to a name to read what it measures.
 
 Below the chart, the P badge shows the type of the last encoded frame (I, P or B). The Packets card counts the packets the encoder received (Done) and output (Sent): their difference is the **LAT** value. The Data card shows the compression at work: the encoder receives raw frames and outputs far fewer bytes.
 
-# 4. Follow a stream {:data-level="all"}
+# 4. Inspect the PIDs of a filter {:data-level="all"}
 
 Each edge of the graph carries a stream, a PID. Click an edge that enters a muxer: the muxer opens directly on its Inputs tab, with one line per incoming PID and its statistics: buffer, average bitrate, processing rate, last processing time.
 
 ![Statistics and bitrate chart of the audio PID entering a muxer](images/pid_metrics.png)
 
 The chart below the table plots one statistic for the selected PIDs. Click a column label, such as **AVG BITRATE**, to choose that statistic. Hover a value to see the related statistics of the same family, and click **+** next to one to plot it. Use the radio button at the left of a PID to add it to the chart or remove it.
+
+## Read the properties of a PID
 
 ![All properties of the audio PID, opened with the eye icon](images/pid_properties.png){ align=left }
 
@@ -63,7 +67,7 @@ The Outputs tab lists the PIDs the filter produces, with the same statistics. Co
 
 # 5. Check what GPAC reports {:data-level="all"}
 
-Look at the **LOGS** counters in the header: errors and warnings received since the session started. Click a counter to display the corresponding messages in the **System Logs** widget.
+Look at the Logs counters in the header: errors, warnings and info messages currently held by the monitor. Click a counter to display the corresponding messages in the **System Logs** widget.
 
 ![Error and warning counters in the header](images/log_counters.png)
 
@@ -74,8 +78,6 @@ To see more about one part of GPAC, open the gear icon of **System Logs**: every
 # 6. Check resource usage {:data-level="all"}
 
 **System Metrics** shows CPU, memory and the number of cores of the machine. Use it to watch trends while the session runs, for example how the CPU reacts when you change the encoding options of the same command.
-
-![CPU and memory usage in the System Metrics widget](images/cpu.png)
 
 !!! note
 
