@@ -105,4 +105,52 @@ Move, resize, close or reopen the widgets until the layout suits the investigati
   ![Saving and restoring a layout](images/layout.png)
 </figure>
 
-To inspect a session after it ends, record it with `-rmt-log` as described in [Session recording](remote-monitoring#session-recording); the replay opens in a separate window, where some header controls are not available.
+# 8. Replay the session {:data-level="all"}
+
+To inspect a session after it ends, record it with `-rmt-log` as described in [Session recording](remote-monitoring#session-recording). Click **History** in the header: the replay opens in a separate window, where some header controls are not available.
+
+The **Select a session** window lists, under **From GPAC**, the recordings of the GPAC instance you are connected to; the recording in progress is marked. Without a running GPAC, drag the folder given to `-rmt-log` onto **Drop a history folder**.
+
+<figure markdown="span">
+  ![The replay timeline: event journal, seek bar with a zoom rectangle, event rows and session time](images/timeline.png)
+</figure>
+
+The widgets show the session as it was at the cursor time. The timeline at the bottom of the window lets you move that cursor.
+
+While replaying, use the same interface as in live: open a filter from the graph, read the statistics and properties of its PIDs, follow its logs. Only the video preview is not available.
+
+## Play and move in time
+
+Click the play button to replay the session from the cursor, and click it again to pause. Click or drag the seek bar to jump to another time: the time under the pointer is shown above the bar.
+
+**Session time** shows the cursor time and the total duration of the recording. To reach an exact time, type it in the field below, for example `1d 02:00:00` or `26:00:00`.
+
+<figure markdown="span">
+  ![Session time, the go-to-time field and the zoom buttons](images/timeline_session_time.png)
+</figure>
+
+## Zoom on a period
+
+Click the time ruler under the seek bar: a red rectangle appears. Drag its edges to choose the period, or drag it to move it, then click **+** next to **Zoom** to show only that period. Click **−** to zoom out.
+
+<figure markdown="span">
+  ![The seek bar and the time ruler, with the red zoom rectangle](images/timeline_ruler.png)
+</figure>
+
+Drag the ruler to scroll through the session while zoomed. Click inside the rectangle to hide it.
+
+## Find an event
+
+Under the ruler, the **Errors**, **Graph** and **Config** rows place the events of the session in time: errors and warnings, graph changes, PID reconfigurations and filter argument changes. Click a dot to move the cursor to that event. A larger grey dot groups close events: zoom in to separate them.
+
+<figure markdown="span">
+  ![Events placed in time on the Errors, Graph and Config rows](images/timeline_events.png)
+</figure>
+
+The **Event Journal** on the left lists the events of the visible period. Click the time of an event to move the cursor there; hover it to read its absolute time.
+
+<figure markdown="span">
+  ![The event filter and the Event Journal](images/timeline_journal.png)
+</figure>
+
+Use **Events:** to show one kind of event only, in the rows and in the journal: **Errors**, **Graph**, **PIDs** or **Args**. **All** shows them all again.
