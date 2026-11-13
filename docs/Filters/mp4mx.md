@@ -60,6 +60,14 @@ gpac -i source:1ItemID=1:#boxpatch=myfile.xml -o mux.mp4
     
 The box patch is applied before writing the initial `moov box in fragmented mode, or when writing the complete file otherwise.`  
 The box patch can either be a filename or the full XML string.  
+In a box path, `*` matches zero or more box levels and edits every match. Empty `Box` elements with paths `trak.*.mdcv` and `trak.*.clli` remove HDR metadata regardless of the sample entry type.  
+Wildcard paths without matches are ignored. Paths starting with `trak` or `traf` apply to all tracks unless a track ID is specified.  
+The [rmhdr](#rmhdr) option removes all `mdcv` and `clli` boxes after applying box patches.  
+Example
+```
+gpac -i source.mp4 -o mux.mp4:rmhdr
+```
+  
     
 
 # Tagging  
@@ -396,6 +404,9 @@ This will force the text stream to be used as a QT chapter track.
 </div>  
 <div markdown class="option">  
 <a id="boxpatch">__boxpatch__</a> (str): apply box patch before writing  
+</div>  
+<div markdown class="option">  
+<a id="rmhdr">__rmhdr__</a> (bool, default: _false_): remove all mdcv and clli boxes  
 </div>  
 <div markdown class="option">  
 <a id="deps">__deps__</a> (bool, default: _true_): add samples dependencies information  
