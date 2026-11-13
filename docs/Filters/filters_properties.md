@@ -337,7 +337,7 @@ HasCRoll | bool |  | Indicates if key roll is used in CENC | CROL
 STSDAllTemplates | mem | D | ISOBMFF serialized sample description box for this PID | ISTA    
 STSDTemplateIdx | uint | D | Index of corresponding `STSDAllTemplates` | ISTI    
 PremuxType | uint |  | Main streamtype of the PID before mux, only used for ROUTE/MABR setup | PPST    
-CodecMerge | uint | D | Indicate the PID can be merged with other streams with same value for single decoding  (HEVC only for now) | PCMB    
+CodecMerge | uint | D | Indicate the PID can be merged with other streams with same value for single decoding (HEVC and AV1 only for now) | PCMB    
 RelativePath | bool | DP | Indicate the packet file name uses relative path | FNRL    
 ClearKeyID | mem | D | Key ID for ClearKey scheme | CCKI    
 DashSparse | bool | D | indicate DASH segments are generated in sparse mode (from context) | DSSG    
