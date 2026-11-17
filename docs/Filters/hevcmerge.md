@@ -81,4 +81,10 @@ Assuming the two sources are encoded at 320x240 and merged as src1 above src2, t
 <div markdown class="option">  
 <a id="minl">__minl__</a> (bool, default: _false_): rewrite level to minimum value acceptable for each stream  
 </div>  
+<div markdown class="option">  
+<a id="lf_tiles">__lf_tiles__</a> (bool, default: _false_): force loop_filter_acoss_tiles to be true (usually false in source unsplit MCTS)  
+</div>  
+<div markdown class="option">  
+<a id="sei_hash">__sei_hash__</a> (bool, default: _false_): preserve input decoded-picture hash SEIs, which may be invalid after merging  
+</div>  
   

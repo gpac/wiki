@@ -15,7 +15,6 @@ The filter assumes that all input PIDs are synchronized (frames share the same t
 ## Implicit Positioning  
 In implicit positioning, results may vary based on the order of input PIDs declaration. Equal-size inputs retain connection order in raster order.  
 In this mode, no input shall have `CropOrigin`. Inputs are grouped by width into columns and by height into common rows, with partial superblock sizes at the final edges.  
-The filter tries complete grids starting with the square root of the input count rounded up, then nearby row counts (fewer rows first on ties).  
 [rows](#rows) and [cols](#cols) constrain implicit packing. If no complete grid satisfies the dimensions and constraints, merging is refused; use explicit positions to select another valid arrangement.  
 Example
 ```
@@ -26,13 +25,12 @@ gpac -i top.obu -i bottom.obu av1merge:cols=1 @ -o merged.mp4
 ## Explicit Positioning  
 In explicit positioning, the `CropOrigin` property on input PIDs is used to setup the tile grid. If `CropOrigin` is used, it shall be set on all input sources.  
 If nonnegative coordinates are used, they specify absolute positioning in pixels of the tiles. Coordinates must align to superblocks and are not rounded.  
-Absolute positioning allows gaps: input rectangle boundaries define the rows and columns, including empty cells. Only populated contiguous tile ranges are emitted, using separate frame-header and tile-group OBUs. No filler is encoded.  
+Absolute positioning allows gaps (including empty cells). Only populated contiguous tile ranges are emitted, using separate frame-header and tile-group OBUs. No filler is encoded.  
 While the bitstream syntax can represent omitted tiles, decoders may refuse such streams: libaom and dav1d reject discontinuous tile groups. Successful decoding and gap rendering are not guaranteed.  
 If negative coordinates are used, they specify relative column and row indices: `-1x0` places an input to the right of `0x0`, and `0x-1` places it below.  
 Both axes must be zero or negative in relative positioning; mixing relative and absolute positions is not supported. Relative grids must be complete with contiguous indices; pixel offsets are computed from the column widths and row heights.  
 Rows, columns and input order are derived from these positions. [rows](#rows) and [cols](#cols), when set, must match the layout; they do not rearrange explicitly positioned inputs.  
-Widths must match within each column and heights within each row; columns and rows may have different sizes. Only the final column and row may have non-superblock-aligned sizes. Frame dimensions must match the input PID dimensions; superresolution is not supported.  
-Render widths must also match within columns and render heights within rows. Empty columns or rows use their coded size; custom render scaling on the corresponding axis is rejected when an empty axis size cannot be inferred.  
+Widths must match within each column and heights within each row. Only the final column and row may have non-superblock-aligned sizes. Frame dimensions must match the input PID dimensions; superresolution is not supported.  
 The minimum horizontal and vertical positions become the output origin. Inputs are ordered left-right, top-down; `TileID` is not used for placement.  
 
 - Gaps are supported only with absolute positioning.  
@@ -78,3 +76,7 @@ Alternatively to using `SRD` and `SRDRef`, it is possible to specify absolute `C
 <div markdown class="option">  
 <a id="rows" data-level="basic">__rows__</a> (uint, default: _0_): required number of rows, constraining explicit or implicit positioning (0: automatic)  
 </div>  
+<div markdown class="option">  
+<a id="cols" data-level="basic">__cols__</a> (uint, default: _0_): required number of columns, constraining explicit or implicit positioning (0: automatic)  
+</div>  
+  

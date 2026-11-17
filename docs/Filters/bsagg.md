@@ -8,10 +8,11 @@ Filters of this class can connect to each-other.
   
 This filter aggregates layers and sublayers into a single output PID.  
   
-The filter supports AVC|H264, HEVC and VVC stream reconstruction, and is passthrough for other codec types.  
+The filter supports AVC|H264, HEVC, VVC and AV1 stream reconstruction, and is passthrough for other codec types.  
   
 Aggregation is based on temporalID value (start from 1) and layerID value (start from 0).  
 For AVC|H264, layerID is the dependency value, or quality value if `svcqid` is set.  
+For AV1, inputs must be layers of the same coded sequence with a shared decoder configuration and signaled dependencies (`DependencyID` or `isom:scal` from MP4). OBUs are ordered by spatial ID within each temporal unit; layer IDs and coded frame data are forwarded.  
   
 The filter can also be used on AVC and HEVC DolbyVision dual-streams to aggregate base stream and DV RPU/EL.  
   

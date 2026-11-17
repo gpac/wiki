@@ -223,6 +223,8 @@ nav:
     - Logging: Filters/core_logs.md
     - Filters:
       - Stream Manipulation:
+        - AV1 Tile extractor: Filters/av1split.md
+        - AV1 Tile merger: Filters/av1merge.md
         - Audio/Video rewinder: Filters/rewind.md
         - Bitstream metadata rewriter: Filters/bsrw.md
         - FFmpeg bitstream filter: Filters/ffbsf.md

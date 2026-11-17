@@ -8,10 +8,12 @@ Filters of this class can connect to each-other.
   
 This filter splits input stream by layers and sublayers  
   
-The filter supports AVC|H264, HEVC and VVC stream splitting and is pass-through for other codec types.  
+The filter supports AVC|H264, HEVC, VVC and AV1 stream splitting and is pass-through for other codec types.  
   
 Splitting is based on temporalID value (start from 1) and layerID value (start from 0).  
 For AVC|H264, layerID is the dependency value, or quality value if `svcqid` is set.  
+For AV1, layerID is `spatial_id` and temporalID is `temporal_id + 1`. Enhancement emits non-standalone video streams that retain their dependencies. The sequence header and operating points are preserved by this filter.  
+AV1 outputs can be saved together in MP4 and reconstructed with `bsagg`. Absent layers use delimiter-only packets to preserve timing.  
   
 Each input stream is filtered according to the `ltid` option as follows:  
 

@@ -14,4 +14,7 @@ Use hevcmerge filter to merge initially motion-constrained tiled HEVC PID in a s
 <div markdown class="option">  
 <a id="minl">__minl__</a> (bool, default: _true_): rewrite level to minimum value acceptable for each stream  
 </div>  
+<div markdown class="option">  
+<a id="sei_hash">__sei_hash__</a> (bool, default: _false_): preserve input decoded-picture hash SEIs, which may be invalid after splitting  
+</div>  
   
