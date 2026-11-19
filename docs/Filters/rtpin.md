@@ -118,4 +118,7 @@ The filter will attempt reconnecting in TLS mode after two consecutive initial c
 <div markdown class="option">  
 <a id="ssmx">__ssmx__</a> (strl): list of IP to exclude for source-specific multicast  
 </div>  
+<div markdown class="option">  
+<a id="idelay">__idelay__</a> (uint, default: _0_): delay first request by the given number of ms  
+</div>  
   
