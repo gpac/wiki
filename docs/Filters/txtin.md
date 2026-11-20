@@ -16,6 +16,7 @@ The filter supports the following formats:
 - SUB: one subtitle per line formatted as `{start_frame}{end_frame}text`  
 - SSA (Substation Alpha): basic parsing support for common files  
 
+For progressive WebVTT input, header fields such as `X-TIMESTAMP-MAP` are collected through the blank-line header terminator. Input chunks may split the header across packets.  
   
 Input files must be in UTF-8 or UTF-16 format, with or without BOM. The internal frame format is:   
 
