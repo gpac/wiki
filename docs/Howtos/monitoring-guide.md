@@ -109,7 +109,31 @@ See the properties of an output PID:
 1. click the edge that leaves the filter
 2. click the eye icon of the PID in the Inputs tab of the next filter
 
-# 5. Check what GPAC reports {:data-level="all"}
+# 5. Preview the video of a PID {:data-level="all"}
+
+The preview shows the video carried by a PID, decoded by your browser. It is available in live only.
+
+You can open a preview in any layout, including the **Default** one, from the filter of the PID. The **Preview** layout is recommended: its **Previews** widget shows at once every PID you can preview, grouped by filter. You can also add **Previews** to any layout from **Widgets**.
+
+Show the video of a PID from its filter:
+
+1. open the Inputs or Outputs tab of the filter
+2. click the camera icon of a video PID ![Camera icon](images/preview_icon.png){ style="height:1.8em; vertical-align:middle" }
+
+The video appears in the filter. The camera icon is shown only on the PIDs you can preview. Click it again to close the preview.
+
+Open a preview from the **Previews** widget:
+
+1. open **Layouts** and choose **Preview**
+2. click the eye icon of a PID under **Available**
+
+The filter opens in its own widget, on its Inputs or Outputs tab, with the video. The PID moves under **Active**.
+
+Only compressed video can be previewed, not raw video: AVC, HEVC if your browser supports it, and AV1. Otherwise the preview shows `Codec not supported by this browser`.
+
+The session of this guide runs in real time (`reframer:rt=on`): the preview shows every frame. When a source runs more than 1.5 times faster than real time, only key frames are sent and a **Keyframes** badge appears on the preview (their rate, 10 or 30 per second, is set with **Keyframes/s** in the **Previews** widget only).
+
+# 6. Check what GPAC reports {:data-level="all"}
 
 The Logs counters in the header show the errors, warnings and info messages currently held by the monitor.
 
@@ -134,7 +158,7 @@ The header then shows the active configuration, here `all@warning:media@info`.
   ![Raising the level of one log tool](images/log_config.png)
 </figure>
 
-# 6. Check resource usage {:data-level="all"}
+# 7. Check resource usage {:data-level="all"}
 
 **System Metrics** also gives the number of cores of the machine. Watch its trends while the session runs (refreshed every half second), for example how the CPU reacts when you change the encoding options of the same command.
 
@@ -142,7 +166,7 @@ The header then shows the active configuration, here `all@warning:media@info`.
 
     On Linux, the CPU value reflects the load of the whole machine, not of the GPAC process only. The memory value is the peak used by the process since it started, so the curve never goes down, even when memory is released.
 
-# 7. Keep your workspace {:data-level="all"}
+# 8. Keep your workspace {:data-level="all"}
 
 Keep a layout for the next investigation:
 
@@ -154,7 +178,7 @@ Keep a layout for the next investigation:
   ![Saving and restoring a layout](images/layout.png)
 </figure>
 
-# 8. Replay the session {:data-level="all"}
+# 9. Replay the session {:data-level="all"}
 
 To inspect a session after it ends, record it with `-rmt-log` as described in [Session recording](remote-monitoring#session-recording).
 
