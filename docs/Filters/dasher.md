@@ -430,6 +430,8 @@ gpac -i SRC1 -o dash.mpd:segdur=2:state=CTX:sflush=end:keep_ts && gpac -i SRC2 -
   
 This will generate all dash segments for `SRC1` without looping/closing the period at end of input, then for `SRC2`. Timestamps of the sources will not be rewritten.  
   
+If [keep_ts](#keep_ts) is set but the new input does not continue the previous timeline, timestamps are not rewritten and a new period is created, as for in-session time discontinuities. Setting [td_detect](#td_detect) to 0 disables this detection.  
+  
 _Note: The default behaviour of MP4Box `-dash-ctx` option is to set the [loop](#loop) to true._  
   
 ## Output redirecting  
@@ -890,7 +892,7 @@ with streamType being "audio", "video", "text", or "all"
 <a id="td_limit">__td_limit__</a> (uint, default: _5_): number of seconds below which a time discontinuity is considered normal (eg loss) - 0 disables checking  
 </div>  
 <div markdown class="option">  
-<a id="td_detect">__td_detect__</a> (uint, default: _5_): number of seconds between DTS above which a discontinuity is triggered - 0 disables checking  
+<a id="td_detect">__td_detect__</a> (uint, default: _5_): number of seconds between DTS above which a discontinuity is triggered - 0 disables checking (may produce non-compliant streams)  
 </div>  
 <div markdown class="option">  
 <a id="sigfo">__sigfo__</a> (bool): use fragment offsets if available when generating index (implicit if sigfrag is used)  
